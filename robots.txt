@@ -1,0 +1,177 @@
+# ============================================
+# robots.txt - ARAMA MOTORU KONTROLÜ
+# ============================================
+# Web sitenizin root dizinine koyun
+# https://yoursite.com/robots.txt
+# ============================================
+# ============================================
+# GENEL KURALLAR (Tüm botlar)
+# ============================================
+User-agent: *
+# İzin verilen sayfalar
+Allow: /
+Allow: /index.html
+Allow: /project-detail.html
+Allow: /*.css
+Allow: /*.js
+Allow: /assets/
+Allow: /images/
+# ============================================
+# YASAKLI SAYFALAR (Admin & Güvenlik)
+# ============================================
+# Admin panelleri
+Disallow: /admin.html
+Disallow: /admin/
+Disallow: /panel/
+Disallow: /secure-*
+Disallow: /*secure*.html
+# Yapılandırma dosyaları
+Disallow: /*.config
+Disallow: /*.env
+Disallow: /*.ini
+Disallow: /panel-*.html
+Disallow: /.htaccess
+Disallow: /.htpasswd
+# Yedek dosyalar
+Disallow: /*backup*
+Disallow: /*old*
+Disallow: /*temp*
+Disallow: /*.bak
+# Git dosyaları
+Disallow: /.git/
+# Private klasörler
+Disallow: /private/
+Disallow: /vendor/
+Disallow: /node_modules/
+# ============================================
+# ÖZEL BOT KURALLARI
+# ============================================
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin.html
+Disallow: /secure-*
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin.html
+Disallow: /secure-*
+# Kötü botları engelle
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+# ============================================
+# SITEMAP
+# ============================================
+# Sitemap dosyanızın konumu
+Sitemap: https://yoursite.com/sitemap.xml
+# Örnek sitemap.xml içeriği:
+# <?xml version="1.0" encoding="UTF-8"?>
+# <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+#   <url>
+#     <loc>https://yoursite.com/</loc>
+#     <lastmod>2024-01-08</lastmod>
+#     <priority>1.0</priority>
+#   </url>
+#   <url>
+#     <loc>https://yoursite.com/project-detail.html</loc>
+#     <lastmod>2024-01-08</lastmod>
+#     <priority>0.8</priority>
+#   </url>
+# </urlset>
+# ============================================
+# CRAWL DELAY (Opsiyonel)
+# ============================================
+# Botların sayfalar arası bekleme süresi (saniye)
+# Sunucuyu yormamak için
+Crawl-delay: 1
+# ============================================
+# ÖZEL KULLANIM ÖRNEKLERİ
+# ============================================
+# E-ticaret sitesi
+# Disallow: /cart/
+# Disallow: /checkout/
+# Disallow: /my-account/
+# Blog sitesi
+# Disallow: /wp-admin/
+# Disallow: /wp-includes/
+# Portal sitesi
+# Disallow: /dashboard/
+# Disallow: /user/
+# ============================================
+# GÜVENLİK NOTU
+# ============================================
+# ⚠️ robots.txt GÜVENLİK SAÄžLAMAZ!
+# 
+# robots.txt sadece NAZIK botları engeller
+# Kötü niyetli botlar yine de erişebilir
+# 
+# Gerçek güvenlik için:
+# ✅ Firebase Authentication
+# ✅ .htaccess koruma
+# ✅ IP kısıtlama
+# ✅ Dosya izinleri
+# ✅ HTTPS
+# ============================================
+# TEST ETME
+# ============================================
+# Google Search Console:
+# 1. https://search.google.com/search-console
+# 2. Property ekle
+# 3. robots.txt test et
+# 4. Sitemap gönder
+# Online Tool:
+# https://www.google.com/webmasters/tools/robots-testing-tool
+# ============================================
+# DEPLOYMENT CHECKLIST
+# ============================================
+# [ ] robots.txt oluşturuldu
+# [ ] Admin sayfaları yasaklandı
+# [ ] Sitemap eklendi
+# [ ] Google Search Console'a gönderildi
+# [ ] Test edildi
+# [ ] Production'a yüklendi
+# ============================================
+# ÖNEMLİ HATIRLATMA
+# ============================================
+# Bu dosya herkese açık!
+# https://yoursite.com/robots.txt adresinden erişilebilir
+# 
+# Gizli sayfaları robots.txt'ye EKLEME!
+# Örnek YANLIŞ kullanım:
+# Disallow: /super-secret-admin-panel-xyz123.html
+# 
+# Bu dosyayı okuyarak gizli sayfayı bulabilirler!
+# 
+# Bunun yerine:
+# - Rastgele dosya adı kullan
+# - .htaccess ile koru
+# - Firebase auth ekle
+# ============================================
+# BEST PRACTICES
+# ============================================
+# ✅ Basit tut
+# ✅ Sadece gerekli kuralları ekle
+# ✅ Joker karakter kullan (*, /)
+# ✅ Büyük/küçük harf duyarlı
+# ✅ Her satır yeni kural
+# ✅ Yorum ekle (#)
+# ❌ Çok spesifik olma
+# ❌ Tüm sayfaları listeleme
+# ❌ Gizli bilgi paylaşma
+# ❌ Güvenlik için kullanma
+# ============================================
+# RESOURCES
+# ============================================
+# Google Robots.txt Docs:
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+# Robots.txt Generator:
+# https://www.ryte.com/free-tools/robots-txt-generator/
+# Sitemap Generator:
+# https://www.xml-sitemaps.com/
+# ============================================

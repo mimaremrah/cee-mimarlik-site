@@ -1,0 +1,350 @@
+<!-- CEE MİMARLIK - ADMIN PANEL EKLENTİLERİ -->
+<!-- Bu kodu admin.html'in içine ekleyin -->
+
+<style>
+/* YENİ BÖLÜMLER İÇİN STYLE */
+.section-content {
+    display: none;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.section-content.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.team-member-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.team-member-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.team-member-card button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.team-member-card button:first-of-type {
+    background: #3b82f6;
+    color: white;
+}
+
+.team-member-card button:last-of-type {
+    background: #ef4444;
+    color: white;
+}
+
+body.dark-mode .section-content {
+    background: #1e293b;
+}
+
+body.dark-mode .form-group label {
+    color: #e2e8f0;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+body.dark-mode .team-member-card {
+    background: #0f172a;
+}
+</style>
+
+<!-- HAKKIMIZDA BÖLÜMÜ -->
+<div id="aboutSection" class="section-content">
+    <h2 style="margin-bottom: 20px;">📝 Hakkımızda Bilgileri</h2>
+    
+    <div class="form-group">
+        <label>Şirket Başlığı</label>
+        <input type="text" id="aboutTitle" placeholder="CEE Mimarlık">
+    </div>
+    
+    <div class="form-group">
+        <label>Açıklama</label>
+        <textarea id="aboutDesc" placeholder="Modern mimarlık anlayışıyla..."></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label>Vizyonumuz</label>
+        <textarea id="aboutVision" placeholder="Sürdürülebilir ve çevre dostu..."></textarea>
+    </div>
+    
+    <button onclick="saveAboutInfo()" style="padding: 12px 30px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;">
+        💾 Kaydet
+    </button>
+</div>
+
+<!-- EKİP ÜYELERİ BÖLÜMÜ -->
+<div id="teamSection" class="section-content">
+    <h2 style="margin-bottom: 20px;">👥 Ekip Üyeleri</h2>
+    
+    <button onclick="openTeamMemberModal()" style="padding: 12px 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin-bottom: 20px;">
+        ➕ Yeni Ekip Üyesi Ekle
+    </button>
+    
+    <div id="teamMembersList"></div>
+</div>
+
+<!-- INSTAGRAM BÖLÜMÜ -->
+<div id="instagramSection" class="section-content">
+    <h2 style="margin-bottom: 20px;">📷 Instagram Hesapları</h2>
+    
+    <div class="form-group">
+        <label>Instagram Kullanıcı Adları (Her satıra bir tane)</label>
+        <textarea id="instagramList" placeholder="cee_mimarlik&#10;cee_architecture&#10;ceemimarlik"></textarea>
+    </div>
+    
+    <button onclick="saveInstagramAccounts()" style="padding: 12px 30px; background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;">
+        💾 Kaydet
+    </button>
+</div>
+
+<!-- EKİP ÜYESİ MODAL -->
+<div id="teamMemberModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: white; padding: 40px; border-radius: 12px; max-width: 500px; width: 90%;">
+        <h3 style="margin-bottom: 20px;">➕ Yeni Ekip Üyesi</h3>
+        
+        <div class="form-group">
+            <label>İsim Soyisim</label>
+            <input type="text" id="teamMemberName">
+        </div>
+        
+        <div class="form-group">
+            <label>Ünvan</label>
+            <input type="text" id="teamMemberTitle" placeholder="Mimar, İç Mimar...">
+        </div>
+        
+        <div class="form-group">
+            <label>Eğitim</label>
+            <textarea id="teamMemberEducation" placeholder="Üniversite, Bölüm..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Deneyim</label>
+            <textarea id="teamMemberExperience" placeholder="İş deneyimi..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Fotoğraf</label>
+            <input type="file" id="teamMemberPhoto" accept="image/*">
+        </div>
+        
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button onclick="saveTeamMember()" style="flex: 1; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                💾 Kaydet
+            </button>
+            <button onclick="closeTeamMemberModal()" style="flex: 1; padding: 12px; background: #6b7280; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                ❌ İptal
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// HAKKIMIZDA YÖNETİMİ
+function loadAboutInfo() {
+    const about = JSON.parse(localStorage.getItem('cee_about_info') || '{"title":"CEE Mimarlık","description":"Modern mimarlık anlayışıyla projeler üretiyoruz.","vision":"Sürdürülebilir ve çevre dostu mimari çözümler."}');
+    document.getElementById('aboutTitle').value = about.title;
+    document.getElementById('aboutDesc').value = about.description;
+    document.getElementById('aboutVision').value = about.vision;
+}
+
+function saveAboutInfo() {
+    const about = {
+        title: document.getElementById('aboutTitle').value,
+        description: document.getElementById('aboutDesc').value,
+        vision: document.getElementById('aboutVision').value
+    };
+    localStorage.setItem('cee_about_info', JSON.stringify(about));
+    alert('✅ Hakkımızda bilgileri kaydedildi!');
+}
+
+// EKİP ÜYELERİ YÖNETİMİ
+function loadTeamMembers() {
+    const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+    const container = document.getElementById('teamMembersList');
+    
+    if (members.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #6b7280;">Henüz ekip üyesi eklenmedi.</p>';
+        document.getElementById('teamCount').textContent = '0';
+        return;
+    }
+    
+    document.getElementById('teamCount').textContent = members.length;
+    
+    container.innerHTML = members.map(m => `
+        <div class="team-member-card">
+            <img src="${m.photo}" alt="${m.name}">
+            <div style="flex: 1;">
+                <h4 style="margin-bottom: 5px;">${m.name}</h4>
+                <p style="color: #6b7280; margin: 0;">${m.title}</p>
+            </div>
+            <button onclick="editTeamMember('${m.id}')">✏️ Düzenle</button>
+            <button onclick="deleteTeamMember('${m.id}')">🗑️ Sil</button>
+        </div>
+    `).join('');
+}
+
+function openTeamMemberModal(id = null) {
+    document.getElementById('teamMemberModal').style.display = 'flex';
+    
+    if (id) {
+        const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+        const member = members.find(m => m.id === id);
+        if (member) {
+            document.getElementById('teamMemberName').value = member.name;
+            document.getElementById('teamMemberTitle').value = member.title;
+            document.getElementById('teamMemberEducation').value = member.education;
+            document.getElementById('teamMemberExperience').value = member.experience;
+        }
+    } else {
+        document.getElementById('teamMemberName').value = '';
+        document.getElementById('teamMemberTitle').value = '';
+        document.getElementById('teamMemberEducation').value = '';
+        document.getElementById('teamMemberExperience').value = '';
+    }
+}
+
+function closeTeamMemberModal() {
+    document.getElementById('teamMemberModal').style.display = 'none';
+}
+
+function saveTeamMember() {
+    const name = document.getElementById('teamMemberName').value;
+    const title = document.getElementById('teamMemberTitle').value;
+    
+    if (!name || !title) {
+        alert('❌ İsim ve ünvan zorunludur!');
+        return;
+    }
+    
+    const photo = document.getElementById('teamMemberPhoto').files[0];
+    if (photo) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            addTeamMemberToStorage({
+                id: Date.now().toString(),
+                name: name,
+                title: title,
+                education: document.getElementById('teamMemberEducation').value,
+                experience: document.getElementById('teamMemberExperience').value,
+                photo: e.target.result
+            });
+        };
+        reader.readAsDataURL(photo);
+    } else {
+        addTeamMemberToStorage({
+            id: Date.now().toString(),
+            name: name,
+            title: title,
+            education: document.getElementById('teamMemberEducation').value,
+            experience: document.getElementById('teamMemberExperience').value,
+            photo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+8J+SpDwvdGV4dD48L3N2Zz4='
+        });
+    }
+}
+
+function addTeamMemberToStorage(member) {
+    const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+    members.push(member);
+    localStorage.setItem('cee_team_members', JSON.stringify(members));
+    loadTeamMembers();
+    closeTeamMemberModal();
+    alert('✅ Ekip üyesi eklendi!');
+}
+
+function editTeamMember(id) {
+    openTeamMemberModal(id);
+}
+
+function deleteTeamMember(id) {
+    if (!confirm('🗑️ Bu ekip üyesini silmek istediğinize emin misiniz?')) return;
+    let members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+    members = members.filter(m => m.id !== id);
+    localStorage.setItem('cee_team_members', JSON.stringify(members));
+    loadTeamMembers();
+    alert('✅ Ekip üyesi silindi!');
+}
+
+// INSTAGRAM HESAPLARI
+function loadInstagramAccounts() {
+    const accounts = JSON.parse(localStorage.getItem('cee_instagram_accounts') || '["cee_mimarlik"]');
+    document.getElementById('instagramList').value = accounts.join('\n');
+}
+
+function saveInstagramAccounts() {
+    const text = document.getElementById('instagramList').value;
+    const accounts = text.split('\n').filter(a => a.trim()).map(a => a.trim().replace('@', ''));
+    localStorage.setItem('cee_instagram_accounts', JSON.stringify(accounts));
+    alert('✅ Instagram hesapları kaydedildi!');
+}
+
+// BÖLÜM GÖSTERİCİ
+function showSection(section) {
+    // Tüm bölümleri gizle
+    document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+    
+    // Seçili bölümü göster
+    if (section === 'about') {
+        document.getElementById('aboutSection').classList.add('active');
+        loadAboutInfo();
+    } else if (section === 'team') {
+        document.getElementById('teamSection').classList.add('active');
+        loadTeamMembers();
+    } else if (section === 'instagram') {
+        document.getElementById('instagramSection').classList.add('active');
+        loadInstagramAccounts();
+    }
+}
+
+// Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', function() {
+    loadTeamMembers();
+});
+</script>

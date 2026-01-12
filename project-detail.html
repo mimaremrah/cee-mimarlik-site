@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Detay - CEE Mimarlık</title>
+    
+    <!-- SEO Fallback Meta Tags -->
+    <meta name="description" content="CEE Mimarlık projesi detayları - Modern mimarlık anlayışıyla tasarlanan villa, apartman ve ticari yapılar.">
+    <meta name="keywords" content="mimarlık projesi, villa tasarımı, modern mimari, CEE Mimarlık">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Proje Detay - CEE Mimarlık">
+    <meta property="og:description" content="CEE Mimarlık projesi detayları">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.ceemimarlik.com/og-image.jpg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* MAIN CONTENT */
+        .project-detail {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* HERO IMAGE */
+        .project-hero {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+
+        /* INFO SECTION */
+        .project-info {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+
+        .project-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .meta-value {
+            color: #6b7280;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* SPECS */
+        .project-specs {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .spec-item {
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .spec-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        /* GALLERY */
+        .project-gallery {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* DRAWINGS */
+        .project-drawings {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .drawings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .drawing-item {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .drawing-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .drawing-image {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #f9fafb;
+            padding: 20px;
+        }
+
+        .drawing-title {
+            padding: 15px;
+            background: #f9fafb;
+            font-weight: 600;
+            color: #1f2937;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .project-hero {
+                height: 300px;
+            }
+
+            .project-title {
+                font-size: 28px;
+            }
+
+            .project-info,
+            .project-specs,
+            .project-gallery,
+            .project-drawings {
+                padding: 20px;
+            }
+
+            .gallery-grid,
+            .drawings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">🏢 CEE MİMARLIK</div>
+            <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="project-detail">
+        <!-- HERO IMAGE -->
+        <div class="project-hero" id="projectHero" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzljYTNhZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPsSwbWFnZSBIZXJlPC90ZXh0Pjwvc3ZnPg==')"></div>
+
+        <!-- PROJECT INFO -->
+        <div class="project-info">
+            <h1 class="project-title" id="projectTitle">Villa Projesi</h1>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">📍 Konum:</span>
+                    <span class="meta-value" id="projectLocation">İstanbul, Türkiye</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">📅 Yıl:</span>
+                    <span class="meta-value" id="projectYear">2024</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">📐 Alan:</span>
+                    <span class="meta-value" id="projectArea">350 m²</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">👤 Müşteri:</span>
+                    <span class="meta-value" id="projectClient">Özel</span>
+                </div>
+            </div>
+
+            <div class="project-description" id="projectDescription">
+                Modern mimari anlayışla tasarlanan bu villa projesi, doğa ile iç içe yaşam konseptini merkeze alır. 
+                Geniş cam yüzeyler sayesinde maksimum doğal ışık alınırken, sürdürülebilir malzemeler kullanılarak 
+                çevre dostu bir yaklaşım benimsenmiştir.
+            </div>
+
+            <div class="project-tags" id="projectTags">
+                <span class="tag">Villa</span>
+                <span class="tag">Modern</span>
+                <span class="tag">Sürdürülebilir</span>
+            </div>
+        </div>
+
+        <!-- TECHNICAL SPECS -->
+        <div class="project-specs">
+            <h2 class="section-title">📋 Teknik Özellikler</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">İnşaat Alanı</div>
+                    <div class="spec-value" id="specArea">350 m²</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Kat Sayısı</div>
+                    <div class="spec-value" id="specFloors">2 Kat</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Oda Sayısı</div>
+                    <div class="spec-value" id="specRooms">4+1</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Banyo</div>
+                    <div class="spec-value" id="specBathrooms">3</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Arsa Alanı</div>
+                    <div class="spec-value" id="specLand">600 m²</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Otopark</div>
+                    <div class="spec-value" id="specParking">2 Araç</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="project-gallery">
+            <h2 class="section-title">🖼️ Görsel Galeri</h2>
+            <div class="gallery-grid" id="projectGallery">
+                <!-- Görseller dinamik yüklenecek -->
+            </div>
+        </div>
+
+        <!-- DRAWINGS/PLANS -->
+        <div class="project-drawings">
+            <h2 class="section-title">📐 Çizimler & Planlar</h2>
+            <div class="drawings-grid" id="projectDrawings">
+                <!-- Çizimler dinamik yüklenecek -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URL'den proje ID'sini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+
+        // LocalStorage'dan proje verilerini yükle
+        function loadProjectData() {
+            try {
+                const projects = JSON.parse(localStorage.getItem('cee_projects')) || [];
+                const project = projects.find(p => p.id === projectId);
+
+                if (!project) {
+                    alert('Proje bulunamadı!');
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                // Temel bilgiler
+                document.title = `${project.title} - CEE Mimarlık`;
+                document.getElementById('projectTitle').textContent = project.title;
+                document.getElementById('projectDescription').textContent = project.description || project.title;
+
+                // Meta bilgiler
+                if (project.details) {
+                    document.getElementById('projectLocation').textContent = project.details.location || 'İstanbul, Türkiye';
+                    document.getElementById('projectYear').textContent = project.details.year || '2024';
+                    document.getElementById('projectArea').textContent = project.details.area || '-';
+                    document.getElementById('projectClient').textContent = project.details.client || 'Özel';
+                }
+
+                // Hero image
+                if (project.media && project.media[0]) {
+                    document.getElementById('projectHero').style.backgroundImage = `url(${project.media[0].url})`;
+                }
+
+                // Tags
+                if (project.tags && project.tags.length > 0) {
+                    const tagsContainer = document.getElementById('projectTags');
+                    tagsContainer.innerHTML = '';
+                    project.tags.forEach(tag => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = 'tag';
+                        tagEl.textContent = tag;
+                        tagsContainer.appendChild(tagEl);
+                    });
+                }
+
+                // Technical specs
+                if (project.specs) {
+                    document.getElementById('specArea').textContent = project.specs.area || '-';
+                    document.getElementById('specFloors').textContent = project.specs.floors || '-';
+                    document.getElementById('specRooms').textContent = project.specs.rooms || '-';
+                    document.getElementById('specBathrooms').textContent = project.specs.bathrooms || '-';
+                    document.getElementById('specLand').textContent = project.specs.land || '-';
+                    document.getElementById('specParking').textContent = project.specs.parking || '-';
+                }
+
+                // Gallery
+                if (project.media && project.media.length > 1) {
+                    const galleryContainer = document.getElementById('projectGallery');
+                    galleryContainer.innerHTML = '';
+                    
+                    project.media.slice(1).forEach(media => {
+                        const item = document.createElement('div');
+                        item.className = 'gallery-item';
+                        item.innerHTML = `<img src="${media.url}" alt="${project.title}">`;
+                        item.onclick = () => window.open(media.url, '_blank');
+                        galleryContainer.appendChild(item);
+                    });
+                }
+
+                // Drawings
+                if (project.drawings && project.drawings.length > 0) {
+                    const drawingsContainer = document.getElementById('projectDrawings');
+                    drawingsContainer.innerHTML = '';
+                    
+                    project.drawings.forEach(drawing => {
+                        const item = document.createElement('div');
+                        item.className = 'drawing-item';
+                        item.innerHTML = `
+                            <img src="${drawing.url}" alt="${drawing.title}" class="drawing-image">
+                            <div class="drawing-title">${drawing.title}</div>
+                        `;
+                        drawingsContainer.appendChild(item);
+                    });
+                } else {
+                    document.querySelector('.project-drawings').style.display = 'none';
+                }
+
+            } catch (error) {
+                console.error('Proje yüklenirken hata:', error);
+                alert('Proje yüklenirken bir hata oluştu!');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Sayfa yüklendiğinde çalıştır
+        document.addEventListener('DOMContentLoaded', loadProjectData);
+    </script>
+
+    <!-- ============================================ -->
+    <!-- FIREBASE CONFIG - ZORUNLU -->
+    <!-- ============================================ -->
+    <script type="module" src="firebase-config.js"></script>
+    
+    <!-- ============================================ -->
+    <!-- DİNAMİK SEO - ZORUNLU -->
+    <!-- ============================================ -->
+    <script type="module" src="dynamic-seo.js"></script>
+    
+    <!-- ============================================ -->
+    <!-- FIRESTORE ENTEGRASYONU - PROJE DETAY YÜKLE -->
+    <!-- ============================================ -->
+    <script type="module">
+    import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+    
+    // URL'den proje ID'sini al
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+    
+    if (!projectId) {
+        alert('Geçersiz proje!');
+        window.location.href = 'index.html';
+    }
+    
+    // Firebase hazır olmasını bekle
+    async function waitForFirebase() {
+        let attempts = 0;
+        while (!window.firebaseDB && attempts < 50) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            attempts++;
+        }
+        
+        if (!window.firebaseDB) {
+            console.error('❌ Firebase başlatılamadı!');
+            alert('Firebase bağlantısı kurulamadı!');
+            return false;
+        }
+        return true;
+    }
+    
+    // Projeyi Firestore'dan yükle
+    async function loadProjectFromFirestore() {
+        console.log('🔥 Proje yükleniyor:', projectId);
+        
+        // Firebase'in hazır olmasını bekle
+        const firebaseReady = await waitForFirebase();
+        if (!firebaseReady) {
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        try {
+            const docRef = doc(window.firebaseDB, 'projects', projectId);
+            const docSnap = await getDoc(docRef);
+            
+            if (docSnap.exists()) {
+                const project = { id: docSnap.id, ...docSnap.data() };
+                console.log('✅ Proje bulundu:', project.title);
+                
+                // ============================================
+                // DİNAMİK SEO - ZORUNLU ÇAĞRI
+                // ============================================
+                if (typeof window.updateSEOMetaTags === 'function') {
+                    window.updateSEOMetaTags(project);
+                    console.log('✅ SEO meta tagları güncellendi');
+                } else {
+                    console.warn('⚠️ updateSEOMetaTags fonksiyonu bulunamadı!');
+                }
+                
+                // Projeyi render et
+                renderProject(project);
+            } else {
+                alert('Proje bulunamadı!');
+                window.location.href = 'index.html';
+            }
+        } catch (error) {
+            console.error('❌ Firestore hatası:', error);
+            alert('Proje yüklenirken bir hata oluştu!');
+            window.location.href = 'index.html';
+        }
+    }
+    
+    // Projeyi sayfada göster
+    function renderProject(project) {
+        // Title
+        document.title = project.title + ' | CEE Mimarlık';
+        
+        // Hero image
+        const heroSection = document.querySelector('.project-hero');
+        if (heroSection) {
+            heroSection.style.backgroundImage = `url('${project.thumbnail || project.images[0]}')`;
+        }
+        
+        // Başlık
+        const titleEl = document.querySelector('.project-title');
+        if (titleEl) titleEl.textContent = project.title;
+        
+        // Açıklama
+        const descEl = document.querySelector('.project-description');
+        if (descEl) descEl.textContent = project.description;
+        
+        // Meta bilgileri (konum, yıl, alan)
+        const metaEl = document.querySelector('.project-meta');
+        if (metaEl) {
+            let metaHTML = '';
+            if (project.details?.location) {
+                metaHTML += `
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span>
+                        <span class="meta-label">Konum:</span>
+                        <span class="meta-value">${project.details.location}</span>
+                    </div>
+                `;
+            }
+            if (project.details?.year) {
+                metaHTML += `
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span class="meta-label">Yıl:</span>
+                        <span class="meta-value">${project.details.year}</span>
+                    </div>
+                `;
+            }
+            if (project.details?.area) {
+                metaHTML += `
+                    <div class="meta-item">
+                        <span class="meta-icon">📐</span>
+                        <span class="meta-label">Alan:</span>
+                        <span class="meta-value">${project.details.area}</span>
+                    </div>
+                `;
+            }
+            metaEl.innerHTML = metaHTML;
+        }
+        
+        // Görseller galerisi
+        const galleryEl = document.querySelector('.gallery-grid');
+        if (galleryEl && project.images && project.images.length > 0) {
+            let galleryHTML = '';
+            project.images.forEach((url) => {
+                galleryHTML += `
+                    <div class="gallery-item" onclick="window.open('${url}', '_blank')" style="cursor:pointer;">
+                        <img src="${url}" loading="lazy" alt="${project.title}">
+                    </div>
+                `;
+            });
+            galleryEl.innerHTML = galleryHTML;
+        }
+        
+        // Teknik özellikler
+        if (project.specs) {
+            const specsContainer = document.querySelector('.project-specs');
+            if (specsContainer) {
+                let specsHTML = '';
+                for (const [key, value] of Object.entries(project.specs)) {
+                    specsHTML += `
+                        <div class="spec-item">
+                            <strong>${key}:</strong> ${value}
+                        </div>
+                    `;
+                }
+                if (specsHTML) {
+                    specsContainer.innerHTML = specsHTML;
+                } else {
+                    specsContainer.style.display = 'none';
+                }
+            }
+        }
+        
+        console.log('✅ Proje render edildi');
+    }
+    
+    // Sayfa yüklendiğinde çalıştır
+    window.addEventListener('DOMContentLoaded', loadProjectFromFirestore);
+    </script>
+
+<!-- Lazy Loading -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+    images.forEach(img => imageObserver.observe(img));
+});
+</script>
+</body>
+</html>

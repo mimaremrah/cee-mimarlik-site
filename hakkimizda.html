@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - CEE Mimarlık</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d3748;
+            --accent: #d4af37;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+        }
+
+        /* HEADER */
+        .header {
+            background: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            max-height: 80px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-section h2 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+
+        /* TEAM GRID */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--accent);
+        }
+
+        .team-card h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .team-card .title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-card .info {
+            font-size: 14px;
+            color: #64748b;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .team-card .info strong {
+            color: var(--primary);
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s;
+            margin: 40px 0;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 30px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img id="siteLogo" src="" alt="CEE Mimarlık" style="display: none;">
+            <h1 id="siteTitle">CEE MİMARLIK</h1>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            ← Ana Sayfaya Dön
+        </a>
+
+        <!-- HAKKIMIZDA -->
+        <div class="about-section">
+            <h2 id="companyTitle">CEE Mimarlık</h2>
+            <p id="companyDescription">
+                Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz.
+            </p>
+        </div>
+
+        <!-- VİZYON -->
+        <div class="about-section">
+            <h2>Vizyonumuz</h2>
+            <p id="companyVision">
+                Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak.
+            </p>
+        </div>
+
+        <!-- EKİP -->
+        <div class="about-section">
+            <h2>Ekibimiz</h2>
+            <div class="team-grid" id="teamGrid">
+                <!-- Dinamik yüklenecek -->
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">
+            ← Ana Sayfaya Dön
+        </a>
+    </div>
+
+    <script>
+        // Logo yükle
+        function loadLogo() {
+            const logo = localStorage.getItem('cee_site_logo');
+            const logoImg = document.getElementById('siteLogo');
+            const logoTitle = document.getElementById('siteTitle');
+            
+            if (logo && logo.trim() !== '') {
+                logoImg.src = logo;
+                logoImg.style.display = 'block';
+                logoTitle.style.display = 'none';
+            }
+        }
+
+        // Hakkımızda bilgileri yükle
+        function loadAbout() {
+            const about = JSON.parse(localStorage.getItem('cee_about_info') || '{}');
+            
+            if (about.title) document.getElementById('companyTitle').textContent = about.title;
+            if (about.description) document.getElementById('companyDescription').textContent = about.description;
+            if (about.vision) document.getElementById('companyVision').textContent = about.vision;
+        }
+
+        // Ekip üyelerini yükle
+        function loadTeam() {
+            const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+            const grid = document.getElementById('teamGrid');
+            
+            if (members.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: #64748b;">Henüz ekip üyesi eklenmedi.</p>';
+                return;
+            }
+            
+            grid.innerHTML = members.map(m => `
+                <div class="team-card">
+                    <img src="${m.photo}" alt="${m.name}">
+                    <h3>${m.name}</h3>
+                    <div class="title">${m.title}</div>
+                    <div class="info">
+                        ${m.education ? `<p><strong>Eğitim:</strong> ${m.education}</p>` : ''}
+                        ${m.experience ? `<p><strong>Deneyim:</strong> ${m.experience}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLogo();
+            loadAbout();
+            loadTeam();
+        });
+    </script>
+</body>
+</html>

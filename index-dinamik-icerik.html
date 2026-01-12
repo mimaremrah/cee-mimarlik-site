@@ -1,0 +1,105 @@
+<!-- CEE MİMARLIK - DİNAMİK İÇERİK SCRIPT -->
+<!-- Bu script'i index.html'in sonuna (</body> öncesine) ekleyin -->
+
+<script>
+// HAKKIMIZDA BÖLÜMÜNÜDİNAMİK YÜKLE
+function loadAboutSection() {
+    const about = JSON.parse(localStorage.getItem('cee_about_info') || '{"title":"CEE Mimarlık","description":"Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır.","vision":"Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz."}');
+    
+    // Hakkımızda bölümünü güncelle
+    const aboutSection = document.querySelector('#hakkimizda .about-content');
+    if (aboutSection) {
+        aboutSection.innerHTML = `
+            <div class="about-text">
+                <h2>${about.title}</h2>
+                <p>${about.description}</p>
+            </div>
+            <div class="about-text">
+                <h2>Vizyonumuz</h2>
+                <p>${about.vision}</p>
+            </div>
+        `;
+    }
+}
+
+// EKİP ÜYELERİNİ GÖSTER
+function loadTeamMembers() {
+    const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
+    
+    if (members.length === 0) return;
+    
+    // Ekip bölümü varsa güncelle
+    const teamContainer = document.getElementById('teamMembersContainer');
+    if (teamContainer) {
+        teamContainer.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+                ${members.map(m => `
+                    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                        <img src="${m.photo}" alt="${m.name}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid #d4af37;">
+                        <h3 style="margin-bottom: 8px; color: #2d3748;">${m.name}</h3>
+                        <p style="color: #d4af37; font-weight: 600; margin-bottom: 15px;">${m.title}</p>
+                        ${m.education ? `<p style="font-size: 14px; color: #64748b; margin-bottom: 10px;"><strong>Eğitim:</strong> ${m.education}</p>` : ''}
+                        ${m.experience ? `<p style="font-size: 14px; color: #64748b;"><strong>Deneyim:</strong> ${m.experience}</p>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+}
+
+// INSTAGRAM HESAPLARINI GÖSTER
+function loadInstagramSection() {
+    const accounts = JSON.parse(localStorage.getItem('cee_instagram_accounts') || '["cee_mimarlik"]');
+    
+    const instagramSection = document.querySelector('#instagram');
+    if (instagramSection) {
+        // Instagram follow butonunu güncelle
+        const followBtn = instagramSection.querySelector('.instagram-follow');
+        if (followBtn && accounts.length > 0) {
+            followBtn.href = `https://instagram.com/${accounts[0]}`;
+        }
+        
+        // Alt kısıma hesap linkleri ekle
+        const linksHTML = `
+            <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(236,72,153,0.1); border-radius: 12px;">
+                <p style="margin-bottom: 15px; color: #64748b;">Instagram Hesaplarımız:</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    ${accounts.map(acc => `
+                        <a href="https://instagram.com/${acc}" target="_blank" style="
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 10px 20px;
+                            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 25px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            transition: transform 0.3s;
+                        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                            📷 @${acc}
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        // Instagram grid'den sonra ekle
+        const grid = instagramSection.querySelector('.instagram-grid');
+        if (grid && !document.getElementById('instagramLinks')) {
+            const linksDiv = document.createElement('div');
+            linksDiv.id = 'instagramLinks';
+            linksDiv.innerHTML = linksHTML;
+            grid.parentNode.insertBefore(linksDiv, grid.nextSibling);
+        }
+    }
+}
+
+// Sayfa yüklendiğinde çalıştır
+document.addEventListener('DOMContentLoaded', function() {
+    loadAboutSection();
+    loadTeamMembers();
+    loadInstagramSection();
+});
+</script>

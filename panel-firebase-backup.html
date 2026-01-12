@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>CEE | Yönetim Paneli</title>
+    
+    <!-- FIREBASE AUTH SNIPPET - ZORUNLU GİRİŞ -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+        // ⚠️ BURAYA KENDİ FIREBASE CONFIG'İNİZİ YAPIŞTIRIN
+        const firebaseConfig = {
+            apiKey: "BURAYA-API-KEY-GELECEK",
+            authDomain: "BURAYA-AUTH-DOMAIN-GELECEK",
+            projectId: "BURAYA-PROJECT-ID-GELECEK",
+            storageBucket: "BURAYA-STORAGE-BUCKET-GELECEK",
+            messagingSenderId: "BURAYA-SENDER-ID-GELECEK",
+            appId: "BURAYA-APP-ID-GELECEK"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Global erişim
+        window.firebaseApp = app;
+        window.firebaseAuth = auth;
+        window.firebaseDB = db;
+        window.firebaseStorage = storage;
+
+        // Loading ekranı
+        document.body.insertAdjacentHTML('afterbegin', `
+            <div id="authLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:999999;">
+                <div style="border:4px solid rgba(255,255,255,0.3);border-top:4px solid white;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;"></div>
+                <p style="color:white;margin-top:20px;font-size:16px;">🔐 Kimlik doğrulanıyor...</p>
+            </div>
+            <style>@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>
+        `);
+
+        let authChecked = false;
+        onAuthStateChanged(auth, (user) => {
+            authChecked = true;
+            const loading = document.getElementById('authLoading');
+            
+            if (!user) {
+                console.warn('⚠️ Yetkisiz erişim!');
+                window.stop(); // Sayfayı durdur
+                alert('Bu sayfaya erişmek için giriş yapmalısınız!');
+                window.location.replace('firebase-login.html');
+            } else {
+                console.log('✅ Giriş yapıldı:', user.email);
+                if (loading) loading.remove();
+                window.currentUser = user;
+                
+                document.addEventListener('DOMContentLoaded', () => {
+                    displayUserInfo(user);
+                });
+            }
+        });
+
+        setTimeout(() => {
+            if (!authChecked) {
+                window.stop();
+                window.location.replace('firebase-login.html');
+            }
+        }, 5000);
+
+        function displayUserInfo(user) {
+            const header = document.querySelector('.admin-header');
+            if (header) {
+                const userDiv = document.createElement('div');
+                userDiv.style.cssText = 'display:flex;align-items:center;gap:15px;';
+                userDiv.innerHTML = `
+                    <div style="padding:8px 15px;background:rgba(102,126,234,0.1);border-radius:20px;">
+                        <span style="font-size:14px;color:#667eea;font-weight:600;">👤 ${user.displayName || user.email.split('@')[0]}</span>
+                    </div>
+                    <button onclick="firebaseLogout()" style="padding:10px 20px;background:#ef4444;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;">
+                        🔒 Çıkış
+                    </button>
+                `;
+                header.appendChild(userDiv);
+            }
+        }
+
+        window.firebaseLogout = async () => {
+            if (confirm('Çıkış yapmak istediğinizden emin misiniz?')) {
+                await signOut(auth);
+                window.location.replace('firebase-login.html');
+            }
+        };
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .admin-header h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .form-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .form-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        small {
+            color: #9ca3af;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1>🏢 CEE Yönetim Paneli</h1>
+                <p style="color: #6b7280; font-size: 14px;">Firebase Firestore + Storage</p>
+            </div>
+        </div>
+
+        <div id="alertBox"></div>
+        
+        <div class="loading" id="uploadLoading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; color: #667eea; font-weight: 600;">Yükleniyor...</p>
+        </div>
+
+        <!-- PROJE EKLEME FORMU -->
+        <form id="projectForm">
+            <div class="form-group">
+                <label>📝 Proje Başlığı</label>
+                <input type="text" id="projectTitle" placeholder="Örn: Modern Villa Tasarımı" required>
+            </div>
+
+            <div class="form-group">
+                <label>📄 Proje Açıklaması</label>
+                <textarea id="projectDescription" rows="4" placeholder="Projenin detaylı açıklaması..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>🖼️ Proje Görselleri</label>
+                <input type="file" id="projectImages" multiple accept="image/*" required>
+                <small>En az 1 görsel seçin. Görseller Firebase Storage'a yüklenecek.</small>
+            </div>
+
+            <!-- DETAYLI BİLGİLER -->
+            <div class="form-section">
+                <h3>📋 Detaylı Bilgiler</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>📍 Konum</label>
+                        <input type="text" id="projectLocation" placeholder="İstanbul, Beşiktaş">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Yıl</label>
+                        <input type="text" id="projectYear" placeholder="2024">
+                    </div>
+                    <div class="form-group">
+                        <label>📐 Alan</label>
+                        <input type="text" id="projectArea" placeholder="350 m²">
+                    </div>
+                    <div class="form-group">
+                        <label>👤 Müşteri</label>
+                        <input type="text" id="projectClient" placeholder="Özel">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEKNİK ÖZELLİKLER -->
+            <div class="form-section">
+                <h3>🏗️ Teknik Özellikler</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>🏢 Kat</label>
+                        <input type="text" id="specFloors" placeholder="2 Kat">
+                    </div>
+                    <div class="form-group">
+                        <label>🚪 Oda</label>
+                        <input type="text" id="specRooms" placeholder="4+1">
+                    </div>
+                    <div class="form-group">
+                        <label>🚿 Banyo</label>
+                        <input type="text" id="specBathrooms" placeholder="3">
+                    </div>
+                    <div class="form-group">
+                        <label>🌳 Arsa</label>
+                        <input type="text" id="specLand" placeholder="600 m²">
+                    </div>
+                    <div class="form-group">
+                        <label>🚗 Otopark</label>
+                        <input type="text" id="specParking" placeholder="2 Araç">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 30px;">
+                ✅ Projeyi Kaydet (Firestore)
+            </button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { collection, addDoc, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { ref, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+        import { ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+        const form = document.getElementById('projectForm');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const loading = document.getElementById('uploadLoading');
+            const alertBox = document.getElementById('alertBox');
+            
+            loading.classList.add('show');
+            alertBox.innerHTML = '';
+
+            try {
+                // 1. GÖRSELLERİ FIREBASE STORAGE'A YÜKLE
+                const imagesInput = document.getElementById('projectImages');
+                const files = Array.from(imagesInput.files);
+                
+                if (files.length === 0) {
+                    throw new Error('En az 1 görsel seçmelisiniz!');
+                }
+
+                console.log(`📤 ${files.length} görsel yükleniyor...`);
+                
+                const imageUrls = [];
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const fileName = `projects/${Date.now()}_${i}_${file.name}`;
+                    const storageRef = ref(window.firebaseStorage, fileName);
+                    
+                    // Yükle
+                    const snapshot = await uploadBytes(storageRef, file);
+                    // URL al
+                    const url = await getDownloadURL(snapshot.ref);
+                    
+                    imageUrls.push(url);
+                    console.log(`✅ Görsel ${i+1}/${files.length} yüklendi`);
+                }
+
+                // 2. PROJE VERİSİNİ HAZIRLAMA
+                const projectData = {
+                    title: document.getElementById('projectTitle').value,
+                    description: document.getElementById('projectDescription').value || '',
+                    images: imageUrls,
+                    thumbnail: imageUrls[0], // İlk görsel thumbnail
+                    
+                    details: {
+                        location: document.getElementById('projectLocation').value || '',
+                        year: document.getElementById('projectYear').value || '',
+                        area: document.getElementById('projectArea').value || '',
+                        client: document.getElementById('projectClient').value || ''
+                    },
+                    
+                    specs: {
+                        floors: document.getElementById('specFloors').value || '',
+                        rooms: document.getElementById('specRooms').value || '',
+                        bathrooms: document.getElementById('specBathrooms').value || '',
+                        land: document.getElementById('specLand').value || '',
+                        parking: document.getElementById('specParking').value || ''
+                    },
+                    
+                    createdAt: new Date().toISOString(),
+                    createdBy: window.currentUser.email
+                };
+
+                // 3. FIRESTORE'A KAYDET
+                const docRef = await addDoc(collection(window.firebaseDB, 'projects'), projectData);
+                
+                console.log('✅ Proje Firestore\'a kaydedildi:', docRef.id);
+                
+                // Başarı mesajı
+                alertBox.innerHTML = `
+                    <div class="alert alert-success">
+                        ✅ <strong>Başarılı!</strong><br>
+                        Proje buluta kaydedildi. Ana sayfada görünecek.<br>
+                        <small>Proje ID: ${docRef.id}</small>
+                    </div>
+                `;
+                
+                // Formu temizle
+                form.reset();
+                
+            } catch (error) {
+                console.error('❌ Hata:', error);
+                alertBox.innerHTML = `
+                    <div class="alert alert-error">
+                        ❌ <strong>Hata!</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            } finally {
+                loading.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

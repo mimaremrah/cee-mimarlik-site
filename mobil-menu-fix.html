@@ -1,0 +1,27 @@
+<!-- HATA ÇÖZÜMÜ: closeMobileMenu fonksiyonu -->
+<!-- Bu kodu index.html'in <body> tag'inden HEMEN SONRA ekle -->
+
+<script>
+// Mobil menü fonksiyonları
+function closeMobileMenu() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('menuToggle');
+    if (nav && toggle) {
+        nav.classList.remove('mobile-open');
+        toggle.textContent = '☰';
+    }
+}
+
+function toggleMobileMenu() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('menuToggle');
+    if (nav && toggle) {
+        nav.classList.toggle('mobile-open');
+        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+    }
+}
+
+// Global olarak erişilebilir yap
+window.closeMobileMenu = closeMobileMenu;
+window.toggleMobileMenu = toggleMobileMenu;
+</script>
