@@ -2027,7 +2027,8 @@ function loadFromLocalStorage() {
         const savedProjects = localStorage.getItem('cee_projects');
         if (savedProjects) {
             const allProjects = JSON.parse(savedProjects);
-            projects = allProjects.filter(p => p && p.row === 'top' && p.img);
+            // row 'top' olanları veya row olmayan (eski) projeleri göster
+            projects = allProjects.filter(p => p && p.img && (p.row === 'top' || !p.row));
             heroImages = projects
                 .filter(p => p.img && p.mediaType !== 'pdf')
                 .sort((a, b) => (b.clickCount || 0) - (a.clickCount || 0))

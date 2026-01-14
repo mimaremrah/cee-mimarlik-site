@@ -2968,12 +2968,13 @@ try {
         const parsed = JSON.parse(savedProjects);
         // Validation: Array mi ve içinde valid projeler var mı?
         if (Array.isArray(parsed)) {
-            // Her projeyi validate et, bozuk olanları at
-            projects = parsed.filter(p => p && p.id && p.img && p.row).map(p => ({
+            // Her projeyi validate et, row yoksa 'top' ata
+            projects = parsed.filter(p => p && p.id && p.img).map(p => ({
                 ...p,
+                row: p.row || 'top',
                 clickCount: p.clickCount || 0,
                 favorite: p.favorite || false,
-                tags: Array.isArray(p.tags) ? p.tags : [],
+                tags: Array.isArray(p.tags) ? p.tags : (p.category ? [p.category] : []),
                 title: p.title || '',
                 mediaType: p.mediaType || 'image'
             }));
@@ -3314,10 +3315,10 @@ function importData() {
                 projects = validProjects.map(p => ({
                     id: p.id,
                     img: p.img,
-                    row: p.row,
+                    row: p.row || 'top',
                     title: p.title || '',
                     favorite: p.favorite || false,
-                    tags: Array.isArray(p.tags) ? p.tags : [],
+                    tags: Array.isArray(p.tags) ? p.tags : (p.category ? [p.category] : []),
                     clickCount: p.clickCount || 0,
                     mediaType: p.mediaType || 'image'
                 }));
@@ -5891,6 +5892,7 @@ function saveNewProject() {
             description: description,
             img: e.target.result,
             mediaType: 'image',
+            row: 'top',
             date: new Date().toISOString()
         };
         
