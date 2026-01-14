@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekibimiz | CEE Mimarlık</title>
+    <meta name="description" content="CEE Mimarlık uzman kadrosu - Deneyimli mimarlarımız ve ekibimizle tanışın.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #c9a227;
+            --text: #2d3748;
+            --secondary: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        body.dark-mode {
+            --primary: #0f0f1a;
+            --text: #e2e8f0;
+            --secondary: #a0aec0;
+            --bg: #1a1a2e;
+            --bg-alt: #2d2d44;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg);
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 85px;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #2d2d44 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .team-card {
+            background: var(--bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .team-info {
+            padding: 30px;
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .team-bio {
+            font-size: 15px;
+            color: var(--secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .team-details {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .detail-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--text);
+            min-width: 80px;
+        }
+
+        .detail-value {
+            color: var(--secondary);
+        }
+
+        /* Social Links */
+        .team-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 5%;
+            margin-top: 80px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .header { padding: 15px 4%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <a href="index.html" class="logo">CEE</a>
+    <a href="index.html#hakkimizda" class="back-btn">← Ana Sayfa</a>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>👥 Uzman Kadromuz</h1>
+    <p>Deneyimli ve tutkulu ekibimizle hayallerinizi gerçeğe dönüştürüyoruz</p>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+    <div class="team-grid" id="teamGrid">
+        <!-- Ekip üyeleri JavaScript ile yüklenecek -->
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2024 CEE Mimarlık. Tüm hakları saklıdır.</p>
+    <p style="margin-top: 10px;"><a href="index.html">Ana Sayfa</a> | <a href="index.html#iletisim">İletişim</a></p>
+</footer>
+
+<!-- Dark Mode Toggle -->
+<button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
+
+<script>
+// Dark Mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+// Load dark mode preference
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+}
+
+// Varsayılan ekip verileri
+const defaultTeam = [
+    {
+        id: '1',
+        name: 'Ahmet Yılmaz',
+        role: 'Kurucu Mimar',
+        photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23e0e0e0" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%23999" font-size="48"%3E👤%3C/text%3E%3C/svg%3E',
+        bio: 'İstanbul Teknik Üniversitesi Mimarlık Fakültesi mezunu olan Ahmet Yılmaz, 15 yılı aşkın sektör deneyimiyle CEE Mimarlık\'ın kurucu ortağıdır. Sürdürülebilir mimari ve yenilikçi tasarım anlayışıyla 200\'den fazla projeye imza atmıştır. Minimalist çizgileri fonksiyonel mekanlarla buluşturma konusundaki ustalığı, onu sektörün önde gelen isimlerinden biri haline getirmiştir.',
+        education: 'İTÜ Mimarlık Fakültesi (2005)',
+        experience: '15+ Yıl Deneyim',
+        projects: '200+ Tamamlanan Proje',
+        expertise: 'Villa, Rezidans, Sürdürülebilir Tasarım',
+        email: 'ahmet@ceemimarlik.com',
+        linkedin: '#'
+    },
+    {
+        id: '2',
+        name: 'Elif Kaya',
+        role: 'Proje Direktörü',
+        photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23e8e0f0" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%23999" font-size="48"%3E👤%3C/text%3E%3C/svg%3E',
+        bio: 'Mimar Sinan Güzel Sanatlar Üniversitesi\'nden onur derecesiyle mezun olan Elif Kaya, proje yönetimi ve iç mimari konularında uzmanlaşmıştır. 12 yıllık kariyerinde lüks konut projelerinden ticari yapılara kadar geniş bir yelpazede çalışmıştır. Detaylara gösterdiği özen ve müşteri odaklı yaklaşımıyla projeleri zamanında ve bütçe dahilinde teslim etme konusunda mükemmel bir sicile sahiptir.',
+        education: 'MSGSÜ İç Mimarlık (2008)',
+        experience: '12+ Yıl Deneyim',
+        projects: '150+ Tamamlanan Proje',
+        expertise: 'İç Mimari, Proje Yönetimi, Lüks Konut',
+        email: 'elif@ceemimarlik.com',
+        linkedin: '#'
+    },
+    {
+        id: '3',
+        name: 'Mehmet Demir',
+        role: 'Teknik Direktör',
+        photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23e0f0e8" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%23999" font-size="48"%3E👤%3C/text%3E%3C/svg%3E',
+        bio: 'Yıldız Teknik Üniversitesi İnşaat Mühendisliği ve Mimarlık çift ana dalından mezun olan Mehmet Demir, yapısal tasarım ve teknik uygulama konularında 10 yılı aşkın deneyime sahiptir. Depreme dayanıklı yapı tasarımı ve akıllı bina sistemleri konusundaki uzmanlığıyla projelerin teknik mükemmelliğini garanti altına alır. Yenilikçi mühendislik çözümleriyle zorlu projeleri başarıyla hayata geçirmektedir.',
+        education: 'YTÜ İnşaat Müh. & Mimarlık (2010)',
+        experience: '10+ Yıl Deneyim',
+        projects: '120+ Tamamlanan Proje',
+        expertise: 'Yapısal Tasarım, Akıllı Binalar, Deprem Mühendisliği',
+        email: 'mehmet@ceemimarlik.com',
+        linkedin: '#'
+    }
+];
+
+// Ekip verilerini yükle
+function loadTeam() {
+    const grid = document.getElementById('teamGrid');
+    
+    // Admin panelden kaydedilen veriyi kontrol et
+    let team = [];
+    const savedTeam = localStorage.getItem('team_members') || localStorage.getItem('cee_team_members');
+    
+    if (savedTeam) {
+        try {
+            const parsed = JSON.parse(savedTeam);
+            if (parsed.length > 0) {
+                team = parsed;
+            } else {
+                team = defaultTeam;
+            }
+        } catch (e) {
+            team = defaultTeam;
+        }
+    } else {
+        team = defaultTeam;
+        // Varsayılan veriyi kaydet
+        localStorage.setItem('team_members', JSON.stringify(defaultTeam));
+    }
+    
+    grid.innerHTML = team.map(member => `
+        <div class="team-card">
+            <img src="${member.photo || member.image || ''}" alt="${member.name}" class="team-photo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2248%22%3E👤%3C/text%3E%3C/svg%3E'">
+            <div class="team-info">
+                <h2 class="team-name">${member.name}</h2>
+                <div class="team-role">${member.role || member.position || ''}</div>
+                <p class="team-bio">${member.bio || member.experience || 'Deneyimli ekip üyemiz.'}</p>
+                
+                <div class="team-details">
+                    ${member.education ? `
+                    <div class="detail-item">
+                        <span class="detail-icon">🎓</span>
+                        <span class="detail-label">Eğitim:</span>
+                        <span class="detail-value">${member.education}</span>
+                    </div>
+                    ` : ''}
+                    
+                    ${member.experience ? `
+                    <div class="detail-item">
+                        <span class="detail-icon">⏱️</span>
+                        <span class="detail-label">Deneyim:</span>
+                        <span class="detail-value">${member.experience}</span>
+                    </div>
+                    ` : ''}
+                    
+                    ${member.projects ? `
+                    <div class="detail-item">
+                        <span class="detail-icon">🏗️</span>
+                        <span class="detail-label">Projeler:</span>
+                        <span class="detail-value">${member.projects}</span>
+                    </div>
+                    ` : ''}
+                    
+                    ${member.expertise ? `
+                    <div class="detail-item">
+                        <span class="detail-icon">⭐</span>
+                        <span class="detail-label">Uzmanlık:</span>
+                        <span class="detail-value">${member.expertise}</span>
+                    </div>
+                    ` : ''}
+                </div>
+                
+                <div class="team-social">
+                    ${member.email ? `<a href="mailto:${member.email}" class="social-link" title="E-posta">📧</a>` : ''}
+                    ${member.linkedin ? `<a href="${member.linkedin}" class="social-link" title="LinkedIn" target="_blank">💼</a>` : ''}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', loadTeam);
+</script>
+
+</body>
+</html>

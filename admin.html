@@ -5254,42 +5254,146 @@ function saveSocialLinks() {
 
 // Ekip Üyesi Ekle
 function addTeamMember() {
-    const name = document.getElementById('teamMemberName').value;
-    const title = document.getElementById('teamMemberTitle').value;
-    const desc = document.getElementById('teamMemberDesc').value;
-    const photoInput = document.getElementById('teamMemberPhoto');
+    // Modal'ı aç
+    openTeamModal();
+}
+
+// Ekip Modal Fonksiyonları
+function openTeamModal(memberId = null) {
+    const modal = document.getElementById('teamModal');
+    if (!modal) return;
     
-    if (!name || !title) {
-        showToast('❌ Ad ve ünvan zorunludur!', 'error');
+    // Formu temizle
+    document.getElementById('memberName').value = '';
+    document.getElementById('memberRole').value = '';
+    document.getElementById('memberBio').value = '';
+    document.getElementById('memberEducation').value = '';
+    document.getElementById('memberExperience').value = '';
+    document.getElementById('memberProjects').value = '';
+    document.getElementById('memberExpertise').value = '';
+    document.getElementById('memberEmail').value = '';
+    document.getElementById('memberLinkedin').value = '';
+    document.getElementById('memberPhoto').value = '';
+    document.getElementById('memberPhotoPreview').style.display = 'none';
+    document.getElementById('editingMemberId').value = '';
+    
+    // Düzenleme modunda ise verileri yükle
+    if (memberId) {
+        const members = JSON.parse(localStorage.getItem('team_members') || '[]');
+        const member = members.find(m => m.id == memberId);
+        if (member) {
+            document.getElementById('memberName').value = member.name || '';
+            document.getElementById('memberRole').value = member.role || member.title || '';
+            document.getElementById('memberBio').value = member.bio || member.description || '';
+            document.getElementById('memberEducation').value = member.education || '';
+            document.getElementById('memberExperience').value = member.experience || '';
+            document.getElementById('memberProjects').value = member.projects || '';
+            document.getElementById('memberExpertise').value = member.expertise || '';
+            document.getElementById('memberEmail').value = member.email || '';
+            document.getElementById('memberLinkedin').value = member.linkedin || '';
+            document.getElementById('editingMemberId').value = memberId;
+            
+            if (member.photo) {
+                document.getElementById('memberPhotoPreview').innerHTML = `<img src="${member.photo}" style="max-width: 150px; border-radius: 8px;">`;
+                document.getElementById('memberPhotoPreview').style.display = 'block';
+            }
+        }
+    }
+    
+    modal.style.display = 'flex';
+}
+
+function closeTeamModal() {
+    const modal = document.getElementById('teamModal');
+    if (modal) modal.style.display = 'none';
+}
+
+function previewMemberPhoto(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const preview = document.getElementById('memberPhotoPreview');
+            preview.innerHTML = `<img src="${e.target.result}" style="max-width: 150px; border-radius: 8px;">`;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function saveTeamMember() {
+    const name = document.getElementById('memberName').value.trim();
+    const role = document.getElementById('memberRole').value.trim();
+    const bio = document.getElementById('memberBio').value.trim();
+    const education = document.getElementById('memberEducation').value.trim();
+    const experience = document.getElementById('memberExperience').value.trim();
+    const projects = document.getElementById('memberProjects').value.trim();
+    const expertise = document.getElementById('memberExpertise').value.trim();
+    const email = document.getElementById('memberEmail').value.trim();
+    const linkedin = document.getElementById('memberLinkedin').value.trim();
+    const photoInput = document.getElementById('memberPhoto');
+    const editingId = document.getElementById('editingMemberId').value;
+    
+    if (!name || !role) {
+        alert('❌ İsim ve pozisyon zorunludur!');
         return;
     }
     
-    const members = JSON.parse(localStorage.getItem('team_members') || '[]');
-    const member = {
-        id: Date.now(),
+    if (!bio) {
+        alert('❌ Lütfen bir özgeçmiş yazın!');
+        return;
+    }
+    
+    let members = JSON.parse(localStorage.getItem('team_members') || '[]');
+    
+    const memberData = {
+        id: editingId ? parseInt(editingId) : Date.now(),
         name: name,
-        title: title,
-        description: desc,
+        role: role,
+        bio: bio,
+        education: education,
+        experience: experience,
+        projects: projects,
+        expertise: expertise,
+        email: email,
+        linkedin: linkedin,
         photo: ''
     };
     
-    if (photoInput.files.length > 0) {
+    // Mevcut fotoğrafı koru (düzenleme modunda)
+    if (editingId) {
+        const existingMember = members.find(m => m.id == editingId);
+        if (existingMember && existingMember.photo) {
+            memberData.photo = existingMember.photo;
+        }
+    }
+    
+    const finishSave = () => {
+        if (editingId) {
+            // Düzenleme
+            const index = members.findIndex(m => m.id == editingId);
+            if (index !== -1) {
+                members[index] = memberData;
+            }
+        } else {
+            // Yeni ekle
+            members.push(memberData);
+        }
+        
+        localStorage.setItem('team_members', JSON.stringify(members));
+        loadTeamMembers();
+        closeTeamModal();
+        showToast('✅ Ekip üyesi kaydedildi!', 'success');
+    };
+    
+    if (photoInput.files && photoInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            member.photo = e.target.result;
-            members.push(member);
-            localStorage.setItem('team_members', JSON.stringify(members));
-            loadTeamMembers();
-            clearTeamMemberForm();
-            showToast('✅ Ekip üyesi eklendi!', 'success');
+            memberData.photo = e.target.result;
+            finishSave();
         };
         reader.readAsDataURL(photoInput.files[0]);
     } else {
-        members.push(member);
-        localStorage.setItem('team_members', JSON.stringify(members));
-        loadTeamMembers();
-        clearTeamMemberForm();
-        showToast('✅ Ekip üyesi eklendi!', 'success');
+        finishSave();
     }
 }
 
@@ -5297,6 +5401,7 @@ function addTeamMember() {
 function loadTeamMembers() {
     const members = JSON.parse(localStorage.getItem('team_members') || '[]');
     const list = document.getElementById('teamMembersList');
+    if (!list) return;
     
     if (members.length === 0) {
         list.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Henüz ekip üyesi eklenmedi</p>';
@@ -5304,16 +5409,24 @@ function loadTeamMembers() {
     }
     
     list.innerHTML = members.map(member => `
-        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 8px; padding: 15px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
-            ${member.photo ? `<img src="${member.photo}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">` : '<div style="width: 60px; height: 60px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; font-size: 24px;">👤</div>'}
-            <div style="flex: 1;">
-                <strong style="display: block; color: #333; margin-bottom: 4px;">${member.name}</strong>
-                <div style="color: #667eea; font-size: 14px; margin-bottom: 4px;">${member.title}</div>
-                ${member.description ? `<div style="color: #666; font-size: 13px;">${member.description}</div>` : ''}
+        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                ${member.photo ? `<img src="${member.photo}" style="width: 80px; height: 80px; border-radius: 10px; object-fit: cover;">` : '<div style="width: 80px; height: 80px; border-radius: 10px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; font-size: 32px;">👤</div>'}
+                <div style="flex: 1;">
+                    <strong style="display: block; color: #333; font-size: 18px; margin-bottom: 4px;">${member.name}</strong>
+                    <div style="color: #667eea; font-size: 14px; font-weight: 600; margin-bottom: 8px;">${member.role || member.title || ''}</div>
+                    <div style="color: #666; font-size: 13px; line-height: 1.5;">${(member.bio || member.description || '').substring(0, 150)}${(member.bio || '').length > 150 ? '...' : ''}</div>
+                    ${member.education ? `<div style="margin-top: 8px; font-size: 12px; color: #888;">🎓 ${member.education}</div>` : ''}
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button onclick="openTeamModal(${member.id})" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                        ✏️ Düzenle
+                    </button>
+                    <button onclick="deleteTeamMember(${member.id})" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                        🗑️ Sil
+                    </button>
+                </div>
             </div>
-            <button onclick="deleteTeamMember(${member.id})" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
-                🗑️ Sil
-            </button>
         </div>
     `).join('');
 }
@@ -5795,23 +5908,77 @@ body.dark-mode .team-member-card {
 
 <!-- EKİP ÜYESİ MODAL -->
 <div id="teamModal" class="modal">
-    <div class="modal-content">
-        <h3>➕ Yeni Ekip Üyesi</h3>
+    <div class="modal-content" style="max-width: 600px;">
+        <h3>👥 Ekip Üyesi Ekle/Düzenle</h3>
         
         <div class="form-group">
-            <label>İsim Soyisim</label>
-            <input type="text" id="memberName">
+            <label>İsim Soyisim *</label>
+            <input type="text" id="memberName" placeholder="Ahmet Yılmaz">
         </div>
         
         <div class="form-group">
-            <label>Ünvan</label>
-            <input type="text" id="memberTitle" placeholder="Mimar, İç Mimar...">
+            <label>Pozisyon/Ünvan *</label>
+            <input type="text" id="memberRole" placeholder="Kurucu Mimar, Proje Direktörü...">
         </div>
         
         <div class="form-group">
-            <label>Eğitim</label>
-            <textarea id="memberEducation" placeholder="Üniversite, Bölüm..." style="min-height: 80px;"></textarea>
+            <label>Fotoğraf</label>
+            <input type="file" id="memberPhoto" accept="image/*" onchange="previewMemberPhoto(this)">
+            <div id="memberPhotoPreview" style="margin-top: 10px; display: none;">
+                <img src="" alt="Preview" style="max-width: 150px; border-radius: 8px;">
+            </div>
         </div>
+        
+        <div class="form-group">
+            <label>Özgeçmiş *</label>
+            <textarea id="memberBio" placeholder="Kısa biyografi ve kariyer özeti..." style="min-height: 120px;"></textarea>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Eğitim</label>
+                <input type="text" id="memberEducation" placeholder="İTÜ Mimarlık (2010)">
+            </div>
+            <div class="form-group">
+                <label>Deneyim</label>
+                <input type="text" id="memberExperience" placeholder="15+ Yıl">
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Tamamlanan Proje</label>
+                <input type="text" id="memberProjects" placeholder="200+ Proje">
+            </div>
+            <div class="form-group">
+                <label>Uzmanlık Alanları</label>
+                <input type="text" id="memberExpertise" placeholder="Villa, Rezidans...">
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>E-posta</label>
+                <input type="email" id="memberEmail" placeholder="isim@ceemimarlik.com">
+            </div>
+            <div class="form-group">
+                <label>LinkedIn</label>
+                <input type="text" id="memberLinkedin" placeholder="https://linkedin.com/in/...">
+            </div>
+        </div>
+        
+        <input type="hidden" id="editingMemberId">
+        
+        <div class="modal-buttons">
+            <button onclick="saveTeamMember()" style="background: #10b981; color: white;">
+                💾 Kaydet
+            </button>
+            <button onclick="closeTeamModal()" style="background: #6b7280; color: white;">
+                ❌ İptal
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- PROJE EKLEME MODAL -->
 <div id="projectModal" class="modal">
