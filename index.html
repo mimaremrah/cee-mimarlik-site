@@ -26,12 +26,17 @@
         script-src 'self' 'unsafe-inline' 'unsafe-eval' 
             https://maps.googleapis.com 
             https://cdnjs.cloudflare.com
-            https://www.gstatic.com;
+            https://www.gstatic.com
+            https://www.googletagmanager.com
+            https://www.google-analytics.com
+            https://connect.facebook.net;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' data: https: blob: 
             https://firebasestorage.googleapis.com 
             https://storage.googleapis.com
-            https://*.appspot.com;
+            https://*.appspot.com
+            https://www.google-analytics.com
+            https://www.facebook.com;
         font-src 'self' data: https://fonts.gstatic.com;
         connect-src 'self' 
             https://api.whatsapp.com https://wa.me
@@ -40,8 +45,10 @@
             https://identitytoolkit.googleapis.com
             https://firebasestorage.googleapis.com
             https://storage.googleapis.com
-            https://*.googleapis.com;
-        frame-src 'self' https://www.google.com https://maps.google.com;
+            https://*.googleapis.com
+            https://www.google-analytics.com
+            https://connect.facebook.net;
+        frame-src 'self' https://www.google.com https://maps.google.com https://www.facebook.com;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -71,7 +78,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" as="style" href="#critical-css">
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -4089,7 +4095,7 @@ window.toggleMobileMenu = toggleMobileMenu;
     </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // İLETİŞİM FORMU - EmailJS entegrasyonu
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -5164,11 +5170,13 @@ function toggleMobileMenu() {
 
 
 function loadTeam() {
+    const grid = document.getElementById('teamGrid');
+    if (!grid) return; // Element yoksa çık
+    
     const teamData = localStorage.getItem('cee_team');
     if (teamData) {
         try {
             const team = JSON.parse(teamData);
-            const grid = document.getElementById('teamGrid');
             grid.innerHTML = team.slice(0, 2).map(member => `
                 <div class="team-member">
                     <img src="${member.photo}" alt="${member.name}" class="team-photo">
@@ -5179,7 +5187,7 @@ function loadTeam() {
         } catch (e) {}
     } else {
         // Default team
-        document.getElementById('teamGrid').innerHTML = `
+        grid.innerHTML = `
             <div class="team-member">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Üyesi" class="team-photo">
                 <div class="team-name">Mimar 1</div>
@@ -5376,24 +5384,31 @@ function openWhatsApp() {
 }
 
 function closeWhatsApp() {
-    document.getElementById('whatsappModal').classList.remove('show');
+    const modal = document.getElementById('whatsappModal');
+    if (modal) modal.classList.remove('show');
+}
+
+function closeAiAssistant() {
+    const panel = document.getElementById('aiAssistantPanel');
+    if (panel) panel.classList.remove('active');
 }
 
 // AI ASSISTANT PANEL - ÖĞRENEN SİSTEM
 let aiConversationHistory = JSON.parse(localStorage.getItem('cee_ai_history') || '[]');
 let aiKnowledgeBase = JSON.parse(localStorage.getItem('cee_ai_knowledge') || '{}');
 
-function closeAiAssistant() {
-    document.getElementById('aiAssistantPanel').classList.remove('active');
-}
-
 function askAiQuestion(question) {
-    document.getElementById('aiAssistantInput').value = question;
-    sendAiAssistantMessage();
+    const input = document.getElementById('aiAssistantInput');
+    if (input) {
+        input.value = question;
+        sendAiAssistantMessage();
+    }
 }
 
 function addAiMessage(content, isUser = false) {
     const messagesDiv = document.getElementById('aiAssistantMessages');
+    if (!messagesDiv) return;
+    
     const welcome = messagesDiv.querySelector('.ai-assistant-welcome');
     if (welcome) welcome.remove();
     
