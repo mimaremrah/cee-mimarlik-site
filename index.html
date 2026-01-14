@@ -1627,21 +1627,22 @@
             background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%);
         }
 
-        /* Project Info - Minimal */
+        /* Project Info - Ortada */
         .hero-content {
             position: absolute;
-            bottom: 60px;
-            left: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 2;
-            max-width: 600px;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease 0.5s;
+            transition: all 0.8s ease 0.3s;
         }
 
         .hero-slide.active .hero-content {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .hero-category {
@@ -1659,13 +1660,14 @@
         }
 
         .hero-title {
-            font-size: 48px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             color: white;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 30px rgba(0,0,0,0.7);
             line-height: 1.2;
+            text-transform: uppercase;
         }
 
         body.dark-mode .hero-title {
@@ -1673,9 +1675,10 @@
         }
 
         .hero-meta {
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
-            letter-spacing: 1px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         /* Navigation Arrows */
@@ -3608,13 +3611,6 @@ window.toggleMobileMenu = toggleMobileMenu;
 
 
 
-<div style="background: white; padding: 20px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <img id="siteLogo" src="" alt="CEE Mimarlık" style="max-height: 80px; display: none;">
-    <h1 id="siteTitle" style="font-size: 32px; color: #d4af37; font-weight: 700; margin: 0;">CEE MİMARLIK</h1>
-</div>
-
-
-
 <!-- HEADER -->
 <header role="banner">
     <div class="header-content">
@@ -3624,11 +3620,6 @@ window.toggleMobileMenu = toggleMobileMenu;
         </div>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
-        <!-- LOGO -->
-        <div class="site-logo" style="text-align: center; padding: 20px 0;">
-            <img id="headerLogo" src="" alt="CEE Mimarlık" style="max-height: 80px; display: none;">
-            <h1 id="headerTitle" style="font-size: 28px; color: var(--accent); font-weight: 700;">CEE MİMARLIK</h1>
-        </div>
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
             <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()">Anasayfa</a>
             <a href="#projeler" onclick="closeMobileMenu()">Projeler</a>
@@ -4895,11 +4886,18 @@ function loadFromLocalStorage() {
             // Sadece valid projeleri al
             projects = allProjects.filter(p => p && p.row === 'top' && p.img);
             
-            // En popüler 4 projeyi al (hero için)
-            heroImages = projects
-                .filter(p => p.img && p.mediaType !== 'pdf') // PDF'leri hero'da gösterme
-                .sort((a, b) => (b.clickCount || 0) - (a.clickCount || 0))
-                .slice(0, 4);
+            // FAVORİ projeleri hero'da göster
+            heroImages = allProjects
+                .filter(p => p && p.img && p.favorite === true && p.mediaType !== 'pdf')
+                .slice(0, 5);
+            
+            // Eğer favori yoksa, en popüler 4 projeyi al
+            if (heroImages.length === 0) {
+                heroImages = projects
+                    .filter(p => p.img && p.mediaType !== 'pdf')
+                    .sort((a, b) => (b.clickCount || 0) - (a.clickCount || 0))
+                    .slice(0, 4);
+            }
         }
         
         siteLogo = localStorage.getItem('site_logo') || '';
