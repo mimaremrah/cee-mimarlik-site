@@ -2550,6 +2550,13 @@ body.dark-mode #projectModal .form-group textarea {
             <div class="zone-header">
                 <h4>⭐ VİTRİN PROJELERİ</h4>
                 <div style="display: flex; gap: 10px; align-items: center;">
+                    <select id="dropCategory" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ddd; font-size: 12px; background: white;">
+                        <option value="villa">🏠 Villa</option>
+                        <option value="apartman">🏢 Apartman</option>
+                        <option value="ofis">🏬 Ofis</option>
+                        <option value="ticari">🏪 Ticari</option>
+                        <option value="konut">🏘️ Konut</option>
+                    </select>
                     <span id="topCount">0 Proje</span>
                     <button class="btn btn-danger" style="padding: 6px 12px; font-size: 12px;" onclick="clearZone('top')">
                         🗑️ Tümünü Sil
@@ -2560,7 +2567,7 @@ body.dark-mode #projectModal .form-group textarea {
                 ondrop="handleFileDrop(event, 'top')" 
                 ondragover="allowDrop(event)" 
                 ondragleave="dragLeave(event)">
-                <div class="empty-message">Henüz proje eklenmedi</div>
+                <div class="empty-message">📷 Fotoğraf sürükleyip bırakın (Kategori: <span id="selectedCatLabel">Villa</span>)</div>
             </div>
         </div>
 
@@ -2968,13 +2975,12 @@ try {
         const parsed = JSON.parse(savedProjects);
         // Validation: Array mi ve içinde valid projeler var mı?
         if (Array.isArray(parsed)) {
-            // Her projeyi validate et, row yoksa 'top' ata
-            projects = parsed.filter(p => p && p.id && p.img).map(p => ({
+            // Her projeyi validate et, bozuk olanları at
+            projects = parsed.filter(p => p && p.id && p.img && p.row).map(p => ({
                 ...p,
-                row: p.row || 'top',
                 clickCount: p.clickCount || 0,
                 favorite: p.favorite || false,
-                tags: Array.isArray(p.tags) ? p.tags : (p.category ? [p.category] : []),
+                tags: Array.isArray(p.tags) ? p.tags : [],
                 title: p.title || '',
                 mediaType: p.mediaType || 'image'
             }));
@@ -3074,6 +3080,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoInput) {
         logoInput.addEventListener('change', function() {
             uploadLogo();
+        });
+    }
+    
+    // Kategori seçici değişikliğini dinle
+    const dropCategory = document.getElementById('dropCategory');
+    if (dropCategory) {
+        dropCategory.addEventListener('change', function() {
+            const label = document.getElementById('selectedCatLabel');
+            if (label) {
+                const categoryNames = {
+                    'villa': 'Villa',
+                    'apartman': 'Apartman',
+                    'ofis': 'Ofis',
+                    'ticari': 'Ticari',
+                    'konut': 'Konut'
+                };
+                label.textContent = categoryNames[this.value] || this.value;
+            }
         });
     }
 });
@@ -3315,10 +3339,10 @@ function importData() {
                 projects = validProjects.map(p => ({
                     id: p.id,
                     img: p.img,
-                    row: p.row || 'top',
+                    row: p.row,
                     title: p.title || '',
                     favorite: p.favorite || false,
-                    tags: Array.isArray(p.tags) ? p.tags : (p.category ? [p.category] : []),
+                    tags: Array.isArray(p.tags) ? p.tags : [],
                     clickCount: p.clickCount || 0,
                     mediaType: p.mediaType || 'image'
                 }));
@@ -3511,13 +3535,17 @@ function processMultipleFiles(files, targetRow) {
         
         const reader = new FileReader();
         reader.onload = (e) => {
+            // Seçilen kategoriyi al
+            const selectedCategory = document.getElementById('dropCategory')?.value || 'villa';
+            
             const newProject = {
                 id: 'proj-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
                 img: e.target.result,
                 row: targetRow,
                 title: '',
                 favorite: false,
-                tags: [],
+                tags: [selectedCategory],
+                category: selectedCategory,
                 clickCount: 0,
                 mediaType: isVideo ? 'video' : 'image'
             };
@@ -5825,11 +5853,11 @@ body.dark-mode .team-member-card {
 <script>
 // Proje Modal Fonksiyonları
 function openProjectModal() {
-    document.getElementById('projectModal').style.display = 'flex';
+    document.getElementById('projectModal').classList.add('show');
 }
 
 function closeProjectModal() {
-    document.getElementById('projectModal').style.display = 'none';
+    document.getElementById('projectModal').classList.remove('show');
     // Formu temizle
     document.getElementById('projectTitle').value = '';
     document.getElementById('projectCategory').value = 'villa';
@@ -5892,7 +5920,6 @@ function saveNewProject() {
             description: description,
             img: e.target.result,
             mediaType: 'image',
-            row: 'top',
             date: new Date().toISOString()
         };
         

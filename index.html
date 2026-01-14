@@ -2165,7 +2165,10 @@ function renderProjects() {
     let filteredProjects = projects;
     if (currentFilter !== 'all') {
         filteredProjects = projects.filter(p => {
-            if (!p.tags || !Array.isArray(p.tags)) return false;
+            if (!p.tags || !Array.isArray(p.tags)) {
+                // tags yoksa category'ye bak
+                return p.category && p.category.toLowerCase() === currentFilter.toLowerCase();
+            }
             return p.tags.some(tag => tag.toLowerCase() === currentFilter.toLowerCase());
         });
     }
