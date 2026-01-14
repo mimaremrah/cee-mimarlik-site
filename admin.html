@@ -5443,7 +5443,7 @@ function saveTeamMember() {
     
     if (photoInput.files && photoInput.files[0]) {
         // Fotoğrafı sıkıştır
-        compressImage(photoInput.files[0], 300, 0.7, function(compressedDataUrl) {
+        compressImage(photoInput.files[0], 600, 0.85, function(compressedDataUrl) {
             memberData.photo = compressedDataUrl;
             finishSave();
         });
@@ -5462,7 +5462,7 @@ function compressImage(file, maxSize, quality, callback) {
             let width = img.width;
             let height = img.height;
             
-            // Boyutu küçült
+            // Boyutu küçült - ama çok küçültme
             if (width > height) {
                 if (width > maxSize) {
                     height = Math.round(height * maxSize / width);
