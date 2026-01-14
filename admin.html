@@ -2567,7 +2567,7 @@ body.dark-mode #projectModal .form-group textarea {
                 ondrop="handleFileDrop(event, 'top')" 
                 ondragover="allowDrop(event)" 
                 ondragleave="dragLeave(event)">
-                <div class="empty-message">📷 Fotoğraf sürükleyip bırakın (Kategori: <span id="selectedCatLabel">Villa</span>)</div>
+                <div class="empty-message">📷 Fotoğraf sürükleyip bırakın</div>
             </div>
         </div>
 
@@ -3080,24 +3080,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoInput) {
         logoInput.addEventListener('change', function() {
             uploadLogo();
-        });
-    }
-    
-    // Kategori seçici değişikliğini dinle
-    const dropCategory = document.getElementById('dropCategory');
-    if (dropCategory) {
-        dropCategory.addEventListener('change', function() {
-            const label = document.getElementById('selectedCatLabel');
-            if (label) {
-                const categoryNames = {
-                    'villa': 'Villa',
-                    'apartman': 'Apartman',
-                    'ofis': 'Ofis',
-                    'ticari': 'Ticari',
-                    'konut': 'Konut'
-                };
-                label.textContent = categoryNames[this.value] || this.value;
-            }
         });
     }
 });
@@ -5920,6 +5902,7 @@ function saveNewProject() {
             description: description,
             img: e.target.result,
             mediaType: 'image',
+            row: 'top',
             date: new Date().toISOString()
         };
         

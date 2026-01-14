@@ -20,33 +20,6 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-            https://maps.googleapis.com 
-            https://cdnjs.cloudflare.com
-            https://www.gstatic.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' data: https: blob: 
-            https://firebasestorage.googleapis.com 
-            https://storage.googleapis.com
-            https://*.appspot.com;
-        font-src 'self' data: https://fonts.gstatic.com;
-        connect-src 'self' 
-            https://api.whatsapp.com https://wa.me
-            https://*.firebaseio.com 
-            https://firestore.googleapis.com 
-            https://identitytoolkit.googleapis.com
-            https://firebasestorage.googleapis.com
-            https://storage.googleapis.com
-            https://*.googleapis.com;
-        frame-src 'self' https://www.google.com https://maps.google.com;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        upgrade-insecure-requests;
-    ">
     
     <!-- Permissions Policy -->
     <meta http-equiv="Permissions-Policy" content="
@@ -1590,6 +1563,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* filter kaldırıldı - net görüntü */
             transition: transform 8s ease-out;
         }
 
@@ -4876,7 +4850,7 @@ function loadFromLocalStorage() {
         if (savedProjects) {
             const allProjects = JSON.parse(savedProjects);
             // Sadece valid projeleri al
-            projects = allProjects.filter(p => p && p.img && (p.row === 'top' || !p.row));
+            projects = allProjects.filter(p => p && p.row === 'top' && p.img);
             
             // En popüler 4 projeyi al (hero için)
             heroImages = projects
@@ -4934,7 +4908,7 @@ function setupHero() {
         return;
     }
     
-    // Slides - sadece fotoğraf, yazı yok
+    // Slides - sadece fotoğraf
     slider.innerHTML = heroImages.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
@@ -5032,12 +5006,9 @@ function renderProjects() {
     
     let filteredProjects = projects;
     if (currentFilter !== 'all') {
-        filteredProjects = projects.filter(p => {
-            if (!p.tags || !Array.isArray(p.tags)) {
-                return p.category && p.category.toLowerCase() === currentFilter.toLowerCase();
-            }
-            return p.tags.some(tag => tag.toLowerCase() === currentFilter.toLowerCase());
-        });
+        filteredProjects = projects.filter(p => 
+            p.tags && p.tags.includes(currentFilter)
+        );
     }
     
     grid.innerHTML = filteredProjects.map(project => {
