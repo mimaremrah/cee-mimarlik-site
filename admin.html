@@ -2634,6 +2634,13 @@ body.dark-mode #projectModal .form-group textarea {
     <div class="context-menu-item" onclick="contextAction('moveTop')">⬆️ Vitrin'e Taşı</div>
     <div class="context-menu-item" onclick="contextAction('moveBottom')">⬇️ Arşiv'e Taşı</div>
     <div class="context-menu-divider"></div>
+    <div style="padding: 8px 16px; font-size: 11px; color: #666; font-weight: 600;">📁 KATEGORİ DEĞİŞTİR</div>
+    <div class="context-menu-item" onclick="contextAction('category-villa')">🏠 Villa</div>
+    <div class="context-menu-item" onclick="contextAction('category-apartman')">🏢 Apartman</div>
+    <div class="context-menu-item" onclick="contextAction('category-ofis')">🏬 Ofis</div>
+    <div class="context-menu-item" onclick="contextAction('category-ticari')">🛒 Ticari</div>
+    <div class="context-menu-item" onclick="contextAction('category-konut')">🏘️ Konut</div>
+    <div class="context-menu-divider"></div>
     <div class="context-menu-item" onclick="contextAction('delete')" style="color: #ef4444;">🗑️ Sil</div>
 </div>
 
@@ -2825,6 +2832,10 @@ function login() {
         
         if (loginScreenEl) loginScreenEl.classList.add('hidden');
         if (adminPanelEl) adminPanelEl.classList.remove('hidden');
+        
+        // Logo section'ı göster
+        const logoSection = document.querySelector('.logo-upload-section');
+        if (logoSection) logoSection.style.display = 'block';
         
         console.log('%c✅ Admin girişi başarılı', 'color: #4CAF50; font-weight: bold');
         
@@ -4235,6 +4246,41 @@ function contextAction(action) {
             updateStats();
             updatePreview();
             break;
+        case 'category-villa':
+            project.category = 'villa';
+            project.tags = ['villa'];
+            saveProjects();
+            render();
+            showToast('✅ Proje Villa kategorisine taşındı', 'success');
+            break;
+        case 'category-apartman':
+            project.category = 'apartman';
+            project.tags = ['apartman'];
+            saveProjects();
+            render();
+            showToast('✅ Proje Apartman kategorisine taşındı', 'success');
+            break;
+        case 'category-ofis':
+            project.category = 'ofis';
+            project.tags = ['ofis'];
+            saveProjects();
+            render();
+            showToast('✅ Proje Ofis kategorisine taşındı', 'success');
+            break;
+        case 'category-ticari':
+            project.category = 'ticari';
+            project.tags = ['ticari'];
+            saveProjects();
+            render();
+            showToast('✅ Proje Ticari kategorisine taşındı', 'success');
+            break;
+        case 'category-konut':
+            project.category = 'konut';
+            project.tags = ['konut'];
+            saveProjects();
+            render();
+            showToast('✅ Proje Konut kategorisine taşındı', 'success');
+            break;
         case 'delete':
             deleteProject(contextMenuProjectId);
             break;
@@ -5461,6 +5507,7 @@ document.addEventListener("DOMContentLoaded", function() {
     border-radius: 12px;
     margin: 20px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: none; /* Giriş yapılmadan gizli */
 }
 
 .logo-preview {
@@ -5824,7 +5871,15 @@ body.dark-mode .team-member-card {
 <script>
 // Proje Modal Fonksiyonları
 function openProjectModal() {
-    document.getElementById('projectModal').style.display = 'flex';
+    console.log('openProjectModal çağrıldı');
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        console.log('Modal açıldı');
+    } else {
+        console.error('projectModal elementi bulunamadı!');
+        alert('❌ Modal elementi bulunamadı!');
+    }
 }
 
 function closeProjectModal() {
