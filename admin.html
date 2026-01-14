@@ -5443,7 +5443,7 @@ function saveTeamMember() {
     
     if (photoInput.files && photoInput.files[0]) {
         // Fotoğrafı sıkıştır
-        compressImage(photoInput.files[0], 600, 0.85, function(compressedDataUrl) {
+        compressImage(photoInput.files[0], 800, 0.9, function(compressedDataUrl) {
             memberData.photo = compressedDataUrl;
             finishSave();
         });
