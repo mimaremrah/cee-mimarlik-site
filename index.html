@@ -827,7 +827,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.92);
             transition: transform 8s ease-out;
         }
 
@@ -836,21 +835,16 @@
         }
 
         body.dark-mode .hero-slide img {
-            filter: brightness(0.8);
+            /* filter kaldırıldı - net görüntü */
         }
 
-        /* Minimal Overlay */
+        /* Overlay gizlendi - net görüntü */
         .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 100%);
+            display: none;
         }
 
         body.dark-mode .hero-overlay {
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%);
+            display: none;
         }
 
         /* Project Info - Minimal */
@@ -937,14 +931,7 @@
 
         /* Progress Bar */
         .hero-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--accent);
-            z-index: 3;
-            transition: width 0.3s ease;
+            display: none;
         }
 
         /* Slide Indicators */
@@ -2063,13 +2050,11 @@ function setupHero() {
     
     if (heroImages.length === 0) {
         slider.innerHTML = `
-            <div class="hero-slide active">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <div class="hero-category">CEE MİMARLIK</div>
-                    <h1 class="hero-title">Hayallerinizi Gerçeğe Dönüştürüyoruz</h1>
-                    <div class="hero-meta">Modern Mimari Çözümler</div>
+            <div class="hero-slide active" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; color: white;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🏗️</div>
+                    <h2 style="font-size: 32px; font-weight: 300; margin-bottom: 10px;">CEE Mimarlık</h2>
+                    <p style="font-size: 16px; opacity: 0.8;">Projelerimiz yakında burada</p>
                 </div>
             </div>
         `;
@@ -2078,8 +2063,7 @@ function setupHero() {
     
     slider.innerHTML = heroImages.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
-            <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
-            <div class="hero-overlay"></div>
+            <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}" style="filter: none !important;">
         </div>
     `).join('');
     
