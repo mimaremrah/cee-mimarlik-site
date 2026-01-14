@@ -6237,93 +6237,12 @@ function loadTeam() {
             <img src="${m.photo}" alt="${m.name}">
             <div class="info">
                 <h4>${m.name}</h4>
-                <p>${m.title}</p>
+                <p>${m.title || m.role || ''}</p>
             </div>
-            <button class="btn-edit" onclick="editMember('${m.id}')">✏️</button>
-            <button class="btn-delete" onclick="deleteMember('${m.id}')">🗑️</button>
+            <button class="btn-edit" onclick="openTeamModal('${m.id}')">✏️</button>
+            <button class="btn-delete" onclick="deleteTeamMember('${m.id}')">🗑️</button>
         </div>
     `).join('');
-}
-
-function openTeamModal(id = null) {
-    document.getElementById('teamModal').classList.add('show');
-    
-    if (id) {
-        const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
-        const member = members.find(m => m.id === id);
-        if (member) {
-            document.getElementById('memberName').value = member.name;
-            document.getElementById('memberTitle').value = member.title;
-            document.getElementById('memberEducation').value = member.education;
-            document.getElementById('memberExperience').value = member.experience;
-        }
-    }
-}
-
-function closeTeamModal() {
-    document.getElementById('teamModal').classList.remove('show');
-    document.getElementById('memberName').value = '';
-    document.getElementById('memberTitle').value = '';
-    document.getElementById('memberEducation').value = '';
-    document.getElementById('memberExperience').value = '';
-}
-
-function saveMember() {
-    const name = document.getElementById('memberName').value.trim();
-    const title = document.getElementById('memberTitle').value.trim();
-    
-    if (!name || !title) {
-        alert('❌ İsim ve ünvan zorunludur!');
-        return;
-    }
-    
-    const photoFile = document.getElementById('memberPhoto').files[0];
-    
-    if (photoFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            saveMemberToStorage({
-                id: Date.now().toString(),
-                name: name,
-                title: title,
-                education: document.getElementById('memberEducation').value,
-                experience: document.getElementById('memberExperience').value,
-                photo: e.target.result
-            });
-        };
-        reader.readAsDataURL(photoFile);
-    } else {
-        saveMemberToStorage({
-            id: Date.now().toString(),
-            name: name,
-            title: title,
-            education: document.getElementById('memberEducation').value,
-            experience: document.getElementById('memberExperience').value,
-            photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23ddd" width="200" height="200"/%3E%3Ctext x="50%25" y="50%25" font-size="60" fill="%23999" text-anchor="middle" dy=".3em"%3E👤%3C/text%3E%3C/svg%3E'
-        });
-    }
-}
-
-function saveMemberToStorage(member) {
-    const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
-    members.push(member);
-    localStorage.setItem('cee_team_members', JSON.stringify(members));
-    loadTeam();
-    closeTeamModal();
-    alert('✅ Ekip üyesi eklendi!');
-}
-
-function editMember(id) {
-    openTeamModal(id);
-}
-
-function deleteMember(id) {
-    if (!confirm('Bu ekip üyesini silmek istediğinize emin misiniz?')) return;
-    let members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
-    members = members.filter(m => m.id !== id);
-    localStorage.setItem('cee_team_members', JSON.stringify(members));
-    loadTeam();
-    alert('✅ Ekip üyesi silindi!');
 }
 
 // ================== INSTAGRAM YÖNETİMİ ==================
@@ -6348,7 +6267,7 @@ function showAdminSection(section) {
         loadAbout();
     } else if (section === 'team') {
         document.getElementById('teamSection').classList.add('active');
-        loadTeam();
+        loadTeamMembers();
     } else if (section === 'instagram') {
         document.getElementById('instagramSection').classList.add('active');
         loadInstagram();
@@ -6358,7 +6277,7 @@ function showAdminSection(section) {
 // ================== SAYFA YÜKLENDİĞİNDE ==================
 document.addEventListener('DOMContentLoaded', function() {
     loadLogo();
-    loadTeam();
+    loadTeamMembers();
 });
 </script>
 
