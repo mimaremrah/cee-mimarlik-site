@@ -2450,6 +2450,9 @@ body.dark-mode #projectModal .form-group textarea {
                             <button class="menu-item" onclick="yandexDiskBackup(); closeCompactMenu();">
                                 ☁️ Yandex Yedek
                             </button>
+                            <button class="menu-item" onclick="clearStorageSpace(); closeCompactMenu();" style="color: #f59e0b;">
+                                🧹 Depolama Temizle
+                            </button>
                         </div>
 
                         <!-- AYARLAR -->
@@ -3255,6 +3258,53 @@ GELECEK GÜNCELLEMEDE:
     // Kullanıcı evet derse JSON yedek yapsın
     if (confirm('JSON yedek dosyası indirmek ister misiniz?')) {
         exportData();
+    }
+}
+
+// Depolama Temizleme
+function clearStorageSpace() {
+    // Mevcut kullanımı hesapla
+    let totalSize = 0;
+    for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+            totalSize += localStorage[key].length * 2; // UTF-16
+        }
+    }
+    const usedMB = (totalSize / (1024 * 1024)).toFixed(2);
+    
+    const choice = prompt(
+        `📊 Depolama Durumu\n\n` +
+        `Kullanılan: ${usedMB} MB / ~5 MB\n\n` +
+        `Temizleme seçenekleri:\n` +
+        `1 - Sadece ekip fotoğraflarını sil\n` +
+        `2 - Arşivdeki projeleri sil\n` +
+        `3 - Tüm verileri sil (DİKKAT!)\n\n` +
+        `Seçiminizi girin (1-3):`
+    );
+    
+    if (choice === '1') {
+        // Ekip fotoğraflarını temizle
+        let members = JSON.parse(localStorage.getItem('team_members') || '[]');
+        members = members.map(m => ({ ...m, photo: '' }));
+        localStorage.setItem('team_members', JSON.stringify(members));
+        alert('✅ Ekip fotoğrafları silindi! Yer açıldı.');
+        loadTeamMembers();
+    } else if (choice === '2') {
+        // Arşivdeki projeleri sil
+        const beforeCount = projects.length;
+        projects = projects.filter(p => p.row !== 'bottom');
+        saveProjects();
+        render();
+        const deleted = beforeCount - projects.length;
+        alert(`✅ ${deleted} arşiv projesi silindi!`);
+    } else if (choice === '3') {
+        if (confirm('⚠️ TÜM VERİLER SİLİNECEK!\n\nBu işlem geri alınamaz. Devam etmek istiyor musunuz?')) {
+            if (confirm('🔴 SON UYARI: Gerçekten tüm verileri silmek istiyor musunuz?')) {
+                localStorage.clear();
+                alert('✅ Tüm veriler silindi. Sayfa yenilenecek.');
+                location.reload();
+            }
+        }
     }
 }
 
@@ -5369,32 +5419,75 @@ function saveTeamMember() {
     
     const finishSave = () => {
         if (editingId) {
-            // Düzenleme
             const index = members.findIndex(m => m.id == editingId);
             if (index !== -1) {
                 members[index] = memberData;
             }
         } else {
-            // Yeni ekle
             members.push(memberData);
         }
         
-        localStorage.setItem('team_members', JSON.stringify(members));
-        loadTeamMembers();
-        closeTeamModal();
-        showToast('✅ Ekip üyesi kaydedildi!', 'success');
+        try {
+            localStorage.setItem('team_members', JSON.stringify(members));
+            loadTeamMembers();
+            closeTeamModal();
+            showToast('✅ Ekip üyesi kaydedildi!', 'success');
+        } catch (e) {
+            if (e.name === 'QuotaExceededError') {
+                alert('❌ Depolama alanı dolu! Lütfen önce bazı projeleri veya eski verileri silin.\n\nYa da daha küçük bir fotoğraf seçin.');
+            } else {
+                alert('❌ Kaydetme hatası: ' + e.message);
+            }
+        }
     };
     
     if (photoInput.files && photoInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            memberData.photo = e.target.result;
+        // Fotoğrafı sıkıştır
+        compressImage(photoInput.files[0], 300, 0.7, function(compressedDataUrl) {
+            memberData.photo = compressedDataUrl;
             finishSave();
-        };
-        reader.readAsDataURL(photoInput.files[0]);
+        });
     } else {
         finishSave();
     }
+}
+
+// Fotoğraf sıkıştırma fonksiyonu
+function compressImage(file, maxSize, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+            
+            // Boyutu küçült
+            if (width > height) {
+                if (width > maxSize) {
+                    height = Math.round(height * maxSize / width);
+                    width = maxSize;
+                }
+            } else {
+                if (height > maxSize) {
+                    width = Math.round(width * maxSize / height);
+                    height = maxSize;
+                }
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            // JPEG olarak sıkıştır
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+            callback(compressedDataUrl);
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
 
 // Ekip Üyelerini Listele
