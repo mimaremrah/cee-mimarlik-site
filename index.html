@@ -827,7 +827,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.75);
+            filter: brightness(0.92);
             transition: transform 8s ease-out;
         }
 
@@ -836,7 +836,7 @@
         }
 
         body.dark-mode .hero-slide img {
-            filter: brightness(0.6);
+            filter: brightness(0.8);
         }
 
         /* Minimal Overlay */
@@ -846,7 +846,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 100%);
         }
 
         body.dark-mode .hero-overlay {
@@ -2079,11 +2079,6 @@ function setupHero() {
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
             <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-category">${project.category || project.tags?.[0] || 'PROJE'}</div>
-                <h1 class="hero-title">${project.title || 'İsimsiz Proje'}</h1>
-                <div class="hero-meta">${project.location || ''} ${project.area ? '• ' + project.area : ''}</div>
-            </div>
         </div>
     `).join('');
     
@@ -2168,7 +2163,10 @@ function renderProjects() {
     
     let filteredProjects = projects;
     if (currentFilter !== 'all') {
-        filteredProjects = projects.filter(p => p.tags && p.tags.includes(currentFilter));
+        filteredProjects = projects.filter(p => {
+            if (!p.tags || !Array.isArray(p.tags)) return false;
+            return p.tags.some(tag => tag.toLowerCase() === currentFilter.toLowerCase());
+        });
     }
     
     grid.innerHTML = filteredProjects.map(project => {
