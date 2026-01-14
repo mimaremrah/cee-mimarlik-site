@@ -1596,16 +1596,21 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.75);
+            object-position: center;
+            filter: brightness(0.8);
             transition: transform 8s ease-out;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .hero-slide.active img {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         body.dark-mode .hero-slide img {
-            filter: brightness(0.6);
+            filter: brightness(0.65);
         }
 
         /* Minimal Overlay */
@@ -1704,16 +1709,9 @@
         .hero-nav.prev { left: 30px; }
         .hero-nav.next { right: 30px; }
 
-        /* Progress Bar */
+        /* Progress Bar - Gizli */
         .hero-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--accent);
-            z-index: 3;
-            transition: width 0.3s ease;
+            display: none;
         }
 
         /* Slide Indicators */
@@ -4955,15 +4953,18 @@ function setupHero() {
         return;
     }
     
-    // Slides
+    // Slides - Sadece fotoğraf, admin panelden yönetilen slogan
+    const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
+    const heroSlogan = heroSettings.title || 'Hayallerinizi Tasarlıyoruz';
+    const heroSubtext = heroSettings.subtitle || 'Modern Mimarlık • Profesyonel Çözümler';
+    
     slider.innerHTML = heroImages.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <div class="hero-category">${project.category || project.tags?.[0] || 'PROJE'}</div>
-                <h1 class="hero-title">${project.title || 'İsimsiz Proje'}</h1>
-                <div class="hero-meta">${project.location || ''} ${project.area ? '• ' + project.area : ''}</div>
+                <h1 class="hero-title">${heroSlogan}</h1>
+                <div class="hero-meta">${heroSubtext}</div>
             </div>
         </div>
     `).join('');
@@ -7767,5 +7768,16 @@ document.addEventListener('DOMContentLoaded', function() {
             initHeroSlider();
         }
     }, 100);
+    
+    // Admin panelden gelindiyse, geri dönüş butonu göster
+    if (sessionStorage.getItem('fromAdmin') === 'true') {
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '⚙️ Admin Panel';
+        adminBtn.style.cssText = 'position:fixed;top:20px;right:20px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:12px 20px;border-radius:25px;text-decoration:none;font-weight:600;z-index:9999;box-shadow:0 4px 15px rgba(102,126,234,0.4);transition:all 0.3s ease;';
+        adminBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; };
+        adminBtn.onmouseout = function() { this.style.transform = 'scale(1)'; };
+        document.body.appendChild(adminBtn);
+    }
 });
 </script>

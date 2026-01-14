@@ -2407,10 +2407,10 @@ body.dark-mode #projectModal .form-group textarea {
                         <!-- GENEL -->
                         <div class="menu-category">
                             <div class="menu-category-title">📋 GENEL</div>
-                            <button class="menu-item" onclick="window.location.href='index.html'; closeCompactMenu();">
+                            <button class="menu-item" onclick="sessionStorage.setItem('fromAdmin', 'true'); window.location.href='index.html'; closeCompactMenu();">
                                 🏠 Ana Sayfa
                             </button>
-                            <button class="menu-item" onclick="window.open('index.html', '_blank'); closeCompactMenu();">
+                            <button class="menu-item" onclick="sessionStorage.setItem('fromAdmin', 'true'); window.open('index.html', '_blank'); closeCompactMenu();">
                                 👁️ Önizle
                             </button>
                             <button class="menu-item" onclick="openSiteSettings(); closeCompactMenu();">
@@ -2428,7 +2428,7 @@ body.dark-mode #projectModal .form-group textarea {
                                 🎨 Logo Yükle
                             </button>
                             <button class="menu-item" onclick="openProjectModal(); closeCompactMenu();">
-                                ➕ Yeni Proje Ekle
+                                âž• Yeni Proje Ekle
                             </button>
                             <button class="menu-item" onclick="document.getElementById('miniConverterFile').click(); closeCompactMenu();">
                                 🔄 Dosya Dönüştür
@@ -2472,7 +2472,7 @@ body.dark-mode #projectModal .form-group textarea {
                 </div>
 
                 <!-- HIZLI BUTONLAR (sadece önemliler) -->
-                <button class="btn btn-success btn-compact" onclick="window.open('index.html', '_blank')" title="Önizle">👁️</button>
+                <button class="btn btn-success btn-compact" onclick="sessionStorage.setItem('fromAdmin', 'true'); window.open('index.html', '_blank')" title="Önizle">👁️</button>
                 <button class="btn btn-info btn-compact" onclick="toggleDarkMode()" id="darkModeBtn" title="Dark Mode">🌙</button>
                 <button class="btn btn-warning btn-compact" id="undoBtn" onclick="undoDelete()" style="display: none;" title="Geri Al">↩️</button>
                 <button class="btn btn-danger btn-compact" onclick="logout()" title="Çıkış">🚪</button>
@@ -2550,13 +2550,6 @@ body.dark-mode #projectModal .form-group textarea {
             <div class="zone-header">
                 <h4>⭐ VİTRİN PROJELERİ</h4>
                 <div style="display: flex; gap: 10px; align-items: center;">
-                    <select id="dropCategory" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ddd; font-size: 12px; background: white;">
-                        <option value="villa">🏠 Villa</option>
-                        <option value="apartman">🏢 Apartman</option>
-                        <option value="ofis">🏬 Ofis</option>
-                        <option value="ticari">🏪 Ticari</option>
-                        <option value="konut">🏘️ Konut</option>
-                    </select>
                     <span id="topCount">0 Proje</span>
                     <button class="btn btn-danger" style="padding: 6px 12px; font-size: 12px;" onclick="clearZone('top')">
                         🗑️ Tümünü Sil
@@ -2567,7 +2560,7 @@ body.dark-mode #projectModal .form-group textarea {
                 ondrop="handleFileDrop(event, 'top')" 
                 ondragover="allowDrop(event)" 
                 ondragleave="dragLeave(event)">
-                <div class="empty-message">📷 Fotoğraf sürükleyip bırakın</div>
+                <div class="empty-message">Henüz proje eklenmedi</div>
             </div>
         </div>
 
@@ -3517,17 +3510,13 @@ function processMultipleFiles(files, targetRow) {
         
         const reader = new FileReader();
         reader.onload = (e) => {
-            // Seçilen kategoriyi al
-            const selectedCategory = document.getElementById('dropCategory')?.value || 'villa';
-            
             const newProject = {
                 id: 'proj-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
                 img: e.target.result,
                 row: targetRow,
                 title: '',
                 favorite: false,
-                tags: [selectedCategory],
-                category: selectedCategory,
+                tags: [],
                 clickCount: 0,
                 mediaType: isVideo ? 'video' : 'image'
             };
@@ -4632,28 +4621,28 @@ const miniFormats = {
         {name: '🎨 PNG', value: 'png'},
         {name: '📄 PDF', value: 'pdf'},
         {name: '🌐 WEBP', value: 'webp'},
-        {name: '⚫ GIF', value: 'gif'},
+        {name: 'âš« GIF', value: 'gif'},
         {name: '🖼️ BMP', value: 'bmp'}
     ],
     'jpg': [
         {name: '🎨 PNG', value: 'png'},
         {name: '📄 PDF', value: 'pdf'},
         {name: '🌐 WEBP', value: 'webp'},
-        {name: '⚫ GIF', value: 'gif'},
+        {name: 'âš« GIF', value: 'gif'},
         {name: '🖼️ BMP', value: 'bmp'}
     ],
     'png': [
         {name: '🖼️ JPEG', value: 'jpeg'},
         {name: '📄 PDF', value: 'pdf'},
         {name: '🌐 WEBP', value: 'webp'},
-        {name: '⚫ GIF', value: 'gif'},
+        {name: 'âš« GIF', value: 'gif'},
         {name: '🖼️ BMP', value: 'bmp'}
     ],
     'webp': [
         {name: '🖼️ JPEG', value: 'jpeg'},
         {name: '🎨 PNG', value: 'png'},
         {name: '📄 PDF', value: 'pdf'},
-        {name: '⚫ GIF', value: 'gif'}
+        {name: 'âš« GIF', value: 'gif'}
     ],
     'bmp': [
         {name: '🖼️ JPEG', value: 'jpeg'},
@@ -5835,11 +5824,11 @@ body.dark-mode .team-member-card {
 <script>
 // Proje Modal Fonksiyonları
 function openProjectModal() {
-    document.getElementById('projectModal').classList.add('show');
+    document.getElementById('projectModal').style.display = 'flex';
 }
 
 function closeProjectModal() {
-    document.getElementById('projectModal').classList.remove('show');
+    document.getElementById('projectModal').style.display = 'none';
     // Formu temizle
     document.getElementById('projectTitle').value = '';
     document.getElementById('projectCategory').value = 'villa';
@@ -5902,7 +5891,6 @@ function saveNewProject() {
             description: description,
             img: e.target.result,
             mediaType: 'image',
-            row: 'top',
             date: new Date().toISOString()
         };
         
