@@ -7422,9 +7422,7 @@ document.addEventListener('DOMContentLoaded', function() {
             trackEvent('Performance', 'page_load_time', Math.round(pageLoadTime));
             trackEvent('Performance', 'dns_time', Math.round(dnsTime));
             trackEvent('Performance', 'tcp_time', Math.round(tcpTime));
-            
-            .toFixed(2)}s`);
-            }
+        }
     });
     
     // 5. ERROR TRACKING
@@ -7432,7 +7430,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof trackEvent === 'function') {
             trackEvent('Error', 'javascript_error', event.message);
         }
-        });
+    });
     
     // 6. VISIBILITY TRACKING (Tab switching)
     let visibilityStart = Date.now();
@@ -7609,11 +7607,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         // Projeleri render et (eğer renderProjects fonksiyonu varsa)
         if (typeof window.renderProjects === 'function') {
             window.renderProjects();
-        } else {
-            }
+        }
         
     } catch (error) {
-        }
+        console.log('Firebase yükleme hatası:', error);
+    }
 });
 
 // Proje detay sayfasına git
