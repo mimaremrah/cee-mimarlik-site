@@ -3743,10 +3743,25 @@ window.toggleMobileMenu = toggleMobileMenu;
     
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
-        <a href="#hakkimizda" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none;">
+        <a href="#ekip" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none;">
             <span data-tr="👥 Uzman Kadromuzu Tanıyın" data-en="👥 Meet Our Expert Team">👥 Uzman Kadromuzu Tanıyın</span>
             <span>→</span>
         </a>
+    </div>
+</section>
+
+<!-- EKİP BÖLÜMÜ -->
+<section id="ekip" style="padding: 80px 5%; background: var(--bg-alt);">
+    <div class="section-header">
+        <div class="section-label" data-tr="EKİBİMİZ" data-en="OUR TEAM">EKİBİMİZ</div>
+        <h2 class="section-title" data-tr="Uzman Kadromuz" data-en="Our Expert Team">Uzman Kadromuz</h2>
+    </div>
+    <p style="text-align: center; color: var(--secondary); font-size: 16px; letter-spacing: 2px; margin-bottom: 50px;" 
+       data-tr="Deneyimli mimarlarımızla tanışın" data-en="Meet our experienced architects">
+        Deneyimli mimarlarımızla tanışın
+    </p>
+    <div id="teamGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+        <!-- Ekip üyeleri buraya yüklenecek -->
     </div>
 </section>
 
@@ -5189,35 +5204,42 @@ function toggleMobileMenu() {
 
 function loadTeam() {
     const grid = document.getElementById('teamGrid');
-    if (!grid) return; // Element yoksa çık
+    if (!grid) return;
     
-    const teamData = localStorage.getItem('cee_team');
+    // Admin panelden gelen ekip verisi
+    const teamData = localStorage.getItem('team_members') || localStorage.getItem('cee_team_members');
+    
     if (teamData) {
         try {
             const team = JSON.parse(teamData);
-            grid.innerHTML = team.slice(0, 2).map(member => `
-                <div class="team-member">
-                    <img src="${member.photo}" alt="${member.name}" class="team-photo">
-                    <div class="team-name">${member.name}</div>
-                    <div class="team-role">${member.role}</div>
-                </div>
-            `).join('');
-        } catch (e) {}
-    } else {
-        // Default team
-        grid.innerHTML = `
-            <div class="team-member">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Üyesi" class="team-photo">
-                <div class="team-name">Mimar 1</div>
-                <div class="team-role">Kurucu Mimar</div>
-            </div>
-            <div class="team-member">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Üyesi" class="team-photo">
-                <div class="team-name">Mimar 2</div>
-                <div class="team-role">Proje Müdürü</div>
-            </div>
-        `;
+            if (team.length > 0) {
+                grid.innerHTML = team.map(member => `
+                    <div class="team-member" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
+                        <div style="height: 280px; overflow: hidden;">
+                            <img src="${member.photo || member.image || ''}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 25px; text-align: center;">
+                            <h3 style="font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px;">${member.name}</h3>
+                            <p style="color: var(--accent); font-weight: 500; margin-bottom: 10px;">${member.role || member.position || ''}</p>
+                            ${member.experience ? `<p style="font-size: 14px; color: var(--secondary); line-height: 1.6;">${member.experience}</p>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+                return;
+            }
+        } catch (e) {
+            console.log('Ekip verisi yüklenemedi:', e);
+        }
     }
+    
+    // Varsayılan - ekip eklenmemişse
+    grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--secondary);">
+            <div style="font-size: 48px; margin-bottom: 20px;">👥</div>
+            <p style="font-size: 18px;">Henüz ekip üyesi eklenmedi</p>
+            <p style="font-size: 14px; margin-top: 10px;">Admin panelden ekip üyesi ekleyebilirsiniz</p>
+        </div>
+    `;
 }
 </script>
 
