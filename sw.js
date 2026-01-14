@@ -1,10 +1,10 @@
-// Service Worker - PWA Offline Support (Advanced)
-const CACHE_VERSION = 'v1';
+// Service Worker - PWA Offline Support (Fixed)
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `cee-mimarlik-${CACHE_VERSION}`;
 const CACHE_NAME_IMAGES = `cee-images-${CACHE_VERSION}`;
-const MAX_IMAGE_CACHE = 50; // Maksimum 50 resim cache'le
+const MAX_IMAGE_CACHE = 50;
 
-// Cache edilecek statik dosyalar (cache-first)
+// Cache edilecek statik dosyalar
 const STATIC_CACHE = [
   '/',
   '/index.html',
@@ -14,16 +14,17 @@ const STATIC_CACHE = [
   '/cookie-consent.js'
 ];
 
-// Install - Static cache
+// Install
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(STATIC_CACHE))
       .then(() => self.skipWaiting())
+      .catch(err => console.log('Cache install error:', err))
   );
 });
 
-// Activate - Eski cache'leri temizle
+// Activate
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -45,22 +46,28 @@ self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
   
-  // 1. Admin/Login sayfaları - HİÇBİR ZAMAN cache'leme
-  if (url.pathname.includes('/admin') || 
-      url.pathname.includes('/firebase-login') ||
-      url.pathname.includes('/panel-')) {
-    event.respondWith(fetch(request));
+  // ⚠️ POST isteklerini cache'leme - sadece network'e gönder
+  if (request.method !== 'GET') {
+    event.respondWith(fetch(request).catch(() => new Response('Offline', { status: 503 })));
     return;
   }
   
-  // 2. Resimler - Cache-first + limit
+  // Admin/Login sayfaları - cache'leme
+  if (url.pathname.includes('/admin') || 
+      url.pathname.includes('/firebase-login') ||
+      url.pathname.includes('/panel-')) {
+    event.respondWith(fetch(request).catch(() => caches.match('/offline.html')));
+    return;
+  }
+  
+  // Resimler - Cache-first + limit
   if (request.destination === 'image' || 
       /\.(jpg|jpeg|png|gif|webp|svg|ico)$/i.test(url.pathname)) {
     event.respondWith(imageHandler(request));
     return;
   }
   
-  // 3. Statik dosyalar (CSS, JS) - Cache-first
+  // Statik dosyalar (CSS, JS) - Cache-first
   if (request.destination === 'script' || 
       request.destination === 'style' ||
       /\.(css|js)$/i.test(url.pathname)) {
@@ -68,18 +75,18 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 4. HTML sayfaları - Network-first
+  // HTML sayfaları - Network-first
   if (request.destination === 'document' || 
       request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(networkFirst(request));
     return;
   }
   
-  // 5. Diğer her şey - Network-first
+  // Diğer her şey - Network-first
   event.respondWith(networkFirst(request));
 });
 
-// Cache-first stratejisi (statik dosyalar için)
+// Cache-first stratejisi
 async function cacheFirst(request) {
   const cached = await caches.match(request);
   if (cached) {
@@ -88,7 +95,7 @@ async function cacheFirst(request) {
   
   try {
     const response = await fetch(request);
-    if (response && response.status === 200) {
+    if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME);
       cache.put(request, response.clone());
     }
@@ -98,11 +105,11 @@ async function cacheFirst(request) {
   }
 }
 
-// Network-first stratejisi (HTML için)
+// Network-first stratejisi
 async function networkFirst(request) {
   try {
     const response = await fetch(request);
-    if (response && response.status === 200) {
+    if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME);
       cache.put(request, response.clone());
     }
@@ -113,7 +120,6 @@ async function networkFirst(request) {
       return cached;
     }
     
-    // Offline sayfası göster
     const offlinePage = await caches.match('/offline.html');
     return offlinePage || new Response(
       '<h1>Offline</h1><p>İnternet bağlantınızı kontrol edin.</p>',
@@ -122,9 +128,8 @@ async function networkFirst(request) {
   }
 }
 
-// Resim cache handler (limit ile)
+// Resim cache handler
 async function imageHandler(request) {
-  // Önce cache'e bak
   const cached = await caches.match(request);
   if (cached) {
     return cached;
@@ -132,13 +137,11 @@ async function imageHandler(request) {
   
   try {
     const response = await fetch(request);
-    if (response && response.status === 200) {
+    if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME_IMAGES);
       
-      // Cache limiti kontrol et
       const keys = await cache.keys();
       if (keys.length >= MAX_IMAGE_CACHE) {
-        // En eski resmi sil (FIFO)
         await cache.delete(keys[0]);
       }
       
@@ -150,7 +153,7 @@ async function imageHandler(request) {
   }
 }
 
-// Background sync için (ileride eklenebilir)
+// Background sync
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-forms') {
     event.waitUntil(syncForms());
@@ -158,6 +161,5 @@ self.addEventListener('sync', event => {
 });
 
 async function syncForms() {
-  // Form verilerini senkronize et
   console.log('Background sync çalışıyor...');
 }

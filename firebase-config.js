@@ -1,17 +1,6 @@
 // ============================================
 // FIREBASE CONFIG - CEE MİMARLIK
 // ============================================
-// ⚠️ ZORUNLU: Bu dosyayı düzenlemelisiniz!
-// 
-// ADIMLAR:
-// 1. https://console.firebase.google.com → Projenizi açın
-// 2. ⚙️ Settings → Project settings
-// 3. Your apps → Web app (</> ikonu)
-// 4. Config kısmını kopyalayın
-// 5. Aşağıdaki "BURAYA..." yazan yerlere yapıştırın
-// 
-// ⚠️ NOT: Tüm satırları doldurun, hiçbirini boş bırakmayın!
-// ============================================
 
 // Firebase modüllerini import et
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
@@ -20,7 +9,7 @@ import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase
 import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
 // ============================================
-// ⚠️ BURAYA KENDİ CONFIG'İNİZİ YAPIŞTIRIN ⚠️
+// Firebase Yapılandırması
 // ============================================
 const firebaseConfig = {
     apiKey: "AIzaSyD_o4IQg2_a5o2sxZvKwsbQ4R6Y_qE5Zhw",
@@ -31,11 +20,6 @@ const firebaseConfig = {
     appId: "1:479234997700:web:60182cab4b5bc8936d3891",
     measurementId: "G-WJJRB55W5F"
 };
-```
-
-### 5. Kaydet:
-```
-Ctrl + S
 
 // ============================================
 // KONTROL: Config doğru mu?

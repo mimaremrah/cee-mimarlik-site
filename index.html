@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="CEE Mimarlık - Modern mimarlık anlayışıyla villa, apartman, ofis ve ticari yapı tasarımı. Hayalinizdeki projeler, ustalıkla hayata geçiyor.">
-    <meta name="keywords" content="mimarlık, inşaat, villa tasarımı, apartman projesi, ofis tasarımı, ticari yapı, CEE Mimarlık">
-    <meta name="author" content="CEE Mimarlık">
+    <meta name="description" content="CEE MimarlÄ±k - Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla villa, apartman, ofis ve ticari yapÄ± tasarÄ±mÄ±. Hayalinizdeki projeler, ustalÄ±kla hayata geÃ§iyor.">
+    <meta name="keywords" content="mimarlÄ±k, inÅŸaat, villa tasarÄ±mÄ±, apartman projesi, ofis tasarÄ±mÄ±, ticari yapÄ±, CEE MimarlÄ±k">
+    <meta name="author" content="CEE MimarlÄ±k">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="CEE Mimarlık">
-    <meta property="og:description" content="Modern mimarlık anlayışıyla hayalinizdeki projeler">
+    <meta property="og:title" content="CEE MimarlÄ±k">
+    <meta property="og:description" content="Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla hayalinizdeki projeler">
     <meta property="og:type" content="website">
     
     <!-- Security Meta Tags -->
@@ -20,6 +20,33 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+            https://maps.googleapis.com 
+            https://cdnjs.cloudflare.com
+            https://www.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' data: https: blob: 
+            https://firebasestorage.googleapis.com 
+            https://storage.googleapis.com
+            https://*.appspot.com;
+        font-src 'self' data: https://fonts.gstatic.com;
+        connect-src 'self' 
+            https://api.whatsapp.com https://wa.me
+            https://*.firebaseio.com 
+            https://firestore.googleapis.com 
+            https://identitytoolkit.googleapis.com
+            https://firebasestorage.googleapis.com
+            https://storage.googleapis.com
+            https://*.googleapis.com;
+        frame-src 'self' https://www.google.com https://maps.google.com;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        upgrade-insecure-requests;
+    ">
     
     <!-- Permissions Policy -->
     <meta http-equiv="Permissions-Policy" content="
@@ -34,7 +61,7 @@
     ">
     
     <meta name="theme-color" content="#2c2c2c">
-    <title>CEE Mimarlık</title>
+    <title>CEE MimarlÄ±k</title>
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.ceemimarlik.com">
@@ -51,18 +78,18 @@
     {
         "@context": "https://schema.org",
         "@type": "ArchitecturalService",
-        "name": "CEE Mimarlık",
-        "description": "Modern mimarlık anlayışıyla villa, apartman, ofis ve ticari yapı tasarımı",
+        "name": "CEE MimarlÄ±k",
+        "description": "Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla villa, apartman, ofis ve ticari yapÄ± tasarÄ±mÄ±",
         "url": "https://www.ceemimarlik.com",
         "logo": "https://www.ceemimarlik.com/logo.png",
         "image": "https://www.ceemimarlik.com/og-image.jpg",
         "telephone": "+90-537-327-8765",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
-            "addressLocality": "Çorlu",
+            "streetAddress": "Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3",
+            "addressLocality": "Ã‡orlu",
             "postalCode": "59860",
-            "addressRegion": "Tekirdağ",
+            "addressRegion": "TekirdaÄŸ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -126,7 +153,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -1563,7 +1590,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* filter kaldırıldı */
+            filter: brightness(0.75);
             transition: transform 8s ease-out;
         }
 
@@ -1572,16 +1599,21 @@
         }
 
         body.dark-mode .hero-slide img {
-            /* filter kaldırıldı */
+            filter: brightness(0.6);
         }
 
-        /* Overlay gizlendi */
+        /* Minimal Overlay */
         .hero-overlay {
-            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
         body.dark-mode .hero-overlay {
-            display: none;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%);
         }
 
         /* Project Info - Minimal */
@@ -1666,9 +1698,16 @@
         .hero-nav.prev { left: 30px; }
         .hero-nav.next { right: 30px; }
 
-        /* Progress Bar gizlendi */
+        /* Progress Bar */
         .hero-progress {
-            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent);
+            z-index: 3;
+            transition: width 0.3s ease;
         }
 
         /* Slide Indicators */
@@ -2131,7 +2170,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2566,7 +2605,7 @@
             transform: scale(1.05);
         }
 
-        /* WHATSAPP BUTTON - Küçük, Sağda */
+        /* WHATSAPP BUTTON - KÃ¼Ã§Ã¼k, SaÄŸda */
         .whatsapp-btn {
             position: fixed;
             bottom: 25px;
@@ -2613,7 +2652,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - Sağda */
+        /* Notification Bubble - SaÄŸda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -3331,7 +3370,7 @@
             transform: translateY(-5px);
         }
         /* ========================================
-           GELİŞMİŞ MOBİL RESPONSIVE İYİLEŞTİRMELER
+           GELÄ°ÅžMÄ°Åž MOBÄ°L RESPONSIVE Ä°YÄ°LEÅžTÄ°RMELER
            ======================================== */
         
         @media (max-width: 768px) {
@@ -3532,20 +3571,20 @@
     <meta name="theme-color" content="#667eea">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="CEE Mimarlık">
+    <meta name="apple-mobile-web-app-title" content="CEE MimarlÄ±k">
     <link rel="apple-touch-icon" href="/icon-192.png">
     <meta name="mobile-web-app-capable" content="yes">
     </head>
 <body>
 
 <script>
-// Mobil menü fonksiyonları - Global scope
+// Mobil menÃ¼ fonksiyonlarÄ± - Global scope
 function closeMobileMenu() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
         nav.classList.remove('mobile-open');
-        toggle.textContent = '☰';
+        toggle.textContent = 'â˜°';
     }
 }
 
@@ -3554,11 +3593,11 @@ function toggleMobileMenu() {
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
         nav.classList.toggle('mobile-open');
-        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+        toggle.textContent = nav.classList.contains('mobile-open') ? 'âœ•' : 'â˜°';
     }
 }
 
-// Global erişim
+// Global eriÅŸim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 </script>
@@ -3566,8 +3605,8 @@ window.toggleMobileMenu = toggleMobileMenu;
 
 
 <div style="background: white; padding: 20px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <img id="siteLogo" src="" alt="CEE Mimarlık" style="max-height: 80px; display: none;">
-    <h1 id="siteTitle" style="font-size: 32px; color: #d4af37; font-weight: 700; margin: 0;">CEE MİMARLIK</h1>
+    <img id="siteLogo" src="" alt="CEE MimarlÄ±k" style="max-height: 80px; display: none;">
+    <h1 id="siteTitle" style="font-size: 32px; color: #d4af37; font-weight: 700; margin: 0;">CEE MÄ°MARLIK</h1>
 </div>
 
 
@@ -3576,37 +3615,37 @@ window.toggleMobileMenu = toggleMobileMenu;
 <header role="banner">
     <div class="header-content">
         <div class="logo-container">
-            <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
-            <div class="logo-text" aria-label="CEE Mimarlık">CEE</div>
+            <img src="" alt="CEE MimarlÄ±k Logo" class="site-logo" id="headerLogo" style="display: none;">
+            <div class="logo-text" aria-label="CEE MimarlÄ±k">CEE</div>
         </div>
-        <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
+        <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="MenÃ¼">â˜°</button>
         
         <!-- LOGO -->
         <div class="site-logo" style="text-align: center; padding: 20px 0;">
-            <img id="headerLogo" src="" alt="CEE Mimarlık" style="max-height: 80px; display: none;">
-            <h1 id="headerTitle" style="font-size: 28px; color: var(--accent); font-weight: 700;">CEE MİMARLIK</h1>
+            <img id="headerLogo" src="" alt="CEE MimarlÄ±k" style="max-height: 80px; display: none;">
+            <h1 id="headerTitle" style="font-size: 28px; color: var(--accent); font-weight: 700;">CEE MÄ°MARLIK</h1>
         </div>
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
             <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()">Anasayfa</a>
             <a href="#projeler" onclick="closeMobileMenu()">Projeler</a>
-            <a href="#hakkimizda" onclick="closeMobileMenu()">Hakkımızda</a>
+            <a href="#hakkimizda" onclick="closeMobileMenu()">HakkÄ±mÄ±zda</a>
             <a href="#hizmetler" onclick="closeMobileMenu()">Hizmetler</a>
             <a href="#referanslar" onclick="closeMobileMenu()">Referanslar</a>
             <a href="#sss" onclick="closeMobileMenu()">SSS</a>
             
-            <!-- E-HİZMETLER DROPDOWN -->
+            <!-- E-HÄ°ZMETLER DROPDOWN -->
             <div class="nav-dropdown" style="display: inline-block; position: relative;">
                 <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;">
-                    🛒 E-Hizmetler
+                    ðŸ›’ E-Hizmetler
                 </a>
                 <div class="ehizmetler-menu" id="ehizmetlerMenu" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 10001; margin-top: 10px;">
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Çorlu Kent Rehberi', 'Çorlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">📍 CBS Çorlu</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">📍 KEOS Ergene</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel Müdürlüğü')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;">📍 Parsel Sorgu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Ã‡orlu Kent Rehberi', 'Ã‡orlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">ðŸ“ CBS Ã‡orlu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">ðŸ“ KEOS Ergene</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel MÃ¼dÃ¼rlÃ¼ÄŸÃ¼')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;">ðŸ“ Parsel Sorgu</a>
                 </div>
             </div>
             
-            <a href="#iletisim" onclick="closeMobileMenu()">İletişim</a>
+            <a href="#iletisim" onclick="closeMobileMenu()">Ä°letiÅŸim</a>
         </nav>
         <div class="header-actions">
             <div class="social-icons">
@@ -3621,8 +3660,8 @@ window.toggleMobileMenu = toggleMobileMenu;
                     </svg>
                 </a>
             </div>
-            <button class="btn-minimal" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir">EN</button>
-            <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema değiştir">🌙</button>
+            <button class="btn-minimal" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir">EN</button>
+            <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema deÄŸiÅŸtir">ðŸŒ™</button>
         </div>
     </div>
 </header>
@@ -3631,8 +3670,8 @@ window.toggleMobileMenu = toggleMobileMenu;
 <section class="hero" id="anasayfa">
     <div id="heroSlider"></div>
     
-    <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
-    <button class="hero-nav next" onclick="changeSlide(1)">›</button>
+    <button class="hero-nav prev" onclick="changeSlide(-1)">â€¹</button>
+    <button class="hero-nav next" onclick="changeSlide(1)">â€º</button>
     
     <div class="hero-progress" id="heroProgress"></div>
     <div class="hero-indicators" id="heroIndicators"></div>
@@ -3645,7 +3684,7 @@ window.toggleMobileMenu = toggleMobileMenu;
     </div>
 
     <div class="filter-container">
-        <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All">Tümü</button>
+        <button class="filter-btn active" data-filter="all" data-tr="TÃ¼mÃ¼" data-en="All">TÃ¼mÃ¼</button>
         <button class="filter-btn" data-filter="villa">Villa</button>
         <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment">Apartman</button>
         <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office">Ofis</button>
@@ -3665,25 +3704,25 @@ window.toggleMobileMenu = toggleMobileMenu;
 
     <div class="about-content">
         <div class="about-text">
-            <h2 data-tr="CEE Mimarlık" data-en="CEE Architecture">CEE Mimarlık</h2>
-            <p data-tr="Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır." 
+            <h2 data-tr="CEE MimarlÄ±k" data-en="CEE Architecture">CEE MimarlÄ±k</h2>
+            <p data-tr="Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla, estetik ve fonksiyonelliÄŸi bir araya getiren projeler Ã¼retiyoruz. Her proje, mÃ¼ÅŸterilerimizin hayallerini gerÃ§eÄŸe dÃ¶nÃ¼ÅŸtÃ¼rmek iÃ§in Ã¶zenle tasarlanÄ±r." 
                data-en="With a modern architectural approach, we create projects that combine aesthetics and functionality. Each project is carefully designed to turn our clients' dreams into reality.">
-                Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır.
+                Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla, estetik ve fonksiyonelliÄŸi bir araya getiren projeler Ã¼retiyoruz. Her proje, mÃ¼ÅŸterilerimizin hayallerini gerÃ§eÄŸe dÃ¶nÃ¼ÅŸtÃ¼rmek iÃ§in Ã¶zenle tasarlanÄ±r.
             </p>
-            <p data-tr="Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapılar konusunda uzmanlaşmış olup, her detayda mükemmelliği hedefler." 
+            <p data-tr="Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapÄ±lar konusunda uzmanlaÅŸmÄ±ÅŸ olup, her detayda mÃ¼kemmelliÄŸi hedefler." 
                data-en="Our experienced team specializes in villas, apartments, offices and commercial buildings, aiming for perfection in every detail.">
-                Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapılar konusunda uzmanlaşmış olup, her detayda mükemmelliği hedefler.
+                Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapÄ±lar konusunda uzmanlaÅŸmÄ±ÅŸ olup, her detayda mÃ¼kemmelliÄŸi hedefler.
             </p>
         </div>
         <div class="about-text">
             <h2 data-tr="Vizyonumuz" data-en="Our Vision">Vizyonumuz</h2>
-            <p data-tr="Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz." 
+            <p data-tr="SÃ¼rdÃ¼rÃ¼lebilir ve Ã§evre dostu mimari Ã§Ã¶zÃ¼mlerle, yaÅŸam kalitesini artÄ±ran mekanlar yaratmak. Gelecek nesillere daha gÃ¼zel bir dÃ¼nya bÄ±rakmak iÃ§in Ã§alÄ±ÅŸÄ±yoruz." 
                data-en="Creating spaces that enhance quality of life with sustainable and environmentally friendly architectural solutions. We work to leave a better world for future generations.">
-                Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz.
+                SÃ¼rdÃ¼rÃ¼lebilir ve Ã§evre dostu mimari Ã§Ã¶zÃ¼mlerle, yaÅŸam kalitesini artÄ±ran mekanlar yaratmak. Gelecek nesillere daha gÃ¼zel bir dÃ¼nya bÄ±rakmak iÃ§in Ã§alÄ±ÅŸÄ±yoruz.
             </p>
-            <p data-tr="İnovasyon ve geleneksel değerleri harmanlayarak, özgün ve zamansız tasarımlar sunuyoruz." 
+            <p data-tr="Ä°novasyon ve geleneksel deÄŸerleri harmanlayarak, Ã¶zgÃ¼n ve zamansÄ±z tasarÄ±mlar sunuyoruz." 
                data-en="We offer original and timeless designs by blending innovation and traditional values.">
-                İnovasyon ve geleneksel değerleri harmanlayarak, özgün ve zamansız tasarımlar sunuyoruz.
+                Ä°novasyon ve geleneksel deÄŸerleri harmanlayarak, Ã¶zgÃ¼n ve zamansÄ±z tasarÄ±mlar sunuyoruz.
             </p>
         </div>
     </div>
@@ -3691,8 +3730,8 @@ window.toggleMobileMenu = toggleMobileMenu;
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
         <a href="#hakkimizda" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none;">
-            <span data-tr="👥 Uzman Kadromuzu Tanıyın" data-en="👥 Meet Our Expert Team">👥 Uzman Kadromuzu Tanıyın</span>
-            <span>→</span>
+            <span data-tr="ðŸ‘¥ Uzman Kadromuzu TanÄ±yÄ±n" data-en="ðŸ‘¥ Meet Our Expert Team">ðŸ‘¥ Uzman Kadromuzu TanÄ±yÄ±n</span>
+            <span>â†’</span>
         </a>
     </div>
 </section>
@@ -3705,14 +3744,14 @@ window.toggleMobileMenu = toggleMobileMenu;
         <h2 class="section-title" data-tr="Instagram'dan" data-en="From Instagram">Instagram'dan</h2>
     </div>
     <p style="text-align: center; color: var(--secondary); font-size: 16px; letter-spacing: 2px; margin-bottom: 50px;" 
-       data-tr="Güncel projelerimizi takip edin" data-en="Follow our latest projects">
-        Güncel projelerimizi takip edin
+       data-tr="GÃ¼ncel projelerimizi takip edin" data-en="Follow our latest projects">
+        GÃ¼ncel projelerimizi takip edin
     </p>
     <div class="instagram-grid" id="instagramGrid"></div>
     <div style="text-align: center; margin-top: 50px;">
         <a href="https://instagram.com/cee_mimarlik" target="_blank" class="btn-primary instagram-follow">
             <span data-tr="Instagram'da Takip Et" data-en="Follow on Instagram">Instagram'da Takip Et</span>
-            <span style="margin-left: 8px;">→</span>
+            <span style="margin-left: 8px;">â†’</span>
         </a>
     </div>
 </section>
@@ -3720,12 +3759,12 @@ window.toggleMobileMenu = toggleMobileMenu;
 <!-- VIDEO GALLERY -->
 <section id="videos">
     <div class="section-header">
-        <div class="section-label" data-tr="VİDEOLAR" data-en="VIDEOS">VİDEOLAR</div>
+        <div class="section-label" data-tr="VÄ°DEOLAR" data-en="VIDEOS">VÄ°DEOLAR</div>
         <h2 class="section-title" data-tr="Video Galeri" data-en="Video Gallery">Video Galeri</h2>
     </div>
     <p style="text-align: center; color: var(--secondary); font-size: 16px; letter-spacing: 2px; margin-bottom: 50px;" 
-       data-tr="Projelerimizi videolarla keşfedin" data-en="Explore our projects through videos">
-        Projelerimizi videolarla keşfedin
+       data-tr="Projelerimizi videolarla keÅŸfedin" data-en="Explore our projects through videos">
+        Projelerimizi videolarla keÅŸfedin
     </p>
     <div class="video-grid" id="videoGrid"></div>
 </section>
@@ -3741,7 +3780,7 @@ window.toggleMobileMenu = toggleMobileMenu;
         <div style="text-align: center; padding: 40px 60px; background: var(--bg);">
             <p style="font-size: 16px; color: var(--secondary); margin-bottom: 10px;">
                 <strong data-tr="Adres:" data-en="Address:">Adres:</strong>
-                <span id="officeAddress">Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</span>
+                <span id="officeAddress">Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ</span>
             </p>
             <p style="font-size: 14px; color: var(--secondary);">
                 <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong>
@@ -3751,59 +3790,59 @@ window.toggleMobileMenu = toggleMobileMenu;
     </div>
 </section>
 
-<!-- HİZMETLERİMİZ SECTION -->
+<!-- HÄ°ZMETLERÄ°MÄ°Z SECTION -->
 <section id="hizmetler" style="padding: 100px 0; background: var(--bg);">
     <div class="section-header">
-        <div class="section-label">HİZMETLERİMİZ</div>
-        <h2 class="section-title">Sunduğumuz Hizmetler</h2>
+        <div class="section-label">HÄ°ZMETLERÄ°MÄ°Z</div>
+        <h2 class="section-title">SunduÄŸumuz Hizmetler</h2>
     </div>
     
     <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🏠</div>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸ </div>
             <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Mimari Proje</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı çizimler.
+                Konut, villa, apartman ve ticari yapÄ±lar iÃ§in profesyonel mimari proje hizmeti. 3D gÃ¶rselleÅŸtirme ve detaylÄ± Ã§izimler.
             </p>
         </div>
         
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">📋</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Ruhsat İşlemleri</h3>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸ“‹</div>
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Ruhsat Ä°ÅŸlemleri</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin takibi ve tamamlanması.
+                Ä°nÅŸaat ruhsatÄ±, yapÄ± kullanma izni ve tÃ¼m belediye izin sÃ¼reÃ§lerinin takibi ve tamamlanmasÄ±.
             </p>
         </div>
         
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🛋️</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">İç Mimarlık</h3>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸ›‹ï¸</div>
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Ä°Ã§ MimarlÄ±k</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı.
+                YaÅŸam alanlarÄ±nÄ±z iÃ§in Ã¶zel iÃ§ mekan tasarÄ±mÄ±, mobilya seÃ§imi ve dekorasyon danÄ±ÅŸmanlÄ±ÄŸÄ±.
             </p>
         </div>
         
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">📐</div>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸ“</div>
             <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Statik Proje</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Deprem yönetmeliğine uygun statik hesaplamalar ve taşıyıcı sistem projeleri.
+                Deprem yÃ¶netmeliÄŸine uygun statik hesaplamalar ve taÅŸÄ±yÄ±cÄ± sistem projeleri.
             </p>
         </div>
         
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🏗️</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Şantiye Yönetimi</h3>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸ—ï¸</div>
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Åžantiye YÃ¶netimi</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                İnşaat sürecinin tamamında profesyonel danışmanlık ve şantiye koordinasyonu.
+                Ä°nÅŸaat sÃ¼recinin tamamÄ±nda profesyonel danÄ±ÅŸmanlÄ±k ve ÅŸantiye koordinasyonu.
             </p>
         </div>
         
         <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🎨</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">3D Görselleştirme</h3>
+            <div style="font-size: 48px; margin-bottom: 20px;">ðŸŽ¨</div>
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">3D GÃ¶rselleÅŸtirme</h3>
             <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Projenizi gerçeğe en yakın şekilde görmenizi sağlayan fotorealistik 3D render hizmeti.
+                Projenizi gerÃ§eÄŸe en yakÄ±n ÅŸekilde gÃ¶rmenizi saÄŸlayan fotorealistik 3D render hizmeti.
             </p>
         </div>
     </div>
@@ -3813,25 +3852,25 @@ window.toggleMobileMenu = toggleMobileMenu;
 <section id="referanslar" style="padding: 100px 0; background: white;">
     <div class="section-header">
         <div class="section-label">REFERANSLARIMIZ</div>
-        <h2 class="section-title">Çalıştığımız Kurumlar</h2>
+        <h2 class="section-title">Ã‡alÄ±ÅŸtÄ±ÄŸÄ±mÄ±z Kurumlar</h2>
     </div>
     
     <div class="references-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
         <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏛️</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Çorlu Belediyesi</h4>
+            <div style="font-size: 60px; margin-bottom: 15px;">ðŸ›ï¸</div>
+            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Ã‡orlu Belediyesi</h4>
         </div>
         <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏢</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Özel Projeler</h4>
+            <div style="font-size: 60px; margin-bottom: 15px;">ðŸ¢</div>
+            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Ã–zel Projeler</h4>
         </div>
         <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏘️</div>
+            <div style="font-size: 60px; margin-bottom: 15px;">ðŸ˜ï¸</div>
             <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Konut Projeleri</h4>
         </div>
         <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏬</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Ticari Yapılar</h4>
+            <div style="font-size: 60px; margin-bottom: 15px;">ðŸ¬</div>
+            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Ticari YapÄ±lar</h4>
         </div>
     </div>
 </section>
@@ -3846,60 +3885,60 @@ window.toggleMobileMenu = toggleMobileMenu;
     <div class="faq-container" style="max-width: 900px; margin: 0 auto; padding: 0 40px;">
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Mimari proje süresi ne kadar?</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Mimari proje sÃ¼resi ne kadar?</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
                 <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.
+                    Proje bÃ¼yÃ¼klÃ¼ÄŸÃ¼ne gÃ¶re deÄŸiÅŸmekle birlikte, ortalama bir konut projesi iÃ§in 3-4 hafta sÃ¼rmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasÄ±nda tamamlanÄ±r.
                 </p>
             </div>
         </div>
         
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Proje ücreti nasıl hesaplanır?</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Proje Ã¼creti nasÄ±l hesaplanÄ±r?</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
                 <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.
+                    Proje Ã¼creti; inÅŸaat alanÄ±, proje tÃ¼rÃ¼, detay seviyesi ve ek hizmetlere gÃ¶re belirlenir. DetaylÄ± fiyat teklifi iÃ§in bizimle iletiÅŸime geÃ§ebilirsiniz.
                 </p>
             </div>
         </div>
         
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Ruhsat işlemleri dahil mi?</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Ruhsat iÅŸlemleri dahil mi?</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
                 <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.
+                    Ruhsat iÅŸlemleri ayrÄ± bir hizmet olup, talep edilmesi halinde tÃ¼m belediye iÅŸlemlerini sizin adÄ±nÄ±za takip ediyoruz. Ruhsat sÃ¼reci ortalama 2-4 ay sÃ¼rmektedir.
                 </p>
             </div>
         </div>
         
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">3D görselleştirme yapıyor musunuz?</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">3D gÃ¶rselleÅŸtirme yapÄ±yor musunuz?</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
                 <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.
+                    Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inÅŸa etmeden Ã¶nce gerÃ§eÄŸe en yakÄ±n ÅŸekilde gÃ¶rebilirsiniz.
                 </p>
             </div>
         </div>
         
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Şantiye takibi yapıyor musunuz?</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Åžantiye takibi yapÄ±yor musunuz?</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
                 <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.
+                    Evet, ÅŸantiye danÄ±ÅŸmanlÄ±ÄŸÄ± ve teknik koordinasyon hizmetleri veriyoruz. Ä°nÅŸaat sÃ¼recinde projeye uygunluÄŸu kontrol eder ve teknik destek saÄŸlarÄ±z.
                 </p>
             </div>
         </div>
@@ -3908,20 +3947,20 @@ window.toggleMobileMenu = toggleMobileMenu;
 
 <section id="iletisim">
     <div class="section-header">
-        <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</div>
-        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">Bize Ulaşın</h2>
+        <div class="section-label" data-tr="Ä°LETÄ°ÅžÄ°M" data-en="CONTACT">Ä°LETÄ°ÅžÄ°M</div>
+        <h2 class="section-title" data-tr="Bize UlaÅŸÄ±n" data-en="Get In Touch">Bize UlaÅŸÄ±n</h2>
     </div>
     
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px;">
             
-            <!-- İLETİŞİM BİLGİLERİ -->
+            <!-- Ä°LETÄ°ÅžÄ°M BÄ°LGÄ°LERÄ° -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">📍 İletişim Bilgileri</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">ðŸ“ Ä°letiÅŸim Bilgileri</h3>
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">ðŸ“ž</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
                             <a href="tel:+905373278765" style="color: var(--accent); text-decoration: none; font-size: 18px;">(0537) 327 87 65</a>
@@ -3931,7 +3970,7 @@ window.toggleMobileMenu = toggleMobileMenu;
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">âœ‰ï¸</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
                             <a href="/cdn-cgi/l/email-protection#21484f474e614244444c484c40534d484a0f424e4c" style="color: var(--accent); text-decoration: none;"><span class="__cf_email__" data-cfemail="81e8efe7eec1e2e4e4ece8ece0f3ede8eaafe2eeec">[email&#160;protected]</span></a>
@@ -3941,35 +3980,35 @@ window.toggleMobileMenu = toggleMobileMenu;
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">ðŸ“</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Adres</strong>
-                            <span style="color: var(--secondary); line-height: 1.6;">Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3<br>59860 Çorlu/Tekirdağ</span>
+                            <span style="color: var(--secondary); line-height: 1.6;">Hatip, Ali Osman Ã‡elebi Blv. No:52<br>A Blok Kat 1 No:3<br>59860 Ã‡orlu/TekirdaÄŸ</span>
                         </div>
                     </div>
                 </div>
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">ðŸ•</div>
                         <div>
-                            <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
-                            <span style="color: var(--secondary); line-height: 1.6;">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
+                            <strong style="display: block; color: var(--primary);">Ã‡alÄ±ÅŸma Saatleri</strong>
+                            <span style="color: var(--secondary); line-height: 1.6;">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: KapalÄ±</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- İLETİŞİM FORMU -->
+            <!-- Ä°LETÄ°ÅžÄ°M FORMU -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">💬 Mesaj Gönderin</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">ðŸ’¬ Mesaj GÃ¶nderin</h3>
                 
                 <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
                     <div>
                         <input 
                             type="text" 
                             id="contactName" 
-                            placeholder="Adınız Soyadınız *" 
+                            placeholder="AdÄ±nÄ±z SoyadÄ±nÄ±z *" 
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
@@ -3995,7 +4034,7 @@ window.toggleMobileMenu = toggleMobileMenu;
                         <input 
                             type="tel" 
                             id="contactPhone" 
-                            placeholder="Telefon Numaranız" 
+                            placeholder="Telefon NumaranÄ±z" 
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
                             onfocus="this.style.borderColor='#d4af37'"
@@ -4010,21 +4049,21 @@ window.toggleMobileMenu = toggleMobileMenu;
                             onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
-                            <option value="">Konu Seçin</option>
+                            <option value="">Konu SeÃ§in</option>
                             <option value="Mimari Proje">Mimari Proje</option>
-                            <option value="Villa Tasarımı">Villa Tasarımı</option>
+                            <option value="Villa TasarÄ±mÄ±">Villa TasarÄ±mÄ±</option>
                             <option value="Apartman Projesi">Apartman Projesi</option>
-                            <option value="Ticari Yapı">Ticari Yapı</option>
-                            <option value="Ruhsat İşlemleri">Ruhsat İşlemleri</option>
-                            <option value="3D Görselleştirme">3D Görselleştirme</option>
-                            <option value="Diğer">Diğer</option>
+                            <option value="Ticari YapÄ±">Ticari YapÄ±</option>
+                            <option value="Ruhsat Ä°ÅŸlemleri">Ruhsat Ä°ÅŸlemleri</option>
+                            <option value="3D GÃ¶rselleÅŸtirme">3D GÃ¶rselleÅŸtirme</option>
+                            <option value="DiÄŸer">DiÄŸer</option>
                         </select>
                     </div>
                     
                     <div>
                         <textarea 
                             id="contactMessage" 
-                            placeholder="Mesajınız *" 
+                            placeholder="MesajÄ±nÄ±z *" 
                             required 
                             rows="5" 
                             maxlength="1000"
@@ -4042,7 +4081,7 @@ window.toggleMobileMenu = toggleMobileMenu;
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
                     >
-                        📤 Mesaj Gönder
+                        ðŸ“¤ Mesaj GÃ¶nder
                     </button>
                 </form>
             </div>
@@ -4051,7 +4090,7 @@ window.toggleMobileMenu = toggleMobileMenu;
 </section>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// İLETİŞİM FORMU - EmailJS entegrasyonu
+// Ä°LETÄ°ÅžÄ°M FORMU - EmailJS entegrasyonu
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -4063,10 +4102,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const statusEl = document.getElementById('formStatus');
     const submitBtn = e.target.querySelector('button[type="submit"]');
     
-    // Rate limiting kontrolü
+    // Rate limiting kontrolÃ¼
     if (!RateLimiter.checkLimit('contact_form', 3, 300000)) { // 3 mesaj/5 dakika
         const wait = RateLimiter.getTimeUntilReset('contact_form', 300000);
-        statusEl.textContent = `⚠️ Çok fazla mesaj gönderdiniz. ${Math.ceil(wait/60)} dakika bekleyin.`;
+        statusEl.textContent = `âš ï¸ Ã‡ok fazla mesaj gÃ¶nderdiniz. ${Math.ceil(wait/60)} dakika bekleyin.`;
         statusEl.style.background = '#ff5252';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
@@ -4075,7 +4114,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     
     // Validation
     if (!SecurityManager.validateEmail(email)) {
-        statusEl.textContent = '⚠️ Geçerli bir e-posta adresi girin.';
+        statusEl.textContent = 'âš ï¸ GeÃ§erli bir e-posta adresi girin.';
         statusEl.style.background = '#ff5252';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
@@ -4083,27 +4122,27 @@ document.getElementById('contactForm').addEventListener('submit', async function
     }
     
     if (!InputValidator.validateSafeText(message)) {
-        statusEl.textContent = '⚠️ Mesaj geçersiz karakterler içeriyor.';
+        statusEl.textContent = 'âš ï¸ Mesaj geÃ§ersiz karakterler iÃ§eriyor.';
         statusEl.style.background = '#ff5252';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
         return;
     }
     
-    // Güvenlik - Sanitize
+    // GÃ¼venlik - Sanitize
     const safeName = SecurityManager.sanitizeInput(name);
     const safeMessage = SecurityManager.sanitizeInput(message);
     
     // Disable button
     submitBtn.disabled = true;
-    submitBtn.textContent = '⏳ Gönderiliyor...';
+    submitBtn.textContent = 'â³ GÃ¶nderiliyor...';
     
     // Analytics
     if (typeof trackEvent === 'function') {
         trackEvent('Form', 'contact_form_submit', subject || 'no_subject');
     }
     
-    // DEMO: LocalStorage'a kaydet (Gerçekte EmailJS veya backend API'ye gönderilir)
+    // DEMO: LocalStorage'a kaydet (GerÃ§ekte EmailJS veya backend API'ye gÃ¶nderilir)
     try {
         const formData = {
             name: safeName,
@@ -4120,7 +4159,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
-        statusEl.textContent = '✅ Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.';
+        statusEl.textContent = 'âœ… MesajÄ±nÄ±z baÅŸarÄ±yla gÃ¶nderildi! En kÄ±sa sÃ¼rede dÃ¶nÃ¼ÅŸ yapacaÄŸÄ±z.';
         statusEl.style.background = '#4CAF50';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
@@ -4139,13 +4178,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
         }, 5000);
         
     } catch (error) {
-        statusEl.textContent = '❌ Bir hata oluştu. Lütfen tekrar deneyin veya bizi arayın.';
+        statusEl.textContent = 'âŒ Bir hata oluÅŸtu. LÃ¼tfen tekrar deneyin veya bizi arayÄ±n.';
         statusEl.style.background = '#ff5252';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
     } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = '📤 Mesaj Gönder';
+        submitBtn.textContent = 'ðŸ“¤ Mesaj GÃ¶nder';
     }
 });
 </script>
@@ -4173,7 +4212,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </div>
             <div class="chat-menu-content">
                 <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant">CEE AI Asistan</div>
-                <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant">Mimarlık & Mevzuat Danışmanı</div>
+                <div class="chat-menu-subtitle" data-tr="MimarlÄ±k & Mevzuat DanÄ±ÅŸmanÄ±" data-en="Architecture & Regulation Consultant">MimarlÄ±k & Mevzuat DanÄ±ÅŸmanÄ±</div>
             </div>
             <div class="chat-menu-badge">AI</div>
         </div>
@@ -4188,54 +4227,54 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </div>
             <div class="chat-menu-content">
                 <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp">WhatsApp</div>
-                <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative">Müşteri temsilcisiyle görüş</div>
+                <div class="chat-menu-subtitle" data-tr="MÃ¼ÅŸteri temsilcisiyle gÃ¶rÃ¼ÅŸ" data-en="Talk to representative">MÃ¼ÅŸteri temsilcisiyle gÃ¶rÃ¼ÅŸ</div>
             </div>
-            <div class="chat-menu-badge online">●</div>
+            <div class="chat-menu-badge online">â—</div>
         </div>
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="ai-assistant-logo">🏗️</div>
+            <div class="ai-assistant-logo">ðŸ—ï¸</div>
             <div>
-                <div style="font-weight: 600; font-size: 16px;">CEE MİMARLIK</div>
-                <div style="font-size: 11px; opacity: 0.8;">Mimarlık & Mevzuat Asistanı</div>
+                <div style="font-weight: 600; font-size: 16px;">CEE MÄ°MARLIK</div>
+                <div style="font-size: 11px; opacity: 0.8;">MimarlÄ±k & Mevzuat AsistanÄ±</div>
             </div>
         </div>
-        <button onclick="closeAiAssistant()" style="background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; width: 35px; height: 35px; line-height: 1;">×</button>
+        <button onclick="closeAiAssistant()" style="background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; width: 35px; height: 35px; line-height: 1;">Ã—</button>
     </div>
     
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
-            <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>Hoşgeldiniz!</h3>
-            <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
+            <div style="font-size: 48px; margin-bottom: 15px;">ðŸ‘‹</div>
+            <h3>HoÅŸgeldiniz!</h3>
+            <p>Ben CEE MÄ°MARLIK'Ä±n mÃ¼ÅŸteri temsilcisiyim. MimarlÄ±k ve yapÄ± mevzuatÄ± hakkÄ±nda her tÃ¼rlÃ¼ sorunuzu yanÄ±tlayabilirim.</p>
             
             <div class="quick-topics">
-                <div class="quick-topic" onclick="askAiQuestion('Piyes ölçüleri nedir?')">📐 Piyes Ölçüleri</div>
-                <div class="quick-topic" onclick="askAiQuestion('Yangın merdiveni ölçüleri')">🔥 Yangın Merdiveni</div>
-                <div class="quick-topic" onclick="askAiQuestion('Merdiven ölçüleri')">🪜 Merdiven</div>
-                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')">📊 Emsal</div>
-                <div class="quick-topic" onclick="askAiQuestion('Sığınak zorunluluğu')">🛡️ Sığınak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Isı yalıtımı')">🏠 Isı Yalıtımı</div>
-                <div class="quick-topic" onclick="askAiQuestion('Otopark ölçüleri')">🚗 Otopark</div>
-                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarımı')">🍳 Mutfak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Kapı pencere ölçüleri')">🚪 Kapı/Pencere</div>
+                <div class="quick-topic" onclick="askAiQuestion('Piyes Ã¶lÃ§Ã¼leri nedir?')">ðŸ“ Piyes Ã–lÃ§Ã¼leri</div>
+                <div class="quick-topic" onclick="askAiQuestion('YangÄ±n merdiveni Ã¶lÃ§Ã¼leri')">ðŸ”¥ YangÄ±n Merdiveni</div>
+                <div class="quick-topic" onclick="askAiQuestion('Merdiven Ã¶lÃ§Ã¼leri')">ðŸªœ Merdiven</div>
+                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')">ðŸ“Š Emsal</div>
+                <div class="quick-topic" onclick="askAiQuestion('SÄ±ÄŸÄ±nak zorunluluÄŸu')">ðŸ›¡ï¸ SÄ±ÄŸÄ±nak</div>
+                <div class="quick-topic" onclick="askAiQuestion('IsÄ± yalÄ±tÄ±mÄ±')">ðŸ  IsÄ± YalÄ±tÄ±mÄ±</div>
+                <div class="quick-topic" onclick="askAiQuestion('Otopark Ã¶lÃ§Ã¼leri')">ðŸš— Otopark</div>
+                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarÄ±mÄ±')">ðŸ³ Mutfak</div>
+                <div class="quick-topic" onclick="askAiQuestion('KapÄ± pencere Ã¶lÃ§Ã¼leri')">ðŸšª KapÄ±/Pencere</div>
             </div>
             
             <div class="contact-info">
-                <strong>📞 Hemen Ulaşın:</strong><br>
+                <strong>ðŸ“ž Hemen UlaÅŸÄ±n:</strong><br>
                 (0537) 327 87 65<br>
-                <small>Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</small>
+                <small>Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ</small>
             </div>
         </div>
     </div>
     
     <div class="ai-assistant-input">
-        <input type="text" id="aiAssistantInput" placeholder="Mimarlık sorunuzu yazın..." 
+        <input type="text" id="aiAssistantInput" placeholder="MimarlÄ±k sorunuzu yazÄ±n..." 
                onkeypress="if(event.key==='Enter') sendAiAssistantMessage()">
         <button onclick="sendAiAssistantMessage()">
             <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
@@ -4255,20 +4294,20 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
             </div>
             <div>
-                <div style="font-weight: 600;" data-tr="Mimarlık Asistanı" data-en="Architecture Assistant">Mimarlık Asistanı</div>
+                <div style="font-weight: 600;" data-tr="MimarlÄ±k AsistanÄ±" data-en="Architecture Assistant">MimarlÄ±k AsistanÄ±</div>
                 <div style="font-size: 11px; opacity: 0.8;" data-tr="AI destekli" data-en="AI powered">AI destekli</div>
             </div>
         </div>
-        <button onclick="toggleAiChat()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
+        <button onclick="toggleAiChat()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">Ã—</button>
     </div>
     
     <div class="ai-chat-messages" id="aiChatMessages">
         <div class="ai-message">
             <div class="ai-message-avatar">AI</div>
             <div class="ai-message-content">
-                <p data-tr="Merhaba! 👋 Mimarlık hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?" 
-                   data-en="Hello! 👋 I can answer your questions about architecture. How can I help you?">
-                    Merhaba! 👋 Mimarlık hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?
+                <p data-tr="Merhaba! ðŸ‘‹ MimarlÄ±k hakkÄ±nda sorularÄ±nÄ±zÄ± yanÄ±tlayabilirim. Size nasÄ±l yardÄ±mcÄ± olabilirim?" 
+                   data-en="Hello! ðŸ‘‹ I can answer your questions about architecture. How can I help you?">
+                    Merhaba! ðŸ‘‹ MimarlÄ±k hakkÄ±nda sorularÄ±nÄ±zÄ± yanÄ±tlayabilirim. Size nasÄ±l yardÄ±mcÄ± olabilirim?
                 </p>
             </div>
         </div>
@@ -4276,23 +4315,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
         <!-- QUICK QUESTIONS -->
         <div class="ai-quick-questions" id="aiQuickQuestions">
             <div class="ai-quick-question" onclick="askQuestion(this.innerText)">
-                🏡 Villa projeleri hakkında bilgi
+                ðŸ¡ Villa projeleri hakkÄ±nda bilgi
             </div>
             <div class="ai-quick-question" onclick="askQuestion(this.innerText)">
-                📐 Tasarım süreci nasıl işler?
+                ðŸ“ TasarÄ±m sÃ¼reci nasÄ±l iÅŸler?
             </div>
             <div class="ai-quick-question" onclick="askQuestion(this.innerText)">
-                🛋️ İç mimarlık hizmetleri
+                ðŸ›‹ï¸ Ä°Ã§ mimarlÄ±k hizmetleri
             </div>
             <div class="ai-quick-question" onclick="askQuestion(this.innerText)">
-                💰 Proje maliyeti hesaplama
+                ðŸ’° Proje maliyeti hesaplama
             </div>
         </div>
     </div>
     
     <div class="ai-chat-input">
-        <input type="text" id="aiChatInput" placeholder="Sorunuzu yazın..." 
-               data-tr-placeholder="Sorunuzu yazın..." 
+        <input type="text" id="aiChatInput" placeholder="Sorunuzu yazÄ±n..." 
+               data-tr-placeholder="Sorunuzu yazÄ±n..." 
                data-en-placeholder="Type your question..."
                onkeypress="if(event.key==='Enter') sendAiMessage()">
         <button onclick="sendAiMessage()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;">
@@ -4306,7 +4345,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <!-- DWG TOOLS MODAL -->
 <div class="dwg-tools-modal" id="dwgToolsModal">
     <div class="dwg-tools-container">
-        <button class="modal-close-btn" onclick="closeDwgTools()">×</button>
+        <button class="modal-close-btn" onclick="closeDwgTools()">Ã—</button>
         
         <div class="dwg-tools-header">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
@@ -4314,8 +4353,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <polyline points="14 2 14 8 20 8"/>
                 <path d="M12 18v-6M9 15l3 3 3-3"/>
             </svg>
-            <h2 data-tr="DWG Araçları" data-en="DWG Tools">DWG Araçları</h2>
-            <p data-tr="DWG dosyalarınızı dönüştürün ve versiyon düşürün" data-en="Convert and downgrade your DWG files">DWG dosyalarınızı dönüştürün ve versiyon düşürün</p>
+            <h2 data-tr="DWG AraÃ§larÄ±" data-en="DWG Tools">DWG AraÃ§larÄ±</h2>
+            <p data-tr="DWG dosyalarÄ±nÄ±zÄ± dÃ¶nÃ¼ÅŸtÃ¼rÃ¼n ve versiyon dÃ¼ÅŸÃ¼rÃ¼n" data-en="Convert and downgrade your DWG files">DWG dosyalarÄ±nÄ±zÄ± dÃ¶nÃ¼ÅŸtÃ¼rÃ¼n ve versiyon dÃ¼ÅŸÃ¼rÃ¼n</p>
         </div>
 
         <div class="dwg-tools-tabs">
@@ -4324,13 +4363,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M8 12h8M12 8v8"/>
                 </svg>
-                <span data-tr="Format Dönüştürücü" data-en="Format Converter">Format Dönüştürücü</span>
+                <span data-tr="Format DÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼" data-en="Format Converter">Format DÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼</span>
             </button>
             <button class="dwg-tab" onclick="switchDwgTab('downgrade')" data-tab="downgrade">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                     <path d="M12 5v14M19 12l-7 7-7-7"/>
                 </svg>
-                <span data-tr="Versiyon Düşürme" data-en="Version Downgrade">Versiyon Düşürme</span>
+                <span data-tr="Versiyon DÃ¼ÅŸÃ¼rme" data-en="Version Downgrade">Versiyon DÃ¼ÅŸÃ¼rme</span>
             </button>
         </div>
 
@@ -4340,23 +4379,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                 </svg>
-                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
-                <p data-tr="Tıklayın veya sürükleyip bırakın" data-en="Click or drag and drop">Tıklayın veya sürükleyip bırakın</p>
-                <span class="file-info">Max 50MB • DWG, DXF</span>
+                <h3 data-tr="DWG DosyasÄ± YÃ¼kle" data-en="Upload DWG File">DWG DosyasÄ± YÃ¼kle</h3>
+                <p data-tr="TÄ±klayÄ±n veya sÃ¼rÃ¼kleyip bÄ±rakÄ±n" data-en="Click or drag and drop">TÄ±klayÄ±n veya sÃ¼rÃ¼kleyip bÄ±rakÄ±n</p>
+                <span class="file-info">Max 50MB â€¢ DWG, DXF</span>
             </div>
             <input type="file" id="converterFileInput" accept=".dwg,.dxf" style="display: none;" onchange="handleConverterFile(this.files[0])">
             
             <div class="file-preview" id="converterPreview" style="display: none;">
-                <div class="file-icon">📐</div>
+                <div class="file-icon">ðŸ“</div>
                 <div class="file-details">
                     <div class="file-name" id="converterFileName"></div>
                     <div class="file-size" id="converterFileSize"></div>
                 </div>
-                <button class="remove-file-btn" onclick="removeConverterFile()">×</button>
+                <button class="remove-file-btn" onclick="removeConverterFile()">Ã—</button>
             </div>
 
             <div class="format-selector">
-                <label data-tr="Dönüştürülecek Format:" data-en="Convert to:">Dönüştürülecek Format:</label>
+                <label data-tr="DÃ¶nÃ¼ÅŸtÃ¼rÃ¼lecek Format:" data-en="Convert to:">DÃ¶nÃ¼ÅŸtÃ¼rÃ¼lecek Format:</label>
                 <div class="format-options">
                     <label class="format-option">
                         <input type="radio" name="outputFormat" value="pdf" checked>
@@ -4390,23 +4429,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
                                 <path d="M21 15l-5-5L5 21"/>
                             </svg>
                             <strong>JPEG</strong>
-                            <span class="format-desc">Yüksek Kalite</span>
+                            <span class="format-desc">YÃ¼ksek Kalite</span>
                         </span>
                     </label>
                 </div>
             </div>
 
             <div class="quality-settings">
-                <label data-tr="Kalite Ayarları:" data-en="Quality Settings:">Kalite Ayarları:</label>
+                <label data-tr="Kalite AyarlarÄ±:" data-en="Quality Settings:">Kalite AyarlarÄ±:</label>
                 <div class="quality-slider-container">
                     <input type="range" min="1" max="4" value="3" class="quality-slider" id="qualitySlider" oninput="updateQualityLabel(this.value)">
                     <div class="quality-labels">
-                        <span data-tr="Düşük" data-en="Low">Düşük</span>
+                        <span data-tr="DÃ¼ÅŸÃ¼k" data-en="Low">DÃ¼ÅŸÃ¼k</span>
                         <span data-tr="Orta" data-en="Medium">Orta</span>
-                        <span data-tr="Yüksek" data-en="High">Yüksek</span>
-                        <span data-tr="En Yüksek" data-en="Maximum">En Yüksek</span>
+                        <span data-tr="YÃ¼ksek" data-en="High">YÃ¼ksek</span>
+                        <span data-tr="En YÃ¼ksek" data-en="Maximum">En YÃ¼ksek</span>
                     </div>
-                    <div class="current-quality" id="currentQuality">Yüksek Kalite</div>
+                    <div class="current-quality" id="currentQuality">YÃ¼ksek Kalite</div>
                 </div>
             </div>
 
@@ -4415,14 +4454,14 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <path d="M21 12a9 9 0 1 1-9-9"/>
                     <path d="M12 3v9l4 4"/>
                 </svg>
-                <span data-tr="Dönüştür" data-en="Convert">Dönüştür</span>
+                <span data-tr="DÃ¶nÃ¼ÅŸtÃ¼r" data-en="Convert">DÃ¶nÃ¼ÅŸtÃ¼r</span>
             </button>
 
             <div class="conversion-progress" id="converterProgress" style="display: none;">
                 <div class="progress-bar">
                     <div class="progress-fill" id="converterProgressBar"></div>
                 </div>
-                <div class="progress-text" id="converterProgressText">Dönüştürülüyor... 0%</div>
+                <div class="progress-text" id="converterProgressText">DÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼yor... 0%</div>
             </div>
 
             <div class="conversion-result" id="converterResult" style="display: none;">
@@ -4431,12 +4470,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <h3 data-tr="Dönüştürme Başarılı!" data-en="Conversion Successful!">Dönüştürme Başarılı!</h3>
+                    <h3 data-tr="DÃ¶nÃ¼ÅŸtÃ¼rme BaÅŸarÄ±lÄ±!" data-en="Conversion Successful!">DÃ¶nÃ¼ÅŸtÃ¼rme BaÅŸarÄ±lÄ±!</h3>
                     <button class="download-btn ripple" id="converterDownloadBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        <span data-tr="Dosyayı İndir" data-en="Download File">Dosyayı İndir</span>
+                        <span data-tr="DosyayÄ± Ä°ndir" data-en="Download File">DosyayÄ± Ä°ndir</span>
                     </button>
                 </div>
             </div>
@@ -4448,20 +4487,20 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                 </svg>
-                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
-                <p data-tr="Yüksek versiyon DWG dosyanızı yükleyin" data-en="Upload your high version DWG file">Yüksek versiyon DWG dosyanızı yükleyin</p>
-                <span class="file-info">Max 50MB • DWG Format</span>
+                <h3 data-tr="DWG DosyasÄ± YÃ¼kle" data-en="Upload DWG File">DWG DosyasÄ± YÃ¼kle</h3>
+                <p data-tr="YÃ¼ksek versiyon DWG dosyanÄ±zÄ± yÃ¼kleyin" data-en="Upload your high version DWG file">YÃ¼ksek versiyon DWG dosyanÄ±zÄ± yÃ¼kleyin</p>
+                <span class="file-info">Max 50MB â€¢ DWG Format</span>
             </div>
             <input type="file" id="downgradeFileInput" accept=".dwg" style="display: none;" onchange="handleDowngradeFile(this.files[0])">
             
             <div class="file-preview" id="downgradePreview" style="display: none;">
-                <div class="file-icon">📐</div>
+                <div class="file-icon">ðŸ“</div>
                 <div class="file-details">
                     <div class="file-name" id="downgradeFileName"></div>
                     <div class="file-size" id="downgradeFileSize"></div>
                     <div class="file-version" id="downgradeFileVersion">Tespit ediliyor...</div>
                 </div>
-                <button class="remove-file-btn" onclick="removeDowngradeFile()">×</button>
+                <button class="remove-file-btn" onclick="removeDowngradeFile()">Ã—</button>
             </div>
 
             <div class="version-selector">
@@ -4515,7 +4554,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M12 16v-4M12 8h.01"/>
                     </svg>
-                    <span data-tr="Not: Bazı özellikler eski versiyonlarda kaybolabilir" data-en="Note: Some features may be lost in older versions">Not: Bazı özellikler eski versiyonlarda kaybolabilir</span>
+                    <span data-tr="Not: BazÄ± Ã¶zellikler eski versiyonlarda kaybolabilir" data-en="Note: Some features may be lost in older versions">Not: BazÄ± Ã¶zellikler eski versiyonlarda kaybolabilir</span>
                 </div>
             </div>
 
@@ -4523,14 +4562,14 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                     <path d="M12 5v14M19 12l-7 7-7-7"/>
                 </svg>
-                <span data-tr="Versiyon Düşür" data-en="Downgrade Version">Versiyon Düşür</span>
+                <span data-tr="Versiyon DÃ¼ÅŸÃ¼r" data-en="Downgrade Version">Versiyon DÃ¼ÅŸÃ¼r</span>
             </button>
 
             <div class="conversion-progress" id="downgradeProgress" style="display: none;">
                 <div class="progress-bar">
                     <div class="progress-fill" id="downgradeProgressBar"></div>
                 </div>
-                <div class="progress-text" id="downgradeProgressText">İşleniyor... 0%</div>
+                <div class="progress-text" id="downgradeProgressText">Ä°ÅŸleniyor... 0%</div>
             </div>
 
             <div class="conversion-result" id="downgradeResult" style="display: none;">
@@ -4539,13 +4578,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <h3 data-tr="Versiyon Düşürme Başarılı!" data-en="Downgrade Successful!">Versiyon Düşürme Başarılı!</h3>
+                    <h3 data-tr="Versiyon DÃ¼ÅŸÃ¼rme BaÅŸarÄ±lÄ±!" data-en="Downgrade Successful!">Versiyon DÃ¼ÅŸÃ¼rme BaÅŸarÄ±lÄ±!</h3>
                     <p id="downgradeResultInfo"></p>
                     <button class="download-btn ripple" id="downgradeDownloadBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        <span data-tr="Dosyayı İndir" data-en="Download File">Dosyayı İndir</span>
+                        <span data-tr="DosyayÄ± Ä°ndir" data-en="Download File">DosyayÄ± Ä°ndir</span>
                     </button>
                 </div>
             </div>
@@ -4557,29 +4596,29 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Yukarı çık">↑</button>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="YukarÄ± Ã§Ä±k">â†‘</button>
 
 <!-- VIDEO LIGHTBOX -->
 <div class="video-lightbox" id="videoLightbox" onclick="if(event.target === this) closeVideo()">
     <div class="video-lightbox-content">
-        <button class="video-lightbox-close" onclick="closeVideo()">✕</button>
+        <button class="video-lightbox-close" onclick="closeVideo()">âœ•</button>
         <div id="videoContainer"></div>
     </div>
 </div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-close" onclick="closeLightbox()">Ã—</button>
     <img src="" alt="Project" class="lightbox-image" id="lightboxImage">
 </div>
 
 <!-- FOOTER -->
-<!-- E-HİZMETLER UYARI MODALI -->
+<!-- E-HÄ°ZMETLER UYARI MODALI -->
 <div id="externalServiceModal" class="external-service-modal" style="display: none;">
     <div class="external-service-container">
         <div class="external-service-header">
-            <div style="font-size: 48px; margin-bottom: 15px;">🏛️</div>
-            <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;">Dış Servise Yönlendiriliyorsunuz</h3>
+            <div style="font-size: 48px; margin-bottom: 15px;">ðŸ›ï¸</div>
+            <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;">DÄ±ÅŸ Servise YÃ¶nlendiriliyorsunuz</h3>
             <p id="externalServiceName" style="font-size: 16px; color: #666; margin-bottom: 20px;"></p>
         </div>
         
@@ -4593,8 +4632,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <div>
                     <strong style="display: block; margin-bottom: 5px; color: #f59e0b;">Bilgilendirme</strong>
                     <p style="font-size: 14px; line-height: 1.6; color: #666;">
-                        <span id="externalServiceOwner"></span> tarafından sağlanan bu hizmet, 
-                        <strong style="color: #667eea;">CEE MİMARLIK</strong> ile hiçbir bağlantısı olmayan 
+                        <span id="externalServiceOwner"></span> tarafÄ±ndan saÄŸlanan bu hizmet, 
+                        <strong style="color: #667eea;">CEE MÄ°MARLIK</strong> ile hiÃ§bir baÄŸlantÄ±sÄ± olmayan 
                         resmi bir devlet/belediye sitesidir.
                     </p>
                 </div>
@@ -4607,18 +4646,18 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 <p style="font-size: 13px; color: #666; line-height: 1.5;">
-                    <strong>CEE MİMARLIK</strong> olarak sadece bu hizmetlere kolay erişim sağlıyoruz. 
-                    Siteye yeni sekmede yönlendirileceksiniz.<br><br>
-                    <strong style="color: #667eea;">💡 Geri Dönmek İçin:</strong><br>
-                    • Tarayıcınızın bu sekmesine geri dönün<br>
-                    • Veya tarayıcı geri (<) butonunu kullanın
+                    <strong>CEE MÄ°MARLIK</strong> olarak sadece bu hizmetlere kolay eriÅŸim saÄŸlÄ±yoruz. 
+                    Siteye yeni sekmede yÃ¶nlendirileceksiniz.<br><br>
+                    <strong style="color: #667eea;">ðŸ’¡ Geri DÃ¶nmek Ä°Ã§in:</strong><br>
+                    â€¢ TarayÄ±cÄ±nÄ±zÄ±n bu sekmesine geri dÃ¶nÃ¼n<br>
+                    â€¢ Veya tarayÄ±cÄ± geri (<) butonunu kullanÄ±n
                 </p>
             </div>
         </div>
         
         <div class="external-service-footer">
             <button onclick="closeExternalServiceModal()" class="btn-secondary">
-                İptal
+                Ä°ptal
             </button>
             <button onclick="confirmExternalService()" class="btn-primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
@@ -4633,7 +4672,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 </div>
 
 <style>
-/* Uyarı Modal Stilleri */
+/* UyarÄ± Modal Stilleri */
 .external-service-modal {
     position: fixed;
     top: 0;
@@ -4780,8 +4819,8 @@ body.dark-mode .btn-secondary {
         
         <!-- SOSYAL MEDYA -->
         <div class="footer-social">
-            <h3 class="footer-social-title" data-tr="Bize Ulaşabilirsiniz" data-en="Connect With Us">
-                Bize Ulaşabilirsiniz
+            <h3 class="footer-social-title" data-tr="Bize UlaÅŸabilirsiniz" data-en="Connect With Us">
+                Bize UlaÅŸabilirsiniz
             </h3>
             <div class="footer-social-icons">
                 <a href="https://instagram.com/cee_mimarlik" target="_blank" aria-label="Instagram" class="footer-social-link">
@@ -4812,9 +4851,9 @@ body.dark-mode .btn-secondary {
         </div>
         
         <p class="footer-copyright">
-            © 2025 
-            <span class="admin-link" onclick="goToAdmin()">CEE MİMARLIK</span> 
-            <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
+            Â© 2025 
+            <span class="admin-link" onclick="goToAdmin()">CEE MÄ°MARLIK</span> 
+            <span data-tr="TÃ¼m haklarÄ± saklÄ±dÄ±r" data-en="All rights reserved">TÃ¼m haklarÄ± saklÄ±dÄ±r</span>
         </p>
     </div>
 </footer>
@@ -4832,7 +4871,7 @@ function init() {
     loadColorTheme();
     loadDarkMode();
     loadLanguage();
-    loadSiteSettings(); // Yeni: Site ayarlarını yükle
+    loadSiteSettings(); // Yeni: Site ayarlarÄ±nÄ± yÃ¼kle
     setupHero();
     renderProjects();
     setupFilters();
@@ -4852,9 +4891,9 @@ function loadFromLocalStorage() {
             // Sadece valid projeleri al
             projects = allProjects.filter(p => p && p.row === 'top' && p.img);
             
-            // En popüler 4 projeyi al (hero için)
+            // En popÃ¼ler 4 projeyi al (hero iÃ§in)
             heroImages = projects
-                .filter(p => p.img && p.mediaType !== 'pdf') // PDF'leri hero'da gösterme
+                .filter(p => p.img && p.mediaType !== 'pdf') // PDF'leri hero'da gÃ¶sterme
                 .sort((a, b) => (b.clickCount || 0) - (a.clickCount || 0))
                 .slice(0, 4);
         }
@@ -4897,21 +4936,29 @@ function setupHero() {
     
     if (heroImages.length === 0) {
         slider.innerHTML = `
-            <div class="hero-slide active" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center; color: white;">
-                    <div style="font-size: 80px; margin-bottom: 20px;">🏗️</div>
-                    <h2 style="font-size: 32px; font-weight: 300; margin-bottom: 10px;">CEE Mimarlık</h2>
-                    <p style="font-size: 16px; opacity: 0.8;">Projelerimiz yakında burada</p>
+            <div class="hero-slide active">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-category">CEE MÄ°MARLIK</div>
+                    <h1 class="hero-title">Hayallerinizi GerÃ§eÄŸe DÃ¶nÃ¼ÅŸtÃ¼rÃ¼yoruz</h1>
+                    <div class="hero-meta">Modern Mimari Ã‡Ã¶zÃ¼mler</div>
                 </div>
             </div>
         `;
         return;
     }
     
-    // Slides - sadece fotoğraf
+    // Slides
     slider.innerHTML = heroImages.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-category">${project.category || project.tags?.[0] || 'PROJE'}</div>
+                <h1 class="hero-title">${project.title || 'Ä°simsiz Proje'}</h1>
+                <div class="hero-meta">${project.location || ''} ${project.area ? 'â€¢ ' + project.area : ''}</div>
+            </div>
         </div>
     `).join('');
     
@@ -4998,7 +5045,7 @@ function renderProjects() {
     if (projects.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; color: var(--secondary);">
-                <p style="font-size: 16px; letter-spacing: 2px;">Henüz proje eklenmedi</p>
+                <p style="font-size: 16px; letter-spacing: 2px;">HenÃ¼z proje eklenmedi</p>
             </div>
         `;
         return;
@@ -5020,7 +5067,7 @@ function renderProjects() {
             mediaHTML = `
                 <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative;">
                     <div style="text-align: center; color: white;">
-                        <div style="font-size: 80px; margin-bottom: 15px;">📄</div>
+                        <div style="font-size: 80px; margin-bottom: 15px;">ðŸ“„</div>
                         <div style="font-size: 18px; font-weight: 600; letter-spacing: 2px;">PDF DOSYASI</div>
                         ${project.title ? `<div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">${project.title}</div>` : ''}
                     </div>
@@ -5031,7 +5078,7 @@ function renderProjects() {
                 <video style="width: 100%; height: 100%; object-fit: cover;" muted loop playsinline>
                     <source src="${project.img}" type="video/mp4">
                 </video>
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; opacity: 0.9; pointer-events: none;">▶️</div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; opacity: 0.9; pointer-events: none;">â–¶ï¸</div>
             `;
         } else {
             mediaHTML = `<img src="${project.img}" alt="${project.title || 'Proje'}" class="project-image" loading="lazy">`;
@@ -5067,7 +5114,7 @@ function setupFilters() {
 function setupNavigation() {
     document.querySelectorAll('nav > a').forEach(link => {
         link.addEventListener('click', function(e) {
-            // External linkler için event'i durdurma
+            // External linkler iÃ§in event'i durdurma
             const href = this.getAttribute('href');
             if (!href || href === 'javascript:void(0)' || href.startsWith('http')) {
                 return;
@@ -5075,7 +5122,7 @@ function setupNavigation() {
             
             e.preventDefault();
             
-            // Active class güncelle
+            // Active class gÃ¼ncelle
             document.querySelectorAll('nav > a').forEach(a => a.classList.remove('active'));
             this.classList.add('active');
             
@@ -5091,7 +5138,7 @@ function setupNavigation() {
                 });
             }
             
-            // Mobile menüyü kapat
+            // Mobile menÃ¼yÃ¼ kapat
             closeMobileMenu();
         });
     });
@@ -5103,7 +5150,7 @@ function closeMobileMenu() {
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
         nav.classList.remove('mobile-open');
-        toggle.textContent = '☰';
+        toggle.textContent = 'â˜°';
     }
 }
 
@@ -5111,7 +5158,7 @@ function toggleMobileMenu() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     nav.classList.toggle('mobile-open');
-    toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+    toggle.textContent = nav.classList.contains('mobile-open') ? 'âœ•' : 'â˜°';
 }
 
 
@@ -5134,14 +5181,14 @@ function loadTeam() {
         // Default team
         document.getElementById('teamGrid').innerHTML = `
             <div class="team-member">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Üyesi" class="team-photo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Ãœyesi" class="team-photo">
                 <div class="team-name">Mimar 1</div>
                 <div class="team-role">Kurucu Mimar</div>
             </div>
             <div class="team-member">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Üyesi" class="team-photo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%23e0e0e0' width='300' height='400'/%3E%3C/svg%3E" alt="Ekip Ãœyesi" class="team-photo">
                 <div class="team-name">Mimar 2</div>
-                <div class="team-role">Proje Müdürü</div>
+                <div class="team-role">Proje MÃ¼dÃ¼rÃ¼</div>
             </div>
         `;
     }
@@ -5155,14 +5202,14 @@ function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     const lightboxImage = document.getElementById('lightboxImage');
     
     if (isPDF) {
-        // PDF için yeni sekmede aç
+        // PDF iÃ§in yeni sekmede aÃ§
         window.open(imgSrc, '_blank');
         incrementClickCount(projectId);
         return;
     }
     
     if (isVideo) {
-        // Video için yeni sekmede aç veya modal göster
+        // Video iÃ§in yeni sekmede aÃ§ veya modal gÃ¶ster
         window.open(imgSrc, '_blank');
         incrementClickCount(projectId);
         return;
@@ -5203,7 +5250,7 @@ function incrementClickCount(projectId) {
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
-    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    document.getElementById('themeBtn').textContent = isDark ? 'â˜€ï¸' : 'ðŸŒ™';
     localStorage.setItem('cee_public_dark', isDark);
 }
 
@@ -5211,7 +5258,7 @@ function loadDarkMode() {
     const isDark = localStorage.getItem('cee_public_dark') === 'true';
     if (isDark) {
         document.body.classList.add('dark-mode');
-        document.getElementById('themeBtn').textContent = '☀️';
+        document.getElementById('themeBtn').textContent = 'â˜€ï¸';
     }
 }
 
@@ -5252,12 +5299,12 @@ function toggleEHizmetler(e) {
     }
 }
 
-// Dış Servis Değişkenleri
+// DÄ±ÅŸ Servis DeÄŸiÅŸkenleri
 let pendingExternalURL = '';
 let pendingExternalName = '';
 let pendingExternalOwner = '';
 
-// Dış Servise Yönlendirme Uyarısı
+// DÄ±ÅŸ Servise YÃ¶nlendirme UyarÄ±sÄ±
 function openExternalServiceWithWarning(url, serviceName, owner) {
     pendingExternalURL = url;
     pendingExternalName = serviceName;
@@ -5273,18 +5320,18 @@ function openExternalServiceWithWarning(url, serviceName, owner) {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     
-    // E-Hizmetler menüsünü kapat
+    // E-Hizmetler menÃ¼sÃ¼nÃ¼ kapat
     const menu = document.getElementById('ehizmetlerMenu');
     if (menu) menu.style.display = 'none';
 }
 
-// Dış Servise Git
+// DÄ±ÅŸ Servise Git
 function confirmExternalService() {
     window.open(pendingExternalURL, '_blank');
     closeExternalServiceModal();
 }
 
-// Uyarı Modalını Kapat
+// UyarÄ± ModalÄ±nÄ± Kapat
 function closeExternalServiceModal() {
     const modal = document.getElementById('externalServiceModal');
     modal.style.display = 'none';
@@ -5295,7 +5342,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuşu ile kapat
+// ESC tuÅŸu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -5305,7 +5352,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Dışarı tıklayınca kapat
+// DÄ±ÅŸarÄ± tÄ±klayÄ±nca kapat
 document.addEventListener('click', function(e) {
     const menu = document.getElementById('ehizmetlerMenu');
     if (menu && menu.style.display === 'block') {
@@ -5332,7 +5379,7 @@ function closeWhatsApp() {
     document.getElementById('whatsappModal').classList.remove('show');
 }
 
-// AI ASSISTANT PANEL - ÖÄžRENEN SİSTEM
+// AI ASSISTANT PANEL - Ã–Ã„Å¾RENEN SÄ°STEM
 let aiConversationHistory = JSON.parse(localStorage.getItem('cee_ai_history') || '[]');
 let aiKnowledgeBase = JSON.parse(localStorage.getItem('cee_ai_knowledge') || '{}');
 
@@ -5354,7 +5401,7 @@ function addAiMessage(content, isUser = false) {
     messageDiv.className = isUser ? 'user-msg' : 'ai-msg';
     
     messageDiv.innerHTML = `
-        <div class="msg-avatar">${isUser ? '👤' : '🏗️'}</div>
+        <div class="msg-avatar">${isUser ? 'ðŸ‘¤' : 'ðŸ—ï¸'}</div>
         <div class="msg-content">${content}</div>
     `;
     
@@ -5368,7 +5415,7 @@ function showTyping() {
     typingDiv.className = 'typing-indicator-wrapper';
     typingDiv.id = 'typingIndicator';
     typingDiv.innerHTML = `
-        <div class="msg-avatar">🏗️</div>
+        <div class="msg-avatar">ðŸ—ï¸</div>
         <div class="typing-indicator">
             <div class="typing-dot"></div>
             <div class="typing-dot"></div>
@@ -5395,7 +5442,7 @@ function sendAiAssistantMessage() {
     
     showTyping();
     
-    // Konuşma geçmişine ekle
+    // KonuÅŸma geÃ§miÅŸine ekle
     aiConversationHistory.push({
         role: 'user',
         content: message,
@@ -5407,7 +5454,7 @@ function sendAiAssistantMessage() {
         hideTyping();
         addAiMessage(response, false);
         
-        // Cevabı geçmişe ekle
+        // CevabÄ± geÃ§miÅŸe ekle
         aiConversationHistory.push({
             role: 'assistant',
             content: response,
@@ -5417,7 +5464,7 @@ function sendAiAssistantMessage() {
         // localStorage'a kaydet
         localStorage.setItem('cee_ai_history', JSON.stringify(aiConversationHistory.slice(-50))); // Son 50 mesaj
         
-        // Bilgi tabanını güncelle (öğrenme)
+        // Bilgi tabanÄ±nÄ± gÃ¼ncelle (Ã¶ÄŸrenme)
         updateKnowledgeBase(message, response);
     }, 800);
 }
@@ -5425,7 +5472,7 @@ function sendAiAssistantMessage() {
 function getSmartResponse(message) {
     const lowerMsg = message.toLowerCase();
     
-    // Önce öğrenilmiş bilgilere bak
+    // Ã–nce Ã¶ÄŸrenilmiÅŸ bilgilere bak
     for (let key in aiKnowledgeBase) {
         if (lowerMsg.includes(key.toLowerCase())) {
             return aiKnowledgeBase[key];
@@ -5433,189 +5480,189 @@ function getSmartResponse(message) {
     }
     
     // Mevzuat bilgileri
-    if (lowerMsg.includes('piyes') || lowerMsg.includes('ölçek') || lowerMsg.includes('çizim')) {
-        return `<strong>📐 Piyes Ölçüleri</strong><br><br>
-<strong>Vaziyet Planı:</strong> 1/500, 1/1000, 1/2000<br>
-<strong>Kat Planları:</strong> 1/50 (detaylı), 1/100 (standart)<br>
-<strong>Kesit & Görünüş:</strong> 1/50, 1/100<br>
+    if (lowerMsg.includes('piyes') || lowerMsg.includes('Ã¶lÃ§ek') || lowerMsg.includes('Ã§izim')) {
+        return `<strong>ðŸ“ Piyes Ã–lÃ§Ã¼leri</strong><br><br>
+<strong>Vaziyet PlanÄ±:</strong> 1/500, 1/1000, 1/2000<br>
+<strong>Kat PlanlarÄ±:</strong> 1/50 (detaylÄ±), 1/100 (standart)<br>
+<strong>Kesit & GÃ¶rÃ¼nÃ¼ÅŸ:</strong> 1/50, 1/100<br>
 <strong>Detaylar:</strong> 1/1, 1/2, 1/5, 1/10, 1/20<br><br>
-<strong>Kağıt Boyutları:</strong><br>
+<strong>KaÄŸÄ±t BoyutlarÄ±:</strong><br>
 A0: 841 x 1189 mm | A1: 594 x 841 mm<br>
 A2: 420 x 594 mm | A3: 297 x 420 mm<br><br>
-Profesyonel çizim hizmetlerimiz için: <strong>(0537) 327 87 65</strong>`;
+Profesyonel Ã§izim hizmetlerimiz iÃ§in: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('yangın') || lowerMsg.includes('yangin')) {
-        return `<strong>🔥 Yangın Yönetmeliği</strong><br><br>
-<strong>Yangın Merdiveni:</strong><br>
-• Zorunluluk: 4+ katlı binalar<br>
-• Genişlik: Min. 1.20m (konut), 1.50m (kamu)<br>
-• Basamak: 28cm genişlik, Max 19cm yükseklik<br>
-• Koridor: Min. 1.20m<br>
-• Kapı: EI 60 (60 dk dayanımlı)<br><br>
-<strong>Yangın Yalıtımı:</strong><br>
-Bodrum: EI 120 | Kat arası: EI 60<br><br>
-Detaylı yangın raporu: <strong>(0537) 327 87 65</strong>`;
+    else if (lowerMsg.includes('yangÄ±n') || lowerMsg.includes('yangin')) {
+        return `<strong>ðŸ”¥ YangÄ±n YÃ¶netmeliÄŸi</strong><br><br>
+<strong>YangÄ±n Merdiveni:</strong><br>
+â€¢ Zorunluluk: 4+ katlÄ± binalar<br>
+â€¢ GeniÅŸlik: Min. 1.20m (konut), 1.50m (kamu)<br>
+â€¢ Basamak: 28cm geniÅŸlik, Max 19cm yÃ¼kseklik<br>
+â€¢ Koridor: Min. 1.20m<br>
+â€¢ KapÄ±: EI 60 (60 dk dayanÄ±mlÄ±)<br><br>
+<strong>YangÄ±n YalÄ±tÄ±mÄ±:</strong><br>
+Bodrum: EI 120 | Kat arasÄ±: EI 60<br><br>
+DetaylÄ± yangÄ±n raporu: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('merdiven') && !lowerMsg.includes('yangın')) {
-        return `<strong>🪜 Merdiven Ölçüleri</strong><br><br>
+    else if (lowerMsg.includes('merdiven') && !lowerMsg.includes('yangÄ±n')) {
+        return `<strong>ðŸªœ Merdiven Ã–lÃ§Ã¼leri</strong><br><br>
 <strong>Konut:</strong><br>
-• Basamak genişliği: Min. 28 cm<br>
-• Basamak yüksekliği: Max. 18 cm<br>
-• Merdiven genişliği: Min. 90 cm<br>
-• <strong>Formül:</strong> 2h + g = 60-65 cm<br><br>
-<strong>Kamu Yapıları:</strong><br>
-• Basamak genişliği: Min. 30 cm<br>
-• Basamak yüksekliği: Max. 17 cm<br>
-• Merdiven genişliği: Min. 1.50 m<br><br>
-<strong>Korkuluk:</strong> Min. 90 cm yükseklik<br><br>
-Merdiven tasarımı: <strong>(0537) 327 87 65</strong>`;
+â€¢ Basamak geniÅŸliÄŸi: Min. 28 cm<br>
+â€¢ Basamak yÃ¼ksekliÄŸi: Max. 18 cm<br>
+â€¢ Merdiven geniÅŸliÄŸi: Min. 90 cm<br>
+â€¢ <strong>FormÃ¼l:</strong> 2h + g = 60-65 cm<br><br>
+<strong>Kamu YapÄ±larÄ±:</strong><br>
+â€¢ Basamak geniÅŸliÄŸi: Min. 30 cm<br>
+â€¢ Basamak yÃ¼ksekliÄŸi: Max. 17 cm<br>
+â€¢ Merdiven geniÅŸliÄŸi: Min. 1.50 m<br><br>
+<strong>Korkuluk:</strong> Min. 90 cm yÃ¼kseklik<br><br>
+Merdiven tasarÄ±mÄ±: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('emsal')) {
-        return `<strong>📊 Emsal Nedir?</strong><br><br>
-Emsal = Toplam İnşaat Alanı / Arsa Alanı<br><br>
-<strong>Örnek:</strong><br>
-500 m² arsa × 1.5 emsal = <strong>750 m² inşaat</strong><br><br>
-<strong>Önemli:</strong><br>
-• Bodrum katlar emsale dahil değil<br>
-• Her bölgede farklı<br>
-• İmar planında belirtilir<br><br>
-Arsanızın emsal hesabı: <strong>(0537) 327 87 65</strong>`;
+        return `<strong>ðŸ“Š Emsal Nedir?</strong><br><br>
+Emsal = Toplam Ä°nÅŸaat AlanÄ± / Arsa AlanÄ±<br><br>
+<strong>Ã–rnek:</strong><br>
+500 mÂ² arsa Ã— 1.5 emsal = <strong>750 mÂ² inÅŸaat</strong><br><br>
+<strong>Ã–nemli:</strong><br>
+â€¢ Bodrum katlar emsale dahil deÄŸil<br>
+â€¢ Her bÃ¶lgede farklÄ±<br>
+â€¢ Ä°mar planÄ±nda belirtilir<br><br>
+ArsanÄ±zÄ±n emsal hesabÄ±: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('sığınak') || lowerMsg.includes('siginak')) {
-        return `<strong>🛡️ Sığınak Yönetmeliği</strong><br><br>
-<strong>Zorunluluk:</strong> 2000 m² üzeri binalar<br><br>
-<strong>Teknik Özellikler:</strong><br>
-• Alan: İnşaat alanının %2'si<br>
-• Tavan: Min. 2.20 m<br>
-• Duvar: Min. 30 cm betonarme<br>
-• Kapı: Gaz sızdırmaz<br>
-• Havalandırma: Özel sistem<br><br>
-Sığınak projesi: <strong>(0537) 327 87 65</strong>`;
+    else if (lowerMsg.includes('sÄ±ÄŸÄ±nak') || lowerMsg.includes('siginak')) {
+        return `<strong>ðŸ›¡ï¸ SÄ±ÄŸÄ±nak YÃ¶netmeliÄŸi</strong><br><br>
+<strong>Zorunluluk:</strong> 2000 mÂ² Ã¼zeri binalar<br><br>
+<strong>Teknik Ã–zellikler:</strong><br>
+â€¢ Alan: Ä°nÅŸaat alanÄ±nÄ±n %2'si<br>
+â€¢ Tavan: Min. 2.20 m<br>
+â€¢ Duvar: Min. 30 cm betonarme<br>
+â€¢ KapÄ±: Gaz sÄ±zdÄ±rmaz<br>
+â€¢ HavalandÄ±rma: Ã–zel sistem<br><br>
+SÄ±ÄŸÄ±nak projesi: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('ısı') || lowerMsg.includes('yalıt') || lowerMsg.includes('bep')) {
-        return `<strong>🏠 Isı Yalıtımı</strong><br><br>
+    else if (lowerMsg.includes('Ä±sÄ±') || lowerMsg.includes('yalÄ±t') || lowerMsg.includes('bep')) {
+        return `<strong>ðŸ  IsÄ± YalÄ±tÄ±mÄ±</strong><br><br>
 <strong>Duvar:</strong> Min. 5 cm XPS/EPS<br>
-<strong>Çatı:</strong> Min. 10 cm<br>
+<strong>Ã‡atÄ±:</strong> Min. 10 cm<br>
 <strong>Taban:</strong> Min. 5 cm (zemine temas)<br>
-<strong>Cam:</strong> Çift cam, U ≤ 1.8 W/m²K<br><br>
+<strong>Cam:</strong> Ã‡ift cam, U â‰¤ 1.8 W/mÂ²K<br><br>
 <strong>BEP Belgesi:</strong> Zorunlu (2011'den itibaren)<br><br>
-BEP belgesi düzenleme: <strong>(0537) 327 87 65</strong>`;
+BEP belgesi dÃ¼zenleme: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('otopark') || lowerMsg.includes('park')) {
-        return `<strong>🚗 Otopark Ölçüleri</strong><br><br>
-<strong>Araç Yeri:</strong> 2.30 x 5.00 m<br>
+        return `<strong>ðŸš— Otopark Ã–lÃ§Ã¼leri</strong><br><br>
+<strong>AraÃ§ Yeri:</strong> 2.30 x 5.00 m<br>
 <strong>Engelli:</strong> 3.70 x 5.00 m<br>
-<strong>Koridor:</strong> İki yön 6m, Tek yön 3.5m<br>
+<strong>Koridor:</strong> Ä°ki yÃ¶n 6m, Tek yÃ¶n 3.5m<br>
 <strong>Tavan:</strong> Min. 2.30 m<br><br>
-<strong>Havalandırma:</strong> Kapalı otoparklarda mekanik zorunlu<br><br>
+<strong>HavalandÄ±rma:</strong> KapalÄ± otoparklarda mekanik zorunlu<br><br>
 Otopark projesi: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('mutfak')) {
-        return `<strong>🍳 Mutfak Tasarımı</strong><br><br>
-<strong>Çalışma Üçgeni:</strong> 4-6 m (Ocak-Lavabo-Buzdolabı)<br>
-<strong>Tezgah:</strong> 85-90 cm yükseklik<br>
-<strong>Üst Dolap:</strong> Min. 55 cm tezgah üstü<br>
+        return `<strong>ðŸ³ Mutfak TasarÄ±mÄ±</strong><br><br>
+<strong>Ã‡alÄ±ÅŸma ÃœÃ§geni:</strong> 4-6 m (Ocak-Lavabo-BuzdolabÄ±)<br>
+<strong>Tezgah:</strong> 85-90 cm yÃ¼kseklik<br>
+<strong>Ãœst Dolap:</strong> Min. 55 cm tezgah Ã¼stÃ¼<br>
 <strong>Koridor:</strong> Min. 120 cm<br>
-<strong>Davlumbaz:</strong> 65-75 cm ocak üstü<br><br>
-Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
+<strong>Davlumbaz:</strong> 65-75 cm ocak Ã¼stÃ¼<br><br>
+Mutfak tasarÄ±m & iÃ§ mimari: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('tuvalet') || lowerMsg.includes('wc') || lowerMsg.includes('banyo')) {
-        return `<strong>🚽 Tuvalet/Banyo Ölçüleri</strong><br><br>
+        return `<strong>ðŸš½ Tuvalet/Banyo Ã–lÃ§Ã¼leri</strong><br><br>
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
-<strong>Lavabo:</strong> 85 cm yükseklik<br>
+<strong>Lavabo:</strong> 85 cm yÃ¼kseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>Duş:</strong> Min. 80 x 80 cm<br>
-<strong>Küvet:</strong> 70 x 150 cm<br><br>
-Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
+<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
+<strong>KÃ¼vet:</strong> 70 x 150 cm<br><br>
+Banyo tasarÄ±mÄ±: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
-        return `<strong>🚪 Kapı & Pencere</strong><br><br>
-<strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana Giriş:</strong> Min. 120 cm<br>
+    else if (lowerMsg.includes('kapÄ±') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
+        return `<strong>ðŸšª KapÄ± & Pencere</strong><br><br>
+<strong>Standart KapÄ±:</strong> 80-90 cm x 210 cm<br>
+<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
-<strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
-Kapı-pencere seçimi: <strong>(0537) 327 87 65</strong>`;
+<strong>HavalandÄ±rma:</strong> Oda alanÄ±nÄ±n 1/8'i<br><br>
+KapÄ±-pencere seÃ§imi: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('taks') || lowerMsg.includes('kaks')) {
-        return `<strong>📐 TAKS & KAKS</strong><br><br>
-<strong>TAKS (Taban Alanı Katsayısı):</strong><br>
-Taban Alanı / Arsa Alanı<br>
-Örnek: 500m² × 0.40 = 200m²<br><br>
-<strong>KAKS (Kat Alanı Katsayısı):</strong><br>
-Toplam Kat Alanı / Arsa Alanı<br>
+        return `<strong>ðŸ“ TAKS & KAKS</strong><br><br>
+<strong>TAKS (Taban AlanÄ± KatsayÄ±sÄ±):</strong><br>
+Taban AlanÄ± / Arsa AlanÄ±<br>
+Ã–rnek: 500mÂ² Ã— 0.40 = 200mÂ²<br><br>
+<strong>KAKS (Kat AlanÄ± KatsayÄ±sÄ±):</strong><br>
+Toplam Kat AlanÄ± / Arsa AlanÄ±<br>
 (KAKS = Emsal)<br><br>
-Genelde TAKS: 0.30-0.40 arası<br><br>
-İmar analizi: <strong>(0537) 327 87 65</strong>`;
+Genelde TAKS: 0.30-0.40 arasÄ±<br><br>
+Ä°mar analizi: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('ruhsat')) {
-        return `<strong>📋 İnşaat Ruhsatı</strong><br><br>
+        return `<strong>ðŸ“‹ Ä°nÅŸaat RuhsatÄ±</strong><br><br>
 <strong>Gerekli Belgeler:</strong><br>
 1. Tapu fotokopisi<br>
-2. İmar durumu<br>
-3. Mimari proje (3 takım)<br>
+2. Ä°mar durumu<br>
+3. Mimari proje (3 takÄ±m)<br>
 4. Statik proje<br>
 5. Elektrik + Mekanik proje<br>
-6. Zemin etüdü<br>
+6. Zemin etÃ¼dÃ¼<br>
 7. Aplikasyon krokisi<br><br>
-<strong>Süre:</strong> 2-4 ay<br><br>
-Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
+<strong>SÃ¼re:</strong> 2-4 ay<br><br>
+Ruhsat iÅŸlemleriniz iÃ§in: <strong>(0537) 327 87 65</strong>`;
     }
     
-    else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
-        return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
-<strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
+    else if (lowerMsg.includes('asansÃ¶r') || lowerMsg.includes('asansor')) {
+        return `<strong>ðŸ›— AsansÃ¶r YÃ¶netmeliÄŸi</strong><br><br>
+<strong>Zorunluluk:</strong> 4+ katlÄ± binalar<br>
+<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
-Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
+AsansÃ¶r planlamasÄ±: <strong>(0537) 327 87 65</strong>`;
     }
     
     else if (lowerMsg.includes('merhaba') || lowerMsg.includes('selam') || lowerMsg.includes('hi')) {
-        return `<strong>Merhaba! 👋</strong><br><br>
-Ben <strong>CEE MİMARLIK</strong>'ın müşteri temsilcisiyim. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
-<strong>Uzmanlık alanlarım:</strong><br>
-• İmar mevzuatı (Emsal, TAKS, KAKS)<br>
-• Yangın güvenliği<br>
-• Merdiven ölçüleri<br>
-• Isı yalıtımı & BEP<br>
-• Otopark, mutfak, banyo tasarımı<br>
-• İnşaat ruhsatı süreçleri<br><br>
-Sormak istediğiniz bir konu var mı? 🏗️`;
+        return `<strong>Merhaba! ðŸ‘‹</strong><br><br>
+Ben <strong>CEE MÄ°MARLIK</strong>'Ä±n mÃ¼ÅŸteri temsilcisiyim. Size mimarlÄ±k ve yapÄ± mevzuatÄ± konularÄ±nda yardÄ±mcÄ± olabilirim.<br><br>
+<strong>UzmanlÄ±k alanlarÄ±m:</strong><br>
+â€¢ Ä°mar mevzuatÄ± (Emsal, TAKS, KAKS)<br>
+â€¢ YangÄ±n gÃ¼venliÄŸi<br>
+â€¢ Merdiven Ã¶lÃ§Ã¼leri<br>
+â€¢ IsÄ± yalÄ±tÄ±mÄ± & BEP<br>
+â€¢ Otopark, mutfak, banyo tasarÄ±mÄ±<br>
+â€¢ Ä°nÅŸaat ruhsatÄ± sÃ¼reÃ§leri<br><br>
+Sormak istediÄŸiniz bir konu var mÄ±? ðŸ—ï¸`;
     }
     
     else {
-        return `Anladım. Bu konuda size daha detaylı bilgi vermek için <strong>uzman ekibimizle</strong> görüşmenizi öneririm.<br><br>
-<strong>📞 CEE MİMARLIK</strong><br>
+        return `AnladÄ±m. Bu konuda size daha detaylÄ± bilgi vermek iÃ§in <strong>uzman ekibimizle</strong> gÃ¶rÃ¼ÅŸmenizi Ã¶neririm.<br><br>
+<strong>ðŸ“ž CEE MÄ°MARLIK</strong><br>
 Telefon: <strong>(0537) 327 87 65</strong><br>
-Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ<br><br>
+Adres: Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-• Mimari Proje & İç Mimari<br>
-• Yapı Ruhsatı İşlemleri<br>
-• 3D Görselleştirme<br>
-• Şantiye Yönetimi<br><br>
-Size en kısa sürede dönüş yapacağız! 🏗️`;
+â€¢ Mimari Proje & Ä°Ã§ Mimari<br>
+â€¢ YapÄ± RuhsatÄ± Ä°ÅŸlemleri<br>
+â€¢ 3D GÃ¶rselleÅŸtirme<br>
+â€¢ Åžantiye YÃ¶netimi<br><br>
+Size en kÄ±sa sÃ¼rede dÃ¶nÃ¼ÅŸ yapacaÄŸÄ±z! ðŸ—ï¸`;
     }
 }
 
 function updateKnowledgeBase(question, answer) {
-    // Basit anahtar kelime çıkarma
+    // Basit anahtar kelime Ã§Ä±karma
     const keywords = question.toLowerCase()
         .split(' ')
         .filter(word => word.length > 3);
     
-    // Her anahtar kelime için cevabı kaydet
+    // Her anahtar kelime iÃ§in cevabÄ± kaydet
     keywords.forEach(keyword => {
         if (!aiKnowledgeBase[keyword]) {
             aiKnowledgeBase[keyword] = answer;
@@ -5626,7 +5673,7 @@ function updateKnowledgeBase(question, answer) {
     localStorage.setItem('cee_ai_knowledge', JSON.stringify(aiKnowledgeBase));
 }
 
-// Baloncuğu 3 saniye sonra göster
+// BaloncuÄŸu 3 saniye sonra gÃ¶ster
 function showWhatsAppNotification() {
     setTimeout(() => {
         const notification = document.getElementById('whatsappNotification');
@@ -5665,17 +5712,17 @@ function sendWhatsApp(e) {
     
     // Validasyon
     if (!name || name.length < 2) {
-        alert('⚠️ Lütfen geçerli bir isim girin!');
+        alert('âš ï¸ LÃ¼tfen geÃ§erli bir isim girin!');
         return;
     }
     
     if (!phone || phone.length < 10) {
-        alert('⚠️ Lütfen geçerli bir telefon numarası girin!');
+        alert('âš ï¸ LÃ¼tfen geÃ§erli bir telefon numarasÄ± girin!');
         return;
     }
     
     if (!message || message.length < 5) {
-        alert('⚠️ Lütfen en az 5 karakter mesaj yazın!');
+        alert('âš ï¸ LÃ¼tfen en az 5 karakter mesaj yazÄ±n!');
         return;
     }
     
@@ -5687,9 +5734,9 @@ function sendWhatsApp(e) {
     let waMessage = `Merhaba, ben ${name}.\n`;
     if (ada) waMessage += `Ada: ${ada}\n`;
     if (parsel) waMessage += `Parsel: ${parsel}\n`;
-    if (il) waMessage += `İl: ${il}\n`;
-    if (ilce) waMessage += `İlçe: ${ilce}\n`;
-    waMessage += `\nMesajım:\n${message}`;
+    if (il) waMessage += `Ä°l: ${il}\n`;
+    if (ilce) waMessage += `Ä°lÃ§e: ${ilce}\n`;
+    waMessage += `\nMesajÄ±m:\n${message}`;
     
     const waUrl = `https://wa.me/905XXXXXXXXX?text=${encodeURIComponent(waMessage)}`;
     window.open(waUrl, '_blank');
@@ -5704,17 +5751,17 @@ function saveMessage() {
     
     // Validasyon
     if (!name || name.length < 2) {
-        showError('Lütfen geçerli bir isim girin!');
+        showError('LÃ¼tfen geÃ§erli bir isim girin!');
         return;
     }
     
     if (!phone || phone.length < 10) {
-        showError('Lütfen geçerli bir telefon numarası girin!');
+        showError('LÃ¼tfen geÃ§erli bir telefon numarasÄ± girin!');
         return;
     }
     
     if (!message || message.length < 5) {
-        showError('Lütfen en az 5 karakter mesaj yazın!');
+        showError('LÃ¼tfen en az 5 karakter mesaj yazÄ±n!');
         return;
     }
     
@@ -5735,19 +5782,19 @@ function saveMessage() {
         const messages = JSON.parse(localStorage.getItem('cee_messages') || '[]');
         messages.unshift(formData);
         localStorage.setItem('cee_messages', JSON.stringify(messages));
-        showSuccess('Mesajınız kaydedildi! En kısa sürede size dönüş yapacağız.');
+        showSuccess('MesajÄ±nÄ±z kaydedildi! En kÄ±sa sÃ¼rede size dÃ¶nÃ¼ÅŸ yapacaÄŸÄ±z.');
         // closeWhatsApp(); // Not needed anymore
         const form = document.querySelector('#iletisim form');
         if (form) form.reset();
     } catch (e) {
-        showError('Mesaj kaydedilemedi! Lütfen tekrar deneyin.');
+        showError('Mesaj kaydedilemedi! LÃ¼tfen tekrar deneyin.');
         }
 }
 
 function goToAdmin() {
     const confirm = prompt('Admin paneline gitmek için "admin" yazın:');
     if (confirm && confirm.toLowerCase() === 'admin') {
-        window.location.href = 'cee_admin_WORKING.html';
+        window.location.href = 'admin.html';
     }
 }
 
@@ -5778,7 +5825,7 @@ function openAiAssistant(event) {
         event.stopPropagation();
     }
     
-    // Menüyü kapat
+    // MenÃ¼yÃ¼ kapat
     chatMenuOpen = false;
     const menu = document.getElementById('chatMenu');
     const btn = document.getElementById('unifiedChatBtn');
@@ -5786,7 +5833,7 @@ function openAiAssistant(event) {
     if (menu) menu.classList.remove('active');
     if (btn) btn.style.transform = 'rotate(0deg)';
     
-    // AI Panel'i aç
+    // AI Panel'i aÃ§
     const panel = document.getElementById('aiAssistantPanel');
     if (panel) {
         panel.classList.add('active');
@@ -5818,20 +5865,20 @@ function sendPanelMessage() {
     
     if (!message) return;
     
-    // Kullanıcı mesajını ekle
+    // KullanÄ±cÄ± mesajÄ±nÄ± ekle
     addPanelMessage(message, 'user');
     input.value = '';
     
-    // Typing göster
+    // Typing gÃ¶ster
     showPanelTyping();
     
-    // Cevabı oluştur
+    // CevabÄ± oluÅŸtur
     setTimeout(() => {
         const response = getSmartResponse(message);
         hidePanelTyping();
         addPanelMessage(response, 'assistant');
         
-        // Geçmişe ekle (öğrenme için)
+        // GeÃ§miÅŸe ekle (Ã¶ÄŸrenme iÃ§in)
         aiPanelHistory.push({
             question: message,
             answer: response,
@@ -5885,31 +5932,31 @@ function hidePanelTyping() {
 function getSmartResponse(message) {
     const lowerMsg = message.toLowerCase();
     
-    // AKILLI ARAMA - Tüm anahtar kelimeleri kontrol et
+    // AKILLI ARAMA - TÃ¼m anahtar kelimeleri kontrol et
     const keywords = {
-        piyes: ['piyes', 'piyès', 'çizim ölçü', 'teknik çizim', 'mimari çizim', 'proje ölçek'],
-        yangin: ['yangın', 'yangin', 'fire', 'yangın merdiven', 'yangın kapı', 'yangın yalıtım'],
-        merdiven: ['merdiven', 'stairs', 'basamak', 'rıht', 'riht', 'step'],
-        emsal: ['emsal', 'kaks', 'inşaat alanı', 'yapı yoğunluk'],
+        piyes: ['piyes', 'piyÃ¨s', 'Ã§izim Ã¶lÃ§Ã¼', 'teknik Ã§izim', 'mimari Ã§izim', 'proje Ã¶lÃ§ek'],
+        yangin: ['yangÄ±n', 'yangin', 'fire', 'yangÄ±n merdiven', 'yangÄ±n kapÄ±', 'yangÄ±n yalÄ±tÄ±m'],
+        merdiven: ['merdiven', 'stairs', 'basamak', 'rÄ±ht', 'riht', 'step'],
+        emsal: ['emsal', 'kaks', 'inÅŸaat alanÄ±', 'yapÄ± yoÄŸunluk'],
         taks: ['taks', 'taban alan', 'zemin kat alan'],
-        siginak: ['sığınak', 'siginak', 'shelter', 'hava sığınağı'],
-        asansor: ['asansör', 'asansor', 'lift', 'elevator'],
-        imar: ['imar', 'imar plan', 'nazım', 'uygulama planı'],
-        ruhsat: ['ruhsat', 'izin', 'yapı ruhsat', 'inşaat izin', 'belediye izin'],
-        otopark: ['otopark', 'park', 'parking', 'araç park', 'garaj'],
+        siginak: ['sÄ±ÄŸÄ±nak', 'siginak', 'shelter', 'hava sÄ±ÄŸÄ±naÄŸÄ±'],
+        asansor: ['asansÃ¶r', 'asansor', 'lift', 'elevator'],
+        imar: ['imar', 'imar plan', 'nazÄ±m', 'uygulama planÄ±'],
+        ruhsat: ['ruhsat', 'izin', 'yapÄ± ruhsat', 'inÅŸaat izin', 'belediye izin'],
+        otopark: ['otopark', 'park', 'parking', 'araÃ§ park', 'garaj'],
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
-        kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doğrama'],
-        yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
-        deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
-        cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
-        temel: ['temel', 'foundation', 'radye', 'kazık'],
-        celik: ['çelik', 'celik', 'steel', 'demir', 'karkas'],
+        kapi: ['kapÄ±', 'kapi', 'door', 'giriÅŸ kapÄ±'],
+        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
+        yalitim: ['yalÄ±tÄ±m', 'yalit', 'Ä±sÄ± yalÄ±t', 'ses yalÄ±t', 'nem yalÄ±t', 'bep'],
+        deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etÃ¼d'],
+        cati: ['Ã§atÄ±', 'cati', 'roof', 'dam', 'kiremit'],
+        temel: ['temel', 'foundation', 'radye', 'kazÄ±k'],
+        celik: ['Ã§elik', 'celik', 'steel', 'demir', 'karkas'],
         beton: ['beton', 'concrete', 'betonarme', 'c25', 'c30'],
-        cephe: ['cephe', 'facade', 'dış cephe', 'giydirme cephe'],
+        cephe: ['cephe', 'facade', 'dÄ±ÅŸ cephe', 'giydirme cephe'],
         tesisat: ['tesisat', 'mekanik', 'elektrik', 'hidrofor'],
-        proje: ['proje', 'plan', 'tasarım', 'dizayn']
+        proje: ['proje', 'plan', 'tasarÄ±m', 'dizayn']
     };
     
     // Hangi kategori?
@@ -5921,210 +5968,210 @@ function getSmartResponse(message) {
         }
     }
     
-    // Telefon numarası tıklanabilir
+    // Telefon numarasÄ± tÄ±klanabilir
     const phoneLink = '<a href="tel:+905373278765" style="color: #d4af37; font-weight: 600; text-decoration: none; border-bottom: 2px solid #d4af37;">(0537) 327 87 65</a>';
     
-    // Kategoriye göre cevap
+    // Kategoriye gÃ¶re cevap
     if (matchedCategory === 'piyes') {
-        return `<strong>📐 Piyes Ölçüleri (Mimari Çizim)</strong><br><br>
-<strong>Vaziyet Planı:</strong> 1/500, 1/1000, 1/2000<br>
-<strong>Kat Planları:</strong> 1/50 (detaylı), 1/100 (standart)<br>
-<strong>Kesit & Görünüş:</strong> 1/50, 1/100<br>
+        return `<strong>ðŸ“ Piyes Ã–lÃ§Ã¼leri (Mimari Ã‡izim)</strong><br><br>
+<strong>Vaziyet PlanÄ±:</strong> 1/500, 1/1000, 1/2000<br>
+<strong>Kat PlanlarÄ±:</strong> 1/50 (detaylÄ±), 1/100 (standart)<br>
+<strong>Kesit & GÃ¶rÃ¼nÃ¼ÅŸ:</strong> 1/50, 1/100<br>
 <strong>Detaylar:</strong> 1/1, 1/2, 1/5, 1/10, 1/20<br><br>
-<strong>Kağıt Boyutları:</strong><br>
-• A0: 841 x 1189 mm<br>
-• A1: 594 x 841 mm<br>
-• A2: 420 x 594 mm<br>
-• A3: 297 x 420 mm<br><br>
-Profesyonel çizim hizmeti: ${phoneLink}`;
+<strong>KaÄŸÄ±t BoyutlarÄ±:</strong><br>
+â€¢ A0: 841 x 1189 mm<br>
+â€¢ A1: 594 x 841 mm<br>
+â€¢ A2: 420 x 594 mm<br>
+â€¢ A3: 297 x 420 mm<br><br>
+Profesyonel Ã§izim hizmeti: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'yangin') {
-        return `<strong>🔥 Yangın Yönetmeliği</strong><br><br>
-<strong>Yangın Merdiveni:</strong><br>
-• Zorunluluk: 4+ katlı binalar<br>
-• Genişlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
-• Basamak: 28 cm genişlik, max 19 cm yükseklik<br>
-• Kapı: EI 60 (60 dk yangın dayanımlı)<br><br>
-<strong>Yangın Yalıtımı:</strong><br>
-• Bodrum: EI 120<br>
-• Kat arası: EI 60<br>
-• Cephe: E 30-60<br><br>
-Yangın projesi için: ${phoneLink}`;
+        return `<strong>ðŸ”¥ YangÄ±n YÃ¶netmeliÄŸi</strong><br><br>
+<strong>YangÄ±n Merdiveni:</strong><br>
+â€¢ Zorunluluk: 4+ katlÄ± binalar<br>
+â€¢ GeniÅŸlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
+â€¢ Basamak: 28 cm geniÅŸlik, max 19 cm yÃ¼kseklik<br>
+â€¢ KapÄ±: EI 60 (60 dk yangÄ±n dayanÄ±mlÄ±)<br><br>
+<strong>YangÄ±n YalÄ±tÄ±mÄ±:</strong><br>
+â€¢ Bodrum: EI 120<br>
+â€¢ Kat arasÄ±: EI 60<br>
+â€¢ Cephe: E 30-60<br><br>
+YangÄ±n projesi iÃ§in: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'merdiven') {
-        return `<strong>🪜 Merdiven Ölçüleri</strong><br><br>
+        return `<strong>ðŸªœ Merdiven Ã–lÃ§Ã¼leri</strong><br><br>
 <strong>KONUT:</strong><br>
-• Basamak genişliği: Min. 28 cm<br>
-• Yükseklik: Max. 18 cm<br>
-• Merdiven genişliği: Min. 90 cm<br>
-• Formül: 2h + g = 60-65 cm ✓<br><br>
+â€¢ Basamak geniÅŸliÄŸi: Min. 28 cm<br>
+â€¢ YÃ¼kseklik: Max. 18 cm<br>
+â€¢ Merdiven geniÅŸliÄŸi: Min. 90 cm<br>
+â€¢ FormÃ¼l: 2h + g = 60-65 cm âœ“<br><br>
 <strong>KAMU YAPILARI:</strong><br>
-• Basamak genişliği: Min. 30 cm<br>
-• Yükseklik: Max. 17 cm<br>
-• Genişlik: Min. 1.50 m<br><br>
+â€¢ Basamak geniÅŸliÄŸi: Min. 30 cm<br>
+â€¢ YÃ¼kseklik: Max. 17 cm<br>
+â€¢ GeniÅŸlik: Min. 1.50 m<br><br>
 <strong>Korkuluk:</strong> Min. 90 cm<br><br>
 Merdiven projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'emsal') {
-        return `<strong>📊 Emsal (KAKS)</strong><br><br>
-<strong>Tanım:</strong> Toplam İnşaat Alanı / Arsa Alanı<br><br>
-<strong>Örnek:</strong><br>
-• 500 m² arsa<br>
-• 1.5 emsal<br>
-• <strong>Toplam İnşaat: 750 m²</strong><br><br>
-<strong>Önemli:</strong><br>
-• Bodrum katlar emsale dahil DEÄžİL<br>
-• Her bölgede farklıdır<br>
-• İmar planında belirtilir<br><br>
-Emsal hesabı: ${phoneLink}`;
+        return `<strong>ðŸ“Š Emsal (KAKS)</strong><br><br>
+<strong>TanÄ±m:</strong> Toplam Ä°nÅŸaat AlanÄ± / Arsa AlanÄ±<br><br>
+<strong>Ã–rnek:</strong><br>
+â€¢ 500 mÂ² arsa<br>
+â€¢ 1.5 emsal<br>
+â€¢ <strong>Toplam Ä°nÅŸaat: 750 mÂ²</strong><br><br>
+<strong>Ã–nemli:</strong><br>
+â€¢ Bodrum katlar emsale dahil DEÃ„Å¾Ä°L<br>
+â€¢ Her bÃ¶lgede farklÄ±dÄ±r<br>
+â€¢ Ä°mar planÄ±nda belirtilir<br><br>
+Emsal hesabÄ±: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'siginak') {
-        return `<strong>🛡️ Sığınak Yönetmeliği</strong><br><br>
-<strong>Zorunluluk:</strong> 2000 m² ve üzeri<br><br>
-<strong>Teknik Özellikler:</strong><br>
-• Alan: İnşaat alanının %2'si<br>
-• Tavan: Min. 2.20 m<br>
-• Duvar: Min. 30 cm betonarme<br>
-• Kapı: Gaz sızdırmaz<br>
-• Havalandırma: Özel sistem<br><br>
-Sığınak projesi: ${phoneLink}`;
+        return `<strong>ðŸ›¡ï¸ SÄ±ÄŸÄ±nak YÃ¶netmeliÄŸi</strong><br><br>
+<strong>Zorunluluk:</strong> 2000 mÂ² ve Ã¼zeri<br><br>
+<strong>Teknik Ã–zellikler:</strong><br>
+â€¢ Alan: Ä°nÅŸaat alanÄ±nÄ±n %2'si<br>
+â€¢ Tavan: Min. 2.20 m<br>
+â€¢ Duvar: Min. 30 cm betonarme<br>
+â€¢ KapÄ±: Gaz sÄ±zdÄ±rmaz<br>
+â€¢ HavalandÄ±rma: Ã–zel sistem<br><br>
+SÄ±ÄŸÄ±nak projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'otopark') {
-        return `<strong>🚗 Otopark Yönetmeliği</strong><br><br>
-<strong>Araç Yeri:</strong><br>
-• Standart: 2.30 x 5.00 m<br>
-• Engelli: 3.70 x 5.00 m<br><br>
+        return `<strong>ðŸš— Otopark YÃ¶netmeliÄŸi</strong><br><br>
+<strong>AraÃ§ Yeri:</strong><br>
+â€¢ Standart: 2.30 x 5.00 m<br>
+â€¢ Engelli: 3.70 x 5.00 m<br><br>
 <strong>Koridor:</strong><br>
-• İki yönlü: Min. 6.00 m<br>
-• Tek yönlü: Min. 3.50 m<br><br>
+â€¢ Ä°ki yÃ¶nlÃ¼: Min. 6.00 m<br>
+â€¢ Tek yÃ¶nlÃ¼: Min. 3.50 m<br><br>
 <strong>Tavan:</strong> Min. 2.30 m<br>
-<strong>Havalandırma:</strong> Mekanik (kapalı)<br><br>
+<strong>HavalandÄ±rma:</strong> Mekanik (kapalÄ±)<br><br>
 Otopark projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'yalitim') {
-        return `<strong>🏠 Isı Yalıtımı & BEP</strong><br><br>
+        return `<strong>ðŸ  IsÄ± YalÄ±tÄ±mÄ± & BEP</strong><br><br>
 <strong>Duvar:</strong> Min. 5 cm XPS/EPS<br>
-<strong>Çatı:</strong> Min. 10 cm<br>
+<strong>Ã‡atÄ±:</strong> Min. 10 cm<br>
 <strong>Taban:</strong> Min. 5 cm<br>
-<strong>Cam:</strong> Çift cam, U≤1.8<br><br>
+<strong>Cam:</strong> Ã‡ift cam, Uâ‰¤1.8<br><br>
 <strong>BEP Belgesi:</strong><br>
-• 2011'den beri zorunlu<br>
-• Enerji sınıfı: A-G arası<br><br>
-BEP belgesi düzenleme: ${phoneLink}`;
+â€¢ 2011'den beri zorunlu<br>
+â€¢ Enerji sÄ±nÄ±fÄ±: A-G arasÄ±<br><br>
+BEP belgesi dÃ¼zenleme: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'ruhsat') {
-        return `<strong>📋 İnşaat Ruhsatı</strong><br><br>
+        return `<strong>ðŸ“‹ Ä°nÅŸaat RuhsatÄ±</strong><br><br>
 <strong>Gerekli Belgeler:</strong><br>
-• Tapu<br>
-• İmar durumu<br>
-• Mimari proje (3 takım)<br>
-• Statik proje<br>
-• Elektrik projesi<br>
-• Mekanik proje<br>
-• Zemin etüdü<br>
-• Aplikasyon<br><br>
-<strong>Süre:</strong> 2-4 ay<br><br>
+â€¢ Tapu<br>
+â€¢ Ä°mar durumu<br>
+â€¢ Mimari proje (3 takÄ±m)<br>
+â€¢ Statik proje<br>
+â€¢ Elektrik projesi<br>
+â€¢ Mekanik proje<br>
+â€¢ Zemin etÃ¼dÃ¼<br>
+â€¢ Aplikasyon<br><br>
+<strong>SÃ¼re:</strong> 2-4 ay<br><br>
 Ruhsat hizmeti: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'taks') {
-        return `<strong>📏 TAKS (Taban Alanı Katsayısı)</strong><br><br>
-<strong>Formül:</strong> Taban Alanı / Arsa Alanı<br><br>
-<strong>Örnek:</strong><br>
-• 500 m² arsa<br>
-• TAKS: 0.40<br>
-• <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik Değerler:</strong><br>
-• Konut: 0.30 - 0.40<br>
-• Ticaret: 0.60 - 0.80<br><br>
-İmar durumu analizi: ${phoneLink}`;
+        return `<strong>ðŸ“ TAKS (Taban AlanÄ± KatsayÄ±sÄ±)</strong><br><br>
+<strong>FormÃ¼l:</strong> Taban AlanÄ± / Arsa AlanÄ±<br><br>
+<strong>Ã–rnek:</strong><br>
+â€¢ 500 mÂ² arsa<br>
+â€¢ TAKS: 0.40<br>
+â€¢ <strong>Taban AlanÄ±: 200 mÂ²</strong><br><br>
+<strong>Tipik DeÄŸerler:</strong><br>
+â€¢ Konut: 0.30 - 0.40<br>
+â€¢ Ticaret: 0.60 - 0.80<br><br>
+Ä°mar durumu analizi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'deprem') {
-        return `<strong>🏗️ Deprem Yönetmeliği (TBDY 2018)</strong><br><br>
+        return `<strong>ðŸ—ï¸ Deprem YÃ¶netmeliÄŸi (TBDY 2018)</strong><br><br>
 <strong>Zorunluluklar:</strong><br>
-• Zemin etüdü raporu<br>
-• Deprem bölgesi analizi<br>
-• Yapı yükseklik kontrolü<br>
-• Betonarme yapı sistemi<br><br>
-<strong>Zemin Sınıfları:</strong><br>
-• ZA: Sağlam kayalar<br>
-• ZB: Az ayrışmış kayalar<br>
-• ZC: Sıkı kum/kil<br>
-• ZD: Gevşek kum/kil<br>
-• ZE: Yumuşak killer<br><br>
+â€¢ Zemin etÃ¼dÃ¼ raporu<br>
+â€¢ Deprem bÃ¶lgesi analizi<br>
+â€¢ YapÄ± yÃ¼kseklik kontrolÃ¼<br>
+â€¢ Betonarme yapÄ± sistemi<br><br>
+<strong>Zemin SÄ±nÄ±flarÄ±:</strong><br>
+â€¢ ZA: SaÄŸlam kayalar<br>
+â€¢ ZB: Az ayrÄ±ÅŸmÄ±ÅŸ kayalar<br>
+â€¢ ZC: SÄ±kÄ± kum/kil<br>
+â€¢ ZD: GevÅŸek kum/kil<br>
+â€¢ ZE: YumuÅŸak killer<br><br>
 Deprem projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'cephe') {
-        return `<strong>🏢 Cephe Sistemleri</strong><br><br>
-<strong>Cephe Türleri:</strong><br>
-• Klasik sıva cephe<br>
-• Giydirme cephe<br>
-• Cam cephe<br>
-• Kompozit panel<br>
-• Doğal taş kaplama<br><br>
-<strong>Önemli Noktalar:</strong><br>
-• Isı yalıtımı zorunlu<br>
-• Yangın geçişini önleme<br>
-• Su yalıtımı detayları<br><br>
-Cephe tasarımı: ${phoneLink}`;
+        return `<strong>ðŸ¢ Cephe Sistemleri</strong><br><br>
+<strong>Cephe TÃ¼rleri:</strong><br>
+â€¢ Klasik sÄ±va cephe<br>
+â€¢ Giydirme cephe<br>
+â€¢ Cam cephe<br>
+â€¢ Kompozit panel<br>
+â€¢ DoÄŸal taÅŸ kaplama<br><br>
+<strong>Ã–nemli Noktalar:</strong><br>
+â€¢ IsÄ± yalÄ±tÄ±mÄ± zorunlu<br>
+â€¢ YangÄ±n geÃ§iÅŸini Ã¶nleme<br>
+â€¢ Su yalÄ±tÄ±mÄ± detaylarÄ±<br><br>
+Cephe tasarÄ±mÄ±: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'proje') {
-        return `<strong>📐 Mimari Proje Hizmetleri</strong><br><br>
-<strong>Proje Aşamaları:</strong><br>
-1. Ön görüşme & keşif<br>
-2. Konsept tasarım<br>
-3. Ön proje<br>
+        return `<strong>ðŸ“ Mimari Proje Hizmetleri</strong><br><br>
+<strong>Proje AÅŸamalarÄ±:</strong><br>
+1. Ã–n gÃ¶rÃ¼ÅŸme & keÅŸif<br>
+2. Konsept tasarÄ±m<br>
+3. Ã–n proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat işlemleri<br><br>
+6. Ruhsat iÅŸlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-• Konut projeleri<br>
-• Villa projeleri<br>
-• Ticari yapılar<br>
-• İç mimari<br>
-• 3D görselleştirme<br><br>
+â€¢ Konut projeleri<br>
+â€¢ Villa projeleri<br>
+â€¢ Ticari yapÄ±lar<br>
+â€¢ Ä°Ã§ mimari<br>
+â€¢ 3D gÃ¶rselleÅŸtirme<br><br>
 Proje teklifi: ${phoneLink}`;
     }
     
-    // Genel mimarlık sorusu
-    else if (lowerMsg.includes('fiyat') || lowerMsg.includes('ücret') || lowerMsg.includes('ne kadar')) {
-        return `<strong>💰 Fiyat Bilgisi</strong><br><br>
-Projelerimiz için fiyat, projenizin özelliklerine göre değişmektedir:<br><br>
-• Proje türü (konut, villa, ticari)<br>
-• Alan büyüklüğü<br>
-• Detay seviyesi<br>
-• Ek hizmetler (3D, ruhsat, vb.)<br><br>
-<strong>Detaylı fiyat teklifi için:</strong><br>
-📞 ${phoneLink}<br>
-📍 Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ`;
+    // Genel mimarlÄ±k sorusu
+    else if (lowerMsg.includes('fiyat') || lowerMsg.includes('Ã¼cret') || lowerMsg.includes('ne kadar')) {
+        return `<strong>ðŸ’° Fiyat Bilgisi</strong><br><br>
+Projelerimiz iÃ§in fiyat, projenizin Ã¶zelliklerine gÃ¶re deÄŸiÅŸmektedir:<br><br>
+â€¢ Proje tÃ¼rÃ¼ (konut, villa, ticari)<br>
+â€¢ Alan bÃ¼yÃ¼klÃ¼ÄŸÃ¼<br>
+â€¢ Detay seviyesi<br>
+â€¢ Ek hizmetler (3D, ruhsat, vb.)<br><br>
+<strong>DetaylÄ± fiyat teklifi iÃ§in:</strong><br>
+ðŸ“ž ${phoneLink}<br>
+ðŸ“ Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ`;
     }
     
     else if (lowerMsg.includes('merhaba') || lowerMsg.includes('selam') || lowerMsg.includes('hello') || lowerMsg.includes('hi')) {
-        return `Merhaba! 👋<br><br>
-Size nasıl yardımcı olabilirim?<br><br>
+        return `Merhaba! ðŸ‘‹<br><br>
+Size nasÄ±l yardÄ±mcÄ± olabilirim?<br><br>
 <strong>Sorabilecekleriniz:</strong><br>
-• Piyes ölçüleri<br>
-• Yangın, merdiven, otopark yönetmelikleri<br>
-• Emsal, TAKS hesaplamaları<br>
-• İnşaat ruhsatı<br>
-• Cephe sistemleri<br>
-• Proje fiyatları<br><br>
-Sorunuzu yazabilirsiniz! 🏗️`;
+â€¢ Piyes Ã¶lÃ§Ã¼leri<br>
+â€¢ YangÄ±n, merdiven, otopark yÃ¶netmelikleri<br>
+â€¢ Emsal, TAKS hesaplamalarÄ±<br>
+â€¢ Ä°nÅŸaat ruhsatÄ±<br>
+â€¢ Cephe sistemleri<br>
+â€¢ Proje fiyatlarÄ±<br><br>
+Sorunuzu yazabilirsiniz! ðŸ—ï¸`;
     }
     
-    // Bilinmeyen soru - müşteri temsilcisi modunda + ÖÄžRENME
+    // Bilinmeyen soru - mÃ¼ÅŸteri temsilcisi modunda + Ã–Ã„Å¾RENME
     else {
-        // Öğrenme sistemi - yeni kelimeler kaydet
+        // Ã–ÄŸrenme sistemi - yeni kelimeler kaydet
         try {
             let unknownQuestions = JSON.parse(localStorage.getItem('cee_unknown_questions') || '[]');
             unknownQuestions.push({
@@ -6136,16 +6183,16 @@ Sorunuzu yazabilirsiniz! 🏗️`;
             localStorage.setItem('cee_unknown_questions', JSON.stringify(unknownQuestions.slice(-100)));
         } catch(e) {}
         
-        return `Anlıyorum, <strong>"${message}"</strong> konusunda detaylı bilgi almak istiyorsunuz.<br><br>
-Bu konu için uzman ekibimizle görüşmenizi öneriyorum. Size en doğru ve güncel bilgiyi verebilirler.<br><br>
-<strong>📞 Hemen İletişime Geçin:</strong><br>
+        return `AnlÄ±yorum, <strong>"${message}"</strong> konusunda detaylÄ± bilgi almak istiyorsunuz.<br><br>
+Bu konu iÃ§in uzman ekibimizle gÃ¶rÃ¼ÅŸmenizi Ã¶neriyorum. Size en doÄŸru ve gÃ¼ncel bilgiyi verebilirler.<br><br>
+<strong>ðŸ“ž Hemen Ä°letiÅŸime GeÃ§in:</strong><br>
 Telefon: ${phoneLink}<br>
-Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ<br><br>
-Başka sorunuz varsa sormaktan çekinmeyin! 🏗️`;
+Adres: Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ<br><br>
+BaÅŸka sorunuz varsa sormaktan Ã§ekinmeyin! ðŸ—ï¸`;
     }
 }
 
-// Sayfa yüklendiğinde geçmişi yükle
+// Sayfa yÃ¼klendiÄŸinde geÃ§miÅŸi yÃ¼kle
 try {
     const savedHistory = localStorage.getItem('cee_ai_history');
     if (savedHistory) {
@@ -6159,17 +6206,17 @@ function toggleFaq(element) {
     const icon = element.querySelector('span');
     const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
     
-    // Tüm FAQ'ları kapat
+    // TÃ¼m FAQ'larÄ± kapat
     document.querySelectorAll('.faq-item').forEach(item => {
         item.querySelector('.faq-answer').style.maxHeight = '0';
         item.querySelector('span').textContent = '+';
         item.querySelector('span').style.transform = 'rotate(0deg)';
     });
     
-    // Eğer kapalıysa aç
+    // EÄŸer kapalÄ±ysa aÃ§
     if (!isOpen) {
         answer.style.maxHeight = answer.scrollHeight + 'px';
-        icon.textContent = '−';
+        icon.textContent = 'âˆ’';
         icon.style.transform = 'rotate(180deg)';
     }
 }
@@ -6211,7 +6258,7 @@ function openAiChat(event) {
         event.stopPropagation();
     }
     
-    // Menüyü kapat
+    // MenÃ¼yÃ¼ kapat
     chatMenuOpen = false;
     const menu = document.getElementById('chatMenu');
     const btn = document.getElementById('unifiedChatBtn');
@@ -6219,13 +6266,13 @@ function openAiChat(event) {
     if (menu) menu.classList.remove('active');
     if (btn) btn.style.transform = 'rotate(0deg)';
     
-    // AI Chat'i aç
+    // AI Chat'i aÃ§
     const chatWindow = document.getElementById('aiChatWindow');
     if (chatWindow) {
         chatWindow.classList.add('active');
         aiChatOpen = true;
         
-        // İlk açılışta quick questions göster
+        // Ä°lk aÃ§Ä±lÄ±ÅŸta quick questions gÃ¶ster
         setTimeout(() => {
             const quickQ = document.getElementById('aiQuickQuestions');
             if (quickQ && quickQ.style.display === 'none') {
@@ -6242,7 +6289,7 @@ function openWhatsAppDirect(event) {
         event.stopPropagation();
     }
     
-    // Menüyü kapat
+    // MenÃ¼yÃ¼ kapat
     chatMenuOpen = false;
     const menu = document.getElementById('chatMenu');
     const btn = document.getElementById('unifiedChatBtn');
@@ -6250,17 +6297,17 @@ function openWhatsAppDirect(event) {
     if (menu) menu.classList.remove('active');
     if (btn) btn.style.transform = 'rotate(0deg)';
     
-    // WhatsApp'ı aç
+    // WhatsApp'Ä± aÃ§
     const phoneNumber = '905551234567'; // Admin panelden ayarlanabilir
-    const message = 'Merhaba! Web sitenizden ulaşıyorum. Mimari proje hakkında bilgi almak istiyorum.';
+    const message = 'Merhaba! Web sitenizden ulaÅŸÄ±yorum. Mimari proje hakkÄ±nda bilgi almak istiyorum.';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
     // Debug
-    // Mobile ve desktop için farklı yöntemler
+    // Mobile ve desktop iÃ§in farklÄ± yÃ¶ntemler
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Mobile: location.href kullan (daha güvenilir)
+        // Mobile: location.href kullan (daha gÃ¼venilir)
         window.location.href = url;
     } else {
         // Desktop: yeni tab
@@ -6312,13 +6359,13 @@ document.addEventListener('touchstart', function(event) {
 // AI CHAT ASSISTANT
 
 function askQuestion(question) {
-    // Quick question'ı gizle
+    // Quick question'Ä± gizle
     document.getElementById('aiQuickQuestions').style.display = 'none';
     
-    // Kullanıcı mesajını ekle
+    // KullanÄ±cÄ± mesajÄ±nÄ± ekle
     addMessage(question, 'user');
     
-    // AI cevabını göster
+    // AI cevabÄ±nÄ± gÃ¶ster
     setTimeout(() => {
         showTypingIndicator();
         setTimeout(() => {
@@ -6335,15 +6382,15 @@ function sendAiMessage() {
     
     if (!question) return;
     
-    // Quick questions'ı gizle
+    // Quick questions'Ä± gizle
     const quickQ = document.getElementById('aiQuickQuestions');
     if (quickQ) quickQ.style.display = 'none';
     
-    // Mesajı ekle
+    // MesajÄ± ekle
     addMessage(question, 'user');
     input.value = '';
     
-    // AI cevabını göster
+    // AI cevabÄ±nÄ± gÃ¶ster
     setTimeout(() => {
         showTypingIndicator();
         setTimeout(() => {
@@ -6361,7 +6408,7 @@ function addMessage(text, sender) {
     
     const avatar = document.createElement('div');
     avatar.className = 'ai-message-avatar';
-    avatar.textContent = sender === 'user' ? 'SİZ' : 'AI';
+    avatar.textContent = sender === 'user' ? 'SÄ°Z' : 'AI';
     
     const content = document.createElement('div');
     content.className = 'ai-message-content';
@@ -6400,162 +6447,162 @@ function hideTypingIndicator() {
 function getAiAnswer(question) {
     const q = question.toLowerCase();
     
-    // Mimarlık bilgi bankası
+    // MimarlÄ±k bilgi bankasÄ±
     const answers = {
         // Villa projeleri
-        villa: `🏡 **Villa Projeleri Hakkında:**
+        villa: `ðŸ¡ **Villa Projeleri HakkÄ±nda:**
 
-Villa projelerimizde modern mimari yaklaşımlar ve fonksiyonel tasarımlar sunuyoruz. Genellikle şunları içerir:
+Villa projelerimizde modern mimari yaklaÅŸÄ±mlar ve fonksiyonel tasarÄ±mlar sunuyoruz. Genellikle ÅŸunlarÄ± iÃ§erir:
 
-• **Arazi Analizi:** Topoğrafya, manzara ve güneşlenme analizi
-• **Konsept Tasarım:** Size özel mimari çözümler
-• **3D Görselleştirme:** Projenizi gerçek gibi görebilirsiniz
-• **Ruhsat İşlemleri:** Tüm yasal süreçler
+â€¢ **Arazi Analizi:** TopoÄŸrafya, manzara ve gÃ¼neÅŸlenme analizi
+â€¢ **Konsept TasarÄ±m:** Size Ã¶zel mimari Ã§Ã¶zÃ¼mler
+â€¢ **3D GÃ¶rselleÅŸtirme:** Projenizi gerÃ§ek gibi gÃ¶rebilirsiniz
+â€¢ **Ruhsat Ä°ÅŸlemleri:** TÃ¼m yasal sÃ¼reÃ§ler
 
-📞 Daha detaylı bilgi için WhatsApp'tan ulaşabilirsiniz!`,
+ðŸ“ž Daha detaylÄ± bilgi iÃ§in WhatsApp'tan ulaÅŸabilirsiniz!`,
 
-        // Tasarım süreci
-        tasarım: `📐 **Mimari Tasarım Sürecimiz:**
+        // TasarÄ±m sÃ¼reci
+        tasarÄ±m: `ðŸ“ **Mimari TasarÄ±m SÃ¼recimiz:**
 
-1️⃣ **İhtiyaç Analizi** (1-2 hafta)
-   • İlk görüşme ve saha keşfi
-   • Bütçe belirleme
+1ï¸âƒ£ **Ä°htiyaÃ§ Analizi** (1-2 hafta)
+   â€¢ Ä°lk gÃ¶rÃ¼ÅŸme ve saha keÅŸfi
+   â€¢ BÃ¼tÃ§e belirleme
    
-2️⃣ **Ön Tasarım** (2-3 hafta)
-   • Konsept eskizler
-   • 3D modelleme
+2ï¸âƒ£ **Ã–n TasarÄ±m** (2-3 hafta)
+   â€¢ Konsept eskizler
+   â€¢ 3D modelleme
    
-3️⃣ **Uygulama Projesi** (4-6 hafta)
-   • Detaylı çizimler
-   • Statik hesaplar
+3ï¸âƒ£ **Uygulama Projesi** (4-6 hafta)
+   â€¢ DetaylÄ± Ã§izimler
+   â€¢ Statik hesaplar
    
-4️⃣ **Ruhsat ve Uygulama** (Değişken)
-   • Belediye onayları
-   • Şantiye takibi
+4ï¸âƒ£ **Ruhsat ve Uygulama** (DeÄŸiÅŸken)
+   â€¢ Belediye onaylarÄ±
+   â€¢ Åžantiye takibi
 
-💡 Her aşamada sizinle iletişim halindeyiz!`,
+ðŸ’¡ Her aÅŸamada sizinle iletiÅŸim halindeyiz!`,
 
-        // İç mimarlık
-        iç: `🛋️ **İç Mimarlık Hizmetlerimiz:**
+        // Ä°Ã§ mimarlÄ±k
+        iÃ§: `ðŸ›‹ï¸ **Ä°Ã§ MimarlÄ±k Hizmetlerimiz:**
 
-✨ Kapsamlı iç mekan tasarımı sunuyoruz:
+âœ¨ KapsamlÄ± iÃ§ mekan tasarÄ±mÄ± sunuyoruz:
 
-• **Mekan Planlaması:** Fonksiyonel alan kullanımı
-• **Mobilya Tasarımı:** Özel üretim mobilyalar
-• **Malzeme Seçimi:** Kaliteli ve estetik materyaller
-• **Aydınlatma Tasarımı:** Ambiyans oluşturma
-• **Renk Paleti:** Uyumlu renk seçimleri
-• **3D Görselleştirme:** Bitirilmiş hali görün
+â€¢ **Mekan PlanlamasÄ±:** Fonksiyonel alan kullanÄ±mÄ±
+â€¢ **Mobilya TasarÄ±mÄ±:** Ã–zel Ã¼retim mobilyalar
+â€¢ **Malzeme SeÃ§imi:** Kaliteli ve estetik materyaller
+â€¢ **AydÄ±nlatma TasarÄ±mÄ±:** Ambiyans oluÅŸturma
+â€¢ **Renk Paleti:** Uyumlu renk seÃ§imleri
+â€¢ **3D GÃ¶rselleÅŸtirme:** BitirilmiÅŸ hali gÃ¶rÃ¼n
 
-🎨 Portföyümüzü inceleyerek çalışmalarımızı görebilirsiniz!`,
+ðŸŽ¨ PortfÃ¶yÃ¼mÃ¼zÃ¼ inceleyerek Ã§alÄ±ÅŸmalarÄ±mÄ±zÄ± gÃ¶rebilirsiniz!`,
 
         // Maliyet
-        maliyet: `💰 **Proje Maliyeti Nasıl Hesaplanır:**
+        maliyet: `ðŸ’° **Proje Maliyeti NasÄ±l HesaplanÄ±r:**
 
-Mimari proje maliyeti şu faktörlere bağlıdır:
+Mimari proje maliyeti ÅŸu faktÃ¶rlere baÄŸlÄ±dÄ±r:
 
-📏 **Proje Büyüklüğü:**
-   • Metrekare bazında (m²)
-   • Kat sayısı
+ðŸ“ **Proje BÃ¼yÃ¼klÃ¼ÄŸÃ¼:**
+   â€¢ Metrekare bazÄ±nda (mÂ²)
+   â€¢ Kat sayÄ±sÄ±
 
-🏗️ **Proje Tipi:**
-   • Villa: 150-300 TL/m²
-   • Apartman: 100-200 TL/m²
-   • İç Mekan: 80-150 TL/m²
+ðŸ—ï¸ **Proje Tipi:**
+   â€¢ Villa: 150-300 TL/mÂ²
+   â€¢ Apartman: 100-200 TL/mÂ²
+   â€¢ Ä°Ã§ Mekan: 80-150 TL/mÂ²
 
-📦 **Kapsam:**
-   • Mimari proje
-   • Statik proje
-   • Mekanik projeler
-   • Ruhsat işlemleri
+ðŸ“¦ **Kapsam:**
+   â€¢ Mimari proje
+   â€¢ Statik proje
+   â€¢ Mekanik projeler
+   â€¢ Ruhsat iÅŸlemleri
 
-💡 Net fiyat için projenizdeki detayları paylaşın!`,
+ðŸ’¡ Net fiyat iÃ§in projenizdeki detaylarÄ± paylaÅŸÄ±n!`,
 
-        // Süre
-        süre: `⏱️ **Proje Teslim Süreleri:**
+        // SÃ¼re
+        sÃ¼re: `â±ï¸ **Proje Teslim SÃ¼releri:**
 
-📅 Ortalama sürelerimiz:
+ðŸ“… Ortalama sÃ¼relerimiz:
 
-• **Villa Projesi:** 6-8 hafta
-• **Konut İç Mekan:** 3-4 hafta
-• **Ticari Mekan:** 4-6 hafta
-• **Ruhsat Süreci:** 2-4 ay (belediyeye göre değişir)
+â€¢ **Villa Projesi:** 6-8 hafta
+â€¢ **Konut Ä°Ã§ Mekan:** 3-4 hafta
+â€¢ **Ticari Mekan:** 4-6 hafta
+â€¢ **Ruhsat SÃ¼reci:** 2-4 ay (belediyeye gÃ¶re deÄŸiÅŸir)
 
-âš¡ Acil projeler için hızlandırılmış seçeneklerimiz var!`,
+Ã¢Å¡Â¡ Acil projeler iÃ§in hÄ±zlandÄ±rÄ±lmÄ±ÅŸ seÃ§eneklerimiz var!`,
 
         // Ruhsat
-        ruhsat: `📋 **Ruhsat İşlemleri:**
+        ruhsat: `ðŸ“‹ **Ruhsat Ä°ÅŸlemleri:**
 
-Belediye onayları için gereken belgeler:
+Belediye onaylarÄ± iÃ§in gereken belgeler:
 
-✅ **Mimari Proje**
-✅ **Statik Proje**
-✅ **Mekanik Proje**
-✅ **Elektrik Proje**
-✅ **Tapu Fotokopisi**
-✅ **İmar Durum Belgesi**
+âœ… **Mimari Proje**
+âœ… **Statik Proje**
+âœ… **Mekanik Proje**
+âœ… **Elektrik Proje**
+âœ… **Tapu Fotokopisi**
+âœ… **Ä°mar Durum Belgesi**
 
-🏛️ Belediye süreçlerini takip ediyoruz.
-📞 Danışmanlık hizmeti veriyoruz!`,
+ðŸ›ï¸ Belediye sÃ¼reÃ§lerini takip ediyoruz.
+ðŸ“ž DanÄ±ÅŸmanlÄ±k hizmeti veriyoruz!`,
 
-        // Ödeme
-        ödeme: `💳 **Ödeme Koşulları:**
+        // Ã–deme
+        Ã¶deme: `ðŸ’³ **Ã–deme KoÅŸullarÄ±:**
 
-Esnek ödeme planlarımız var:
+Esnek Ã¶deme planlarÄ±mÄ±z var:
 
-1️⃣ **%40** - Sözleşme imzalanırken
-2️⃣ **%30** - Ön tasarım onayında
-3️⃣ **%30** - Proje tesliminde
+1ï¸âƒ£ **%40** - SÃ¶zleÅŸme imzalanÄ±rken
+2ï¸âƒ£ **%30** - Ã–n tasarÄ±m onayÄ±nda
+3ï¸âƒ£ **%30** - Proje tesliminde
 
-💡 Özel ödeme planları da yapabiliriz.
-📧 Detaylı görüşme için iletişime geçin!`,
+ðŸ’¡ Ã–zel Ã¶deme planlarÄ± da yapabiliriz.
+ðŸ“§ DetaylÄ± gÃ¶rÃ¼ÅŸme iÃ§in iletiÅŸime geÃ§in!`,
 
         // 3D
-        '3d': `🎨 **3D Görselleştirme:**
+        '3d': `ðŸŽ¨ **3D GÃ¶rselleÅŸtirme:**
 
-Projelerinizi gerçekçi 3D render'larla görselleştiriyoruz:
+Projelerinizi gerÃ§ekÃ§i 3D render'larla gÃ¶rselleÅŸtiriyoruz:
 
-✨ **Özellikler:**
-• Fotorealistik görüntüler
-• Gündüz/gece sahneleri
-• İç ve dış mekan renderleri
-• 360° tur seçeneği
-• Video animasyon
+âœ¨ **Ã–zellikler:**
+â€¢ Fotorealistik gÃ¶rÃ¼ntÃ¼ler
+â€¢ GÃ¼ndÃ¼z/gece sahneleri
+â€¢ Ä°Ã§ ve dÄ±ÅŸ mekan renderleri
+â€¢ 360Â° tur seÃ§eneÄŸi
+â€¢ Video animasyon
 
-🎬 Projenizi yaşamadan önce görün!`,
+ðŸŽ¬ Projenizi yaÅŸamadan Ã¶nce gÃ¶rÃ¼n!`,
 
-        // Diğer
-        default: `Merhaba! 👋 
+        // DiÄŸer
+        default: `Merhaba! ðŸ‘‹ 
 
-Mimarlık hakkında size nasıl yardımcı olabilirim? 
+MimarlÄ±k hakkÄ±nda size nasÄ±l yardÄ±mcÄ± olabilirim? 
 
-**Popüler konular:**
-🏡 Villa ve konut projeleri
-📐 Tasarım süreci
-🛋️ İç mimarlık
-💰 Maliyet hesaplama
-⏱️ Proje süreleri
-📋 Ruhsat işlemleri
+**PopÃ¼ler konular:**
+ðŸ¡ Villa ve konut projeleri
+ðŸ“ TasarÄ±m sÃ¼reci
+ðŸ›‹ï¸ Ä°Ã§ mimarlÄ±k
+ðŸ’° Maliyet hesaplama
+â±ï¸ Proje sÃ¼releri
+ðŸ“‹ Ruhsat iÅŸlemleri
 
-Sorunuzu detaylandırabilir veya WhatsApp üzerinden doğrudan iletişime geçebilirsiniz! 📞`
+Sorunuzu detaylandÄ±rabilir veya WhatsApp Ã¼zerinden doÄŸrudan iletiÅŸime geÃ§ebilirsiniz! ðŸ“ž`
     };
     
-    // Anahtar kelime eşleştirme
+    // Anahtar kelime eÅŸleÅŸtirme
     if (q.includes('villa') || q.includes('ev') || q.includes('konut')) {
         return answers.villa;
-    } else if (q.includes('tasarım') || q.includes('süreç') || q.includes('nasıl') || q.includes('aşama')) {
-        return answers.tasarım;
-    } else if (q.includes('iç') || q.includes('mobilya') || q.includes('dekor')) {
-        return answers.iç;
-    } else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('ücret') || q.includes('para')) {
+    } else if (q.includes('tasarÄ±m') || q.includes('sÃ¼reÃ§') || q.includes('nasÄ±l') || q.includes('aÅŸama')) {
+        return answers.tasarÄ±m;
+    } else if (q.includes('iÃ§') || q.includes('mobilya') || q.includes('dekor')) {
+        return answers.iÃ§;
+    } else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('Ã¼cret') || q.includes('para')) {
         return answers.maliyet;
-    } else if (q.includes('süre') || q.includes('ne kadar') || q.includes('zaman')) {
-        return answers.süre;
+    } else if (q.includes('sÃ¼re') || q.includes('ne kadar') || q.includes('zaman')) {
+        return answers.sÃ¼re;
     } else if (q.includes('ruhsat') || q.includes('izin') || q.includes('belediye')) {
         return answers.ruhsat;
-    } else if (q.includes('ödeme') || q.includes('taksit') || q.includes('peşin')) {
-        return answers.ödeme;
-    } else if (q.includes('3d') || q.includes('görsel') || q.includes('render')) {
+    } else if (q.includes('Ã¶deme') || q.includes('taksit') || q.includes('peÅŸin')) {
+        return answers.Ã¶deme;
+    } else if (q.includes('3d') || q.includes('gÃ¶rsel') || q.includes('render')) {
         return answers['3d'];
     } else {
         return answers.default;
@@ -6589,14 +6636,14 @@ function handleConverterFile(file) {
     
     const maxSize = 50 * 1024 * 1024; // 50MB
     if (file.size > maxSize) {
-        showError('Dosya boyutu 50MB\'dan küçük olmalıdır!');
+        showError('Dosya boyutu 50MB\'dan kÃ¼Ã§Ã¼k olmalÄ±dÄ±r!');
         return;
     }
     
     const validTypes = ['.dwg', '.dxf'];
     const ext = '.' + file.name.split('.').pop().toLowerCase();
     if (!validTypes.includes(ext)) {
-        showError('Sadece DWG ve DXF dosyaları kabul edilir!');
+        showError('Sadece DWG ve DXF dosyalarÄ± kabul edilir!');
         return;
     }
     
@@ -6609,7 +6656,7 @@ function handleConverterFile(file) {
     document.getElementById('converterFileSize').textContent = formatFileSize(file.size);
     document.getElementById('convertBtn').disabled = false;
     
-    showSuccess('Dosya yüklendi: ' + file.name);
+    showSuccess('Dosya yÃ¼klendi: ' + file.name);
 }
 
 function removeConverterFile() {
@@ -6622,13 +6669,13 @@ function removeConverterFile() {
 }
 
 function updateQualityLabel(value) {
-    const labels = ['Düşük Kalite', 'Orta Kalite', 'Yüksek Kalite', 'En Yüksek Kalite'];
+    const labels = ['DÃ¼ÅŸÃ¼k Kalite', 'Orta Kalite', 'YÃ¼ksek Kalite', 'En YÃ¼ksek Kalite'];
     document.getElementById('currentQuality').textContent = labels[value - 1];
 }
 
 function convertDwgFile() {
     if (!converterFile) {
-        showError('Lütfen bir dosya yükleyin!');
+        showError('LÃ¼tfen bir dosya yÃ¼kleyin!');
         return;
     }
     
@@ -6647,7 +6694,7 @@ function convertDwgFile() {
         if (progress > 100) progress = 100;
         
         document.getElementById('converterProgressBar').style.width = progress + '%';
-        document.getElementById('converterProgressText').textContent = `Dönüştürülüyor... ${Math.floor(progress)}%`;
+        document.getElementById('converterProgressText').textContent = `DÃ¶nÃ¼ÅŸtÃ¼rÃ¼lÃ¼yor... ${Math.floor(progress)}%`;
         
         if (progress >= 100) {
             clearInterval(interval);
@@ -6661,7 +6708,7 @@ function convertDwgFile() {
                 downloadBtn.onclick = () => {
                     // In real implementation, this would download the converted file
                     const fileName = converterFile.name.replace(/\.[^/.]+$/, '') + '.' + format;
-                    showSuccess(`${fileName} indirilmeye hazır!`);
+                    showSuccess(`${fileName} indirilmeye hazÄ±r!`);
                     
                     // Simulate download
                     const blob = new Blob(['Converted file content'], { type: 'application/octet-stream' });
@@ -6672,7 +6719,7 @@ function convertDwgFile() {
                     a.click();
                 };
                 
-                showSuccess('Dönüştürme başarıyla tamamlandı!');
+                showSuccess('DÃ¶nÃ¼ÅŸtÃ¼rme baÅŸarÄ±yla tamamlandÄ±!');
             }, 500);
         }
     }, 200);
@@ -6684,13 +6731,13 @@ function handleDowngradeFile(file) {
     
     const maxSize = 50 * 1024 * 1024; // 50MB
     if (file.size > maxSize) {
-        showError('Dosya boyutu 50MB\'dan küçük olmalıdır!');
+        showError('Dosya boyutu 50MB\'dan kÃ¼Ã§Ã¼k olmalÄ±dÄ±r!');
         return;
     }
     
     const ext = '.' + file.name.split('.').pop().toLowerCase();
     if (ext !== '.dwg') {
-        showError('Sadece DWG dosyaları kabul edilir!');
+        showError('Sadece DWG dosyalarÄ± kabul edilir!');
         return;
     }
     
@@ -6711,7 +6758,7 @@ function handleDowngradeFile(file) {
     
     document.getElementById('downgradeBtn').disabled = false;
     
-    showSuccess('Dosya yüklendi: ' + file.name);
+    showSuccess('Dosya yÃ¼klendi: ' + file.name);
 }
 
 function removeDowngradeFile() {
@@ -6725,7 +6772,7 @@ function removeDowngradeFile() {
 
 function downgradeDwgFile() {
     if (!downgradeFile) {
-        showError('Lütfen bir dosya yükleyin!');
+        showError('LÃ¼tfen bir dosya yÃ¼kleyin!');
         return;
     }
     
@@ -6751,7 +6798,7 @@ function downgradeDwgFile() {
         if (progress > 100) progress = 100;
         
         document.getElementById('downgradeProgressBar').style.width = progress + '%';
-        document.getElementById('downgradeProgressText').textContent = `İşleniyor... ${Math.floor(progress)}%`;
+        document.getElementById('downgradeProgressText').textContent = `Ä°ÅŸleniyor... ${Math.floor(progress)}%`;
         
         if (progress >= 100) {
             clearInterval(interval);
@@ -6761,13 +6808,13 @@ function downgradeDwgFile() {
                 document.getElementById('downgradeBtn').disabled = false;
                 
                 document.getElementById('downgradeResultInfo').textContent = 
-                    `Dosya başarıyla ${versionNames[targetVersion]} formatına dönüştürüldü.`;
+                    `Dosya baÅŸarÄ±yla ${versionNames[targetVersion]} formatÄ±na dÃ¶nÃ¼ÅŸtÃ¼rÃ¼ldÃ¼.`;
                 
                 // Create download button
                 const downloadBtn = document.getElementById('downgradeDownloadBtn');
                 downloadBtn.onclick = () => {
                     const fileName = downgradeFile.name.replace('.dwg', '') + '_' + targetVersion + '.dwg';
-                    showSuccess(`${fileName} indirilmeye hazır!`);
+                    showSuccess(`${fileName} indirilmeye hazÄ±r!`);
                     
                     // Simulate download
                     const blob = new Blob(['Downgraded DWG content'], { type: 'application/octet-stream' });
@@ -6778,7 +6825,7 @@ function downgradeDwgFile() {
                     a.click();
                 };
                 
-                showSuccess('Versiyon düşürme başarıyla tamamlandı!');
+                showSuccess('Versiyon dÃ¼ÅŸÃ¼rme baÅŸarÄ±yla tamamlandÄ±!');
             }, 500);
         }
     }, 250);
@@ -6816,10 +6863,10 @@ function showToast(message, type = 'info', duration = 3000) {
     };
     
     const titles = {
-        success: 'Başarılı!',
+        success: 'BaÅŸarÄ±lÄ±!',
         error: 'Hata!',
         info: 'Bilgi',
-        warning: 'Uyarı'
+        warning: 'UyarÄ±'
     };
     
     toast.innerHTML = `
@@ -6828,7 +6875,7 @@ function showToast(message, type = 'info', duration = 3000) {
             <div class="toast-title">${titles[type]}</div>
             <div class="toast-message">${message}</div>
         </div>
-        <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+        <button class="toast-close" onclick="this.parentElement.remove()">Ã—</button>
         <div class="toast-progress"></div>
     `;
     
@@ -6908,7 +6955,7 @@ function loadColorTheme() {
 
 // INSTAGRAM FEED
 function loadInstagram() {
-    // Demo Instagram posts - Gerçek API için instagram-feed.js kullanılabilir
+    // Demo Instagram posts - GerÃ§ek API iÃ§in instagram-feed.js kullanÄ±labilir
     const instagramPosts = [
         {
             id: 1,
@@ -6961,8 +7008,8 @@ function loadInstagram() {
         <a href="${post.link}" target="_blank" class="instagram-post">
             <img src="${post.image}" alt="Instagram post" loading="lazy">
             <div class="instagram-overlay">
-                <span>❤️ ${post.likes}</span>
-                <span>💬 ${post.comments}</span>
+                <span>â¤ï¸ ${post.likes}</span>
+                <span>ðŸ’¬ ${post.comments}</span>
             </div>
         </a>
     `).join('');
@@ -6970,11 +7017,11 @@ function loadInstagram() {
 
 // VIDEO GALLERY
 function loadVideos() {
-    // Admin panelden yüklenen videolar (mediaType: 'video')
+    // Admin panelden yÃ¼klenen videolar (mediaType: 'video')
     const projects = JSON.parse(localStorage.getItem('cee_projects') || '[]');
     const videos = projects.filter(p => p.mediaType === 'video');
 
-    // Demo YouTube videoları (gerçek videolar yoksa)
+    // Demo YouTube videolarÄ± (gerÃ§ek videolar yoksa)
     const demoVideos = [
         {
             id: 'dQw4w9WgXcQ',
@@ -6983,12 +7030,12 @@ function loadVideos() {
         },
         {
             id: 'dQw4w9WgXcQ',
-            title: 'Apartman Dönüşümü',
+            title: 'Apartman DÃ¶nÃ¼ÅŸÃ¼mÃ¼',
             thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
         },
         {
             id: 'dQw4w9WgXcQ',
-            title: 'Ofis İç Tasarım',
+            title: 'Ofis Ä°Ã§ TasarÄ±m',
             thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
         }
     ];
@@ -6996,7 +7043,7 @@ function loadVideos() {
     const grid = document.getElementById('videoGrid');
     if (!grid) return;
 
-    // Önce admin panelden yüklenen videoları göster
+    // Ã–nce admin panelden yÃ¼klenen videolarÄ± gÃ¶ster
     let videoHTML = '';
 
     if (videos.length > 0) {
@@ -7005,17 +7052,17 @@ function loadVideos() {
                 <video class="video-thumbnail" muted>
                     <source src="${video.img}" type="video/mp4">
                 </video>
-                <div class="video-play-btn">â–¶</div>
+                <div class="video-play-btn">Ã¢â€“Â¶</div>
                 <div class="video-title">${video.title || 'Video'}</div>
             </div>
         `).join('');
     }
 
-    // Demo YouTube videoları ekle
+    // Demo YouTube videolarÄ± ekle
     videoHTML += demoVideos.map(video => `
         <div class="video-item" onclick="openVideo('${video.id}', 'youtube')">
             <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
-            <div class="video-play-btn">â–¶</div>
+            <div class="video-play-btn">Ã¢â€“Â¶</div>
             <div class="video-title">${video.title}</div>
         </div>
     `).join('');
@@ -7023,7 +7070,7 @@ function loadVideos() {
     if (videoHTML) {
         grid.innerHTML = videoHTML;
     } else {
-        grid.innerHTML = '<div class="instagram-placeholder"><p>Henüz video eklenmedi</p></div>';
+        grid.innerHTML = '<div class="instagram-placeholder"><p>HenÃ¼z video eklenmedi</p></div>';
     }
 }
 
@@ -7049,7 +7096,7 @@ function closeVideo() {
 
 // GOOGLE MAPS
 function initMap() {
-    // Varsayılan konum: İstanbul Taksim
+    // VarsayÄ±lan konum: Ä°stanbul Taksim
     const officeLocation = { lat: 41.0369, lng: 28.9850 };
     
     // Admin panelden ayarlanabilir konum
@@ -7064,9 +7111,9 @@ function initMap() {
     const mapDiv = document.getElementById('map');
     if (!mapDiv) return;
 
-    // Google Maps yüklü mü kontrol et
+    // Google Maps yÃ¼klÃ¼ mÃ¼ kontrol et
     if (typeof google === 'undefined' || !google.maps) {
-        mapDiv.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;"><p>Harita yükleniyor...</p></div>';
+        mapDiv.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;"><p>Harita yÃ¼kleniyor...</p></div>';
         loadGoogleMaps();
         return;
     }
@@ -7091,7 +7138,7 @@ function initMap() {
     new google.maps.Marker({
         position: officeLocation,
         map: map,
-        title: 'CEE MİMARLIK',
+        title: 'CEE MÄ°MARLIK',
         animation: google.maps.Animation.DROP
     });
 }
@@ -7105,7 +7152,7 @@ function loadGoogleMaps() {
 }
 
 // ============================================
-// 🔒 GÜVENLİK SİSTEMİ - CEE MİMARLIK
+// ðŸ”’ GÃœVENLÄ°K SÄ°STEMÄ° - CEE MÄ°MARLIK
 // ============================================
 
 // 1. XSS (Cross-Site Scripting) KORUNMASI
@@ -7189,7 +7236,7 @@ const SessionManager = {
     }
 };
 
-// 5. GÜVENLI MESAJ GÖNDERME
+// 5. GÃœVENLI MESAJ GÃ–NDERME
 function sendPanelMessageSecure() {
     const input = document.getElementById('aiPanelInput');
     let message = input.value.trim();
@@ -7198,18 +7245,18 @@ function sendPanelMessageSecure() {
     // Rate Limiting
     if (!RateLimiter.checkLimit('ai_message', 10, 60000)) {
         const wait = RateLimiter.getTimeUntilReset('ai_message');
-        addPanelMessage(`⚠️ Çok fazla mesaj gönderdiniz. ${wait} saniye bekleyin.`, 'assistant');
+        addPanelMessage(`âš ï¸ Ã‡ok fazla mesaj gÃ¶nderdiniz. ${wait} saniye bekleyin.`, 'assistant');
         return;
     }
     
     // Validation
     if (!InputValidator.validateLength(message, 1, 500)) {
-        addPanelMessage('⚠️ Mesaj 1-500 karakter olmalı.', 'assistant');
+        addPanelMessage('âš ï¸ Mesaj 1-500 karakter olmalÄ±.', 'assistant');
         return;
     }
     
     if (!InputValidator.validateSafeText(message)) {
-        addPanelMessage('⚠️ Geçersiz karakterler.', 'assistant');
+        addPanelMessage('âš ï¸ GeÃ§ersiz karakterler.', 'assistant');
         return;
     }
     
@@ -7237,7 +7284,7 @@ function sendPanelMessageSecure() {
 
 window.sendPanelMessage = sendPanelMessageSecure;
 
-// 6. SAYFA YÜKLENDİÄžİNDE
+// 6. SAYFA YÃœKLENDÄ°Ã„Å¾Ä°NDE
 document.addEventListener('DOMContentLoaded', function() {
     if (!SessionManager.checkTimeout()) SessionManager.createSession();
     
@@ -7247,7 +7294,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 300000);
     
-    // Input güvenliği
+    // Input gÃ¼venliÄŸi
     document.querySelectorAll('input, textarea').forEach(input => {
         input.addEventListener('input', function() {
             const max = this.getAttribute('maxlength') || 1000;
@@ -7257,7 +7304,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // âš¡ PERFORMANCE OPTIMIZATION
+    // Ã¢Å¡Â¡ PERFORMANCE OPTIMIZATION
     // ============================================
     
     // 1. LAZY LOADING IMAGES
@@ -7414,11 +7461,11 @@ document.addEventListener('DOMContentLoaded', function() {
 if (window.top !== window.self) window.top.location = window.self.location;
 
 // ==============================================
-// SİTE AYARLARINI YÜKLE
+// SÄ°TE AYARLARINI YÃœKLE
 // ==============================================
 
 function loadSiteSettings() {
-    // Hero ayarlarını yükle
+    // Hero ayarlarÄ±nÄ± yÃ¼kle
     const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
     if (heroSettings.title || heroSettings.subtitle) {
         const heroTitle = document.querySelector('.hero-content h1');
@@ -7431,20 +7478,20 @@ function loadSiteSettings() {
         if (heroSettings.color && heroTitle) heroTitle.style.color = heroSettings.color;
     }
     
-    // Sosyal medya linklerini yükle
+    // Sosyal medya linklerini yÃ¼kle
     const socialLinks = JSON.parse(localStorage.getItem('social_links') || '{}');
     const socialContainer = document.querySelector('footer div[style*="gap: 15px"]');
     if (socialContainer && Object.keys(socialLinks).length > 0) {
         let html = '';
         if (socialLinks.facebook) html += `<a href="${socialLinks.facebook}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1877f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">f</a>`;
-        if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">📷</a>`;
+        if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ðŸ“·</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
-        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1da1f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
-        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â–¶</a>`;
+        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1da1f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ð•</a>`;
+        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">Ã¢â€“Â¶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
     
-    // Renk ayarlarını yükle
+    // Renk ayarlarÄ±nÄ± yÃ¼kle
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     if (Object.keys(colorSettings).length > 0) {
         const root = document.documentElement;
@@ -7460,38 +7507,38 @@ function loadSiteSettings() {
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-panel-header">
         <div class="ai-panel-header-content">
-            <div class="ai-panel-logo">🏗️</div>
+            <div class="ai-panel-logo">ðŸ—ï¸</div>
             <div class="ai-panel-title">
-                <h2>CEE MİMARLIK</h2>
-                <p>Mimarlık & Mevzuat Danışmanı</p>
+                <h2>CEE MÄ°MARLIK</h2>
+                <p>MimarlÄ±k & Mevzuat DanÄ±ÅŸmanÄ±</p>
             </div>
         </div>
-        <button class="ai-panel-close" onclick="closeAiPanel()">×</button>
+        <button class="ai-panel-close" onclick="closeAiPanel()">Ã—</button>
     </div>
     
     <div class="ai-panel-messages" id="aiPanelMessages">
         <div class="ai-panel-message assistant">
             <div class="ai-panel-bubble">
-                <strong>Merhaba! 👋</strong><br><br>
-                Ben CEE MİMARLIK'ın AI asistanıyım. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
-                <strong>Yardımcı olabileceğim konular:</strong><br>
-                • İmar planı ve imar durumu<br>
-                • Piyes ölçüleri ve teknik çizimler<br>
-                • Yangın, merdiven, otopark yönetmelikleri<br>
-                • İnşaat ruhsatı süreçleri<br>
-                • Mimari proje hazırlama<br><br>
-                Aklınıza takılan soruyu sorabilirsiniz! 🏗️
+                <strong>Merhaba! ðŸ‘‹</strong><br><br>
+                Ben CEE MÄ°MARLIK'Ä±n AI asistanÄ±yÄ±m. Size mimarlÄ±k ve yapÄ± mevzuatÄ± konularÄ±nda yardÄ±mcÄ± olabilirim.<br><br>
+                <strong>YardÄ±mcÄ± olabileceÄŸim konular:</strong><br>
+                â€¢ Ä°mar planÄ± ve imar durumu<br>
+                â€¢ Piyes Ã¶lÃ§Ã¼leri ve teknik Ã§izimler<br>
+                â€¢ YangÄ±n, merdiven, otopark yÃ¶netmelikleri<br>
+                â€¢ Ä°nÅŸaat ruhsatÄ± sÃ¼reÃ§leri<br>
+                â€¢ Mimari proje hazÄ±rlama<br><br>
+                AklÄ±nÄ±za takÄ±lan soruyu sorabilirsiniz! ðŸ—ï¸
             </div>
         </div>
     </div>
     
     <div class="ai-panel-quick-questions">
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Piyes ölçüleri nedir?')">📐 Piyes</button>
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Yangın merdiveni')">🔥 Yangın</button>
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Merdiven ölçüleri')">🪜 Merdiven</button>
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Emsal nedir?')">📊 Emsal</button>
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Sığınak')">🛡️ Sığınak</button>
-        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Otopark ölçüleri')">🚗 Otopark</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Piyes Ã¶lÃ§Ã¼leri nedir?')">ðŸ“ Piyes</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('YangÄ±n merdiveni')">ðŸ”¥ YangÄ±n</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Merdiven Ã¶lÃ§Ã¼leri')">ðŸªœ Merdiven</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Emsal nedir?')">ðŸ“Š Emsal</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('SÄ±ÄŸÄ±nak')">ðŸ›¡ï¸ SÄ±ÄŸÄ±nak</button>
+        <button class="ai-panel-quick-btn" onclick="askPanelQuestion('Otopark Ã¶lÃ§Ã¼leri')">ðŸš— Otopark</button>
     </div>
     
     <div class="ai-panel-input-area">
@@ -7500,7 +7547,7 @@ function loadSiteSettings() {
                 type="text" 
                 class="ai-panel-input" 
                 id="aiPanelInput" 
-                placeholder="Sorunuzu yazın..."
+                placeholder="Sorunuzu yazÄ±n..."
                 onkeypress="if(event.key==='Enter') sendPanelMessage()"
             >
             <button class="ai-panel-send" onclick="sendPanelMessage()">
@@ -7519,14 +7566,14 @@ function loadSiteSettings() {
 <script type="module" src="firebase-config.js"></script>
 
 <!-- ============================================ -->
-<!-- FIRESTORE ENTEGRASYONU - PROJELERI YÜKLE -->
+<!-- FIRESTORE ENTEGRASYONU - PROJELERI YÃœKLE -->
 <!-- ============================================ -->
 <script type="module">
 import { collection, getDocs, orderBy, query } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-// Firebase hazır olmasını bekle
+// Firebase hazÄ±r olmasÄ±nÄ± bekle
 window.addEventListener('DOMContentLoaded', async () => {
-    // Firebase config yüklenene kadar bekle
+    // Firebase config yÃ¼klenene kadar bekle
     let attempts = 0;
     while (!window.firebaseDB && attempts < 50) {
         await new Promise(resolve => setTimeout(resolve, 100));
@@ -7559,7 +7606,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         
         window.projects = projects;
         
-        // Projeleri render et (eğer renderProjects fonksiyonu varsa)
+        // Projeleri render et (eÄŸer renderProjects fonksiyonu varsa)
         if (typeof window.renderProjects === 'function') {
             window.renderProjects();
         } else {
@@ -7569,7 +7616,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
 });
 
-// Proje detay sayfasına git
+// Proje detay sayfasÄ±na git
 window.openProjectDetail = function(projectId) {
     window.location.href = `project-detail.html?id=${projectId}`;
 };
@@ -7582,7 +7629,7 @@ window.openProjectDetail = function(projectId) {
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
     import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
     
-    // Firebase config yükle
+    // Firebase config yÃ¼kle
     try {
         const response = await fetch('firebase-config.js');
         const configText = await response.text();
@@ -7591,12 +7638,12 @@ window.openProjectDetail = function(projectId) {
         if (configMatch) {
             const firebaseConfig = eval('(' + configMatch[1] + ')');
             
-            // API key kontrolü
+            // API key kontrolÃ¼
             if (firebaseConfig.apiKey && !firebaseConfig.apiKey.includes('BURAYA')) {
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
                 
-                // Projeleri çek
+                // Projeleri Ã§ek
                 const q = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
                 const querySnapshot = await getDocs(q);
                 
@@ -7606,10 +7653,10 @@ window.openProjectDetail = function(projectId) {
                 });
                 
                 if (firebaseProjects.length > 0) {
-                    console.log('✅ Firebase projeleri yüklendi:', firebaseProjects.length);
+                    console.log('âœ… Firebase projeleri yÃ¼klendi:', firebaseProjects.length);
                     window.firebaseProjects = firebaseProjects;
                     
-                    // Proje listesini güncelle
+                    // Proje listesini gÃ¼ncelle
                     if (typeof displayProjects === 'function') {
                         displayProjects(firebaseProjects);
                     }
@@ -7617,7 +7664,7 @@ window.openProjectDetail = function(projectId) {
             }
         }
     } catch (error) {
-        console.log('ℹ️ Firebase config bulunamadı, demo modda çalışıyor');
+        console.log('â„¹ï¸ Firebase config bulunamadÄ±, demo modda Ã§alÄ±ÅŸÄ±yor');
     }
 </script>
 
@@ -7628,14 +7675,14 @@ window.openProjectDetail = function(projectId) {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('✅ Service Worker kayıtlı'))
-            .catch(err => console.log('❌ Service Worker hatası:', err));
+            .then(reg => console.log('âœ… Service Worker kayÄ±tlÄ±'))
+            .catch(err => console.log('âŒ Service Worker hatasÄ±:', err));
     });
 }
 </script>
 
 <script>
-// Logo yükleyici
+// Logo yÃ¼kleyici
 function loadSiteLogo() {
     const logo = localStorage.getItem('cee_site_logo');
     const logoImg = document.getElementById('headerLogo');
@@ -7653,12 +7700,12 @@ function loadSiteLogo() {
     }
 }
 
-// Sayfa yüklendiğinde
+// Sayfa yÃ¼klendiÄŸinde
 document.addEventListener('DOMContentLoaded', loadSiteLogo);
 </script>
 
 <script>
-// Logo yükleyici
+// Logo yÃ¼kleyici
 function loadSiteLogo() {
     const logo = localStorage.getItem('cee_site_logo');
     const logoImg = document.getElementById('siteLogo');
@@ -7676,7 +7723,7 @@ function loadSiteLogo() {
     }
 }
 
-// Sayfa yüklendiğinde
+// Sayfa yÃ¼klendiÄŸinde
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadSiteLogo);
 } else {
@@ -7688,7 +7735,7 @@ if (document.readyState === 'loading') {
 
 </html>
 <script>
-// FIX: Sayfa yüklendiğinde projeleri göster
+// FIX: Sayfa yÃ¼klendiÄŸinde projeleri gÃ¶ster
 if (typeof toggleChatMenu === 'undefined') {
     window.toggleChatMenu = function() {};
 }
