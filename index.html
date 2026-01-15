@@ -2015,7 +2015,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: #1a1a1a;
+            background: var(--accent, #d4af37);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2028,7 +2028,7 @@
 
         .unified-chat-btn:hover {
             transform: scale(1.1);
-            background: #333;
+            filter: brightness(1.1);
         }
 
         .chat-badge {
@@ -3370,7 +3370,7 @@
             right: 30px;
             width: 45px;
             height: 45px;
-            background: #1a1a1a;
+            background: var(--accent, #d4af37);
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -3393,7 +3393,7 @@
         }
         
         .scroll-top:hover {
-            background: #333;
+            filter: brightness(1.1);
             transform: translateY(-3px);
         }
         /* ========================================
@@ -3596,7 +3596,7 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: #1a1a1a;
+            background: var(--accent, #d4af37);
             color: #fff;
             padding: 14px 16px;
             writing-mode: horizontal-tb;
@@ -3608,12 +3608,12 @@
             font-weight: 600;
             font-size: 13px;
             letter-spacing: 0.5px;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
             transition: all 0.3s ease;
         }
         .social-sidebar-trigger:hover {
             padding-right: 20px;
-            background: #333;
+            filter: brightness(1.1);
         }
         .social-sidebar-icon { font-size: 18px; }
         .social-sidebar-content {
@@ -3955,7 +3955,14 @@ window.goToAdmin = goToAdmin;
         </nav>
         <div class="header-actions">
             <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
-                <span id="langFlag">🇹🇷</span>
+                <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
+                    <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
+                        <rect fill="#E30A17" width="1200" height="800"/>
+                        <circle fill="#fff" cx="425" cy="400" r="200"/>
+                        <circle fill="#E30A17" cx="475" cy="400" r="160"/>
+                        <polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/>
+                    </svg>
+                </span>
                 <span id="langText">TR</span>
             </button>
             <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema değiştir">🌙</button>
@@ -5678,7 +5685,27 @@ function toggleLanguage() {
 function updateLanguageUI() {
     const langFlag = document.getElementById('langFlag');
     const langText = document.getElementById('langText');
-    if (langFlag) langFlag.textContent = currentLang === 'tr' ? '🇹🇷' : '🇬🇧';
+    
+    if (langFlag) {
+        if (currentLang === 'tr') {
+            // Türk Bayrağı SVG
+            langFlag.innerHTML = `<svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
+                <rect fill="#E30A17" width="1200" height="800"/>
+                <circle fill="#fff" cx="425" cy="400" r="200"/>
+                <circle fill="#E30A17" cx="475" cy="400" r="160"/>
+                <polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/>
+            </svg>`;
+        } else {
+            // İngiliz Bayrağı SVG
+            langFlag.innerHTML = `<svg viewBox="0 0 60 30" style="width: 100%; height: 100%;">
+                <rect fill="#012169" width="60" height="30"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="polygon(30 15, 30 0, 0 0, 30 15, 60 0, 60 15, 30 15, 60 30, 30 30, 30 15, 0 30, 0 15)"/>
+                <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
+            </svg>`;
+        }
+    }
     if (langText) langText.textContent = currentLang === 'tr' ? 'TR' : 'EN';
 }
 
@@ -6898,164 +6925,219 @@ function hideTypingIndicator() {
 }
 
 function getAiAnswer(question) {
-    const q = question.toLowerCase();
+    const q = question.toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ı]/g, 'i').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c');
     
-    // Mimarlık bilgi bankası
+    // Gelişmiş Mimarlık Bilgi Bankası
     const answers = {
         // Villa projeleri
-        villa: `🏡 **Villa Projeleri Hakkında:**
-
-Villa projelerimizde modern mimari yaklaşımlar ve fonksiyonel tasarımlar sunuyoruz. Genellikle şunları içerir:
-
-• **Arazi Analizi:** Topoğrafya, manzara ve güneşlenme analizi
-• **Konsept Tasarım:** Size özel mimari çözümler
-• **3D Görselleştirme:** Projenizi gerçek gibi görebilirsiniz
-• **Ruhsat İşlemleri:** Tüm yasal süreçler
-
-📞 Daha detaylı bilgi için WhatsApp'tan ulaşabilirsiniz!`,
+        villa: `🏡 <b>Villa Projeleri:</b><br><br>
+Villa projelerimizde modern mimari ve fonksiyonel tasarım anlayışı sunuyoruz:<br><br>
+• <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
+• <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
+• <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
+• <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
+Detaylı bilgi için mesaj atabilirsiniz!`,
 
         // Tasarım süreci
-        tasarım: `📐 **Mimari Tasarım Sürecimiz:**
-
-1️⃣ **İhtiyaç Analizi** (1-2 hafta)
-   • İlk görüşme ve saha keşfi
-   • Bütçe belirleme
-   
-2️⃣ **Ön Tasarım** (2-3 hafta)
-   • Konsept eskizler
-   • 3D modelleme
-   
-3️⃣ **Uygulama Projesi** (4-6 hafta)
-   • Detaylı çizimler
-   • Statik hesaplar
-   
-4️⃣ **Ruhsat ve Uygulama** (Değişken)
-   • Belediye onayları
-   • Şantiye takibi
-
-💡 Her aşamada sizinle iletişim halindeyiz!`,
+        tasarim: `📐 <b>Mimari Tasarım Sürecimiz:</b><br><br>
+<b>1. İhtiyaç Analizi (1-2 hafta)</b><br>
+• İlk görüşme ve saha keşfi<br>
+• Bütçe belirleme<br><br>
+<b>2. Ön Tasarım (2-3 hafta)</b><br>
+• Konsept eskizler ve 3D modelleme<br><br>
+<b>3. Uygulama Projesi (4-6 hafta)</b><br>
+• Detaylı çizimler ve statik hesaplar<br><br>
+<b>4. Ruhsat ve Uygulama</b><br>
+• Belediye onayları ve şantiye takibi`,
 
         // İç mimarlık
-        iç: `🛋️ **İç Mimarlık Hizmetlerimiz:**
+        ic: `🛋️ <b>İç Mimarlık Hizmetlerimiz:</b><br><br>
+• Mekan Planlaması<br>
+• Mobilya Tasarımı (özel üretim)<br>
+• Malzeme Seçimi<br>
+• Aydınlatma Tasarımı<br>
+• Renk Paleti Oluşturma<br>
+• 3D Görselleştirme<br><br>
+Portföyümüzü inceleyebilirsiniz!`,
 
-✨ Kapsamlı iç mekan tasarımı sunuyoruz:
+        // TAKS KAKS
+        taks: `📊 <b>TAKS ve KAKS Nedir?</b><br><br>
+<b>TAKS (Taban Alanı Kat Sayısı):</b><br>
+Yapının taban alanının parsel alanına oranıdır.<br>
+• Formül: TAKS = Taban Alanı / Parsel Alanı<br>
+• Örnek: 500m² parselde TAKS=0.40 ise max taban 200m²<br><br>
+<b>KAKS (Kat Alanı Kat Sayısı):</b><br>
+Toplam inşaat alanının parsel alanına oranıdır.<br>
+• Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
+• Örnek: KAKS=1.5 ise 500m² parselde max 750m² inşaat<br><br>
+<b>Emsal:</b> KAKS ile aynı anlama gelir.`,
 
-• **Mekan Planlaması:** Fonksiyonel alan kullanımı
-• **Mobilya Tasarımı:** Özel üretim mobilyalar
-• **Malzeme Seçimi:** Kaliteli ve estetik materyaller
-• **Aydınlatma Tasarımı:** Ambiyans oluşturma
-• **Renk Paleti:** Uyumlu renk seçimleri
-• **3D Görselleştirme:** Bitirilmiş hali görün
-
-🎨 Portföyümüzü inceleyerek çalışmalarımızı görebilirsiniz!`,
-
-        // Maliyet
-        maliyet: `💰 **Proje Maliyeti Nasıl Hesaplanır:**
-
-Mimari proje maliyeti şu faktörlere bağlıdır:
-
-📏 **Proje Büyüklüğü:**
-   • Metrekare bazında (m²)
-   • Kat sayısı
-
-🏗️ **Proje Tipi:**
-   • Villa: 150-300 TL/m²
-   • Apartman: 100-200 TL/m²
-   • İç Mekan: 80-150 TL/m²
-
-📦 **Kapsam:**
-   • Mimari proje
-   • Statik proje
-   • Mekanik projeler
-   • Ruhsat işlemleri
-
-💡 Net fiyat için projenizdeki detayları paylaşın!`,
-
-        // Süre
-        süre: `⏱️ **Proje Teslim Süreleri:**
-
-📅 Ortalama sürelerimiz:
-
-• **Villa Projesi:** 6-8 hafta
-• **Konut İç Mekan:** 3-4 hafta
-• **Ticari Mekan:** 4-6 hafta
-• **Ruhsat Süreci:** 2-4 ay (belediyeye göre değişir)
-
-âš¡ Acil projeler için hızlandırılmış seçeneklerimiz var!`,
+        // İmar
+        imar: `🏛️ <b>İmar Mevzuatı Bilgileri:</b><br><br>
+<b>Önemli Kavramlar:</b><br>
+• <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
+• <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
+• <b>H max:</b> Maksimum bina yüksekliği<br>
+• <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
+<b>Başvuru İçin Gerekli Belgeler:</b><br>
+• Tapu fotokopisi<br>
+• İmar durumu belgesi<br>
+• Mimari proje<br>
+• Statik proje<br>
+• Mekanik proje`,
 
         // Ruhsat
-        ruhsat: `📋 **Ruhsat İşlemleri:**
+        ruhsat: `📋 <b>Yapı Ruhsatı Süreci:</b><br><br>
+<b>Gerekli Projeler:</b><br>
+✅ Mimari Proje<br>
+✅ Statik Proje<br>
+✅ Mekanik (Tesisat) Proje<br>
+✅ Elektrik Proje<br><br>
+<b>Gerekli Belgeler:</b><br>
+• Tapu fotokopisi<br>
+• İmar durum belgesi<br>
+• Zemin etüdü raporu<br>
+• Harita aplikasyonu<br><br>
+<b>Süre:</b> Ortalama 2-4 ay (belediyeye göre değişir)`,
 
-Belediye onayları için gereken belgeler:
+        // Deprem yönetmeliği
+        deprem: `🏗️ <b>Türkiye Bina Deprem Yönetmeliği (TBDY 2018):</b><br><br>
+<b>Temel Prensipler:</b><br>
+• Dayanım esaslı tasarım<br>
+• Süneklik sınıfları (sınırlı, normal, yüksek)<br>
+• Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
+<b>Yapı Düzensizlikleri:</b><br>
+• A Tipi (Plan): Burulma, döşeme süreksizliği<br>
+• B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
+<b>Önemli:</b> Tüm projelerimiz TBDY 2018'e uygundur.`,
 
-✅ **Mimari Proje**
-✅ **Statik Proje**
-✅ **Mekanik Proje**
-✅ **Elektrik Proje**
-✅ **Tapu Fotokopisi**
-✅ **İmar Durum Belgesi**
+        // Yangın yönetmeliği
+        yangin: `🔥 <b>Binaların Yangından Korunması Yönetmeliği:</b><br><br>
+<b>Kaçış Yolları:</b><br>
+• Min genişlik: 80cm (konut), 120cm (ticari)<br>
+• Merdiven genişliği: Min 120cm<br><br>
+<b>Yangın Merdiveni Zorunluluğu:</b><br>
+• 21.50m üzeri binalar<br>
+• 30 kişiyi aşan katlar<br><br>
+<b>Yangın Kompartımanı:</b><br>
+• Her 2500m²'de bölme<br>
+• 2 saat yangın dayanımı`,
 
-🏛️ Belediye süreçlerini takip ediyoruz.
-📞 Danışmanlık hizmeti veriyoruz!`,
+        // Maliyet
+        maliyet: `💰 <b>Proje Maliyetleri:</b><br><br>
+<b>Mimari Proje (m² bazlı):</b><br>
+• Villa: 150-300 TL/m²<br>
+• Apartman: 100-200 TL/m²<br>
+• İç Mekan: 80-150 TL/m²<br>
+• Ticari: 120-250 TL/m²<br><br>
+<b>Not:</b> Fiyatlar proje kapsamına göre değişir.<br>
+Net fiyat için proje detaylarınızı paylaşın!`,
 
-        // Ödeme
-        ödeme: `💳 **Ödeme Koşulları:**
+        // Çekme mesafeleri
+        cekme: `📏 <b>Çekme Mesafeleri:</b><br><br>
+<b>Ayrık Yapı Düzeni:</b><br>
+• Ön bahçe: Min 5m (yola göre değişir)<br>
+• Arka bahçe: Min 3m (H/2 kuralı)<br>
+• Yan bahçe: Min 3m<br><br>
+<b>Bitişik Yapı Düzeni:</b><br>
+• Sadece ön ve arka bahçe çekmesi<br><br>
+<b>Not:</b> İmar planına göre değişiklik gösterebilir.`,
 
-Esnek ödeme planlarımız var:
+        // Kat yüksekliği
+        kat: `📐 <b>Kat Yüksekliği Standartları:</b><br><br>
+<b>Konutlarda:</b><br>
+• Min döşemeden tavana: 2.40m<br>
+• Brüt kat yüksekliği: 2.80-3.00m<br><br>
+<b>Ticari Alanlarda:</b><br>
+• Min temiz yükseklik: 2.60m<br>
+• Bodrum: Min 2.40m<br><br>
+<b>Asansör Zorunluluğu:</b><br>
+• 4 kattan fazla binalarda zorunlu`,
 
-1️⃣ **%40** - Sözleşme imzalanırken
-2️⃣ **%30** - Ön tasarım onayında
-3️⃣ **%30** - Proje tesliminde
-
-💡 Özel ödeme planları da yapabiliriz.
-📧 Detaylı görüşme için iletişime geçin!`,
+        // Otopark
+        otopark: `🚗 <b>Otopark Yönetmeliği:</b><br><br>
+<b>Konut:</b><br>
+• 0-75m²: 1 araç / 2 daire<br>
+• 75-150m²: 1 araç / daire<br>
+• 150m² üzeri: 2 araç / daire<br><br>
+<b>Ticari:</b><br>
+• Ofis: 1 araç / 30m²<br>
+• Mağaza: 1 araç / 50m²<br><br>
+<b>Otopark Boyutları:</b><br>
+• Min 2.50 x 5.00m`,
 
         // 3D
-        '3d': `🎨 **3D Görselleştirme:**
+        '3d': `🎨 <b>3D Görselleştirme:</b><br><br>
+• Fotorealistik görüntüler<br>
+• Gündüz/gece sahneleri<br>
+• İç ve dış mekan renderleri<br>
+• 360° sanal tur<br>
+• Video animasyon<br><br>
+Projenizi yaşamadan önce görün!`,
 
-Projelerinizi gerçekçi 3D render'larla görselleştiriyoruz:
+        // Süre
+        sure: `⏱️ <b>Proje Süreleri:</b><br><br>
+• Villa Projesi: 6-8 hafta<br>
+• Konut İç Mekan: 3-4 hafta<br>
+• Ticari Mekan: 4-6 hafta<br>
+• Ruhsat Süreci: 2-4 ay<br><br>
+Acil projeler için hızlandırılmış seçeneklerimiz var!`,
 
-✨ **Özellikler:**
-• Fotorealistik görüntüler
-• Gündüz/gece sahneleri
-• İç ve dış mekan renderleri
-• 360° tur seçeneği
-• Video animasyon
+        // Ödeme
+        odeme: `💳 <b>Ödeme Koşulları:</b><br><br>
+<b>Standart Plan:</b><br>
+• %40 - Sözleşmede<br>
+• %30 - Ön tasarım onayında<br>
+• %30 - Proje tesliminde<br><br>
+Özel ödeme planları için görüşebiliriz!`,
 
-🎬 Projenizi yaşamadan önce görün!`,
-
-        // Diğer
-        default: `Merhaba! 👋 
-
-Mimarlık hakkında size nasıl yardımcı olabilirim? 
-
-**Popüler konular:**
-🏡 Villa ve konut projeleri
-📐 Tasarım süreci
-🛋️ İç mimarlık
-💰 Maliyet hesaplama
-⏱️ Proje süreleri
-📋 Ruhsat işlemleri
-
-Sorunuzu detaylandırabilir veya WhatsApp üzerinden doğrudan iletişime geçebilirsiniz! 📞`
+        // Default
+        default: `Merhaba! 👋<br><br>
+CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
+🏡 Villa ve konut projeleri<br>
+📐 Tasarım süreci<br>
+🛋️ İç mimarlık<br>
+📊 TAKS/KAKS hesaplama<br>
+🏛️ İmar mevzuatı<br>
+📋 Ruhsat işlemleri<br>
+🏗️ Deprem yönetmeliği<br>
+🔥 Yangın yönetmeliği<br>
+📏 Çekme mesafeleri<br>
+🚗 Otopark yönetmeliği<br>
+💰 Maliyet hesaplama<br><br>
+Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // Anahtar kelime eşleştirme
-    if (q.includes('villa') || q.includes('ev') || q.includes('konut')) {
+    // Gelişmiş anahtar kelime eşleştirme
+    if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
+        return answers.taks;
+    } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
+        return answers.imar;
+    } else if (q.includes('deprem') || q.includes('tbdy') || q.includes('yonetmelik') && q.includes('bina')) {
+        return answers.deprem;
+    } else if (q.includes('yangin') || q.includes('kacis') || q.includes('merdiven')) {
+        return answers.yangin;
+    } else if (q.includes('cekme') || q.includes('bahce') || q.includes('mesafe')) {
+        return answers.cekme;
+    } else if (q.includes('kat') && (q.includes('yukseklik') || q.includes('asansor'))) {
+        return answers.kat;
+    } else if (q.includes('otopark') || q.includes('park') || q.includes('garaj')) {
+        return answers.otopark;
+    } else if (q.includes('villa') || q.includes('ev') || q.includes('konut')) {
         return answers.villa;
-    } else if (q.includes('tasarım') || q.includes('süreç') || q.includes('nasıl') || q.includes('aşama')) {
-        return answers.tasarım;
-    } else if (q.includes('iç') || q.includes('mobilya') || q.includes('dekor')) {
-        return answers.iç;
-    } else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('ücret') || q.includes('para')) {
+    } else if (q.includes('tasarim') || q.includes('surec') || q.includes('nasil') || q.includes('asama')) {
+        return answers.tasarim;
+    } else if (q.includes('ic') || q.includes('mobilya') || q.includes('dekor')) {
+        return answers.ic;
+    } else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('ucret') || q.includes('para')) {
         return answers.maliyet;
-    } else if (q.includes('süre') || q.includes('ne kadar') || q.includes('zaman')) {
-        return answers.süre;
+    } else if (q.includes('sure') || q.includes('ne kadar') || q.includes('zaman')) {
+        return answers.sure;
     } else if (q.includes('ruhsat') || q.includes('izin') || q.includes('belediye')) {
         return answers.ruhsat;
-    } else if (q.includes('ödeme') || q.includes('taksit') || q.includes('peşin')) {
-        return answers.ödeme;
-    } else if (q.includes('3d') || q.includes('görsel') || q.includes('render')) {
+    } else if (q.includes('odeme') || q.includes('taksit') || q.includes('pesin')) {
+        return answers.odeme;
+    } else if (q.includes('3d') || q.includes('gorsel') || q.includes('render')) {
         return answers['3d'];
     } else {
         return answers.default;
@@ -7613,8 +7695,8 @@ const SecurityManager = {
     escapeHtml: function(text) {
         if (typeof text !== 'string') return text;
         const map = {
-            '&': '&', '<': '<', '>': '>', '"': '"',
-            "'": ''', "/": '/', "`": '`', "=": '='
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;',
+            "'": '&#39;', "/": '&#x2F;', "`": '&#x60;', "=": '&#x3D;'
         };
         return text.replace(/[&<>"'`=\/]/g, (char) => map[char]);
     },
@@ -7624,7 +7706,7 @@ const SecurityManager = {
         input = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
         input = input.replace(/on\w+\s*=\s*["'][^"']*["']/gi, '');
         input = input.replace(/javascript:/gi, '');
-        input = input.replace(/[';\"--]/g, '');
+        input = input.replace(/['";\-\-]/g, '');
         return input.trim();
     },
 
