@@ -3932,16 +3932,16 @@ window.goToAdmin = goToAdmin;
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
-            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()">Anasayfa</a>
-            <a href="#projeler" onclick="closeMobileMenu()">Projeler</a>
-            <a href="#hakkimizda" onclick="closeMobileMenu()">Hakkımızda</a>
-            <a href="#hizmetler" onclick="closeMobileMenu()">Hizmetler</a>
-            <a href="#referanslar" onclick="closeMobileMenu()">Referanslar</a>
-            <a href="#sss" onclick="closeMobileMenu()">SSS</a>
+            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()" data-tr="Anasayfa" data-en="Home">Anasayfa</a>
+            <a href="#projeler" onclick="closeMobileMenu()" data-tr="Projeler" data-en="Projects">Projeler</a>
+            <a href="#hakkimizda" onclick="closeMobileMenu()" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</a>
+            <a href="#hizmetler" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+            <a href="#referanslar" onclick="closeMobileMenu()" data-tr="Referanslar" data-en="References">Referanslar</a>
+            <a href="#sss" onclick="closeMobileMenu()" data-tr="SSS" data-en="FAQ">SSS</a>
             
             <!-- E-HİZMETLER DROPDOWN -->
             <div class="nav-dropdown" style="display: inline-block; position: relative;">
-                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;">
+                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;" data-tr="🛒 E-Hizmetler" data-en="🛒 E-Services">
                     🛒 E-Hizmetler
                 </a>
                 <div class="ehizmetler-menu" id="ehizmetlerMenu" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 10001; margin-top: 10px;">
@@ -3951,7 +3951,7 @@ window.goToAdmin = goToAdmin;
                 </div>
             </div>
             
-            <a href="#iletisim" onclick="closeMobileMenu()">İletişim</a>
+            <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
             <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
@@ -4024,7 +4024,7 @@ window.goToAdmin = goToAdmin;
 
     <div class="filter-container">
         <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All">Tümü</button>
-        <button class="filter-btn" data-filter="villa">Villa</button>
+        <button class="filter-btn" data-filter="villa" data-tr="Villa" data-en="Villa">Villa</button>
         <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment">Apartman</button>
         <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office">Ofis</button>
         <button class="filter-btn" data-filter="ticari" data-tr="Ticari" data-en="Commercial">Ticari</button>
@@ -4079,157 +4079,152 @@ window.goToAdmin = goToAdmin;
 <!-- HİZMETLERİMİZ SECTION -->
 <section id="hizmetler" style="padding: 100px 0; background: var(--bg);">
     <div class="section-header">
-        <div class="section-label">HİZMETLERİMİZ</div>
-        <h2 class="section-title">Sunduğumuz Hizmetler</h2>
+        <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
+        <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">Sunduğumuz Hizmetler</h2>
     </div>
     
-    <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🏠</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Mimari Proje</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı çizimler.
-            </p>
-        </div>
-        
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">📋</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Ruhsat İşlemleri</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin takibi ve tamamlanması.
-            </p>
-        </div>
-        
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🛋️</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">İç Mimarlık</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı.
-            </p>
-        </div>
-        
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">📐</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Statik Proje</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Deprem yönetmeliğine uygun statik hesaplamalar ve taşıyıcı sistem projeleri.
-            </p>
-        </div>
-        
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🏗️</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">Şantiye Yönetimi</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                İnşaat sürecinin tamamında profesyonel danışmanlık ve şantiye koordinasyonu.
-            </p>
-        </div>
-        
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">🎨</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);">3D Görselleştirme</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;">
-                Projenizi gerçeğe en yakın şekilde görmenizi sağlayan fotorealistik 3D render hizmeti.
-            </p>
-        </div>
+    <div class="services-grid" id="servicesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+        <!-- Hizmetler JavaScript ile yüklenecek -->
     </div>
 </section>
+
+<script>
+// Varsayılan hizmetler
+const defaultServices = [
+    { icon: '🏠', titleTr: 'Mimari Proje', titleEn: 'Architectural Project', descTr: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı çizimler.', descEn: 'Professional architectural project service for residential, villa, apartment and commercial buildings. 3D visualization and detailed drawings.' },
+    { icon: '📋', titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', descTr: 'İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin takibi ve tamamlanması.', descEn: 'Tracking and completion of construction permits, occupancy permits and all municipal permit processes.' },
+    { icon: '🛋️', titleTr: 'İç Mimarlık', titleEn: 'Interior Design', descTr: 'Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı.', descEn: 'Custom interior design, furniture selection and decoration consultancy for your living spaces.' },
+    { icon: '📐', titleTr: 'Statik Proje', titleEn: 'Structural Project', descTr: 'Deprem yönetmeliğine uygun statik hesaplamalar ve taşıyıcı sistem projeleri.', descEn: 'Structural calculations and load-bearing system projects compliant with earthquake regulations.' },
+    { icon: '🏗️', titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', descTr: 'İnşaat sürecinin tamamında profesyonel danışmanlık ve şantiye koordinasyonu.', descEn: 'Professional consultancy and site coordination throughout the construction process.' },
+    { icon: '🎨', titleTr: '3D Görselleştirme', titleEn: '3D Visualization', descTr: 'Projenizi gerçeğe en yakın şekilde görmenizi sağlayan fotorealistik 3D render hizmeti.', descEn: 'Photorealistic 3D render service that allows you to see your project as close to reality as possible.' }
+];
+
+function loadServices() {
+    const grid = document.getElementById('servicesGrid');
+    if (!grid) return;
+    
+    const savedServices = localStorage.getItem('cee_services');
+    let services = defaultServices;
+    
+    if (savedServices) {
+        try {
+            const parsed = JSON.parse(savedServices);
+            if (parsed.length > 0) services = parsed;
+        } catch(e) {}
+    }
+    
+    const lang = localStorage.getItem('cee_public_lang') || 'tr';
+    
+    grid.innerHTML = services.map(s => `
+        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div style="font-size: 48px; margin-bottom: 20px;">${s.icon}</div>
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);" data-tr="${s.titleTr}" data-en="${s.titleEn}">${lang === 'tr' ? s.titleTr : s.titleEn}</h3>
+            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;" data-tr="${s.descTr}" data-en="${s.descEn}">${lang === 'tr' ? s.descTr : s.descEn}</p>
+        </div>
+    `).join('');
+}
+loadServices();
+</script>
 
 <!-- REFERANSLAR SECTION -->
 <section id="referanslar" style="padding: 100px 0; background: white;">
     <div class="section-header">
-        <div class="section-label">REFERANSLARIMIZ</div>
-        <h2 class="section-title">Çalıştığımız Kurumlar</h2>
+        <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</div>
+        <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">Çalıştığımız Kurumlar</h2>
     </div>
     
-    <div class="references-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏛️</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Çorlu Belediyesi</h4>
-        </div>
-        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏢</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Özel Projeler</h4>
-        </div>
-        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏘️</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Konut Projeleri</h4>
-        </div>
-        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            <div style="font-size: 60px; margin-bottom: 15px;">🏬</div>
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;">Ticari Yapılar</h4>
-        </div>
+    <div class="references-grid" id="referencesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+        <!-- Referanslar JavaScript ile yüklenecek -->
     </div>
 </section>
+
+<script>
+// Varsayılan referanslar
+const defaultReferences = [
+    { icon: '🏛️', nameTr: 'Çorlu Belediyesi', nameEn: 'Corlu Municipality', logo: '' },
+    { icon: '🏢', nameTr: 'Özel Projeler', nameEn: 'Private Projects', logo: '' },
+    { icon: '🏘️', nameTr: 'Konut Projeleri', nameEn: 'Residential Projects', logo: '' },
+    { icon: '🏬', nameTr: 'Ticari Yapılar', nameEn: 'Commercial Buildings', logo: '' }
+];
+
+function loadReferences() {
+    const grid = document.getElementById('referencesGrid');
+    if (!grid) return;
+    
+    const savedRefs = localStorage.getItem('cee_references');
+    let refs = defaultReferences;
+    
+    if (savedRefs) {
+        try {
+            const parsed = JSON.parse(savedRefs);
+            if (parsed.length > 0) refs = parsed;
+        } catch(e) {}
+    }
+    
+    const lang = localStorage.getItem('cee_public_lang') || 'tr';
+    
+    grid.innerHTML = refs.map(r => `
+        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
+            ${r.logo ? `<img src="${r.logo}" alt="${lang === 'tr' ? r.nameTr : r.nameEn}" style="max-width: 80px; max-height: 60px; object-fit: contain; margin-bottom: 15px;">` : `<div style="font-size: 60px; margin-bottom: 15px;">${r.icon}</div>`}
+            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;" data-tr="${r.nameTr}" data-en="${r.nameEn}">${lang === 'tr' ? r.nameTr : r.nameEn}</h4>
+        </div>
+    `).join('');
+}
+loadReferences();
+</script>
 
 <!-- SSS (FAQ) SECTION -->
 <section id="sss" style="padding: 100px 0; background: var(--bg);">
     <div class="section-header">
-        <div class="section-label">SIK SORULAN SORULAR</div>
-        <h2 class="section-title">Merak Edilenler</h2>
+        <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS">SIK SORULAN SORULAR</div>
+        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">Merak Edilenler</h2>
     </div>
     
-    <div class="faq-container" style="max-width: 900px; margin: 0 auto; padding: 0 40px;">
-        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Mimari proje süresi ne kadar?</h3>
-                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
-            </div>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.
-                </p>
-            </div>
-        </div>
-        
-        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Proje ücreti nasıl hesaplanır?</h3>
-                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
-            </div>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.
-                </p>
-            </div>
-        </div>
-        
-        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Ruhsat işlemleri dahil mi?</h3>
-                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
-            </div>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.
-                </p>
-            </div>
-        </div>
-        
-        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">3D görselleştirme yapıyor musunuz?</h3>
-                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
-            </div>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.
-                </p>
-            </div>
-        </div>
-        
-        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;">Şantiye takibi yapıyor musunuz?</h3>
-                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
-            </div>
-            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;">
-                    Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.
-                </p>
-            </div>
-        </div>
+    <div class="faq-container" id="faqContainer" style="max-width: 900px; margin: 0 auto; padding: 0 40px;">
+        <!-- SSS JavaScript ile yüklenecek -->
     </div>
 </section>
+
+<script>
+// Varsayılan SSS
+const defaultFaqs = [
+    { questionTr: 'Mimari proje süresi ne kadar?', questionEn: 'How long does an architectural project take?', answerTr: 'Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.', answerEn: 'Depending on the project size, an average residential project takes 3-4 weeks. Villa projects take 4-6 weeks, while commercial projects are completed in 6-8 weeks.' },
+    { questionTr: 'Proje ücreti nasıl hesaplanır?', questionEn: 'How is the project fee calculated?', answerTr: 'Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.', answerEn: 'Project fee is determined based on construction area, project type, level of detail and additional services. Contact us for a detailed quote.' },
+    { questionTr: 'Ruhsat işlemleri dahil mi?', questionEn: 'Are permit services included?', answerTr: 'Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.', answerEn: 'Permit services are separate. Upon request, we follow up all municipal procedures on your behalf. The permit process takes an average of 2-4 months.' },
+    { questionTr: '3D görselleştirme yapıyor musunuz?', questionEn: 'Do you do 3D visualization?', answerTr: 'Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.', answerEn: 'Yes, we offer photorealistic 3D render and animation services. You can see your project as close to reality as possible before construction.' },
+    { questionTr: 'Şantiye takibi yapıyor musunuz?', questionEn: 'Do you provide site supervision?', answerTr: 'Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.', answerEn: 'Yes, we provide site consultancy and technical coordination services. We check project compliance during construction and provide technical support.' }
+];
+
+function loadFaqs() {
+    const container = document.getElementById('faqContainer');
+    if (!container) return;
+    
+    const savedFaqs = localStorage.getItem('cee_faqs');
+    let faqs = defaultFaqs;
+    
+    if (savedFaqs) {
+        try {
+            const parsed = JSON.parse(savedFaqs);
+            if (parsed.length > 0) faqs = parsed;
+        } catch(e) {}
+    }
+    
+    const lang = localStorage.getItem('cee_public_lang') || 'tr';
+    
+    container.innerHTML = faqs.map(f => `
+        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr}" data-en="${f.questionEn}">${lang === 'tr' ? f.questionTr : f.questionEn}</h3>
+                <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
+            </div>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
+                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr}" data-en="${f.answerEn}">${lang === 'tr' ? f.answerTr : f.answerEn}</p>
+            </div>
+        </div>
+    `).join('');
+}
+loadFaqs();
+</script>
 
 <section id="iletisim">
     <div class="section-header">
@@ -4335,20 +4330,22 @@ window.goToAdmin = goToAdmin;
                             onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
-                            <option value="">Konu Seçin</option>
-                            <option value="Mimari Proje">Mimari Proje</option>
-                            <option value="Villa Tasarımı">Villa Tasarımı</option>
-                            <option value="Apartman Projesi">Apartman Projesi</option>
-                            <option value="Ticari Yapı">Ticari Yapı</option>
-                            <option value="Ruhsat İşlemleri">Ruhsat İşlemleri</option>
-                            <option value="3D Görselleştirme">3D Görselleştirme</option>
-                            <option value="Diğer">Diğer</option>
+                            <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
+                            <option value="Mimari Proje" data-tr="Mimari Proje" data-en="Architectural Project">Mimari Proje</option>
+                            <option value="Villa Tasarımı" data-tr="Villa Tasarımı" data-en="Villa Design">Villa Tasarımı</option>
+                            <option value="Apartman Projesi" data-tr="Apartman Projesi" data-en="Apartment Project">Apartman Projesi</option>
+                            <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
+                            <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
+                            <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
                         </select>
                     </div>
                     
                     <div>
                         <textarea 
                             id="contactMessage" 
+                            data-tr="Mesajınız *" 
+                            data-en="Your Message *"
                             placeholder="Mesajınız *" 
                             required 
                             rows="5" 
@@ -4366,6 +4363,7 @@ window.goToAdmin = goToAdmin;
                         style="padding: 16px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+                        data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
                     >
                         📤 Mesaj Gönder
                     </button>
@@ -4381,26 +4379,63 @@ window.goToAdmin = goToAdmin;
         <h2 style="color: #1a1a1a; font-size: 32px; font-weight: 400; margin: 0;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
     </div>
     
-    <div style="max-width: 100%; margin: 0 auto;">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3009.26!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15!3m2!1m1!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
-            width="100%" 
-            height="400" 
-            style="border:0; display: block;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative;">
+        <!-- Harita -->
+        <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.26!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
+                width="100%" 
+                height="400" 
+                style="border:0; display: block;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Logo Overlay - Harita üzerinde -->
+        <div id="mapLogoOverlay" style="position: absolute; top: 20px; left: 40px; background: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; z-index: 10;">
+            <img id="mapLogo" src="" alt="CEE" style="width: 40px; height: 40px; object-fit: contain; display: none;">
+            <div id="mapLogoFallback" style="width: 40px; height: 40px; background: var(--accent, #d4af37); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px;">CEE</div>
+            <div>
+                <div style="font-weight: 700; color: #1a1a1a; font-size: 16px;">CEE MİMARLIK</div>
+                <div style="font-size: 12px; color: #666;">Mimarlık & Tasarım</div>
+            </div>
+        </div>
     </div>
     
+    <!-- Bilgiler -->
     <div style="max-width: 800px; margin: 30px auto 0; padding: 0 20px; text-align: center;">
-        <p style="color: #333; font-size: 15px; margin-bottom: 8px;">
-            <strong>Adres:</strong> Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
+        <p style="color: #333; font-size: 15px; margin-bottom: 8px;" data-tr="Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ" data-en="Address: Hatip, Ali Osman Celebi Blv. No:52 A Block Floor 1 No:3, 59860 Corlu/Tekirdag">
+            <strong data-tr="Adres:" data-en="Address:">Adres:</strong> Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
         </p>
         <p style="color: #333; font-size: 15px;">
-            <strong>Telefon:</strong> +90 282 651 55 66
+            <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong> +90 282 651 55 66
         </p>
+        <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #d4af37); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
+           onmouseover="this.style.filter='brightness(1.1)'"
+           onmouseout="this.style.filter='brightness(1)'"
+           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
+            🧭 Yol Tarifi Al
+        </a>
     </div>
 </section>
+
+<script>
+// Harita üzerindeki logoyu yükle
+(function() {
+    const savedLogo = localStorage.getItem('site_logo') || localStorage.getItem('cee_site_logo');
+    if (savedLogo) {
+        const mapLogo = document.getElementById('mapLogo');
+        const mapLogoFallback = document.getElementById('mapLogoFallback');
+        if (mapLogo && mapLogoFallback) {
+            mapLogo.src = savedLogo;
+            mapLogo.style.display = 'block';
+            mapLogoFallback.style.display = 'none';
+        }
+    }
+})();
+</script>
 
 <script>
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -5125,18 +5160,40 @@ body.dark-mode .btn-secondary {
         <div class="footer-logo">
             <img src="" alt="CEE" id="footerLogo" style="display: none;">
         </div>
-        <p class="footer-text" data-tr="Kalite ve estetik bir arada" data-en="Quality and aesthetics together">
+        <p class="footer-text" id="footerSlogan" data-tr="Kalite ve estetik bir arada" data-en="Quality and aesthetics together">
             Kalite ve estetik bir arada
         </p>
         
         
         <p class="footer-copyright">
             © <span id="footerYear">2026</span> 
-            <span class="admin-link" onclick="goToAdmin()">CEE MİMARLIK</span> 
+            <span class="admin-link" onclick="goToAdmin()" id="footerCompany">CEE MİMARLIK</span> 
             <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
         </p>
     </div>
 </footer>
+
+<script>
+// Footer bilgilerini yükle
+function loadFooterSettings() {
+    const savedFooter = localStorage.getItem('cee_footer_settings');
+    if (savedFooter) {
+        try {
+            const footer = JSON.parse(savedFooter);
+            if (footer.year) document.getElementById('footerYear').textContent = footer.year;
+            if (footer.company) document.getElementById('footerCompany').textContent = footer.company;
+            if (footer.slogan) {
+                const sloganEl = document.getElementById('footerSlogan');
+                if (sloganEl) {
+                    sloganEl.textContent = footer.slogan;
+                    sloganEl.dataset.tr = footer.slogan;
+                }
+            }
+        } catch(e) {}
+    }
+}
+loadFooterSettings();
+</script>
 
 <script>
 let projects = [];
@@ -8099,7 +8156,7 @@ function loadSiteSettings() {
 <script type="module" src="firebase-config.js"></script>
 
 <!-- ============================================ -->
-<!-- FIRESTORE ENTEGRASYONU - PROJELERI YÜKLE -->
+<!-- FIRESTORE ENTEGRASYONU - VERİLERİ YÜKLE -->
 <!-- ============================================ -->
 <script type="module">
 import { collection, getDocs, orderBy, query } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
@@ -8114,21 +8171,25 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (!window.firebaseDB) {
+        console.log('ℹ️ Firebase bağlantısı yok, localStorage kullanılıyor');
         return;
     }
     
+    console.log('🔥 Firebase bağlandı, veriler yükleniyor...');
+    
+    // PROJELERİ YÜKLE
     try {
-        const q = query(collection(window.firebaseDB, 'projects'), orderBy('createdAt', 'desc'));
-        const querySnapshot = await getDocs(q);
+        const projectsQuery = query(collection(window.firebaseDB, 'projects'), orderBy('createdAt', 'desc'));
+        const projectsSnapshot = await getDocs(projectsQuery);
         
         const projects = [];
-        querySnapshot.forEach((doc) => {
+        projectsSnapshot.forEach((doc) => {
             const data = doc.data();
             projects.push({
                 id: doc.id,
                 title: data.title || '',
                 description: data.description || '',
-                img: data.thumbnail || data.images[0],
+                img: data.thumbnail || (data.images && data.images[0]) || '',
                 media: data.images || [],
                 tags: data.tags || [],
                 details: data.details || {},
@@ -8137,15 +8198,72 @@ window.addEventListener('DOMContentLoaded', async () => {
             });
         });
         
-        window.projects = projects;
-        
-        // Projeleri render et (eğer renderProjects fonksiyonu varsa)
-        if (typeof window.renderProjects === 'function') {
-            window.renderProjects();
+        if (projects.length > 0) {
+            console.log('✅ Firebase projeleri yüklendi:', projects.length);
+            window.projects = projects;
+            
+            // Projeleri render et
+            if (typeof window.renderProjects === 'function') {
+                window.renderProjects();
+            }
         }
-        
     } catch (error) {
-        console.log('Firebase yükleme hatası:', error);
+        console.log('Proje yükleme hatası:', error);
+    }
+    
+    // EKİP ÜYELERİNİ YÜKLE
+    try {
+        const teamQuery = query(collection(window.firebaseDB, 'team_members'), orderBy('order', 'asc'));
+        const teamSnapshot = await getDocs(teamQuery);
+        
+        const teamMembers = [];
+        teamSnapshot.forEach((doc) => {
+            const data = doc.data();
+            teamMembers.push({
+                id: doc.id,
+                name: data.name || '',
+                role: data.role || data.position || '',
+                photo: data.photo || '',
+                bio: data.bio || '',
+                education: data.education || '',
+                experience: data.experience || '',
+                projects: data.projects || '',
+                email: data.email || '',
+                linkedin: data.linkedin || '',
+                instagram: data.instagram || '',
+                phone: data.phone || '',
+                order: data.order || 0
+            });
+        });
+        
+        if (teamMembers.length > 0) {
+            console.log('✅ Firebase ekip üyeleri yüklendi:', teamMembers.length);
+            // localStorage'a da kaydet (loadTeam fonksiyonu için)
+            localStorage.setItem('team_members', JSON.stringify(teamMembers));
+            
+            // Ekibi yeniden render et
+            if (typeof window.loadTeam === 'function') {
+                window.loadTeam();
+            }
+        }
+    } catch (error) {
+        console.log('Ekip yükleme hatası:', error);
+    }
+    
+    // SİTE AYARLARINI YÜKLE
+    try {
+        const settingsDoc = await getDocs(collection(window.firebaseDB, 'settings'));
+        settingsDoc.forEach((doc) => {
+            const data = doc.data();
+            if (data.theme) {
+                localStorage.setItem('cee_site_theme', data.theme);
+            }
+            if (data.footer) {
+                localStorage.setItem('cee_footer_settings', JSON.stringify(data.footer));
+            }
+        });
+    } catch (error) {
+        // Settings yüklenemezse devam et
     }
 });
 

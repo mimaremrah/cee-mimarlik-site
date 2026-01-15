@@ -2229,20 +2229,32 @@ body.dark-mode #projectModal .form-group textarea {
         </div>
         
         <!-- TABS -->
-        <div style="display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 1px solid #e5e7eb;">
-            <button onclick="switchSettingsTab('logo')" id="logoTabBtn" class="settings-tab-btn active" style="padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #667eea; border-bottom: 3px solid #667eea;">
+        <div style="display: flex; gap: 5px; margin-bottom: 25px; border-bottom: 1px solid #e5e7eb; flex-wrap: wrap;">
+            <button onclick="switchSettingsTab('logo')" id="logoTabBtn" class="settings-tab-btn active" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #667eea; border-bottom: 3px solid #667eea; font-size: 13px;">
                 🖼️ Logo
             </button>
-            <button onclick="switchSettingsTab('hero')" id="heroTabBtn" class="settings-tab-btn" style="padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent;">
-                🎨 Hero Yazıları
+            <button onclick="switchSettingsTab('hero')" id="heroTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                🎨 Hero
             </button>
-            <button onclick="switchSettingsTab('social')" id="socialTabBtn" class="settings-tab-btn" style="padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent;">
-                📱 Sosyal Medya
+            <button onclick="switchSettingsTab('services')" id="servicesTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                🛠️ Hizmetler
             </button>
-            <button onclick="switchSettingsTab('team')" id="teamTabBtn" class="settings-tab-btn" style="padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent;">
+            <button onclick="switchSettingsTab('references')" id="referencesTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                🏢 Referanslar
+            </button>
+            <button onclick="switchSettingsTab('faq')" id="faqTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                ❓ SSS
+            </button>
+            <button onclick="switchSettingsTab('footer')" id="footerTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                📄 Footer
+            </button>
+            <button onclick="switchSettingsTab('social')" id="socialTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
+                📱 Sosyal
+            </button>
+            <button onclick="switchSettingsTab('team')" id="teamTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
                 👥 Ekip
             </button>
-            <button onclick="switchSettingsTab('colors')" id="colorsTabBtn" class="settings-tab-btn" style="padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent;">
+            <button onclick="switchSettingsTab('colors')" id="colorsTabBtn" class="settings-tab-btn" style="padding: 8px 12px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; font-size: 13px;">
                 🎨 Renkler
             </button>
         </div>
@@ -2502,6 +2514,85 @@ body.dark-mode #projectModal .form-group textarea {
             
             <button onclick="resetColors()" style="width: 100%; padding: 12px; background: #f3f4f6; color: #666; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;">
                 🔄 Varsayılan Renklere Dön
+            </button>
+        </div>
+        
+        <!-- HİZMETLER TAB -->
+        <div id="servicesTab" class="settings-tab-content" style="display: none;">
+            <h3 style="color: #333; margin-bottom: 20px;">🛠️ Sunduğumuz Hizmetler</h3>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Anasayfadaki "Sunduğumuz Hizmetler" bölümünü buradan düzenleyebilirsiniz.</p>
+            
+            <div id="servicesList" style="margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
+                <!-- Hizmetler buraya yüklenecek -->
+            </div>
+            
+            <button onclick="addNewService()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
+                ➕ Yeni Hizmet Ekle
+            </button>
+            
+            <button onclick="saveServices()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                💾 Hizmetleri Kaydet
+            </button>
+        </div>
+        
+        <!-- REFERANSLAR TAB -->
+        <div id="referencesTab" class="settings-tab-content" style="display: none;">
+            <h3 style="color: #333; margin-bottom: 20px;">🏢 Çalıştığımız Kurumlar</h3>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Anasayfadaki "Çalıştığımız Kurumlar" bölümünü buradan düzenleyebilirsiniz.</p>
+            
+            <div id="referencesList" style="margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
+                <!-- Referanslar buraya yüklenecek -->
+            </div>
+            
+            <button onclick="addNewReference()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
+                ➕ Yeni Referans Ekle
+            </button>
+            
+            <button onclick="saveReferences()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                💾 Referansları Kaydet
+            </button>
+        </div>
+        
+        <!-- SSS TAB -->
+        <div id="faqTab" class="settings-tab-content" style="display: none;">
+            <h3 style="color: #333; margin-bottom: 20px;">❓ Sık Sorulan Sorular</h3>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Anasayfadaki "Merak Edilenler" bölümünü buradan düzenleyebilirsiniz.</p>
+            
+            <div id="faqList" style="margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
+                <!-- SSS buraya yüklenecek -->
+            </div>
+            
+            <button onclick="addNewFaq()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
+                ➕ Yeni Soru Ekle
+            </button>
+            
+            <button onclick="saveFaqs()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                💾 SSS'yi Kaydet
+            </button>
+        </div>
+        
+        <!-- FOOTER TAB -->
+        <div id="footerTab" class="settings-tab-content" style="display: none;">
+            <h3 style="color: #333; margin-bottom: 20px;">📄 Footer Ayarları</h3>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Sitenin alt kısmındaki (footer) bilgileri buradan düzenleyebilirsiniz.</p>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Şirket Adı:</label>
+                <input type="text" id="footerCompanyInput" value="CEE MİMARLIK" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Slogan:</label>
+                <input type="text" id="footerSloganInput" value="Kalite ve estetik bir arada" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Yıl:</label>
+                <input type="number" id="footerYearInput" value="2026" min="2020" max="2100" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;">
+            </div>
+            
+            <button onclick="saveFooterSettings()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                💾 Footer Ayarlarını Kaydet
             </button>
         </div>
     </div>
@@ -5411,6 +5502,18 @@ function loadSiteSettings() {
     if (colorSettings.primary) document.getElementById('primaryColor').value = colorSettings.primary;
     if (colorSettings.secondary) document.getElementById('secondaryColor').value = colorSettings.secondary;
     if (colorSettings.accent) document.getElementById('accentColor').value = colorSettings.accent;
+    
+    // Hizmetleri yükle
+    loadServicesAdmin();
+    
+    // Referansları yükle
+    loadReferencesAdmin();
+    
+    // SSS yükle
+    loadFaqsAdmin();
+    
+    // Footer ayarlarını yükle
+    loadFooterSettingsAdmin();
 }
 
 // Hero Ayarlarını Kaydet
@@ -5439,6 +5542,265 @@ function saveSocialLinks() {
     
     localStorage.setItem('social_links', JSON.stringify(links));
     showToast('✅ Sosyal medya linkleri kaydedildi!', 'success');
+}
+
+// ==========================================
+// HİZMETLER YÖNETİMİ
+// ==========================================
+const defaultServicesAdmin = [
+    { icon: '🏠', titleTr: 'Mimari Proje', titleEn: 'Architectural Project', descTr: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti.', descEn: 'Professional architectural project service for residential buildings.' },
+    { icon: '📋', titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', descTr: 'İnşaat ruhsatı ve tüm belediye izin süreçleri.', descEn: 'Construction permits and all municipal processes.' },
+    { icon: '🛋️', titleTr: 'İç Mimarlık', titleEn: 'Interior Design', descTr: 'Yaşam alanlarınız için özel iç mekan tasarımı.', descEn: 'Custom interior design for your living spaces.' },
+    { icon: '📐', titleTr: 'Statik Proje', titleEn: 'Structural Project', descTr: 'Deprem yönetmeliğine uygun statik hesaplamalar.', descEn: 'Structural calculations compliant with earthquake regulations.' },
+    { icon: '🏗️', titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', descTr: 'İnşaat sürecinde profesyonel danışmanlık.', descEn: 'Professional consultancy during construction.' },
+    { icon: '🎨', titleTr: '3D Görselleştirme', titleEn: '3D Visualization', descTr: 'Fotorealistik 3D render hizmeti.', descEn: 'Photorealistic 3D render service.' }
+];
+
+let servicesData = [];
+
+function loadServicesAdmin() {
+    const saved = localStorage.getItem('cee_services');
+    servicesData = saved ? JSON.parse(saved) : [...defaultServicesAdmin];
+    renderServicesAdmin();
+}
+
+function renderServicesAdmin() {
+    const list = document.getElementById('servicesList');
+    if (!list) return;
+    
+    list.innerHTML = servicesData.map((s, i) => `
+        <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 28px;">${s.icon}</span>
+            <div style="flex: 1;">
+                <strong style="color: #333;">${s.titleTr}</strong>
+                <p style="font-size: 12px; color: #666; margin: 0;">${s.descTr.substring(0, 50)}...</p>
+            </div>
+            <button onclick="editService(${i})" style="background: #667eea; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">✏️</button>
+            <button onclick="deleteService(${i})" style="background: #ef4444; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">🗑️</button>
+        </div>
+    `).join('');
+}
+
+function addNewService() {
+    const icon = prompt('Emoji İkon (örn: 🏠):', '🏢');
+    const titleTr = prompt('Başlık (Türkçe):', '');
+    const titleEn = prompt('Başlık (İngilizce):', '');
+    const descTr = prompt('Açıklama (Türkçe):', '');
+    const descEn = prompt('Açıklama (İngilizce):', '');
+    
+    if (titleTr && descTr) {
+        servicesData.push({ icon: icon || '🏢', titleTr, titleEn: titleEn || titleTr, descTr, descEn: descEn || descTr });
+        renderServicesAdmin();
+        showToast('✅ Hizmet eklendi!', 'success');
+    }
+}
+
+function editService(index) {
+    const s = servicesData[index];
+    const icon = prompt('Emoji İkon:', s.icon);
+    const titleTr = prompt('Başlık (Türkçe):', s.titleTr);
+    const titleEn = prompt('Başlık (İngilizce):', s.titleEn);
+    const descTr = prompt('Açıklama (Türkçe):', s.descTr);
+    const descEn = prompt('Açıklama (İngilizce):', s.descEn);
+    
+    if (titleTr) {
+        servicesData[index] = { icon: icon || s.icon, titleTr, titleEn: titleEn || titleTr, descTr, descEn: descEn || descTr };
+        renderServicesAdmin();
+        showToast('✅ Hizmet güncellendi!', 'success');
+    }
+}
+
+function deleteService(index) {
+    if (confirm('Bu hizmeti silmek istediğinize emin misiniz?')) {
+        servicesData.splice(index, 1);
+        renderServicesAdmin();
+        showToast('✅ Hizmet silindi!', 'success');
+    }
+}
+
+function saveServices() {
+    localStorage.setItem('cee_services', JSON.stringify(servicesData));
+    showToast('✅ Hizmetler kaydedildi!', 'success');
+}
+
+// ==========================================
+// REFERANSLAR YÖNETİMİ
+// ==========================================
+const defaultReferencesAdmin = [
+    { icon: '🏛️', nameTr: 'Çorlu Belediyesi', nameEn: 'Corlu Municipality', logo: '' },
+    { icon: '🏢', nameTr: 'Özel Projeler', nameEn: 'Private Projects', logo: '' },
+    { icon: '🏘️', nameTr: 'Konut Projeleri', nameEn: 'Residential Projects', logo: '' },
+    { icon: '🏬', nameTr: 'Ticari Yapılar', nameEn: 'Commercial Buildings', logo: '' }
+];
+
+let referencesData = [];
+
+function loadReferencesAdmin() {
+    const saved = localStorage.getItem('cee_references');
+    referencesData = saved ? JSON.parse(saved) : [...defaultReferencesAdmin];
+    renderReferencesAdmin();
+}
+
+function renderReferencesAdmin() {
+    const list = document.getElementById('referencesList');
+    if (!list) return;
+    
+    list.innerHTML = referencesData.map((r, i) => `
+        <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 28px;">${r.icon}</span>
+            <div style="flex: 1;">
+                <strong style="color: #333;">${r.nameTr}</strong>
+                <p style="font-size: 12px; color: #666; margin: 0;">${r.nameEn}</p>
+            </div>
+            <button onclick="editReference(${i})" style="background: #667eea; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">✏️</button>
+            <button onclick="deleteReference(${i})" style="background: #ef4444; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">🗑️</button>
+        </div>
+    `).join('');
+}
+
+function addNewReference() {
+    const icon = prompt('Emoji İkon (örn: 🏛️):', '🏢');
+    const nameTr = prompt('Kurum Adı (Türkçe):', '');
+    const nameEn = prompt('Kurum Adı (İngilizce):', '');
+    
+    if (nameTr) {
+        referencesData.push({ icon: icon || '🏢', nameTr, nameEn: nameEn || nameTr, logo: '' });
+        renderReferencesAdmin();
+        showToast('✅ Referans eklendi!', 'success');
+    }
+}
+
+function editReference(index) {
+    const r = referencesData[index];
+    const icon = prompt('Emoji İkon:', r.icon);
+    const nameTr = prompt('Kurum Adı (Türkçe):', r.nameTr);
+    const nameEn = prompt('Kurum Adı (İngilizce):', r.nameEn);
+    
+    if (nameTr) {
+        referencesData[index] = { icon: icon || r.icon, nameTr, nameEn: nameEn || nameTr, logo: r.logo };
+        renderReferencesAdmin();
+        showToast('✅ Referans güncellendi!', 'success');
+    }
+}
+
+function deleteReference(index) {
+    if (confirm('Bu referansı silmek istediğinize emin misiniz?')) {
+        referencesData.splice(index, 1);
+        renderReferencesAdmin();
+        showToast('✅ Referans silindi!', 'success');
+    }
+}
+
+function saveReferences() {
+    localStorage.setItem('cee_references', JSON.stringify(referencesData));
+    showToast('✅ Referanslar kaydedildi!', 'success');
+}
+
+// ==========================================
+// SSS YÖNETİMİ
+// ==========================================
+const defaultFaqsAdmin = [
+    { questionTr: 'Mimari proje süresi ne kadar?', questionEn: 'How long does an architectural project take?', answerTr: 'Proje büyüklüğüne göre değişmekle birlikte, ortalama 3-6 hafta sürer.', answerEn: 'It takes 3-6 weeks on average depending on the project size.' },
+    { questionTr: 'Proje ücreti nasıl hesaplanır?', questionEn: 'How is the project fee calculated?', answerTr: 'İnşaat alanı ve proje türüne göre belirlenir.', answerEn: 'Determined by construction area and project type.' },
+    { questionTr: 'Ruhsat işlemleri dahil mi?', questionEn: 'Are permit services included?', answerTr: 'Ruhsat işlemleri ayrı bir hizmet olarak sunulur.', answerEn: 'Permit services are offered as a separate service.' }
+];
+
+let faqsData = [];
+
+function loadFaqsAdmin() {
+    const saved = localStorage.getItem('cee_faqs');
+    faqsData = saved ? JSON.parse(saved) : [...defaultFaqsAdmin];
+    renderFaqsAdmin();
+}
+
+function renderFaqsAdmin() {
+    const list = document.getElementById('faqList');
+    if (!list) return;
+    
+    list.innerHTML = faqsData.map((f, i) => `
+        <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; gap: 10px;">
+                <div style="flex: 1;">
+                    <strong style="color: #333; display: block; margin-bottom: 5px;">❓ ${f.questionTr}</strong>
+                    <p style="font-size: 12px; color: #666; margin: 0;">${f.answerTr.substring(0, 80)}...</p>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <button onclick="editFaq(${i})" style="background: #667eea; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">✏️</button>
+                    <button onclick="deleteFaq(${i})" style="background: #ef4444; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">🗑️</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function addNewFaq() {
+    const questionTr = prompt('Soru (Türkçe):', '');
+    const questionEn = prompt('Soru (İngilizce):', '');
+    const answerTr = prompt('Cevap (Türkçe):', '');
+    const answerEn = prompt('Cevap (İngilizce):', '');
+    
+    if (questionTr && answerTr) {
+        faqsData.push({ questionTr, questionEn: questionEn || questionTr, answerTr, answerEn: answerEn || answerTr });
+        renderFaqsAdmin();
+        showToast('✅ Soru eklendi!', 'success');
+    }
+}
+
+function editFaq(index) {
+    const f = faqsData[index];
+    const questionTr = prompt('Soru (Türkçe):', f.questionTr);
+    const questionEn = prompt('Soru (İngilizce):', f.questionEn);
+    const answerTr = prompt('Cevap (Türkçe):', f.answerTr);
+    const answerEn = prompt('Cevap (İngilizce):', f.answerEn);
+    
+    if (questionTr && answerTr) {
+        faqsData[index] = { questionTr, questionEn: questionEn || questionTr, answerTr, answerEn: answerEn || answerTr };
+        renderFaqsAdmin();
+        showToast('✅ Soru güncellendi!', 'success');
+    }
+}
+
+function deleteFaq(index) {
+    if (confirm('Bu soruyu silmek istediğinize emin misiniz?')) {
+        faqsData.splice(index, 1);
+        renderFaqsAdmin();
+        showToast('✅ Soru silindi!', 'success');
+    }
+}
+
+function saveFaqs() {
+    localStorage.setItem('cee_faqs', JSON.stringify(faqsData));
+    showToast('✅ SSS kaydedildi!', 'success');
+}
+
+// ==========================================
+// FOOTER YÖNETİMİ
+// ==========================================
+function loadFooterSettingsAdmin() {
+    const saved = localStorage.getItem('cee_footer_settings');
+    if (saved) {
+        const footer = JSON.parse(saved);
+        if (document.getElementById('footerCompanyInput')) {
+            document.getElementById('footerCompanyInput').value = footer.company || 'CEE MİMARLIK';
+        }
+        if (document.getElementById('footerSloganInput')) {
+            document.getElementById('footerSloganInput').value = footer.slogan || 'Kalite ve estetik bir arada';
+        }
+        if (document.getElementById('footerYearInput')) {
+            document.getElementById('footerYearInput').value = footer.year || '2026';
+        }
+    }
+}
+
+function saveFooterSettings() {
+    const footer = {
+        company: document.getElementById('footerCompanyInput').value,
+        slogan: document.getElementById('footerSloganInput').value,
+        year: document.getElementById('footerYearInput').value
+    };
+    
+    localStorage.setItem('cee_footer_settings', JSON.stringify(footer));
+    showToast('✅ Footer ayarları kaydedildi!', 'success');
 }
 
 // Ekip Üyesi Ekle
@@ -5541,7 +5903,7 @@ function saveTeamMember() {
     let members = JSON.parse(localStorage.getItem('team_members') || '[]');
     
     const memberData = {
-        id: editingId ? parseInt(editingId) : Date.now(),
+        id: editingId ? editingId : Date.now().toString(),
         name: name,
         role: role,
         bio: bio,
@@ -5553,7 +5915,8 @@ function saveTeamMember() {
         linkedin: linkedin,
         instagram: instagram,
         phone: phone,
-        photo: ''
+        photo: '',
+        order: members.length
     };
     
     // Mevcut fotoğrafı koru (düzenleme modunda)
@@ -5564,7 +5927,8 @@ function saveTeamMember() {
         }
     }
     
-    const finishSave = () => {
+    const finishSave = async () => {
+        // LocalStorage'a kaydet
         if (editingId) {
             const index = members.findIndex(m => m.id == editingId);
             if (index !== -1) {
@@ -5576,6 +5940,27 @@ function saveTeamMember() {
         
         try {
             localStorage.setItem('team_members', JSON.stringify(members));
+            
+            // Firebase'e de kaydet (eğer hazırsa)
+            if (window.firebaseReady) {
+                try {
+                    if (editingId && typeof window.updateTeamMemberInFirebase === 'function') {
+                        await window.updateTeamMemberInFirebase(editingId, memberData);
+                    } else if (typeof window.saveTeamMemberToFirebase === 'function') {
+                        const firebaseId = await window.saveTeamMemberToFirebase(memberData);
+                        if (firebaseId) {
+                            // Firebase ID'yi localStorage'a da kaydet
+                            memberData.firebaseId = firebaseId;
+                            members[members.length - 1] = memberData;
+                            localStorage.setItem('team_members', JSON.stringify(members));
+                        }
+                    }
+                    console.log('✅ Firebase\'e de kaydedildi');
+                } catch (fbError) {
+                    console.log('Firebase kayıt hatası:', fbError);
+                }
+            }
+            
             loadTeamMembers();
             closeTeamModal();
             showToast('✅ Ekip üyesi kaydedildi!', 'success');
@@ -5592,6 +5977,7 @@ function saveTeamMember() {
         // Fotoğrafı sıkıştır
         compressImage(photoInput.files[0], 800, 0.9, function(compressedDataUrl) {
             memberData.photo = compressedDataUrl;
+            memberData.photoFile = photoInput.files[0]; // Firebase için
             finishSave();
         });
     } else {
@@ -6535,6 +6921,236 @@ function showAdminSection(section) {
 document.addEventListener('DOMContentLoaded', function() {
     loadLogo();
     loadTeamMembers();
+});
+</script>
+
+<!-- ============================================ -->
+<!-- FIREBASE ENTEGRASYONU -->
+<!-- ============================================ -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+// Firebase Config
+const firebaseConfig = {
+    apiKey: "AIzaSyD_o4IQg2_a5o2sxZvKwsbQ4R6Y_qE5Zhw",
+    authDomain: "cee-mimarlik.firebaseapp.com",
+    projectId: "cee-mimarlik",
+    storageBucket: "cee-mimarlik.firebasestorage.app",
+    messagingSenderId: "479234997700",
+    appId: "1:479234997700:web:60182cab4b5bc8936d3891"
+};
+
+// Firebase'i başlat
+let app, db, storage;
+try {
+    app = initializeApp(firebaseConfig, 'admin-app');
+    db = getFirestore(app);
+    storage = getStorage(app);
+    console.log('✅ Firebase Admin bağlandı');
+    
+    // Global olarak erişilebilir yap
+    window.firebaseDB = db;
+    window.firebaseStorage = storage;
+    window.firebaseReady = true;
+} catch (error) {
+    console.log('⚠️ Firebase başlatılamadı:', error);
+    window.firebaseReady = false;
+}
+
+// ============================================
+// EKİP ÜYESİ FIREBASE KAYDETME
+// ============================================
+window.saveTeamMemberToFirebase = async function(memberData) {
+    if (!window.firebaseReady) {
+        console.log('Firebase hazır değil, localStorage kullanılıyor');
+        return null;
+    }
+    
+    try {
+        // Fotoğraf varsa Storage'a yükle
+        if (memberData.photoFile) {
+            const photoRef = ref(storage, `team/${Date.now()}_${memberData.photoFile.name}`);
+            const snapshot = await uploadBytes(photoRef, memberData.photoFile);
+            memberData.photo = await getDownloadURL(snapshot.ref);
+            delete memberData.photoFile;
+        }
+        
+        // Firestore'a kaydet
+        const docRef = await addDoc(collection(db, 'team_members'), {
+            ...memberData,
+            createdAt: serverTimestamp(),
+            order: memberData.order || 0
+        });
+        
+        console.log('✅ Ekip üyesi Firebase\'e kaydedildi:', docRef.id);
+        return docRef.id;
+    } catch (error) {
+        console.error('Firebase kaydetme hatası:', error);
+        return null;
+    }
+};
+
+// ============================================
+// EKİP ÜYESİ GÜNCELLEME
+// ============================================
+window.updateTeamMemberInFirebase = async function(memberId, memberData) {
+    if (!window.firebaseReady || !memberId) return false;
+    
+    try {
+        // Yeni fotoğraf varsa yükle
+        if (memberData.photoFile) {
+            const photoRef = ref(storage, `team/${Date.now()}_${memberData.photoFile.name}`);
+            const snapshot = await uploadBytes(photoRef, memberData.photoFile);
+            memberData.photo = await getDownloadURL(snapshot.ref);
+            delete memberData.photoFile;
+        }
+        
+        const memberRef = doc(db, 'team_members', memberId);
+        await updateDoc(memberRef, {
+            ...memberData,
+            updatedAt: serverTimestamp()
+        });
+        
+        console.log('✅ Ekip üyesi güncellendi:', memberId);
+        return true;
+    } catch (error) {
+        console.error('Güncelleme hatası:', error);
+        return false;
+    }
+};
+
+// ============================================
+// EKİP ÜYESİ SİLME
+// ============================================
+window.deleteTeamMemberFromFirebase = async function(memberId) {
+    if (!window.firebaseReady || !memberId) return false;
+    
+    try {
+        await deleteDoc(doc(db, 'team_members', memberId));
+        console.log('✅ Ekip üyesi silindi:', memberId);
+        return true;
+    } catch (error) {
+        console.error('Silme hatası:', error);
+        return false;
+    }
+};
+
+// ============================================
+// PROJE FIREBASE KAYDETME
+// ============================================
+window.saveProjectToFirebase = async function(projectData) {
+    if (!window.firebaseReady) {
+        console.log('Firebase hazır değil');
+        return null;
+    }
+    
+    try {
+        // Görselleri Storage'a yükle
+        const uploadedImages = [];
+        
+        if (projectData.imageFiles && projectData.imageFiles.length > 0) {
+            for (const file of projectData.imageFiles) {
+                const imageRef = ref(storage, `projects/${Date.now()}_${file.name}`);
+                const snapshot = await uploadBytes(imageRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                uploadedImages.push(url);
+            }
+            delete projectData.imageFiles;
+        }
+        
+        // Firestore'a kaydet
+        const docRef = await addDoc(collection(db, 'projects'), {
+            title: projectData.title || '',
+            description: projectData.description || '',
+            images: uploadedImages.length > 0 ? uploadedImages : (projectData.images || []),
+            thumbnail: uploadedImages[0] || projectData.thumbnail || '',
+            tags: projectData.tags || [],
+            details: projectData.details || {},
+            specs: projectData.specs || {},
+            createdAt: serverTimestamp()
+        });
+        
+        console.log('✅ Proje Firebase\'e kaydedildi:', docRef.id);
+        return docRef.id;
+    } catch (error) {
+        console.error('Proje kaydetme hatası:', error);
+        return null;
+    }
+};
+
+// ============================================
+// PROJE SİLME
+// ============================================
+window.deleteProjectFromFirebase = async function(projectId) {
+    if (!window.firebaseReady || !projectId) return false;
+    
+    try {
+        await deleteDoc(doc(db, 'projects', projectId));
+        console.log('✅ Proje silindi:', projectId);
+        return true;
+    } catch (error) {
+        console.error('Proje silme hatası:', error);
+        return false;
+    }
+};
+
+// ============================================
+// FIREBASE'DEN VERİLERİ YÜKLE
+// ============================================
+window.loadFromFirebase = async function() {
+    if (!window.firebaseReady) return;
+    
+    try {
+        // Ekip üyelerini yükle
+        const teamQuery = query(collection(db, 'team_members'), orderBy('order', 'asc'));
+        const teamSnapshot = await getDocs(teamQuery);
+        
+        const teamMembers = [];
+        teamSnapshot.forEach((doc) => {
+            teamMembers.push({ id: doc.id, ...doc.data() });
+        });
+        
+        if (teamMembers.length > 0) {
+            localStorage.setItem('team_members', JSON.stringify(teamMembers));
+            console.log('✅ Ekip üyeleri Firebase\'den yüklendi:', teamMembers.length);
+        }
+        
+        // Projeleri yükle
+        const projectsQuery = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
+        const projectsSnapshot = await getDocs(projectsQuery);
+        
+        const projects = [];
+        projectsSnapshot.forEach((doc) => {
+            projects.push({ id: doc.id, ...doc.data() });
+        });
+        
+        if (projects.length > 0) {
+            localStorage.setItem('cee_projects', JSON.stringify(projects));
+            console.log('✅ Projeler Firebase\'den yüklendi:', projects.length);
+        }
+        
+        return { teamMembers, projects };
+    } catch (error) {
+        console.error('Firebase yükleme hatası:', error);
+        return null;
+    }
+};
+
+// Sayfa yüklendiğinde Firebase'den verileri çek
+document.addEventListener('DOMContentLoaded', async () => {
+    // Biraz bekle (Firebase başlatılması için)
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    if (window.firebaseReady) {
+        await window.loadFromFirebase();
+        
+        // Ekip listesini yenile
+        if (typeof loadTeamMembers === 'function') {
+            loadTeamMembers();
+        }
+    }
 });
 </script>
 
