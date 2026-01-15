@@ -3916,7 +3916,7 @@
 
 <script>
 // Mobil menü fonksiyonları - Global scope
-function closeMobileMenu() {
+window.closeMobileMenu = function() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
@@ -3925,7 +3925,7 @@ function closeMobileMenu() {
     }
 }
 
-function toggleMobileMenu() {
+window.toggleMobileMenu = function() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
@@ -3935,18 +3935,18 @@ function toggleMobileMenu() {
 }
 
 // Sosyal Sidebar Toggle
-function toggleSocialSidebar() {
+window.toggleSocialSidebar = function() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.toggle('active');
 }
 
-function closeSocialSidebar() {
+window.closeSocialSidebar = function() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.remove('active');
 }
 
 // Admin Panel Git
-function goToAdmin() {
+window.goToAdmin = function() {
     window.location.href = 'admin.html';
 }
 
@@ -4137,7 +4137,7 @@ const defaultServices = [
     { icon: '🎨', titleTr: '3D Görselleştirme', titleEn: '3D Visualization', descTr: 'Projenizi gerçeğe en yakın şekilde görmenizi sağlayan fotorealistik 3D render hizmeti.', descEn: 'Photorealistic 3D render service that allows you to see your project as close to reality as possible.' }
 ];
 
-function loadServices() {
+window.loadServices = function() {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
     
@@ -4185,7 +4185,7 @@ const defaultReferences = [
     { icon: '🏪', nameTr: 'Ticari Yapılar', nameEn: 'Commercial Buildings', logo: '' }
 ];
 
-function loadReferences() {
+window.loadReferences = function() {
     const grid = document.getElementById('referencesGrid');
     if (!grid) return;
     
@@ -4233,7 +4233,7 @@ const defaultFaqs = [
     { questionTr: 'Şantiye takibi yapıyor musunuz?', questionEn: 'Do you provide site supervision?', answerTr: 'Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.', answerEn: 'Yes, we provide site consultancy and technical coordination services. We check project compliance during construction and provide technical support.' }
 ];
 
-function loadFaqs() {
+window.loadFaqs = function() {
     const container = document.getElementById('faqContainer');
     if (!container) return;
     
@@ -5187,7 +5187,7 @@ body.dark-mode .btn-secondary {
 
 <script>
 // Footer bilgilerini yükle
-function loadFooterSettings() {
+window.loadFooterSettings = function() {
     const savedFooter = localStorage.getItem('cee_footer_settings');
     if (savedFooter) {
         try {
@@ -5273,7 +5273,7 @@ const defaultProjects = [
     }
 ];
 
-function init() {
+window.init = function() {
     loadFromLocalStorage();
     loadColorTheme();
     loadDarkMode();
@@ -5290,7 +5290,7 @@ function init() {
     updateLanguageUI();
 }
 
-function loadFromLocalStorage() {
+window.loadFromLocalStorage = function() {
     try {
         const savedProjects = localStorage.getItem('cee_projects');
         if (savedProjects) {
@@ -5411,7 +5411,7 @@ window.setupHero = function() {
     startHeroAutoSlide();
 }
 
-function startHeroAutoSlide() {
+window.startHeroAutoSlide = function() {
     // Progress bar animation
     const progressBar = document.getElementById('heroProgress');
     let progress = 0;
@@ -5438,7 +5438,7 @@ function startHeroAutoSlide() {
     }, 5000);
 }
 
-function changeSlide(direction) {
+window.changeSlide = function(direction) {
     if (heroImages.length === 0) return;
     
     const slides = document.querySelectorAll('.hero-slide');
@@ -5459,7 +5459,7 @@ function changeSlide(direction) {
     if (progressBar) progressBar.style.width = '0%';
 }
 
-function goToSlide(index) {
+window.goToSlide = function(index) {
     if (heroImages.length === 0) return;
     
     const slides = document.querySelectorAll('.hero-slide');
@@ -5477,7 +5477,7 @@ function goToSlide(index) {
     startHeroAutoSlide();
 }
 
-function renderProjects() {
+window.renderProjects = function() {
     const grid = document.getElementById('projectsGrid');
     
     if (projects.length === 0) {
@@ -5538,7 +5538,7 @@ function renderProjects() {
     }).join('');
 }
 
-function setupFilters() {
+window.setupFilters = function() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -5549,7 +5549,7 @@ function setupFilters() {
     });
 }
 
-function setupNavigation() {
+window.setupNavigation = function() {
     document.querySelectorAll('nav > a').forEach(link => {
         link.addEventListener('click', function(e) {
             // External linkler için event'i durdurma
@@ -5583,7 +5583,7 @@ function setupNavigation() {
 }
 
 
-function closeMobileMenu() {
+window.closeMobileMenu = function() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
@@ -5592,7 +5592,7 @@ function closeMobileMenu() {
     }
 }
 
-function toggleMobileMenu() {
+window.toggleMobileMenu = function() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     nav.classList.toggle('mobile-open');
@@ -5617,7 +5617,7 @@ const defaultTeamMembers = [
     }
 ];
 
-function loadTeam() {
+window.loadTeam = function() {
     const grid = document.getElementById('teamGrid');
     if (!grid) return;
     
@@ -5679,7 +5679,7 @@ function loadTeam() {
 
 <script>
 
-function openLightbox(imgSrc, projectId, isPDF, isVideo) {
+window.openLightbox = function(imgSrc, projectId, isPDF, isVideo) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     
@@ -5702,7 +5702,7 @@ function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     incrementClickCount(projectId);
 }
 
-function closeLightbox() {
+window.closeLightbox = function() {
     document.getElementById('lightbox').classList.remove('show');
 }
 
@@ -5717,7 +5717,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-function incrementClickCount(projectId) {
+window.incrementClickCount = function(projectId) {
     try {
         const allProjects = JSON.parse(localStorage.getItem('cee_projects') || '[]');
         const project = allProjects.find(p => p.id === projectId);
@@ -5729,14 +5729,14 @@ function incrementClickCount(projectId) {
     } catch (e) {}
 }
 
-function toggleDarkMode() {
+window.toggleDarkMode = function() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     document.getElementById('themeBtn').textContent = isDark ? '☀️' : '';
     localStorage.setItem('cee_public_dark', isDark);
 }
 
-function loadDarkMode() {
+window.loadDarkMode = function() {
     const isDark = localStorage.getItem('cee_public_dark') === 'true';
     if (isDark) {
         document.body.classList.add('dark-mode');
@@ -5744,14 +5744,14 @@ function loadDarkMode() {
     }
 }
 
-function toggleLanguage() {
+window.toggleLanguage = function() {
     currentLang = currentLang === 'tr' ? 'en' : 'tr';
     updateLanguageUI();
     applyLanguage();
     localStorage.setItem('cee_public_lang', currentLang);
 }
 
-function updateLanguageUI() {
+window.updateLanguageUI = function() {
     const langFlag = document.getElementById('langFlag');
     const langText = document.getElementById('langText');
     
@@ -5778,7 +5778,7 @@ function updateLanguageUI() {
     if (langText) langText.textContent = currentLang === 'tr' ? 'TR' : 'EN';
 }
 
-function loadLanguage() {
+window.loadLanguage = function() {
     const saved = localStorage.getItem('cee_public_lang');
     if (saved) {
         currentLang = saved;
@@ -5787,7 +5787,7 @@ function loadLanguage() {
     }
 }
 
-function applyLanguage() {
+window.applyLanguage = function() {
     document.querySelectorAll('[data-tr]').forEach(el => {
         const text = currentLang === 'tr' ? el.dataset.tr : el.dataset.en;
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
@@ -5799,17 +5799,17 @@ function applyLanguage() {
 }
 
 // SOSYAL MEDYA SEKMESİ FONKSİYONLARI (MADDE 3)
-function toggleSocialSidebar() {
+window.toggleSocialSidebar = function() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.toggle('active');
 }
 
-function closeSocialSidebar() {
+window.closeSocialSidebar = function() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.remove('active');
 }
 
-function initSocialSidebar() {
+window.initSocialSidebar = function() {
     // 3 saniye sonra otomatik aç
     setTimeout(() => {
         const content = document.getElementById('socialSidebarContent');
@@ -5832,7 +5832,7 @@ function initSocialSidebar() {
 }
 
 // E-Hizmetler Toggle
-function toggleEHizmetler(e) {
+window.toggleEHizmetler = function(e) {
     e.preventDefault();
     e.stopPropagation();
     const menu = document.getElementById('ehizmetlerMenu');
@@ -5847,7 +5847,7 @@ let pendingExternalName = '';
 let pendingExternalOwner = '';
 
 // Dış Servise Yönlendirme Uyarısı
-function openExternalServiceWithWarning(url, serviceName, owner) {
+window.openExternalServiceWithWarning = function(url, serviceName, owner) {
     pendingExternalURL = url;
     pendingExternalName = serviceName;
     pendingExternalOwner = owner;
@@ -5868,13 +5868,13 @@ function openExternalServiceWithWarning(url, serviceName, owner) {
 }
 
 // Dış Servise Git
-function confirmExternalService() {
+window.confirmExternalService = function() {
     window.open(pendingExternalURL, '_blank');
     closeExternalServiceModal();
 }
 
 // Uyarı Modalını Kapat
-function closeExternalServiceModal() {
+window.closeExternalServiceModal = function() {
     const modal = document.getElementById('externalServiceModal');
     modal.style.display = 'none';
     document.body.style.overflow = '';
@@ -5905,7 +5905,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-function openWhatsApp() {
+window.openWhatsApp = function() {
     document.getElementById('whatsappModal').classList.add('show');
     const notification = document.getElementById('whatsappNotification');
     if (notification) {
@@ -5917,12 +5917,12 @@ function openWhatsApp() {
     }
 }
 
-function closeWhatsApp() {
+window.closeWhatsApp = function() {
     const modal = document.getElementById('whatsappModal');
     if (modal) modal.classList.remove('show');
 }
 
-function closeAiAssistant() {
+window.closeAiAssistant = function() {
     const panel = document.getElementById('aiAssistantPanel');
     if (panel) panel.classList.remove('active');
 }
@@ -5931,7 +5931,7 @@ function closeAiAssistant() {
 let aiConversationHistory = JSON.parse(localStorage.getItem('cee_ai_history') || '[]');
 let aiKnowledgeBase = JSON.parse(localStorage.getItem('cee_ai_knowledge') || '{}');
 
-function askAiQuestion(question) {
+window.askAiQuestion = function(question) {
     const input = document.getElementById('aiAssistantInput');
     if (input) {
         input.value = question;
@@ -5939,7 +5939,7 @@ function askAiQuestion(question) {
     }
 }
 
-function addAiMessage(content, isUser = false) {
+window.addAiMessage = function(content, isUser = false) {
     const messagesDiv = document.getElementById('aiAssistantMessages');
     if (!messagesDiv) return;
     
@@ -5958,7 +5958,7 @@ function addAiMessage(content, isUser = false) {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-function showTyping() {
+window.showTyping = function() {
     const messagesDiv = document.getElementById('aiAssistantMessages');
     const typingDiv = document.createElement('div');
     typingDiv.className = 'typing-indicator-wrapper';
@@ -5975,12 +5975,12 @@ function showTyping() {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-function hideTyping() {
+window.hideTyping = function() {
     const typing = document.getElementById('typingIndicator');
     if (typing) typing.remove();
 }
 
-function sendAiAssistantMessage() {
+window.sendAiAssistantMessage = function() {
     const input = document.getElementById('aiAssistantInput');
     const message = input.value.trim();
     
@@ -6018,7 +6018,7 @@ function sendAiAssistantMessage() {
     }, 800);
 }
 
-function getSmartResponse(message) {
+window.getSmartResponse = function(message) {
     const lowerMsg = message.toLowerCase();
     
     // Önce öğrenilmiş bilgilere bak
@@ -6188,7 +6188,7 @@ Ben <strong>CEE MİMARLIK</strong>'ın müşteri temsilcisiyim. Size mimarlık v
 • Isı yalıtımı & BEP<br>
 • Otopark, mutfak, banyo tasarımı<br>
 • İnşaat ruhsatı süreçleri<br><br>
-Sormak istediğiniz bir konu var mı? 
+Sormak istediğiniz bir konu var mı?`;
     }
     
     else {
@@ -6201,11 +6201,11 @@ Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekir
 • Yapı Ruhsatı İşlemleri<br>
 • 3D Görselleştirme<br>
 • Şantiye Yönetimi<br><br>
-Size en kısa sürede dönüş yapacağız! 
+Size en kısa sürede dönüş yapacağız!`;
     }
 }
 
-function updateKnowledgeBase(question, answer) {
+window.updateKnowledgeBase = function(question, answer) {
     // Basit anahtar kelime çıkarma
     const keywords = question.toLowerCase()
         .split(' ')
@@ -6223,7 +6223,7 @@ function updateKnowledgeBase(question, answer) {
 }
 
 // Baloncuğu 3 saniye sonra göster
-function showWhatsAppNotification() {
+window.showWhatsAppNotification = function() {
     setTimeout(() => {
         const notification = document.getElementById('whatsappNotification');
         if (notification) {
@@ -6233,7 +6233,7 @@ function showWhatsAppNotification() {
 }
 
 // Scroll to top
-function scrollToTop() {
+window.scrollToTop = function() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -6252,7 +6252,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-function sendWhatsApp(e) {
+window.sendWhatsApp = function(e) {
     e.preventDefault();
     
     const name = document.getElementById('fullName').value.trim();
@@ -6293,7 +6293,7 @@ function sendWhatsApp(e) {
     e.target.reset();
 }
 
-function saveMessage() {
+window.saveMessage = function() {
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
@@ -6340,7 +6340,7 @@ function saveMessage() {
         }
 }
 
-function goToAdmin() {
+window.goToAdmin = function() {
     const confirm = prompt('Admin paneline gitmek için "admin" yazın:');
     if (confirm && confirm.toLowerCase() === 'admin') {
         window.location.href = 'admin.html';
@@ -6352,7 +6352,7 @@ window.addEventListener('DOMContentLoaded', init);
 let chatMenuOpen = false;
 let aiChatOpen = false;
 
-function toggleChatMenu() {
+window.toggleChatMenu = function() {
     const menu = document.getElementById('chatMenu');
     
     chatMenuOpen = !chatMenuOpen;
@@ -6364,7 +6364,7 @@ function toggleChatMenu() {
     }
 }
 
-function openAiAssistant(event) {
+window.openAiAssistant = function(event) {
     // Event varsa prevent default
     if (event) {
         event.preventDefault();
@@ -6389,21 +6389,21 @@ function openAiAssistant(event) {
     }
 }
 
-function closeAiPanel() {
+window.closeAiPanel = function() {
     const panel = document.getElementById('aiAssistantPanel');
     if (panel) {
         panel.classList.remove('active');
     }
 }
 
-function askPanelQuestion(question) {
+window.askPanelQuestion = function(question) {
     document.getElementById('aiPanelInput').value = question;
     sendPanelMessage();
 }
 
 let aiPanelHistory = [];
 
-function sendPanelMessage() {
+window.sendPanelMessage = function() {
     const input = document.getElementById('aiPanelInput');
     const message = input.value.trim();
     
@@ -6436,7 +6436,7 @@ function sendPanelMessage() {
     }, 800);
 }
 
-function addPanelMessage(text, type) {
+window.addPanelMessage = function(text, type) {
     const container = document.getElementById('aiPanelMessages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `ai-panel-message ${type}`;
@@ -6452,7 +6452,7 @@ function addPanelMessage(text, type) {
     container.scrollTop = container.scrollHeight;
 }
 
-function showPanelTyping() {
+window.showPanelTyping = function() {
     const container = document.getElementById('aiPanelMessages');
     const typingDiv = document.createElement('div');
     typingDiv.className = 'ai-panel-message assistant';
@@ -6468,12 +6468,12 @@ function showPanelTyping() {
     container.scrollTop = container.scrollHeight;
 }
 
-function hidePanelTyping() {
+window.hidePanelTyping = function() {
     const typing = document.getElementById('aiPanelTyping');
     if (typing) typing.remove();
 }
 
-function getSmartResponse(message) {
+window.getSmartResponse = function(message) {
     const lowerMsg = message.toLowerCase();
     
     // AKILLI ARAMA - Tüm anahtar kelimeleri kontrol et
@@ -6745,7 +6745,7 @@ try {
 } catch(e) {}
 
 // FAQ TOGGLE
-function toggleFaq(element) {
+window.toggleFaq = function(element) {
     const answer = element.querySelector('.faq-answer');
     const icon = element.querySelector('span');
     const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
@@ -6795,7 +6795,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function openAiChat(event) {
+window.openAiChat = function(event) {
     // Event varsa prevent default
     if (event) {
         event.preventDefault();
@@ -6826,7 +6826,7 @@ function openAiChat(event) {
     }
 }
 
-function openWhatsAppDirect(event) {
+window.openWhatsAppDirect = function(event) {
     // Event varsa (click event) prevent default
     if (event) {
         event.preventDefault();
@@ -6859,7 +6859,7 @@ function openWhatsAppDirect(event) {
     }
 }
 
-function toggleAiChat() {
+window.toggleAiChat = function() {
     const window = document.getElementById('aiChatWindow');
     aiChatOpen = !aiChatOpen;
     
@@ -6902,7 +6902,7 @@ document.addEventListener('touchstart', function(event) {
 
 // AI CHAT ASSISTANT
 
-function askQuestion(question) {
+window.askQuestion = function(question) {
     // Quick question'ı gizle
     document.getElementById('aiQuickQuestions').style.display = 'none';
     
@@ -6920,7 +6920,7 @@ function askQuestion(question) {
     }, 300);
 }
 
-function sendAiMessage() {
+window.sendAiMessage = function() {
     const input = document.getElementById('aiChatInput');
     const question = input.value.trim();
     
@@ -6945,7 +6945,7 @@ function sendAiMessage() {
     }, 300);
 }
 
-function addMessage(text, sender) {
+window.addMessage = function(text, sender) {
     const messagesDiv = document.getElementById('aiChatMessages');
     const messageDiv = document.createElement('div');
     messageDiv.className = sender === 'user' ? 'ai-message user-message' : 'ai-message';
@@ -6966,7 +6966,7 @@ function addMessage(text, sender) {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-function showTypingIndicator() {
+window.showTypingIndicator = function() {
     const messagesDiv = document.getElementById('aiChatMessages');
     const typingDiv = document.createElement('div');
     typingDiv.className = 'ai-message';
@@ -6983,12 +6983,12 @@ function showTypingIndicator() {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-function hideTypingIndicator() {
+window.hideTypingIndicator = function() {
     const indicator = document.getElementById('typingIndicator');
     if (indicator) indicator.remove();
 }
 
-function getAiAnswer(question) {
+window.getAiAnswer = function(question) {
     const q = question.toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ı]/g, 'i').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c');
     
     // =====================================================
@@ -7646,15 +7646,15 @@ Ben CEE Mimarlık AI asistanıyım. <b>Mimarlık ve mevzuat</b> konularında siz
 let converterFile = null;
 let downgradeFile = null;
 
-function openDwgTools() {
+window.openDwgTools = function() {
     document.getElementById('dwgToolsModal').classList.add('active');
 }
 
-function closeDwgTools() {
+window.closeDwgTools = function() {
     document.getElementById('dwgToolsModal').classList.remove('active');
 }
 
-function switchDwgTab(tab) {
+window.switchDwgTab = function(tab) {
     // Switch tabs
     document.querySelectorAll('.dwg-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.dwg-tab-content').forEach(c => c.classList.remove('active'));
@@ -7664,7 +7664,7 @@ function switchDwgTab(tab) {
 }
 
 // CONVERTER FUNCTIONS
-function handleConverterFile(file) {
+window.handleConverterFile = function(file) {
     if (!file) return;
     
     const maxSize = 50 * 1024 * 1024; // 50MB
@@ -7692,7 +7692,7 @@ function handleConverterFile(file) {
     showSuccess('Dosya yüklendi: ' + file.name);
 }
 
-function removeConverterFile() {
+window.removeConverterFile = function() {
     converterFile = null;
     document.getElementById('converterUpload').style.display = 'block';
     document.getElementById('converterPreview').style.display = 'none';
@@ -7701,12 +7701,12 @@ function removeConverterFile() {
     document.getElementById('converterResult').style.display = 'none';
 }
 
-function updateQualityLabel(value) {
+window.updateQualityLabel = function(value) {
     const labels = ['Düşük Kalite', 'Orta Kalite', 'Yüksek Kalite', 'En Yüksek Kalite'];
     document.getElementById('currentQuality').textContent = labels[value - 1];
 }
 
-function convertDwgFile() {
+window.convertDwgFile = function() {
     if (!converterFile) {
         showError('Lütfen bir dosya yükleyin!');
         return;
@@ -7759,7 +7759,7 @@ function convertDwgFile() {
 }
 
 // DOWNGRADE FUNCTIONS
-function handleDowngradeFile(file) {
+window.handleDowngradeFile = function(file) {
     if (!file) return;
     
     const maxSize = 50 * 1024 * 1024; // 50MB
@@ -7794,7 +7794,7 @@ function handleDowngradeFile(file) {
     showSuccess('Dosya yüklendi: ' + file.name);
 }
 
-function removeDowngradeFile() {
+window.removeDowngradeFile = function() {
     downgradeFile = null;
     document.getElementById('downgradeUpload').style.display = 'block';
     document.getElementById('downgradePreview').style.display = 'none';
@@ -7803,7 +7803,7 @@ function removeDowngradeFile() {
     document.getElementById('downgradeResult').style.display = 'none';
 }
 
-function downgradeDwgFile() {
+window.downgradeDwgFile = function() {
     if (!downgradeFile) {
         showError('Lütfen bir dosya yükleyin!');
         return;
@@ -7864,7 +7864,7 @@ function downgradeDwgFile() {
     }, 250);
 }
 
-function formatFileSize(bytes) {
+window.formatFileSize = function(bytes) {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
@@ -7881,7 +7881,7 @@ document.addEventListener('click', function(event) {
 });
 
 // TOAST NOTIFICATIONS
-function showToast(message, type = 'info', duration = 3000) {
+window.showToast = function(message, type = 'info', duration = 3000) {
     const container = document.getElementById('toastContainer');
     if (!container) return;
     
@@ -7922,24 +7922,24 @@ function showToast(message, type = 'info', duration = 3000) {
 }
 
 // Convenience functions
-function showSuccess(message) {
+window.showSuccess = function(message) {
     showToast(message, 'success');
 }
 
-function showError(message) {
+window.showError = function(message) {
     showToast(message, 'error');
 }
 
-function showInfo(message) {
+window.showInfo = function(message) {
     showToast(message, 'info');
 }
 
-function showWarning(message) {
+window.showWarning = function(message) {
     showToast(message, 'warning');
 }
 
 // ANIMATED COUNTERS
-function animateCounters() {
+window.animateCounters = function() {
     const counters = document.querySelectorAll('.stat-number');
     const speed = 200; // Animation speed
     
@@ -7962,7 +7962,7 @@ function animateCounters() {
 }
 
 // Intersection Observer for stats
-function setupStatsObserver() {
+window.setupStatsObserver = function() {
     const statsContainer = document.querySelector('.stats-container');
     if (!statsContainer) return;
     
@@ -7979,7 +7979,7 @@ function setupStatsObserver() {
 }
 
 // RENK TEMASI
-function loadColorTheme() {
+window.loadColorTheme = function() {
     const theme = localStorage.getItem('cee_color_theme') || 'default';
     if (theme !== 'default') {
         document.body.setAttribute('data-theme', theme);
@@ -7987,7 +7987,7 @@ function loadColorTheme() {
 }
 
 // INSTAGRAM FEED
-function loadInstagram() {
+window.loadInstagram = function() {
     // Demo Instagram posts - Gerçek API için instagram-feed.js kullanılabilir
     const instagramPosts = [
         {
@@ -8049,7 +8049,7 @@ function loadInstagram() {
 }
 
 // VIDEO GALLERY
-function loadVideos() {
+window.loadVideos = function() {
     // Admin panelden yüklenen videolar (mediaType: 'video')
     const projects = JSON.parse(localStorage.getItem('cee_projects') || '[]');
     const videos = projects.filter(p => p.mediaType === 'video');
@@ -8107,7 +8107,7 @@ function loadVideos() {
     }
 }
 
-function openVideo(id, type) {
+window.openVideo = function(id, type) {
     const lightbox = document.getElementById('videoLightbox');
     const container = document.getElementById('videoContainer');
     
@@ -8120,7 +8120,7 @@ function openVideo(id, type) {
     lightbox.classList.add('active');
 }
 
-function closeVideo() {
+window.closeVideo = function() {
     const lightbox = document.getElementById('videoLightbox');
     const container = document.getElementById('videoContainer');
     lightbox.classList.remove('active');
@@ -8128,7 +8128,7 @@ function closeVideo() {
 }
 
 // GOOGLE MAPS
-function initMap() {
+window.initMap = function() {
     // Varsayılan konum: İstanbul Taksim
     const officeLocation = { lat: 41.0369, lng: 28.9850 };
     
@@ -8176,7 +8176,7 @@ function initMap() {
     });
 }
 
-function loadGoogleMaps() {
+window.loadGoogleMaps = function() {
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
     script.async = true;
@@ -8270,7 +8270,7 @@ const SessionManager = {
 };
 
 // 5. GÜVENLI MESAJ GÖNDERME
-function sendPanelMessageSecure() {
+window.sendPanelMessageSecure = function() {
     const input = document.getElementById('aiPanelInput');
     let message = input.value.trim();
     if (!message) return;
@@ -8495,7 +8495,7 @@ if (window.top !== window.self) window.top.location = window.self.location;
 // SİTE AYARLARINI YÜKLE
 // ==============================================
 
-function loadSiteSettings() {
+window.loadSiteSettings = function() {
     // Hero ayarlarını yükle
     const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
     if (heroSettings.title || heroSettings.subtitle) {
@@ -8740,7 +8740,7 @@ if ('serviceWorker' in navigator) {
 
 <script>
 // Logo yükleyici
-function loadSiteLogo() {
+window.loadSiteLogo = function() {
     const logo = localStorage.getItem('cee_site_logo');
     const logoImg = document.getElementById('headerLogo');
     const logoTitle = document.getElementById('headerTitle');
@@ -8763,7 +8763,7 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
 
 <script>
 // Logo yükleyici
-function loadSiteLogo() {
+window.loadSiteLogo = function() {
     const logo = localStorage.getItem('cee_site_logo');
     const logoImg = document.getElementById('siteLogo');
     const logoTitle = document.getElementById('siteTitle');
