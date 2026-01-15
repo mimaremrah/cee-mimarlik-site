@@ -2022,12 +2022,16 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-            z-index: 1001;
+            transition: filter 0.3s;
+            z-index: 9998;
         }
 
         .unified-chat-btn:hover {
             filter: brightness(1.1);
+        }
+
+        .unified-chat-btn:active {
+            filter: brightness(0.95);
         }
 
         .chat-badge {
@@ -2067,7 +2071,9 @@
             min-width: 280px;
             opacity: 0;
             visibility: hidden;
-            z-index: 1002;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 9999;
+            pointer-events: none;
         }
 
         body.dark-mode .chat-menu {
@@ -2078,6 +2084,7 @@
         .chat-menu.active {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }
 
         .chat-menu-item {
@@ -3222,15 +3229,16 @@
                 right: 20px;
                 width: 60px;
                 height: 60px;
-                z-index: 1001;
+                z-index: 9998;
             }
             
             .chat-menu {
-                bottom: 90px;
+                bottom: 100px;
                 right: 20px;
                 left: auto;
                 min-width: 260px;
                 max-width: 300px;
+                z-index: 9999;
             }
             
             .chat-menu-item {
@@ -3844,6 +3852,47 @@
             }
             .social-sidebar-content.active {
                 transform: translateX(0) !important;
+            }
+            
+            /* İLETİŞİM MOBİL */
+            #iletisim > div {
+                padding: 0 15px !important;
+            }
+            #iletisim > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                margin-top: 30px !important;
+            }
+            #iletisim h3 {
+                font-size: 18px !important;
+                margin-bottom: 20px !important;
+            }
+            #iletisim input, #iletisim select, #iletisim textarea {
+                padding: 12px !important;
+                font-size: 14px !important;
+            }
+            #iletisim button[type="submit"] {
+                padding: 14px 30px !important;
+                font-size: 14px !important;
+            }
+            
+            /* SOSYAL SIDEBAR MOBİL - KÜÇÜK */
+            .social-sidebar-content {
+                width: 220px !important;
+                padding: 15px !important;
+            }
+            .social-sidebar-header {
+                font-size: 14px !important;
+                margin-bottom: 15px !important;
+                padding-bottom: 10px !important;
+            }
+            .social-sidebar-link {
+                padding: 10px 12px !important;
+                font-size: 13px !important;
+                gap: 10px !important;
+            }
+            .social-sidebar-links {
+                gap: 8px !important;
             }
         }
     </style>
