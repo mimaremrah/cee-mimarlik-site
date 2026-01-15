@@ -5266,44 +5266,61 @@ function toggleMobileMenu() {
 
 
 
+// Varsayılan ekip üyeleri
+const defaultTeamMembers = [
+    {
+        id: '1',
+        name: 'Emrah İpek',
+        role: 'Baş Mimar',
+        photo: '',
+        bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
+        education: 'Kırklareli Üniversitesi',
+        experience: '15',
+        projects: '100',
+        expertise: 'Mimari',
+        email: 'ceemimarlik@gmail.com'
+    }
+];
+
 function loadTeam() {
     const grid = document.getElementById('teamGrid');
     if (!grid) return;
     
     // Admin panelden gelen ekip verisi
     const teamData = localStorage.getItem('team_members') || localStorage.getItem('cee_team_members');
+    let team = defaultTeamMembers; // Varsayılan
     
     if (teamData) {
         try {
-            const team = JSON.parse(teamData);
-            if (team.length > 0) {
-                grid.innerHTML = team.map(member => `
-                    <div class="team-member" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
-                        <div style="height: 280px; overflow: hidden;">
-                            <img src="${member.photo || member.image || ''}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div style="padding: 25px; text-align: center;">
-                            <h3 style="font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px;">${member.name}</h3>
-                            <p style="color: var(--accent); font-weight: 500; margin-bottom: 10px;">${member.role || member.position || ''}</p>
-                            ${member.experience ? `<p style="font-size: 14px; color: var(--secondary); line-height: 1.6;">${member.experience}</p>` : ''}
-                        </div>
-                    </div>
-                `).join('');
-                return;
+            const parsed = JSON.parse(teamData);
+            if (parsed.length > 0) {
+                team = parsed;
             }
         } catch (e) {
             console.log('Ekip verisi yüklenemedi:', e);
         }
     }
     
-    // Varsayılan - ekip eklenmemişse
-    grid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--secondary);">
-            <div style="font-size: 48px; margin-bottom: 20px;">👥</div>
-            <p style="font-size: 18px;">Henüz ekip üyesi eklenmedi</p>
-            <p style="font-size: 14px; margin-top: 10px;">Admin panelden ekip üyesi ekleyebilirsiniz</p>
+    // Placeholder fotoğraf
+    const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
+    
+    grid.innerHTML = team.map(member => `
+        <div class="team-member" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; max-width: 400px;">
+            <div style="height: 320px; overflow: hidden; background: #f5f5f5;">
+                <img src="${member.photo || placeholderPhoto}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" onerror="this.src='${placeholderPhoto}'">
+            </div>
+            <div style="padding: 25px; text-align: center;">
+                <h3 style="font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 8px;">${member.name}</h3>
+                <p style="color: var(--accent); font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; font-size: 13px;">${member.role || member.position || ''}</p>
+                ${member.bio ? `<p style="font-size: 14px; color: var(--secondary); line-height: 1.7; margin-bottom: 15px;">${member.bio.substring(0, 200)}...</p>` : ''}
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                    ${member.education ? `<span style="font-size: 12px; color: #666;">🎓 ${member.education}</span>` : ''}
+                    ${member.experience ? `<span style="font-size: 12px; color: #666;">⏱️ ${member.experience} Yıl</span>` : ''}
+                    ${member.projects ? `<span style="font-size: 12px; color: #666;">🏗️ ${member.projects}+ Proje</span>` : ''}
+                </div>
+            </div>
         </div>
-    `;
+    `).join('');
 }
 </script>
 
@@ -5857,7 +5874,7 @@ function sendWhatsApp(e) {
     if (ilce) waMessage += `İlçe: ${ilce}\n`;
     waMessage += `\nMesajım:\n${message}`;
     
-    const waUrl = `https://wa.me/905XXXXXXXXX?text=${encodeURIComponent(waMessage)}`;
+    const waUrl = `https://wa.me/905373278765?text=${encodeURIComponent(waMessage)}`;
     window.open(waUrl, '_blank');
     closeWhatsApp();
     e.target.reset();
@@ -6417,7 +6434,7 @@ function openWhatsAppDirect(event) {
     if (btn) btn.style.transform = 'rotate(0deg)';
     
     // WhatsApp'ı aç
-    const phoneNumber = '905551234567'; // Admin panelden ayarlanabilir
+    const phoneNumber = '905373278765'; // WhatsApp numarası
     const message = 'Merhaba! Web sitenizden ulaşıyorum. Mimari proje hakkında bilgi almak istiyorum.';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
