@@ -2013,15 +2013,15 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
             transition: all 0.3s;
             z-index: 1001;
             animation: pulse 2s infinite;
@@ -2029,7 +2029,7 @@
 
         .unified-chat-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
         }
 
         .chat-badge {
@@ -3367,12 +3367,12 @@
         /* SCROLL TO TOP */
         .scroll-top {
             position: fixed;
-            bottom: 90px;
-            right: 25px;
-            width: 45px;
-            height: 45px;
-            background: var(--accent);
-            color: var(--white);
+            bottom: 100px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #1a1a1a;
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -3383,7 +3383,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.4);
         }
         
         .scroll-top.visible {
@@ -3392,8 +3394,8 @@
         }
         
         .scroll-top:hover {
-            background: var(--primary);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.6);
         }
         /* ========================================
            GELİŞMİŞ MOBİL RESPONSIVE İYİLEŞTİRMELER
@@ -3595,24 +3597,24 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 12px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #1a1a1a;
+            padding: 14px 16px;
             writing-mode: horizontal-tb;
             cursor: pointer;
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 16px 16px 0;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
             letter-spacing: 0.5px;
-            box-shadow: 3px 0 15px rgba(102,126,234,0.4);
+            box-shadow: 4px 4px 20px rgba(212,175,55,0.4);
             transition: all 0.3s ease;
         }
         .social-sidebar-trigger:hover {
-            padding-right: 18px;
-            box-shadow: 5px 0 25px rgba(102,126,234,0.6);
+            padding-right: 22px;
+            box-shadow: 6px 6px 30px rgba(212,175,55,0.6);
         }
         .social-sidebar-icon { font-size: 18px; }
         .social-sidebar-content {
@@ -3895,9 +3897,28 @@ function toggleMobileMenu() {
     }
 }
 
+// Sosyal Sidebar Toggle
+function toggleSocialSidebar() {
+    const content = document.getElementById('socialSidebarContent');
+    if (content) content.classList.toggle('active');
+}
+
+function closeSocialSidebar() {
+    const content = document.getElementById('socialSidebarContent');
+    if (content) content.classList.remove('active');
+}
+
+// Admin Panel Git
+function goToAdmin() {
+    window.location.href = 'admin.html';
+}
+
 // Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
+window.toggleSocialSidebar = toggleSocialSidebar;
+window.closeSocialSidebar = closeSocialSidebar;
+window.goToAdmin = goToAdmin;
 </script>
 
 
@@ -4349,22 +4370,33 @@ window.toggleMobileMenu = toggleMobileMenu;
 </section>
 
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
-<section id="ofis-konum" style="padding: 80px 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-    <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-        <div class="section-label" data-tr="KONUM" data-en="LOCATION">KONUM</div>
-        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
+<section id="ofis-konum" style="padding: 100px 0; background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);">
+    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+        <div class="section-label" style="color: #d4af37;" data-tr="KONUM" data-en="LOCATION">KONUM</div>
+        <h2 class="section-title" style="color: #fff;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
+        <p style="color: #888; font-size: 16px; margin-top: 15px;">Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</p>
     </div>
     
-    <div style="max-width: 1000px; margin: 0 auto; padding: 0 40px;">
-        <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+        <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); border: 3px solid rgba(212,175,55,0.3);">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1504.63!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15!3m2!1m1!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
                 width="100%" 
-                height="450" 
+                height="550" 
                 style="border:0; display: block;" 
                 allowfullscreen="" 
                 loading="lazy">
             </iframe>
+        </div>
+        
+        <!-- Yol Tarifi Butonu -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
+               style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: #1a1a1a; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s; box-shadow: 0 8px 30px rgba(212,175,55,0.4);"
+               onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 40px rgba(212,175,55,0.5)'"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 30px rgba(212,175,55,0.4)'">
+                🧭 Yol Tarifi Al
+            </a>
         </div>
     </div>
 </section>
