@@ -1,14 +1,14 @@
 // ============================================
-// FIREBASE CONFIG - CEE MIMARLIK
+// FIREBASE CONFIG - CEE MİMARLIK
 // ============================================
 
-// Firebase modullerini import et
+// Firebase modüllerini import et
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
-// Firebase Yapilandirmasi
+// Firebase Yapılandırması
 const firebaseConfig = {
     apiKey: "AIzaSyD_o4IQg2_a5o2sxZvKwsbQ4R6Y_qE5Zhw",
     authDomain: "cee-mimarlik.firebaseapp.com",
@@ -19,13 +19,13 @@ const firebaseConfig = {
     measurementId: "G-WJJRB55W5F"
 };
 
-// Firebase'i baslat
+// Firebase'i başlat
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Global olarak erisilebilir yap
+// Global olarak erişilebilir yap
 window.firebaseApp = app;
 window.firebaseAuth = auth;
 window.firebaseDB = db;
@@ -34,5 +34,5 @@ window.firebaseStorage = storage;
 // Export et
 export { app, auth, db, storage };
 
-console.log('Firebase baslatildi');
-console.log('Project ID:', firebaseConfig.projectId);
+console.log('✅ Firebase başlatıldı');
+console.log('📦 Project ID:', firebaseConfig.projectId);

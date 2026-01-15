@@ -95,7 +95,7 @@
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
             "postalCode": "59860",
-            "addressRegion": "TekirdaÄŸ",
+            "addressRegion": "Tekirdağ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -159,7 +159,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2022,16 +2022,13 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            transition: filter 0.3s;
-            z-index: 9998;
+            transition: all 0.3s;
+            z-index: 1001;
         }
 
         .unified-chat-btn:hover {
+            transform: scale(1.1);
             filter: brightness(1.1);
-        }
-
-        .unified-chat-btn:active {
-            filter: brightness(0.95);
         }
 
         .chat-badge {
@@ -2060,31 +2057,33 @@
 
         /* CHAT MENU */
         .chat-menu {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: #fff;
-            border: 1px solid #e0e0e0;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.5) inset;
             padding: 8px;
-            min-width: 280px;
+            min-width: 320px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
-            z-index: 9999;
-            pointer-events: none;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1002;
         }
 
         body.dark-mode .chat-menu {
-            background: #2c2c2c;
-            border: 1px solid #444;
+            background: rgba(44, 44, 44, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .chat-menu.active {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto;
+            transform: translateY(0);
         }
 
         .chat-menu-item {
@@ -2094,7 +2093,7 @@
             padding: 14px;
             border-radius: 12px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
             user-select: none;
@@ -2102,11 +2101,13 @@
         }
 
         .chat-menu-item:active {
-            background: #e0e0e0;
+            background: #e8e8e8;
+            transform: scale(0.98);
         }
 
         .chat-menu-item:hover {
             background: #f5f5f5;
+            transform: translateX(-3px);
         }
 
         .chat-menu-icon {
@@ -2194,7 +2195,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2676,7 +2677,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - SaÄŸda */
+        /* Notification Bubble - Sağda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -3229,20 +3230,22 @@
                 right: 20px;
                 width: 60px;
                 height: 60px;
-                z-index: 9998;
+                z-index: 1001;
             }
             
             .chat-menu {
-                bottom: 100px;
-                right: 20px;
-                left: auto;
-                min-width: 260px;
-                max-width: 300px;
-                z-index: 9999;
+                bottom: 85px;
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+                width: calc(100% - 20px);
+                max-width: 350px;
+                margin-left: auto;
+                z-index: 1002;
             }
             
             .chat-menu-item {
-                padding: 14px;
+                padding: 16px;
             }
             
             .chat-menu-subtitle {
@@ -3853,47 +3856,6 @@
             .social-sidebar-content.active {
                 transform: translateX(0) !important;
             }
-            
-            /* İLETİŞİM MOBİL */
-            #iletisim > div {
-                padding: 0 15px !important;
-            }
-            #iletisim > div > div {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-                margin-top: 30px !important;
-            }
-            #iletisim h3 {
-                font-size: 18px !important;
-                margin-bottom: 20px !important;
-            }
-            #iletisim input, #iletisim select, #iletisim textarea {
-                padding: 12px !important;
-                font-size: 14px !important;
-            }
-            #iletisim button[type="submit"] {
-                padding: 14px 30px !important;
-                font-size: 14px !important;
-            }
-            
-            /* SOSYAL SIDEBAR MOBİL - KÜÇÜK */
-            .social-sidebar-content {
-                width: 220px !important;
-                padding: 15px !important;
-            }
-            .social-sidebar-header {
-                font-size: 14px !important;
-                margin-bottom: 15px !important;
-                padding-bottom: 10px !important;
-            }
-            .social-sidebar-link {
-                padding: 10px 12px !important;
-                font-size: 13px !important;
-                gap: 10px !important;
-            }
-            .social-sidebar-links {
-                gap: 8px !important;
-            }
         }
     </style>
     <!-- Social Media Meta Tags -->
@@ -3916,7 +3878,7 @@
 
 <script>
 // Mobil menü fonksiyonları - Global scope
-window.closeMobileMenu = function() {
+function closeMobileMenu() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
@@ -3935,22 +3897,22 @@ function toggleMobileMenu() {
 }
 
 // Sosyal Sidebar Toggle
-window.toggleSocialSidebar = function() {
+function toggleSocialSidebar() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.toggle('active');
 }
 
-window.closeSocialSidebar = function() {
+function closeSocialSidebar() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.remove('active');
 }
 
 // Admin Panel Git
-window.goToAdmin = function() {
+function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global eriÅŸim
+// Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -3992,7 +3954,7 @@ window.goToAdmin = goToAdmin;
             <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir" style="display: flex; align-items: center; gap: 6px;">
+            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
                 <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
                     <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                         <rect fill="#E30A17" width="1200" height="800"/>
@@ -4118,7 +4080,7 @@ window.goToAdmin = goToAdmin;
 <section id="hizmetler" style="padding: 100px 0; background: var(--bg);">
     <div class="section-header">
         <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
-        <h2 class="section-title" data-tr="SunduÄŸumuz Hizmetler" data-en="Services We Offer">SunduÄŸumuz Hizmetler</h2>
+        <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">Sunduğumuz Hizmetler</h2>
     </div>
     
     <div class="services-grid" id="servicesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px;">
@@ -4375,7 +4337,7 @@ loadFaqs();
                             <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
                             <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
                             <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="DiÄŸer" data-tr="DiÄŸer" data-en="Other">DiÄŸer</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
                         </select>
                     </div>
                     
@@ -4412,44 +4374,68 @@ loadFaqs();
 </section>
 
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
-<section id="ofis-konum" style="padding: 80px 0; background: #f8f9fa;">
-    <!-- Başlık -->
-    <div style="text-align: center; margin-bottom: 40px;">
-        <span style="display: block; color: #888; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;">KONUM</span>
-        <h2 style="color: #1a1a1a; font-size: 42px; font-weight: 300; margin: 0;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
+<section id="ofis-konum" style="padding: 60px 0; background: #f5f5f5;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #1a1a1a; font-size: 32px; font-weight: 400; margin: 0;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
     </div>
     
-    <!-- Harita - Geniş ve Ortalı -->
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative;">
+        <!-- Harita -->
+        <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.26!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
                 width="100%" 
-                height="500" 
+                height="400" 
                 style="border:0; display: block;" 
                 allowfullscreen="" 
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+                loading="lazy">
             </iframe>
+        </div>
+        
+        <!-- Logo Overlay - Harita üzerinde -->
+        <div id="mapLogoOverlay" style="position: absolute; top: 20px; left: 40px; background: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; z-index: 10;">
+            <img id="mapLogo" src="" alt="CEE" style="width: 40px; height: 40px; object-fit: contain; display: none;">
+            <div id="mapLogoFallback" style="width: 40px; height: 40px; background: var(--accent, #d4af37); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px;">CEE</div>
+            <div>
+                <div style="font-weight: 700; color: #1a1a1a; font-size: 16px;">CEE MİMARLIK</div>
+                <div style="font-size: 12px; color: #666;">Mimarlık & Tasarım</div>
+            </div>
         </div>
     </div>
     
-    <!-- Bilgiler - Ortalı -->
-    <div style="max-width: 800px; margin: 40px auto 0; padding: 0 20px; text-align: center;">
-        <p style="color: #333; font-size: 16px; margin-bottom: 10px;">
-            <strong>Adres:</strong> Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
+    <!-- Bilgiler -->
+    <div style="max-width: 800px; margin: 30px auto 0; padding: 0 20px; text-align: center;">
+        <p style="color: #333; font-size: 15px; margin-bottom: 8px;" data-tr="Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ" data-en="Address: Hatip, Ali Osman Celebi Blv. No:52 A Block Floor 1 No:3, 59860 Corlu/Tekirdag">
+            <strong data-tr="Adres:" data-en="Address:">Adres:</strong> Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
         </p>
-        <p style="color: #333; font-size: 16px; margin-bottom: 25px;">
-            <strong>Telefon:</strong> +90 282 651 55 66
+        <p style="color: #333; font-size: 15px;">
+            <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong> +90 282 651 55 66
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
-           style="display: inline-block; padding: 14px 32px; background: #1a1a1a; color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s;"
-           onmouseover="this.style.background='#333'"
-           onmouseout="this.style.background='#1a1a1a'">
-            Yol Tarifi Al
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #d4af37); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
+           onmouseover="this.style.filter='brightness(1.1)'"
+           onmouseout="this.style.filter='brightness(1)'"
+           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
+            🧭 Yol Tarifi Al
         </a>
     </div>
 </section>
+
+<script>
+// Harita üzerindeki logoyu yükle
+(function() {
+    const savedLogo = localStorage.getItem('site_logo') || localStorage.getItem('cee_site_logo');
+    if (savedLogo) {
+        const mapLogo = document.getElementById('mapLogo');
+        const mapLogoFallback = document.getElementById('mapLogoFallback');
+        if (mapLogo && mapLogoFallback) {
+            mapLogo.src = savedLogo;
+            mapLogo.style.display = 'block';
+            mapLogoFallback.style.display = 'none';
+        }
+    }
+})();
+</script>
 
 <script>
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -4559,43 +4545,43 @@ document.getElementById('contactForm').addEventListener('submit', async function
         <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
     </svg>
     <div class="chat-badge" id="chatBadge">2</div>
+    
+    <!-- FLOATING MENU -->
+    <div class="chat-menu" id="chatMenu">
+        <div class="chat-menu-item" onclick="openAiAssistant(event)">
+            <div class="chat-menu-icon ai-gradient">
+                <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <circle cx="8.5" cy="12" r="1"/>
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="15.5" cy="12" r="1"/>
+                </svg>
+            </div>
+            <div class="chat-menu-content">
+                <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant">CEE AI Asistan</div>
+                <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant">Mimarlık & Mevzuat Danışmanı</div>
+            </div>
+            <div class="chat-menu-badge">AI</div>
+        </div>
+        
+        <div class="chat-menu-divider"></div>
+        
+        <div class="chat-menu-item" onclick="openWhatsAppDirect(event)">
+            <div class="chat-menu-icon whatsapp-gradient">
+                <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+            </div>
+            <div class="chat-menu-content">
+                <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp">WhatsApp</div>
+                <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative">Müşteri temsilcisiyle görüş</div>
+            </div>
+            <div class="chat-menu-badge online">●</div>
+        </div>
+    </div>
 </div>
 
-<!-- FLOATING MENU - BUTONUN DIÅžINDA -->
-<div class="chat-menu" id="chatMenu">
-    <div class="chat-menu-item" onclick="openAiAssistant(event)">
-        <div class="chat-menu-icon ai-gradient">
-            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                <circle cx="8.5" cy="12" r="1"/>
-                <circle cx="12" cy="12" r="1"/>
-                <circle cx="15.5" cy="12" r="1"/>
-            </svg>
-        </div>
-        <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant">CEE AI Asistan</div>
-            <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant">Mimarlık & Mevzuat Danışmanı</div>
-        </div>
-        <div class="chat-menu-badge">AI</div>
-    </div>
-    
-    <div class="chat-menu-divider"></div>
-    
-    <div class="chat-menu-item" onclick="openWhatsAppDirect(event)">
-        <div class="chat-menu-icon whatsapp-gradient">
-            <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-        </div>
-        <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp">WhatsApp</div>
-            <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative">Müşteri temsilcisiyle görüş</div>
-        </div>
-        <div class="chat-menu-badge online">●</div>
-    </div>
-</div>
-
-<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -4611,7 +4597,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>HoÅŸgeldiniz!</h3>
+            <h3>Hoşgeldiniz!</h3>
             <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
@@ -5242,7 +5228,7 @@ const defaultProjects = [
         title: 'Ofis Binası',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'TekirdaÄŸ',
+        location: 'Tekirdağ',
         area: '1200m²',
         row: 'top'
     },
@@ -5440,7 +5426,7 @@ function startHeroAutoSlide() {
     }, 5000);
 }
 
-window.changeSlide = function(direction) {
+function changeSlide(direction) {
     if (heroImages.length === 0) return;
     
     const slides = document.querySelectorAll('.hero-slide');
@@ -5461,7 +5447,7 @@ window.changeSlide = function(direction) {
     if (progressBar) progressBar.style.width = '0%';
 }
 
-window.goToSlide = function(index) {
+function goToSlide(index) {
     if (heroImages.length === 0) return;
     
     const slides = document.querySelectorAll('.hero-slide');
@@ -5585,7 +5571,7 @@ function setupNavigation() {
 }
 
 
-window.closeMobileMenu = function() {
+function closeMobileMenu() {
     const nav = document.getElementById('mainNav');
     const toggle = document.getElementById('menuToggle');
     if (nav && toggle) {
@@ -5608,7 +5594,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÅŸ Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -5638,11 +5624,11 @@ function loadTeam() {
         }
     }
     
-    // Placeholder fotoÄŸraf
+    // Placeholder fotoğraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluÅŸtur (MADDE 2)
+        // Sosyal medya linkleri oluştur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">✉️</a>';
@@ -5681,7 +5667,7 @@ function loadTeam() {
 
 <script>
 
-window.openLightbox = function(imgSrc, projectId, isPDF, isVideo) {
+function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     
@@ -5704,7 +5690,7 @@ window.openLightbox = function(imgSrc, projectId, isPDF, isVideo) {
     incrementClickCount(projectId);
 }
 
-window.closeLightbox = function() {
+function closeLightbox() {
     document.getElementById('lightbox').classList.remove('show');
 }
 
@@ -5731,7 +5717,7 @@ function incrementClickCount(projectId) {
     } catch (e) {}
 }
 
-window.toggleDarkMode = function() {
+function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
@@ -5746,7 +5732,7 @@ function loadDarkMode() {
     }
 }
 
-window.toggleLanguage = function() {
+function toggleLanguage() {
     currentLang = currentLang === 'tr' ? 'en' : 'tr';
     updateLanguageUI();
     applyLanguage();
@@ -5801,12 +5787,12 @@ function applyLanguage() {
 }
 
 // SOSYAL MEDYA SEKMESİ FONKSİYONLARI (MADDE 3)
-window.toggleSocialSidebar = function() {
+function toggleSocialSidebar() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.toggle('active');
 }
 
-window.closeSocialSidebar = function() {
+function closeSocialSidebar() {
     const content = document.getElementById('socialSidebarContent');
     if (content) content.classList.remove('active');
 }
@@ -5834,7 +5820,7 @@ function initSocialSidebar() {
 }
 
 // E-Hizmetler Toggle
-window.toggleEHizmetler = function(e) {
+function toggleEHizmetler(e) {
     e.preventDefault();
     e.stopPropagation();
     const menu = document.getElementById('ehizmetlerMenu');
@@ -5886,7 +5872,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuÅŸu ile kapat
+// ESC tuşu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -5907,7 +5893,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-window.openWhatsApp = function() {
+function openWhatsApp() {
     document.getElementById('whatsappModal').classList.add('show');
     const notification = document.getElementById('whatsappNotification');
     if (notification) {
@@ -6130,7 +6116,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
+<strong>Duş:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -6138,7 +6124,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>🚪 Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
+<strong>Ana Giriş:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -6174,7 +6160,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
+<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -6235,7 +6221,7 @@ function showWhatsAppNotification() {
 }
 
 // Scroll to top
-window.scrollToTop = function() {
+function scrollToTop() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -6342,7 +6328,7 @@ function saveMessage() {
         }
 }
 
-window.goToAdmin = function() {
+function goToAdmin() {
     const confirm = prompt('Admin paneline gitmek için "admin" yazın:');
     if (confirm && confirm.toLowerCase() === 'admin') {
         window.location.href = 'admin.html';
@@ -6356,13 +6342,16 @@ let aiChatOpen = false;
 
 function toggleChatMenu() {
     const menu = document.getElementById('chatMenu');
+    const btn = document.getElementById('unifiedChatBtn');
     
     chatMenuOpen = !chatMenuOpen;
     
     if (chatMenuOpen) {
         menu.classList.add('active');
+        btn.style.transform = 'rotate(45deg)';
     } else {
         menu.classList.remove('active');
+        btn.style.transform = 'rotate(0deg)';
     }
 }
 
@@ -6376,8 +6365,10 @@ function openAiAssistant(event) {
     // Menüyü kapat
     chatMenuOpen = false;
     const menu = document.getElementById('chatMenu');
+    const btn = document.getElementById('unifiedChatBtn');
     
     if (menu) menu.classList.remove('active');
+    if (btn) btn.style.transform = 'rotate(0deg)';
     
     // AI Panel'i aç
     const panel = document.getElementById('aiAssistantPanel');
@@ -6493,7 +6484,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
+        pencere: ['pencere', 'window', 'cam', 'doğrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -6634,7 +6625,7 @@ Ruhsat hizmeti: ${phoneLink}`;
 • 500 m² arsa<br>
 • TAKS: 0.40<br>
 • <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik DeÄŸerler:</strong><br>
+<strong>Tipik Değerler:</strong><br>
 • Konut: 0.30 - 0.40<br>
 • Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
@@ -6679,7 +6670,7 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat iÅŸlemleri<br><br>
+6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
 • Konut projeleri<br>
 • Villa projeleri<br>
@@ -6810,7 +6801,7 @@ function openAiChat(event) {
     const btn = document.getElementById('unifiedChatBtn');
     
     if (menu) menu.classList.remove('active');
-    if (btn) 
+    if (btn) btn.style.transform = 'rotate(0deg)';
     
     // AI Chat'i aç
     const chatWindow = document.getElementById('aiChatWindow');
@@ -6841,7 +6832,7 @@ function openWhatsAppDirect(event) {
     const btn = document.getElementById('unifiedChatBtn');
     
     if (menu) menu.classList.remove('active');
-    if (btn) 
+    if (btn) btn.style.transform = 'rotate(0deg)';
     
     // WhatsApp'ı aç
     const phoneNumber = '905373278765'; // WhatsApp numarası
@@ -6886,7 +6877,7 @@ document.addEventListener('click', function(event) {
     if (chatMenuOpen && btn && menu && !btn.contains(event.target) && !menu.contains(event.target)) {
         chatMenuOpen = false;
         menu.classList.remove('active');
-        
+        btn.style.transform = 'rotate(0deg)';
     }
 });
 
@@ -6898,7 +6889,7 @@ document.addEventListener('touchstart', function(event) {
     if (chatMenuOpen && btn && menu && !btn.contains(event.target) && !menu.contains(event.target)) {
         chatMenuOpen = false;
         menu.classList.remove('active');
-        
+        btn.style.transform = 'rotate(0deg)';
     }
 }, { passive: true });
 
@@ -6993,653 +6984,219 @@ function hideTypingIndicator() {
 function getAiAnswer(question) {
     const q = question.toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ı]/g, 'i').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c');
     
-    // =====================================================
-    // CEE MİMARLIK KAPSAMLI MEVZUAT VE MİMARLIK BİLGİ BANKASI
-    // =====================================================
+    // Gelişmiş Mimarlık Bilgi Bankası
     const answers = {
-        // ========== TAKS KAKS EMSAL ==========
-        taks: `📊 <b>TAKS / KAKS / EMSAL Detaylı Bilgi</b><br><br>
-<b>🔹 TAKS (Taban Alanı Kat Sayısı):</b><br>
-Yapının zemin kattaki taban alanının parsel alanına oranıdır.<br>
-• <b>Formül:</b> TAKS = Taban Alanı ÷ Parsel Alanı<br>
-• <b>Örnek:</b> 500m² parselde TAKS=0.40 → Max taban: 200m²<br>
-• Çıkmalar taban alanına dahil edilmez<br>
-• Asansör, merdiven dahil edilir<br><br>
+        // Villa projeleri
+        villa: `🏡 <b>Villa Projeleri:</b><br><br>
+Villa projelerimizde modern mimari ve fonksiyonel tasarım anlayışı sunuyoruz:<br><br>
+• <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
+• <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
+• <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
+• <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
+Detaylı bilgi için mesaj atabilirsiniz!`,
 
-<b>🔹 KAKS (Kat Alanı Kat Sayısı) = EMSAL:</b><br>
+        // Tasarım süreci
+        tasarim: `📐 <b>Mimari Tasarım Sürecimiz:</b><br><br>
+<b>1. İhtiyaç Analizi (1-2 hafta)</b><br>
+• İlk görüşme ve saha keşfi<br>
+• Bütçe belirleme<br><br>
+<b>2. Ön Tasarım (2-3 hafta)</b><br>
+• Konsept eskizler ve 3D modelleme<br><br>
+<b>3. Uygulama Projesi (4-6 hafta)</b><br>
+• Detaylı çizimler ve statik hesaplar<br><br>
+<b>4. Ruhsat ve Uygulama</b><br>
+• Belediye onayları ve şantiye takibi`,
+
+        // İç mimarlık
+        ic: `🛋️ <b>İç Mimarlık Hizmetlerimiz:</b><br><br>
+• Mekan Planlaması<br>
+• Mobilya Tasarımı (özel üretim)<br>
+• Malzeme Seçimi<br>
+• Aydınlatma Tasarımı<br>
+• Renk Paleti Oluşturma<br>
+• 3D Görselleştirme<br><br>
+Portföyümüzü inceleyebilirsiniz!`,
+
+        // TAKS KAKS
+        taks: `📊 <b>TAKS ve KAKS Nedir?</b><br><br>
+<b>TAKS (Taban Alanı Kat Sayısı):</b><br>
+Yapının taban alanının parsel alanına oranıdır.<br>
+• Formül: TAKS = Taban Alanı / Parsel Alanı<br>
+• Örnek: 500m² parselde TAKS=0.40 ise max taban 200m²<br><br>
+<b>KAKS (Kat Alanı Kat Sayısı):</b><br>
 Toplam inşaat alanının parsel alanına oranıdır.<br>
-• <b>Formül:</b> KAKS = Toplam İnşaat ÷ Parsel Alanı<br>
-• <b>Örnek:</b> KAKS=1.50, 500m² parsel → Max: 750m² inşaat<br><br>
+• Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
+• Örnek: KAKS=1.5 ise 500m² parselde max 750m² inşaat<br><br>
+<b>Emsal:</b> KAKS ile aynı anlama gelir.`,
 
-<b>🔹 KAKS'a Dahil Olmayan Alanlar:</b><br>
-✅ Bodrum otopark (ilk 2 bodrum)<br>
-✅ Sığınak<br>
-✅ Kapıcı dairesi (max 50m²)<br>
-✅ Ortak alanlar (%30'a kadar)<br>
-✅ Asansör boşlukları<br><br>
-
-<b>📞 Hesaplama için bize ulaşın!</b>`,
-
-        // ========== İMAR MEVZUATI ==========
-        imar: `🏛️ <b>İmar Mevzuatı Detaylı Rehber</b><br><br>
-<b>📋 3194 Sayılı İmar Kanunu (Temel Kavramlar):</b><br>
+        // İmar
+        imar: `🏛️ <b>İmar Mevzuatı Bilgileri:</b><br><br>
+<b>Önemli Kavramlar:</b><br>
 • <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
-• <b>Çekme Mesafeleri:</b> Ön, arka, yan bahçe<br>
+• <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
 • <b>H max:</b> Maksimum bina yüksekliği<br>
-• <b>Kat Adedi:</b> İzin verilen toplam kat<br><br>
-
-<b>📋 Planlı Alanlar İmar Yönetmeliği (PATY):</b><br>
-• <b>Yapı Yaklaşma Sınırları</b><br>
-• <b>Parsel Büyüklükleri</b> (min 500m² konut)<br>
-• <b>Bina Derinlikleri</b> (max 22m)<br>
-• <b>Asansör Zorunluluğu</b> (4+ kat)<br><br>
-
-<b>📋 İmar Durumu Belgesi İçin:</b><br>
+• <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
+<b>Başvuru İçin Gerekli Belgeler:</b><br>
 • Tapu fotokopisi<br>
-• Aplikasyon krokisi<br>
-• Belediyeye dilekçe<br><br>
+• İmar durumu belgesi<br>
+• Mimari proje<br>
+• Statik proje<br>
+• Mekanik proje`,
 
-<b>💡 İmar durumu sorgusu için yardımcı olabilirim!</b>`,
-
-        // ========== YAPI RUHSATI ==========
-        ruhsat: `📋 <b>Yapı Ruhsatı Süreci A'dan Z'ye</b><br><br>
-<b>🔹 GEREKLİ PROJELER:</b><br>
-1️⃣ <b>Mimari Proje</b> - Vaziyet, kat planları, kesitler, görünüşler<br>
-2️⃣ <b>Statik Proje</b> - Betonarme/çelik hesaplar<br>
-3️⃣ <b>Mekanik Proje</b> - Sıhhi tesisat, kalorifer, havalandırma<br>
-4️⃣ <b>Elektrik Proje</b> - Aydınlatma, priz, topraklama<br>
-5️⃣ <b>Peyzaj Projesi</b> (1000m²+ parsellerde)<br><br>
-
-<b>🔹 GEREKLİ BELGELER:</b><br>
+        // Ruhsat
+        ruhsat: `📋 <b>Yapı Ruhsatı Süreci:</b><br><br>
+<b>Gerekli Projeler:</b><br>
+✅ Mimari Proje<br>
+✅ Statik Proje<br>
+✅ Mekanik (Tesisat) Proje<br>
+✅ Elektrik Proje<br><br>
+<b>Gerekli Belgeler:</b><br>
 • Tapu fotokopisi<br>
 • İmar durum belgesi<br>
 • Zemin etüdü raporu<br>
-• Harita aplikasyonu<br>
-• Yapı denetim sözleşmesi<br>
-• Proje müellifi taahhütnameleri<br>
-• Mimar/mühendis sicil belgeleri<br><br>
+• Harita aplikasyonu<br><br>
+<b>Süre:</b> Ortalama 2-4 ay (belediyeye göre değişir)`,
 
-<b>🔹 SÜREÇ:</b><br>
-• Belediye incelemesi: 30 iş günü<br>
-• Kurum görüşleri: 15-30 gün<br>
-• <b>Toplam:</b> 2-4 ay<br><br>
+        // Deprem yönetmeliği
+        deprem: `🏗️ <b>Türkiye Bina Deprem Yönetmeliği (TBDY 2018):</b><br><br>
+<b>Temel Prensipler:</b><br>
+• Dayanım esaslı tasarım<br>
+• Süneklik sınıfları (sınırlı, normal, yüksek)<br>
+• Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
+<b>Yapı Düzensizlikleri:</b><br>
+• A Tipi (Plan): Burulma, döşeme süreksizliği<br>
+• B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
+<b>Önemli:</b> Tüm projelerimiz TBDY 2018'e uygundur.`,
 
-<b>📞 Ruhsat işlemlerinizi biz takip edelim!</b>`,
-
-        // ========== DEPREM YÖNETMELİĞİ ==========
-        deprem: `🏗️ <b>TBDY 2018 - Türkiye Bina Deprem Yönetmeliği</b><br><br>
-<b>🔹 DEPREM TASARIM SINIFLARI (DTS):</b><br>
-• <b>DTS-1:</b> Yüksek öneme sahip (hastane, itfaiye)<br>
-• <b>DTS-2:</b> Özel kullanım (okul, AVM)<br>
-• <b>DTS-3:</b> Yoğun kullanım (konut, ofis)<br>
-• <b>DTS-4:</b> Diğer yapılar<br><br>
-
-<b>🔹 DEPREM YER HAREKETİ DÜZEYLERİ:</b><br>
-• <b>DD-1:</b> 2475 yıl (en büyük deprem)<br>
-• <b>DD-2:</b> 475 yıl (standart tasarım)<br>
-• <b>DD-3:</b> 72 yıl (sık deprem)<br>
-• <b>DD-4:</b> 43 yıl (servis depremi)<br><br>
-
-<b>🔹 SÜNEKLİK SINIFLARI:</b><br>
-• <b>Yüksek Süneklik:</b> q = 4-8<br>
-• <b>Normal Süneklik:</b> q = 2-4<br>
-• <b>Sınırlı Süneklik:</b> q = 1.5-2<br><br>
-
-<b>🔹 YAPI DÜZENSİZLİKLERİ:</b><br>
-<b>A Tipi (Planda):</b> A1-Burulma, A2-Döşeme süreksizliği, A3-Çıkıntılar<br>
-<b>B Tipi (Düşeyde):</b> B1-Komşu kat rijitliği, B2-Yumuşak kat, B3-Taşıyıcı süreksizliği<br><br>
-
-<b>⚠️ Tüm projelerimiz TBDY 2018'e %100 uygundur!</b>`,
-
-        // ========== YANGIN YÖNETMELİĞİ ==========
-        yangin: `🔥 <b>Binaların Yangından Korunması Yönetmeliği</b><br><br>
-<b>🔹 KAÇIŞ YOLLARI:</b><br>
-• Min kaçış genişliği: 80cm (konut), 120cm (umumi)<br>
-• Koridor genişliği: Min 120cm<br>
-• Çıkış kapısı: Kaçış yönüne açılır<br>
-• Max kaçış mesafesi: 30m (sprinklersiz), 60m (sprinklerli)<br><br>
-
-<b>🔹 YANGIN MERDİVENİ ZORUNLULUĞU:</b><br>
+        // Yangın yönetmeliği
+        yangin: `🔥 <b>Binaların Yangından Korunması Yönetmeliği:</b><br><br>
+<b>Kaçış Yolları:</b><br>
+• Min genişlik: 80cm (konut), 120cm (ticari)<br>
+• Merdiven genişliği: Min 120cm<br><br>
+<b>Yangın Merdiveni Zorunluluğu:</b><br>
 • 21.50m üzeri binalar<br>
-• Bodrum hariç 6+ katlı yapılar<br>
-• Katta 30+ kişi bulunması<br>
-• Genişlik: Min 120cm<br><br>
+• 30 kişiyi aşan katlar<br><br>
+<b>Yangın Kompartımanı:</b><br>
+• Her 2500m²'de bölme<br>
+• 2 saat yangın dayanımı`,
 
-<b>🔹 YANGIN KOMPARTIMANI:</b><br>
-• Konut: Her 2500m²<br>
-• Ticari: Her 2000m²<br>
-• Yangın dayanımı: 90-120 dakika<br><br>
+        // Maliyet
+        maliyet: `💰 <b>Proje Maliyetleri:</b><br><br>
+<b>Mimari Proje (m² bazlı):</b><br>
+• Villa: 150-300 TL/m²<br>
+• Apartman: 100-200 TL/m²<br>
+• İç Mekan: 80-150 TL/m²<br>
+• Ticari: 120-250 TL/m²<br><br>
+<b>Not:</b> Fiyatlar proje kapsamına göre değişir.<br>
+Net fiyat için proje detaylarınızı paylaşın!`,
 
-<b>🔹 YANGIN SÖNDÜRME SİSTEMLERİ:</b><br>
-• <b>Sprinkler:</b> AVM, otel, 30m+ binalar<br>
-• <b>Yangın dolapları:</b> Her 30m'de bir<br>
-• <b>Duman tahliye:</b> 200m²+ alanlar<br><br>
+        // Çekme mesafeleri
+        cekme: `📏 <b>Çekme Mesafeleri:</b><br><br>
+<b>Ayrık Yapı Düzeni:</b><br>
+• Ön bahçe: Min 5m (yola göre değişir)<br>
+• Arka bahçe: Min 3m (H/2 kuralı)<br>
+• Yan bahçe: Min 3m<br><br>
+<b>Bitişik Yapı Düzeni:</b><br>
+• Sadece ön ve arka bahçe çekmesi<br><br>
+<b>Not:</b> İmar planına göre değişiklik gösterebilir.`,
 
-<b>🔹 YANGIN DURAKLAMA ALANI:</b><br>
-• Min 6m² (engelliler için)<br>
-• Her katta zorunlu (yüksek binalar)`,
+        // Kat yüksekliği
+        kat: `📐 <b>Kat Yüksekliği Standartları:</b><br><br>
+<b>Konutlarda:</b><br>
+• Min döşemeden tavana: 2.40m<br>
+• Brüt kat yüksekliği: 2.80-3.00m<br><br>
+<b>Ticari Alanlarda:</b><br>
+• Min temiz yükseklik: 2.60m<br>
+• Bodrum: Min 2.40m<br><br>
+<b>Asansör Zorunluluğu:</b><br>
+• 4 kattan fazla binalarda zorunlu`,
 
-        // ========== YAPI DENETİM ==========
-        denetim: `🔍 <b>Yapı Denetim Sistemi (4708 Sayılı Kanun)</b><br><br>
-<b>🔹 YAPI DENETİM FİRMASI GÖREVLERİ:</b><br>
-• Proje kontrolü<br>
-• Malzeme denetimi<br>
-• İş yeri denetimi<br>
-• Hakediş onayı<br>
-• İş bitirme belgesi<br><br>
-
-<b>🔹 DENETİM BEDELİ (2024):</b><br>
-• Konut: İnşaat maliyetinin %1.5'i<br>
-• Ticari: %2<br>
-• Sanayi: %1<br><br>
-
-<b>🔹 MÜTEAHHİT YETKİ BELGESİ:</b><br>
-• <b>A Grubu:</b> Sınırsız<br>
-• <b>B Grubu:</b> 30.000m²'ye kadar<br>
-• <b>C Grubu:</b> 10.000m²'ye kadar<br>
-• <b>D Grubu:</b> 5.000m²'ye kadar<br>
-• <b>E Grubu:</b> 2.000m²'ye kadar<br><br>
-
-<b>🔹 YİBF AÇMA:</b><br>
-• Yapı denetim sözleşmesi<br>
-• Müteahhit belgesi<br>
-• Proje onayları<br>
-• SGK işyeri tescili`,
-
-        // ========== İSKAN (YAPI KULLANMA İZNİ) ==========
-        iskan: `🏠 <b>Yapı Kullanma İzni (İskan) Süreci</b><br><br>
-<b>🔹 GEREKLİ BELGELER:</b><br>
-• Yapı denetim iş bitirme belgesi<br>
-• SGK ilişiksizlik yazısı<br>
-• Vergi ilişiksizlik yazısı<br>
-• Cins değişikliği belgesi<br>
-• Enerji kimlik belgesi<br>
-• Sığınak uygunluk belgesi<br>
-• Asansör tescil belgesi<br>
-• İtfaiye raporu<br><br>
-
-<b>🔹 KAT MÜLKİYETİ İÇİN:</b><br>
-• Yapı kullanma izni<br>
-• Yönetim planı<br>
-• Bağımsız bölüm numaraları<br>
-• Tapu müdürlüğü işlemleri<br><br>
-
-<b>🔹 SÜRE:</b> 2-4 hafta (belgeler tamamsa)<br><br>
-
-<b>📞 İskan sürecinizi yönetmemizi ister misiniz?</b>`,
-
-        // ========== KENTSEL DÖNÜŞÜM ==========
-        donusum: `🔄 <b>Kentsel Dönüşüm (6306 Sayılı Kanun)</b><br><br>
-<b>🔹 RİSKLİ YAPI TESPİTİ:</b><br>
-• Lisanslı kuruluş raporu<br>
-• Taşıyıcı sistem analizi<br>
-• Malzeme testleri<br>
-• AFAD onayı<br><br>
-
-<b>🔹 HAK SAHİPLİĞİ:</b><br>
-• 2/3 çoğunluk kararı yeterli<br>
-• 1/3 azınlık: Satış ihalesi<br>
-• Kira yardımı hakkı<br><br>
-
-<b>🔹 DEVLET DESTEKLERİ:</b><br>
-• Kira yardımı: Aylık<br>
-• Taşınma yardımı: Tek seferlik<br>
-• Kredi faiz desteği<br>
-• Harç muafiyeti<br><br>
-
-<b>🔹 İMAR ARTIŞI:</b><br>
-• %30'a kadar ek inşaat hakkı<br>
-• Çekme mesafelerinde esneklik`,
-
-        // ========== ÇEKME MESAFELERİ ==========
-        cekme: `📏 <b>Yapı Yaklaşma Mesafeleri (Çekmeler)</b><br><br>
-<b>🔹 AYRIK NİZAM:</b><br>
-• <b>Ön Bahçe:</b> Min 5m (yol genişliğine göre artabilir)<br>
-• <b>Arka Bahçe:</b> Min 3m (H/2 kuralı uygulanır)<br>
-• <b>Yan Bahçe:</b> Min 3m (her iki taraf)<br><br>
-
-<b>🔹 BİTİŞİK NİZAM:</b><br>
-• Ön bahçe: İmar planına göre<br>
-• Arka bahçe: Min 3m<br>
-• Yan bahçe: Yok (komşuya bitişik)<br><br>
-
-<b>🔹 BLOK NİZAM:</b><br>
-• Birden fazla bina aynı parselde<br>
-• Bina araları: Min 6m<br><br>
-
-<b>🔹 H/2 KURALI:</b><br>
-• Bina yüksekliğinin yarısı kadar çekme<br>
-• Arka bahçe için geçerli<br>
-• <b>Örnek:</b> H=15m → Min 7.5m çekme<br><br>
-
-<b>🔹 YOL GENİŞLİĞİNE GÖRE ÖN BAHÇE:</b><br>
-• 7m yol → 3m çekme<br>
-• 10m yol → 5m çekme<br>
-• 15m+ yol → 7m+ çekme`,
-
-        // ========== KAT YÜKSEKLİKLERİ ==========
-        kat: `📐 <b>Kat Yüksekliği ve Bina Standartları</b><br><br>
-<b>🔹 KONUT KAT YÜKSEKLİKLERİ:</b><br>
-• Döşemeden tavana (temiz): Min 2.40m<br>
-• Brüt kat yüksekliği: 2.80-3.00m<br>
-• Çatı arası (kullanılacaksa): Min 1.80m<br><br>
-
-<b>🔹 TİCARİ KAT YÜKSEKLİKLERİ:</b><br>
-• Mağaza zemin: Min 3.00m<br>
-• Ofis katları: Min 2.60m<br>
-• Restoran/kafe: Min 2.80m<br><br>
-
-<b>🔹 BODRUM KAT:</b><br>
-• Min yükseklik: 2.40m<br>
-• Otopark: 2.20m (engelli: 2.40m)<br>
-• Depo: 2.00m<br><br>
-
-<b>🔹 ASANSÖR ZORUNLULUĞU:</b><br>
-• 4 kattan fazla: 1 asansör<br>
-• 8 kattan fazla: 2 asansör<br>
-• 12 kattan fazla: 3 asansör<br>
-• Engelli asansörü: 110x140cm min<br><br>
-
-<b>🔹 MERDİVEN ÖLÇÜLERİ:</b><br>
-• Genişlik: Min 120cm<br>
-• Rıht: 15-18cm<br>
-• Basamak: 28-32cm<br>
-• Korkuluk: 90cm (min)`,
-
-        // ========== OTOPARK ==========
-        otopark: `🚗 <b>Otopark Yönetmeliği Detayları</b><br><br>
-<b>🔹 KONUT OTOPARK ORANLARI:</b><br>
-• 0-75m² daire: 1 araç / 2 daire<br>
-• 75-150m² daire: 1 araç / daire<br>
-• 150-250m² daire: 2 araç / daire<br>
-• 250m²+ daire: 3 araç / daire<br><br>
-
-<b>🔹 TİCARİ OTOPARK ORANLARI:</b><br>
+        // Otopark
+        otopark: `🚗 <b>Otopark Yönetmeliği:</b><br><br>
+<b>Konut:</b><br>
+• 0-75m²: 1 araç / 2 daire<br>
+• 75-150m²: 1 araç / daire<br>
+• 150m² üzeri: 2 araç / daire<br><br>
+<b>Ticari:</b><br>
 • Ofis: 1 araç / 30m²<br>
-• Mağaza: 1 araç / 50m²<br>
-• AVM: 1 araç / 25m²<br>
-• Restoran: 1 araç / 10 kişi<br>
-• Otel: 1 araç / 5 oda<br><br>
+• Mağaza: 1 araç / 50m²<br><br>
+<b>Otopark Boyutları:</b><br>
+• Min 2.50 x 5.00m`,
 
-<b>🔹 OTOPARK BOYUTLARI:</b><br>
-• Normal: 2.50 x 5.00m<br>
-• Engelli: 3.50 x 5.00m<br>
-• Kadın: 2.75 x 5.00m (önerilir)<br>
-• Koridor: Min 5.50m (çift sıra)<br><br>
+        // 3D
+        '3d': `🎨 <b>3D Görselleştirme:</b><br><br>
+• Fotorealistik görüntüler<br>
+• Gündüz/gece sahneleri<br>
+• İç ve dış mekan renderleri<br>
+• 360° sanal tur<br>
+• Video animasyon<br><br>
+Projenizi yaşamadan önce görün!`,
 
-<b>🔹 RAMPA:</b><br>
-• Max eğim: %20 (kapalı)<br>
-• Max eğim: %15 (açık)<br>
-• Genişlik: Min 3.00m (tek yön)<br>
-• Genişlik: Min 5.50m (çift yön)`,
+        // Süre
+        sure: `⏱️ <b>Proje Süreleri:</b><br><br>
+• Villa Projesi: 6-8 hafta<br>
+• Konut İç Mekan: 3-4 hafta<br>
+• Ticari Mekan: 4-6 hafta<br>
+• Ruhsat Süreci: 2-4 ay<br><br>
+Acil projeler için hızlandırılmış seçeneklerimiz var!`,
 
-        // ========== ENERJİ KİMLİK BELGESİ ==========
-        enerji: `âš¡ <b>Enerji Kimlik Belgesi (EKB)</b><br><br>
-<b>🔹 EKB SINIFLANDIRMASI:</b><br>
-• <b>A Sınıfı:</b> En verimli (0-50 kWh/m²)<br>
-• <b>B Sınıfı:</b> Çok iyi (51-75 kWh/m²)<br>
-• <b>C Sınıfı:</b> İyi (76-100 kWh/m²)<br>
-• <b>D Sınıfı:</b> Orta (101-150 kWh/m²)<br>
-• <b>E Sınıfı:</b> Düşük (151-200 kWh/m²)<br>
-• <b>F/G Sınıfı:</b> Çok düşük<br><br>
-
-<b>🔹 EKB ZORUNLULUĞU:</b><br>
-• 50m²+ tüm bağımsız bölümler<br>
-• Satış ve kiralama işlemlerinde<br>
-• İskan için zorunlu<br><br>
-
-<b>🔹 GEÇERLİLİK:</b> 10 yıl<br><br>
-
-<b>🔹 ENERJİ VERİMLİLİĞİ İÇİN:</b><br>
-• Mantolama (10cm min)<br>
-• Isı cam (Low-E)<br>
-• Güneş kırıcı<br>
-• LED aydınlatma`,
-
-        // ========== SIÄžINAK ==========
-        siginak: `🛡️ <b>Sığınak Yönetmeliği</b><br><br>
-<b>🔹 SIĞINAK ZORUNLULUĞU:</b><br>
-• 1500m²+ konut projeleri<br>
-• 2000m²+ ticari projeler<br>
-• Tüm kamu binaları<br><br>
-
-<b>🔹 SIĞINAK BÜYÜKLÜĞÜ:</b><br>
-• Kişi başı: 1.5m²<br>
-• Min yükseklik: 2.20m<br>
-• 1 WC / 100 kişi<br><br>
-
-<b>🔹 SIĞINAK ÖZELLİKLERİ:</b><br>
-• Havalandırma sistemi<br>
-• Acil aydınlatma<br>
-• Su deposu<br>
-• İletişim sistemi<br><br>
-
-<b>🔹 NOT:</b> Sığınak yerine otopark bedeli ödenebilir (bazı belediyelerde)`,
-
-        // ========== PROJE TÜRLERİ ==========
-        villa: `🏡 <b>Villa Projesi Detayları</b><br><br>
-<b>🔹 TASARIM SÜRECİ:</b><br>
-• İhtiyaç analizi ve arazi keşfi<br>
-• Konsept eskizler<br>
-• 3D modelleme<br>
-• Uygulama projeleri<br><br>
-
-<b>🔹 VİLLA TİPLERİ:</b><br>
-• <b>Modern Villa:</b> Düz çatı, geniş cam<br>
-• <b>Klasik Villa:</b> Kırma çatı, geleneksel<br>
-• <b>Minimal Villa:</b> Sade çizgiler<br>
-• <b>Akdeniz Villa:</b> Beyaz, taş<br><br>
-
-<b>🔹 ÖNERİLEN ALANLAR:</b><br>
-• 2+1: 120-150m²<br>
-• 3+1: 180-220m²<br>
-• 4+1: 250-300m²<br>
-• 5+1: 350m²+<br><br>
-
-<b>📞 Hayalinizdeki villayı tasarlayalım!</b>`,
-
-        apartman: `🏢 <b>Apartman Projesi</b><br><br>
-<b>🔹 DAİRE TİPLERİ:</b><br>
-• <b>Stüdyo:</b> 30-45m² (1 oda)<br>
-• <b>1+1:</b> 45-65m²<br>
-• <b>2+1:</b> 80-110m²<br>
-• <b>3+1:</b> 120-150m²<br>
-• <b>4+1:</b> 160-200m²<br><br>
-
-<b>🔹 ORTAK ALANLAR:</b><br>
-• Giriş holü<br>
-• Asansör alanı<br>
-• Merdiven<br>
-• Otopark<br>
-• Sığınak<br><br>
-
-<b>🔹 KATLAR:</b><br>
-• Zemin: Ticari/konut<br>
-• Normal katlar: Konut<br>
-• Çatı katı: Dubleks imkanı`,
-
-        ticari: `🏪 <b>Ticari Yapı Projeleri</b><br><br>
-<b>🔹 TİCARİ YAPI TÜRLERİ:</b><br>
-• Ofis binaları<br>
-• İş merkezleri<br>
-• AVM ve mağazalar<br>
-• Otel ve konaklama<br>
-• Restoran/kafe<br>
-• Showroom<br><br>
-
-<b>🔹 DİKKAT EDİLECEKLER:</b><br>
-• Yüksek kat yüksekliği<br>
-• Geniş açıklıklar<br>
-• Esnek plan<br>
-• Yangın güvenliği<br>
-• Otopark kapasitesi<br><br>
-
-<b>🔹 SÜRE:</b> 8-12 hafta`,
-
-        // ========== MALİYET ==========
-        maliyet: `💰 <b>Proje ve İnşaat Maliyetleri (2024)</b><br><br>
-<b>🔹 MİMARİ PROJE BEDELİ:</b><br>
-• Villa: 150-350 TL/m²<br>
-• Apartman: 100-250 TL/m²<br>
-• Ticari: 150-400 TL/m²<br>
-• İç mekan: 100-200 TL/m²<br><br>
-
-<b>🔹 İNŞAAT MALİYETİ (Kaba + İnce):</b><br>
-• Ekonomik: 15.000-20.000 TL/m²<br>
-• Orta: 20.000-30.000 TL/m²<br>
-• Lüks: 30.000-50.000 TL/m²<br>
-• Ultra lüks: 50.000+ TL/m²<br><br>
-
-<b>🔹 ÇEVRE DÜZENLEMESİ:</b><br>
-• Temel peyzaj: 500-1.000 TL/m²<br>
-• Kapsamlı: 1.000-2.000 TL/m²<br><br>
-
-<b>📞 Detaylı maliyet analizi için arayın!</b>`,
-
-        // ========== 3D GÖRSELLEŞTIRME ==========
-        '3d': `🎨 <b>3D Görselleştirme Hizmetleri</b><br><br>
-<b>🔹 HİZMETLERİMİZ:</b><br>
-• <b>Dış Cephe Render:</b> Fotorealistik görünüm<br>
-• <b>İç Mekan Render:</b> Mobilya ile<br>
-• <b>Gece/Gündüz Sahneleri</b><br>
-• <b>360° Panorama:</b> Sanal tur<br>
-• <b>Video Animasyon:</b> Fly-through<br>
-• <b>VR Deneyimi</b><br><br>
-
-<b>🔹 RENDER KALİTESİ:</b><br>
-• 4K çözünürlük<br>
-• Ray tracing<br>
-• Gerçekçi malzemeler<br>
-• Doğal aydınlatma<br><br>
-
-<b>🔹 TESLİM SÜRESİ:</b><br>
-• Tek görsel: 2-3 gün<br>
-• Set (5-10 görsel): 1 hafta<br>
-• Animasyon: 2-3 hafta`,
-
-        // ========== SÜRE ==========
-        sure: `⏱️ <b>Proje Süreleri</b><br><br>
-<b>🔹 MİMARİ PROJE:</b><br>
-• Villa (200-400m²): 6-8 hafta<br>
-• Apartman (8-12 daire): 8-10 hafta<br>
-• Büyük proje: 12-16 hafta<br><br>
-
-<b>🔹 RUHSAT SÜRECİ:</b><br>
-• Proje hazırlık: 2-3 ay<br>
-• Belediye onayı: 1-2 ay<br>
-• <b>Toplam:</b> 3-5 ay<br><br>
-
-<b>🔹 İNŞAAT:</b><br>
-• Villa: 8-12 ay<br>
-• Apartman (5-8 kat): 12-18 ay<br>
-• Ticari: 12-24 ay<br><br>
-
-<b>🔹 İSKAN:</b> 2-4 hafta<br><br>
-
-<b>⚡ Acil projeler için hızlandırılmış süreçlerimiz var!</b>`,
-
-        // ========== İÇ MİMARLIK ==========
-        ic: `🛋️ <b>İç Mimarlık Hizmetlerimiz</b><br><br>
-<b>🔹 HİZMET KAPSAMI:</b><br>
-• Mekan analizi ve planlama<br>
-• Konsept tasarım<br>
-• Malzeme seçimi<br>
-• Mobilya tasarımı<br>
-• Aydınlatma projesi<br>
-• Renk danışmanlığı<br>
-• 3D görselleştirme<br>
-• Uygulama takibi<br><br>
-
-<b>🔹 TASARIM STİLLERİ:</b><br>
-• Modern minimalist<br>
-• Klasik/Neo-klasik<br>
-• Endüstriyel<br>
-• Skandinav<br>
-• Akdeniz<br>
-• Japon minimalizmi<br><br>
-
-<b>📞 Mekanınızı dönüştürelim!</b>`,
-
-        // ========== TASARIM SÜRECİ ==========
-        tasarim: `📐 <b>Tasarım Sürecimiz</b><br><br>
-<b>🔹 1. AŞAMA - İHTİYAÇ ANALİZİ (1 hafta)</b><br>
-• İlk görüşme<br>
-• İstek listesi<br>
-• Arazi/mekan keşfi<br>
-• Bütçe belirleme<br><br>
-
-<b>🔹 2. AŞAMA - ÖN TASARIM (2-3 hafta)</b><br>
-• Konsept eskizler<br>
-• Alternatif planlar<br>
-• 3D kütle modeli<br>
-• Ön maliyet tahmini<br><br>
-
-<b>🔹 3. AŞAMA - KESİN PROJE (3-4 hafta)</b><br>
-• Detaylı çizimler<br>
-• Malzeme seçimleri<br>
-• 3D renderlar<br>
-• Statik başlangıç<br><br>
-
-<b>🔹 4. AŞAMA - UYGULAMA (4-6 hafta)</b><br>
-• Teknik çizimler<br>
-• Detaylar<br>
-• Metraj<br>
-• İhale dosyası`,
-
-        // ========== ÖDEME ==========
-        odeme: `💳 <b>Ödeme Koşulları</b><br><br>
-<b>🔹 STANDART ÖDEME PLANI:</b><br>
-• %40 - Sözleşme imzasında<br>
+        // Ödeme
+        odeme: `💳 <b>Ödeme Koşulları:</b><br><br>
+<b>Standart Plan:</b><br>
+• %40 - Sözleşmede<br>
 • %30 - Ön tasarım onayında<br>
 • %30 - Proje tesliminde<br><br>
+Özel ödeme planları için görüşebiliriz!`,
 
-<b>🔹 GENİŞ ÖDEME PLANI:</b><br>
-• %25 - Sözleşmede<br>
-• %25 - Ön tasarımda<br>
-• %25 - Uygulama projesinde<br>
-• %25 - Final tesliminde<br><br>
-
-<b>🔹 ÖDEME YÖNTEMLERİ:</b><br>
-• Nakit<br>
-• Havale/EFT<br>
-• Kredi kartı (tek çekim)<br><br>
-
-<b>📞 Özel ödeme planları için görüşelim!</b>`,
-
-        // ========== İLETİŞİM ==========
-        iletisim: `📞 <b>CEE Mimarlık İletişim</b><br><br>
-<b>📍 Adres:</b><br>
-Hatip, Ali Osman Çelebi Blv. No:52<br>
-A Blok Kat 1 No:3<br>
-59860 Çorlu/Tekirdağ<br><br>
-
-<b>📞 Telefon:</b> +90 282 651 55 66<br>
-<b>📱 WhatsApp:</b> +90 537 327 87 65<br><br>
-
-<b>🕐 Çalışma Saatleri:</b><br>
-Pazartesi-Cuma: 09:00-18:00<br>
-Cumartesi: 10:00-14:00<br><br>
-
-<b>💬 WhatsApp'tan hemen yazın!</b>`,
-
-        // ========== DEFAULT ==========
+        // Default
         default: `Merhaba! 👋<br><br>
-Ben CEE Mimarlık AI asistanıyım. <b>Mimarlık ve mevzuat</b> konularında size yardımcı olabilirim:<br><br>
-📊 <b>İmar Hesapları:</b> TAKS, KAKS, Emsal<br>
-🏛️ <b>Mevzuat:</b> İmar Kanunu, Planlı Alanlar<br>
-📋 <b>Ruhsat:</b> Yapı ruhsatı, iskan süreci<br>
-🏗️ <b>Deprem:</b> TBDY 2018 kuralları<br>
-🔥 <b>Yangın:</b> Kaçış, merdiven, kompartıman<br>
-🔍 <b>Yapı Denetim:</b> 4708 sayılı kanun<br>
-🔄 <b>Kentsel Dönüşüm:</b> 6306 sayılı kanun<br>
-📏 <b>Çekme Mesafeleri:</b> Ön, arka, yan bahçe<br>
-🚗 <b>Otopark:</b> Oranlar ve boyutlar<br>
-⚡ <b>Enerji:</b> EKB sınıfları<br>
-🏡 <b>Projeler:</b> Villa, apartman, ticari<br>
-💰 <b>Maliyet:</b> Proje ve inşaat bedelleri<br><br>
-<b>Sorunuzu yazın, detaylı bilgi vereyim!</b>`
+CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
+🏡 Villa ve konut projeleri<br>
+📐 Tasarım süreci<br>
+🛋️ İç mimarlık<br>
+📊 TAKS/KAKS hesaplama<br>
+🏛️ İmar mevzuatı<br>
+📋 Ruhsat işlemleri<br>
+🏗️ Deprem yönetmeliği<br>
+🔥 Yangın yönetmeliği<br>
+📏 Çekme mesafeleri<br>
+🚗 Otopark yönetmeliği<br>
+💰 Maliyet hesaplama<br><br>
+Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // ========== GELİŞMİŞ ANAHTAR KELİME EŞLEŞTİRME ==========
-    
-    // TAKS KAKS EMSAL
-    if (q.includes('taks') || q.includes('kaks') || q.includes('emsal') || (q.includes('taban') && q.includes('alan'))) {
+    // Gelişmiş anahtar kelime eşleştirme
+    if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
-    }
-    // İmar
-    else if (q.includes('imar') || q.includes('3194') || q.includes('planli alan') || (q.includes('mevzuat') && !q.includes('deprem') && !q.includes('yangin'))) {
+    } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
         return answers.imar;
-    }
-    // Ruhsat
-    else if (q.includes('ruhsat') || q.includes('yapi izni') || q.includes('insaat izni') || (q.includes('belediye') && q.includes('proje'))) {
-        return answers.ruhsat;
-    }
-    // Deprem
-    else if (q.includes('deprem') || q.includes('tbdy') || q.includes('2018') || q.includes('suneklik') || q.includes('duzensizlik')) {
+    } else if (q.includes('deprem') || q.includes('tbdy') || q.includes('yonetmelik') && q.includes('bina')) {
         return answers.deprem;
-    }
-    // Yangın
-    else if (q.includes('yangin') || q.includes('kacis') || q.includes('merdiven') && (q.includes('yangin') || q.includes('guvenlik')) || q.includes('sprinkler') || q.includes('kompartiman')) {
+    } else if (q.includes('yangin') || q.includes('kacis') || q.includes('merdiven')) {
         return answers.yangin;
-    }
-    // Yapı Denetim
-    else if (q.includes('yapi denetim') || q.includes('4708') || q.includes('muteahhit') || q.includes('yibf') || q.includes('hakedi')) {
-        return answers.denetim;
-    }
-    // İskan
-    else if (q.includes('iskan') || q.includes('yapi kullanma') || q.includes('oturma izni') || q.includes('kat mulkiyet')) {
-        return answers.iskan;
-    }
-    // Kentsel Dönüşüm
-    else if (q.includes('kentsel') || q.includes('donusum') || q.includes('6306') || q.includes('riskli') || q.includes('yikim')) {
-        return answers.donusum;
-    }
-    // Çekme mesafeleri
-    else if (q.includes('cekme') || q.includes('bahce') && q.includes('mesafe') || q.includes('yaklasma') || q.includes('h/2')) {
+    } else if (q.includes('cekme') || q.includes('bahce') || q.includes('mesafe')) {
         return answers.cekme;
-    }
-    // Kat yüksekliği
-    else if ((q.includes('kat') && (q.includes('yukseklik') || q.includes('asansor'))) || q.includes('merdiven olcu')) {
+    } else if (q.includes('kat') && (q.includes('yukseklik') || q.includes('asansor'))) {
         return answers.kat;
-    }
-    // Otopark
-    else if (q.includes('otopark') || q.includes('park') && q.includes('arac') || q.includes('garaj') || q.includes('rampa')) {
+    } else if (q.includes('otopark') || q.includes('park') || q.includes('garaj')) {
         return answers.otopark;
-    }
-    // Enerji
-    else if (q.includes('enerji') || q.includes('ekb') || q.includes('kimlik belgesi') || q.includes('mantolama') || q.includes('yalitim')) {
-        return answers.enerji;
-    }
-    // Sığınak
-    else if (q.includes('siginak') || q.includes('sivil savunma')) {
-        return answers.siginak;
-    }
-    // Villa
-    else if (q.includes('villa') || (q.includes('mustaakil') && q.includes('ev'))) {
+    } else if (q.includes('villa') || q.includes('ev') || q.includes('konut')) {
         return answers.villa;
-    }
-    // Apartman
-    else if (q.includes('apartman') || q.includes('daire') || q.includes('rezidans')) {
-        return answers.apartman;
-    }
-    // Ticari
-    else if (q.includes('ticari') || q.includes('ofis') || q.includes('magaza') || q.includes('avm') || q.includes('otel')) {
-        return answers.ticari;
-    }
-    // Tasarım süreci
-    else if (q.includes('tasarim') || q.includes('surec') || q.includes('asama') || (q.includes('nasil') && q.includes('calis'))) {
+    } else if (q.includes('tasarim') || q.includes('surec') || q.includes('nasil') || q.includes('asama')) {
         return answers.tasarim;
-    }
-    // İç mimarlık
-    else if (q.includes('ic mimarlik') || q.includes('ic mekan') || q.includes('mobilya') || q.includes('dekorasyon')) {
+    } else if (q.includes('ic') || q.includes('mobilya') || q.includes('dekor')) {
         return answers.ic;
-    }
-    // Maliyet
-    else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('ucret') || q.includes('para') || q.includes('bedel') || q.includes('kac lira')) {
+    } else if (q.includes('maliyet') || q.includes('fiyat') || q.includes('ucret') || q.includes('para')) {
         return answers.maliyet;
-    }
-    // Süre
-    else if (q.includes('sure') || q.includes('ne kadar zaman') || q.includes('ne zaman') || q.includes('hafta') || q.includes('ay') && q.includes('surer')) {
+    } else if (q.includes('sure') || q.includes('ne kadar') || q.includes('zaman')) {
         return answers.sure;
-    }
-    // Ödeme
-    else if (q.includes('odeme') || q.includes('taksit') || q.includes('pesin') || q.includes('kredi')) {
+    } else if (q.includes('ruhsat') || q.includes('izin') || q.includes('belediye')) {
+        return answers.ruhsat;
+    } else if (q.includes('odeme') || q.includes('taksit') || q.includes('pesin')) {
         return answers.odeme;
-    }
-    // 3D
-    else if (q.includes('3d') || q.includes('render') || q.includes('gorsel') || q.includes('animasyon') || q.includes('sanal tur')) {
+    } else if (q.includes('3d') || q.includes('gorsel') || q.includes('render')) {
         return answers['3d'];
-    }
-    // İletişim
-    else if (q.includes('iletisim') || q.includes('adres') || q.includes('telefon') || q.includes('nerede') || q.includes('ulas')) {
-        return answers.iletisim;
-    }
-    // Genel konut/ev sorusu
-    else if (q.includes('ev') || q.includes('konut')) {
-        return answers.villa;
-    }
-    // Default
-    else {
+    } else {
         return answers.default;
     }
 }
