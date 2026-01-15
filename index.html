@@ -4880,12 +4880,70 @@ let currentFilter = 'all';
 let currentSlide = 0;
 let heroImages = [];
 
+// Varsayılan projeler (herkes görebilsin)
+const defaultProjects = [
+    {
+        id: 'demo1',
+        title: 'Modern Villa Projesi',
+        category: 'villa',
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+        location: 'İstanbul',
+        area: '450m²',
+        row: 'top'
+    },
+    {
+        id: 'demo2',
+        title: 'Lüks Rezidans',
+        category: 'apartman',
+        img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+        location: 'Çorlu',
+        area: '320m²',
+        row: 'top'
+    },
+    {
+        id: 'demo3',
+        title: 'Ofis Binası',
+        category: 'ofis',
+        img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+        location: 'Tekirdağ',
+        area: '1200m²',
+        row: 'top'
+    },
+    {
+        id: 'demo4',
+        title: 'Ticari Kompleks',
+        category: 'ticari',
+        img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+        location: 'İstanbul',
+        area: '2500m²',
+        row: 'top'
+    },
+    {
+        id: 'demo5',
+        title: 'Minimalist Konut',
+        category: 'konut',
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+        location: 'Çorlu',
+        area: '280m²',
+        row: 'top'
+    },
+    {
+        id: 'demo6',
+        title: 'Bahçeli Villa',
+        category: 'villa',
+        img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+        location: 'Silivri',
+        area: '520m²',
+        row: 'top'
+    }
+];
+
 function init() {
     loadFromLocalStorage();
     loadColorTheme();
     loadDarkMode();
     loadLanguage();
-    loadSiteSettings(); // Yeni: Site ayarlarını yükle
+    loadSiteSettings();
     setupHero();
     renderProjects();
     setupFilters();
@@ -4902,21 +4960,23 @@ function loadFromLocalStorage() {
         const savedProjects = localStorage.getItem('cee_projects');
         if (savedProjects) {
             const allProjects = JSON.parse(savedProjects);
-            // Sadece valid projeleri al
             projects = allProjects.filter(p => p && p.row === 'top' && p.img);
             
-            // FAVORİ projeleri hero'da göster
             heroImages = allProjects
                 .filter(p => p && p.img && p.favorite === true && p.mediaType !== 'pdf')
                 .slice(0, 5);
             
-            // Eğer favori yoksa, en popüler 4 projeyi al
             if (heroImages.length === 0) {
                 heroImages = projects
                     .filter(p => p.img && p.mediaType !== 'pdf')
                     .sort((a, b) => (b.clickCount || 0) - (a.clickCount || 0))
                     .slice(0, 4);
             }
+        }
+        
+        // Eğer proje yoksa varsayılanları kullan
+        if (projects.length === 0) {
+            projects = defaultProjects;
         }
         
         siteLogo = localStorage.getItem('site_logo') || '';
@@ -4943,7 +5003,7 @@ function loadFromLocalStorage() {
             }
         }
     } catch (e) {
-        projects = [];
+        projects = defaultProjects;
         heroImages = [];
     }
 }
@@ -4951,11 +5011,30 @@ function loadFromLocalStorage() {
 let heroAutoSlide;
 let heroProgressInterval;
 
+// Varsayılan hero görselleri (herkes görebilsin)
+const defaultHeroImages = [
+    {
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80',
+        title: 'Modern Villa Tasarımı'
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80',
+        title: 'Lüks Konut Projesi'
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80',
+        title: 'Mimari Tasarım'
+    }
+];
+
 function setupHero() {
     const slider = document.getElementById('heroSlider');
     const indicatorsContainer = document.getElementById('heroIndicators');
     
-    if (heroImages.length === 0) {
+    // Önce localStorage'dan, yoksa varsayılan görseller
+    let slidesToUse = heroImages.length > 0 ? heroImages : defaultHeroImages;
+    
+    if (slidesToUse.length === 0) {
         slider.innerHTML = `
             <div class="hero-slide active">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
@@ -4972,10 +5051,10 @@ function setupHero() {
     
     // Slides - Sadece fotoğraf, admin panelden yönetilen slogan
     const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
-    const heroSlogan = heroSettings.title || 'Hayallerinizi Tasarlıyoruz';
+    const heroSlogan = heroSettings.title || 'Hayallerinizi Gerçeğe Dönüştürüyoruz';
     const heroSubtext = heroSettings.subtitle || 'Modern Mimarlık • Profesyonel Çözümler';
     
-    slider.innerHTML = heroImages.map((project, index) => `
+    slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
             <div class="hero-overlay"></div>
@@ -4987,8 +5066,8 @@ function setupHero() {
     `).join('');
     
     // Indicators
-    if (heroImages.length > 1) {
-        indicatorsContainer.innerHTML = heroImages.map((_, index) => 
+    if (slidesToUse.length > 1) {
+        indicatorsContainer.innerHTML = slidesToUse.map((_, index) => 
             `<div class="hero-indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>`
         ).join('');
     }
