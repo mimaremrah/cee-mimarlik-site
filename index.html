@@ -2015,21 +2015,20 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: #1a1a1a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s;
             z-index: 1001;
-            animation: pulse 2s infinite;
         }
 
         .unified-chat-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
+            background: #333;
         }
 
         .chat-badge {
@@ -3369,10 +3368,10 @@
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            color: #1a1a1a;
+            width: 45px;
+            height: 45px;
+            background: #1a1a1a;
+            color: #fff;
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -3383,9 +3382,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
-            box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         .scroll-top.visible {
@@ -3394,8 +3393,8 @@
         }
         
         .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212,175,55,0.6);
+            background: #333;
+            transform: translateY(-3px);
         }
         /* ========================================
            GELİŞMİŞ MOBİL RESPONSIVE İYİLEŞTİRMELER
@@ -3597,24 +3596,24 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
-            color: #1a1a1a;
+            background: #1a1a1a;
+            color: #fff;
             padding: 14px 16px;
             writing-mode: horizontal-tb;
             cursor: pointer;
-            border-radius: 0 16px 16px 0;
+            border-radius: 0 12px 12px 0;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 13px;
             letter-spacing: 0.5px;
-            box-shadow: 4px 4px 20px rgba(212,175,55,0.4);
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
         .social-sidebar-trigger:hover {
-            padding-right: 22px;
-            box-shadow: 6px 6px 30px rgba(212,175,55,0.6);
+            padding-right: 20px;
+            background: #333;
         }
         .social-sidebar-icon { font-size: 18px; }
         .social-sidebar-content {
@@ -4370,34 +4369,29 @@ window.goToAdmin = goToAdmin;
 </section>
 
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
-<section id="ofis-konum" style="padding: 100px 0; background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);">
-    <div class="section-header" style="text-align: center; margin-bottom: 60px;">
-        <div class="section-label" style="color: #d4af37;" data-tr="KONUM" data-en="LOCATION">KONUM</div>
-        <h2 class="section-title" style="color: #fff;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
-        <p style="color: #888; font-size: 16px; margin-top: 15px;">Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</p>
+<section id="ofis-konum" style="padding: 60px 0; background: #f5f5f5;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #1a1a1a; font-size: 32px; font-weight: 400; margin: 0;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
     </div>
     
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-        <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); border: 3px solid rgba(212,175,55,0.3);">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1504.63!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15!3m2!1m1!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
-                width="100%" 
-                height="550" 
-                style="border:0; display: block;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
-        
-        <!-- Yol Tarifi Butonu -->
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
-               style="display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: #1a1a1a; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s; box-shadow: 0 8px 30px rgba(212,175,55,0.4);"
-               onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 40px rgba(212,175,55,0.5)'"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 30px rgba(212,175,55,0.4)'">
-                🧭 Yol Tarifi Al
-            </a>
-        </div>
+    <div style="max-width: 100%; margin: 0 auto;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3009.26!2d27.7831933!3d41.1570005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15!3m2!1m1!2zNDHCsDA5JzI1LjIiTiAyN8KwNDYnNTkuNSJF!5e0!3m2!1str!2str!4v1" 
+            width="100%" 
+            height="400" 
+            style="border:0; display: block;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+    
+    <div style="max-width: 800px; margin: 30px auto 0; padding: 0 20px; text-align: center;">
+        <p style="color: #333; font-size: 15px; margin-bottom: 8px;">
+            <strong>Adres:</strong> Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
+        </p>
+        <p style="color: #333; font-size: 15px;">
+            <strong>Telefon:</strong> +90 282 651 55 66
+        </p>
     </div>
 </section>
 

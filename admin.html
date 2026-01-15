@@ -176,8 +176,44 @@
 
         /* LOGIN */
         .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .login-screen > div,
+        .login-screen h1,
+        .login-screen input,
+        .login-screen button,
+        .login-screen p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .login-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+        }
+        
+        .login-screen.hidden {
+            display: none;
+        }
+        
+        .login-box {
             max-width: 400px;
-            margin: 100px auto;
+            width: 90%;
             background: white;
             padding: 40px;
             border-radius: 20px;
@@ -197,6 +233,7 @@
             border: 2px solid var(--border);
             border-radius: 8px;
             font-size: 14px;
+            box-sizing: border-box;
         }
 
         .login-screen button {
@@ -2167,18 +2204,20 @@ body.dark-mode #projectModal .form-group textarea {
 
 <!-- LOGIN -->
 <div id="loginScreen" class="login-screen">
-    <h1>🔐 Admin Girişi</h1>
-    <div id="loginError" class="login-error"></div>
-    <input type="text" id="username" placeholder="Kullanıcı Adı" value="admin" onkeypress="if(event.key==='Enter') login()">
-    <input type="password" id="password" placeholder="Şifre" value="admin123" onkeypress="if(event.key==='Enter') login()">
-    <button onclick="login()">Giriş Yap</button>
-    <div style="display: flex; gap: 10px; margin-top: 15px;">
-        <button onclick="forgotPassword()" style="flex: 1; background: #6c757d;">Şifremi Unuttum</button>
-        <button onclick="changePassword()" style="flex: 1; background: #0dcaf0;">Şifre Değiştir</button>
+    <div class="login-box">
+        <h1>🔐 Admin Girişi</h1>
+        <div id="loginError" class="login-error"></div>
+        <input type="text" id="username" placeholder="Kullanıcı Adı" value="admin" onkeypress="if(event.key==='Enter') login()">
+        <input type="password" id="password" placeholder="Şifre" value="admin123" onkeypress="if(event.key==='Enter') login()">
+        <button onclick="login()">Giriş Yap</button>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <button onclick="forgotPassword()" style="flex: 1; background: #6c757d;">Şifremi Unuttum</button>
+            <button onclick="changePassword()" style="flex: 1; background: #0dcaf0;">Şifre Değiştir</button>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
+            Varsayılan: admin / admin123
+        </p>
     </div>
-    <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
-        Varsayılan: admin / admin123
-    </p>
 </div>
 
 <!-- SİTE AYARLARI MODALI -->
@@ -2385,6 +2424,18 @@ body.dark-mode #projectModal .form-group textarea {
             <div style="margin-bottom: 30px;">
                 <label style="display: block; margin-bottom: 15px; font-weight: 700; color: #333; font-size: 16px;">✨ Hazır Renk Temaları:</label>
                 <div id="colorPresets" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <!-- SİYAH GRİ MODERN (ÖNERİLEN) -->
+                    <div class="color-preset" onclick="applyColorPreset('#1a1a1a', '#333333', '#666666')" 
+                         style="padding: 15px; border: 3px solid #1a1a1a; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
+                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                            <div style="width: 25px; height: 25px; background: #1a1a1a; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #333333; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #666666; border-radius: 6px;"></div>
+                        </div>
+                        <strong style="font-size: 13px; color: #1a1a1a;">⭐ Siyah Gri (Önerilen)</strong>
+                        <p style="font-size: 11px; color: #666; margin: 0;">Modern ve şık</p>
+                    </div>
+                    
                     <!-- ALTIN KLASİK -->
                     <div class="color-preset" onclick="applyColorPreset('#d4af37', '#b8963a', '#f4d03f')" 
                          style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
@@ -2397,40 +2448,28 @@ body.dark-mode #projectModal .form-group textarea {
                         <p style="font-size: 11px; color: #666; margin: 0;">Şık ve profesyonel</p>
                     </div>
                     
-                    <!-- MODERN MAVİ -->
-                    <div class="color-preset" onclick="applyColorPreset('#3b82f6', '#1d4ed8', '#60a5fa')" 
+                    <!-- KOYU GRİ -->
+                    <div class="color-preset" onclick="applyColorPreset('#374151', '#4b5563', '#6b7280')" 
                          style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
                         <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #3b82f6; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #1d4ed8; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #60a5fa; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #374151; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #4b5563; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #6b7280; border-radius: 6px;"></div>
                         </div>
-                        <strong style="font-size: 13px; color: #333;">💎 Modern Mavi</strong>
+                        <strong style="font-size: 13px; color: #333;">🌑 Koyu Gri</strong>
+                        <p style="font-size: 11px; color: #666; margin: 0;">Minimalist ve temiz</p>
+                    </div>
+                    
+                    <!-- LACIVERT -->
+                    <div class="color-preset" onclick="applyColorPreset('#1e3a5f', '#2c4a6e', '#3d5a80')" 
+                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
+                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                            <div style="width: 25px; height: 25px; background: #1e3a5f; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #2c4a6e; border-radius: 6px;"></div>
+                            <div style="width: 25px; height: 25px; background: #3d5a80; border-radius: 6px;"></div>
+                        </div>
+                        <strong style="font-size: 13px; color: #333;">🌊 Lacivert</strong>
                         <p style="font-size: 11px; color: #666; margin: 0;">Güvenilir ve kurumsal</p>
-                    </div>
-                    
-                    <!-- YEŞİL DOĞA -->
-                    <div class="color-preset" onclick="applyColorPreset('#10b981', '#059669', '#34d399')" 
-                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #10b981; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #059669; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #34d399; border-radius: 6px;"></div>
-                        </div>
-                        <strong style="font-size: 13px; color: #333;">🌿 Yeşil Doğa</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Taze ve sürdürülebilir</p>
-                    </div>
-                    
-                    <!-- MOR LÜKS -->
-                    <div class="color-preset" onclick="applyColorPreset('#8b5cf6', '#7c3aed', '#a78bfa')" 
-                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #8b5cf6; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #7c3aed; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #a78bfa; border-radius: 6px;"></div>
-                        </div>
-                        <strong style="font-size: 13px; color: #333;">👑 Mor Lüks</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Yaratıcı ve premium</p>
                     </div>
                 </div>
             </div>
@@ -2917,9 +2956,16 @@ function login() {
         if (loginScreenEl) loginScreenEl.classList.add('hidden');
         if (adminPanelEl) adminPanelEl.classList.remove('hidden');
         
-        // Logo section'ı göster
+        // Tüm admin bölümlerini göster
         const logoSection = document.querySelector('.logo-upload-section');
+        const aboutSection = document.getElementById('aboutSection');
+        const teamSection = document.getElementById('teamSection');
+        const instagramSection = document.getElementById('instagramSection');
+        
         if (logoSection) logoSection.style.display = 'block';
+        if (aboutSection) aboutSection.style.display = 'block';
+        if (teamSection) teamSection.style.display = 'block';
+        if (instagramSection) instagramSection.style.display = 'block';
         
         console.log('%c✅ Admin girişi başarılı', 'color: #4CAF50; font-weight: bold');
         
@@ -5201,6 +5247,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const adminPanelEl = document.getElementById('adminPanel');
         if (loginScreenEl) loginScreenEl.classList.add('hidden');
         if (adminPanelEl) adminPanelEl.classList.remove('hidden');
+        
+        // Tüm admin bölümlerini göster
+        const logoSection = document.querySelector('.logo-upload-section');
+        const aboutSection = document.getElementById('aboutSection');
+        const teamSection = document.getElementById('teamSection');
+        const instagramSection = document.getElementById('instagramSection');
+        
+        if (logoSection) logoSection.style.display = 'block';
+        if (aboutSection) aboutSection.style.display = 'block';
+        if (teamSection) teamSection.style.display = 'block';
+        if (instagramSection) instagramSection.style.display = 'block';
+        
         init();
         console.log('%c♻️ Mevcut oturum yüklendi', 'color: #2196F3; font-weight: bold');
     }
@@ -6047,7 +6105,7 @@ body.dark-mode .team-member-card {
 </style>
 
 <!-- LOGO YÜKLEME BÖLÜMÜ -->
-<div class="logo-upload-section">
+<div class="logo-upload-section" style="display: none;">
     <h2 style="margin-bottom: 20px; color: #2d3748;">🎨 Site Logosu</h2>
     <div class="logo-preview">
         <img id="logoPreview" src="" style="display: none;">
@@ -6068,7 +6126,7 @@ body.dark-mode .team-member-card {
 </div>
 
 <!-- HAKKIMIZDA BÖLÜMÜ -->
-<div id="aboutSection" class="admin-section">
+<div id="aboutSection" class="admin-section" style="display: none;">
     <h2 style="margin-bottom: 20px; color: #2d3748;">📝 Hakkımızda Bilgileri</h2>
     
     <div class="form-group">
@@ -6092,7 +6150,7 @@ body.dark-mode .team-member-card {
 </div>
 
 <!-- EKİP ÜYELERİ BÖLÜMÜ -->
-<div id="teamSection" class="admin-section">
+<div id="teamSection" class="admin-section" style="display: none;">
     <h2 style="margin-bottom: 20px; color: #2d3748;">👥 Ekip Üyeleri</h2>
     
     <button onclick="openTeamModal()" class="btn-add">
@@ -6103,7 +6161,7 @@ body.dark-mode .team-member-card {
 </div>
 
 <!-- INSTAGRAM BÖLÜMÜ -->
-<div id="instagramSection" class="admin-section">
+<div id="instagramSection" class="admin-section" style="display: none;">
     <h2 style="margin-bottom: 20px; color: #2d3748;">📷 Instagram Hesapları</h2>
     
     <div class="form-group">
@@ -6365,28 +6423,6 @@ function saveNewProject() {
     reader.readAsDataURL(file);
 }
 </script>
-
-        
-        <div class="form-group">
-            <label>Deneyim</label>
-            <textarea id="memberExperience" placeholder="İş deneyimi..." style="min-height: 80px;"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label>Fotoğraf</label>
-            <input type="file" id="memberPhoto" accept="image/*">
-        </div>
-        
-        <div class="modal-buttons">
-            <button onclick="saveMember()" style="background: #10b981; color: white;">
-                💾 Kaydet
-            </button>
-            <button onclick="closeTeamModal()" style="background: #6b7280; color: white;">
-                ❌ İptal
-            </button>
-        </div>
-    </div>
-</div>
 
 <script>
 // ================== LOGO YÖNETİMİ ==================
