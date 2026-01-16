@@ -1424,19 +1424,29 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.18);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            padding: 20px 0;
-            transition: all 0.3s ease;
+            padding: 15px 0;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
         body.dark-mode header {
-            background: rgba(26, 26, 26, 0.8);
+            background: rgba(26, 26, 26, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode header.scrolled {
+            background: rgba(26, 26, 26, 0.98);
         }
 
         .header-content {
@@ -1450,21 +1460,62 @@
 
         .logo-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .logo-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .site-logo {
-            height: 45px;
+            height: 40px;
             width: auto;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled .site-logo {
+            height: 32px;
         }
 
         .logo-text {
-            font-size: 24px;
-            font-weight: 200;
-            letter-spacing: 5px;
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 8px;
             color: var(--accent);
             text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled .logo-text {
+            font-size: 22px;
+            letter-spacing: 6px;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 1;
+            white-space: nowrap;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled .logo-subtitle {
+            opacity: 0;
+            font-size: 0;
+            margin-top: -10px;
+        }
+
+        body.dark-mode .logo-subtitle {
+            color: #ccc;
         }
 
         /* Mobile Menu Toggle */
@@ -1785,13 +1836,13 @@
         /* SECTIONS */
         section {
             max-width: 1600px;
-            margin: 120px auto;
+            margin: 60px auto;
             padding: 0 80px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 50px;
         }
 
         .section-label {
@@ -2947,8 +2998,8 @@
         footer {
             background: var(--white);
             border-top: 1px solid var(--border);
-            padding: 60px 0 30px;
-            margin-top: 150px;
+            padding: 40px 0 20px;
+            margin-top: 60px;
         }
 
         .footer-content {
@@ -3313,6 +3364,8 @@
             }
             
             .logo-text { font-size: 18px; letter-spacing: 3px; }
+            .logo-subtitle { font-size: 6px; letter-spacing: 1px; text-align: center; white-space: nowrap; }
+            header.scrolled .logo-subtitle { opacity: 0; font-size: 0; }
             .hero { height: 50vh; }
             .hero-title { font-size: 36px; letter-spacing: 5px; }
             .hero-subtitle { font-size: 13px; }
@@ -4076,8 +4129,10 @@ window.goToAdmin = goToAdmin;
 <header role="banner">
     <div class="header-content">
         <div class="logo-container">
-            <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
-            <div class="logo-text" aria-label="CEE Mimarlık">CEE</div>
+            <div class="logo-top">
+                <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
+            </div>
+            <div class="logo-subtitle" id="headerSlogan" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS">MİMARLIK & YAPI SİSTEMLERİ</div>
         </div>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
@@ -4227,7 +4282,7 @@ window.goToAdmin = goToAdmin;
 
 
 <!-- HİZMETLERİMİZ SECTION -->
-<section id="hizmetler" style="padding: 100px 0; background: var(--bg);">
+<section id="hizmetler" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
         <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
         <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">Sunduğumuz Hizmetler</h2>
@@ -4277,7 +4332,7 @@ loadServices();
 </script>
 
 <!-- REFERANSLAR SECTION -->
-<section id="referanslar" style="padding: 100px 0; background: white;">
+<section id="referanslar" style="padding: 50px 0; background: white;">
     <div class="section-header">
         <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</div>
         <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">Çalıştığımız Kurumlar</h2>
@@ -4324,7 +4379,7 @@ loadReferences();
 </script>
 
 <!-- SSS (FAQ) SECTION -->
-<section id="sss" style="padding: 100px 0; background: var(--bg);">
+<section id="sss" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
         <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS">SIK SORULAN SORULAR</div>
         <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">Merak Edilenler</h2>
@@ -4524,7 +4579,7 @@ loadFaqs();
 </section>
 
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
-<section id="ofis-konum" style="padding: 60px 0; background: #f5f5f5;">
+<section id="ofis-konum" style="padding: 40px 0; background: #f5f5f5;">
     <div style="text-align: center; margin-bottom: 30px;">
         <h2 style="color: #1a1a1a; font-size: 32px; font-weight: 400; margin: 0;" data-tr="Ofis Konumumuz" data-en="Our Office Location">Ofis Konumumuz</h2>
     </div>
@@ -8045,7 +8100,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 2. SCROLL PERFORMANCE
     let scrollTimer;
+    const header = document.querySelector('header');
+    
+    // Header scroll effect
     window.addEventListener('scroll', function() {
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        
         if (scrollTimer) clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
             // Scroll ended - track analytics
@@ -8457,21 +8523,27 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <script>
-// Logo yükleyici
+// Logo ve slogan yükleyici
 function loadSiteLogo() {
     const logo = localStorage.getItem('cee_site_logo');
+    const slogan = localStorage.getItem('cee_header_slogan');
     const logoImg = document.getElementById('headerLogo');
-    const logoTitle = document.getElementById('headerTitle');
+    const sloganEl = document.getElementById('headerSlogan');
     
+    // Logo yükle
     if (logo && logo.trim() !== '') {
         if (logoImg) {
             logoImg.src = logo;
             logoImg.style.display = 'block';
         }
-        if (logoTitle) logoTitle.style.display = 'none';
     } else {
         if (logoImg) logoImg.style.display = 'none';
-        if (logoTitle) logoTitle.style.display = 'block';
+    }
+    
+    // Slogan yükle
+    if (slogan && slogan.trim() !== '' && sloganEl) {
+        sloganEl.textContent = slogan;
+        sloganEl.setAttribute('data-tr', slogan);
     }
 }
 
@@ -8479,32 +8551,7 @@ function loadSiteLogo() {
 document.addEventListener('DOMContentLoaded', loadSiteLogo);
 </script>
 
-<script>
-// Logo yükleyici
-function loadSiteLogo() {
-    const logo = localStorage.getItem('cee_site_logo');
-    const logoImg = document.getElementById('siteLogo');
-    const logoTitle = document.getElementById('siteTitle');
-    
-    if (logo && logo.trim() !== '') {
-        if (logoImg) {
-            logoImg.src = logo;
-            logoImg.style.display = 'block';
-        }
-        if (logoTitle) logoTitle.style.display = 'none';
-    } else {
-        if (logoImg) logoImg.style.display = 'none';
-        if (logoTitle) logoTitle.style.display = 'block';
-    }
-}
 
-// Sayfa yüklendiğinde
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadSiteLogo);
-} else {
-    loadSiteLogo();
-}
-</script>
 
 </body>
 
