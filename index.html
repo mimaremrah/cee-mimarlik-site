@@ -1962,8 +1962,8 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px var(--shadow);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
         }
 
         .project-image {
@@ -1975,49 +1975,83 @@
         }
 
         .project-card:hover .project-image {
-            transform: scale(1.08);
+            transform: scale(1.1);
             filter: grayscale(0%);
         }
 
         .project-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
-            padding: 35px;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.92);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .project-card:hover .project-overlay {
-            transform: translateY(0);
+            opacity: 1;
         }
 
         .project-title {
             color: white;
-            font-size: 22px;
-            font-weight: 200;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             text-transform: uppercase;
+        }
+
+        .project-description {
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 90%;
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .project-btn:hover {
+            background: var(--accent);
+            color: #1e1e1e;
         }
 
         .project-tags {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 15px;
         }
 
         .project-tag {
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
-            color: rgba(255,255,255,0.9);
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 5px 14px;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 4px 12px;
             text-transform: uppercase;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
         }
 
         /* ABOUT SECTION */
@@ -5742,7 +5776,7 @@ function renderProjects() {
         }
         
         return `
-            <div class="project-card" onclick="openLightbox('${project.img}', '${project.id}', ${isPDF}, ${isVideo})">
+            <div class="project-card" data-project-id="${project.id}" onclick="openProjectDetail('${project.id}')">
                 ${mediaHTML}
                 <div class="project-overlay">
                     ${project.title ? `<div class="project-title">${project.title}</div>` : ''}
@@ -5751,6 +5785,8 @@ function renderProjects() {
                             ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                         </div>
                     ` : ''}
+                    ${project.description ? `<div class="project-description">${project.description}</div>` : ''}
+                    <button class="project-btn" onclick="event.stopPropagation(); openProjectDetail('${project.id}')">Daha Fazla</button>
                 </div>
             </div>
         `;
@@ -5884,6 +5920,63 @@ function loadTeam() {
 </script>
 
 <script>
+
+// Proje detay modal'ını açma fonksiyonu
+function openProjectDetail(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    // Modal HTML oluştur
+    const modalHTML = `
+        <div class="project-modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
+            <div class="project-modal" onclick="event.stopPropagation()">
+                <button class="project-modal-close" onclick="closeProjectModal()">&times;</button>
+                <div class="project-modal-image">
+                    <img src="${project.img}" alt="${project.title || 'Proje'}">
+                </div>
+                <div class="project-modal-content">
+                    <h2 class="project-modal-title">${project.title || 'Proje Detayı'}</h2>
+                    ${project.tags && project.tags.length > 0 ? `
+                        <div class="project-modal-tags">
+                            ${project.tags.map(tag => `<span class="project-modal-tag">${tag}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                    <p class="project-modal-description">${project.description || 'Bu proje hakkında detaylı bilgi için bizimle iletişime geçebilirsiniz.'}</p>
+                    <div class="project-modal-actions">
+                        <a href="#iletisim" class="project-modal-btn primary" onclick="closeProjectModal()">İletişime Geç</a>
+                        <button class="project-modal-btn secondary" onclick="closeProjectModal()">Kapat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Modal'ı body'e ekle
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    document.body.style.overflow = 'hidden';
+    
+    // Animasyon için
+    setTimeout(() => {
+        document.getElementById('projectModal').classList.add('active');
+    }, 10);
+}
+
+function closeProjectModal(event) {
+    if (event && event.target !== event.currentTarget) return;
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.remove();
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
+// ESC tuşu ile kapatma
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeProjectModal();
+});
 
 function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     const lightbox = document.getElementById('lightbox');
