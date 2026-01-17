@@ -4,753 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proje Detay - CEE Mimarlık</title>
-    
-    <!-- SEO Fallback Meta Tags -->
-    <meta name="description" content="CEE Mimarlık projesi detayları - Modern mimarlık anlayışıyla tasarlanan villa, apartman ve ticari yapılar.">
-    <meta name="keywords" content="mimarlık projesi, villa tasarımı, modern mimari, CEE Mimarlık">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Proje Detay - CEE Mimarlık">
-    <meta property="og:description" content="CEE Mimarlık projesi detayları">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.ceemimarlik.com/og-image.jpg">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="CEE Mimarlık projesi detayları">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            line-height: 1.6;
-        }
-
-        /* HEADER */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .back-btn {
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .back-btn:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        /* MAIN CONTENT */
-        .project-detail {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* HERO IMAGE */
-        .project-hero {
-            width: 100%;
-            height: 500px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            margin-bottom: 40px;
-        }
-
-        /* INFO SECTION */
-        .project-info {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-        }
-
-        .project-title {
-            font-size: 36px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 20px;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .meta-label {
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .meta-value {
-            color: #6b7280;
-        }
-
-        .project-description {
-            font-size: 16px;
-            color: #4b5563;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        /* SPECS */
-        .project-specs {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .spec-item {
-            padding: 20px;
-            background: #f9fafb;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-        }
-
-        .spec-label {
-            font-size: 12px;
-            color: #9ca3af;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
-
-        .spec-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-        /* GALLERY */
-        .project-gallery {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 250px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* DRAWINGS */
-        .project-drawings {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-        }
-
-        .drawings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
-
-        .drawing-item {
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .drawing-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-        }
-
-        .drawing-image {
-            width: 100%;
-            height: 300px;
-            object-fit: contain;
-            background: #f9fafb;
-            padding: 20px;
-        }
-
-        .drawing-title {
-            padding: 15px;
-            background: #f9fafb;
-            font-weight: 600;
-            color: #1f2937;
-            text-align: center;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .project-hero {
-                height: 300px;
-            }
-
-            .project-title {
-                font-size: 28px;
-            }
-
-            .project-info,
-            .project-specs,
-            .project-gallery,
-            .project-drawings {
-                padding: 20px;
-            }
-
-            .gallery-grid,
-            .drawings-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #f5f5f5; color: #2c2c2c; line-height: 1.6; }
+        body.dark-mode { background: #1a1a1a; color: #e8e8e8; }
+        header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid #e0e0e0; z-index: 1000; padding: 15px 0; }
+        body.dark-mode header { background: rgba(26,26,26,0.98); border-bottom: 1px solid #333; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; flex-direction: column; padding: 8px 15px; border: 1px solid #ddd; border-radius: 8px; text-decoration: none; background: white; }
+        body.dark-mode .logo-container { background: #2c2c2c; border-color: #444; }
+        .site-logo { height: 50px; width: auto; }
+        .logo-subtitle { font-size: 8px; font-weight: 500; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-top: 4px; border-top: 1px solid #ddd; padding-top: 5px; }
+        body.dark-mode .logo-subtitle { color: #999; border-top-color: #444; }
+        .header-actions { display: flex; gap: 15px; align-items: center; }
+        .btn-back { padding: 10px 20px; border: 1px solid #2c2c2c; color: #2c2c2c; background: transparent; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
+        .btn-back:hover { background: #2c2c2c; color: white; }
+        body.dark-mode .btn-back { border-color: #888; color: #888; }
+        body.dark-mode .btn-back:hover { background: #888; color: #1a1a1a; }
+        .btn-minimal { background: none; border: none; font-size: 18px; cursor: pointer; padding: 8px; }
+        main { margin-top: 100px; padding: 40px 20px 80px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .project-hero { width: 100%; height: 450px; border-radius: 8px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .project-hero img { width: 100%; height: 100%; object-fit: cover; }
+        .project-info { background: white; padding: 50px; border-radius: 8px; margin-bottom: 40px; }
+        body.dark-mode .project-info { background: #2c2c2c; }
+        .project-title { font-size: 32px; font-weight: 300; letter-spacing: 3px; margin-bottom: 25px; text-transform: uppercase; }
+        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
+        .project-tag { font-size: 10px; letter-spacing: 2px; color: #666; border: 1px solid #ddd; padding: 6px 16px; text-transform: uppercase; }
+        body.dark-mode .project-tag { color: #999; border-color: #444; }
+        .project-description { font-size: 15px; line-height: 1.9; color: #555; }
+        body.dark-mode .project-description { color: #bbb; }
+        .project-cta { background: #2c2c2c; padding: 50px; border-radius: 8px; text-align: center; }
+        body.dark-mode .project-cta { background: #222; }
+        .cta-title { font-size: 24px; font-weight: 300; color: white; margin-bottom: 15px; letter-spacing: 2px; }
+        .cta-text { color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 14px; }
+        .cta-btn { display: inline-block; padding: 14px 35px; background: white; color: #2c2c2c; text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; }
+        .cta-btn:hover { background: #f5f5f5; }
+        footer { background: #2c2c2c; color: white; padding: 30px 20px; text-align: center; margin-top: 60px; }
+        body.dark-mode footer { background: #111; }
+        .footer-text { opacity: 0.6; font-size: 12px; }
+        .loading { text-align: center; padding: 80px 20px; }
+        .loading-spinner { width: 35px; height: 35px; border: 2px solid #ddd; border-top-color: #2c2c2c; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .not-found { text-align: center; padding: 80px 20px; }
+        .not-found h2 { font-size: 28px; font-weight: 300; margin-bottom: 15px; }
+        @media (max-width: 768px) { .header-content { padding: 0 15px; } .site-logo { height: 40px; } main { margin-top: 90px; padding: 20px 15px 50px; } .project-hero { height: 280px; } .project-info { padding: 30px 20px; } .project-title { font-size: 24px; } .project-cta { padding: 35px 20px; } .cta-title { font-size: 20px; } }
     </style>
-<!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
 </head>
 <body>
-    <!-- HEADER -->
-    <div class="header">
-        <div class="container">
-            <div class="logo">🏢 CEE MİMARLIK</div>
-            <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo-container">
+            <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
+            <div class="logo-subtitle" id="headerSlogan">MİMARLIK & YAPI SİSTEMLERİ</div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html#projeler" class="btn-back">← Projelere Dön</a>
+            <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn">🌙</button>
         </div>
     </div>
-
-    <!-- MAIN CONTENT -->
-    <div class="project-detail">
-        <!-- HERO IMAGE -->
-        <div class="project-hero" id="projectHero" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzljYTNhZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPsSwbWFnZSBIZXJlPC90ZXh0Pjwvc3ZnPg==')"></div>
-
-        <!-- PROJECT INFO -->
-        <div class="project-info">
-            <h1 class="project-title" id="projectTitle">Villa Projesi</h1>
-            
-            <div class="project-meta">
-                <div class="meta-item">
-                    <span class="meta-label">📍 Konum:</span>
-                    <span class="meta-value" id="projectLocation">İstanbul, Türkiye</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">📅 Yıl:</span>
-                    <span class="meta-value" id="projectYear">2024</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">📐 Alan:</span>
-                    <span class="meta-value" id="projectArea">350 m²</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">👤 Müşteri:</span>
-                    <span class="meta-value" id="projectClient">Özel</span>
-                </div>
-            </div>
-
-            <div class="project-description" id="projectDescription">
-                Modern mimari anlayışla tasarlanan bu villa projesi, doğa ile iç içe yaşam konseptini merkeze alır. 
-                Geniş cam yüzeyler sayesinde maksimum doğal ışık alınırken, sürdürülebilir malzemeler kullanılarak 
-                çevre dostu bir yaklaşım benimsenmiştir.
-            </div>
-
-            <div class="project-tags" id="projectTags">
-                <span class="tag">Villa</span>
-                <span class="tag">Modern</span>
-                <span class="tag">Sürdürülebilir</span>
-            </div>
-        </div>
-
-        <!-- TECHNICAL SPECS -->
-        <div class="project-specs">
-            <h2 class="section-title">📋 Teknik Özellikler</h2>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">İnşaat Alanı</div>
-                    <div class="spec-value" id="specArea">350 m²</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Kat Sayısı</div>
-                    <div class="spec-value" id="specFloors">2 Kat</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Oda Sayısı</div>
-                    <div class="spec-value" id="specRooms">4+1</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Banyo</div>
-                    <div class="spec-value" id="specBathrooms">3</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Arsa Alanı</div>
-                    <div class="spec-value" id="specLand">600 m²</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Otopark</div>
-                    <div class="spec-value" id="specParking">2 Araç</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GALLERY -->
-        <div class="project-gallery">
-            <h2 class="section-title">🖼️ Görsel Galeri</h2>
-            <div class="gallery-grid" id="projectGallery">
-                <!-- Görseller dinamik yüklenecek -->
-            </div>
-        </div>
-
-        <!-- DRAWINGS/PLANS -->
-        <div class="project-drawings">
-            <h2 class="section-title">📐 Çizimler & Planlar</h2>
-            <div class="drawings-grid" id="projectDrawings">
-                <!-- Çizimler dinamik yüklenecek -->
-            </div>
-        </div>
-        
-        <!-- VIDEO SECTION -->
-        <div class="project-video" id="projectVideoSection" style="display: none; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 30px;">
-            <h2 class="section-title">🎬 Proje Videosu</h2>
-            <div id="projectVideoContainer" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000;">
-            </div>
-        </div>
-        
-        <!-- PROJE BİLGİLERİ DETAY -->
-        <div class="project-extra-info" id="projectExtraInfo" style="display: none; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 30px;">
-            <h2 class="section-title">📋 Detaylı Proje Bilgileri</h2>
-            <div id="extraInfoGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // URL'den proje ID'sini al
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectId = urlParams.get('id');
-
-        // LocalStorage'dan proje verilerini yükle
-        function loadProjectData() {
-            try {
-                const projects = JSON.parse(localStorage.getItem('cee_projects')) || [];
-                const project = projects.find(p => p.id === projectId);
-
-                if (!project) {
-                    alert('Proje bulunamadı!');
-                    window.location.href = 'index.html';
-                    return;
-                }
-
-                // Temel bilgiler
-                document.title = `${project.title} - CEE Mimarlık`;
-                document.getElementById('projectTitle').textContent = project.title;
-                document.getElementById('projectDescription').textContent = project.description || project.title;
-
-                // Meta bilgiler
-                if (project.details) {
-                    document.getElementById('projectLocation').textContent = project.details.location || 'İstanbul, Türkiye';
-                    document.getElementById('projectYear').textContent = project.details.year || '2024';
-                    document.getElementById('projectArea').textContent = project.details.area || '-';
-                    document.getElementById('projectClient').textContent = project.details.client || 'Özel';
-                }
-
-                // Hero image
-                if (project.media && project.media[0]) {
-                    document.getElementById('projectHero').style.backgroundImage = `url(${project.media[0].url})`;
-                }
-
-                // Tags
-                if (project.tags && project.tags.length > 0) {
-                    const tagsContainer = document.getElementById('projectTags');
-                    tagsContainer.innerHTML = '';
-                    project.tags.forEach(tag => {
-                        const tagEl = document.createElement('span');
-                        tagEl.className = 'tag';
-                        tagEl.textContent = tag;
-                        tagsContainer.appendChild(tagEl);
-                    });
-                }
-
-                // Technical specs
-                if (project.specs) {
-                    document.getElementById('specArea').textContent = project.specs.area || '-';
-                    document.getElementById('specFloors').textContent = project.specs.floors || '-';
-                    document.getElementById('specRooms').textContent = project.specs.rooms || '-';
-                    document.getElementById('specBathrooms').textContent = project.specs.bathrooms || '-';
-                    document.getElementById('specLand').textContent = project.specs.land || '-';
-                    document.getElementById('specParking').textContent = project.specs.parking || '-';
-                }
-
-                // Gallery
-                if (project.media && project.media.length > 1) {
-                    const galleryContainer = document.getElementById('projectGallery');
-                    galleryContainer.innerHTML = '';
-                    
-                    project.media.slice(1).forEach(media => {
-                        const item = document.createElement('div');
-                        item.className = 'gallery-item';
-                        item.innerHTML = `<img src="${media.url}" alt="${project.title}">`;
-                        item.onclick = () => window.open(media.url, '_blank');
-                        galleryContainer.appendChild(item);
-                    });
-                }
-
-                // Drawings
-                if (project.drawings && project.drawings.length > 0) {
-                    const drawingsContainer = document.getElementById('projectDrawings');
-                    drawingsContainer.innerHTML = '';
-                    
-                    project.drawings.forEach(drawing => {
-                        const item = document.createElement('div');
-                        item.className = 'drawing-item';
-                        item.innerHTML = `
-                            <img src="${drawing.url}" alt="${drawing.title}" class="drawing-image">
-                            <div class="drawing-title">${drawing.title}</div>
-                        `;
-                        drawingsContainer.appendChild(item);
-                    });
-                } else {
-                    document.querySelector('.project-drawings').style.display = 'none';
-                }
-                
-                // VIDEO SECTION - MADDE 1
-                if (project.videoUrl || project.video) {
-                    const videoUrl = project.videoUrl || project.video;
-                    const videoSection = document.getElementById('projectVideoSection');
-                    const videoContainer = document.getElementById('projectVideoContainer');
-                    
-                    if (videoSection && videoContainer) {
-                        videoSection.style.display = 'block';
-                        
-                        // YouTube video kontrolü
-                        if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-                            let videoId = '';
-                            if (videoUrl.includes('youtu.be/')) {
-                                videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-                            } else if (videoUrl.includes('v=')) {
-                                videoId = videoUrl.split('v=')[1].split('&')[0];
-                            }
-                            videoContainer.innerHTML = `<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
-                        } else {
-                            videoContainer.innerHTML = `<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" controls><source src="${videoUrl}" type="video/mp4">Tarayıcınız video desteklemiyor.</video>`;
-                        }
-                    }
-                }
-                
-                // EXTRA INFO - Arsa, Parsel bilgileri
-                if (project.extraInfo || project.parsel || project.ada) {
-                    const extraSection = document.getElementById('projectExtraInfo');
-                    const extraGrid = document.getElementById('extraInfoGrid');
-                    
-                    if (extraSection && extraGrid) {
-                        extraSection.style.display = 'block';
-                        let infoHtml = '';
-                        
-                        if (project.ada) infoHtml += `<div class="spec-item"><div class="spec-label">Ada No</div><div class="spec-value">${project.ada}</div></div>`;
-                        if (project.parsel) infoHtml += `<div class="spec-item"><div class="spec-label">Parsel No</div><div class="spec-value">${project.parsel}</div></div>`;
-                        if (project.pafta) infoHtml += `<div class="spec-item"><div class="spec-label">Pafta No</div><div class="spec-value">${project.pafta}</div></div>`;
-                        if (project.imar) infoHtml += `<div class="spec-item"><div class="spec-label">İmar Durumu</div><div class="spec-value">${project.imar}</div></div>`;
-                        if (project.gabari) infoHtml += `<div class="spec-item"><div class="spec-label">Gabari</div><div class="spec-value">${project.gabari}</div></div>`;
-                        if (project.taks) infoHtml += `<div class="spec-item"><div class="spec-label">TAKS</div><div class="spec-value">${project.taks}</div></div>`;
-                        if (project.kaks) infoHtml += `<div class="spec-item"><div class="spec-label">KAKS</div><div class="spec-value">${project.kaks}</div></div>`;
-                        
-                        if (infoHtml) {
-                            extraGrid.innerHTML = infoHtml;
-                        } else {
-                            extraSection.style.display = 'none';
-                        }
-                    }
-                }
-
-            } catch (error) {
-                console.error('Proje yüklenirken hata:', error);
-                alert('Proje yüklenirken bir hata oluştu!');
-                window.location.href = 'index.html';
-            }
-        }
-
-        // Sayfa yüklendiğinde çalıştır
-        document.addEventListener('DOMContentLoaded', loadProjectData);
-    </script>
-
-    <!-- ============================================ -->
-    <!-- FIREBASE CONFIG - ZORUNLU -->
-    <!-- ============================================ -->
-    <script type="module" src="firebase-config.js"></script>
-    
-    <!-- ============================================ -->
-    <!-- DİNAMİK SEO - ZORUNLU -->
-    <!-- ============================================ -->
-    <script type="module" src="dynamic-seo.js"></script>
-    
-    <!-- ============================================ -->
-    <!-- FIRESTORE ENTEGRASYONU - PROJE DETAY YÜKLE -->
-    <!-- ============================================ -->
-    <script type="module">
-    import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-    
-    // URL'den proje ID'sini al
-    const params = new URLSearchParams(window.location.search);
-    const projectId = params.get('id');
-    
-    if (!projectId) {
-        alert('Geçersiz proje!');
-        window.location.href = 'index.html';
-    }
-    
-    // Firebase hazır olmasını bekle
-    async function waitForFirebase() {
-        let attempts = 0;
-        while (!window.firebaseDB && attempts < 50) {
-            await new Promise(resolve => setTimeout(resolve, 100));
-            attempts++;
-        }
-        
-        if (!window.firebaseDB) {
-            console.error('❌ Firebase başlatılamadı!');
-            alert('Firebase bağlantısı kurulamadı!');
-            return false;
-        }
-        return true;
-    }
-    
-    // Projeyi Firestore'dan yükle
-    async function loadProjectFromFirestore() {
-        console.log('🔥 Proje yükleniyor:', projectId);
-        
-        // Firebase'in hazır olmasını bekle
-        const firebaseReady = await waitForFirebase();
-        if (!firebaseReady) {
-            window.location.href = 'index.html';
-            return;
-        }
-        
-        try {
-            const docRef = doc(window.firebaseDB, 'projects', projectId);
-            const docSnap = await getDoc(docRef);
-            
-            if (docSnap.exists()) {
-                const project = { id: docSnap.id, ...docSnap.data() };
-                console.log('✅ Proje bulundu:', project.title);
-                
-                // ============================================
-                // DİNAMİK SEO - ZORUNLU ÇAĞRI
-                // ============================================
-                if (typeof window.updateSEOMetaTags === 'function') {
-                    window.updateSEOMetaTags(project);
-                    console.log('✅ SEO meta tagları güncellendi');
-                } else {
-                    console.warn('⚠️ updateSEOMetaTags fonksiyonu bulunamadı!');
-                }
-                
-                // Projeyi render et
-                renderProject(project);
-            } else {
-                alert('Proje bulunamadı!');
-                window.location.href = 'index.html';
-            }
-        } catch (error) {
-            console.error('❌ Firestore hatası:', error);
-            alert('Proje yüklenirken bir hata oluştu!');
-            window.location.href = 'index.html';
-        }
-    }
-    
-    // Projeyi sayfada göster
-    function renderProject(project) {
-        // Title
-        document.title = project.title + ' | CEE Mimarlık';
-        
-        // Hero image
-        const heroSection = document.querySelector('.project-hero');
-        if (heroSection) {
-            heroSection.style.backgroundImage = `url('${project.thumbnail || project.images[0]}')`;
-        }
-        
-        // Başlık
-        const titleEl = document.querySelector('.project-title');
-        if (titleEl) titleEl.textContent = project.title;
-        
-        // Açıklama
-        const descEl = document.querySelector('.project-description');
-        if (descEl) descEl.textContent = project.description;
-        
-        // Meta bilgileri (konum, yıl, alan)
-        const metaEl = document.querySelector('.project-meta');
-        if (metaEl) {
-            let metaHTML = '';
-            if (project.details?.location) {
-                metaHTML += `
-                    <div class="meta-item">
-                        <span class="meta-icon">📍</span>
-                        <span class="meta-label">Konum:</span>
-                        <span class="meta-value">${project.details.location}</span>
-                    </div>
-                `;
-            }
-            if (project.details?.year) {
-                metaHTML += `
-                    <div class="meta-item">
-                        <span class="meta-icon">📅</span>
-                        <span class="meta-label">Yıl:</span>
-                        <span class="meta-value">${project.details.year}</span>
-                    </div>
-                `;
-            }
-            if (project.details?.area) {
-                metaHTML += `
-                    <div class="meta-item">
-                        <span class="meta-icon">📐</span>
-                        <span class="meta-label">Alan:</span>
-                        <span class="meta-value">${project.details.area}</span>
-                    </div>
-                `;
-            }
-            metaEl.innerHTML = metaHTML;
-        }
-        
-        // Görseller galerisi
-        const galleryEl = document.querySelector('.gallery-grid');
-        if (galleryEl && project.images && project.images.length > 0) {
-            let galleryHTML = '';
-            project.images.forEach((url) => {
-                galleryHTML += `
-                    <div class="gallery-item" onclick="window.open('${url}', '_blank')" style="cursor:pointer;">
-                        <img src="${url}" loading="lazy" alt="${project.title}">
-                    </div>
-                `;
-            });
-            galleryEl.innerHTML = galleryHTML;
-        }
-        
-        // Teknik özellikler
-        if (project.specs) {
-            const specsContainer = document.querySelector('.project-specs');
-            if (specsContainer) {
-                let specsHTML = '';
-                for (const [key, value] of Object.entries(project.specs)) {
-                    specsHTML += `
-                        <div class="spec-item">
-                            <strong>${key}:</strong> ${value}
-                        </div>
-                    `;
-                }
-                if (specsHTML) {
-                    specsContainer.innerHTML = specsHTML;
-                } else {
-                    specsContainer.style.display = 'none';
-                }
-            }
-        }
-        
-        console.log('✅ Proje render edildi');
-    }
-    
-    // Sayfa yüklendiğinde çalıştır
-    window.addEventListener('DOMContentLoaded', loadProjectFromFirestore);
-    </script>
-
-<!-- Lazy Loading -->
+</header>
+<main id="mainContent">
+    <div class="loading"><div class="loading-spinner"></div><p>Proje yükleniyor...</p></div>
+</main>
+<footer><p class="footer-text">© 2025 CEE Mimarlık. Tüm hakları saklıdır.</p></footer>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
-        });
-    });
-    images.forEach(img => imageObserver.observe(img));
-});
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');
+    let projects = [];
+    function loadProjects() { const saved = localStorage.getItem('ceeProjects'); if (saved) projects = JSON.parse(saved); return projects; }
+    function loadSiteSettings() { const settings = localStorage.getItem('ceeSiteSettings'); if (settings) { const parsed = JSON.parse(settings); if (parsed.logo) { const headerLogo = document.getElementById('headerLogo'); if (headerLogo) { headerLogo.src = parsed.logo; headerLogo.style.display = 'block'; } } if (parsed.headerSlogan) { const slogan = document.getElementById('headerSlogan'); if (slogan) slogan.textContent = parsed.headerSlogan; } } }
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙'; }
+    function checkDarkMode() { const isDark = localStorage.getItem('darkMode') === 'true'; if (isDark) { document.body.classList.add('dark-mode'); document.getElementById('themeBtn').textContent = '☀️'; } }
+    function renderProject(project) {
+        const main = document.getElementById('mainContent');
+        if (!project) { main.innerHTML = '<div class="not-found"><h2>Proje Bulunamadı</h2><p>Aradığınız proje mevcut değil.</p><a href="index.html#projeler" class="cta-btn" style="margin-top:20px;display:inline-block;">Projelere Dön</a></div>'; return; }
+        const description = project.description || 'Bu proje, modern mimarlık anlayışıyla tasarlanmış olup, estetik ve işlevselliği bir arada sunmaktadır. Proje tasarımından uygulama süreçlerine kadar tüm aşamalar titizlikle yönetilerek, mekânlara teknik açıdan sağlam, estetik ve işlevsel çözümler sunulmaktadır.';
+        main.innerHTML = '<div class="project-hero"><img src="' + project.img + '" alt="' + (project.title || 'Proje') + '"></div><div class="project-info"><h1 class="project-title">' + (project.title || 'Proje Detayı') + '</h1>' + (project.tags && project.tags.length > 0 ? '<div class="project-tags">' + project.tags.map(tag => '<span class="project-tag">' + tag + '</span>').join('') + '</div>' : '') + '<p class="project-description">' + description + '</p></div><div class="project-cta"><h3 class="cta-title">Bu Proje Hakkında Bilgi Almak İster Misiniz?</h3><p class="cta-text">Benzer projeler için bizimle iletişime geçebilirsiniz.</p><a href="index.html#iletisim" class="cta-btn">İletişime Geç</a></div>';
+        document.title = (project.title || 'Proje') + ' - CEE Mimarlık';
+    }
+    document.addEventListener('DOMContentLoaded', function() { checkDarkMode(); loadSiteSettings(); const projects = loadProjects(); const project = projects.find(p => p.id === projectId); renderProject(project); });
 </script>
 </body>
 </html>

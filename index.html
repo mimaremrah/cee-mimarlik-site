@@ -184,7 +184,7 @@
         }
 
         .ai-assistant-header {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
             color: white;
             padding: 25px;
             display: flex;
@@ -269,7 +269,7 @@
             color: white;
             border-color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 12px rgba(51, 51, 51, 0.3);
         }
 
         .contact-info {
@@ -325,7 +325,7 @@
         }
 
         .ai-assistant-input button {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
             border: none;
             border-radius: 50%;
             width: 50px;
@@ -370,7 +370,7 @@
         }
 
         .ai-msg .msg-avatar {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
         }
 
         .user-msg .msg-avatar {
@@ -411,7 +411,7 @@
         }
 
         body.dark-mode .msg-content strong {
-            color: #f4d03f;
+            color: #444444;
         }
 
         .typing-indicator-wrapper {
@@ -607,7 +607,7 @@
         body[data-theme="elegant"] {
             --primary: #1a1a1a;
             --secondary: #8b7355;
-            --accent: #d4af37;
+            --accent: #333333;
             --bg: #fafaf8;
             --border: #e8dcc8;
         }
@@ -1468,14 +1468,14 @@
             padding: 8px 15px;
             border-radius: 8px;
             background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(51, 51, 51, 0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(51, 51, 51, 0.1);
         }
 
         body.dark-mode .logo-container {
             background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(40,40,40,0.9) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(51, 51, 51, 0.3);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(51, 51, 51, 0.15);
         }
 
         .logo-top {
@@ -1532,7 +1532,7 @@
             white-space: nowrap;
             margin-top: 4px;
             padding-left: 2px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 1px solid rgba(51, 51, 51, 0.3);
             padding-top: 5px;
             transition: all 0.4s ease;
         }
@@ -1549,7 +1549,7 @@
 
         body.dark-mode .logo-subtitle {
             color: #aaa;
-            border-top-color: rgba(212, 175, 55, 0.4);
+            border-top-color: rgba(51, 51, 51, 0.4);
         }
 
         /* Mobile Menu Toggle */
@@ -1971,12 +1971,10 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: grayscale(10%);
         }
 
         .project-card:hover .project-image {
             transform: scale(1.1);
-            filter: grayscale(0%);
         }
 
         .project-overlay {
@@ -1985,13 +1983,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(40, 40, 40, 0.9);
+            background: rgba(30, 30, 30, 0.92);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px 30px;
+            padding: 30px;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -2004,24 +2002,24 @@
             color: white;
             font-size: 16px;
             font-weight: 400;
-            letter-spacing: 5px;
-            margin-bottom: 25px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .project-description {
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.85);
             font-size: 13px;
             line-height: 1.8;
-            margin-bottom: 30px;
-            max-width: 85%;
+            margin-bottom: 25px;
+            max-width: 90%;
         }
 
         .project-btn {
             display: inline-block;
-            padding: 14px 40px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
+            padding: 12px 35px;
+            border: 1px solid #888;
+            color: #fff;
             font-size: 11px;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -2032,26 +2030,17 @@
         }
 
         .project-btn:hover {
-            background: var(--accent);
-            color: #1e1e1e;
+            background: #fff;
+            color: #1a1a1a;
+            border-color: #fff;
         }
 
         .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 15px;
+            display: none;
         }
 
         .project-tag {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.7);
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 4px 12px;
-            text-transform: uppercase;
-            background: rgba(255,255,255,0.05);
+            display: none;
         }
 
         /* ABOUT SECTION */
@@ -2134,7 +2123,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: var(--accent, #d4af37);
+            background: var(--accent, #333333);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2356,7 +2345,7 @@
         }
 
         .ai-panel-header {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, #333333, #444444);
             padding: 20px;
             display: flex;
             align-items: center;
@@ -2460,7 +2449,7 @@
         }
 
         .ai-panel-message.user .ai-panel-bubble {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, #333333, #444444);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -2504,9 +2493,9 @@
         }
 
         .ai-panel-quick-btn:hover {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, #333333, #444444);
             color: white;
-            border-color: #d4af37;
+            border-color: #333333;
             transform: translateY(-2px);
         }
 
@@ -2538,7 +2527,7 @@
         }
 
         .ai-panel-input:focus {
-            border-color: #d4af37;
+            border-color: #333333;
         }
 
         body.dark-mode .ai-panel-input {
@@ -2550,7 +2539,7 @@
         .ai-panel-send {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, #333333, #444444);
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -2562,7 +2551,7 @@
 
         .ai-panel-send:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 12px rgba(51, 51, 51, 0.4);
         }
 
         .ai-panel-typing {
@@ -2578,7 +2567,7 @@
         .ai-panel-typing-dot {
             width: 8px;
             height: 8px;
-            background: #d4af37;
+            background: #333333;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -3512,7 +3501,7 @@
             right: 30px;
             width: 45px;
             height: 45px;
-            background: var(--accent, #d4af37);
+            background: var(--accent, #333333);
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -3738,7 +3727,7 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: var(--accent, #d4af37);
+            background: var(--accent, #333333);
             color: #fff;
             padding: 10px 12px;
             writing-mode: horizontal-tb;
@@ -3838,7 +3827,7 @@
             border-top: 1px solid #f0f0f0;
             text-align: center;
             font-weight: 600;
-            color: #d4af37;
+            color: #333333;
             font-size: 10px;
         }
         body.dark-mode .social-sidebar-footer { border-top-color: #334155; }
@@ -3850,7 +3839,7 @@
         body.dark-mode .faq-item h3, body.dark-mode .faq-question { color: #e2e8f0 !important; }
         body.dark-mode .faq-answer, body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: #333333 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode .section-title, body.dark-mode .section-label { color: #e2e8f0 !important; }
         body.dark-mode #referanslar, body.dark-mode .references-section { background: #0f172a !important; }
@@ -3939,7 +3928,7 @@
             text-decoration: none;
             font-size: 14px;
         }
-        .team-social-link.email { background: #d4af37; color: white; }
+        .team-social-link.email { background: #333333; color: white; }
         .team-social-link.instagram { background: linear-gradient(45deg, #f09433, #dc2743); color: white; }
         .team-social-link.linkedin { background: #0a66c2; color: white; }
         .team-social-link.phone { background: #25d366; color: white; }
@@ -3955,26 +3944,26 @@
            ============================================= */
         body.dark-mode .faq-item { background: #1e293b !important; }
         body.dark-mode .faq-item h3 { color: #e2e8f0 !important; }
-        body.dark-mode .faq-item span { color: #d4af37 !important; }
+        body.dark-mode .faq-item span { color: #333333 !important; }
         body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: #333333 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode #referanslar { background: #0f172a !important; }
         body.dark-mode .reference-item { background: #1e293b !important; border-color: #334155 !important; }
         body.dark-mode .reference-item h4 { color: #e2e8f0 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-label { color: #d4af37 !important; }
+        body.dark-mode .section-label { color: #333333 !important; }
         body.dark-mode .location-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important; }
         
         /* =============================================
            MADDE 8: CROSS-BROWSER UYUMLULUK
            ============================================= */
         .filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
-        * { scrollbar-width: thin; scrollbar-color: #d4af37 #f1f1f1; }
+        * { scrollbar-width: thin; scrollbar-color: #333333 #f1f1f1; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #b8963a; }
         body.dark-mode ::-webkit-scrollbar-track { background: #1e293b; }
         
@@ -4355,96 +4344,97 @@ window.goToAdmin = goToAdmin;
 
 
 <!-- HİZMETLERİMİZ SECTION -->
-<section id="hizmetler" style="padding: 50px 0; background: var(--bg);">
-    <div class="section-header">
-        <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
-        <h2 class="section-title" data-tr="SunduÄŸumuz Hizmetler" data-en="Services We Offer">SunduÄŸumuz Hizmetler</h2>
-    </div>
-    
-    <div class="services-grid" id="servicesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-        <!-- Hizmetler JavaScript ile yüklenecek -->
-    </div>
-</section>
-
-<script>
-// Varsayılan hizmetler
-const defaultServices = [
-    { icon: '🏠', titleTr: 'Mimari Proje', titleEn: 'Architectural Project', descTr: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı çizimler.', descEn: 'Professional architectural project service for residential, villa, apartment and commercial buildings. 3D visualization and detailed drawings.' },
-    { icon: '📋', titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', descTr: 'İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin takibi ve tamamlanması.', descEn: 'Tracking and completion of construction permits, occupancy permits and all municipal permit processes.' },
-    { icon: '🛋️', titleTr: 'İç Mimarlık', titleEn: 'Interior Design', descTr: 'Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı.', descEn: 'Custom interior design, furniture selection and decoration consultancy for your living spaces.' },
-    { icon: '📐', titleTr: 'Statik Proje', titleEn: 'Structural Project', descTr: 'Deprem yönetmeliğine uygun statik hesaplamalar ve taşıyıcı sistem projeleri.', descEn: 'Structural calculations and load-bearing system projects compliant with earthquake regulations.' },
-    { icon: '🏗️', titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', descTr: 'İnşaat sürecinin tamamında profesyonel danışmanlık ve şantiye koordinasyonu.', descEn: 'Professional consultancy and site coordination throughout the construction process.' },
-    { icon: '🎨', titleTr: '3D Görselleştirme', titleEn: '3D Visualization', descTr: 'Projenizi gerçeğe en yakın şekilde görmenizi sağlayan fotorealistik 3D render hizmeti.', descEn: 'Photorealistic 3D render service that allows you to see your project as close to reality as possible.' }
-];
-
-function loadServices() {
-    const grid = document.getElementById('servicesGrid');
-    if (!grid) return;
-    
-    const savedServices = localStorage.getItem('cee_services');
-    let services = defaultServices;
-    
-    if (savedServices) {
-        try {
-            const parsed = JSON.parse(savedServices);
-            if (parsed.length > 0) services = parsed;
-        } catch(e) {}
-    }
-    
-    const lang = localStorage.getItem('cee_public_lang') || 'tr';
-    
-    grid.innerHTML = services.map(s => `
-        <div class="service-card" style="background: white; padding: 40px 30px; border-radius: 8px; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-            <div style="font-size: 48px; margin-bottom: 20px;">${s.icon}</div>
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--accent);" data-tr="${s.titleTr}" data-en="${s.titleEn}">${lang === 'tr' ? s.titleTr : s.titleEn}</h3>
-            <p style="color: var(--secondary); line-height: 1.7; font-size: 14px;" data-tr="${s.descTr}" data-en="${s.descEn}">${lang === 'tr' ? s.descTr : s.descEn}</p>
+<section id="hizmetler" style="padding: 80px 0; background: #1a1a1a;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <div style="font-size: 12px; letter-spacing: 4px; color: #888; margin-bottom: 15px;">ÇALIŞMA SÜRECİMİZ</div>
+            <h2 style="font-size: 36px; font-weight: 300; color: white; letter-spacing: 2px;">Projelerimizi Nasıl Hayata Geçiriyoruz?</h2>
         </div>
-    `).join('');
-}
-loadServices();
-</script>
-
-<!-- REFERANSLAR SECTION -->
-<section id="referanslar" style="padding: 50px 0; background: white;">
-    <div class="section-header">
-        <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</div>
-        <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">Çalıştığımız Kurumlar</h2>
+        
+        <div class="process-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;">
+            <div style="position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, #444, #444, transparent);"></div>
+            
+            <div style="text-align: center; padding: 0 15px; position: relative;">
+                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                </div>
+                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
+                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">SİZİ DİNLİYORUZ</h3>
+                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Sizin isteklerinizi, hayallerinizi ve ihtiyaçlarınızı önemsiyor ve tüm proje sürecinde sizleri dinliyoruz. Tasarım sürecimizde, sizin vizyonunuzu merkeze alarak, yaşam alanlarınızı şekillendiriyoruz.</p>
+                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">01</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 0 15px; position: relative; margin-top: 60px;">
+                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
+                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">PROJELENDİRME</h3>
+                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Projelendirme aşaması, detaylı analiz ve özenli planlama ile gerçekleştirilir. Sizin isteklerinize ve ihtiyaçlarınıza yanıt veren, sürdürülebilir ve yenilikçi mimari çözümler sunmak için titizlikle çalışıyoruz.</p>
+                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">02</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 0 15px; position: relative;">
+                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+                </div>
+                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
+                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">TASARIM</h3>
+                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Tasarım aşaması, sizin vizyonunuz ve ihtiyaçlarınız doğrultusunda, sürdürülebilir ve estetik değerleri birleştiren özgün tasarımlar oluşturmak üzere yürütülür. Her tasarımımız, alanın fonksiyonelliğini optimize etmeye yönelik titizlikle şekillendirilir.</p>
+                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">03</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 0 15px; position: relative; margin-top: 60px;">
+                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+                </div>
+                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
+                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">UYGULAMA</h3>
+                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Projenin her detayını titizlikle yönetiyor ve kalitenin sürekliliğini garanti ediyoruz. Projenizin tasarımından uygulamasına kadar olan süreçte, işin profesyonellikle ve zamanında tamamlanması için gerekli tüm adımları takip ediyoruz.</p>
+                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">04</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="references-grid" id="referencesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-        <!-- Referanslar JavaScript ile yüklenecek -->
+    <style>
+        @media (max-width: 1024px) { .process-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px !important; } .process-grid > div { margin-top: 0 !important; } }
+        @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr !important; } }
+    </style>
+</section>
+
+<section id="referanslar" style="padding: 80px 0; background: #f5f5f5;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <div style="font-size: 12px; letter-spacing: 4px; color: #888; margin-bottom: 15px;">REFERANSLARIMIZ</div>
+            <h2 style="font-size: 36px; font-weight: 300; color: #2c2c2c; letter-spacing: 2px;">Güvenilir İş Ortaklarımız</h2>
+            <p style="color: #666; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">Yılların deneyimi ve güveniyle birçok prestijli kurum ve şirketle başarılı projeler gerçekleştirdik.</p>
+        </div>
+        <div id="referencesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;"></div>
     </div>
 </section>
 
 <script>
-// Varsayılan referanslar
 const defaultReferences = [
-    { icon: '🏛️', nameTr: 'Çorlu Belediyesi', nameEn: 'Corlu Municipality', logo: '' },
-    { icon: '🏢', nameTr: 'Özel Projeler', nameEn: 'Private Projects', logo: '' },
-    { icon: '🏘️', nameTr: 'Konut Projeleri', nameEn: 'Residential Projects', logo: '' },
-    { icon: '🏬', nameTr: 'Ticari Yapılar', nameEn: 'Commercial Buildings', logo: '' }
+    { icon: '🏛️', nameTr: 'Çorlu Belediyesi', nameEn: 'Corlu Municipality', descTr: 'Kamu projeleri ve kentsel dönüşüm', descEn: 'Public projects', logo: '' },
+    { icon: '🏢', nameTr: 'Özel Sektör', nameEn: 'Private Sector', descTr: 'Kurumsal yapılar ve ofis binaları', descEn: 'Corporate buildings', logo: '' },
+    { icon: '🏘️', nameTr: 'Konut Projeleri', nameEn: 'Residential', descTr: 'Villa, apartman ve site projeleri', descEn: 'Villa and apartment projects', logo: '' },
+    { icon: '🏬', nameTr: 'Ticari Yapılar', nameEn: 'Commercial', descTr: 'AVM, mağaza ve showroom', descEn: 'Shopping centers and stores', logo: '' }
 ];
-
 function loadReferences() {
     const grid = document.getElementById('referencesGrid');
     if (!grid) return;
-    
     const savedRefs = localStorage.getItem('cee_references');
     let refs = defaultReferences;
-    
-    if (savedRefs) {
-        try {
-            const parsed = JSON.parse(savedRefs);
-            if (parsed.length > 0) refs = parsed;
-        } catch(e) {}
-    }
-    
+    if (savedRefs) { try { const parsed = JSON.parse(savedRefs); if (parsed.length > 0) refs = parsed; } catch(e) {} }
     const lang = localStorage.getItem('cee_public_lang') || 'tr';
-    
     grid.innerHTML = refs.map(r => `
-        <div class="reference-item" style="text-align: center; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; transition: all 0.3s;">
-            ${r.logo ? `<img src="${r.logo}" alt="${lang === 'tr' ? r.nameTr : r.nameEn}" style="max-width: 80px; max-height: 60px; object-fit: contain; margin-bottom: 15px;">` : `<div style="font-size: 60px; margin-bottom: 15px;">${r.icon}</div>`}
-            <h4 style="font-size: 16px; color: var(--primary); font-weight: 600;" data-tr="${r.nameTr}" data-en="${r.nameEn}">${lang === 'tr' ? r.nameTr : r.nameEn}</h4>
+        <div style="background: white; padding: 35px 30px; border-radius: 8px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
+            ${r.logo ? '<img src="' + r.logo + '" style="max-width: 80px; max-height: 60px; object-fit: contain; margin-bottom: 20px;">' : '<div style="font-size: 50px; margin-bottom: 20px;">' + r.icon + '</div>'}
+            <h4 style="font-size: 18px; color: #2c2c2c; font-weight: 500; margin-bottom: 10px;">${lang === 'tr' ? r.nameTr : r.nameEn}</h4>
+            <p style="color: #888; font-size: 13px; line-height: 1.6;">${lang === 'tr' ? (r.descTr || '') : (r.descEn || '')}</p>
         </div>
     `).join('');
 }
@@ -4519,7 +4509,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
                             <a href="tel:+905373278765" style="color: var(--accent); text-decoration: none; font-size: 18px;">(0537) 327 87 65</a>
@@ -4529,7 +4519,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
                             <a href="/cdn-cgi/l/email-protection#21484f474e614244444c484c40534d484a0f424e4c" style="color: var(--accent); text-decoration: none;"><span class="__cf_email__" data-cfemail="81e8efe7eec1e2e4e4ece8ece0f3ede8eaafe2eeec">[email protected]</span></a>
@@ -4539,7 +4529,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;">Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3<br>59860 Çorlu/Tekirdağ</span>
@@ -4549,7 +4539,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
                             <span style="color: var(--secondary); line-height: 1.6;">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
@@ -4571,7 +4561,7 @@ loadFaqs();
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor='#333333'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4584,7 +4574,7 @@ loadFaqs();
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor='#333333'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4596,7 +4586,7 @@ loadFaqs();
                             placeholder="Telefon Numaranız" 
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor='#333333'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4605,7 +4595,7 @@ loadFaqs();
                         <select 
                             id="contactSubject" 
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor='#333333'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                             <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
@@ -4629,7 +4619,7 @@ loadFaqs();
                             rows="5" 
                             maxlength="1000"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; resize: vertical; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor='#333333'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         ></textarea>
                     </div>
@@ -4638,7 +4628,7 @@ loadFaqs();
                     
                     <button 
                         type="submit" 
-                        style="padding: 16px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+                        style="padding: 16px 40px; background: linear-gradient(135deg, #333333, #444444); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
                         data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
@@ -4672,7 +4662,7 @@ loadFaqs();
         
         <!-- Konum İkonu - Harita üzerinde -->
         <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: white; padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; z-index: 10;">
-            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #333333 0%, #444444 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -4691,7 +4681,7 @@ loadFaqs();
             <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong> +90 282 651 55 66
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
-           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #d4af37); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #333333); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
            onmouseover="this.style.filter='brightness(1.1)'"
            onmouseout="this.style.filter='brightness(1)'"
            data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
@@ -5916,62 +5906,12 @@ function loadTeam() {
 
 <script>
 
-// Proje detay modal'ını açma fonksiyonu
+// Proje detay sayfasını açma
 function openProjectDetail(projectId) {
     const project = projects.find(p => p.id === projectId);
     if (!project) return;
-    
-    // Modal HTML oluştur
-    const modalHTML = `
-        <div class="project-modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
-            <div class="project-modal" onclick="event.stopPropagation()">
-                <button class="project-modal-close" onclick="closeProjectModal()">&times;</button>
-                <div class="project-modal-image">
-                    <img src="${project.img}" alt="${project.title || 'Proje'}">
-                </div>
-                <div class="project-modal-content">
-                    <h2 class="project-modal-title">${project.title || 'Proje Detayı'}</h2>
-                    ${project.tags && project.tags.length > 0 ? `
-                        <div class="project-modal-tags">
-                            ${project.tags.map(tag => `<span class="project-modal-tag">${tag}</span>`).join('')}
-                        </div>
-                    ` : ''}
-                    <p class="project-modal-description">${project.description || 'Bu proje hakkında detaylı bilgi için bizimle iletişime geçebilirsiniz.'}</p>
-                    <div class="project-modal-actions">
-                        <a href="#iletisim" class="project-modal-btn primary" onclick="closeProjectModal()">İletişime Geç</a>
-                        <button class="project-modal-btn secondary" onclick="closeProjectModal()">Kapat</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Modal'ı body'e ekle
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    document.body.style.overflow = 'hidden';
-    
-    // Animasyon için
-    setTimeout(() => {
-        document.getElementById('projectModal').classList.add('active');
-    }, 10);
+    window.location.href = `project-detail.html?id=${projectId}`;
 }
-
-function closeProjectModal(event) {
-    if (event && event.target !== event.currentTarget) return;
-    const modal = document.getElementById('projectModal');
-    if (modal) {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.remove();
-            document.body.style.overflow = '';
-        }, 300);
-    }
-}
-
-// ESC tuşu ile kapatma
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeProjectModal();
-});
 
 function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     const lightbox = document.getElementById('lightbox');
@@ -6812,7 +6752,7 @@ function getSmartResponse(message) {
     }
     
     // Telefon numarası tıklanabilir
-    const phoneLink = '<a href="tel:+905373278765" style="color: #d4af37; font-weight: 600; text-decoration: none; border-bottom: 2px solid #d4af37;">(0537) 327 87 65</a>';
+    const phoneLink = '<a href="tel:+905373278765" style="color: #333333; font-weight: 600; text-decoration: none; border-bottom: 2px solid #333333;">(0537) 327 87 65</a>';
     
     // Kategoriye göre cevap
     if (matchedCategory === 'piyes') {
@@ -7070,7 +7010,7 @@ document.addEventListener('DOMContentLoaded', function() {
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.2)';
+            this.style.boxShadow = '0 10px 30px rgba(51, 51, 51, 0.2)';
         });
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
@@ -7083,8 +7023,8 @@ document.addEventListener('DOMContentLoaded', function() {
     referenceItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
-            this.style.borderColor = '#d4af37';
-            this.style.boxShadow = '0 5px 20px rgba(212, 175, 55, 0.15)';
+            this.style.borderColor = '#333333';
+            this.style.boxShadow = '0 5px 20px rgba(51, 51, 51, 0.15)';
         });
         item.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
