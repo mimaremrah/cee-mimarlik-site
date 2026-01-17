@@ -78,22 +78,35 @@
             try {
                 var theme = JSON.parse(savedTheme);
                 var themes = {
-                    'lares': { accent: '#2c3e50', primary: '#2c3e50', secondary: '#7f8c8d', bg: '#ffffff', border: '#ecf0f1' },
-                    'gold': { accent: '#d4af37', primary: '#1a1a1a', secondary: '#666666', bg: '#fafafa', border: '#e0e0e0' },
-                    'gray': { accent: '#374151', primary: '#1f2937', secondary: '#6b7280', bg: '#f9fafb', border: '#e5e7eb' },
-                    'ocean': { accent: '#1e3a5f', primary: '#1e3a5f', secondary: '#64748b', bg: '#f8fafc', border: '#e2e8f0' },
-                    'emerald': { accent: '#065f46', primary: '#064e3b', secondary: '#6b7280', bg: '#f0fdf4', border: '#d1fae5' },
-                    'wine': { accent: '#7c2d12', primary: '#7c2d12', secondary: '#78716c', bg: '#fef2f2', border: '#fecaca' },
-                    'purple': { accent: '#5b21b6', primary: '#4c1d95', secondary: '#7c7c7c', bg: '#f5f3ff', border: '#ede9fe' }
+                    'lares': { accent: '#2c3e50', accentLight: '#34495e', primary: '#2c3e50', secondary: '#7f8c8d', bg: '#ffffff', border: '#ecf0f1' },
+                    'gold': { accent: '#d4af37', accentLight: '#f4d03f', primary: '#1a1a1a', secondary: '#666666', bg: '#fafafa', border: '#e0e0e0' },
+                    'gray': { accent: '#374151', accentLight: '#6b7280', primary: '#1f2937', secondary: '#6b7280', bg: '#f9fafb', border: '#e5e7eb' },
+                    'ocean': { accent: '#1e3a5f', accentLight: '#3b82f6', primary: '#1e3a5f', secondary: '#64748b', bg: '#f8fafc', border: '#e2e8f0' },
+                    'emerald': { accent: '#065f46', accentLight: '#10b981', primary: '#064e3b', secondary: '#6b7280', bg: '#f0fdf4', border: '#d1fae5' },
+                    'wine': { accent: '#7c2d12', accentLight: '#ef4444', primary: '#7c2d12', secondary: '#78716c', bg: '#fef2f2', border: '#fecaca' },
+                    'purple': { accent: '#5b21b6', accentLight: '#a78bfa', primary: '#4c1d95', secondary: '#7c7c7c', bg: '#f5f3ff', border: '#ede9fe' }
                 };
-                var colors = themes[theme.id] || (theme.accent ? { accent: theme.accent, primary: theme.textColor || '#1a1a1a', secondary: '#666', bg: '#fafafa', border: '#e0e0e0' } : null);
+                var colors = themes[theme.id] || (theme.accent ? { accent: theme.accent, accentLight: theme.accentLight || theme.accent, primary: theme.textColor || '#1a1a1a', secondary: '#666', bg: '#fafafa', border: '#e0e0e0' } : null);
                 if (colors) {
                     var style = document.createElement('style');
                     style.id = 'theme-override';
-                    style.textContent = ':root{--accent:' + colors.accent + ' !important;--primary:' + colors.primary + ' !important;--secondary:' + colors.secondary + ' !important;--bg:' + colors.bg + ' !important;--border:' + colors.border + ' !important;}';
+                    style.textContent = ':root{' +
+                        '--accent:' + colors.accent + ' !important;' +
+                        '--accent-light:' + colors.accentLight + ' !important;' +
+                        '--primary:' + colors.primary + ' !important;' +
+                        '--secondary:' + colors.secondary + ' !important;' +
+                        '--bg:' + colors.bg + ' !important;' +
+                        '--border:' + colors.border + ' !important;' +
+                    '}' +
+                    '.whatsapp-float, .social-sidebar-trigger, .scroll-to-top, .btn-primary, .hero-nav, .project-overlay span, .filter-btn.active, .contact-form button, .chat-send-btn {' +
+                        'background: linear-gradient(135deg, ' + colors.accent + ', ' + colors.accentLight + ') !important;' +
+                    '}' +
+                    '.section-title::after, nav a::after, .logo-container::after, .filter-btn::after {' +
+                        'background: ' + colors.accent + ' !important;' +
+                    '}';
                     document.head.appendChild(style);
                 }
-            } catch(e) {}
+            } catch(e) { console.log('Tema yüklenemedi:', e); }
         }
         
         // Admin panelden tema değişikliği dinle
@@ -586,12 +599,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: var(--bg);
             color: var(--primary);
-            line-height: 1.8;
+            line-height: 1.9;
             overflow-x: hidden;
             transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 0.2px;
         }
 
         /* THEME COLORS */
@@ -1524,7 +1539,7 @@
             bottom: -8px;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 1px;
             background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
             opacity: 0;
             transform: scaleX(0);
@@ -1625,9 +1640,9 @@
         nav a {
             color: #555;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s ease;
             position: relative;
@@ -1641,7 +1656,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--accent);
             transition: width 0.3s ease;
         }
@@ -1662,11 +1677,6 @@
 
         body.dark-mode nav a:hover,
         body.dark-mode nav a.active {
-            color: var(--accent);
-        }
-
-        nav a:hover,
-        nav a.active {
             color: var(--accent);
         }
 
@@ -1970,27 +1980,40 @@
         }
 
         .section-label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 400;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: var(--secondary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .section-title {
-            font-size: 52px;
-            font-weight: 100;
-            letter-spacing: 3px;
+            font-size: 42px;
+            font-weight: 200;
+            letter-spacing: 2px;
             color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
         }
 
         /* PROJECTS GRID */
         .filter-container {
             display: flex;
             justify-content: center;
-            gap: 45px;
-            margin-bottom: 90px;
+            gap: 40px;
+            margin-bottom: 70px;
             flex-wrap: wrap;
         }
 
@@ -1998,10 +2021,11 @@
             background: none;
             border: none;
             color: var(--secondary);
-            font-size: 13px;
+            font-size: 12px;
+            font-weight: 400;
             letter-spacing: 2px;
             cursor: pointer;
-            padding: 10px 0;
+            padding: 8px 0;
             position: relative;
             transition: all 0.4s;
             text-transform: uppercase;
@@ -2562,7 +2586,7 @@
         .ai-panel-quick-btn:hover {
             background: linear-gradient(135deg, #d4af37, #f4d03f);
             color: white;
-            border-color: #d4af37;
+            border-color: var(--accent);
             transform: translateY(-2px);
         }
 
@@ -2594,7 +2618,7 @@
         }
 
         .ai-panel-input:focus {
-            border-color: #d4af37;
+            border-color: var(--accent);
         }
 
         body.dark-mode .ai-panel-input {
@@ -2634,7 +2658,7 @@
         .ai-panel-typing-dot {
             width: 8px;
             height: 8px;
-            background: #d4af37;
+            background: var(--accent);
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -3894,7 +3918,7 @@
             border-top: 1px solid #f0f0f0;
             text-align: center;
             font-weight: 600;
-            color: #d4af37;
+            color: var(--accent);
             font-size: 10px;
         }
         body.dark-mode .social-sidebar-footer { border-top-color: #334155; }
@@ -3906,7 +3930,7 @@
         body.dark-mode .faq-item h3, body.dark-mode .faq-question { color: #e2e8f0 !important; }
         body.dark-mode .faq-answer, body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: var(--accent) !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode .section-title, body.dark-mode .section-label { color: #e2e8f0 !important; }
         body.dark-mode #referanslar, body.dark-mode .references-section { background: #0f172a !important; }
@@ -3995,7 +4019,7 @@
             text-decoration: none;
             font-size: 14px;
         }
-        .team-social-link.email { background: #d4af37; color: white; }
+        .team-social-link.email { background: var(--accent); color: white; }
         .team-social-link.instagram { background: linear-gradient(45deg, #f09433, #dc2743); color: white; }
         .team-social-link.linkedin { background: #0a66c2; color: white; }
         .team-social-link.phone { background: #25d366; color: white; }
@@ -4011,26 +4035,26 @@
            ============================================= */
         body.dark-mode .faq-item { background: #1e293b !important; }
         body.dark-mode .faq-item h3 { color: #e2e8f0 !important; }
-        body.dark-mode .faq-item span { color: #d4af37 !important; }
+        body.dark-mode .faq-item span { color: var(--accent) !important; }
         body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: var(--accent) !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode #referanslar { background: #0f172a !important; }
         body.dark-mode .reference-item { background: #1e293b !important; border-color: #334155 !important; }
         body.dark-mode .reference-item h4 { color: #e2e8f0 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-label { color: #d4af37 !important; }
+        body.dark-mode .section-label { color: var(--accent) !important; }
         body.dark-mode .location-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important; }
         
         /* =============================================
            MADDE 8: CROSS-BROWSER UYUMLULUK
            ============================================= */
         .filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
-        * { scrollbar-width: thin; scrollbar-color: #d4af37 #f1f1f1; }
+        * { scrollbar-width: thin; scrollbar-color: var(--accent) #f1f1f1; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #b8963a; }
         body.dark-mode ::-webkit-scrollbar-track { background: #1e293b; }
         
@@ -6814,7 +6838,7 @@ function getSmartResponse(message) {
     }
     
     // Telefon numarası tıklanabilir
-    const phoneLink = '<a href="tel:+905373278765" style="color: #d4af37; font-weight: 600; text-decoration: none; border-bottom: 2px solid #d4af37;">(0537) 327 87 65</a>';
+    const phoneLink = '<a href="tel:+905373278765" style="color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 2px solid #d4af37;">(0537) 327 87 65</a>';
     
     // Kategoriye göre cevap
     if (matchedCategory === 'piyes') {
