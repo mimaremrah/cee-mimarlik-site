@@ -1985,13 +1985,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(30, 30, 30, 0.92);
+            background: rgba(40, 40, 40, 0.9);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -2002,27 +2002,27 @@
 
         .project-title {
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
 
         .project-description {
-            color: rgba(255,255,255,0.85);
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            max-width: 90%;
+            color: rgba(255,255,255,0.9);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 85%;
         }
 
         .project-btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 40px;
             border: 1px solid var(--accent);
             color: var(--accent);
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 3px;
             text-transform: uppercase;
             text-decoration: none;
@@ -5780,12 +5780,7 @@ function renderProjects() {
                 ${mediaHTML}
                 <div class="project-overlay">
                     ${project.title ? `<div class="project-title">${project.title}</div>` : ''}
-                    ${project.tags && project.tags.length > 0 ? `
-                        <div class="project-tags">
-                            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                        </div>
-                    ` : ''}
-                    ${project.description ? `<div class="project-description">${project.description}</div>` : ''}
+                    <div class="project-description">${project.description || 'Proje tasarımından uygulama süreçlerine kadar tüm aşamaları titizlikle yöneterek, mekânlarınıza teknik açıdan sağlam, estetik ve işlevsel çözümler sunar.'}</div>
                     <button class="project-btn" onclick="event.stopPropagation(); openProjectDetail('${project.id}')">Daha Fazla</button>
                 </div>
             </div>
