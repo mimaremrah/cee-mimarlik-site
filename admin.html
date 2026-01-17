@@ -6273,7 +6273,24 @@ function applyThemePalette(themeId, accent, accentLight, bgLight, bgMuted, theme
         event.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
     }
     
-    showToast('🎨 ' + themeName + ' teması uygulandı!', 'success');
+    // Tema başarıyla kaydedildi bildirimi ve yenileme önerisi
+    showToast('🎨 ' + themeName + ' teması kaydedildi!', 'success');
+    
+    // 1 saniye sonra yenileme sorusu sor
+    setTimeout(() => {
+        if (confirm('Tema değişikliğini görmek için ana sayfayı yenilemek ister misiniz?')) {
+            // Ana sayfa açıksa yenile
+            if (window.opener) {
+                window.opener.location.reload();
+            }
+            // Açık index.html sekmelerini yenile (BroadcastChannel)
+            try {
+                const bc = new BroadcastChannel('theme_change');
+                bc.postMessage({ type: 'reload' });
+                bc.close();
+            } catch(e) {}
+        }
+    }, 500);
 }
 
 // Aktif tema göstergesini güncelle

@@ -70,6 +70,44 @@
     <meta name="theme-color" content="#2c2c2c">
     <title>CEE Mimarlık</title>
     
+    <!-- TEMA YÜKLEYICI - Sayfa yüklenmeden önce çalışır -->
+    <script>
+    (function() {
+        var savedTheme = localStorage.getItem('cee_theme');
+        if (savedTheme) {
+            try {
+                var theme = JSON.parse(savedTheme);
+                var themes = {
+                    'lares': { accent: '#2c3e50', primary: '#2c3e50', secondary: '#7f8c8d', bg: '#ffffff', border: '#ecf0f1' },
+                    'gold': { accent: '#d4af37', primary: '#1a1a1a', secondary: '#666666', bg: '#fafafa', border: '#e0e0e0' },
+                    'gray': { accent: '#374151', primary: '#1f2937', secondary: '#6b7280', bg: '#f9fafb', border: '#e5e7eb' },
+                    'ocean': { accent: '#1e3a5f', primary: '#1e3a5f', secondary: '#64748b', bg: '#f8fafc', border: '#e2e8f0' },
+                    'emerald': { accent: '#065f46', primary: '#064e3b', secondary: '#6b7280', bg: '#f0fdf4', border: '#d1fae5' },
+                    'wine': { accent: '#7c2d12', primary: '#7c2d12', secondary: '#78716c', bg: '#fef2f2', border: '#fecaca' },
+                    'purple': { accent: '#5b21b6', primary: '#4c1d95', secondary: '#7c7c7c', bg: '#f5f3ff', border: '#ede9fe' }
+                };
+                var colors = themes[theme.id] || (theme.accent ? { accent: theme.accent, primary: theme.textColor || '#1a1a1a', secondary: '#666', bg: '#fafafa', border: '#e0e0e0' } : null);
+                if (colors) {
+                    var style = document.createElement('style');
+                    style.id = 'theme-override';
+                    style.textContent = ':root{--accent:' + colors.accent + ' !important;--primary:' + colors.primary + ' !important;--secondary:' + colors.secondary + ' !important;--bg:' + colors.bg + ' !important;--border:' + colors.border + ' !important;}';
+                    document.head.appendChild(style);
+                }
+            } catch(e) {}
+        }
+        
+        // Admin panelden tema değişikliği dinle
+        try {
+            var bc = new BroadcastChannel('theme_change');
+            bc.onmessage = function(e) {
+                if (e.data && e.data.type === 'reload') {
+                    window.location.reload();
+                }
+            };
+        } catch(e) {}
+    })();
+    </script>
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.ceemimarlik.com">
     
@@ -537,9 +575,9 @@
         }
 
         :root {
-            --primary: #2c2c2c;
+            --primary: #1a1a1a;
             --secondary: #666;
-            --accent: #1a1a1a;
+            --accent: #d4af37;
             --bg: #fafafa;
             --white: #ffffff;
             --border: #e0e0e0;
@@ -8658,33 +8696,90 @@ function loadTheme() {
 function applyThemeColors(theme) {
     const root = document.documentElement;
     
-    if (theme.accent) {
-        root.style.setProperty('--accent', theme.accent);
-    }
-    if (theme.accentLight) {
-        root.style.setProperty('--accent-light', theme.accentLight);
-    }
-    if (theme.textColor) {
-        root.style.setProperty('--primary', theme.textColor);
+    // Tema paletleri
+    const themes = {
+        'lares': {
+            accent: '#2c3e50',
+            accentLight: '#34495e',
+            primary: '#2c3e50',
+            secondary: '#7f8c8d',
+            bg: '#ffffff',
+            border: '#ecf0f1'
+        },
+        'gold': {
+            accent: '#d4af37',
+            accentLight: '#b8963a',
+            primary: '#1a1a1a',
+            secondary: '#666666',
+            bg: '#fafafa',
+            border: '#e0e0e0'
+        },
+        'gray': {
+            accent: '#374151',
+            accentLight: '#4b5563',
+            primary: '#1f2937',
+            secondary: '#6b7280',
+            bg: '#f9fafb',
+            border: '#e5e7eb'
+        },
+        'ocean': {
+            accent: '#1e3a5f',
+            accentLight: '#2563eb',
+            primary: '#1e3a5f',
+            secondary: '#64748b',
+            bg: '#f8fafc',
+            border: '#e2e8f0'
+        },
+        'emerald': {
+            accent: '#065f46',
+            accentLight: '#10b981',
+            primary: '#064e3b',
+            secondary: '#6b7280',
+            bg: '#f0fdf4',
+            border: '#d1fae5'
+        },
+        'wine': {
+            accent: '#7c2d12',
+            accentLight: '#dc2626',
+            primary: '#7c2d12',
+            secondary: '#78716c',
+            bg: '#fef2f2',
+            border: '#fecaca'
+        },
+        'purple': {
+            accent: '#5b21b6',
+            accentLight: '#8b5cf6',
+            primary: '#4c1d95',
+            secondary: '#7c7c7c',
+            bg: '#f5f3ff',
+            border: '#ede9fe'
+        }
+    };
+    
+    // Tema ID'sine göre renkleri al
+    let colors = themes[theme.id] || themes['gold'];
+    
+    // Özel tema ise direkt değerleri kullan
+    if (theme.id === 'custom' || theme.id === 'preset') {
+        colors = {
+            accent: theme.accent || '#d4af37',
+            accentLight: theme.accentLight || theme.accent || '#b8963a',
+            primary: theme.textColor || '#1a1a1a',
+            secondary: '#666666',
+            bg: theme.bgLight || '#fafafa',
+            border: theme.bgMuted || '#e0e0e0'
+        };
     }
     
-    // Özel tema ID'lerine göre ek stiller
-    if (theme.id === 'lares') {
-        // Lares teması - daha beyaz ve minimal
-        root.style.setProperty('--accent', '#2c3e50');
-        root.style.setProperty('--bg', '#ffffff');
-        document.body.style.setProperty('--nav-color', '#34495e');
-    } else if (theme.id === 'ocean') {
-        root.style.setProperty('--accent', '#1e3a5f');
-    } else if (theme.id === 'emerald') {
-        root.style.setProperty('--accent', '#065f46');
-    } else if (theme.id === 'wine') {
-        root.style.setProperty('--accent', '#7c2d12');
-    } else if (theme.id === 'purple') {
-        root.style.setProperty('--accent', '#5b21b6');
-    } else if (theme.id === 'gray') {
-        root.style.setProperty('--accent', '#374151');
-    }
+    // CSS değişkenlerini uygula
+    root.style.setProperty('--accent', colors.accent);
+    root.style.setProperty('--accent-light', colors.accentLight);
+    root.style.setProperty('--primary', colors.primary);
+    root.style.setProperty('--secondary', colors.secondary);
+    root.style.setProperty('--bg', colors.bg);
+    root.style.setProperty('--border', colors.border);
+    
+    console.log('Tema uygulandı:', theme.id, colors);
 }
 
 // Sayfa yüklendiğinde
