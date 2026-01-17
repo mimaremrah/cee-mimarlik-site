@@ -78,7 +78,7 @@
             background: #0f172a;
         }
 
-        /* CONTEXT MENU (SAĞ TIK) */
+        /* CONTEXT MENU (SAÄž TIK) */
         .context-menu {
             position: fixed;
             background: white;
@@ -123,6 +123,39 @@
 
         body.dark-mode .context-menu-item:hover {
             background: #334155;
+        }
+
+        /* TEMA PALETİ STİLLERİ */
+        .theme-palette {
+            transition: all 0.3s ease;
+        }
+        
+        .theme-palette:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        body.dark-mode .theme-palette {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        
+        body.dark-mode .theme-palette:hover {
+            border-color: #667eea !important;
+        }
+        
+        body.dark-mode .theme-palette div,
+        body.dark-mode .theme-palette strong {
+            color: #e2e8f0 !important;
+        }
+        
+        body.dark-mode .theme-palette p {
+            color: #94a3b8 !important;
+        }
+        
+        body.dark-mode #activeThemeIndicator {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+            border-color: #334155 !important;
         }
 
         /* ETİKETLER */
@@ -2208,11 +2241,11 @@ body.dark-mode #projectModal .form-group textarea {
         <h1>🔐 Admin Girişi</h1>
         <div id="loginError" class="login-error"></div>
         <input type="text" id="username" placeholder="Kullanıcı Adı" value="admin" onkeypress="if(event.key==='Enter') login()">
-        <input type="password" id="password" placeholder="Şifre" value="admin123" onkeypress="if(event.key==='Enter') login()">
-        <button onclick="login()">Giriş Yap</button>
+        <input type="password" id="password" placeholder="Åžifre" value="admin123" onkeypress="if(event.key==='Enter') login()">
+        <button onclick="login()">GiriÅŸ Yap</button>
         <div style="display: flex; gap: 10px; margin-top: 15px;">
-            <button onclick="forgotPassword()" style="flex: 1; background: #6c757d;">Şifremi Unuttum</button>
-            <button onclick="changePassword()" style="flex: 1; background: #0dcaf0;">Şifre Değiştir</button>
+            <button onclick="forgotPassword()" style="flex: 1; background: #6c757d;">Åžifremi Unuttum</button>
+            <button onclick="changePassword()" style="flex: 1; background: #0dcaf0;">Åžifre DeÄŸiÅŸtir</button>
         </div>
         <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
             Varsayılan: admin / admin123
@@ -2378,7 +2411,7 @@ body.dark-mode #projectModal .form-group textarea {
                 
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Ünvan:</label>
-                    <input type="text" id="teamMemberTitle" placeholder="Baş Mimar" style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px;">
+                    <input type="text" id="teamMemberTitle" placeholder="BaÅŸ Mimar" style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px;">
                 </div>
                 
                 <div style="margin-bottom: 15px;">
@@ -2387,7 +2420,7 @@ body.dark-mode #projectModal .form-group textarea {
                 </div>
                 
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Fotoğraf:</label>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">FotoÄŸraf:</label>
                     <input type="file" id="teamMemberPhoto" accept="image/*" style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px;">
                 </div>
                 
@@ -2428,92 +2461,185 @@ body.dark-mode #projectModal .form-group textarea {
             </button>
         </div>
         
-        <!-- COLORS TAB -->
+        <!-- COLORS TAB - TEMA PALETİ -->
         <div id="colorsTab" class="settings-tab-content" style="display: none;">
-            <h3 style="color: #333; margin-bottom: 20px;">🎨 Site Renk Yönetimi</h3>
+            <h3 style="color: #333; margin-bottom: 10px; font-size: 20px;">🎨 Tema Paleti</h3>
+            <p style="color: #888; margin-bottom: 25px; font-size: 13px;">Sitenizin tüm renklerini tek tıkla değiştirin. Lares kalitesinde renk uyumu.</p>
             
-            <!-- HAZIR RENK TEMALARI -->
+            <!-- AKTİF TEMA GÖSTERGESİ -->
+            <div id="activeThemeIndicator" style="background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border: 2px solid #e5e7eb; border-radius: 16px; padding: 20px; margin-bottom: 30px; display: flex; align-items: center; gap: 20px;">
+                <div style="display: flex; gap: 8px;">
+                    <div id="activeColor1" style="width: 40px; height: 40px; background: #d4af37; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+                    <div id="activeColor2" style="width: 40px; height: 40px; background: #b8963a; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+                    <div id="activeColor3" style="width: 40px; height: 40px; background: #1a1a1a; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"></div>
+                </div>
+                <div>
+                    <div style="font-weight: 700; color: #333; font-size: 16px;" id="activeThemeName">Altın Klasik</div>
+                    <div style="color: #888; font-size: 12px;">Şu an aktif tema</div>
+                </div>
+            </div>
+            
+            <!-- PREMIUM TEMA PALETLERİ -->
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 15px; font-weight: 700; color: #333; font-size: 16px;">✨ Hazır Renk Temaları:</label>
-                <div id="colorPresets" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                    <!-- SİYAH GRİ MODERN (ÖNERİLEN) -->
-                    <div class="color-preset" onclick="applyColorPreset('#1a1a1a', '#333333', '#666666')" 
-                         style="padding: 15px; border: 3px solid #1a1a1a; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #1a1a1a; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #333333; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #666666; border-radius: 6px;"></div>
+                <label style="display: block; margin-bottom: 15px; font-weight: 700; color: #333; font-size: 15px;">
+                    ✨ Premium Tema Paletleri
+                </label>
+                
+                <div id="themePalettes" style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+                    
+                    <!-- LARES BEYAZ - ÖNERİLEN -->
+                    <div class="theme-palette" onclick="applyThemePalette('lares', '#2c3e50', '#34495e', '#ecf0f1', '#bdc3c7', 'Lares Beyaz')" 
+                         style="padding: 18px 20px; border: 2px solid #2c3e50; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #2c3e50; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #34495e; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #ecf0f1; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #bdc3c7; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #2c3e50; font-size: 14px;">⭐ Lares Beyaz</div>
+                                <div style="font-size: 11px; color: #666;">Temiz, profesyonel, minimal</div>
+                            </div>
                         </div>
-                        <strong style="font-size: 13px; color: #1a1a1a;">⭐ Siyah Gri (Önerilen)</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Modern ve şık</p>
+                        <div style="background: #2c3e50; color: white; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 600;">ÖNERİLEN</div>
                     </div>
                     
                     <!-- ALTIN KLASİK -->
-                    <div class="color-preset" onclick="applyColorPreset('#d4af37', '#b8963a', '#f4d03f')" 
-                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #d4af37; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #b8963a; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #f4d03f; border-radius: 6px;"></div>
+                    <div class="theme-palette" onclick="applyThemePalette('gold', '#d4af37', '#b8963a', '#1a1a1a', '#333333', 'Altın Klasik')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #d4af37; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #b8963a; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #1a1a1a; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #333333; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">🏆 Altın Klasik</div>
+                                <div style="font-size: 11px; color: #666;">Lüks, şık, premium</div>
+                            </div>
                         </div>
-                        <strong style="font-size: 13px; color: #333;">🏆 Altın Klasik</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Şık ve profesyonel</p>
                     </div>
                     
-                    <!-- KOYU GRİ -->
-                    <div class="color-preset" onclick="applyColorPreset('#374151', '#4b5563', '#6b7280')" 
-                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #374151; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #4b5563; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #6b7280; border-radius: 6px;"></div>
+                    <!-- MODERN GRİ -->
+                    <div class="theme-palette" onclick="applyThemePalette('gray', '#374151', '#4b5563', '#f9fafb', '#e5e7eb', 'Modern Gri')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #374151; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #4b5563; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #f9fafb; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #e5e7eb; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">🌑 Modern Gri</div>
+                                <div style="font-size: 11px; color: #666;">Minimalist, kurumsal</div>
+                            </div>
                         </div>
-                        <strong style="font-size: 13px; color: #333;">🌑 Koyu Gri</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Minimalist ve temiz</p>
                     </div>
                     
-                    <!-- LACIVERT -->
-                    <div class="color-preset" onclick="applyColorPreset('#1e3a5f', '#2c4a6e', '#3d5a80')" 
-                         style="padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: white;">
-                        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                            <div style="width: 25px; height: 25px; background: #1e3a5f; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #2c4a6e; border-radius: 6px;"></div>
-                            <div style="width: 25px; height: 25px; background: #3d5a80; border-radius: 6px;"></div>
+                    <!-- OCEAN BLUE -->
+                    <div class="theme-palette" onclick="applyThemePalette('ocean', '#1e3a5f', '#2563eb', '#f0f9ff', '#dbeafe', 'Ocean Blue')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #1e3a5f; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #2563eb; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #f0f9ff; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #dbeafe; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">🌊 Ocean Blue</div>
+                                <div style="font-size: 11px; color: #666;">Güvenilir, sakin</div>
+                            </div>
                         </div>
-                        <strong style="font-size: 13px; color: #333;">🌊 Lacivert</strong>
-                        <p style="font-size: 11px; color: #666; margin: 0;">Güvenilir ve kurumsal</p>
                     </div>
+                    
+                    <!-- EMERALD GREEN -->
+                    <div class="theme-palette" onclick="applyThemePalette('emerald', '#065f46', '#10b981', '#ecfdf5', '#d1fae5', 'Emerald Green')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #065f46; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #10b981; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #ecfdf5; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #d1fae5; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">💎 Emerald Green</div>
+                                <div style="font-size: 11px; color: #666;">Doğal, taze, modern</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- WINE RED -->
+                    <div class="theme-palette" onclick="applyThemePalette('wine', '#7c2d12', '#dc2626', '#fef2f2', '#fecaca', 'Wine Red')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #7c2d12; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #dc2626; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #fef2f2; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #fecaca; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">🍷 Wine Red</div>
+                                <div style="font-size: 11px; color: #666;">Güçlü, dikkat çekici</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PURPLE ROYAL -->
+                    <div class="theme-palette" onclick="applyThemePalette('purple', '#5b21b6', '#8b5cf6', '#f5f3ff', '#ede9fe', 'Purple Royal')" 
+                         style="padding: 18px 20px; border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer; transition: all 0.3s; background: white; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; gap: 5px;">
+                                <div style="width: 32px; height: 32px; background: #5b21b6; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #8b5cf6; border-radius: 8px;"></div>
+                                <div style="width: 32px; height: 32px; background: #f5f3ff; border-radius: 8px; border: 1px solid #ddd;"></div>
+                                <div style="width: 32px; height: 32px; background: #ede9fe; border-radius: 8px;"></div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #333; font-size: 14px;">👑 Purple Royal</div>
+                                <div style="font-size: 11px; color: #666;">Yaratıcı, premium</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             
-            <hr style="border: none; border-top: 2px dashed #e5e7eb; margin: 25px 0;">
+            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 25px 0;">
             
             <!-- ÖZEL RENK SEÇİMİ -->
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 15px; font-weight: 700; color: #333; font-size: 16px;">🎯 Özel Renk Seçimi:</label>
+                <label style="display: block; margin-bottom: 15px; font-weight: 700; color: #333; font-size: 15px;">🎯 Özel Renk Seçimi</label>
                 
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Ana Renk (Primary):</label>
-                    <input type="color" id="primaryColor" value="#d4af37" style="width: 100%; height: 50px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666; font-size: 12px;">Ana Renk (Accent)</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="color" id="customAccentColor" value="#d4af37" style="width: 50px; height: 40px; border: none; border-radius: 8px; cursor: pointer;">
+                            <input type="text" id="customAccentHex" value="#d4af37" style="flex: 1; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-family: monospace; font-size: 13px;" oninput="document.getElementById('customAccentColor').value = this.value">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666; font-size: 12px;">Metin Rengi</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="color" id="customTextColor" value="#1a1a1a" style="width: 50px; height: 40px; border: none; border-radius: 8px; cursor: pointer;">
+                            <input type="text" id="customTextHex" value="#1a1a1a" style="flex: 1; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-family: monospace; font-size: 13px;" oninput="document.getElementById('customTextColor').value = this.value">
+                        </div>
+                    </div>
                 </div>
                 
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">İkincil Renk (Secondary):</label>
-                    <input type="color" id="secondaryColor" value="#b8963a" style="width: 100%; height: 50px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
-                </div>
-                
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #666;">Accent Renk:</label>
-                    <input type="color" id="accentColor" value="#f4d03f" style="width: 100%; height: 50px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
-                </div>
+                <button onclick="applyCustomColors()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 14px; margin-bottom: 10px;">
+                    🎨 Özel Renkleri Uygula
+                </button>
             </div>
             
-            <button onclick="saveColorSettings()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #1a1a1a; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 16px;">
-                💾 Renk Ayarlarını Kaydet
-            </button>
-            
-            <button onclick="resetColors()" style="width: 100%; padding: 12px; background: #f3f4f6; color: #666; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;">
-                🔄 Varsayılan Renklere Dön
+            <button onclick="resetToDefaultTheme()" style="width: 100%; padding: 12px; background: #f3f4f6; color: #666; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 13px;">
+                🔄 Varsayılan Temaya Dön
             </button>
         </div>
         
@@ -2527,7 +2653,7 @@ body.dark-mode #projectModal .form-group textarea {
             </div>
             
             <button onclick="addNewService()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
-                ➕ Yeni Hizmet Ekle
+                âž• Yeni Hizmet Ekle
             </button>
             
             <button onclick="saveServices()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
@@ -2545,7 +2671,7 @@ body.dark-mode #projectModal .form-group textarea {
             </div>
             
             <button onclick="addNewReference()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
-                ➕ Yeni Referans Ekle
+                âž• Yeni Referans Ekle
             </button>
             
             <button onclick="saveReferences()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
@@ -2563,7 +2689,7 @@ body.dark-mode #projectModal .form-group textarea {
             </div>
             
             <button onclick="addNewFaq()" style="width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">
-                ➕ Yeni Soru Ekle
+                âž• Yeni Soru Ekle
             </button>
             
             <button onclick="saveFaqs()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
@@ -2735,7 +2861,7 @@ body.dark-mode #projectModal .form-group textarea {
                 <span class="stat-icon">📦</span>
                 <div>
                     <div class="stat-number-compact" id="archiveProjects">0</div>
-                    <div class="stat-label-compact">Arşiv</div>
+                    <div class="stat-label-compact">ArÅŸiv</div>
                 </div>
             </div>
             <div class="stat-card-compact">
@@ -2838,7 +2964,7 @@ body.dark-mode #projectModal .form-group textarea {
     </div>
 </div>
 
-<!-- CONTEXT MENU (SAĞ TIK) -->
+<!-- CONTEXT MENU (SAÄž TIK) -->
 <div id="contextMenu" class="context-menu">
     <div class="context-menu-item" onclick="contextAction('fullscreen')">🖼️ Tam Ekran</div>
     <div class="context-menu-item" onclick="contextAction('favorite')">⭐ Favori</div>
@@ -3038,7 +3164,7 @@ function login() {
         LoginSecurity.reset();
         isAuthenticated = true;
         
-        // Session oluştur
+        // Session oluÅŸtur
         const sessionToken = CSRFToken.generate();
         sessionStorage.setItem('admin_session', sessionToken);
         sessionStorage.setItem('admin_login_time', Date.now().toString());
@@ -3114,7 +3240,7 @@ function changePassword() {
     const currentUser = prompt('Mevcut kullanıcı adınızı girin:');
     if (!currentUser) return;
     
-    const currentPass = prompt('Mevcut şifrenizi girin:');
+    const currentPass = prompt('Mevcut ÅŸifrenizi girin:');
     if (!currentPass) return;
     
     if (currentUser !== credentials.username || currentPass !== credentials.password) {
@@ -3125,13 +3251,13 @@ function changePassword() {
     const newUser = prompt('Yeni kullanıcı adı girin:', credentials.username);
     if (!newUser) return;
     
-    const newPass = prompt('Yeni şifre girin (min 6 karakter):');
+    const newPass = prompt('Yeni ÅŸifre girin (min 6 karakter):');
     if (!newPass || newPass.length < 6) {
         alert('❌ Şifre en az 6 karakter olmalı!');
         return;
     }
     
-    const confirmPass = prompt('Yeni şifreyi tekrar girin:');
+    const confirmPass = prompt('Yeni ÅŸifreyi tekrar girin:');
     if (newPass !== confirmPass) {
         alert('❌ Şifreler eşleşmiyor!');
         return;
@@ -3249,7 +3375,7 @@ function loadLogo() {
         
         if (uploadBtn && removeBtn && status) {
             if (siteLogo) {
-                uploadBtn.textContent = 'Logo Değiştir';
+                uploadBtn.textContent = 'Logo DeÄŸiÅŸtir';
                 uploadBtn.className = 'btn btn-primary';
                 removeBtn.style.display = 'inline-block';
                 status.textContent = '✅ Logo aktif';
@@ -3307,6 +3433,11 @@ document.addEventListener('DOMContentLoaded', function() {
             uploadLogo();
         });
     }
+    
+    // Aktif temayı yükle
+    if (typeof loadActiveTheme === 'function') {
+        loadActiveTheme();
+    }
 });
 
 function uploadLogo() {
@@ -3336,7 +3467,7 @@ function uploadLogo() {
         const status = document.getElementById('logoStatus');
         
         if (uploadBtn) {
-            uploadBtn.textContent = 'Logo Değiştir';
+            uploadBtn.textContent = 'Logo DeÄŸiÅŸtir';
             uploadBtn.className = 'btn btn-primary';
         }
         if (removeBtn) {
@@ -3418,7 +3549,7 @@ function deleteProject(id) {
 }
 
 function undoDelete() {
-    // Eğer toplu silme varsa onu geri al
+    // EÄŸer toplu silme varsa onu geri al
     if (clearedZones && clearedZones.length > 0) {
         undoClear();
         return;
@@ -3459,7 +3590,7 @@ Yandex Disk'e otomatik yedekleme için:
 3️⃣ Token'ı sisteme kaydedin
 4️⃣ Otomatik yedekleme başlar
 
-ŞU AN:
+ÅžU AN:
 - Manuel yedek: "📥 Yedekle" butonu
 - Yandex API entegrasyonu için OAuth gerekli
 
@@ -3468,7 +3599,7 @@ GELECEK GÜNCELLEMEDE:
 ✅ Bulut senkronizasyonu
 ✅ Çoklu cihaz desteği
 
-Şimdilik JSON yedeklemesini kullanabilirsiniz!
+Åžimdilik JSON yedeklemesini kullanabilirsiniz!
     `.trim();
     
     alert(info);
@@ -3495,7 +3626,7 @@ function clearStorageSpace() {
         `Kullanılan: ${usedMB} MB / ~5 MB\n\n` +
         `Temizleme seçenekleri:\n` +
         `1 - Sadece ekip fotoğraflarını sil\n` +
-        `2 - Arşivdeki projeleri sil\n` +
+        `2 - ArÅŸivdeki projeleri sil\n` +
         `3 - Tüm verileri sil (DİKKAT!)\n\n` +
         `Seçiminizi girin (1-3):`
     );
@@ -3508,7 +3639,7 @@ function clearStorageSpace() {
         alert('✅ Ekip fotoğrafları silindi! Yer açıldı.');
         loadTeamMembers();
     } else if (choice === '2') {
-        // Arşivdeki projeleri sil
+        // ArÅŸivdeki projeleri sil
         const beforeCount = projects.length;
         projects = projects.filter(p => p.row !== 'bottom');
         saveProjects();
@@ -3652,7 +3783,7 @@ function clearZone(row) {
     // İKİNCİ ONAY - SON ŞANS
     if (!confirm('⚠️ SON ONAY!\n\n' +
                  zoneName + ' bölümündeki ' + zoneProjects.length + ' proje SİLİNECEK!\n\n' +
-                 'Devam etmek istediğinize %100 emin misiniz?')) {
+                 'Devam etmek istediÄŸinize %100 emin misiniz?')) {
         return;
     }
     
@@ -3882,14 +4013,14 @@ function drop(e, targetRow) {
             const draggedIndex = projects.findIndex(p => p.id === draggedId);
             const targetIndex = projects.findIndex(p => p.id === targetId);
             
-            // SWAP - Yer değiştir
+            // SWAP - Yer deÄŸiÅŸtir
             [projects[draggedIndex], projects[targetIndex]] = [projects[targetIndex], projects[draggedIndex]];
             
             // Manuel sıralama moduna geç
             localStorage.setItem('cee_manual_sort', 'true');
         }
     } else if (oldRow !== targetRow) {
-        // FARKLI ALANA TAŞI
+        // FARKLI ALANA TAÅžI
         draggedProject.row = targetRow;
     }
     
@@ -4395,7 +4526,7 @@ document.addEventListener('keydown', (e) => {
                 e.preventDefault();
                 document.getElementById('projectInput').click();
                 break;
-            case 'l': // CTRL + L = Logo Değiştir
+            case 'l': // CTRL + L = Logo DeÄŸiÅŸtir
                 e.preventDefault();
                 document.getElementById('logoInput').click();
                 break;
@@ -4404,7 +4535,7 @@ document.addEventListener('keydown', (e) => {
     
     // DELETE tuşu - son tıklanan projeyi sil (eğer varsa)
     if (e.key === 'Delete' && contextMenuProjectId) {
-        if (confirm('Projeyi silmek istediğinize emin misiniz?')) {
+        if (confirm('Projeyi silmek istediÄŸinize emin misiniz?')) {
             deleteProject(contextMenuProjectId);
             contextMenuProjectId = null;
         }
@@ -4430,7 +4561,7 @@ DELETE    →  Seçili Projeyi Sil
 }
 
 
-// CONTEXT MENU (SAĞ TIK)
+// CONTEXT MENU (SAÄž TIK)
 let contextMenuProjectId = null;
 
 function showContextMenu(e, projectId) {
@@ -4577,7 +4708,7 @@ function addTag(projectId) {
         return;
     }
     
-    const tagOptions = ['Villa', 'Apartman', 'Ofis', 'Ticari', 'Konut', 'Diğer'];
+    const tagOptions = ['Villa', 'Apartman', 'Ofis', 'Ticari', 'Konut', 'DiÄŸer'];
     let tagList = tagOptions.map((t, i) => `${i+1}. ${t}`).join('\n');
     
     const choice = prompt(`Etiket seçin:\n\n${tagList}\n\nNumara girin (1-6):`);
@@ -5030,7 +5161,7 @@ function handleMiniConverter(input) {
     select.innerHTML = '<option value="">Format Seçin →</option>';
     formats.forEach(f => {
         const opt = document.createElement('option');
-        opt.value = f.value;  // Doğrudan value
+        opt.value = f.value;  // DoÄŸrudan value
         opt.textContent = f.name;  // Emoji + isim
         select.appendChild(opt);
     });
@@ -5326,7 +5457,7 @@ function resetMiniConverter() {
 
 // Session manager başlat ve eski session kontrolü
 document.addEventListener('DOMContentLoaded', function() {
-    // Session manager başlat
+    // Session manager baÅŸlat
     SessionManager.init();
     
     // Eski session kontrolü
@@ -5445,7 +5576,7 @@ function closeSiteSettings() {
     document.getElementById('siteSettingsModal').style.display = 'none';
 }
 
-// Tab Değiştir
+// Tab DeÄŸiÅŸtir
 function switchSettingsTab(tabName) {
     // Tüm tab içeriklerini gizle
     document.querySelectorAll('.settings-tab-content').forEach(tab => {
@@ -5611,7 +5742,7 @@ function editService(index) {
 }
 
 function deleteService(index) {
-    if (confirm('Bu hizmeti silmek istediğinize emin misiniz?')) {
+    if (confirm('Bu hizmeti silmek istediÄŸinize emin misiniz?')) {
         servicesData.splice(index, 1);
         renderServicesAdmin();
         showToast('✅ Hizmet silindi!', 'success');
@@ -5761,7 +5892,7 @@ function editFaq(index) {
 }
 
 function deleteFaq(index) {
-    if (confirm('Bu soruyu silmek istediğinize emin misiniz?')) {
+    if (confirm('Bu soruyu silmek istediÄŸinize emin misiniz?')) {
         faqsData.splice(index, 1);
         renderFaqsAdmin();
         showToast('✅ Soru silindi!', 'success');
@@ -6111,56 +6242,142 @@ function saveTeamSettings() {
     showToast('✅ Ekip bölümü ayarları kaydedildi!', 'success');
 }
 
-// Hazır Renk Temasını Uygula (MADDE 14)
-function applyColorPreset(primary, secondary, accent) {
-    document.getElementById('primaryColor').value = primary;
-    document.getElementById('secondaryColor').value = secondary;
-    document.getElementById('accentColor').value = accent;
-    
-    // Seçili preset'i vurgula
-    document.querySelectorAll('.color-preset').forEach(el => {
-        el.style.borderColor = '#e5e7eb';
-        el.style.transform = 'scale(1)';
-    });
-    event.currentTarget.style.borderColor = primary;
-    event.currentTarget.style.transform = 'scale(1.02)';
-    
-    showToast('🎨 Renk teması seçildi! Kaydet butonuna basarak uygulayın.', 'success');
-}
+// ============== TEMA PALETİ FONKSİYONLARI ==============
 
-// Renk Ayarlarını Kaydet
-function saveColorSettings() {
-    const settings = {
-        primary: document.getElementById('primaryColor').value,
-        secondary: document.getElementById('secondaryColor').value,
-        accent: document.getElementById('accentColor').value
+// Tema paletini uygula
+function applyThemePalette(themeId, accent, accentLight, bgLight, bgMuted, themeName) {
+    const theme = {
+        id: themeId,
+        name: themeName,
+        accent: accent,
+        accentLight: accentLight,
+        bgLight: bgLight,
+        bgMuted: bgMuted
     };
     
-    localStorage.setItem('color_settings', JSON.stringify(settings));
-    showToast('✅ Renk ayarları kaydedildi! Sayfayı yenileyerek değişiklikleri görebilirsiniz.', 'success');
+    // LocalStorage'a kaydet
+    localStorage.setItem('cee_theme', JSON.stringify(theme));
+    
+    // Aktif tema göstergesini güncelle
+    updateActiveThemeIndicator(theme);
+    
+    // Seçili paleti vurgula
+    document.querySelectorAll('.theme-palette').forEach(el => {
+        el.style.borderColor = '#e5e7eb';
+        el.style.transform = 'scale(1)';
+        el.style.boxShadow = 'none';
+    });
+    if (event && event.currentTarget) {
+        event.currentTarget.style.borderColor = accent;
+        event.currentTarget.style.transform = 'scale(1.01)';
+        event.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+    }
+    
+    showToast('🎨 ' + themeName + ' teması uygulandı!', 'success');
 }
 
-// Renkleri Sıfırla
-function resetColors() {
-    if (!confirm('Renkleri varsayılana döndürmek istediğinizden emin misiniz?')) return;
+// Aktif tema göstergesini güncelle
+function updateActiveThemeIndicator(theme) {
+    const el1 = document.getElementById('activeColor1');
+    const el2 = document.getElementById('activeColor2');
+    const el3 = document.getElementById('activeColor3');
+    const nameEl = document.getElementById('activeThemeName');
     
-    document.getElementById('primaryColor').value = '#667eea';
-    document.getElementById('secondaryColor').value = '#764ba2';
-    document.getElementById('accentColor').value = '#10b981';
-    
-    localStorage.removeItem('color_settings');
-    showToast('✅ Renkler varsayılana döndürüldü!', 'success');
+    if (el1) el1.style.background = theme.accent;
+    if (el2) el2.style.background = theme.accentLight;
+    if (el3) el3.style.background = theme.bgLight;
+    if (nameEl) nameEl.textContent = theme.name;
 }
 
-// Hazır Renk Paleti Uygula (MADDE 14)
+// Özel renkleri uygula
+function applyCustomColors() {
+    const accent = document.getElementById('customAccentColor').value;
+    const text = document.getElementById('customTextColor').value;
+    
+    const theme = {
+        id: 'custom',
+        name: 'Özel Tema',
+        accent: accent,
+        accentLight: accent,
+        bgLight: '#ffffff',
+        bgMuted: '#f9fafb',
+        textColor: text
+    };
+    
+    localStorage.setItem('cee_theme', JSON.stringify(theme));
+    updateActiveThemeIndicator(theme);
+    
+    showToast('🎨 Özel renkler uygulandı!', 'success');
+}
+
+// Varsayılan temaya dön
+function resetToDefaultTheme() {
+    if (!confirm('Varsayılan temaya dönmek istediğinize emin misiniz?')) return;
+    
+    const defaultTheme = {
+        id: 'gold',
+        name: 'Altın Klasik',
+        accent: '#d4af37',
+        accentLight: '#b8963a',
+        bgLight: '#ffffff',
+        bgMuted: '#f9fafb'
+    };
+    
+    localStorage.setItem('cee_theme', JSON.stringify(defaultTheme));
+    updateActiveThemeIndicator(defaultTheme);
+    
+    // Özel renk inputlarını sıfırla
+    document.getElementById('customAccentColor').value = '#d4af37';
+    document.getElementById('customAccentHex').value = '#d4af37';
+    document.getElementById('customTextColor').value = '#1a1a1a';
+    document.getElementById('customTextHex').value = '#1a1a1a';
+    
+    showToast('✅ Varsayılan tema geri yüklendi!', 'success');
+}
+
+// Sayfa yüklendiğinde aktif temayı göster
+function loadActiveTheme() {
+    const savedTheme = localStorage.getItem('cee_theme');
+    if (savedTheme) {
+        try {
+            const theme = JSON.parse(savedTheme);
+            updateActiveThemeIndicator(theme);
+        } catch (e) {
+            console.log('Tema yüklenemedi:', e);
+        }
+    }
+}
+
+// Hazır Renk Temasını Uygula (Eski - Uyumluluk için)
 function applyColorPreset(primary, secondary, accent) {
-    document.getElementById('primaryColor').value = primary;
-    document.getElementById('secondaryColor').value = secondary;
-    document.getElementById('accentColor').value = accent;
+    const theme = {
+        id: 'preset',
+        name: 'Özel Preset',
+        accent: primary,
+        accentLight: secondary,
+        bgLight: '#ffffff',
+        bgMuted: accent
+    };
     
-    const settings = { primary, secondary, accent };
+    localStorage.setItem('cee_theme', JSON.stringify(theme));
+    localStorage.setItem('color_settings', JSON.stringify({ primary, secondary, accent }));
+    showToast('🎨 Renk teması uygulandı!', 'success');
+}
+
+// Renk Ayarlarını Kaydet (Eski - Uyumluluk için)
+function saveColorSettings() {
+    const accent = document.getElementById('customAccentColor')?.value || '#d4af37';
+    const text = document.getElementById('customTextColor')?.value || '#1a1a1a';
+    
+    const settings = { primary: accent, secondary: text, accent: accent };
     localStorage.setItem('color_settings', JSON.stringify(settings));
-    showToast('🎨 Renk paleti uygulandı! Kaydetmeyi unutmayın.', 'success');
+    
+    applyCustomColors();
+}
+
+// Renkleri Sıfırla (Eski - Uyumluluk için)
+function resetColors() {
+    resetToDefaultTheme();
 }
 
 // Toast Bildirimi
@@ -6207,7 +6424,7 @@ function showToast(message, type = 'success') {
                 <div class="message-content">
                     Merhaba! Size nasıl yardımcı olabilirim?
                 </div>
-                <div class="message-time">Şimdi</div>
+                <div class="message-time">Åžimdi</div>
             </div>
         </div>
         
@@ -6509,6 +6726,18 @@ body.dark-mode .team-member-card {
             🗑️ Logoyu Kaldır
         </button>
     </div>
+    
+    <!-- HEADER SLOGAN ALANI -->
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <h3 style="color: #333; margin-bottom: 15px;">📝 Header Slogan (Logo Altı Yazı)</h3>
+        <div class="form-group">
+            <label>Slogan Metni</label>
+            <input type="text" id="headerSloganInput" placeholder="MİMARLIK & YAPI SİSTEMLERİ" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px;">
+        </div>
+        <button onclick="saveHeaderSlogan()" class="btn-save" style="margin-top: 10px;">
+            💾 Slogan Kaydet
+        </button>
+    </div>
 </div>
 
 <!-- HAKKIMIZDA BÖLÜMÜ -->
@@ -6576,7 +6805,7 @@ body.dark-mode .team-member-card {
         </div>
         
         <div class="form-group">
-            <label>Fotoğraf</label>
+            <label>FotoÄŸraf</label>
             <input type="file" id="memberPhoto" accept="image/*" onchange="previewMemberPhoto(this)">
             <div id="memberPhotoPreview" style="margin-top: 10px; display: none;">
                 <img src="" alt="Preview" style="max-width: 150px; border-radius: 8px;">
@@ -6590,7 +6819,7 @@ body.dark-mode .team-member-card {
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
             <div class="form-group">
-                <label>Eğitim</label>
+                <label>EÄŸitim</label>
                 <input type="text" id="memberEducation" placeholder="İTÜ Mimarlık (2010)">
             </div>
             <div class="form-group">
@@ -6677,7 +6906,7 @@ body.dark-mode .team-member-card {
         </div>
         
         <div class="form-group">
-            <label>Fotoğraf</label>
+            <label>FotoÄŸraf</label>
             <input type="file" id="projectPhotoInput" accept="image/*">
             <div id="projectPhotoPreview" style="margin-top: 10px; display: none;">
                 <img src="" alt="Preview" style="max-width: 200px; border-radius: 8px;">
@@ -6837,6 +7066,8 @@ function loadLogo() {
         document.getElementById('logoPreview').style.display = 'block';
         document.getElementById('logoPlaceholder').style.display = 'none';
     }
+    // Slogan'ı da yükle
+    loadHeaderSlogan();
 }
 
 function removeLogo() {
@@ -6845,6 +7076,25 @@ function removeLogo() {
     document.getElementById('logoPreview').style.display = 'none';
     document.getElementById('logoPlaceholder').style.display = 'block';
     alert('✅ Logo kaldırıldı!');
+}
+
+// ================== HEADER SLOGAN YÖNETİMİ ==================
+function loadHeaderSlogan() {
+    const slogan = localStorage.getItem('cee_header_slogan');
+    const sloganInput = document.getElementById('headerSloganInput');
+    if (sloganInput) {
+        sloganInput.value = slogan || 'MİMARLIK & YAPI SİSTEMLERİ';
+    }
+}
+
+function saveHeaderSlogan() {
+    const sloganInput = document.getElementById('headerSloganInput');
+    if (sloganInput && sloganInput.value.trim() !== '') {
+        localStorage.setItem('cee_header_slogan', sloganInput.value.trim());
+        alert('✅ Header slogan kaydedildi!');
+    } else {
+        alert('⚠️ Lütfen bir slogan girin!');
+    }
 }
 
 // ================== HAKKIMIZDA YÖNETİMİ ==================
@@ -6942,7 +7192,7 @@ const firebaseConfig = {
     appId: "1:479234997700:web:60182cab4b5bc8936d3891"
 };
 
-// Firebase'i başlat
+// Firebase'i baÅŸlat
 let app, db, storage;
 try {
     app = initializeApp(firebaseConfig, 'admin-app');
@@ -6950,7 +7200,7 @@ try {
     storage = getStorage(app);
     console.log('✅ Firebase Admin bağlandı');
     
-    // Global olarak erişilebilir yap
+    // Global olarak eriÅŸilebilir yap
     window.firebaseDB = db;
     window.firebaseStorage = storage;
     window.firebaseReady = true;
