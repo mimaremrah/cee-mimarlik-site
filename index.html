@@ -1663,6 +1663,75 @@
             margin-top: 85px;
             overflow: hidden;
         }
+        
+        /* Lares Tarzı Hero İçerik */
+        .hero-content-lares {
+            position: absolute;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
+            z-index: 10;
+            max-width: 550px;
+            text-align: left;
+        }
+        
+        .hero-brand {
+            font-size: 52px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            color: #d4af37;
+            margin: 0 0 30px 0;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            font-size: 15px;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.85);
+            font-weight: 300;
+            margin-bottom: 35px;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 45px;
+            background: #d4af37;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-cta:hover {
+            background: #b8962e;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content-lares {
+                right: 5%;
+                left: 5%;
+                max-width: none;
+                text-align: center;
+            }
+            .hero-brand {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-brand {
+                font-size: 28px;
+            }
+            .hero-description {
+                font-size: 14px;
+            }
+        }
 
         .hero-slide {
             position: absolute;
@@ -1701,7 +1770,7 @@
             filter: brightness(0.85);
         }
 
-        /* Minimal Overlay - Sadece yazı okunabilirliği için */
+        /* Minimal Overlay - Yazı okunabilirliği için */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -1709,10 +1778,10 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,0.1) 0%,
-                rgba(0,0,0,0.2) 40%,
-                rgba(0,0,0,0.4) 100%
+                to right,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.5) 50%,
+                rgba(0,0,0,0.7) 100%
             );
             pointer-events: none;
         }
@@ -1992,6 +2061,12 @@
 
         .project-card:hover .project-overlay {
             transform: translateY(0);
+        }
+        
+        .project-detail-btn:hover {
+            background: white !important;
+            color: #1a1a1a !important;
+            border-color: white !important;
         }
 
         .project-title {
@@ -4267,10 +4342,6 @@ window.goToAdmin = goToAdmin;
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 <span>Instagram</span>
             </a>
-            <a href="https://facebook.com/cee_mimarlik" target="_blank" class="social-sidebar-link facebook">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                <span>Facebook</span>
-            </a>
             <a href="https://twitter.com/cee_mimarlik" target="_blank" class="social-sidebar-link twitter">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 <span>X (Twitter)</span>
@@ -4289,6 +4360,13 @@ window.goToAdmin = goToAdmin;
 <!-- HERO SLIDER -->
 <section class="hero" id="anasayfa">
     <div id="heroSlider"></div>
+    
+    <!-- Lares Tarzı İçerik -->
+    <div class="hero-content-lares">
+        <h1 class="hero-brand" id="heroBrand">CEE MİMARLIK</h1>
+        <p class="hero-description" id="heroDescription" data-tr="CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz." data-en="As CEE Architecture, we reshape your living spaces, offices, villas and commercial projects according to our clients' expectations. Throughout all these processes, we provide turnkey design and implementation services from A to Z.">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</p>
+        <a href="#iletisim" class="hero-cta" data-tr="İLETİŞİME GEÇİN" data-en="CONTACT US">İLETİŞİME GEÇİN</a>
+    </div>
     
     <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
     <button class="hero-nav next" onclick="changeSlide(1)">›</button>
@@ -4373,8 +4451,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 1 - Mimari Proje -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
@@ -4388,8 +4466,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 2 - Ruhsat İşlemleri -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
                             <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -4405,8 +4483,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 3 - İç Mimarlık -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="3" y1="9" x2="21" y2="9"></line>
                             <line x1="9" y1="21" x2="9" y2="9"></line>
@@ -4421,8 +4499,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 4 - Statik Proje -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                             <polyline points="2 17 12 22 22 17"></polyline>
                             <polyline points="2 12 12 17 22 12"></polyline>
@@ -4437,8 +4515,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 5 - Şantiye Yönetimi -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                         </svg>
@@ -4452,8 +4530,8 @@ window.goToAdmin = goToAdmin;
             <!-- Kart 6 - 3D Görselleştirme -->
             <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                    <div style="width: 60px; height: 60px; background: #d4af37; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                         </svg>
@@ -4477,12 +4555,11 @@ window.goToAdmin = goToAdmin;
     border-bottom-color: #333;
 }
 .service-card-v2:hover .service-icon-v2 {
-    background: #e8e8e8;
-    border-color: #999;
+    background: #c9a227;
     transform: scale(1.15);
 }
 .service-card-v2:hover .service-icon-v2 svg {
-    stroke: #222;
+    stroke: #333;
 }
 @media (max-width: 1024px) {
     #hizmetler > div > div:last-child {
@@ -4512,8 +4589,8 @@ window.goToAdmin = goToAdmin;
             
             <!-- Referans 1 -->
             <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
-                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
-                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #d4af37; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.5">
                         <path d="M3 21h18"></path>
                         <path d="M5 21V7l8-4v18"></path>
                         <path d="M19 21V11l-6-4"></path>
@@ -4530,8 +4607,8 @@ window.goToAdmin = goToAdmin;
             
             <!-- Referans 2 -->
             <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
-                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
-                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #d4af37; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.5">
                         <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
                         <rect x="9" y="9" width="6" height="6"></rect>
                         <line x1="9" y1="1" x2="9" y2="4"></line>
@@ -4551,8 +4628,8 @@ window.goToAdmin = goToAdmin;
             
             <!-- Referans 3 -->
             <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
-                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
-                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #d4af37; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.5">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
@@ -4564,8 +4641,8 @@ window.goToAdmin = goToAdmin;
             
             <!-- Referans 4 -->
             <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
-                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
-                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #d4af37; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.5">
                         <line x1="12" y1="1" x2="12" y2="23"></line>
                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                     </svg>
@@ -4573,26 +4650,6 @@ window.goToAdmin = goToAdmin;
                 <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="Ticari Yapılar" data-en="Commercial Buildings">Ticari Yapılar</h4>
                 <p style="font-size: 13px; color: #888; margin: 0;" data-tr="İş Merkezi & Mağaza" data-en="Office & Retail">İş Merkezi & Mağaza</p>
                 <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #333; transform: scaleX(0); transition: transform 0.4s ease;" class="ref-line"></div>
-            </div>
-        </div>
-        
-        <!-- Alt Bilgi -->
-        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee;">
-            <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap;">
-                <div style="text-align: center;">
-                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">150+</span>
-                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Tamamlanan Proje" data-en="Completed Projects">Tamamlanan Proje</span>
-                </div>
-                <div style="width: 1px; height: 50px; background: #eee;"></div>
-                <div style="text-align: center;">
-                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">12+</span>
-                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Yıllık Deneyim" data-en="Years Experience">Yıllık Deneyim</span>
-                </div>
-                <div style="width: 1px; height: 50px; background: #eee;"></div>
-                <div style="text-align: center;">
-                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">%98</span>
-                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Müşteri Memnuniyeti" data-en="Client Satisfaction">Müşteri Memnuniyeti</span>
-                </div>
             </div>
         </div>
     </div>
@@ -4605,12 +4662,11 @@ window.goToAdmin = goToAdmin;
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 .ref-card:hover .ref-icon {
-    background: #e8e8e8;
-    border: 1px solid #999;
+    background: #c9a227;
     transform: scale(1.1);
 }
 .ref-card:hover .ref-icon svg {
-    stroke: #222;
+    stroke: #333;
 }
 .ref-card:hover .ref-line {
     transform: scaleX(1);
@@ -5822,29 +5878,16 @@ function setupHero() {
             <div class="hero-slide active">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
                 <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <div class="hero-category">CEE MİMARLIK</div>
-                    <h1 class="hero-title">Hayallerinizi Gerçeğe Dönüştürüyoruz</h1>
-                    <div class="hero-meta">Modern Mimari Çözümler</div>
-                </div>
             </div>
         `;
         return;
     }
     
-    // Slides - Sadece fotoğraf, admin panelden yönetilen slogan
-    const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
-    const heroSlogan = heroSettings.title || 'Hayallerinizi Gerçeğe Dönüştürüyoruz';
-    const heroSubtext = heroSettings.subtitle || 'Modern Mimarlık • Profesyonel Çözümler';
-    
+    // Slides - Sadece fotoğraf
     slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
             <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">${heroSlogan}</h1>
-                <div class="hero-meta">${heroSubtext}</div>
-            </div>
         </div>
     `).join('');
     
@@ -5857,6 +5900,25 @@ function setupHero() {
     
     // Auto-slide her 5 saniyede
     startHeroAutoSlide();
+    
+    // Hero içeriğini localStorage'dan yükle
+    loadHeroContent();
+}
+
+function loadHeroContent() {
+    const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
+    
+    const brandEl = document.getElementById('heroBrand');
+    const descEl = document.getElementById('heroDescription');
+    
+    if (brandEl && heroSettings.brand) {
+        brandEl.textContent = heroSettings.brand;
+    }
+    
+    if (descEl && heroSettings.description) {
+        descEl.textContent = heroSettings.description;
+        descEl.setAttribute('data-tr', heroSettings.description);
+    }
 }
 
 function startHeroAutoSlide() {
@@ -5975,11 +6037,8 @@ function renderProjects() {
                 ${mediaHTML}
                 <div class="project-overlay">
                     ${project.title ? `<div class="project-title">${project.title}</div>` : ''}
-                    ${project.tags && project.tags.length > 0 ? `
-                        <div class="project-tags">
-                            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                        </div>
-                    ` : ''}
+                    ${project.description ? `<p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 20px;">${project.description}</p>` : ''}
+                    <button class="project-detail-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 12px 30px; font-size: 12px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;">DAHA FAZLA</button>
                 </div>
             </div>
         `;
