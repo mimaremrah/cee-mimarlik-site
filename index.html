@@ -184,7 +184,7 @@
         }
 
         .ai-assistant-header {
-            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
             color: white;
             padding: 25px;
             display: flex;
@@ -269,7 +269,7 @@
             color: white;
             border-color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(51, 51, 51, 0.3);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
         .contact-info {
@@ -325,7 +325,7 @@
         }
 
         .ai-assistant-input button {
-            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
             border: none;
             border-radius: 50%;
             width: 50px;
@@ -370,7 +370,7 @@
         }
 
         .ai-msg .msg-avatar {
-            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
         }
 
         .user-msg .msg-avatar {
@@ -411,7 +411,7 @@
         }
 
         body.dark-mode .msg-content strong {
-            color: #444444;
+            color: #f4d03f;
         }
 
         .typing-indicator-wrapper {
@@ -607,7 +607,7 @@
         body[data-theme="elegant"] {
             --primary: #1a1a1a;
             --secondary: #8b7355;
-            --accent: #333333;
+            --accent: #d4af37;
             --bg: #fafaf8;
             --border: #e8dcc8;
         }
@@ -1468,14 +1468,14 @@
             padding: 8px 15px;
             border-radius: 8px;
             background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
-            border: 1px solid rgba(51, 51, 51, 0.2);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(51, 51, 51, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(212, 175, 55, 0.1);
         }
 
         body.dark-mode .logo-container {
             background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(40,40,40,0.9) 100%);
-            border: 1px solid rgba(51, 51, 51, 0.3);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(51, 51, 51, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(212, 175, 55, 0.15);
         }
 
         .logo-top {
@@ -1532,7 +1532,7 @@
             white-space: nowrap;
             margin-top: 4px;
             padding-left: 2px;
-            border-top: 1px solid rgba(51, 51, 51, 0.3);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
             padding-top: 5px;
             transition: all 0.4s ease;
         }
@@ -1549,7 +1549,7 @@
 
         body.dark-mode .logo-subtitle {
             color: #aaa;
-            border-top-color: rgba(51, 51, 51, 0.4);
+            border-top-color: rgba(212, 175, 55, 0.4);
         }
 
         /* Mobile Menu Toggle */
@@ -1962,8 +1962,8 @@
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px var(--shadow);
         }
 
         .project-image {
@@ -1971,76 +1971,53 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(10%);
         }
 
         .project-card:hover .project-image {
-            transform: scale(1.1);
+            transform: scale(1.08);
+            filter: grayscale(0%);
         }
 
         .project-overlay {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(30, 30, 30, 0.92);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+            padding: 35px;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card:hover .project-overlay {
-            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-title {
             color: white;
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .project-description {
-            color: rgba(255,255,255,0.85);
-            font-size: 13px;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            max-width: 90%;
-        }
-
-        .project-btn {
-            display: inline-block;
-            padding: 12px 35px;
-            border: 1px solid #888;
-            color: #fff;
-            font-size: 11px;
+            font-size: 22px;
+            font-weight: 200;
             letter-spacing: 3px;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .project-btn:hover {
-            background: #fff;
-            color: #1a1a1a;
-            border-color: #fff;
         }
 
         .project-tags {
-            display: none;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .project-tag {
-            display: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 5px 14px;
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
 
         /* ABOUT SECTION */
@@ -2123,7 +2100,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: var(--accent, #333333);
+            background: var(--accent, #d4af37);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2345,7 +2322,7 @@
         }
 
         .ai-panel-header {
-            background: linear-gradient(135deg, #333333, #444444);
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             padding: 20px;
             display: flex;
             align-items: center;
@@ -2449,7 +2426,7 @@
         }
 
         .ai-panel-message.user .ai-panel-bubble {
-            background: linear-gradient(135deg, #333333, #444444);
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -2493,9 +2470,9 @@
         }
 
         .ai-panel-quick-btn:hover {
-            background: linear-gradient(135deg, #333333, #444444);
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             color: white;
-            border-color: #333333;
+            border-color: #d4af37;
             transform: translateY(-2px);
         }
 
@@ -2527,7 +2504,7 @@
         }
 
         .ai-panel-input:focus {
-            border-color: #333333;
+            border-color: #d4af37;
         }
 
         body.dark-mode .ai-panel-input {
@@ -2539,7 +2516,7 @@
         .ai-panel-send {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #333333, #444444);
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -2551,7 +2528,7 @@
 
         .ai-panel-send:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(51, 51, 51, 0.4);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
         }
 
         .ai-panel-typing {
@@ -2567,7 +2544,7 @@
         .ai-panel-typing-dot {
             width: 8px;
             height: 8px;
-            background: #333333;
+            background: #d4af37;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -3495,37 +3472,74 @@
         }
         
         /* SCROLL TO TOP */
-        .scroll-top {
+        /* Scroll Progress Indicator */
+        .scroll-progress-wrap {
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--accent, #333333);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 0.3s;
             z-index: 998;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
         }
         
-        .scroll-top.visible {
+        .scroll-progress-wrap.visible {
             opacity: 1;
+            visibility: visible;
             transform: translateY(0);
         }
         
-        .scroll-top:hover {
-            filter: brightness(1.1);
+        .scroll-progress-wrap svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .scroll-progress-wrap .progress-circle-bg {
+            fill: none;
+            stroke: #bbb;
+            stroke-width: 2.5;
+        }
+        
+        .scroll-progress-wrap .progress-circle {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.1s ease;
+        }
+        
+        .scroll-progress-wrap .progress-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .scroll-progress-wrap .progress-icon svg {
+            width: 18px;
+            height: 18px;
+            transform: rotate(0deg);
+            stroke: #333;
+            stroke-width: 2.5;
+            fill: none;
+        }
+        
+        .scroll-progress-wrap:hover {
             transform: translateY(-3px);
+        }
+        
+        .scroll-progress-wrap:hover .progress-circle {
+            stroke: #555;
         }
         /* ========================================
            GELİŞMİŞ MOBİL RESPONSIVE İYİLEŞTİRMELER
@@ -3727,7 +3741,7 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: var(--accent, #333333);
+            background: var(--accent, #d4af37);
             color: #fff;
             padding: 10px 12px;
             writing-mode: horizontal-tb;
@@ -3827,7 +3841,7 @@
             border-top: 1px solid #f0f0f0;
             text-align: center;
             font-weight: 600;
-            color: #333333;
+            color: #d4af37;
             font-size: 10px;
         }
         body.dark-mode .social-sidebar-footer { border-top-color: #334155; }
@@ -3839,7 +3853,7 @@
         body.dark-mode .faq-item h3, body.dark-mode .faq-question { color: #e2e8f0 !important; }
         body.dark-mode .faq-answer, body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #333333 !important; }
+        body.dark-mode .service-card h3 { color: #d4af37 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode .section-title, body.dark-mode .section-label { color: #e2e8f0 !important; }
         body.dark-mode #referanslar, body.dark-mode .references-section { background: #0f172a !important; }
@@ -3928,7 +3942,7 @@
             text-decoration: none;
             font-size: 14px;
         }
-        .team-social-link.email { background: #333333; color: white; }
+        .team-social-link.email { background: #d4af37; color: white; }
         .team-social-link.instagram { background: linear-gradient(45deg, #f09433, #dc2743); color: white; }
         .team-social-link.linkedin { background: #0a66c2; color: white; }
         .team-social-link.phone { background: #25d366; color: white; }
@@ -3944,26 +3958,26 @@
            ============================================= */
         body.dark-mode .faq-item { background: #1e293b !important; }
         body.dark-mode .faq-item h3 { color: #e2e8f0 !important; }
-        body.dark-mode .faq-item span { color: #333333 !important; }
+        body.dark-mode .faq-item span { color: #d4af37 !important; }
         body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #333333 !important; }
+        body.dark-mode .service-card h3 { color: #d4af37 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode #referanslar { background: #0f172a !important; }
         body.dark-mode .reference-item { background: #1e293b !important; border-color: #334155 !important; }
         body.dark-mode .reference-item h4 { color: #e2e8f0 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-label { color: #333333 !important; }
+        body.dark-mode .section-label { color: #d4af37 !important; }
         body.dark-mode .location-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important; }
         
         /* =============================================
            MADDE 8: CROSS-BROWSER UYUMLULUK
            ============================================= */
         .filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
-        * { scrollbar-width: thin; scrollbar-color: #333333 #f1f1f1; }
+        * { scrollbar-width: thin; scrollbar-color: #d4af37 #f1f1f1; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #b8963a; }
         body.dark-mode ::-webkit-scrollbar-track { background: #1e293b; }
         
@@ -4343,103 +4357,284 @@ window.goToAdmin = goToAdmin;
 </section>
 
 
-<!-- HİZMETLERİMİZ SECTION -->
-<section id="hizmetler" style="padding: 80px 0; background: #1a1a1a;">
+<!-- HİZMETLER SECTION - Modern Minimalist -->
+<section id="hizmetler" style="padding: 100px 0; background: #f5f5f5;">
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <div style="font-size: 12px; letter-spacing: 4px; color: #888; margin-bottom: 15px;">ÇALIŞMA SÜRECİMİZ</div>
-            <h2 style="font-size: 36px; font-weight: 300; color: white; letter-spacing: 2px;">Projelerimizi Nasıl Hayata Geçiriyoruz?</h2>
+        <!-- Başlık -->
+        <div style="text-align: center; margin-bottom: 70px;">
+            <span style="display: inline-block; color: #999; font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</span>
+            <h2 style="font-size: 42px; color: #1a1a1a; font-weight: 300; margin: 0;" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">Sunduğumuz Hizmetler</h2>
+            <p style="color: #777; font-size: 16px; margin-top: 15px; font-weight: 300;" data-tr="Projeleriniz için kapsamlı mimarlık çözümleri" data-en="Comprehensive architectural solutions for your projects">Projeleriniz için kapsamlı mimarlık çözümleri</p>
         </div>
         
-        <div class="process-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;">
-            <div style="position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, #444, #444, transparent);"></div>
+        <!-- Hizmet Kartları Grid -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
             
-            <div style="text-align: center; padding: 0 15px; position: relative;">
-                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+            <!-- Kart 1 - Mimari Proje -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">01</span>
                 </div>
-                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
-                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">SİZİ DİNLİYORUZ</h3>
-                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Sizin isteklerinizi, hayallerinizi ve ihtiyaçlarınızı önemsiyor ve tüm proje sürecinde sizleri dinliyoruz. Tasarım sürecimizde, sizin vizyonunuzu merkeze alarak, yaşam alanlarınızı şekillendiriyoruz.</p>
-                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">01</span>
-                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="Mimari Proje" data-en="Architectural Project">Mimari Proje</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı teknik çizimler." data-en="Professional architectural project service for residential and commercial buildings.">Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı teknik çizimler.</p>
             </div>
             
-            <div style="text-align: center; padding: 0 15px; position: relative; margin-top: 60px;">
-                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <!-- Kart 2 - Ruhsat İşlemleri -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">02</span>
                 </div>
-                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
-                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">PROJELENDİRME</h3>
-                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Projelendirme aşaması, detaylı analiz ve özenli planlama ile gerçekleştirilir. Sizin isteklerinize ve ihtiyaçlarınıza yanıt veren, sürdürülebilir ve yenilikçi mimari çözümler sunmak için titizlikle çalışıyoruz.</p>
-                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">02</span>
-                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin profesyonel takibi ve tamamlanması." data-en="Professional tracking of construction permits and municipal processes.">İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin profesyonel takibi ve tamamlanması.</p>
             </div>
             
-            <div style="text-align: center; padding: 0 15px; position: relative;">
-                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+            <!-- Kart 3 - İç Mimarlık -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">03</span>
                 </div>
-                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
-                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">TASARIM</h3>
-                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Tasarım aşaması, sizin vizyonunuz ve ihtiyaçlarınız doğrultusunda, sürdürülebilir ve estetik değerleri birleştiren özgün tasarımlar oluşturmak üzere yürütülür. Her tasarımımız, alanın fonksiyonelliğini optimize etmeye yönelik titizlikle şekillendirilir.</p>
-                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">03</span>
-                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="İç Mimarlık" data-en="Interior Design">İç Mimarlık</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı hizmeti." data-en="Custom interior design and decoration consultancy for your living spaces.">Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı hizmeti.</p>
             </div>
             
-            <div style="text-align: center; padding: 0 15px; position: relative; margin-top: 60px;">
-                <div style="width: 70px; height: 70px; border: 1px solid #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; background: #1a1a1a; position: relative; z-index: 2;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+            <!-- Kart 4 - Statik Proje -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">04</span>
                 </div>
-                <div style="border: 1px solid #444; border-radius: 8px; padding: 30px 20px; min-height: 300px; position: relative; background: rgba(255,255,255,0.02);">
-                    <h3 style="font-size: 13px; letter-spacing: 4px; color: white; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 15px;">UYGULAMA</h3>
-                    <p style="color: #999; font-size: 13px; line-height: 1.9;">Projenin her detayını titizlikle yönetiyor ve kalitenin sürekliliğini garanti ediyoruz. Projenizin tasarımından uygulamasına kadar olan süreçte, işin profesyonellikle ve zamanında tamamlanması için gerekli tüm adımları takip ediyoruz.</p>
-                    <span style="position: absolute; bottom: 15px; right: 20px; font-size: 48px; font-weight: 200; color: rgba(255,255,255,0.08);">04</span>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="Statik Proje" data-en="Structural Project">Statik Proje</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="Deprem yönetmeliğine uygun statik hesaplamalar ve güvenli taşıyıcı sistem projeleri." data-en="Structural calculations compliant with earthquake regulations.">Deprem yönetmeliğine uygun statik hesaplamalar ve güvenli taşıyıcı sistem projeleri.</p>
+            </div>
+            
+            <!-- Kart 5 - Şantiye Yönetimi -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">05</span>
                 </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="Şantiye Yönetimi" data-en="Site Management">Şantiye Yönetimi</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="İnşaat sürecinin tamamında profesyonel teknik danışmanlık ve şantiye koordinasyonu." data-en="Professional consultancy and site coordination throughout the construction process.">İnşaat sürecinin tamamında profesyonel teknik danışmanlık ve şantiye koordinasyonu.</p>
+            </div>
+            
+            <!-- Kart 6 - 3D Görselleştirme -->
+            <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 4px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+                    <div style="width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" class="service-icon-v2">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#333" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                        </svg>
+                    </div>
+                    <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.12); line-height: 1;">06</span>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</h3>
+                <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="Projenizi inşa etmeden önce fotorealistik 3D render ile gerçeğe en yakın şekilde görün." data-en="See your project with photorealistic 3D render before construction.">Projenizi inşa etmeden önce fotorealistik 3D render ile gerçeğe en yakın şekilde görün.</p>
             </div>
         </div>
     </div>
-    <style>
-        @media (max-width: 1024px) { .process-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 30px !important; } .process-grid > div { margin-top: 0 !important; } }
-        @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr !important; } }
-    </style>
 </section>
 
-<section id="referanslar" style="padding: 80px 0; background: #f5f5f5;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <div style="font-size: 12px; letter-spacing: 4px; color: #888; margin-bottom: 15px;">REFERANSLARIMIZ</div>
-            <h2 style="font-size: 36px; font-weight: 300; color: #2c2c2c; letter-spacing: 2px;">Güvenilir İş Ortaklarımız</h2>
-            <p style="color: #666; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">Yılların deneyimi ve güveniyle birçok prestijli kurum ve şirketle başarılı projeler gerçekleştirdik.</p>
-        </div>
-        <div id="referencesGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;"></div>
-    </div>
-</section>
-
-<script>
-const defaultReferences = [
-    { icon: '🏛️', nameTr: 'Çorlu Belediyesi', nameEn: 'Corlu Municipality', descTr: 'Kamu projeleri ve kentsel dönüşüm', descEn: 'Public projects', logo: '' },
-    { icon: '🏢', nameTr: 'Özel Sektör', nameEn: 'Private Sector', descTr: 'Kurumsal yapılar ve ofis binaları', descEn: 'Corporate buildings', logo: '' },
-    { icon: '🏘️', nameTr: 'Konut Projeleri', nameEn: 'Residential', descTr: 'Villa, apartman ve site projeleri', descEn: 'Villa and apartment projects', logo: '' },
-    { icon: '🏬', nameTr: 'Ticari Yapılar', nameEn: 'Commercial', descTr: 'AVM, mağaza ve showroom', descEn: 'Shopping centers and stores', logo: '' }
-];
-function loadReferences() {
-    const grid = document.getElementById('referencesGrid');
-    if (!grid) return;
-    const savedRefs = localStorage.getItem('cee_references');
-    let refs = defaultReferences;
-    if (savedRefs) { try { const parsed = JSON.parse(savedRefs); if (parsed.length > 0) refs = parsed; } catch(e) {} }
-    const lang = localStorage.getItem('cee_public_lang') || 'tr';
-    grid.innerHTML = refs.map(r => `
-        <div style="background: white; padding: 35px 30px; border-radius: 8px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05);">
-            ${r.logo ? '<img src="' + r.logo + '" style="max-width: 80px; max-height: 60px; object-fit: contain; margin-bottom: 20px;">' : '<div style="font-size: 50px; margin-bottom: 20px;">' + r.icon + '</div>'}
-            <h4 style="font-size: 18px; color: #2c2c2c; font-weight: 500; margin-bottom: 10px;">${lang === 'tr' ? r.nameTr : r.nameEn}</h4>
-            <p style="color: #888; font-size: 13px; line-height: 1.6;">${lang === 'tr' ? (r.descTr || '') : (r.descEn || '')}</p>
-        </div>
-    `).join('');
+<style>
+.service-card-v2 {
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
 }
-loadReferences();
-</script>
+.service-card-v2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-bottom-color: #333;
+}
+.service-card-v2:hover .service-icon-v2 {
+    background: #e8e8e8;
+    border-color: #999;
+    transform: scale(1.15);
+}
+.service-card-v2:hover .service-icon-v2 svg {
+    stroke: #222;
+}
+@media (max-width: 1024px) {
+    #hizmetler > div > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 640px) {
+    #hizmetler > div > div:last-child {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
+
+
+<!-- REFERANSLAR SECTION - Modern Tasarım -->
+<section id="referanslar" style="padding: 100px 0; background: white;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+        <!-- Başlık -->
+        <div style="text-align: center; margin-bottom: 70px;">
+            <span style="display: inline-block; color: #999; font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</span>
+            <h2 style="font-size: 42px; color: #1a1a1a; font-weight: 300; margin: 0;" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">Çalıştığımız Kurumlar</h2>
+            <p style="color: #777; font-size: 16px; margin-top: 15px; font-weight: 300;" data-tr="Güvenilir iş ortaklarımız ve başarılı projelerimiz" data-en="Our trusted partners and successful projects">Güvenilir iş ortaklarımız ve başarılı projelerimiz</p>
+        </div>
+        
+        <!-- Referans Kartları -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;">
+            
+            <!-- Referans 1 -->
+            <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                        <path d="M3 21h18"></path>
+                        <path d="M5 21V7l8-4v18"></path>
+                        <path d="M19 21V11l-6-4"></path>
+                        <path d="M9 9v.01"></path>
+                        <path d="M9 12v.01"></path>
+                        <path d="M9 15v.01"></path>
+                        <path d="M9 18v.01"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="Çorlu Belediyesi" data-en="Çorlu Municipality">Çorlu Belediyesi</h4>
+                <p style="font-size: 13px; color: #888; margin: 0;" data-tr="Kamu Projeleri" data-en="Public Projects">Kamu Projeleri</p>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #333; transform: scaleX(0); transition: transform 0.4s ease;" class="ref-line"></div>
+            </div>
+            
+            <!-- Referans 2 -->
+            <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="Özel Sektör" data-en="Private Sector">Özel Sektör</h4>
+                <p style="font-size: 13px; color: #888; margin: 0;" data-tr="Kurumsal Projeler" data-en="Corporate Projects">Kurumsal Projeler</p>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #333; transform: scaleX(0); transition: transform 0.4s ease;" class="ref-line"></div>
+            </div>
+            
+            <!-- Referans 3 -->
+            <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="Konut Projeleri" data-en="Residential Projects">Konut Projeleri</h4>
+                <p style="font-size: 13px; color: #888; margin: 0;" data-tr="Villa & Apartman" data-en="Villa & Apartment">Villa & Apartman</p>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #333; transform: scaleX(0); transition: transform 0.4s ease;" class="ref-line"></div>
+            </div>
+            
+            <!-- Referans 4 -->
+            <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 25px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease, transform 0.3s ease;" class="ref-icon">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#333" stroke-width="1.8">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="Ticari Yapılar" data-en="Commercial Buildings">Ticari Yapılar</h4>
+                <p style="font-size: 13px; color: #888; margin: 0;" data-tr="İş Merkezi & Mağaza" data-en="Office & Retail">İş Merkezi & Mağaza</p>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #333; transform: scaleX(0); transition: transform 0.4s ease;" class="ref-line"></div>
+            </div>
+        </div>
+        
+        <!-- Alt Bilgi -->
+        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">150+</span>
+                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Tamamlanan Proje" data-en="Completed Projects">Tamamlanan Proje</span>
+                </div>
+                <div style="width: 1px; height: 50px; background: #eee;"></div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">12+</span>
+                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Yıllık Deneyim" data-en="Years Experience">Yıllık Deneyim</span>
+                </div>
+                <div style="width: 1px; height: 50px; background: #eee;"></div>
+                <div style="text-align: center;">
+                    <span style="display: block; font-size: 42px; font-weight: 700; color: #1a1a1a;">%98</span>
+                    <span style="font-size: 13px; color: #888; letter-spacing: 1px;" data-tr="Müşteri Memnuniyeti" data-en="Client Satisfaction">Müşteri Memnuniyeti</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.ref-card:hover {
+    background: white;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+.ref-card:hover .ref-icon {
+    background: #e8e8e8;
+    border: 1px solid #999;
+    transform: scale(1.1);
+}
+.ref-card:hover .ref-icon svg {
+    stroke: #222;
+}
+.ref-card:hover .ref-line {
+    transform: scaleX(1);
+}
+@media (max-width: 1024px) {
+    #referanslar > div > div:nth-child(2) {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 640px) {
+    #referanslar > div > div:nth-child(2) {
+        grid-template-columns: 1fr !important;
+    }
+    #referanslar > div > div:last-child > div:last-child {
+        flex-direction: column;
+        gap: 30px !important;
+    }
+    #referanslar > div > div:last-child > div:last-child > div[style*="width: 1px"] {
+        width: 50px !important;
+        height: 1px !important;
+    }
+}
+</style>
+
 
 <!-- SSS (FAQ) SECTION -->
 <section id="sss" style="padding: 50px 0; background: var(--bg);">
@@ -4509,7 +4704,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
                             <a href="tel:+905373278765" style="color: var(--accent); text-decoration: none; font-size: 18px;">(0537) 327 87 65</a>
@@ -4519,7 +4714,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
                             <a href="/cdn-cgi/l/email-protection#21484f474e614244444c484c40534d484a0f424e4c" style="color: var(--accent); text-decoration: none;"><span class="__cf_email__" data-cfemail="81e8efe7eec1e2e4e4ece8ece0f3ede8eaafe2eeec">[email protected]</span></a>
@@ -4529,7 +4724,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;">Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3<br>59860 Çorlu/Tekirdağ</span>
@@ -4539,7 +4734,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #333333, #444444); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
                             <span style="color: var(--secondary); line-height: 1.6;">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
@@ -4561,7 +4756,7 @@ loadFaqs();
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#333333'"
+                            onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4574,7 +4769,7 @@ loadFaqs();
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#333333'"
+                            onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4586,7 +4781,7 @@ loadFaqs();
                             placeholder="Telefon Numaranız" 
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#333333'"
+                            onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4595,7 +4790,7 @@ loadFaqs();
                         <select 
                             id="contactSubject" 
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#333333'"
+                            onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                             <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
@@ -4619,7 +4814,7 @@ loadFaqs();
                             rows="5" 
                             maxlength="1000"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; resize: vertical; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#333333'"
+                            onfocus="this.style.borderColor='#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         ></textarea>
                     </div>
@@ -4628,7 +4823,7 @@ loadFaqs();
                     
                     <button 
                         type="submit" 
-                        style="padding: 16px 40px; background: linear-gradient(135deg, #333333, #444444); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+                        style="padding: 16px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
                         data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
@@ -4662,7 +4857,7 @@ loadFaqs();
         
         <!-- Konum İkonu - Harita üzerinde -->
         <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: white; padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; z-index: 10;">
-            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #333333 0%, #444444 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -4681,7 +4876,7 @@ loadFaqs();
             <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong> +90 282 651 55 66
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
-           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #333333); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--accent, #d4af37); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
            onmouseover="this.style.filter='brightness(1.1)'"
            onmouseout="this.style.filter='brightness(1)'"
            data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
@@ -5197,8 +5392,18 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <!-- TOAST CONTAINER -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Yukarı çık">↑</button>
+<!-- SCROLL PROGRESS INDICATOR -->
+<div class="scroll-progress-wrap" id="scrollProgress" onclick="scrollToTop()">
+    <svg viewBox="0 0 100 100">
+        <circle class="progress-circle-bg" cx="50" cy="50" r="46"></circle>
+        <circle class="progress-circle" cx="50" cy="50" r="46" id="progressCircle"></circle>
+    </svg>
+    <div class="progress-icon">
+        <svg viewBox="0 0 24 24">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+</div>
 
 <!-- VIDEO LIGHTBOX -->
 <div class="video-lightbox" id="videoLightbox" onclick="if(event.target === this) closeVideo()">
@@ -5766,12 +5971,15 @@ function renderProjects() {
         }
         
         return `
-            <div class="project-card" data-project-id="${project.id}" onclick="openProjectDetail('${project.id}')">
+            <div class="project-card" onclick="openLightbox('${project.img}', '${project.id}', ${isPDF}, ${isVideo})">
                 ${mediaHTML}
                 <div class="project-overlay">
                     ${project.title ? `<div class="project-title">${project.title}</div>` : ''}
-                    <div class="project-description">${project.description || 'Proje tasarımından uygulama süreçlerine kadar tüm aşamaları titizlikle yöneterek, mekânlarınıza teknik açıdan sağlam, estetik ve işlevsel çözümler sunar.'}</div>
-                    <button class="project-btn" onclick="event.stopPropagation(); openProjectDetail('${project.id}')">Daha Fazla</button>
+                    ${project.tags && project.tags.length > 0 ? `
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                        </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -5905,13 +6113,6 @@ function loadTeam() {
 </script>
 
 <script>
-
-// Proje detay sayfasını açma
-function openProjectDetail(projectId) {
-    const project = projects.find(p => p.id === projectId);
-    if (!project) return;
-    window.location.href = `project-detail.html?id=${projectId}`;
-}
 
 function openLightbox(imgSrc, projectId, isPDF, isVideo) {
     const lightbox = document.getElementById('lightbox');
@@ -6474,14 +6675,29 @@ function scrollToTop() {
     });
 }
 
-// Scroll to top button visibility
+// Scroll Progress Indicator
 window.addEventListener('scroll', () => {
-    const scrollTop = document.getElementById('scrollTop');
-    if (scrollTop) {
-        if (window.pageYOffset > 300) {
-            scrollTop.classList.add('visible');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const progressCircle = document.getElementById('progressCircle');
+    
+    if (scrollProgress && progressCircle) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / scrollHeight;
+        
+        // Circle parametreleri
+        const radius = 46;
+        const circumference = 2 * Math.PI * radius;
+        
+        // Progress çizgisini ayarla
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
+        
+        // Görünürlük
+        if (scrollTop > 200) {
+            scrollProgress.classList.add('visible');
         } else {
-            scrollTop.classList.remove('visible');
+            scrollProgress.classList.remove('visible');
         }
     }
 });
@@ -6752,7 +6968,7 @@ function getSmartResponse(message) {
     }
     
     // Telefon numarası tıklanabilir
-    const phoneLink = '<a href="tel:+905373278765" style="color: #333333; font-weight: 600; text-decoration: none; border-bottom: 2px solid #333333;">(0537) 327 87 65</a>';
+    const phoneLink = '<a href="tel:+905373278765" style="color: #d4af37; font-weight: 600; text-decoration: none; border-bottom: 2px solid #d4af37;">(0537) 327 87 65</a>';
     
     // Kategoriye göre cevap
     if (matchedCategory === 'piyes') {
@@ -7010,7 +7226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 10px 30px rgba(51, 51, 51, 0.2)';
+            this.style.boxShadow = '0 10px 30px rgba(212, 175, 55, 0.2)';
         });
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
@@ -7023,8 +7239,8 @@ document.addEventListener('DOMContentLoaded', function() {
     referenceItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
-            this.style.borderColor = '#333333';
-            this.style.boxShadow = '0 5px 20px rgba(51, 51, 51, 0.15)';
+            this.style.borderColor = '#d4af37';
+            this.style.boxShadow = '0 5px 20px rgba(212, 175, 55, 0.15)';
         });
         item.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
