@@ -725,7 +725,7 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Site Ayarları</h1>
-                        <p class="page-subtitle">Logo, footer ve sosyal medya</p>
+                        <p class="page-subtitle">Logo, SEO, tema ve sosyal medya</p>
                     </div>
                 </div>
 
@@ -749,6 +749,51 @@
                     </div>
 
                     <div class="card">
+                        <div class="card-header"><span class="card-title">🌙 Tema Ayarları</span></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Varsayılan Tema</label>
+                                <select class="form-input" id="defaultTheme">
+                                    <option value="light">☀️ Açık Tema (Light)</option>
+                                    <option value="dark">🌙 Koyu Tema (Dark)</option>
+                                    <option value="auto">🔄 Sistem Ayarına Göre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="allowDarkToggle" checked style="width: 18px; height: 18px;">
+                                    Kullanıcıların tema değiştirmesine izin ver
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" onclick="saveThemeSettings()">💾 Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><span class="card-title">🔍 SEO Ayarları</span></div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Site Başlığı (Title)</label>
+                            <input type="text" class="form-input" id="seoTitle" placeholder="CEE Mimarlık - Profesyonel Mimari Proje Hizmetleri" maxlength="60">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 60 karakter önerilir</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Site Açıklaması (Meta Description)</label>
+                            <textarea class="form-textarea" id="seoDesc" rows="3" placeholder="CEE Mimarlık olarak Çorlu ve çevresinde mimari proje, ruhsat işlemleri, iç mimarlık ve 3D görselleştirme hizmetleri sunuyoruz." maxlength="160"></textarea>
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 160 karakter önerilir</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Anahtar Kelimeler (Keywords)</label>
+                            <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlık, çorlu mimar, proje, ruhsat, iç mimarlık">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Virgülle ayırarak yazın</small>
+                        </div>
+                        <button class="btn btn-primary" onclick="saveSeoSettings()">💾 Kaydet</button>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
                         <div class="card-header"><span class="card-title">📄 Footer</span></div>
                         <div class="card-body">
                             <div class="form-group">
@@ -760,6 +805,24 @@
                                 <input type="number" class="form-input" id="footerYear" value="2026">
                             </div>
                             <button class="btn btn-primary" onclick="saveFooter()">💾 Kaydet</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">🎨 Renk Ayarları</span></div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Ana Renk</label>
+                                    <input type="color" class="form-input" id="colorPrimary" value="#d4af37" style="height:45px;padding:5px;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Simge Arka Plan</label>
+                                    <input type="color" class="form-input" id="colorIconBg" value="#d4af37" style="height:45px;padding:5px;">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" onclick="saveColors()">💾 Kaydet</button>
+                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="resetColors()">🔄 Sıfırla</button>
                         </div>
                     </div>
                 </div>
@@ -788,24 +851,6 @@
                             </div>
                         </div>
                         <button class="btn btn-primary" onclick="saveSocial()">💾 Kaydet</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header"><span class="card-title">🎨 Renk Ayarları</span></div>
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Ana Renk</label>
-                                <input type="color" class="form-input" id="colorPrimary" value="#d4af37" style="height:45px;padding:5px;">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Simge Arka Plan</label>
-                                <input type="color" class="form-input" id="colorIconBg" value="#d4af37" style="height:45px;padding:5px;">
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" onclick="saveColors()">💾 Kaydet</button>
-                        <button class="btn btn-secondary" style="margin-left:10px;" onclick="resetColors()">🔄 Sıfırla</button>
                     </div>
                 </div>
             </section>
@@ -1054,11 +1099,61 @@
     function saveContact() { localStorage.setItem('contact_settings', JSON.stringify({ address: document.getElementById('contactAddr').value, phone: document.getElementById('contactPhone').value, whatsapp: document.getElementById('contactWa').value, email: document.getElementById('contactEmail').value, mapsLink: document.getElementById('contactMap').value, workHours: document.getElementById('contactHours').value, weekend: document.getElementById('contactWeekend').value })); toast('Kaydedildi', 'success'); }
 
     // SETTINGS
-    function loadSettings() { const f = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}'); if (f.company) document.getElementById('footerCompany').value = f.company; if (f.year) document.getElementById('footerYear').value = f.year; const soc = JSON.parse(localStorage.getItem('social_links') || '{}'); if (soc.instagram) document.getElementById('socialIg').value = soc.instagram; if (soc.twitter) document.getElementById('socialTw').value = soc.twitter; if (soc.linkedin) document.getElementById('socialLi').value = soc.linkedin; if (soc.youtube) document.getElementById('socialYt').value = soc.youtube; const c = JSON.parse(localStorage.getItem('color_settings') || '{}'); if (c.primary) document.getElementById('colorPrimary').value = c.primary; if (c.iconBg) document.getElementById('colorIconBg').value = c.iconBg; }
+    function loadSettings() { 
+        // Footer
+        const f = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}'); 
+        if (f.company) document.getElementById('footerCompany').value = f.company; 
+        if (f.year) document.getElementById('footerYear').value = f.year; 
+        
+        // Sosyal Medya
+        const soc = JSON.parse(localStorage.getItem('social_links') || '{}'); 
+        if (soc.instagram) document.getElementById('socialIg').value = soc.instagram; 
+        if (soc.twitter) document.getElementById('socialTw').value = soc.twitter; 
+        if (soc.linkedin) document.getElementById('socialLi').value = soc.linkedin; 
+        if (soc.youtube) document.getElementById('socialYt').value = soc.youtube; 
+        
+        // Renkler
+        const c = JSON.parse(localStorage.getItem('color_settings') || '{}'); 
+        if (c.primary) document.getElementById('colorPrimary').value = c.primary; 
+        if (c.iconBg) document.getElementById('colorIconBg').value = c.iconBg;
+        
+        // SEO
+        const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
+        if (seo.title) document.getElementById('seoTitle').value = seo.title;
+        if (seo.description) document.getElementById('seoDesc').value = seo.description;
+        if (seo.keywords) document.getElementById('seoKeywords').value = seo.keywords;
+        
+        // Tema
+        const theme = JSON.parse(localStorage.getItem('theme_settings') || '{}');
+        if (theme.defaultTheme) document.getElementById('defaultTheme').value = theme.defaultTheme;
+        if (theme.allowToggle !== undefined) document.getElementById('allowDarkToggle').checked = theme.allowToggle;
+    }
+    
     function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
     function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
     function saveColors() { localStorage.setItem('color_settings', JSON.stringify({ primary: document.getElementById('colorPrimary').value, iconBg: document.getElementById('colorIconBg').value })); toast('Kaydedildi', 'success'); }
     function resetColors() { document.getElementById('colorPrimary').value = '#d4af37'; document.getElementById('colorIconBg').value = '#d4af37'; localStorage.removeItem('color_settings'); toast('Sıfırlandı', 'success'); }
+    
+    // SEO SETTINGS
+    function saveSeoSettings() {
+        const seo = {
+            title: document.getElementById('seoTitle').value,
+            description: document.getElementById('seoDesc').value,
+            keywords: document.getElementById('seoKeywords').value
+        };
+        localStorage.setItem('seo_settings', JSON.stringify(seo));
+        toast('SEO ayarları kaydedildi', 'success');
+    }
+    
+    // TEMA SETTINGS
+    function saveThemeSettings() {
+        const theme = {
+            defaultTheme: document.getElementById('defaultTheme').value,
+            allowToggle: document.getElementById('allowDarkToggle').checked
+        };
+        localStorage.setItem('theme_settings', JSON.stringify(theme));
+        toast('Tema ayarları kaydedildi', 'success');
+    }
 
     // LOGO
     function loadLogo() { 
@@ -1103,8 +1198,63 @@
     function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; } if (u) credentials.username = u; if (p) credentials.password = p; localStorage.setItem('cee_credentials', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('Güncellendi', 'success'); }
 
     // BACKUP
-    function exportBackup() { const backup = { projects: localStorage.getItem('cee_projects'), services: localStorage.getItem('cee_services'), references: localStorage.getItem('cee_references'), team: localStorage.getItem('cee_team'), faqs: localStorage.getItem('cee_faqs'), hero: localStorage.getItem('hero_settings'), heroImages: localStorage.getItem('hero_images'), contact: localStorage.getItem('contact_settings'), footer: localStorage.getItem('cee_footer_settings'), social: localStorage.getItem('social_links'), colors: localStorage.getItem('color_settings'), messages: localStorage.getItem('contact_messages'), logo: localStorage.getItem('site_logo'), date: new Date().toISOString() }; const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `cee-backup-${new Date().toISOString().split('T')[0]}.json`; a.click(); toast('İndirildi', 'success'); }
-    function importBackup(input) { const f = input.files[0]; if (!f) return; const reader = new FileReader(); reader.onload = e => { try { const b = JSON.parse(e.target.result); if (b.projects) localStorage.setItem('cee_projects', b.projects); if (b.services) localStorage.setItem('cee_services', b.services); if (b.references) localStorage.setItem('cee_references', b.references); if (b.team) localStorage.setItem('cee_team', b.team); if (b.faqs) localStorage.setItem('cee_faqs', b.faqs); if (b.hero) localStorage.setItem('hero_settings', b.hero); if (b.heroImages) localStorage.setItem('hero_images', b.heroImages); if (b.contact) localStorage.setItem('contact_settings', b.contact); if (b.footer) localStorage.setItem('cee_footer_settings', b.footer); if (b.social) localStorage.setItem('social_links', b.social); if (b.colors) localStorage.setItem('color_settings', b.colors); if (b.messages) localStorage.setItem('contact_messages', b.messages); if (b.logo) localStorage.setItem('site_logo', b.logo); loadAll(); toast('Yüklendi', 'success'); } catch(e) { toast('Geçersiz dosya', 'error'); } }; reader.readAsText(f); }
+    function exportBackup() { 
+        const backup = { 
+            projects: localStorage.getItem('cee_projects'), 
+            services: localStorage.getItem('cee_services'), 
+            references: localStorage.getItem('cee_references'), 
+            team: localStorage.getItem('cee_team'), 
+            faqs: localStorage.getItem('cee_faqs'), 
+            hero: localStorage.getItem('hero_settings'), 
+            heroImages: localStorage.getItem('hero_images'), 
+            contact: localStorage.getItem('contact_settings'), 
+            footer: localStorage.getItem('cee_footer_settings'), 
+            social: localStorage.getItem('social_links'), 
+            colors: localStorage.getItem('color_settings'), 
+            messages: localStorage.getItem('contact_messages'), 
+            logo: localStorage.getItem('site_logo'),
+            seo: localStorage.getItem('seo_settings'),
+            theme: localStorage.getItem('theme_settings'),
+            date: new Date().toISOString() 
+        }; 
+        const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }); 
+        const a = document.createElement('a'); 
+        a.href = URL.createObjectURL(blob); 
+        a.download = `cee-backup-${new Date().toISOString().split('T')[0]}.json`; 
+        a.click(); 
+        toast('Yedek indirildi', 'success'); 
+    }
+    
+    function importBackup(input) { 
+        const f = input.files[0]; 
+        if (!f) return; 
+        const reader = new FileReader(); 
+        reader.onload = e => { 
+            try { 
+                const b = JSON.parse(e.target.result); 
+                if (b.projects) localStorage.setItem('cee_projects', b.projects); 
+                if (b.services) localStorage.setItem('cee_services', b.services); 
+                if (b.references) localStorage.setItem('cee_references', b.references); 
+                if (b.team) localStorage.setItem('cee_team', b.team); 
+                if (b.faqs) localStorage.setItem('cee_faqs', b.faqs); 
+                if (b.hero) localStorage.setItem('hero_settings', b.hero); 
+                if (b.heroImages) localStorage.setItem('hero_images', b.heroImages); 
+                if (b.contact) localStorage.setItem('contact_settings', b.contact); 
+                if (b.footer) localStorage.setItem('cee_footer_settings', b.footer); 
+                if (b.social) localStorage.setItem('social_links', b.social); 
+                if (b.colors) localStorage.setItem('color_settings', b.colors); 
+                if (b.messages) localStorage.setItem('contact_messages', b.messages); 
+                if (b.logo) localStorage.setItem('site_logo', b.logo);
+                if (b.seo) localStorage.setItem('seo_settings', b.seo);
+                if (b.theme) localStorage.setItem('theme_settings', b.theme);
+                loadAll(); 
+                toast('Yedek yüklendi', 'success'); 
+            } catch(e) { 
+                toast('Geçersiz dosya', 'error'); 
+            } 
+        }; 
+        reader.readAsText(f); 
+    }
 
     // TOAST
     function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
