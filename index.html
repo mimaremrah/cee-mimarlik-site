@@ -95,7 +95,7 @@
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
             "postalCode": "59860",
-            "addressRegion": "TekirdaÄŸ",
+            "addressRegion": "Tekirdağ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -159,7 +159,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2372,7 +2372,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2854,7 +2854,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - SaÄŸda */
+        /* Notification Bubble - Sağda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -4003,8 +4003,7 @@
         .social-sidebar-content.active .social-sidebar-link:nth-child(3) { transition-delay: 0.3s; }
         .social-sidebar-content.active .social-sidebar-link:nth-child(4) { transition-delay: 0.4s; }
         .social-sidebar-link.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .social-sidebar-link.facebook { background: #1877f2; }
-        .social-sidebar-link.twitter { background: #000; }
+        .social-sidebar-link.twitter { background: linear-gradient(135deg, #d4af37, #b8962e); }
         .social-sidebar-link.linkedin { background: #0a66c2; }
         .social-sidebar-link:hover { transform: scale(1.03) !important; box-shadow: 0 5px 20px rgba(0,0,0,0.25); }
         .social-sidebar-footer {
@@ -4363,7 +4362,7 @@ function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global eriÅŸim
+// Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -4407,7 +4406,7 @@ window.goToAdmin = goToAdmin;
             <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir" style="display: flex; align-items: center; gap: 6px;">
+            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
                 <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
                     <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                         <rect fill="#E30A17" width="1200" height="800"/>
@@ -4856,24 +4855,25 @@ loadFaqs();
                 <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">📍 İletişim Bilgileri</h3>
                 
                 <div style="margin-bottom: 25px;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <a href="javascript:void(0)" onclick="handlePhoneClick()" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
                         <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
-                            <a href="javascript:void(0)" onclick="handlePhoneClick()" style="color: var(--accent); text-decoration: none; font-size: 18px;"><span id="displayPhone">(0537) 327 87 65</span></a>
+                            <span style="color: var(--accent); font-size: 18px;" id="displayPhone">(0537) 327 87 65</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <div style="margin-bottom: 25px;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <a href="mailto:ceemimarlik@gmail.com" id="emailLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
                         <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
-                            <a href="mailto:ceemimarlik@gmail.com" id="emailLink" style="color: var(--accent); text-decoration: none;"><span class="__cf_email__" data-cfemail="81e8efe7eec1e2e4e4ece8ece0f3ede8eaafe2eeec">[email protected]</span></a>
+                            <span style="color: var(--accent);" id="displayEmail">ceemimarlik@gmail.com</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
+
                 
                 <div style="margin-bottom: 25px;">
                     <a href="https://www.google.com/maps/search/?api=1&query=CEE+Mimarlık+Hatip+Ali+Osman+Çelebi+Blv+No:52+Çorlu+Tekirdağ" target="_blank" id="addressLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
@@ -4953,7 +4953,7 @@ loadFaqs();
                             <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
                             <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
                             <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="DiÄŸer" data-tr="DiÄŸer" data-en="Other">DiÄŸer</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
                         </select>
                     </div>
                     
@@ -5072,14 +5072,16 @@ function loadContactInfo() {
     if (contactSettings.phone) {
         const phoneEl = document.getElementById('displayPhone');
         if (phoneEl) phoneEl.textContent = contactSettings.phone;
+        
+        const phoneMapEl = document.getElementById('displayPhoneMap');
+        if (phoneMapEl) phoneMapEl.textContent = contactSettings.phone;
     }
     
     if (contactSettings.email) {
+        const emailEl = document.getElementById('displayEmail');
         const emailLink = document.getElementById('emailLink');
-        if (emailLink) {
-            emailLink.href = 'mailto:' + contactSettings.email;
-            emailLink.querySelector('span') ? emailLink.querySelector('span').textContent = contactSettings.email : emailLink.textContent = contactSettings.email;
-        }
+        if (emailEl) emailEl.textContent = contactSettings.email;
+        if (emailLink) emailLink.href = 'mailto:' + contactSettings.email;
     }
     
     if (contactSettings.address) {
@@ -5286,7 +5288,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -5302,7 +5304,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>HoÅŸgeldiniz!</h3>
+            <h3>Hoşgeldiniz!</h3>
             <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
@@ -5972,7 +5974,7 @@ const defaultProjects = [
         title: 'Ofis Binası',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'TekirdaÄŸ',
+        location: 'Tekirdağ',
         area: '1200m²',
         row: 'top'
     },
@@ -6350,7 +6352,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÅŸ Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -6368,11 +6370,11 @@ function loadTeam() {
     // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
     let team = defaultTeamMembers;
     
-    // Placeholder fotoÄŸraf
+    // Placeholder fotoğraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluÅŸtur (MADDE 2)
+        // Sosyal medya linkleri oluştur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">✉️</a>';
@@ -6615,7 +6617,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuÅŸu ile kapat
+// ESC tuşu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -6859,7 +6861,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
+<strong>Duş:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -6867,7 +6869,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>🚪 Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
+<strong>Ana Giriş:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -6903,7 +6905,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
+<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -7242,7 +7244,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
+        pencere: ['pencere', 'window', 'cam', 'doğrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -7383,7 +7385,7 @@ Ruhsat hizmeti: ${phoneLink}`;
 • 500 m² arsa<br>
 • TAKS: 0.40<br>
 • <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik DeÄŸerler:</strong><br>
+<strong>Tipik Değerler:</strong><br>
 • Konut: 0.30 - 0.40<br>
 • Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
@@ -7428,7 +7430,7 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat iÅŸlemleri<br><br>
+6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
 • Konut projeleri<br>
 • Villa projeleri<br>
@@ -7923,7 +7925,7 @@ CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
 Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // GeliÅŸmiÅŸ anahtar kelime eÅŸleÅŸtirme
+    // Gelişmiş anahtar kelime eşleştirme
     if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
     } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
@@ -8845,7 +8847,7 @@ function loadSiteSettings() {
         if (socialLinks.facebook) html += `<a href="${socialLinks.facebook}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1877f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">f</a>`;
         if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">📷</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
-        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1da1f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
+        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #d4af37, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
         if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â–¶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
