@@ -3105,9 +3105,10 @@
 
         /* FOOTER - Modern Dark Style */
         footer {
-            background: #1a1a1a;
-            padding: 80px 0 40px;
+            background: #f8f9fa;
+            padding: 25px 0;
             margin-top: 0;
+            border-top: 1px solid #e5e7eb;
         }
 
         .footer-content {
@@ -3116,74 +3117,15 @@
             padding: 0 80px;
         }
         
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 60px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .footer-brand h3 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #d4af37;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-brand p {
-            font-size: 14px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .footer-links h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: white;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-        
-        .footer-links a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            margin-bottom: 12px;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #d4af37;
-        }
-        
-        .footer-contact p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-contact p span {
-            color: #d4af37;
-        }
-        
         .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 40px;
         }
-
+        
         .footer-copyright {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
+            font-size: 14px;
+            color: #666;
         }
         
         .footer-social-bottom {
@@ -3195,25 +3137,21 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            background: #e5e7eb;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #666;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .footer-social-bottom a:hover {
             background: #d4af37;
+            color: white;
         }
         
         @media (max-width: 992px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
             .footer-bottom {
                 flex-direction: column;
                 gap: 20px;
@@ -5874,35 +5812,15 @@ body.dark-mode .btn-secondary {
 
 <footer>
     <div class="footer-content">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <h3>CEE MİMARLIK</h3>
-                <p data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz." data-en="We provide turnkey design and implementation services for your living spaces, offices, villas and commercial projects from A to Z.">Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</p>
+        <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="" id="footerLogo" class="site-logo" style="height: 50px; display: none;" alt="CEE Mimarlık">
+                <p class="footer-copyright" style="margin: 0;">
+                    © <span id="footerYear">2026</span> 
+                    <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #d4af37;">CEE MİMARLIK</span> 
+                    <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
+                </p>
             </div>
-            
-            <div class="footer-links">
-                <h4 data-tr="Hızlı Linkler" data-en="Quick Links">Hızlı Linkler</h4>
-                <a href="#anasayfa" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a>
-                <a href="#projeler" data-tr="Projeler" data-en="Projects">Projeler</a>
-                <a href="#hizmetler" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
-                <a href="#hakkimizda" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</a>
-                <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
-            </div>
-            
-            <div class="footer-contact">
-                <h4 data-tr="İletişim" data-en="Contact" style="font-size: 14px; font-weight: 600; color: white; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase;">İletişim</h4>
-                <p><span>📍</span> Çorlu, Tekirdağ</p>
-                <p><span>📞</span> +90 282 XXX XX XX</p>
-                <p><span>✉️</span> info@ceemimarlik.com</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p class="footer-copyright">
-                © <span id="footerYear">2026</span> 
-                <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer;">CEE MİMARLIK</span> 
-                <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
-            </p>
             
             <div class="footer-social-bottom">
                 <a href="https://instagram.com/cee_mimarlik" target="_blank">
@@ -5928,14 +5846,15 @@ function loadFooterSettings() {
             const footer = JSON.parse(savedFooter);
             if (footer.year) document.getElementById('footerYear').textContent = footer.year;
             if (footer.company) document.getElementById('footerCompany').textContent = footer.company;
-            if (footer.slogan) {
-                const sloganEl = document.getElementById('footerSlogan');
-                if (sloganEl) {
-                    sloganEl.textContent = footer.slogan;
-                    sloganEl.dataset.tr = footer.slogan;
-                }
-            }
         } catch(e) {}
+    }
+    
+    // Footer logosunu yükle
+    const siteLogo = localStorage.getItem('site_logo');
+    const footerLogoEl = document.getElementById('footerLogo');
+    if (siteLogo && footerLogoEl) {
+        footerLogoEl.src = siteLogo;
+        footerLogoEl.style.display = 'block';
     }
 }
 loadFooterSettings();
