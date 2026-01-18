@@ -545,6 +545,8 @@
             --border: #e0e0e0;
             --shadow: rgba(0, 0, 0, 0.05);
             --whatsapp: #25D366;
+            --icon-bg: #d4af37;
+            --icon-bg-light: #f4d03f;
         }
 
         body {
@@ -4794,7 +4796,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="javascript:void(0)" onclick="handlePhoneClick()" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
                             <span style="color: var(--accent); font-size: 18px;" id="displayPhone">(0537) 327 87 65</span>
@@ -4804,7 +4806,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="mailto:ceemimarlik@gmail.com" id="emailLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
                             <span style="color: var(--accent);" id="displayEmail">ceemimarlik@gmail.com</span>
@@ -4815,7 +4817,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="https://www.google.com/maps/search/?api=1&query=CEE+Mimarlık+Hatip+Ali+Osman+Çelebi+Blv+No:52+Çorlu+Tekirdağ" target="_blank" id="addressLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayAddress">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</span>
@@ -4825,7 +4827,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayHours">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
@@ -4847,7 +4849,7 @@ loadFaqs();
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4860,7 +4862,7 @@ loadFaqs();
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4872,7 +4874,7 @@ loadFaqs();
                             placeholder="Telefon Numaranız" 
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -4881,7 +4883,7 @@ loadFaqs();
                         <select 
                             id="contactSubject" 
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                             <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
@@ -4905,7 +4907,7 @@ loadFaqs();
                             rows="5" 
                             maxlength="1000"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; resize: vertical; transition: all 0.3s;"
-                            onfocus="this.style.borderColor='#d4af37'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#d4af37'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         ></textarea>
                     </div>
@@ -4914,7 +4916,9 @@ loadFaqs();
                     
                     <button 
                         type="submit" 
-                        style="padding: 16px 40px; background: linear-gradient(135deg, #d4af37, #f4d03f); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+                        id="submitBtn"
+                        class="contact-submit-btn"
+                        style="padding: 16px 40px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
                         data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
@@ -8778,7 +8782,30 @@ function loadSiteSettings() {
         if (colorSettings.primary) root.style.setProperty('--primary', colorSettings.primary);
         if (colorSettings.secondary) root.style.setProperty('--secondary', colorSettings.secondary);
         if (colorSettings.accent) root.style.setProperty('--accent', colorSettings.accent);
+        
+        // İkon arka plan renkleri
+        if (colorSettings.iconBg) {
+            root.style.setProperty('--icon-bg', colorSettings.iconBg);
+            // Daha açık ton hesapla
+            const lighterColor = lightenColor(colorSettings.iconBg, 20);
+            root.style.setProperty('--icon-bg-light', lighterColor);
+        }
     }
+}
+
+// Rengi açıklaştırma fonksiyonu
+function lightenColor(color, percent) {
+    const num = parseInt(color.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = (num >> 16) + amt;
+    const G = (num >> 8 & 0x00FF) + amt;
+    const B = (num & 0x0000FF) + amt;
+    return '#' + (
+        0x1000000 +
+        (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+        (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+        (B < 255 ? (B < 1 ? 0 : B) : 255)
+    ).toString(16).slice(1);
 }
 
 </script>
