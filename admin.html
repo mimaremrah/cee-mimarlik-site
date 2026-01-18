@@ -983,9 +983,9 @@
         if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div></div>'; return; }
         el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">🗑️</button></div></div>`).join('');
     }
-    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); renderServices(); toast('Eklendi', 'success'); } }
-    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; renderServices(); toast('Güncellendi', 'success'); } }
-    function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); toast('Kaydedildi', 'success'); }
+    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
+    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet güncellendi', 'success'); } }
+    function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); }
 
     // REFERENCES
     function renderRefs() {
@@ -993,9 +993,9 @@
         if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div></div>'; return; }
         el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">🗑️</button></div></div>`).join('');
     }
-    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); renderRefs(); toast('Eklendi', 'success'); } }
-    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; renderRefs(); toast('Güncellendi', 'success'); } }
-    function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); toast('Kaydedildi', 'success'); }
+    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
+    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans güncellendi', 'success'); } }
+    function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); }
 
     // TEAM
     function renderTeam() {
@@ -1033,14 +1033,15 @@
         const ni = i + dir;
         if (ni < 0 || ni >= arr.length) return;
         [arr[i], arr[ni]] = [arr[ni], arr[i]];
-        type === 'services' ? renderServices() : renderRefs();
+        if (type === 'services') { saveServices(); renderServices(); }
+        else if (type === 'refs') { saveReferences(); renderRefs(); }
     }
     function deleteItem(type, i) {
         if (!confirm('Silmek istiyor musunuz?')) return;
-        if (type === 'services') { services.splice(i, 1); renderServices(); }
-        else if (type === 'refs') { refs.splice(i, 1); renderRefs(); }
-        else if (type === 'team') { team.splice(i, 1); renderTeam(); }
-        else if (type === 'faqs') { faqs.splice(i, 1); renderFaqs(); }
+        if (type === 'services') { services.splice(i, 1); saveServices(); renderServices(); }
+        else if (type === 'refs') { refs.splice(i, 1); saveReferences(); renderRefs(); }
+        else if (type === 'team') { team.splice(i, 1); localStorage.setItem('cee_team', JSON.stringify(team)); renderTeam(); }
+        else if (type === 'faqs') { faqs.splice(i, 1); localStorage.setItem('cee_faqs', JSON.stringify(faqs)); renderFaqs(); }
         toast('Silindi', 'success');
     }
 
