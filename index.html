@@ -4935,6 +4935,17 @@
         background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light)) !important;
     }
 
+    /* TAKİP ET VE CHAT BUTONLARI */
+    .social-sidebar-trigger {
+        background: var(--accent-gold) !important;
+    }
+    .unified-chat-btn {
+        background: var(--accent-gold) !important;
+    }
+    .chat-badge {
+        background: var(--accent-gold) !important;
+    }
+
     /* FİLTRE BUTONLARI */
     .filter-container {
         background: transparent !important;
@@ -9523,6 +9534,17 @@ function loadSiteSettings() {
                 background: ${colorSettings.iconBg || '#c9a227'} !important;
                 background: linear-gradient(135deg, ${colorSettings.iconBg || '#c9a227'}, ${lightenColor(colorSettings.iconBg || '#c9a227', 15)}) !important;
             }
+            
+            /* Takip Et ve Chat Butonları */
+            .social-sidebar-trigger {
+                background: ${colorSettings.iconBg || '#c9a227'} !important;
+            }
+            .unified-chat-btn {
+                background: ${colorSettings.iconBg || '#c9a227'} !important;
+            }
+            .chat-badge {
+                background: ${colorSettings.iconBg || '#c9a227'} !important;
+            }
         `;
         
         // Eski dinamik stili kaldır
@@ -9542,6 +9564,18 @@ function loadSiteSettings() {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
             
+            // Takip Et butonu
+            const socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            
+            // Chat butonu
+            const chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
+            
+            // Chat badge
+            const chatBadge = document.querySelector('.chat-badge');
+            if (chatBadge) chatBadge.style.setProperty('background', accentColor, 'important');
+            
             // Harita pin ikonu
             document.querySelectorAll('.map-location-badge div[style*="background"]').forEach(el => {
                 if (el.querySelector('svg')) {
@@ -9559,12 +9593,24 @@ function loadSiteSettings() {
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
+            
+            // Takip Et ve Chat butonları
+            const socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            const chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
         }, 500);
         
         setTimeout(() => {
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
+            
+            // Takip Et ve Chat butonları
+            const socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            const chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
         }, 1000);
     }
     
@@ -10593,14 +10639,24 @@ document.addEventListener('DOMContentLoaded', function() {
             initHeroSlider();
         }
         
-        // Tüm ikonları güncelle
+        // Tüm ikonları ve butonları güncelle
         var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
         if (colorSettings.iconBg) {
             var accentColor = colorSettings.iconBg;
             var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            
+            // İkonlar
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
+            
+            // Takip Et butonu
+            var socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            
+            // Chat butonu
+            var chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
         }
     }, 100);
     
@@ -10610,9 +10666,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (colorSettings.iconBg) {
             var accentColor = colorSettings.iconBg;
             var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
+            
+            var socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            
+            var chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
         }
     }, 500);
     
@@ -10622,9 +10685,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (colorSettings.iconBg) {
             var accentColor = colorSettings.iconBg;
             var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
                 icon.style.setProperty('background', gradientBg, 'important');
             });
+            
+            var socialTrigger = document.querySelector('.social-sidebar-trigger');
+            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
+            
+            var chatBtn = document.querySelector('.unified-chat-btn');
+            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
         }
     }, 1000);
     
