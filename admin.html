@@ -894,6 +894,21 @@ a{color:inherit;text-decoration:none}
                             </div>
                             <button class="btn btn-primary" onclick="saveColors()">💾 Kaydet</button>
                             <button class="btn btn-secondary" style="margin-left:10px;" onclick="resetColors()">🔄 Sıfırla</button>
+                            <button class="btn" style="margin-left:10px; background: #10b981; color: white;" onclick="exportThemeCode()">📋 Kodu Kopyala (Tüm Cihazlar)</button>
+                            
+                            <!-- Tema Kodu Modal -->
+                            <div id="themeCodeModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+                                <div style="background: white; border-radius: 16px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                                    <h3 style="margin: 0 0 20px 0; color: #1a1a1a;">📋 Tema Kodu</h3>
+                                    <p style="color: #666; margin-bottom: 15px;">Bu kodu <strong>index.html</strong> dosyasının başındaki <code>SITE_THEME</code> kısmıyla değiştirin:</p>
+                                    <textarea id="themeCodeOutput" readonly style="width: 100%; height: 200px; font-family: monospace; font-size: 12px; padding: 15px; border: 2px solid #e5e5e5; border-radius: 8px; background: #f8f9fa; resize: none;"></textarea>
+                                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                                        <button onclick="copyThemeCode()" class="btn btn-primary" style="flex: 1;">📋 Kopyala</button>
+                                        <button onclick="downloadUpdatedIndex()" class="btn" style="flex: 1; background: #3b82f6; color: white;">📥 Güncel index.html İndir</button>
+                                        <button onclick="closeThemeModal()" class="btn btn-secondary">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1269,6 +1284,94 @@ a{color:inherit;text-decoration:none}
         
         saveColors();
         toast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' teması uygulandı!', 'success');
+    }
+    
+    // TEMA KODU DIŞA AKTARMA
+    function exportThemeCode() {
+        const theme = {
+            primary: document.getElementById('colorPrimary').value,
+            iconBg: document.getElementById('colorIconBg').value,
+            bgMain: document.getElementById('colorBgMain').value,
+            bgSection: document.getElementById('colorBgSection').value,
+            text: document.getElementById('colorText').value,
+            header: document.getElementById('colorHeader').value
+        };
+        
+        const code = `    <!-- GLOBAL TEMA AYARLARI - Tüm cihazlarda aynı görünüm için -->
+    <script>
+    // CEE MİMARLIK - Site Tema Ayarları
+    // Admin panelden değiştirdiğinizde bu kısmı güncelleyin
+    const SITE_THEME = {
+        primary: '${theme.primary}',
+        iconBg: '${theme.iconBg}',
+        bgMain: '${theme.bgMain}',
+        bgSection: '${theme.bgSection}',
+        text: '${theme.text}',
+        header: '${theme.header}'
+    };
+    
+    // Tema ayarlarını localStorage'a yükle
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('color_settings', JSON.stringify(SITE_THEME));
+    }
+    <\/script>`;
+        
+        document.getElementById('themeCodeOutput').value = code;
+        document.getElementById('themeCodeModal').style.display = 'flex';
+    }
+    
+    function copyThemeCode() {
+        const textarea = document.getElementById('themeCodeOutput');
+        textarea.select();
+        document.execCommand('copy');
+        toast('Kod kopyalandı! index.html dosyasına yapıştırın.', 'success');
+    }
+    
+    function downloadUpdatedIndex() {
+        const theme = {
+            primary: document.getElementById('colorPrimary').value,
+            iconBg: document.getElementById('colorIconBg').value,
+            bgMain: document.getElementById('colorBgMain').value,
+            bgSection: document.getElementById('colorBgSection').value,
+            text: document.getElementById('colorText').value,
+            header: document.getElementById('colorHeader').value
+        };
+        
+        // Güncel index.html oluştur
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                // SITE_THEME kısmını güncelle
+                const newThemeCode = `const SITE_THEME = {
+        primary: '${theme.primary}',
+        iconBg: '${theme.iconBg}',
+        bgMain: '${theme.bgMain}',
+        bgSection: '${theme.bgSection}',
+        text: '${theme.text}',
+        header: '${theme.header}'
+    };`;
+                
+                html = html.replace(/const SITE_THEME = \{[^}]+\};/s, newThemeCode);
+                
+                // Dosyayı indir
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                toast('index.html indirildi! GitHub\'a yükleyin.', 'success');
+                closeThemeModal();
+            })
+            .catch(err => {
+                toast('Hata: ' + err.message, 'error');
+            });
+    }
+    
+    function closeThemeModal() {
+        document.getElementById('themeCodeModal').style.display = 'none';
     }
     
     // SEO SETTINGS

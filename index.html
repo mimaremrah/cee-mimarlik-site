@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- GLOBAL TEMA AYARLARI - Tüm cihazlarda aynı görünüm için -->
+    <script>
+    // CEE MİMARLIK - Site Tema Ayarları
+    // Admin panelden değiştirdiğinizde bu kısmı güncelleyin
+    const SITE_THEME = {
+        primary: '#5a6677',
+        iconBg: '#5a6677',
+        bgMain: '#ffffff',
+        bgSection: '#f8f9fa',
+        text: '#2d3748',
+        header: '#1a202c'
+    };
+    
+    // Tema ayarlarını localStorage'a yükle
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('color_settings', JSON.stringify(SITE_THEME));
+    }
+    </script>
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="CEE Mimarlık - Modern mimarlık anlayışıyla villa, apartman, ofis ve ticari yapı tasarımı. Hayalinizdeki projeler, ustalıkla hayata geçiyor.">
     <meta name="keywords" content="mimarlık, inşaat, villa tasarımı, apartman projesi, ofis tasarımı, ticari yapı, CEE Mimarlık">
@@ -545,8 +564,9 @@
         .hero-brand { color: #5a6677; }
         .hero-cta { background: #5a6677; }
         .logo-text { color: #5a6677; }
-        .filter-btn.active { background: linear-gradient(135deg, #5a6677, #7a8694); border-color: #5a6677; }
+        .filter-btn.active { background: linear-gradient(135deg, #5a6677, #7a8694); border-color: #5a6677; color: white; }
         .filter-btn:hover { border-color: #5a6677; color: #5a6677; }
+        .filter-btn.active:hover { color: white !important; }
         .team-cta-btn { background: #5a6677; }
         .directions-btn { background: linear-gradient(135deg, #5a6677, #7a8694); }
         .ai-assistant-header { background: linear-gradient(135deg, #5a6677, #7a8694); }
@@ -2454,7 +2474,7 @@
             color: #5a6677; /* IE fallback */
             color: #5a6677;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 15px rgba(90, 102, 119, 0.2);
         }
 
         .filter-btn.active {
@@ -2462,7 +2482,11 @@
             border-color: #5a6677;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+            box-shadow: 0 6px 20px rgba(90, 102, 119, 0.35);
+        }
+        
+        .filter-btn.active:hover {
+            color: white !important;
         }
 
         .filter-btn.active::before {
@@ -2483,6 +2507,10 @@
         body.dark-mode .filter-btn.active {
             border-color: #5a6677;
             color: white;
+        }
+        
+        body.dark-mode .filter-btn.active:hover {
+            color: white !important;
         }
 
         /* Mobil uyumluluk */
@@ -4974,6 +5002,10 @@
     .filter-btn.active {
         background: var(--accent-gold) !important;
         border-color: var(--accent-gold) !important;
+        color: white !important;
+    }
+    
+    .filter-btn.active:hover {
         color: white !important;
     }
 
@@ -9499,8 +9531,9 @@ function loadSiteSettings() {
             .section-title .accent { color: ${colorSettings.iconBg || '#5a6677'} !important; }
             .hero-brand { color: ${colorSettings.iconBg || '#5a6677'} !important; }
             .hero-cta, .team-cta-btn, .directions-btn { background: ${colorSettings.iconBg || '#5a6677'} !important; }
-            .filter-btn.active { background: ${colorSettings.iconBg || '#5a6677'} !important; border-color: ${colorSettings.iconBg || '#5a6677'} !important; }
+            .filter-btn.active { background: ${colorSettings.iconBg || '#5a6677'} !important; border-color: ${colorSettings.iconBg || '#5a6677'} !important; color: white !important; }
             .filter-btn:hover { border-color: ${colorSettings.iconBg || '#5a6677'} !important; color: ${colorSettings.iconBg || '#5a6677'} !important; }
+            .filter-btn.active:hover { color: white !important; }
             .section-decoration .dot { background: ${colorSettings.iconBg || '#5a6677'} !important; }
             nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#5a6677'} !important; }
             
