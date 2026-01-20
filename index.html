@@ -5724,6 +5724,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
             icon.style.background = colorSettings.iconBg;
         });
+        
+        // Biraz gecikmeyle tekrar güncelle (dinamik yüklenen içerik için)
+        setTimeout(() => {
+            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
+                icon.style.setProperty('background', colorSettings.iconBg, 'important');
+            });
+        }, 500);
     }
     
     if (colorSettings.iconStroke) {
@@ -9493,6 +9500,11 @@ function loadSiteSettings() {
             .service-card, [id="referencesGrid"] > div, .faq-item, .contact-card {
                 background: ${colorSettings.bgMain || '#ffffff'} !important;
             }
+            
+            /* Hizmet ve Referans İkonları */
+            .service-icon-v2, .ref-icon {
+                background: ${colorSettings.iconBg || '#c9a227'} !important;
+            }
         `;
         
         // Eski dinamik stili kaldır
@@ -9500,6 +9512,19 @@ function loadSiteSettings() {
         if (oldStyle) oldStyle.remove();
         
         document.head.appendChild(dynamicStyle);
+        
+        // Hizmet ve Referans ikonlarını güncelle (JavaScript ile oluşturuluyorlar)
+        setTimeout(() => {
+            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
+                icon.style.setProperty('background', colorSettings.iconBg || '#c9a227', 'important');
+            });
+        }, 100);
+        
+        setTimeout(() => {
+            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
+                icon.style.setProperty('background', colorSettings.iconBg || '#c9a227', 'important');
+            });
+        }, 500);
     }
     
     // SEO Ayarlarını yükle
