@@ -9327,14 +9327,53 @@ function loadSiteSettings() {
                 const style = document.createElement('style');
                 style.textContent = `
                     .filter-btn:hover {
+                        border-color: ${colorSettings.iconBg} !important;
+                        color: ${colorSettings.iconBg} !important;
                         box-shadow: 0 4px 15px ${hexToRgba(colorSettings.iconBg, 0.2)} !important;
                     }
                     .filter-btn.active {
+                        border-color: ${colorSettings.iconBg} !important;
                         box-shadow: 0 6px 20px ${hexToRgba(colorSettings.iconBg, 0.35)} !important;
+                    }
+                    .filter-btn.active::before {
+                        background: linear-gradient(135deg, ${colorSettings.iconBg}, ${lighterColor}) !important;
+                    }
+                    nav a:hover, nav a.active {
+                        color: ${colorSettings.iconBg} !important;
+                    }
+                    nav a::after, nav a:hover::after, nav a.active::after {
+                        background: ${colorSettings.iconBg} !important;
+                    }
+                    .footer-social-link:hover {
+                        background: ${colorSettings.iconBg} !important;
+                        border-color: ${colorSettings.iconBg} !important;
+                    }
+                    .footer-social-bottom a:hover {
+                        background: ${colorSettings.iconBg} !important;
+                    }
+                    ::selection {
+                        background: ${colorSettings.iconBg} !important;
+                    }
+                    ::-moz-selection {
+                        background: ${colorSettings.iconBg} !important;
                     }
                 `;
                 document.head.appendChild(style);
             }
+            
+            // Logo text
+            const logoText = document.querySelector('.logo-text');
+            if (logoText) logoText.style.color = colorSettings.iconBg;
+            
+            // Section decoration dots
+            document.querySelectorAll('.section-decoration .dot').forEach(el => {
+                el.style.background = colorSettings.iconBg;
+            });
+            
+            // Filter butonları - aktif olanın arka planı
+            document.querySelectorAll('.filter-btn.active').forEach(el => {
+                el.style.borderColor = colorSettings.iconBg;
+            });
         }
     }
     
