@@ -835,12 +835,32 @@ a{color:inherit;text-decoration:none}
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label class="form-label">Ana Renk</label>
+                                    <label class="form-label">Ana Renk (Accent)</label>
                                     <input type="color" class="form-input" id="colorPrimary" value="#d4af37" style="height:45px;padding:5px;">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Simge Arka Plan</label>
                                     <input type="color" class="form-input" id="colorIconBg" value="#d4af37" style="height:45px;padding:5px;">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Sayfa Arka Plan</label>
+                                    <input type="color" class="form-input" id="colorBgMain" value="#ffffff" style="height:45px;padding:5px;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Section Arka Plan</label>
+                                    <input type="color" class="form-input" id="colorBgSection" value="#f5f5f5" style="height:45px;padding:5px;">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Yazı Rengi</label>
+                                    <input type="color" class="form-input" id="colorText" value="#1a1a1a" style="height:45px;padding:5px;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Header/Footer Rengi</label>
+                                    <input type="color" class="form-input" id="colorHeader" value="#1a1a1a" style="height:45px;padding:5px;">
                                 </div>
                             </div>
                             <button class="btn btn-primary" onclick="saveColors()">💾 Kaydet</button>
@@ -1138,6 +1158,10 @@ a{color:inherit;text-decoration:none}
         const c = JSON.parse(localStorage.getItem('color_settings') || '{}'); 
         if (c.primary) document.getElementById('colorPrimary').value = c.primary; 
         if (c.iconBg) document.getElementById('colorIconBg').value = c.iconBg;
+        if (c.bgMain) document.getElementById('colorBgMain').value = c.bgMain;
+        if (c.bgSection) document.getElementById('colorBgSection').value = c.bgSection;
+        if (c.text) document.getElementById('colorText').value = c.text;
+        if (c.header) document.getElementById('colorHeader').value = c.header;
         
         // SEO
         const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
@@ -1153,8 +1177,27 @@ a{color:inherit;text-decoration:none}
     
     function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
     function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
-    function saveColors() { localStorage.setItem('color_settings', JSON.stringify({ primary: document.getElementById('colorPrimary').value, iconBg: document.getElementById('colorIconBg').value })); toast('Kaydedildi', 'success'); }
-    function resetColors() { document.getElementById('colorPrimary').value = '#d4af37'; document.getElementById('colorIconBg').value = '#d4af37'; localStorage.removeItem('color_settings'); toast('Sıfırlandı', 'success'); }
+    function saveColors() { 
+        localStorage.setItem('color_settings', JSON.stringify({ 
+            primary: document.getElementById('colorPrimary').value, 
+            iconBg: document.getElementById('colorIconBg').value,
+            bgMain: document.getElementById('colorBgMain').value,
+            bgSection: document.getElementById('colorBgSection').value,
+            text: document.getElementById('colorText').value,
+            header: document.getElementById('colorHeader').value
+        })); 
+        toast('Renkler kaydedildi! Sayfayı yenileyin.', 'success'); 
+    }
+    function resetColors() { 
+        document.getElementById('colorPrimary').value = '#d4af37'; 
+        document.getElementById('colorIconBg').value = '#d4af37'; 
+        document.getElementById('colorBgMain').value = '#ffffff';
+        document.getElementById('colorBgSection').value = '#f5f5f5';
+        document.getElementById('colorText').value = '#1a1a1a';
+        document.getElementById('colorHeader').value = '#1a1a1a';
+        localStorage.removeItem('color_settings'); 
+        toast('Renkler sıfırlandı!', 'success'); 
+    }
     
     // SEO SETTINGS
     function saveSeoSettings() {
