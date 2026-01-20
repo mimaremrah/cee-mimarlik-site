@@ -535,6 +535,32 @@
         }
 
         /* =============================================
+           INTERNET EXPLORER FALLBACK
+           IE CSS değişkenlerini desteklemediği için
+           sabit değerler kullanıyoruz
+           ============================================= */
+        
+        /* IE için sabit renkler */
+        .section-title .accent { color: #d4af37; }
+        .hero-brand { color: #d4af37; }
+        .hero-cta { background: #d4af37; }
+        .logo-text { color: #d4af37; }
+        .filter-btn.active { background: linear-gradient(135deg, #d4af37, #f4d03f); border-color: #d4af37; }
+        .filter-btn:hover { border-color: #d4af37; color: #d4af37; }
+        .team-cta-btn { background: #d4af37; }
+        .directions-btn { background: linear-gradient(135deg, #d4af37, #f4d03f); }
+        .ai-assistant-header { background: linear-gradient(135deg, #d4af37, #f4d03f); }
+        .ai-panel-header { background: linear-gradient(135deg, #d4af37, #f4d03f); }
+        .section-decoration .dot { background: #d4af37; }
+        nav a:hover, nav a.active { color: #d4af37; }
+        nav a::after { background: #d4af37; }
+        .footer-social-link:hover { background: #d4af37; border-color: #d4af37; }
+        .footer-social-bottom a:hover { background: #d4af37; }
+        ::selection { background: #d4af37; }
+        ::-moz-selection { background: #d4af37; }
+        :focus-visible { outline-color: #d4af37; }
+        
+        /* =============================================
            CROSS-BROWSER & MOBILE UYUMLULUK
            Tüm cihaz ve tarayıcılarda tutarlı görünüm
            ============================================= */
@@ -2303,6 +2329,7 @@
         .section-title span.accent,
         h2.section-title .accent,
         h2.section-title span.accent {
+            color: #d4af37; /* IE fallback */
             color: #d4af37 !important;
             font-weight: 400;
         }
@@ -2422,13 +2449,16 @@
         }
 
         .filter-btn:hover {
+            border-color: #d4af37; /* IE fallback */
             border-color: var(--icon-bg, #d4af37);
+            color: #d4af37; /* IE fallback */
             color: var(--icon-bg, #d4af37);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
         }
 
         .filter-btn.active {
+            border-color: #d4af37; /* IE fallback */
             border-color: var(--icon-bg, #d4af37);
             color: white;
             transform: translateY(-2px);
