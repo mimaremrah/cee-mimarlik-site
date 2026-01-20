@@ -4928,6 +4928,13 @@
         transition: var(--transition-smooth) !important;
     }
 
+    /* İKON DAİRELERİ */
+    .contact-icon-circle,
+    .service-icon-v2,
+    .ref-icon {
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light)) !important;
+    }
+
     /* FİLTRE BUTONLARI */
     .filter-container {
         background: transparent !important;
@@ -5467,7 +5474,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="javascript:void(0)" onclick="handlePhoneClick()" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📞</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Telefon</strong>
                             <span style="color: var(--accent); font-size: 18px;" id="displayPhone">(0537) 327 87 65</span>
@@ -5477,7 +5484,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="/cdn-cgi/l/email-protection#94f7f1f1f9fdf9f5e6f8fdffd4f3f9f5fdf8baf7fbf9" id="emailLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
                             <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="523137373f3b3f33203e3b3912353f333b3e7c313d3f">[email&#160;protected]</span></span>
@@ -5488,7 +5495,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <a href="https://www.google.com/maps/search/?api=1&query=CEE+Mimarlık+Hatip+Ali+Osman+Çelebi+Blv+No:52+Çorlu+Tekirdağ" target="_blank" id="addressLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
-                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">📍</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayAddress">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</span>
@@ -5498,7 +5505,7 @@ loadFaqs();
                 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, #d4af37, #f4d03f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
+                        <div class="contact-icon-circle" style="width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">🕐</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayHours">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
@@ -5720,17 +5727,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     
     if (colorSettings.iconBg) {
-        // Service ve Reference ikonlarının arka plan rengini güncelle
-        document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
-            icon.style.background = colorSettings.iconBg;
+        const accentColor = colorSettings.iconBg;
+        const accentLight = lightenColor(accentColor, 15);
+        const gradientBg = `linear-gradient(135deg, ${accentColor}, ${accentLight})`;
+        
+        // Service, Reference ve Contact ikonlarının arka plan rengini güncelle
+        document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+            icon.style.background = gradientBg;
         });
         
         // Biraz gecikmeyle tekrar güncelle (dinamik yüklenen içerik için)
         setTimeout(() => {
-            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
-                icon.style.setProperty('background', colorSettings.iconBg, 'important');
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+                icon.style.setProperty('background', gradientBg, 'important');
             });
         }, 500);
+        
+        setTimeout(() => {
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+        }, 1000);
     }
     
     if (colorSettings.iconStroke) {
@@ -9502,8 +9519,9 @@ function loadSiteSettings() {
             }
             
             /* Hizmet ve Referans İkonları */
-            .service-icon-v2, .ref-icon {
+            .service-icon-v2, .ref-icon, .contact-icon-circle {
                 background: ${colorSettings.iconBg || '#c9a227'} !important;
+                background: linear-gradient(135deg, ${colorSettings.iconBg || '#c9a227'}, ${lightenColor(colorSettings.iconBg || '#c9a227', 15)}) !important;
             }
         `;
         
@@ -9514,17 +9532,40 @@ function loadSiteSettings() {
         document.head.appendChild(dynamicStyle);
         
         // Hizmet ve Referans ikonlarını güncelle (JavaScript ile oluşturuluyorlar)
+        const accentColor = colorSettings.iconBg || '#c9a227';
+        const accentLight = lightenColor(accentColor, 15);
+        const gradientBg = `linear-gradient(135deg, ${accentColor}, ${accentLight})`;
+        
         setTimeout(() => {
-            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
-                icon.style.setProperty('background', colorSettings.iconBg || '#c9a227', 'important');
+            // Tüm ikon dairelerini güncelle
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+            
+            // Harita pin ikonu
+            document.querySelectorAll('.map-location-badge div[style*="background"]').forEach(el => {
+                if (el.querySelector('svg')) {
+                    el.style.setProperty('background', gradientBg, 'important');
+                }
+            });
+            
+            // Form gönder butonu
+            document.querySelectorAll('button[type="submit"], #contactForm button').forEach(btn => {
+                btn.style.setProperty('background', gradientBg, 'important');
             });
         }, 100);
         
         setTimeout(() => {
-            document.querySelectorAll('.service-icon-v2, .ref-icon').forEach(icon => {
-                icon.style.setProperty('background', colorSettings.iconBg || '#c9a227', 'important');
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+                icon.style.setProperty('background', gradientBg, 'important');
             });
         }, 500);
+        
+        setTimeout(() => {
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(icon => {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+        }, 1000);
     }
     
     // SEO Ayarlarını yükle
@@ -10551,7 +10592,41 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof initHeroSlider === 'function') {
             initHeroSlider();
         }
+        
+        // Tüm ikonları güncelle
+        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
+        if (colorSettings.iconBg) {
+            var accentColor = colorSettings.iconBg;
+            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+        }
     }, 100);
+    
+    // 500ms sonra tekrar güncelle
+    setTimeout(function() {
+        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
+        if (colorSettings.iconBg) {
+            var accentColor = colorSettings.iconBg;
+            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+        }
+    }, 500);
+    
+    // 1 saniye sonra da güncelle (geç yüklenen içerik için)
+    setTimeout(function() {
+        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
+        if (colorSettings.iconBg) {
+            var accentColor = colorSettings.iconBg;
+            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
+                icon.style.setProperty('background', gradientBg, 'important');
+            });
+        }
+    }, 1000);
     
     // Admin panelden gelindiyse, geri dönüş butonu göster
     if (sessionStorage.getItem('fromAdmin') === 'true') {
