@@ -4976,7 +4976,7 @@
     .contact-icon-circle:hover,
     .service-card-v2:hover .service-icon-v2,
     .ref-card:hover .ref-icon {
-        background: var(--accent-gold, #5a6677) !important;
+        background: var(--accent-gold) !important;
         color: white !important;
     }
     
@@ -4984,21 +4984,6 @@
     .service-card-v2:hover .service-icon-v2 svg,
     .ref-card:hover .ref-icon svg {
         stroke: white !important;
-    }
-    
-    /* Koyu mod için kart stilleri */
-    body[data-theme="dark"] .service-card-v2,
-    body[data-theme="dark"] .ref-card,
-    body[data-theme="dark"] .faq-item {
-        background: #2c2c2c !important;
-        border-color: #404040 !important;
-    }
-    
-    body[data-theme="dark"] .service-icon-v2,
-    body[data-theme="dark"] .ref-icon,
-    body[data-theme="dark"] .contact-icon-circle {
-        background: #3a3a3a !important;
-        color: #ccc !important;
     }
 
     /* TAKİP ET VE CHAT BUTONLARI */
@@ -5368,26 +5353,17 @@ function loadServicesSection() {
     // Renk ve boyut ayarlarını al
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     const iconSize = colorSettings.iconSize || 60;
-    const bgMain = colorSettings.bgMain || '#ffffff';
-    const isDark = bgMain === '#1a1a1a' || bgMain === '#111111' || bgMain === '#0f0f0f' || bgMain === '#000000' || bgMain === '#2c2c2c';
-    
-    const cardBg = isDark ? '#2c2c2c' : 'white';
-    const iconBg = isDark ? '#3a3a3a' : '#f0f0f0';
-    const iconColor = isDark ? '#ccc' : '#333';
-    const textPrimary = isDark ? '#e5e5e5' : '#1a1a1a';
-    const textSecondary = isDark ? '#a0a0a0' : '#666';
-    const numColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
     
     grid.innerHTML = services.map((s, i) => `
-        <div class="service-card-v2" style="background: ${cardBg}; padding: 45px 35px; border-radius: 16px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
+        <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 16px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
             <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
-                <div style="width: ${iconSize}px; height: ${iconSize}px; background: ${iconBg}; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: ${iconColor};" class="service-icon-v2">
+                <div style="width: ${iconSize}px; height: ${iconSize}px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: #333;" class="service-icon-v2">
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
-                <span style="font-size: 64px; font-weight: 800; color: ${numColor}; line-height: 1;">${String(i + 1).padStart(2, '0')}</span>
+                <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.06); line-height: 1;">${String(i + 1).padStart(2, '0')}</span>
             </div>
-            <h3 style="font-size: 18px; font-weight: 600; color: ${textPrimary}; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
-            <p style="font-size: 14px; line-height: 1.8; color: ${textSecondary}; margin: 0;">${s.desc}</p>
+            <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
+            <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
         </div>
     `).join('');
 }
@@ -5403,13 +5379,10 @@ document.addEventListener('DOMContentLoaded', loadServicesSection);
 .service-card-v2:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    border-bottom-color: var(--accent-gold, #5a6677);
-}
-body[data-theme="dark"] .service-card-v2:hover {
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border-bottom-color: #333;
 }
 .service-card-v2:hover .service-icon-v2 {
-    background: var(--accent-gold, #5a6677) !important;
+    background: #5a6677 !important;
     transform: scale(1.1);
     color: white !important;
 }
@@ -5484,22 +5457,14 @@ function loadReferencesSection() {
     // Renk ve boyut ayarlarını al
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     const iconSize = colorSettings.iconSize || 60;
-    const bgMain = colorSettings.bgMain || '#ffffff';
-    const isDark = bgMain === '#1a1a1a' || bgMain === '#111111' || bgMain === '#0f0f0f' || bgMain === '#000000' || bgMain === '#2c2c2c';
-    
-    const cardBg = isDark ? '#252525' : '#fafafa';
-    const iconBg = isDark ? '#3a3a3a' : '#f0f0f0';
-    const iconColor = isDark ? '#ccc' : '#333';
-    const textPrimary = isDark ? '#e5e5e5' : '#1a1a1a';
-    const textSecondary = isDark ? '#a0a0a0' : '#888';
     
     grid.innerHTML = references.map((r, i) => `
-        <div class="ref-card" style="background: ${cardBg}; padding: 40px 30px; text-align: center; border-radius: 16px; transition: all 0.4s ease; position: relative; overflow: hidden;">
-            <div style="width: ${iconSize}px; height: ${iconSize}px; margin: 0 auto 25px; background: ${iconBg}; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; color: ${iconColor};" class="ref-icon">
+        <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 16px; transition: all 0.4s ease; position: relative; overflow: hidden;">
+            <div style="width: ${iconSize}px; height: ${iconSize}px; margin: 0 auto 25px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; color: #333;" class="ref-icon">
                 ${svgIcons[i] || svgIcons[0]}
             </div>
-            <h4 style="font-size: 16px; font-weight: 600; color: ${textPrimary}; margin: 0 0 8px 0;">${r.title}</h4>
-            <p style="font-size: 13px; color: ${textSecondary}; margin: 0;">${r.desc}</p>
+            <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;">${r.title}</h4>
+            <p style="font-size: 13px; color: #888; margin: 0;">${r.desc}</p>
         </div>
     `).join('');
 }
@@ -5510,18 +5475,12 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 
 <style>
 .ref-card:hover {
+    background: white;
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
-body[data-theme="dark"] .ref-card:hover {
-    background: #333 !important;
-}
-body[data-theme="light"] .ref-card:hover,
-.ref-card:hover {
-    background: white;
-}
 .ref-card:hover .ref-icon {
-    background: var(--accent-gold, #5a6677) !important;
+    background: #5a6677 !important;
     transform: scale(1.1);
     color: white !important;
 }
@@ -5591,24 +5550,14 @@ function loadFaqs() {
     
     const lang = localStorage.getItem('cee_public_lang') || 'tr';
     
-    // Koyu mod kontrolü
-    const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
-    const bgMain = colorSettings.bgMain || '#ffffff';
-    const isDark = bgMain === '#1a1a1a' || bgMain === '#111111' || bgMain === '#0f0f0f' || bgMain === '#000000' || bgMain === '#2c2c2c';
-    
-    const cardBg = isDark ? '#2c2c2c' : 'white';
-    const textPrimary = isDark ? '#e5e5e5' : 'var(--primary)';
-    const textSecondary = isDark ? '#a0a0a0' : 'var(--secondary)';
-    const borderColor = isDark ? '#404040' : '#e0e0e0';
-    
     container.innerHTML = faqs.map(f => `
-        <div class="faq-item" style="background: ${cardBg}; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
+        <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: ${textPrimary}; margin: 0;" data-tr="${f.questionTr}" data-en="${f.questionEn}">${lang === 'tr' ? f.questionTr : f.questionEn}</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr}" data-en="${f.questionEn}">${lang === 'tr' ? f.questionTr : f.questionEn}</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid ${borderColor}; color: ${textSecondary}; line-height: 1.7;" data-tr="${f.answerTr}" data-en="${f.answerEn}">${lang === 'tr' ? f.answerTr : f.answerEn}</p>
+                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr}" data-en="${f.answerEn}">${lang === 'tr' ? f.answerTr : f.answerEn}</p>
             </div>
         </div>
     `).join('');
@@ -10155,20 +10104,12 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             const headerColor = cs.header || '#1a202c';
             const iconSize = cs.iconSize || 60;
             
-            // Koyu mod mu kontrol et
-            const isDarkMode = bgMain === '#1a1a1a' || bgMain === '#111111' || bgMain === '#0f0f0f' || bgMain === '#000000' || bgMain === '#2c2c2c';
-            
-            // Body'ye tema attribute ekle
-            document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-            
             // CSS Variables
             document.documentElement.style.setProperty('--accent-gold', accent);
             document.documentElement.style.setProperty('--accent-gold-light', accentLight);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
-            document.documentElement.style.setProperty('--primary', textColor);
-            document.documentElement.style.setProperty('--secondary', isDarkMode ? '#94a3b8' : '#666');
             
             // İkon boyutlarını güncelle
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
@@ -10178,138 +10119,36 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             
             // Body & Sections
             document.body.style.backgroundColor = bgMain;
-            document.body.style.color = textColor;
             document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
             document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
             
             // Header & Footer
-            const isDarkHeader = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c'].includes(headerColor);
             document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
             document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
-            document.querySelectorAll('nav a').forEach(a => a.style.color = isDarkHeader ? '#fff' : '#1a1a1a');
+            
+            const isDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c'].includes(headerColor);
+            document.querySelectorAll('nav a').forEach(a => a.style.color = isDark ? '#fff' : '#1a1a1a');
             const logo = document.querySelector('.logo-text');
-            if (logo) logo.style.color = isDarkHeader ? '#fff' : '#1a1a1a';
+            if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
             
-            // KOYU MOD - Kartlar ve içerikler
-            const cardBg = isDarkMode ? '#2c2c2c' : 'white';
-            const cardBgAlt = isDarkMode ? '#252525' : '#fafafa';
-            const textPrimary = isDarkMode ? '#e5e5e5' : '#1a1a1a';
-            const textSecondary = isDarkMode ? '#a0a0a0' : '#666';
-            const borderColor = isDarkMode ? '#404040' : '#e5e5e5';
-            const iconBgColor = isDarkMode ? '#3a3a3a' : '#f0f0f0';
-            const iconTextColor = isDarkMode ? '#ccc' : '#333';
-            
-            // Hizmet kartları
-            document.querySelectorAll('.service-card-v2').forEach(el => {
-                el.style.backgroundColor = cardBg;
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.service-card-v2 h3').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.service-card-v2 p').forEach(el => el.style.color = textSecondary);
-            
-            // Referans kartları
-            document.querySelectorAll('.ref-card').forEach(el => {
-                el.style.backgroundColor = cardBgAlt;
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.ref-card h4').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.ref-card p').forEach(el => el.style.color = textSecondary);
-            
-            // İletişim bölümü
-            document.querySelectorAll('#iletisim').forEach(el => el.style.backgroundColor = bgMain);
-            document.querySelectorAll('#iletisim strong').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('#iletisim span').forEach(el => el.style.color = textSecondary);
-            document.querySelectorAll('#iletisim input, #iletisim textarea').forEach(el => {
-                el.style.backgroundColor = isDarkMode ? '#2c2c2c' : '#fff';
-                el.style.color = textPrimary;
-                el.style.borderColor = borderColor;
-            });
-            
-            // FAQ kartları
-            document.querySelectorAll('.faq-item').forEach(el => {
-                el.style.backgroundColor = cardBg;
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.faq-item h4, .faq-question').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.faq-item p').forEach(el => el.style.color = textSecondary);
-            
-            // İkon arka planları (normal durumda)
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
-                el.style.setProperty('background', iconBgColor, 'important');
-                el.style.setProperty('color', iconTextColor, 'important');
-            });
-            
-            // Section başlıkları
-            document.querySelectorAll('.section-title').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.section-label').forEach(el => el.style.color = textSecondary);
+            // Accent elements
+            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
             document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
             document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
             
-            // Hero bölümü
-            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => {
-                el.style.background = accent;
-                el.style.color = '#fff';
-            });
+            // Icons with gradient
+            const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
             
-            // Butonlar
+            // Buttons
             document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
-            document.querySelectorAll('.filter-btn.active').forEach(el => { 
-                el.style.background = accent; 
-                el.style.borderColor = accent; 
-            });
-            document.querySelectorAll('.filter-btn:not(.active)').forEach(el => {
-                el.style.color = textPrimary;
-                el.style.borderColor = borderColor;
-            });
+            document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
             
-            // Ofis konum kartı
-            document.querySelectorAll('.location-card').forEach(el => {
-                el.style.backgroundColor = cardBg;
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.location-card h3, .location-card h4').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.location-card p, .location-card span').forEach(el => el.style.color = textSecondary);
+            // Text
+            document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
             
-            // Hakkımızda bölümü
-            document.querySelectorAll('#hakkimizda').forEach(el => el.style.backgroundColor = bgMain);
-            document.querySelectorAll('.about-text h2, .about-text h3').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.about-text p').forEach(el => el.style.color = textSecondary);
-            
-            // Ekip bölümü
-            document.querySelectorAll('.team-card, .team-member').forEach(el => {
-                el.style.backgroundColor = cardBg;
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.team-card h3, .team-card h4, .team-member h3').forEach(el => el.style.color = textPrimary);
-            document.querySelectorAll('.team-card p, .team-member p').forEach(el => el.style.color = textSecondary);
-            
-            // Genel paragraflar
-            document.querySelectorAll('p').forEach(el => {
-                if (!el.closest('.service-card-v2') && !el.closest('.ref-card') && !el.closest('.faq-item')) {
-                    el.style.color = textSecondary;
-                }
-            });
-            
-            // Footer içeriği
-            document.querySelectorAll('footer p, footer span, footer a').forEach(el => {
-                if (!el.classList.contains('social-sidebar-trigger')) {
-                    el.style.color = isDarkHeader ? '#ccc' : '#666';
-                }
-            });
-            document.querySelectorAll('footer h3, footer h4').forEach(el => el.style.color = isDarkHeader ? '#fff' : '#1a1a1a');
-            
-            // Sosyal sidebar
-            document.querySelectorAll('.social-sidebar-content').forEach(el => {
-                el.style.backgroundColor = isDarkMode ? '#2c2c2c' : '#fff';
-                el.style.borderColor = borderColor;
-            });
-            document.querySelectorAll('.social-sidebar-header').forEach(el => {
-                el.style.color = textPrimary;
-                el.style.borderColor = borderColor;
-            });
-            
-            console.log('✅ Renkler uygulandı' + (isDarkMode ? ' (Koyu Mod)' : ''));
+            console.log('✅ Renkler uygulandı');
         } catch(e) { console.error('Renk hatası:', e); }
     }
     
