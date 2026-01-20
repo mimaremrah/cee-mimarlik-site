@@ -78,6 +78,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
     <!-- Preload Critical Resources -->
+    <link rel="preload" href="logo.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -94,8 +99,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
-            "postalCode": "59860",
-            "addressRegion": "Tekirdağ",
+            "addressRegion": "TekirdaÄŸ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -159,7 +163,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
+        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -184,7 +188,7 @@
         }
 
         .ai-assistant-header {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37) 0%, var(--icon-bg-light, #f4d03f) 100%);
             color: white;
             padding: 25px;
             display: flex;
@@ -325,7 +329,7 @@
         }
 
         .ai-assistant-input button {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37) 0%, var(--icon-bg-light, #f4d03f) 100%);
             border: none;
             border-radius: 50%;
             width: 50px;
@@ -370,7 +374,7 @@
         }
 
         .ai-msg .msg-avatar {
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37) 0%, var(--icon-bg-light, #f4d03f) 100%);
         }
 
         .user-msg .msg-avatar {
@@ -530,11 +534,307 @@
 
         }
 
-        * {
+        /* =============================================
+           CROSS-BROWSER & MOBILE UYUMLULUK
+           Tüm cihaz ve tarayıcılarda tutarlı görünüm
+           ============================================= */
+        
+        /* CSS Reset & Normalize */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
         }
+
+        /* HTML & Body - Tam ekran ve scroll düzeltmeleri */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* iOS Safari 100vh Fix */
+        html, body {
+            height: 100%;
+            min-height: 100%;
+            min-height: -webkit-fill-available;
+        }
+
+        @supports (height: 100dvh) {
+            html, body {
+                min-height: 100dvh;
+            }
+        }
+
+        /* iPhone Notch / Safe Area Desteği */
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        /* Touch Cihazlar için Optimizasyon */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            touch-action: manipulation;
+        }
+
+        /* iOS Smooth Scroll */
+        body, .scroll-container, .ai-assistant-messages, .modal-content {
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+        }
+
+        /* Form Elemanları - Tüm Tarayıcılarda Tutarlı */
+        input, button, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+        }
+
+        /* iOS Input Zoom Önleme (16px minimum) */
+        @media screen and (max-width: 768px) {
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="password"],
+            input[type="number"],
+            input[type="search"],
+            select,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Buton Stilleri - Cross Browser */
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Görseller - Responsive */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Link Stilleri */
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Flexbox Cross-Browser */
+        .flex, [class*="flex"] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        /* Grid Cross-Browser */
+        .grid, [class*="grid"] {
+            display: -ms-grid;
+            display: grid;
+        }
+
+        /* Transform Cross-Browser Helper */
+        .transform-gpu {
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+
+        /* Animasyon Performans */
+        .animate, [class*="animate"], .transition {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform, opacity;
+        }
+
+        /* Firefox Scrollbar Düzeltmesi */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent, #d4af37) transparent;
+        }
+
+        /* Webkit Scrollbar (Chrome, Safari, Edge) */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent, #d4af37);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary, #2c2c2c);
+        }
+
+        /* Selection Rengi */
+        ::selection {
+            background: var(--accent, #d4af37);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: var(--accent, #d4af37);
+            color: white;
+        }
+
+        /* Placeholder Stilleri - Cross Browser */
+        ::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #999;
+        }
+
+        ::-moz-placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        :-ms-input-placeholder {
+            color: #999;
+        }
+
+        /* Focus Outline - Accessibility */
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent, #d4af37);
+            outline-offset: 2px;
+        }
+
+        /* Print Stilleri */
+        @media print {
+            *, *::before, *::after {
+                background: white !important;
+                color: black !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            
+            a, a:visited {
+                text-decoration: underline;
+            }
+            
+            img {
+                max-width: 100% !important;
+            }
+            
+            @page {
+                margin: 2cm;
+            }
+        }
+
+        /* Reduced Motion - Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Dark Mode Sistem Desteği */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme]) {
+                color-scheme: dark;
+            }
+        }
+
+        /* iOS 100vh Fix - Sabit Paneller İçin */
+        :root {
+            --vh: 1vh;
+            --full-height: 100vh;
+        }
+
+        @supports (height: 100dvh) {
+            :root {
+                --full-height: 100dvh;
+            }
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            :root {
+                --full-height: -webkit-fill-available;
+            }
+        }
+
+        /* Fixed pozisyonlu elementler için height düzeltmesi */
+        .ai-assistant-panel,
+        .ai-chat-window,
+        .mobile-menu,
+        [class*="modal"],
+        [class*="panel"][style*="fixed"],
+        [style*="position: fixed"][style*="height: 100vh"],
+        [style*="position:fixed"][style*="height:100vh"] {
+            height: var(--full-height, 100vh);
+            max-height: var(--full-height, 100vh);
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --border: #000;
+            }
+            
+            button, a, input, select {
+                border: 2px solid currentColor !important;
+            }
+        }
+
+        /* Landscape Orientation Fix */
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            .hero {
+                min-height: 100vh;
+                height: auto;
+            }
+        }
+
+        /* =============================================
+           ORIJINAL CSS DEVAM EDIYOR
+           ============================================= */
 
         :root {
             --primary: #2c2c2c;
@@ -1681,7 +1981,7 @@
             font-size: 52px;
             font-weight: 600;
             letter-spacing: 6px;
-            color: #d4af37;
+            color: var(--icon-bg, #d4af37);
             margin: 0 0 30px 0;
             text-transform: uppercase;
             line-height: 1.2;
@@ -1698,7 +1998,7 @@
         .hero-cta {
             display: inline-block;
             padding: 16px 45px;
-            background: #d4af37;
+            background: var(--icon-bg, #d4af37);
             color: #1a1a1a;
             text-decoration: none;
             font-size: 13px;
@@ -1709,7 +2009,7 @@
         }
         
         .hero-cta:hover {
-            background: #b8962e;
+            background: var(--icon-bg-light, #b8962e);
             transform: translateY(-2px);
         }
         
@@ -2374,7 +2674,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
+        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2399,7 +2699,7 @@
         }
 
         .ai-panel-header {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f));
             padding: 20px;
             display: flex;
             align-items: center;
@@ -2503,7 +2803,7 @@
         }
 
         .ai-panel-message.user .ai-panel-bubble {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f));
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -2547,9 +2847,9 @@
         }
 
         .ai-panel-quick-btn:hover {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f));
             color: white;
-            border-color: #d4af37;
+            border-color: var(--icon-bg, #d4af37);
             transform: translateY(-2px);
         }
 
@@ -2581,7 +2881,7 @@
         }
 
         .ai-panel-input:focus {
-            border-color: #d4af37;
+            border-color: var(--icon-bg, #d4af37);
         }
 
         body.dark-mode .ai-panel-input {
@@ -2593,7 +2893,7 @@
         .ai-panel-send {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f));
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -2856,7 +3156,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - Sağda */
+        /* Notification Bubble - SaÄŸda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -3964,7 +4264,7 @@
         body.dark-mode .faq-item h3, body.dark-mode .faq-question { color: #e2e8f0 !important; }
         body.dark-mode .faq-answer, body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: var(--icon-bg, #d4af37) !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode .section-title, body.dark-mode .section-label { color: #e2e8f0 !important; }
         body.dark-mode #referanslar, body.dark-mode .references-section { background: #0f172a !important; }
@@ -4069,23 +4369,23 @@
            ============================================= */
         body.dark-mode .faq-item { background: #1e293b !important; }
         body.dark-mode .faq-item h3 { color: #e2e8f0 !important; }
-        body.dark-mode .faq-item span { color: #d4af37 !important; }
+        body.dark-mode .faq-item span { color: var(--icon-bg, #d4af37) !important; }
         body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1e293b !important; }
-        body.dark-mode .service-card h3 { color: #d4af37 !important; }
+        body.dark-mode .service-card h3 { color: var(--icon-bg, #d4af37) !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode #referanslar { background: #0f172a !important; }
         body.dark-mode .reference-item { background: #1e293b !important; border-color: #334155 !important; }
         body.dark-mode .reference-item h4 { color: #e2e8f0 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-label { color: #d4af37 !important; }
+        body.dark-mode .section-label { color: var(--icon-bg, #d4af37) !important; }
         body.dark-mode .location-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important; }
         
         /* =============================================
            MADDE 8: CROSS-BROWSER UYUMLULUK
            ============================================= */
         .filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
-        * { scrollbar-width: thin; scrollbar-color: #d4af37 #f1f1f1; }
+        * { scrollbar-width: thin; scrollbar-color: var(--icon-bg, #d4af37) #f1f1f1; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
@@ -4257,12 +4557,28 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <!-- PWA Meta Tags (Lighthouse Optimized) -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#d4af37">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="CEE Mimarlık">
     <link rel="apple-touch-icon" href="/icon-192.png">
     <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- iOS Safari 100vh Fix - Dinamik -->
+    <script>
+    (function() {
+        function setVH() {
+            var vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+            document.documentElement.style.setProperty('--full-height', window.innerHeight + 'px');
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(setVH, 100);
+        });
+    })();
+    </script>
     </head>
 <body>
 
@@ -4302,7 +4618,7 @@ function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global erişim
+// Global eriÅŸim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -4346,7 +4662,7 @@ window.goToAdmin = goToAdmin;
             <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
+            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir" style="display: flex; align-items: center; gap: 6px;">
                 <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
                     <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                         <rect fill="#E30A17" width="1200" height="800"/>
@@ -4463,8 +4779,8 @@ window.goToAdmin = goToAdmin;
     
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
-        <a href="ekip.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none;">
-            <span data-tr="👥 Uzman Kadromuzu Tanıyın" data-en="👥 Meet Our Expert Team">👥 Uzman Kadromuzu Tanıyın</span>
+        <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none; background: var(--icon-bg, #d4af37); color: white; border-radius: 50px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">
+            <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team">👥 UZMAN KADROMUZU TANIYIN</span>
             <span>→</span>
         </a>
     </div>
@@ -4477,7 +4793,7 @@ window.goToAdmin = goToAdmin;
         <!-- Başlık -->
         <div style="text-align: center; margin-bottom: 70px;">
             <span style="display: inline-block; color: #999; font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</span>
-            <h2 style="font-size: 42px; color: #1a1a1a; font-weight: 300; margin: 0;" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">Sunduğumuz Hizmetler</h2>
+            <h2 style="font-size: 42px; color: #1a1a1a; font-weight: 300; margin: 0;" data-tr="SunduÄŸumuz Hizmetler" data-en="Services We Offer">SunduÄŸumuz Hizmetler</h2>
             <p style="color: #777; font-size: 16px; margin-top: 15px; font-weight: 300;" data-tr="Projeleriniz için kapsamlı mimarlık çözümleri" data-en="Comprehensive architectural solutions for your projects">Projeleriniz için kapsamlı mimarlık çözümleri</p>
         </div>
         
@@ -4724,11 +5040,11 @@ loadFaqs();
                 </div>
                 
                 <div style="margin-bottom: 25px;">
-                    <a href="mailto:ceemimarlik@gmail.com" id="emailLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
+                    <a href="/cdn-cgi/l/email-protection#94f7f1f1f9fdf9f5e6f8fdffd4f3f9f5fdf8baf7fbf9" id="emailLink" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
                         <div class="contact-icon-circle" style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--icon-bg, #d4af37), var(--icon-bg-light, #f4d03f)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
                         <div>
                             <strong style="display: block; color: var(--primary);">E-posta</strong>
-                            <span style="color: var(--accent);" id="displayEmail">ceemimarlik@gmail.com</span>
+                            <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="523137373f3b3f33203e3b3912353f333b3e7c313d3f">[email&#160;protected]</span></span>
                         </div>
                     </a>
                 </div>
@@ -4812,7 +5128,7 @@ loadFaqs();
                             <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
                             <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
                             <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
+                            <option value="DiÄŸer" data-tr="DiÄŸer" data-en="Other">DiÄŸer</option>
                         </select>
                     </div>
                     
@@ -4871,7 +5187,7 @@ loadFaqs();
         
         <!-- Konum İkonu - Harita üzerinde -->
         <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: white; padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; z-index: 10;">
-            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, var(--icon-bg, #d4af37) 0%, var(--icon-bg-light, #f4d03f) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -4901,7 +5217,7 @@ loadFaqs();
 
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Telefon tıklama - Mobilde arama, bilgisayarda WhatsApp
 function handlePhoneClick() {
     const contactSettings = JSON.parse(localStorage.getItem('contact_settings') || '{}');
@@ -4918,7 +5234,7 @@ function handlePhoneClick() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Mobilde doğrudan arama yap
+        // Mobilde doÄŸrudan arama yap
         window.location.href = 'tel:+' + fullPhone;
     } else {
         // Bilgisayarda WhatsApp aç
@@ -4954,15 +5270,7 @@ function loadContactInfo() {
         const hoursEl = document.getElementById('displayHours');
         if (hoursEl) {
             let hoursText = contactSettings.workHours || 'Pazartesi - Cuma: 09:00 - 18:00';
-            if (contactSettings.weekend) hoursText += '<br>' + contactSettings.weekend;
-            hoursEl.innerHTML = hoursText;
-        }
-    }
-    
-    if (contactSettings.mapsLink) {
-        const addressLink = document.getElementById('addressLink');
-        if (addressLink) addressLink.href = contactSettings.mapsLink;
-    }
+            if (contactSettings.weekend) hoursText += '<br>' + contactSettings.w   }
 }
 
 // Sayfa yüklendiğinde iletişim bilgilerini yükle
@@ -5070,7 +5378,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         
         // Admin paneline mesaj kaydet
         let messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        messages.unshift(formData); // En yeni başa ekle
+        messages.unshift(formData); // En yeni baÅŸa ekle
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
@@ -5149,7 +5457,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -5165,7 +5473,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>Hoşgeldiniz!</h3>
+            <h3>HoÅŸgeldiniz!</h3>
             <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
@@ -5804,7 +6112,7 @@ const defaultProjects = [
         title: 'Ofis Binası',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'Tekirdağ',
+        location: 'TekirdaÄŸ',
         area: '1200m²',
         row: 'top'
     },
@@ -5943,7 +6251,7 @@ function setupHero() {
         return;
     }
     
-    // Slides - Sadece fotoğraf
+    // Slides - Sadece fotoÄŸraf
     slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
@@ -6182,7 +6490,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'Baş Mimar',
+        role: 'BaÅŸ Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -6200,11 +6508,11 @@ function loadTeam() {
     // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
     let team = defaultTeamMembers;
     
-    // Placeholder fotoğraf
+    // Placeholder fotoÄŸraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluştur (MADDE 2)
+        // Sosyal medya linkleri oluÅŸtur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">✉️</a>';
@@ -6447,7 +6755,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuşu ile kapat
+// ESC tuÅŸu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -6691,7 +6999,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>Duş:</strong> Min. 80 x 80 cm<br>
+<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -6699,7 +7007,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>🚪 Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana Giriş:</strong> Min. 120 cm<br>
+<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -6735,7 +7043,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
+<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -7074,7 +7382,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doğrama'],
+        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -7215,7 +7523,7 @@ Ruhsat hizmeti: ${phoneLink}`;
 • 500 m² arsa<br>
 • TAKS: 0.40<br>
 • <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik Değerler:</strong><br>
+<strong>Tipik DeÄŸerler:</strong><br>
 • Konut: 0.30 - 0.40<br>
 • Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
@@ -7260,7 +7568,7 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat işlemleri<br><br>
+6. Ruhsat iÅŸlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
 • Konut projeleri<br>
 • Villa projeleri<br>
@@ -7755,7 +8063,7 @@ CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
 Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // Gelişmiş anahtar kelime eşleştirme
+    // GeliÅŸmiÅŸ anahtar kelime eÅŸleÅŸtirme
     if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
     } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
@@ -8678,7 +8986,7 @@ function loadSiteSettings() {
         if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">📷</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
         if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #d4af37, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
-        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">▶</a>`;
+        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â–¶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
     
@@ -8696,6 +9004,58 @@ function loadSiteSettings() {
             // Daha açık ton hesapla
             const lighterColor = lightenColor(colorSettings.iconBg, 20);
             root.style.setProperty('--icon-bg-light', lighterColor);
+            
+            // =============================================
+            // TÜM ELEMENTLERE RENK UYGULA
+            // =============================================
+            
+            // Hero başlık
+            const heroBrand = document.querySelector('.hero-brand');
+            if (heroBrand) heroBrand.style.color = colorSettings.iconBg;
+            
+            // Hero buton
+            const heroCta = document.querySelector('.hero-cta');
+            if (heroCta) heroCta.style.background = colorSettings.iconBg;
+            
+            // Tüm gradient butonları
+            document.querySelectorAll('[style*="linear-gradient"][style*="d4af37"], [style*="linear-gradient"][style*="#d4af37"]').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${colorSettings.iconBg}, ${lighterColor})`;
+            });
+            
+            // Section başlıkları
+            document.querySelectorAll('.section-title, .section-subtitle, h2, h3').forEach(el => {
+                const style = getComputedStyle(el);
+                if (style.color === 'rgb(212, 175, 55)' || style.color === '#d4af37') {
+                    el.style.color = colorSettings.iconBg;
+                }
+            });
+            
+            // Border'lar
+            document.querySelectorAll('[style*="border"][style*="d4af37"]').forEach(el => {
+                el.style.borderColor = colorSettings.iconBg;
+            });
+            
+            // Accent renkli elementler
+            document.querySelectorAll('.team-btn, .cta-btn, .btn-primary, .back-btn, .team-cta-btn').forEach(el => {
+                el.style.background = `linear-gradient(135deg, ${colorSettings.iconBg}, ${lighterColor})`;
+            });
+            
+            // Team CTA butonu (solid renk)
+            const teamCtaBtn = document.querySelector('.team-cta-btn');
+            if (teamCtaBtn) {
+                teamCtaBtn.style.background = colorSettings.iconBg;
+                teamCtaBtn.style.boxShadow = `0 4px 15px ${colorSettings.iconBg}40`;
+            }
+            
+            // AI Panel header
+            const aiPanelHeader = document.querySelector('.ai-panel-header, .ai-assistant-header');
+            if (aiPanelHeader) aiPanelHeader.style.background = `linear-gradient(135deg, ${colorSettings.iconBg}, ${lighterColor})`;
+            
+            // Harita pin ikonu
+            document.querySelectorAll('.map-pin, .location-icon, [class*="pin"]').forEach(el => {
+                el.style.background = colorSettings.iconBg;
+                el.style.color = colorSettings.iconBg;
+            });
         }
     }
     
