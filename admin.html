@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CEE Mimarlık - Yönetim Paneli">
+    <meta name="robots" content="noindex, nofollow">
     <title>CEE Mimarlık | Yönetim Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
             --primary: #d4af37;
             --primary-dark: #b8962e;
-            --primary-light: rgba(212, 175, 55, 0.1);
             --bg-dark: #0f172a;
             --bg-card: #1e293b;
             --bg-hover: #334155;
@@ -20,19 +22,20 @@
             --success: #10b981;
             --danger: #ef4444;
             --warning: #f59e0b;
-            --info: #3b82f6;
         }
+
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
             min-height: 100vh;
         }
+
         .admin-layout { display: flex; min-height: 100vh; }
-        
+
         /* SIDEBAR */
         .sidebar {
-            width: 260px;
+            width: 250px;
             background: var(--bg-card);
             border-right: 1px solid var(--border);
             position: fixed;
@@ -40,8 +43,8 @@
             display: flex;
             flex-direction: column;
             z-index: 100;
-            transition: transform 0.3s ease;
         }
+
         .sidebar-header {
             padding: 20px;
             border-bottom: 1px solid var(--border);
@@ -49,6 +52,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .sidebar-logo {
             width: 42px;
             height: 42px;
@@ -62,12 +66,14 @@
             color: #1a1a1a;
             overflow: hidden;
         }
+
         .sidebar-logo img { width: 100%; height: 100%; object-fit: contain; }
         .sidebar-title { font-size: 15px; font-weight: 600; }
         .sidebar-subtitle { font-size: 11px; color: var(--text-secondary); }
         .sidebar-nav { flex: 1; padding: 15px 10px; overflow-y: auto; }
         .nav-section { margin-bottom: 20px; }
         .nav-section-title { font-size: 10px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; }
+
         .nav-item {
             display: flex;
             align-items: center;
@@ -81,9 +87,11 @@
             font-size: 13px;
             margin-bottom: 2px;
         }
+
         .nav-item:hover { background: var(--bg-hover); color: var(--text-primary); }
         .nav-item.active { background: var(--primary); color: #1a1a1a; font-weight: 500; }
         .nav-item-icon { font-size: 16px; width: 22px; text-align: center; }
+
         .nav-badge {
             margin-left: auto;
             background: var(--danger);
@@ -93,7 +101,9 @@
             border-radius: 10px;
             font-weight: 600;
         }
+
         .sidebar-footer { padding: 15px; border-top: 1px solid var(--border); }
+
         .user-box {
             display: flex;
             align-items: center;
@@ -102,6 +112,7 @@
             border-radius: 8px;
             background: var(--bg-hover);
         }
+
         .user-avatar {
             width: 34px;
             height: 34px;
@@ -114,52 +125,18 @@
             font-size: 14px;
             color: #1a1a1a;
         }
+
         .user-name { font-size: 13px; font-weight: 500; }
         .user-role { font-size: 11px; color: var(--text-secondary); }
-        
-        /* MOBILE */
-        .mobile-menu-btn {
-            display: none;
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 200;
-            width: 44px;
-            height: 44px;
-            background: var(--primary);
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .mobile-menu-btn span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: #1a1a1a;
-            transition: all 0.3s;
-        }
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-        }
-        
+
         /* MAIN */
-        .main-content { flex: 1; margin-left: 260px; padding: 25px; min-height: 100vh; transition: margin 0.3s; }
-        .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+        .main-content { flex: 1; margin-left: 250px; padding: 25px; min-height: 100vh; }
+
+        .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .page-title { font-size: 22px; font-weight: 600; }
         .page-subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 3px; }
-        .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-        
+        .header-actions { display: flex; gap: 10px; }
+
         /* BUTTONS */
         .btn {
             padding: 10px 18px;
@@ -174,45 +151,42 @@
             gap: 8px;
             font-family: inherit;
         }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
         .btn-primary { background: var(--primary); color: #1a1a1a; }
-        .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+        .btn-primary:hover { background: var(--primary-dark); }
         .btn-secondary { background: var(--bg-hover); color: var(--text-primary); }
-        .btn-secondary:hover:not(:disabled) { background: #475569; }
+        .btn-secondary:hover { background: #475569; }
         .btn-danger { background: var(--danger); color: white; }
-        .btn-danger:hover:not(:disabled) { background: #dc2626; }
         .btn-success { background: var(--success); color: white; }
-        .btn-info { background: var(--info); color: white; }
         .btn-sm { padding: 6px 12px; font-size: 12px; }
-        .btn-xs { padding: 4px 8px; font-size: 11px; }
-        .btn-icon { width: 36px; height: 36px; padding: 0; justify-content: center; }
-        
+
         /* CARDS */
         .card { background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
-        .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .card-title { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
         .card-body { padding: 20px; }
-        .card-footer { padding: 15px 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; flex-wrap: wrap; }
-        
+
         /* STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; }
+
         .stat-card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+
         .stat-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 12px; }
         .stat-icon.blue { background: rgba(59, 130, 246, 0.15); }
         .stat-icon.green { background: rgba(16, 185, 129, 0.15); }
         .stat-icon.yellow { background: rgba(245, 158, 11, 0.15); }
         .stat-icon.purple { background: rgba(139, 92, 246, 0.15); }
+
         .stat-value { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
         .stat-label { font-size: 12px; color: var(--text-secondary); }
-        
+
         /* GRID */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        
+
         /* FORM */
         .form-group { margin-bottom: 16px; }
         .form-label { display: block; font-size: 12px; font-weight: 500; margin-bottom: 6px; color: var(--text-secondary); }
-        .form-label.required::after { content: ' *'; color: var(--danger); }
+
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 11px 14px;
@@ -224,25 +198,19 @@
             font-family: inherit;
             transition: all 0.2s;
         }
+
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
+
         .form-textarea { min-height: 90px; resize: vertical; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .form-hint { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
-        .form-check {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-        .form-check input { width: 18px; height: 18px; cursor: pointer; }
-        
+
         /* QUICK ACTIONS */
         .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
         .quick-card {
             background: var(--bg-dark);
             border: 1px solid var(--border);
@@ -252,14 +220,16 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .quick-card:hover { border-color: var(--primary); transform: translateY(-2px); }
         .quick-card-icon { font-size: 26px; margin-bottom: 10px; }
         .quick-card-label { font-size: 12px; color: var(--text-secondary); }
-        
+
         /* MESSAGES */
-        .msg-item { display: flex; gap: 12px; padding: 14px; border-bottom: 1px solid var(--border); transition: background 0.2s; cursor: pointer; }
+        .msg-item { display: flex; gap: 12px; padding: 14px; border-bottom: 1px solid var(--border); transition: background 0.2s; }
         .msg-item:hover { background: var(--bg-hover); }
         .msg-item:last-child { border-bottom: none; }
+
         .msg-avatar {
             width: 40px; height: 40px;
             background: var(--primary);
@@ -267,6 +237,7 @@
             display: flex; align-items: center; justify-content: center;
             font-weight: 600; color: #1a1a1a; flex-shrink: 0; font-size: 14px;
         }
+
         .msg-content { flex: 1; min-width: 0; }
         .msg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
         .msg-name { font-weight: 500; font-size: 13px; }
@@ -274,157 +245,42 @@
         .msg-subject { font-size: 12px; color: var(--primary); margin-bottom: 3px; }
         .msg-preview { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .msg-unread { background: rgba(212, 175, 55, 0.05); }
-        
-        /* DROPZONE */
-        .dropzone {
-            border: 2px dashed var(--border);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: var(--bg-dark);
+
+        /* PROJECTS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+
+        .project-card { background: var(--bg-dark); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); transition: all 0.2s; }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .project-img { width: 100%; height: 120px; object-fit: cover; }
+        .project-info { padding: 12px; }
+        .project-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .project-meta { font-size: 11px; color: var(--text-secondary); }
+
+        .project-actions { display: flex; gap: 6px; padding: 10px 12px; border-top: 1px solid var(--border); }
+        .project-actions button {
+            flex: 1; padding: 6px;
+            background: var(--bg-hover); border: none; border-radius: 6px;
+            color: var(--text-secondary); cursor: pointer; font-size: 11px; transition: all 0.2s;
         }
-        .dropzone:hover, .dropzone.dragover {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-        .dropzone-icon { font-size: 48px; margin-bottom: 15px; opacity: 0.7; }
-        .dropzone-text { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
-        .dropzone-hint { font-size: 12px; color: var(--text-secondary); opacity: 0.7; }
-        
-        /* PROJECT GRID */
-        .project-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-            gap: 20px; 
-        }
-        .project-card { 
-            background: var(--bg-dark); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            border: 1px solid var(--border); 
-            transition: all 0.2s;
-            position: relative;
-        }
-        .project-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .project-card.dragging { opacity: 0.5; transform: scale(0.95); }
-        .project-card.drag-over { border-color: var(--primary); border-width: 2px; }
-        .project-card-drag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            background: rgba(0,0,0,0.7);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: grab;
-            opacity: 0;
-            transition: opacity 0.2s;
-            z-index: 5;
-            color: white;
-        }
-        .project-card:hover .project-card-drag { opacity: 1; }
-        .project-img-container {
-            position: relative;
-            width: 100%;
-            height: 160px;
-            overflow: hidden;
-        }
-        .project-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.3s;
-        }
-        .project-card:hover .project-img { transform: scale(1.05); }
-        .project-img-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8));
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 15px;
-            gap: 8px;
-        }
-        .project-card:hover .project-img-overlay { opacity: 1; }
-        .project-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .project-badge.featured { background: var(--primary); color: #1a1a1a; }
-        .project-badge.draft { background: var(--warning); color: #1a1a1a; }
-        .project-info { padding: 15px; }
-        .project-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .project-meta { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; }
-        .project-category { background: var(--bg-hover); padding: 3px 8px; border-radius: 4px; font-size: 11px; }
-        .project-gallery-count {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
+        .project-actions button:hover { background: var(--primary); color: #1a1a1a; }
+
         /* LIST ITEMS */
-        .sortable-list { min-height: 50px; }
-        .list-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            padding: 14px; 
-            background: var(--bg-dark); 
-            border-radius: 10px; 
-            margin-bottom: 10px; 
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-        .list-item:hover { border-color: var(--primary); }
-        .list-item.dragging { opacity: 0.5; }
-        .list-item.drag-over { border-color: var(--primary); border-width: 2px; }
-        .list-item-drag {
-            cursor: grab;
-            padding: 5px;
-            color: var(--text-secondary);
-            font-size: 16px;
-        }
-        .list-item-drag:active { cursor: grabbing; }
-        .list-item-icon { font-size: 28px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: var(--bg-hover); border-radius: 10px; }
-        .list-item-img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
-        .list-item-content { flex: 1; min-width: 0; }
+        .list-item { display: flex; align-items: center; gap: 14px; padding: 14px; background: var(--bg-dark); border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--border); }
+        .list-item-icon { font-size: 22px; }
+        .list-item-content { flex: 1; }
         .list-item-title { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
-        .list-item-subtitle { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .list-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
-        
+        .list-item-subtitle { font-size: 12px; color: var(--text-secondary); }
+        .list-item-actions { display: flex; gap: 6px; }
+
         /* SECTIONS */
         .content-section { display: none; }
         .content-section.active { display: block; }
-        
+
         /* EMPTY STATE */
-        .empty-state { text-align: center; padding: 50px 20px; color: var(--text-secondary); }
-        .empty-icon { font-size: 55px; margin-bottom: 15px; opacity: 0.4; }
-        .empty-text { font-size: 14px; margin-bottom: 20px; }
-        
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-secondary); }
+        .empty-icon { font-size: 45px; margin-bottom: 12px; opacity: 0.5; }
+        .empty-text { font-size: 13px; }
+
         /* LOGIN */
         .login-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -432,335 +288,31 @@
             display: flex; align-items: center; justify-content: center;
             z-index: 10000;
         }
+
         .login-box { background: var(--bg-card); padding: 35px; border-radius: 16px; width: 100%; max-width: 380px; border: 1px solid var(--border); }
         .login-logo { text-align: center; margin-bottom: 25px; }
         .login-logo-icon { width: 65px; height: 65px; background: var(--primary); border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; color: #1a1a1a; margin-bottom: 12px; }
         .login-title { font-size: 20px; font-weight: 600; }
         .login-subtitle { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
-        
-        /* MODAL */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            padding: 20px;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal {
-            background: var(--bg-card);
-            border-radius: 16px;
-            width: 100%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow: hidden;
-            transform: translateY(-20px);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-overlay.active .modal { transform: translateY(0); }
-        .modal.large { max-width: 900px; }
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-title { font-size: 18px; font-weight: 600; }
-        .modal-close {
-            width: 36px;
-            height: 36px;
-            border: none;
-            background: var(--bg-hover);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-        .modal-close:hover { background: var(--danger); color: white; }
-        .modal-body {
-            padding: 20px;
-            overflow-y: auto;
-            flex: 1;
-        }
-        .modal-footer {
-            padding: 15px 20px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-        
-        /* LIGHTBOX */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-        .lightbox.active { opacity: 1; visibility: visible; }
-        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-        }
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-        }
-        .lightbox-nav.prev { left: 20px; }
-        .lightbox-nav.next { right: 20px; }
-        
+
         /* TOAST */
         .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
-        .toast { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            padding: 14px 18px; 
-            border-radius: 10px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            animation: slideIn 0.3s ease; 
-            min-width: 280px; 
-            font-size: 13px; 
-        }
+        .toast { background: var(--bg-card); border: 1px solid var(--border); padding: 14px 18px; border-radius: 10px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); animation: slideIn 0.3s ease; min-width: 280px; font-size: 13px; }
         .toast.success { border-left: 4px solid var(--success); }
         .toast.error { border-left: 4px solid var(--danger); }
-        .toast.warning { border-left: 4px solid var(--warning); }
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        
-        /* LOADING */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10002;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-        .loading-overlay.active { opacity: 1; visibility: visible; }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text { margin-top: 20px; color: var(--text-secondary); font-size: 14px; }
-        
-        /* TABS */
-        .tabs { display: flex; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; flex-wrap: wrap; }
-        .tab {
-            padding: 10px 20px;
-            background: transparent;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-        .tab:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .tab.active { background: var(--primary); color: #1a1a1a; font-weight: 500; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        /* GALLERY */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-        }
-        .gallery-item {
-            position: relative;
-            aspect-ratio: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 2px solid var(--border);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .gallery-item:hover { border-color: var(--primary); }
-        .gallery-item.main { border-color: var(--primary); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item-badge {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            background: var(--primary);
-            color: #1a1a1a;
-            font-size: 9px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .gallery-item-delete {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 24px;
-            height: 24px;
-            background: var(--danger);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 12px;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        .gallery-item:hover .gallery-item-delete { opacity: 1; }
-        
-        /* CATEGORIES */
-        .category-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .category-tag {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: var(--bg-hover);
-            border-radius: 20px;
-            font-size: 12px;
-        }
-        .category-tag button {
-            width: 18px;
-            height: 18px;
-            border: none;
-            background: var(--danger);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 10px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* SELECTION */
-        .selectable { position: relative; }
-        .select-checkbox {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 22px;
-            height: 22px;
-            background: rgba(0,0,0,0.7);
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.2s;
-            z-index: 5;
-        }
-        .selectable:hover .select-checkbox,
-        .selectable.selected .select-checkbox { opacity: 1; }
-        .selectable.selected .select-checkbox { background: var(--primary); border-color: var(--primary); }
-        .selectable.selected .select-checkbox::after { content: '✓'; color: #1a1a1a; font-size: 14px; font-weight: bold; }
-        
-        /* BULK ACTIONS */
-        .bulk-actions {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            z-index: 1000;
-            transition: transform 0.3s;
-        }
-        .bulk-actions.active { transform: translateX(-50%) translateY(0); }
-        .bulk-count { font-size: 13px; color: var(--text-secondary); }
-        .bulk-count strong { color: var(--primary); }
-        
+
+        /* UPLOAD AREA */
+        .upload-area { border: 2px dashed var(--border); border-radius: 10px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .upload-area:hover { border-color: var(--primary); background: rgba(212, 175, 55, 0.05); }
+        .upload-icon { font-size: 35px; margin-bottom: 10px; }
+        .upload-text { font-size: 13px; color: var(--text-secondary); }
+
         /* RESPONSIVE */
-        @media (max-width: 1200px) { 
-            .stats-grid { grid-template-columns: repeat(2, 1fr); } 
-            .grid-2 { grid-template-columns: 1fr; } 
-            .quick-grid { grid-template-columns: repeat(2, 1fr); }
-            .form-row { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) { 
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.open { transform: translateX(0); }
-            .sidebar-overlay.active { display: block; }
-            .mobile-menu-btn { display: flex; }
-            .main-content { margin-left: 0; padding: 70px 15px 15px; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .page-header { flex-direction: column; align-items: flex-start; }
-            .header-actions { width: 100%; }
-            .header-actions .btn { flex: 1; justify-content: center; }
-            .project-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-            .modal { margin: 10px; max-height: 95vh; }
-        }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        @media (max-width: 1200px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .grid-2 { grid-template-columns: 1fr; } .quick-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; } .stats-grid { grid-template-columns: 1fr; } }
+
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
         .hidden { display: none !important; }
@@ -780,26 +332,20 @@
                 <input type="text" class="form-input" id="loginUsername" placeholder="admin">
             </div>
             <div class="form-group">
-                <label class="form-label">Şifre</label>
+                <label class="form-label">Åžifre</label>
                 <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
             </div>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">Giriş Yap</button>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">GiriÅŸ Yap</button>
             <p style="text-align: center; margin-top: 15px; font-size: 12px;">
                 <a href="index.html" style="color: var(--primary);">← Ana Sayfaya Dön</a>
             </p>
         </div>
     </div>
 
-    <!-- MOBILE MENU -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-    </button>
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileMenu()"></div>
-
     <!-- MAIN LAYOUT -->
     <div class="admin-layout" id="adminLayout" style="display: none;">
         <!-- SIDEBAR -->
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo" id="sidebarLogo">CEE</div>
                 <div>
@@ -807,6 +353,7 @@
                     <div class="sidebar-subtitle">Yönetim Paneli</div>
                 </div>
             </div>
+
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <div class="nav-section-title">Ana Menü</div>
@@ -821,6 +368,7 @@
                         <span class="nav-badge" id="msgBadge" style="display:none;">0</span>
                     </a>
                 </div>
+
                 <div class="nav-section">
                     <div class="nav-section-title">İçerik Yönetimi</div>
                     <a class="nav-item" onclick="showSection('hero', this)">
@@ -839,11 +387,9 @@
                         <span class="nav-item-icon">❓</span> SSS
                     </a>
                 </div>
+
                 <div class="nav-section">
                     <div class="nav-section-title">Ayarlar</div>
-                    <a class="nav-item" onclick="showSection('categories', this)">
-                        <span class="nav-item-icon">🏷️</span> Kategoriler
-                    </a>
                     <a class="nav-item" onclick="showSection('contact', this)">
                         <span class="nav-item-icon">📞</span> İletişim Bilgileri
                     </a>
@@ -855,6 +401,7 @@
                     </a>
                 </div>
             </nav>
+
             <div class="sidebar-footer">
                 <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">👁️ Siteyi Görüntüle</a>
                 <div class="user-box">
@@ -868,7 +415,7 @@
             </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
+        <!-- MAIN -->
         <main class="main-content">
             <!-- DASHBOARD -->
             <section class="content-section active" id="section-dashboard">
@@ -881,6 +428,7 @@
                         <a href="index.html" target="_blank" class="btn btn-secondary">👁️ Siteyi Gör</a>
                     </div>
                 </div>
+
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon blue">🏗️</div>
@@ -898,17 +446,20 @@
                         <div class="stat-label">Hizmet</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon purple">👥</div>
-                        <div class="stat-value" id="statTeam">0</div>
-                        <div class="stat-label">Ekip Üyesi</div>
+                        <div class="stat-icon purple">🏢</div>
+                        <div class="stat-value" id="statRefs">0</div>
+                        <div class="stat-label">Referans</div>
                     </div>
                 </div>
+
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">⚡ Hızlı İşlemler</span></div>
+                        <div class="card-header">
+                            <span class="card-title">⚡ Hızlı İşlemler</span>
+                        </div>
                         <div class="card-body">
                             <div class="quick-grid">
-                                <div class="quick-card" onclick="openProjectModal()">
+                                <div class="quick-card" onclick="showSection('projects')">
                                     <div class="quick-card-icon">📸</div>
                                     <div class="quick-card-label">Proje Ekle</div>
                                 </div>
@@ -927,6 +478,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card">
                         <div class="card-header">
                             <span class="card-title">💬 Son Mesajlar</span>
@@ -949,31 +501,18 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Projeler</h1>
-                        <p class="page-subtitle">Proje galerisi yönetimi • Sürükle-bırak ile sıralayın</p>
+                        <p class="page-subtitle">Proje galerisi yönetimi</p>
                     </div>
                     <div class="header-actions">
-                        <select class="form-select" style="width: 150px;" id="projectFilter" onchange="filterProjects()">
-                            <option value="">Tüm Kategoriler</option>
-                        </select>
-                        <input type="text" class="form-input" placeholder="🔍 Ara..." style="width: 180px;" id="projectSearch" onkeyup="filterProjects()">
-                        <button class="btn btn-primary" onclick="openProjectModal()">➕ Yeni Proje</button>
+                        <input type="file" id="projectUpload" accept="image/*" multiple style="display:none;" onchange="uploadProjects(this)">
+                        <button class="btn btn-primary" onclick="document.getElementById('projectUpload').click()">âž• Proje Ekle</button>
                     </div>
                 </div>
-                <div class="card" style="margin-bottom: 20px;">
-                    <div class="dropzone" id="projectDropzone">
-                        <div class="dropzone-icon">📁</div>
-                        <div class="dropzone-text">Görselleri sürükleyip bırakın veya tıklayın</div>
-                        <div class="dropzone-hint">PNG, JPG, WEBP • Çoklu seçim desteklenir</div>
-                        <input type="file" id="projectBulkUpload" accept="image/*" multiple style="display:none;" onchange="bulkUploadProjects(this)">
-                    </div>
-                </div>
+
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">🏗️ Tüm Projeler (<span id="projectCount">0</span>)</span>
-                        <div style="display: flex; gap: 10px;">
-                            <button class="btn btn-sm btn-secondary" onclick="selectAllProjects()">☑️ Tümünü Seç</button>
-                            <button class="btn btn-sm btn-secondary" onclick="deselectAllProjects()">⬜ Seçimi Kaldır</button>
-                        </div>
+                        <span class="card-title">🏗️ Tüm Projeler</span>
+                        <input type="text" class="form-input" placeholder="🔍 Ara..." style="width: 200px;" onkeyup="filterProjects(this.value)">
                     </div>
                     <div class="card-body">
                         <div class="project-grid" id="projectGrid"></div>
@@ -992,6 +531,7 @@
                         <button class="btn btn-danger" onclick="clearMessages()">🗑️ Tümünü Sil</button>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-body" style="padding: 0;">
                         <div id="allMsgs"></div>
@@ -1007,52 +547,49 @@
                         <p class="page-subtitle">Ana sayfa hero bölümü</p>
                     </div>
                 </div>
-                <div class="grid-2">
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">✏️ Hero İçeriği</span></div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="form-label">Marka Adı</label>
-                                <input type="text" class="form-input" id="heroBrand" value="CEE MİMARLIK">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Açıklama Metni</label>
-                                <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz.</textarea>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Font Boyutu: <span id="heroSizeVal">52px</span></label>
-                                    <input type="range" class="form-input" id="heroSize" min="32" max="80" value="52" style="padding:5px;" oninput="document.getElementById('heroSizeVal').textContent=this.value+'px'">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Font Kalınlığı</label>
-                                    <select class="form-select" id="heroWeight">
-                                        <option value="300">İnce</option>
-                                        <option value="400">Normal</option>
-                                        <option value="500">Orta</option>
-                                        <option value="600" selected>Kalın</option>
-                                        <option value="700">Çok Kalın</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Buton Metni</label>
-                                <input type="text" class="form-input" id="heroBtn" value="İLETİŞİME GEÇİN">
-                            </div>
-                            <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Marka Adı (Büyük Başlık)</label>
+                            <input type="text" class="form-input" id="heroBrand" value="CEE MİMARLIK">
                         </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama Metni</label>
+                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz.</textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Font Boyutu: <span id="heroSizeVal">52px</span></label>
+                                <input type="range" class="form-input" id="heroSize" min="32" max="80" value="52" style="padding:5px;" oninput="document.getElementById('heroSizeVal').textContent=this.value+'px'">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Font Kalınlığı</label>
+                                <select class="form-select" id="heroWeight">
+                                    <option value="300">İnce</option>
+                                    <option value="400">Normal</option>
+                                    <option value="500">Orta</option>
+                                    <option value="600" selected>Kalın</option>
+                                    <option value="700">Çok Kalın</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Buton Metni</label>
+                            <input type="text" class="form-input" id="heroBtn" value="İLETİŞİME GEÇİN">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">🖼️ Hero Görselleri</span></div>
-                        <div class="card-body">
-                            <div class="dropzone" id="heroDropzone" style="padding: 25px; margin-bottom: 15px;">
-                                <div class="dropzone-icon">🖼️</div>
-                                <div class="dropzone-text">Görselleri sürükleyin veya tıklayın</div>
-                                <input type="file" id="heroImgUpload" accept="image/*" multiple style="display:none;" onchange="uploadHeroImages(this)">
-                            </div>
-                            <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 15px;">💡 Sıralamak için görselleri sürükleyin</p>
-                            <div class="gallery-grid" id="heroImagesGrid"></div>
-                        </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">🖼️ Hero Görselleri (Slider)</span>
+                        <input type="file" id="heroImgUpload" accept="image/*" multiple style="display:none;" onchange="uploadHeroImages(this)">
+                        <button class="btn btn-sm btn-secondary" onclick="document.getElementById('heroImgUpload').click()">➕ Görsel Ekle</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="project-grid" id="heroImagesGrid"></div>
                     </div>
                 </div>
             </section>
@@ -1062,14 +599,18 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Hizmetler</h1>
-                        <p class="page-subtitle">Sunulan hizmetleri yönetin • Sürükle-bırak ile sıralayın</p>
+                        <p class="page-subtitle">Sunulan hizmetleri yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="openServiceModal()">➕ Yeni Hizmet</button>
+                        <button class="btn btn-primary" onclick="addService()">âž• Yeni Hizmet</button>
                     </div>
                 </div>
+
                 <div class="card">
-                    <div class="card-body sortable-list" id="servicesList"></div>
+                    <div class="card-body" id="servicesList"></div>
+                    <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
+                        <button class="btn btn-success" onclick="saveServices()">💾 Hizmetleri Kaydet</button>
+                    </div>
                 </div>
             </section>
 
@@ -1078,14 +619,18 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Referanslar</h1>
-                        <p class="page-subtitle">Çalıştığınız kurumlar • Sürükle-bırak ile sıralayın</p>
+                        <p class="page-subtitle">Çalıştığınız kurumlar</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="openRefModal()">➕ Yeni Referans</button>
+                        <button class="btn btn-primary" onclick="addReference()">âž• Yeni Referans</button>
                     </div>
                 </div>
+
                 <div class="card">
-                    <div class="card-body sortable-list" id="refsList"></div>
+                    <div class="card-body" id="refsList"></div>
+                    <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
+                        <button class="btn btn-success" onclick="saveReferences()">💾 Referansları Kaydet</button>
+                    </div>
                 </div>
             </section>
 
@@ -1094,14 +639,18 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Ekip</h1>
-                        <p class="page-subtitle">Ekip üyelerini yönetin • Sürükle-bırak ile sıralayın</p>
+                        <p class="page-subtitle">Ekip üyelerini yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="openTeamModal()">➕ Üye Ekle</button>
+                        <button class="btn btn-primary" onclick="addTeamMember()">➕ Üye Ekle</button>
                     </div>
                 </div>
+
                 <div class="card">
-                    <div class="card-body sortable-list" id="teamList"></div>
+                    <div class="card-body" id="teamList"></div>
+                    <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
+                        <button class="btn btn-success" onclick="saveTeam()">💾 Ekibi Kaydet</button>
+                    </div>
                 </div>
             </section>
 
@@ -1110,37 +659,17 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Sıkça Sorulan Sorular</h1>
-                        <p class="page-subtitle">SSS bölümünü yönetin • Sürükle-bırak ile sıralayın</p>
+                        <p class="page-subtitle">SSS bölümünü yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="openFaqModal()">➕ Soru Ekle</button>
+                        <button class="btn btn-primary" onclick="addFaq()">âž• Soru Ekle</button>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body sortable-list" id="faqList"></div>
-                </div>
-            </section>
 
-            <!-- CATEGORIES -->
-            <section class="content-section" id="section-categories">
-                <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Kategoriler</h1>
-                        <p class="page-subtitle">Proje kategorilerini yönetin</p>
-                    </div>
-                </div>
                 <div class="card">
-                    <div class="card-header"><span class="card-title">🏷️ Proje Kategorileri</span></div>
-                    <div class="card-body">
-                        <div class="form-row" style="margin-bottom: 20px;">
-                            <div class="form-group" style="margin-bottom: 0;">
-                                <input type="text" class="form-input" id="newCategoryInput" placeholder="Yeni kategori adı...">
-                            </div>
-                            <div>
-                                <button class="btn btn-primary" onclick="addCategory()">➕ Ekle</button>
-                            </div>
-                        </div>
-                        <div class="category-tags" id="categoryTags"></div>
+                    <div class="card-body" id="faqList"></div>
+                    <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
+                        <button class="btn btn-success" onclick="saveFaqs()">💾 SSS Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -1150,9 +679,10 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">İletişim Bilgileri</h1>
-                        <p class="page-subtitle">Site genelindeki iletişim bilgileri</p>
+                        <p class="page-subtitle">Site genelindeki iletiÅŸim bilgileri</p>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
@@ -1200,6 +730,7 @@
                         <p class="page-subtitle">Logo, SEO, tema ve sosyal medya</p>
                     </div>
                 </div>
+
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
@@ -1207,30 +738,32 @@
                             <button class="btn btn-sm btn-danger" id="deleteLogoBtn" style="display:none;" onclick="deleteLogo()">🗑️ Sil</button>
                         </div>
                         <div class="card-body">
-                            <div class="dropzone" id="logoDropzone" style="padding: 25px;">
+                            <div class="upload-area" id="logoUploadArea" onclick="document.getElementById('logoUpload').click()">
                                 <img id="logoPreview" src="" style="max-width: 180px; max-height: 100px; display: none;">
                                 <div id="logoPlaceholder">
-                                    <div class="dropzone-icon">📤</div>
-                                    <div class="dropzone-text">Logo yüklemek için tıklayın</div>
+                                    <div class="upload-icon">📤</div>
+                                    <div class="upload-text">Logo yüklemek için tıklayın</div>
                                 </div>
                             </div>
                             <input type="file" id="logoUpload" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
+                            <p style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; text-align: center;">PNG veya SVG önerilir (şeffaf arka plan)</p>
                         </div>
                     </div>
+
                     <div class="card">
                         <div class="card-header"><span class="card-title">🌙 Tema Ayarları</span></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Varsayılan Tema</label>
-                                <select class="form-select" id="defaultTheme">
-                                    <option value="light">☀️ Açık Tema</option>
-                                    <option value="dark">🌙 Koyu Tema</option>
+                                <select class="form-input" id="defaultTheme">
+                                    <option value="light">☀️ Açık Tema (Light)</option>
+                                    <option value="dark">🌙 Koyu Tema (Dark)</option>
                                     <option value="auto">🔄 Sistem Ayarına Göre</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-check">
-                                    <input type="checkbox" id="allowDarkToggle" checked>
+                                <label class="form-label" style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="allowDarkToggle" checked style="width: 18px; height: 18px;">
                                     Kullanıcıların tema değiştirmesine izin ver
                                 </label>
                             </div>
@@ -1238,24 +771,29 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-header"><span class="card-title">🔍 SEO Ayarları</span></div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Site Başlığı</label>
-                            <input type="text" class="form-input" id="seoTitle" placeholder="CEE Mimarlık - Profesyonel Mimari Proje Hizmetleri">
+                            <label class="form-label">Site Başlığı (Title)</label>
+                            <input type="text" class="form-input" id="seoTitle" placeholder="CEE Mimarlık - Profesyonel Mimari Proje Hizmetleri" maxlength="60">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 60 karakter önerilir</small>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Site Açıklaması</label>
-                            <textarea class="form-textarea" id="seoDesc" rows="3" placeholder="CEE Mimarlık olarak Çorlu ve çevresinde mimari proje hizmetleri sunuyoruz."></textarea>
+                            <label class="form-label">Site Açıklaması (Meta Description)</label>
+                            <textarea class="form-textarea" id="seoDesc" rows="3" placeholder="CEE Mimarlık olarak Çorlu ve çevresinde mimari proje, ruhsat işlemleri, iç mimarlık ve 3D görselleştirme hizmetleri sunuyoruz." maxlength="160"></textarea>
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 160 karakter önerilir</small>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Anahtar Kelimeler</label>
-                            <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlık, çorlu mimar, proje">
+                            <label class="form-label">Anahtar Kelimeler (Keywords)</label>
+                            <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlık, çorlu mimar, proje, ruhsat, iç mimarlık">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Virgülle ayırarak yazın</small>
                         </div>
                         <button class="btn btn-primary" onclick="saveSeoSettings()">💾 Kaydet</button>
                     </div>
                 </div>
+
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header"><span class="card-title">📄 Footer</span></div>
@@ -1271,6 +809,7 @@
                             <button class="btn btn-primary" onclick="saveFooter()">💾 Kaydet</button>
                         </div>
                     </div>
+
                     <div class="card">
                         <div class="card-header"><span class="card-title">🎨 Renk Ayarları</span></div>
                         <div class="card-body">
@@ -1280,7 +819,7 @@
                                     <input type="color" class="form-input" id="colorPrimary" value="#d4af37" style="height:45px;padding:5px;">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">İkon Arka Plan</label>
+                                    <label class="form-label">Simge Arka Plan</label>
                                     <input type="color" class="form-input" id="colorIconBg" value="#d4af37" style="height:45px;padding:5px;">
                                 </div>
                             </div>
@@ -1289,6 +828,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-header"><span class="card-title">📱 Sosyal Medya</span></div>
                     <div class="card-body">
@@ -1322,32 +862,36 @@
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Güvenlik</h1>
-                        <p class="page-subtitle">Giriş bilgileri ve yedekleme</p>
+                        <p class="page-subtitle">GiriÅŸ bilgileri ve yedekleme</p>
                     </div>
                 </div>
+
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">🔑 Şifre Değiştir</span></div>
+                        <div class="card-header"><span class="card-title">🔒 Şifre Değiştir</span></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Yeni Kullanıcı Adı</label>
                                 <input type="text" class="form-input" id="newUser" placeholder="admin">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Yeni Şifre</label>
+                                <label class="form-label">Yeni Åžifre</label>
                                 <input type="password" class="form-input" id="newPass" placeholder="••••••••">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Şifre Tekrar</label>
+                                <label class="form-label">Åžifre Tekrar</label>
                                 <input type="password" class="form-input" id="newPassConfirm" placeholder="••••••••">
                             </div>
                             <button class="btn btn-primary" onclick="changePassword()">💾 Güncelle</button>
                         </div>
                     </div>
+
                     <div class="card">
                         <div class="card-header"><span class="card-title">💾 Yedekleme</span></div>
                         <div class="card-body">
-                            <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 13px;">Tüm site verilerini yedekleyin veya geri yükleyin.</p>
+                            <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 13px;">
+                                Tüm site verilerini yedekleyin veya geri yükleyin.
+                            </p>
                             <button class="btn btn-secondary" onclick="exportBackup()">📥 Yedeği İndir</button>
                             <button class="btn btn-secondary" style="margin-left:10px;" onclick="document.getElementById('backupFile').click()">📤 Yedeği Yükle</button>
                             <input type="file" id="backupFile" accept=".json" style="display:none;" onchange="importBackup(this)">
@@ -1358,274 +902,19 @@
         </main>
     </div>
 
-    <!-- BULK ACTIONS -->
-    <div class="bulk-actions" id="bulkActions">
-        <span class="bulk-count"><strong id="selectedCount">0</strong> öğe seçildi</span>
-        <button class="btn btn-sm btn-danger" onclick="bulkDelete()">🗑️ Seçilenleri Sil</button>
-        <button class="btn btn-sm btn-secondary" onclick="deselectAllProjects()">✕ İptal</button>
-    </div>
-
     <!-- TOAST -->
     <div class="toast-container" id="toastBox"></div>
 
-    <!-- LOADING -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-        <div class="loading-text" id="loadingText">Yükleniyor...</div>
-    </div>
-
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-        <button class="lightbox-nav prev" onclick="event.stopPropagation(); lightboxPrev()">❮</button>
-        <img id="lightboxImg" src="">
-        <button class="lightbox-nav next" onclick="event.stopPropagation(); lightboxNext()">❯</button>
-    </div>
-
-    <!-- MODALS -->
-    <!-- PROJECT MODAL -->
-    <div class="modal-overlay" id="projectModal">
-        <div class="modal large">
-            <div class="modal-header">
-                <h3 class="modal-title" id="projectModalTitle">Yeni Proje</h3>
-                <button class="modal-close" onclick="closeProjectModal()">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchProjectTab('info', this)">📝 Bilgiler</button>
-                    <button class="tab" onclick="switchProjectTab('gallery', this)">🖼️ Galeri</button>
-                    <button class="tab" onclick="switchProjectTab('details', this)">📋 Detaylar</button>
-                </div>
-                <div class="tab-content active" id="projectTab-info">
-                    <div class="form-group">
-                        <label class="form-label required">Proje Adı</label>
-                        <input type="text" class="form-input" id="projectTitle" placeholder="Proje başlığı">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Kategori</label>
-                            <select class="form-select" id="projectCategory"><option value="Genel">Genel</option></select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Durum</label>
-                            <select class="form-select" id="projectStatus">
-                                <option value="published">✅ Yayında</option>
-                                <option value="draft">📝 Taslak</option>
-                                <option value="featured">⭐ Öne Çıkan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Kısa Açıklama</label>
-                        <textarea class="form-textarea" id="projectDesc" rows="3" placeholder="Proje hakkında kısa bilgi..."></textarea>
-                    </div>
-                </div>
-                <div class="tab-content" id="projectTab-gallery">
-                    <div class="dropzone" id="projectGalleryDropzone" style="margin-bottom: 20px;">
-                        <div class="dropzone-icon">🖼️</div>
-                        <div class="dropzone-text">Görselleri sürükleyin veya tıklayın</div>
-                        <div class="dropzone-hint">İlk görsel kapak fotoğrafı olacak</div>
-                        <input type="file" id="projectGalleryUpload" accept="image/*" multiple style="display:none;">
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 15px;">💡 Görselleri sürükleyerek sıralayın. İlk görsel ana görsel olur.</p>
-                    <div class="gallery-grid" id="projectGalleryGrid"></div>
-                </div>
-                <div class="tab-content" id="projectTab-details">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">📍 Konum</label>
-                            <input type="text" class="form-input" id="projectLocation" placeholder="İstanbul, Türkiye">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">📅 Tarih</label>
-                            <input type="text" class="form-input" id="projectDate" placeholder="2024">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">👤 Müşteri</label>
-                            <input type="text" class="form-input" id="projectClient" placeholder="Müşteri adı">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">📐 Alan (m²)</label>
-                            <input type="text" class="form-input" id="projectArea" placeholder="150">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">📝 Detaylı Açıklama</label>
-                        <textarea class="form-textarea" id="projectFullDesc" rows="5" placeholder="Proje hakkında detaylı bilgi..."></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeProjectModal()">İptal</button>
-                <button class="btn btn-primary" onclick="saveProject()">💾 Kaydet</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SERVICE MODAL -->
-    <div class="modal-overlay" id="serviceModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="serviceModalTitle">Yeni Hizmet</h3>
-                <button class="modal-close" onclick="closeModal('serviceModal')">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Emoji / İkon</label>
-                    <input type="text" class="form-input" id="serviceIcon" placeholder="🏠" maxlength="4">
-                </div>
-                <div class="form-group">
-                    <label class="form-label required">Başlık</label>
-                    <input type="text" class="form-input" id="serviceTitle" placeholder="Hizmet adı">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Açıklama</label>
-                    <textarea class="form-textarea" id="serviceDesc" rows="3" placeholder="Hizmet açıklaması..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('serviceModal')">İptal</button>
-                <button class="btn btn-primary" onclick="saveService()">💾 Kaydet</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- REFERENCE MODAL -->
-    <div class="modal-overlay" id="refModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="refModalTitle">Yeni Referans</h3>
-                <button class="modal-close" onclick="closeModal('refModal')">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Emoji / İkon</label>
-                    <input type="text" class="form-input" id="refIcon" placeholder="🏢" maxlength="4">
-                </div>
-                <div class="form-group">
-                    <label class="form-label required">Başlık</label>
-                    <input type="text" class="form-input" id="refTitle" placeholder="Referans adı">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Açıklama</label>
-                    <textarea class="form-textarea" id="refDesc" rows="3" placeholder="Referans açıklaması..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('refModal')">İptal</button>
-                <button class="btn btn-primary" onclick="saveRef()">💾 Kaydet</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TEAM MODAL -->
-    <div class="modal-overlay" id="teamModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="teamModalTitle">Yeni Ekip Üyesi</h3>
-                <button class="modal-close" onclick="closeModal('teamModal')">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group" style="text-align: center;">
-                    <div class="dropzone" id="teamPhotoDropzone" style="width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                        <img id="teamPhotoPreview" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
-                        <div id="teamPhotoPlaceholder" style="text-align: center;">
-                            <div style="font-size: 32px;">👤</div>
-                            <div style="font-size: 11px; color: var(--text-secondary);">Fotoğraf</div>
-                        </div>
-                    </div>
-                    <input type="file" id="teamPhotoUpload" accept="image/*" style="display:none;">
-                </div>
-                <div class="form-group">
-                    <label class="form-label required">İsim Soyisim</label>
-                    <input type="text" class="form-input" id="teamName" placeholder="Ad Soyad">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Pozisyon</label>
-                    <input type="text" class="form-input" id="teamRole" placeholder="Mimar">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">📧 E-posta</label>
-                    <input type="email" class="form-input" id="teamEmail" placeholder="email@example.com">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">💼 LinkedIn</label>
-                        <input type="url" class="form-input" id="teamLinkedin" placeholder="https://linkedin.com/in/...">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">📷 Instagram</label>
-                        <input type="url" class="form-input" id="teamInstagram" placeholder="https://instagram.com/...">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('teamModal')">İptal</button>
-                <button class="btn btn-primary" onclick="saveTeamMember()">💾 Kaydet</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FAQ MODAL -->
-    <div class="modal-overlay" id="faqModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title" id="faqModalTitle">Yeni Soru</h3>
-                <button class="modal-close" onclick="closeModal('faqModal')">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label required">Soru</label>
-                    <input type="text" class="form-input" id="faqQuestion" placeholder="Soru metni">
-                </div>
-                <div class="form-group">
-                    <label class="form-label required">Cevap</label>
-                    <textarea class="form-textarea" id="faqAnswer" rows="5" placeholder="Cevap metni..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('faqModal')">İptal</button>
-                <button class="btn btn-primary" onclick="saveFaq()">💾 Kaydet</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MESSAGE MODAL -->
-    <div class="modal-overlay" id="messageModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Mesaj Detayı</h3>
-                <button class="modal-close" onclick="closeModal('messageModal')">✕</button>
-            </div>
-            <div class="modal-body" id="messageModalBody"></div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" id="deleteMessageBtn">🗑️ Sil</button>
-                <button class="btn btn-secondary" onclick="closeModal('messageModal')">Kapat</button>
-            </div>
-        </div>
+    <!-- SAĞ ALT SABİT LOGO -->
+    <div id="fixedLogo" style="position: fixed; bottom: 20px; right: 20px; z-index: 50; display: none;">
+        <img id="fixedLogoImg" src="" style="max-width: 120px; max-height: 60px; opacity: 0.7; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
     </div>
 
     <script>
-    // ========================================
-    // GLOBAL STATE
-    // ========================================
+    // AUTH
     let credentials = { username: 'admin', password: 'admin123' };
-    let projects = [], services = [], refs = [], team = [], faqs = [], heroImages = [];
-    let categories = ['Genel', 'Konut', 'Ticari', 'Villa', 'Ofis', 'Renovasyon'];
-    let selectedProjects = new Set();
-    let editingIndex = -1;
-    let currentProjectGallery = [];
-    let lightboxImages = [], lightboxIndex = 0;
-    let dragType = '', dragIndex = -1;
-    let teamPhotoData = '';
-
     try { const s = localStorage.getItem('cee_credentials'); if (s) credentials = JSON.parse(s); } catch(e) {}
 
-    // ========================================
-    // AUTH
-    // ========================================
     function login() {
         const u = document.getElementById('loginUsername').value;
         const p = document.getElementById('loginPassword').value;
@@ -1634,7 +923,7 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminLayout').style.display = 'flex';
             loadAll();
-            toast('Hoş geldiniz!', 'success');
+            toast('HoÅŸ geldiniz!', 'success');
         } else {
             toast('Hatalı giriş bilgileri!', 'error');
         }
@@ -1646,13 +935,7 @@
         document.getElementById('adminLayout').style.display = 'none';
     }
 
-    document.addEventListener('keydown', e => { 
-        if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') login();
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
-            closeLightbox();
-        }
-    });
+    document.addEventListener('keydown', e => { if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') login(); });
 
     if (sessionStorage.getItem('adminLoggedIn') === 'true') {
         document.getElementById('loginScreen').style.display = 'none';
@@ -1660,851 +943,253 @@
         setTimeout(loadAll, 100);
     }
 
-    // ========================================
-    // NAVIGATION & MOBILE
-    // ========================================
+    // NAVIGATION
     function showSection(id, el) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.getElementById('section-' + id)?.classList.add('active');
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         if (el) el.classList.add('active');
         else document.querySelector(`[onclick*="'${id}'"]`)?.classList.add('active');
-        if (window.innerWidth <= 768) toggleMobileMenu();
     }
 
-    function toggleMobileMenu() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('sidebarOverlay').classList.toggle('active');
-    }
+    // DATA
+    let projects = [], services = [], refs = [], team = [], faqs = [], heroImages = [];
 
-    // ========================================
-    // DATA LOADING
-    // ========================================
+    const defaultServices = [
+        { icon: '🏠', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarımlar' },
+        { icon: '📐', title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel tasarımlar' },
+        { icon: '🏗️', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
+        { icon: '📋', title: 'Ruhsat İşlemleri', desc: 'Tüm resmi işlemler için danışmanlık' }
+    ];
+
+    const defaultRefs = [
+        { icon: '🏛️', title: 'Kamu Kurumları', desc: 'Devlet projeleri' },
+        { icon: '🏢', title: 'Özel Sektör', desc: 'Ticari projeler' },
+        { icon: '🏠', title: 'Bireysel', desc: 'Konut projeleri' }
+    ];
+
     function loadAll() {
-        showLoading('Veriler yükleniyor...');
-        projects = JSON.parse(localStorage.getItem('cee_projects') || '[]');
-        services = JSON.parse(localStorage.getItem('cee_services') || 'null') || [
-            { icon: '🏠', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarımlar' },
-            { icon: '🔍', title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel tasarımlar' },
-            { icon: '🏗️', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
-            { icon: '📋', title: 'Ruhsat İşlemleri', desc: 'Tüm resmi işlemler için danışmanlık' }
-        ];
-        refs = JSON.parse(localStorage.getItem('cee_references') || 'null') || [
-            { icon: '🏛️', title: 'Kamu Kurumları', desc: 'Devlet projeleri' },
-            { icon: '🏢', title: 'Özel Sektör', desc: 'Ticari projeler' },
-            { icon: '🏠', title: 'Bireysel', desc: 'Konut projeleri' }
-        ];
-        team = JSON.parse(localStorage.getItem('cee_team') || '[]');
-        faqs = JSON.parse(localStorage.getItem('cee_faqs') || '[]');
-        heroImages = JSON.parse(localStorage.getItem('hero_images') || '[]');
-        categories = JSON.parse(localStorage.getItem('cee_categories') || 'null') || ['Genel', 'Konut', 'Ticari', 'Villa', 'Ofis', 'Renovasyon'];
-        
-        renderAll();
-        loadSettings();
-        hideLoading();
-    }
-
-    function renderAll() {
-        renderProjects();
-        renderServices();
-        renderRefs();
-        renderTeam();
-        renderFaqs();
-        renderHeroImages();
-        renderCategories();
-        loadMessages();
-        loadHero();
-        loadContact();
-        loadLogo();
-        updateStats();
-        updateCategorySelects();
+        projects = JSON.parse(localStorage.getItem('cee_projects') || '[]'); renderProjects();
+        services = JSON.parse(localStorage.getItem('cee_services') || 'null') || [...defaultServices]; renderServices();
+        refs = JSON.parse(localStorage.getItem('cee_references') || 'null') || [...defaultRefs]; renderRefs();
+        team = JSON.parse(localStorage.getItem('cee_team') || '[]'); renderTeam();
+        faqs = JSON.parse(localStorage.getItem('cee_faqs') || '[]'); renderFaqs();
+        heroImages = JSON.parse(localStorage.getItem('hero_images') || '[]'); renderHeroImages();
+        loadMessages(); loadHero(); loadContact(); loadSettings(); loadLogo(); updateStats();
     }
 
     function updateStats() {
         document.getElementById('statProjects').textContent = projects.length;
-        document.getElementById('statServices').textContent = services.length;
-        document.getElementById('statTeam').textContent = team.length;
         const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
         document.getElementById('statMessages').textContent = msgs.length;
+        document.getElementById('statServices').textContent = services.length;
+        document.getElementById('statRefs').textContent = refs.length;
         const unread = msgs.filter(m => !m.read).length;
         const badge = document.getElementById('msgBadge');
         badge.textContent = unread;
         badge.style.display = unread > 0 ? 'block' : 'none';
     }
 
-    // ========================================
     // PROJECTS
-    // ========================================
     function renderProjects() {
         const grid = document.getElementById('projectGrid');
-        document.getElementById('projectCount').textContent = projects.length;
-        
-        if (projects.length === 0) {
-            grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🏗️</div><div class="empty-text">Henüz proje yok</div><button class="btn btn-primary" onclick="openProjectModal()">➕ İlk Projeyi Ekle</button></div>';
-            return;
-        }
-        
-        grid.innerHTML = projects.map((p, i) => {
-            const mainImg = p.gallery?.[0] || p.img || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect fill="%231e293b" width="300" height="200"/><text fill="%2394a3b8" x="150" y="100" text-anchor="middle" font-size="14">Görsel Yok</text></svg>';
-            const galleryCount = p.gallery?.length || (p.img ? 1 : 0);
-            const isSelected = selectedProjects.has(i);
-            return `
-                <div class="project-card selectable ${isSelected ? 'selected' : ''}" data-index="${i}" draggable="true"
-                     ondragstart="dragStart(event, 'project', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'project', ${i})">
-                    <div class="select-checkbox" onclick="event.stopPropagation(); toggleProjectSelect(${i})"></div>
-                    <div class="project-card-drag">⋮⋮</div>
-                    ${p.status === 'featured' ? '<span class="project-badge featured">⭐ Öne Çıkan</span>' : ''}
-                    ${p.status === 'draft' ? '<span class="project-badge draft">📝 Taslak</span>' : ''}
-                    <div class="project-img-container">
-                        <img src="${mainImg}" class="project-img" onclick="openLightbox(${i})">
-                        ${galleryCount > 1 ? `<div class="project-gallery-count">🖼️ ${galleryCount}</div>` : ''}
-                        <div class="project-img-overlay">
-                            <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation(); editProject(${i})">✏️</button>
-                            <button class="btn btn-sm btn-info" onclick="event.stopPropagation(); openLightbox(${i})">👁️</button>
-                            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); deleteProject(${i})">🗑️</button>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">${p.title || 'İsimsiz'}</div>
-                        <div class="project-meta">
-                            <span class="project-category">${p.category || 'Genel'}</span>
-                            ${p.date ? `<span>${p.date}</span>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
+        if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🏗️</div><div class="empty-text">Henüz proje yok</div></div>'; return; }
+        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'İsimsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">✏️</button><button onclick="deleteProject(${i})">🗑️</button></div></div>`).join('');
     }
 
-    function openProjectModal(index = -1) {
-        editingIndex = index;
-        currentProjectGallery = [];
-        if (index >= 0) {
-            const p = projects[index];
-            document.getElementById('projectModalTitle').textContent = 'Proje Düzenle';
-            document.getElementById('projectTitle').value = p.title || '';
-            document.getElementById('projectCategory').value = p.category || 'Genel';
-            document.getElementById('projectStatus').value = p.status || 'published';
-            document.getElementById('projectDesc').value = p.desc || '';
-            document.getElementById('projectLocation').value = p.location || '';
-            document.getElementById('projectDate').value = p.date || '';
-            document.getElementById('projectClient').value = p.client || '';
-            document.getElementById('projectArea').value = p.area || '';
-            document.getElementById('projectFullDesc').value = p.fullDesc || '';
-            currentProjectGallery = p.gallery ? [...p.gallery] : (p.img ? [p.img] : []);
-        } else {
-            document.getElementById('projectModalTitle').textContent = 'Yeni Proje';
-            ['projectTitle','projectDesc','projectLocation','projectDate','projectClient','projectArea','projectFullDesc'].forEach(id => document.getElementById(id).value = '');
-            document.getElementById('projectCategory').value = 'Genel';
-            document.getElementById('projectStatus').value = 'published';
-        }
-        renderProjectGallery();
-        switchProjectTab('info', document.querySelector('#projectModal .tab'));
-        openModal('projectModal');
-    }
-
-    function closeProjectModal() { closeModal('projectModal'); editingIndex = -1; currentProjectGallery = []; }
-
-    function switchProjectTab(tab, el) {
-        document.querySelectorAll('#projectModal .tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('#projectModal .tab-content').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-        document.getElementById('projectTab-' + tab).classList.add('active');
-    }
-
-    function renderProjectGallery() {
-        const grid = document.getElementById('projectGalleryGrid');
-        if (currentProjectGallery.length === 0) {
-            grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-secondary); padding:20px;">Henüz görsel eklenmedi</div>';
-            return;
-        }
-        grid.innerHTML = currentProjectGallery.map((img, i) => `
-            <div class="gallery-item ${i === 0 ? 'main' : ''}" draggable="true" data-index="${i}"
-                 ondragstart="galleryDragStart(event, ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="galleryDrop(event, ${i})">
-                ${i === 0 ? '<span class="gallery-item-badge">Kapak</span>' : ''}
-                <img src="${img}" onclick="openSingleLightbox('${img.replace(/'/g, "\\'")}')">
-                <button class="gallery-item-delete" onclick="event.stopPropagation(); removeProjectGalleryItem(${i})">✕</button>
-            </div>
-        `).join('');
-    }
-
-    let galleryDragIndex = -1;
-    function galleryDragStart(e, index) { galleryDragIndex = index; e.dataTransfer.effectAllowed = 'move'; }
-    function galleryDrop(e, targetIndex) {
-        e.preventDefault();
-        e.target.closest('.gallery-item')?.classList.remove('drag-over');
-        if (galleryDragIndex === -1 || galleryDragIndex === targetIndex) return;
-        const item = currentProjectGallery.splice(galleryDragIndex, 1)[0];
-        currentProjectGallery.splice(targetIndex, 0, item);
-        galleryDragIndex = -1;
-        renderProjectGallery();
-    }
-    function removeProjectGalleryItem(index) { currentProjectGallery.splice(index, 1); renderProjectGallery(); }
-
-    function saveProject() {
-        const title = document.getElementById('projectTitle').value.trim();
-        if (!title) { toast('Proje adı gerekli!', 'error'); return; }
-        const projectData = {
-            title,
-            category: document.getElementById('projectCategory').value,
-            status: document.getElementById('projectStatus').value,
-            desc: document.getElementById('projectDesc').value,
-            location: document.getElementById('projectLocation').value,
-            date: document.getElementById('projectDate').value,
-            client: document.getElementById('projectClient').value,
-            area: document.getElementById('projectArea').value,
-            fullDesc: document.getElementById('projectFullDesc').value,
-            gallery: currentProjectGallery,
-            img: currentProjectGallery[0] || ''
-        };
-        if (editingIndex >= 0) {
-            projects[editingIndex] = { ...projects[editingIndex], ...projectData };
-            toast('Proje güncellendi', 'success');
-        } else {
-            projects.push(projectData);
-            toast('Proje eklendi', 'success');
-        }
-        localStorage.setItem('cee_projects', JSON.stringify(projects));
-        renderProjects();
-        updateStats();
-        closeProjectModal();
-    }
-
-    function editProject(index) { openProjectModal(index); }
-    function deleteProject(index) {
-        if (confirm('Bu projeyi silmek istediğinize emin misiniz?')) {
-            projects.splice(index, 1);
-            localStorage.setItem('cee_projects', JSON.stringify(projects));
-            renderProjects();
-            updateStats();
-            toast('Proje silindi', 'success');
-        }
-    }
-
-    function filterProjects() {
-        const search = document.getElementById('projectSearch').value.toLowerCase();
-        const category = document.getElementById('projectFilter').value;
-        document.querySelectorAll('.project-card').forEach(card => {
-            const index = parseInt(card.dataset.index);
-            const p = projects[index];
-            if (!p) return;
-            const matchesSearch = p.title?.toLowerCase().includes(search) || false;
-            const matchesCategory = !category || p.category === category;
-            card.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
-        });
-    }
-
-    function bulkUploadProjects(input) {
-        const files = Array.from(input.files);
-        if (files.length === 0) return;
-        showLoading(`${files.length} görsel işleniyor...`);
-        let processed = 0;
-        files.forEach(file => {
-            const reader = new FileReader();
-            reader.onload = e => {
-                const title = file.name.replace(/\.[^.]+$/, '');
-                projects.push({ title, category: 'Genel', status: 'published', gallery: [e.target.result], img: e.target.result });
-                processed++;
-                if (processed === files.length) {
-                    localStorage.setItem('cee_projects', JSON.stringify(projects));
-                    renderProjects();
-                    updateStats();
-                    hideLoading();
-                    toast(`${files.length} proje eklendi`, 'success');
-                }
-            };
-            reader.readAsDataURL(file);
-        });
-        input.value = '';
-    }
-
-    // Selection
-    function toggleProjectSelect(index) {
-        if (selectedProjects.has(index)) selectedProjects.delete(index);
-        else selectedProjects.add(index);
-        renderProjects();
-        updateBulkActions();
-    }
-    function selectAllProjects() { projects.forEach((_, i) => selectedProjects.add(i)); renderProjects(); updateBulkActions(); }
-    function deselectAllProjects() { selectedProjects.clear(); renderProjects(); updateBulkActions(); }
-    function updateBulkActions() {
-        const bar = document.getElementById('bulkActions');
-        document.getElementById('selectedCount').textContent = selectedProjects.size;
-        bar.classList.toggle('active', selectedProjects.size > 0);
-    }
-    function bulkDelete() {
-        if (selectedProjects.size === 0) return;
-        if (confirm(`${selectedProjects.size} projeyi silmek istediğinize emin misiniz?`)) {
-            Array.from(selectedProjects).sort((a, b) => b - a).forEach(i => projects.splice(i, 1));
-            localStorage.setItem('cee_projects', JSON.stringify(projects));
-            selectedProjects.clear();
-            renderProjects();
-            updateStats();
-            updateBulkActions();
-            toast('Seçili projeler silindi', 'success');
-        }
-    }
-
-    // ========================================
-    // DRAG & DROP
-    // ========================================
-    function dragStart(e, type, index) {
-        dragType = type; dragIndex = index;
-        e.dataTransfer.effectAllowed = 'move';
-        setTimeout(() => e.target.classList.add('dragging'), 0);
-    }
-    function dragOver(e) {
-        e.preventDefault();
-        const target = e.target.closest('.project-card, .list-item, .gallery-item');
-        if (target) target.classList.add('drag-over');
-    }
-    function dragLeave(e) {
-        const target = e.target.closest('.project-card, .list-item, .gallery-item');
-        if (target) target.classList.remove('drag-over');
-    }
-    function drop(e, type, targetIndex) {
-        e.preventDefault();
-        document.querySelectorAll('.dragging, .drag-over').forEach(el => el.classList.remove('dragging', 'drag-over'));
-        if (dragType !== type || dragIndex === targetIndex || dragIndex === -1) { dragIndex = -1; return; }
-        let arr, storageKey, renderFn;
-        switch(type) {
-            case 'project': arr = projects; storageKey = 'cee_projects'; renderFn = renderProjects; break;
-            case 'service': arr = services; storageKey = 'cee_services'; renderFn = renderServices; break;
-            case 'ref': arr = refs; storageKey = 'cee_references'; renderFn = renderRefs; break;
-            case 'team': arr = team; storageKey = 'cee_team'; renderFn = renderTeam; break;
-            case 'faq': arr = faqs; storageKey = 'cee_faqs'; renderFn = renderFaqs; break;
-            case 'hero': arr = heroImages; storageKey = 'hero_images'; renderFn = renderHeroImages; break;
-        }
-        if (arr) {
-            const item = arr.splice(dragIndex, 1)[0];
-            arr.splice(targetIndex, 0, item);
-            localStorage.setItem(storageKey, JSON.stringify(arr));
-            renderFn();
-            toast('Sıralama güncellendi', 'success');
-        }
-        dragIndex = -1;
-    }
-
-    // ========================================
-    // SERVICES
-    // ========================================
-    function renderServices() {
-        const el = document.getElementById('servicesList');
-        if (services.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div><button class="btn btn-primary" onclick="openServiceModal()">➕ Hizmet Ekle</button></div>';
-            return;
-        }
-        el.innerHTML = services.map((s, i) => `
-            <div class="list-item" data-index="${i}" draggable="true"
-                 ondragstart="dragStart(event, 'service', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'service', ${i})">
-                <div class="list-item-drag">⋮⋮</div>
-                <div class="list-item-icon">${s.icon || '🏠'}</div>
-                <div class="list-item-content">
-                    <div class="list-item-title">${s.title || s.titleTr || ''}</div>
-                    <div class="list-item-subtitle">${s.desc || s.descTr || ''}</div>
-                </div>
-                <div class="list-item-actions">
-                    <button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteService(${i})">🗑️</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function openServiceModal(index = -1) {
-        editingIndex = index;
-        if (index >= 0) {
-            const s = services[index];
-            document.getElementById('serviceModalTitle').textContent = 'Hizmet Düzenle';
-            document.getElementById('serviceIcon').value = s.icon || '';
-            document.getElementById('serviceTitle').value = s.title || s.titleTr || '';
-            document.getElementById('serviceDesc').value = s.desc || s.descTr || '';
-        } else {
-            document.getElementById('serviceModalTitle').textContent = 'Yeni Hizmet';
-            document.getElementById('serviceIcon').value = '🏠';
-            document.getElementById('serviceTitle').value = '';
-            document.getElementById('serviceDesc').value = '';
-        }
-        openModal('serviceModal');
-    }
-
-    function saveService() {
-        const title = document.getElementById('serviceTitle').value.trim();
-        if (!title) { toast('Başlık gerekli!', 'error'); return; }
-        const data = { icon: document.getElementById('serviceIcon').value || '🏠', title, desc: document.getElementById('serviceDesc').value };
-        if (editingIndex >= 0) { services[editingIndex] = data; toast('Hizmet güncellendi', 'success'); }
-        else { services.push(data); toast('Hizmet eklendi', 'success'); }
-        localStorage.setItem('cee_services', JSON.stringify(services));
-        renderServices(); updateStats(); closeModal('serviceModal'); editingIndex = -1;
-    }
-    function editService(index) { openServiceModal(index); }
-    function deleteService(index) {
-        if (confirm('Bu hizmeti silmek istediğinize emin misiniz?')) {
-            services.splice(index, 1);
-            localStorage.setItem('cee_services', JSON.stringify(services));
-            renderServices(); updateStats(); toast('Hizmet silindi', 'success');
-        }
-    }
-
-    // ========================================
-    // REFERENCES
-    // ========================================
-    function renderRefs() {
-        const el = document.getElementById('refsList');
-        if (refs.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div><button class="btn btn-primary" onclick="openRefModal()">➕ Referans Ekle</button></div>';
-            return;
-        }
-        el.innerHTML = refs.map((r, i) => `
-            <div class="list-item" data-index="${i}" draggable="true"
-                 ondragstart="dragStart(event, 'ref', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'ref', ${i})">
-                <div class="list-item-drag">⋮⋮</div>
-                <div class="list-item-icon">${r.icon || '🏢'}</div>
-                <div class="list-item-content">
-                    <div class="list-item-title">${r.title || r.titleTr || ''}</div>
-                    <div class="list-item-subtitle">${r.desc || r.descTr || ''}</div>
-                </div>
-                <div class="list-item-actions">
-                    <button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteRef(${i})">🗑️</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function openRefModal(index = -1) {
-        editingIndex = index;
-        if (index >= 0) {
-            const r = refs[index];
-            document.getElementById('refModalTitle').textContent = 'Referans Düzenle';
-            document.getElementById('refIcon').value = r.icon || '';
-            document.getElementById('refTitle').value = r.title || r.titleTr || '';
-            document.getElementById('refDesc').value = r.desc || r.descTr || '';
-        } else {
-            document.getElementById('refModalTitle').textContent = 'Yeni Referans';
-            document.getElementById('refIcon').value = '🏢';
-            document.getElementById('refTitle').value = '';
-            document.getElementById('refDesc').value = '';
-        }
-        openModal('refModal');
-    }
-
-    function saveRef() {
-        const title = document.getElementById('refTitle').value.trim();
-        if (!title) { toast('Başlık gerekli!', 'error'); return; }
-        const data = { icon: document.getElementById('refIcon').value || '🏢', title, desc: document.getElementById('refDesc').value };
-        if (editingIndex >= 0) { refs[editingIndex] = data; toast('Referans güncellendi', 'success'); }
-        else { refs.push(data); toast('Referans eklendi', 'success'); }
-        localStorage.setItem('cee_references', JSON.stringify(refs));
-        renderRefs(); closeModal('refModal'); editingIndex = -1;
-    }
-    function editRef(index) { openRefModal(index); }
-    function deleteRef(index) {
-        if (confirm('Bu referansı silmek istediğinize emin misiniz?')) {
-            refs.splice(index, 1);
-            localStorage.setItem('cee_references', JSON.stringify(refs));
-            renderRefs(); toast('Referans silindi', 'success');
-        }
-    }
-
-    // ========================================
-    // TEAM
-    // ========================================
-    function renderTeam() {
-        const el = document.getElementById('teamList');
-        if (team.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Ekip üyesi yok</div><button class="btn btn-primary" onclick="openTeamModal()">➕ Üye Ekle</button></div>';
-            return;
-        }
-        el.innerHTML = team.map((t, i) => `
-            <div class="list-item" data-index="${i}" draggable="true"
-                 ondragstart="dragStart(event, 'team', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'team', ${i})">
-                <div class="list-item-drag">⋮⋮</div>
-                ${t.photo ? `<img src="${t.photo}" class="list-item-img">` : '<div class="list-item-icon">👤</div>'}
-                <div class="list-item-content">
-                    <div class="list-item-title">${t.name || ''}</div>
-                    <div class="list-item-subtitle">${t.role || ''}</div>
-                </div>
-                <div class="list-item-actions">
-                    <button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">✏️</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteTeamMember(${i})">🗑️</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function openTeamModal(index = -1) {
-        editingIndex = index;
-        teamPhotoData = '';
-        if (index >= 0) {
-            const t = team[index];
-            document.getElementById('teamModalTitle').textContent = 'Ekip Üyesi Düzenle';
-            document.getElementById('teamName').value = t.name || '';
-            document.getElementById('teamRole').value = t.role || '';
-            document.getElementById('teamEmail').value = t.email || '';
-            document.getElementById('teamLinkedin').value = t.linkedin || '';
-            document.getElementById('teamInstagram').value = t.instagram || '';
-            if (t.photo) {
-                teamPhotoData = t.photo;
-                document.getElementById('teamPhotoPreview').src = t.photo;
-                document.getElementById('teamPhotoPreview').style.display = 'block';
-                document.getElementById('teamPhotoPlaceholder').style.display = 'none';
-            } else {
-                document.getElementById('teamPhotoPreview').style.display = 'none';
-                document.getElementById('teamPhotoPlaceholder').style.display = 'block';
-            }
-        } else {
-            document.getElementById('teamModalTitle').textContent = 'Yeni Ekip Üyesi';
-            ['teamName','teamRole','teamEmail','teamLinkedin','teamInstagram'].forEach(id => document.getElementById(id).value = '');
-            document.getElementById('teamPhotoPreview').style.display = 'none';
-            document.getElementById('teamPhotoPlaceholder').style.display = 'block';
-        }
-        openModal('teamModal');
-    }
-
-    function saveTeamMember() {
-        const name = document.getElementById('teamName').value.trim();
-        if (!name) { toast('İsim gerekli!', 'error'); return; }
-        const data = {
-            name, role: document.getElementById('teamRole').value,
-            email: document.getElementById('teamEmail').value,
-            linkedin: document.getElementById('teamLinkedin').value,
-            instagram: document.getElementById('teamInstagram').value,
-            photo: teamPhotoData
-        };
-        if (editingIndex >= 0) { team[editingIndex] = { ...team[editingIndex], ...data }; toast('Üye güncellendi', 'success'); }
-        else { team.push(data); toast('Üye eklendi', 'success'); }
-        localStorage.setItem('cee_team', JSON.stringify(team));
-        renderTeam(); updateStats(); closeModal('teamModal'); editingIndex = -1;
-    }
-    function editTeamMember(index) { openTeamModal(index); }
-    function deleteTeamMember(index) {
-        if (confirm('Bu üyeyi silmek istediğinize emin misiniz?')) {
-            team.splice(index, 1);
-            localStorage.setItem('cee_team', JSON.stringify(team));
-            renderTeam(); updateStats(); toast('Üye silindi', 'success');
-        }
-    }
-
-    // ========================================
-    // FAQ
-    // ========================================
-    function renderFaqs() {
-        const el = document.getElementById('faqList');
-        if (faqs.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">❓</div><div class="empty-text">Soru yok</div><button class="btn btn-primary" onclick="openFaqModal()">➕ Soru Ekle</button></div>';
-            return;
-        }
-        el.innerHTML = faqs.map((f, i) => `
-            <div class="list-item" data-index="${i}" draggable="true"
-                 ondragstart="dragStart(event, 'faq', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'faq', ${i})">
-                <div class="list-item-drag">⋮⋮</div>
-                <div class="list-item-icon">❓</div>
-                <div class="list-item-content">
-                    <div class="list-item-title">${f.question || f.questionTr || ''}</div>
-                    <div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 100)}...</div>
-                </div>
-                <div class="list-item-actions">
-                    <button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">✏️</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteFaq(${i})">🗑️</button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function openFaqModal(index = -1) {
-        editingIndex = index;
-        if (index >= 0) {
-            const f = faqs[index];
-            document.getElementById('faqModalTitle').textContent = 'Soru Düzenle';
-            document.getElementById('faqQuestion').value = f.question || f.questionTr || '';
-            document.getElementById('faqAnswer').value = f.answer || f.answerTr || '';
-        } else {
-            document.getElementById('faqModalTitle').textContent = 'Yeni Soru';
-            document.getElementById('faqQuestion').value = '';
-            document.getElementById('faqAnswer').value = '';
-        }
-        openModal('faqModal');
-    }
-
-    function saveFaq() {
-        const question = document.getElementById('faqQuestion').value.trim();
-        const answer = document.getElementById('faqAnswer').value.trim();
-        if (!question || !answer) { toast('Soru ve cevap gerekli!', 'error'); return; }
-        const data = { question, answer };
-        if (editingIndex >= 0) { faqs[editingIndex] = data; toast('Soru güncellendi', 'success'); }
-        else { faqs.push(data); toast('Soru eklendi', 'success'); }
-        localStorage.setItem('cee_faqs', JSON.stringify(faqs));
-        renderFaqs(); closeModal('faqModal'); editingIndex = -1;
-    }
-    function editFaq(index) { openFaqModal(index); }
-    function deleteFaq(index) {
-        if (confirm('Bu soruyu silmek istediğinize emin misiniz?')) {
-            faqs.splice(index, 1);
-            localStorage.setItem('cee_faqs', JSON.stringify(faqs));
-            renderFaqs(); toast('Soru silindi', 'success');
-        }
-    }
-
-    // ========================================
-    // HERO IMAGES
-    // ========================================
-    function renderHeroImages() {
-        const el = document.getElementById('heroImagesGrid');
-        if (heroImages.length === 0) {
-            el.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-secondary); padding:20px;">Hero görseli yok</div>';
-            return;
-        }
-        el.innerHTML = heroImages.map((img, i) => `
-            <div class="gallery-item ${i === 0 ? 'main' : ''}" draggable="true" data-index="${i}"
-                 ondragstart="dragStart(event, 'hero', ${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'hero', ${i})">
-                ${i === 0 ? '<span class="gallery-item-badge">İlk</span>' : ''}
-                <img src="${img}" onclick="openSingleLightbox('${img.replace(/'/g, "\\'")}')">
-                <button class="gallery-item-delete" onclick="event.stopPropagation(); deleteHeroImage(${i})">✕</button>
-            </div>
-        `).join('');
-    }
-
-    function uploadHeroImages(input) {
+    function uploadProjects(input) {
         for (let f of input.files) {
             const reader = new FileReader();
             reader.onload = e => {
-                heroImages.push(e.target.result);
-                localStorage.setItem('hero_images', JSON.stringify(heroImages));
-                renderHeroImages();
-                toast('Görsel eklendi', 'success');
+                const title = prompt('Proje Adı:', f.name.replace(/\.[^.]+$/, ''));
+                if (title !== null) { projects.push({ img: e.target.result, title, category: 'Genel' }); localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); updateStats(); toast('Proje eklendi', 'success'); }
             };
             reader.readAsDataURL(f);
         }
         input.value = '';
     }
 
-    function deleteHeroImage(i) {
-        if (confirm('Silmek istiyor musunuz?')) {
-            heroImages.splice(i, 1);
-            localStorage.setItem('hero_images', JSON.stringify(heroImages));
-            renderHeroImages();
-            toast('Silindi', 'success');
-        }
-    }
+    function editProject(i) { const p = projects[i]; const title = prompt('Proje Adı:', p.title); if (title !== null) { projects[i].title = title; projects[i].category = prompt('Kategori:', p.category || 'Genel') || 'Genel'; localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); toast('Güncellendi', 'success'); } }
+    function deleteProject(i) { if (confirm('Silmek istiyor musunuz?')) { projects.splice(i, 1); localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); updateStats(); toast('Silindi', 'success'); } }
+    function filterProjects(q) { document.querySelectorAll('.project-card').forEach(c => { c.style.display = c.querySelector('.project-title').textContent.toLowerCase().includes(q.toLowerCase()) ? 'block' : 'none'; }); }
 
-    // ========================================
-    // CATEGORIES
-    // ========================================
-    function renderCategories() {
-        const el = document.getElementById('categoryTags');
-        el.innerHTML = categories.map((c, i) => `
-            <div class="category-tag">${c}${c !== 'Genel' ? `<button onclick="deleteCategory(${i})">✕</button>` : ''}</div>
-        `).join('');
-    }
-
-    function addCategory() {
-        const input = document.getElementById('newCategoryInput');
-        const name = input.value.trim();
-        if (!name) { toast('Kategori adı gerekli!', 'error'); return; }
-        if (categories.includes(name)) { toast('Bu kategori zaten var!', 'error'); return; }
-        categories.push(name);
-        localStorage.setItem('cee_categories', JSON.stringify(categories));
-        renderCategories();
-        updateCategorySelects();
-        input.value = '';
-        toast('Kategori eklendi', 'success');
-    }
-
-    function deleteCategory(index) {
-        if (categories[index] === 'Genel') return;
-        if (confirm('Bu kategoriyi silmek istediğinize emin misiniz?')) {
-            categories.splice(index, 1);
-            localStorage.setItem('cee_categories', JSON.stringify(categories));
-            renderCategories();
-            updateCategorySelects();
-            toast('Kategori silindi', 'success');
-        }
-    }
-
-    function updateCategorySelects() {
-        ['projectFilter', 'projectCategory'].forEach(id => {
-            const select = document.getElementById(id);
-            if (!select) return;
-            const isFilter = id === 'projectFilter';
-            const currentValue = select.value;
-            select.innerHTML = isFilter ? '<option value="">Tüm Kategoriler</option>' : '';
-            categories.forEach(c => { select.innerHTML += `<option value="${c}">${c}</option>`; });
-            select.value = currentValue;
-        });
-    }
-
-    // ========================================
     // MESSAGES
-    // ========================================
-    function loadMessages() {
-        const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        renderMsgs(msgs.slice(0, 4), 'recentMsgs');
-        renderMsgs(msgs, 'allMsgs');
-    }
-
+    function loadMessages() { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); renderMsgs(msgs.slice(0, 4), 'recentMsgs'); renderMsgs(msgs, 'allMsgs'); }
     function renderMsgs(msgs, id) {
         const el = document.getElementById(id);
-        if (msgs.length === 0) {
-            el.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">Henüz mesaj yok</div></div>';
-            return;
-        }
-        el.innerHTML = msgs.map((m, i) => `
-            <div class="msg-item ${!m.read ? 'msg-unread' : ''}" onclick="showMessage(${i})">
-                <div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div>
-                <div class="msg-content">
-                    <div class="msg-header">
-                        <span class="msg-name">${m.name || 'Anonim'}</span>
-                        <span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span>
-                    </div>
-                    <div class="msg-subject">${m.subject || 'Konu yok'}</div>
-                    <div class="msg-preview">${m.message || ''}</div>
-                </div>
-                ${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); deleteMsg(${i})">🗑️</button>` : ''}
-            </div>
-        `).join('');
-        if (id === 'allMsgs') {
-            const allMsgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-            allMsgs.forEach(m => m.read = true);
-            localStorage.setItem('contact_messages', JSON.stringify(allMsgs));
-            updateStats();
-        }
+        if (msgs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">Henüz mesaj yok</div></div>'; return; }
+        el.innerHTML = msgs.map((m, i) => `<div class="msg-item ${!m.read ? 'msg-unread' : ''}"><div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div><div class="msg-content"><div class="msg-header"><span class="msg-name">${m.name}</span><span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span></div><div class="msg-subject">${m.subject || 'Konu yok'}</div><div class="msg-preview">${m.message}</div></div>${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="deleteMsg(${i})">🗑️</button>` : ''}</div>`).join('');
+        if (id === 'allMsgs') { msgs.forEach(m => m.read = true); localStorage.setItem('contact_messages', JSON.stringify(msgs)); updateStats(); }
+    }
+    function deleteMsg(i) { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); msgs.splice(i, 1); localStorage.setItem('contact_messages', JSON.stringify(msgs)); loadMessages(); updateStats(); toast('Silindi', 'success'); }
+    function clearMessages() { if (confirm('Tüm mesajları silmek istiyor musunuz?')) { localStorage.setItem('contact_messages', '[]'); loadMessages(); updateStats(); toast('Tümü silindi', 'success'); } }
+
+    // SERVICES
+    function renderServices() {
+        const el = document.getElementById('servicesList');
+        if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div></div>'; return; }
+        el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">🗑️</button></div></div>`).join('');
+    }
+    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
+    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet güncellendi', 'success'); } }
+    function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); }
+
+    // REFERENCES
+    function renderRefs() {
+        const el = document.getElementById('refsList');
+        if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div></div>'; return; }
+        el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">🗑️</button></div></div>`).join('');
+    }
+    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
+    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans güncellendi', 'success'); } }
+    function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); }
+
+    // TEAM
+    function renderTeam() {
+        const el = document.getElementById('teamList');
+        if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Ekip üyesi yok</div></div>'; return; }
+        el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">👤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">🗑️</button></div></div>`).join('');
+    }
+    function addTeamMember() { const name = prompt('İsim:', ''); const role = prompt('Pozisyon:', ''); if (name) { team.push({ name, role }); renderTeam(); toast('Eklendi', 'success'); } }
+    function editTeamMember(i) { const t = team[i]; const name = prompt('İsim:', t.name); const role = prompt('Pozisyon:', t.role); if (name) { team[i] = { ...t, name, role }; renderTeam(); toast('Güncellendi', 'success'); } }
+    function saveTeam() { localStorage.setItem('cee_team', JSON.stringify(team)); toast('Kaydedildi', 'success'); }
+
+    // FAQ
+    function renderFaqs() {
+        const el = document.getElementById('faqList');
+        if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">❓</div><div class="empty-text">Soru yok</div></div>'; return; }
+        el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">❓</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">🗑️</button></div></div>`).join('');
+    }
+    function addFaq() { const q = prompt('Soru:', ''); const a = prompt('Cevap:', ''); if (q) { faqs.push({ question: q, answer: a }); renderFaqs(); toast('Eklendi', 'success'); } }
+    function editFaq(i) { const f = faqs[i]; const q = prompt('Soru:', f.question || f.questionTr); const a = prompt('Cevap:', f.answer || f.answerTr); if (q) { faqs[i] = { question: q, answer: a }; renderFaqs(); toast('Güncellendi', 'success'); } }
+    function saveFaqs() { localStorage.setItem('cee_faqs', JSON.stringify(faqs)); toast('Kaydedildi', 'success'); }
+
+    // HERO IMAGES
+    function renderHeroImages() {
+        const el = document.getElementById('heroImagesGrid');
+        if (heroImages.length === 0) { el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🖼️</div><div class="empty-text">Hero görseli yok</div></div>'; return; }
+        el.innerHTML = heroImages.map((img, i) => `<div class="project-card"><img src="${img}" class="project-img"><div class="project-actions"><button onclick="deleteHeroImage(${i})">🗑️</button></div></div>`).join('');
+    }
+    function uploadHeroImages(input) { for (let f of input.files) { const reader = new FileReader(); reader.onload = e => { heroImages.push(e.target.result); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Eklendi', 'success'); }; reader.readAsDataURL(f); } input.value = ''; }
+    function deleteHeroImage(i) { if (confirm('Silmek istiyor musunuz?')) { heroImages.splice(i, 1); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Silindi', 'success'); } }
+
+    // GENERIC HELPERS
+    function moveItem(type, i, dir) {
+        const arr = type === 'services' ? services : type === 'refs' ? refs : null;
+        if (!arr) return;
+        const ni = i + dir;
+        if (ni < 0 || ni >= arr.length) return;
+        [arr[i], arr[ni]] = [arr[ni], arr[i]];
+        if (type === 'services') { saveServices(); renderServices(); }
+        else if (type === 'refs') { saveReferences(); renderRefs(); }
+    }
+    function deleteItem(type, i) {
+        if (!confirm('Silmek istiyor musunuz?')) return;
+        if (type === 'services') { services.splice(i, 1); saveServices(); renderServices(); }
+        else if (type === 'refs') { refs.splice(i, 1); saveReferences(); renderRefs(); }
+        else if (type === 'team') { team.splice(i, 1); localStorage.setItem('cee_team', JSON.stringify(team)); renderTeam(); }
+        else if (type === 'faqs') { faqs.splice(i, 1); localStorage.setItem('cee_faqs', JSON.stringify(faqs)); renderFaqs(); }
+        toast('Silindi', 'success');
     }
 
-    function showMessage(index) {
-        const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        const m = msgs[index];
-        if (!m) return;
-        document.getElementById('messageModalBody').innerHTML = `
-            <div style="margin-bottom: 20px;"><strong>Gönderen:</strong> ${m.name || 'Anonim'}</div>
-            <div style="margin-bottom: 20px;"><strong>E-posta:</strong> ${m.email || '-'}</div>
-            <div style="margin-bottom: 20px;"><strong>Telefon:</strong> ${m.phone || '-'}</div>
-            <div style="margin-bottom: 20px;"><strong>Konu:</strong> ${m.subject || '-'}</div>
-            <div style="margin-bottom: 20px;"><strong>Tarih:</strong> ${new Date(m.timestamp || m.date).toLocaleString('tr-TR')}</div>
-            <div><strong>Mesaj:</strong><p style="margin-top: 10px; padding: 15px; background: var(--bg-dark); border-radius: 8px;">${m.message || '-'}</p></div>
-        `;
-        document.getElementById('deleteMessageBtn').onclick = () => { deleteMsg(index); closeModal('messageModal'); };
-        openModal('messageModal');
-    }
+    // HERO SETTINGS
+    function loadHero() { const s = JSON.parse(localStorage.getItem('hero_settings') || '{}'); if (s.brand) document.getElementById('heroBrand').value = s.brand; if (s.description) document.getElementById('heroDesc').value = s.description; if (s.fontSize) { document.getElementById('heroSize').value = parseInt(s.fontSize); document.getElementById('heroSizeVal').textContent = s.fontSize; } if (s.fontWeight) document.getElementById('heroWeight').value = s.fontWeight; if (s.buttonText) document.getElementById('heroBtn').value = s.buttonText; }
+    function saveHero() { localStorage.setItem('hero_settings', JSON.stringify({ brand: document.getElementById('heroBrand').value, description: document.getElementById('heroDesc').value, fontSize: document.getElementById('heroSize').value + 'px', fontWeight: document.getElementById('heroWeight').value, buttonText: document.getElementById('heroBtn').value })); toast('Kaydedildi', 'success'); }
 
-    function deleteMsg(i) {
-        const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        msgs.splice(i, 1);
-        localStorage.setItem('contact_messages', JSON.stringify(msgs));
-        loadMessages();
-        updateStats();
-        toast('Mesaj silindi', 'success');
-    }
+    // CONTACT SETTINGS
+    function loadContact() { const s = JSON.parse(localStorage.getItem('contact_settings') || '{}'); if (s.address) document.getElementById('contactAddr').value = s.address; if (s.phone) document.getElementById('contactPhone').value = s.phone; if (s.whatsapp) document.getElementById('contactWa').value = s.whatsapp; if (s.email) document.getElementById('contactEmail').value = s.email; if (s.mapsLink) document.getElementById('contactMap').value = s.mapsLink; if (s.workHours) document.getElementById('contactHours').value = s.workHours; if (s.weekend) document.getElementById('contactWeekend').value = s.weekend; }
+    function saveContact() { localStorage.setItem('contact_settings', JSON.stringify({ address: document.getElementById('contactAddr').value, phone: document.getElementById('contactPhone').value, whatsapp: document.getElementById('contactWa').value, email: document.getElementById('contactEmail').value, mapsLink: document.getElementById('contactMap').value, workHours: document.getElementById('contactHours').value, weekend: document.getElementById('contactWeekend').value })); toast('Kaydedildi', 'success'); }
 
-    function clearMessages() {
-        if (confirm('Tüm mesajları silmek istiyor musunuz?')) {
-            localStorage.setItem('contact_messages', '[]');
-            loadMessages();
-            updateStats();
-            toast('Tüm mesajlar silindi', 'success');
-        }
-    }
-
-    // ========================================
     // SETTINGS
-    // ========================================
-    function loadHero() {
-        const s = JSON.parse(localStorage.getItem('hero_settings') || '{}');
-        if (s.brand) document.getElementById('heroBrand').value = s.brand;
-        if (s.description) document.getElementById('heroDesc').value = s.description;
-        if (s.fontSize) { document.getElementById('heroSize').value = parseInt(s.fontSize); document.getElementById('heroSizeVal').textContent = s.fontSize; }
-        if (s.fontWeight) document.getElementById('heroWeight').value = s.fontWeight;
-        if (s.buttonText) document.getElementById('heroBtn').value = s.buttonText;
-    }
-
-    function saveHero() {
-        localStorage.setItem('hero_settings', JSON.stringify({
-            brand: document.getElementById('heroBrand').value,
-            description: document.getElementById('heroDesc').value,
-            fontSize: document.getElementById('heroSize').value + 'px',
-            fontWeight: document.getElementById('heroWeight').value,
-            buttonText: document.getElementById('heroBtn').value
-        }));
-        toast('Hero ayarları kaydedildi', 'success');
-    }
-
-    function loadContact() {
-        const s = JSON.parse(localStorage.getItem('contact_settings') || '{}');
-        if (s.address) document.getElementById('contactAddr').value = s.address;
-        if (s.phone) document.getElementById('contactPhone').value = s.phone;
-        if (s.whatsapp) document.getElementById('contactWa').value = s.whatsapp;
-        if (s.email) document.getElementById('contactEmail').value = s.email;
-        if (s.mapsLink) document.getElementById('contactMap').value = s.mapsLink;
-        if (s.workHours) document.getElementById('contactHours').value = s.workHours;
-        if (s.weekend) document.getElementById('contactWeekend').value = s.weekend;
-    }
-
-    function saveContact() {
-        localStorage.setItem('contact_settings', JSON.stringify({
-            address: document.getElementById('contactAddr').value,
-            phone: document.getElementById('contactPhone').value,
-            whatsapp: document.getElementById('contactWa').value,
-            email: document.getElementById('contactEmail').value,
-            mapsLink: document.getElementById('contactMap').value,
-            workHours: document.getElementById('contactHours').value,
-            weekend: document.getElementById('contactWeekend').value
-        }));
-        toast('İletişim bilgileri kaydedildi', 'success');
-    }
-
-    function loadSettings() {
-        const f = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
-        if (f.company) document.getElementById('footerCompany').value = f.company;
-        if (f.year) document.getElementById('footerYear').value = f.year;
-        const soc = JSON.parse(localStorage.getItem('social_links') || '{}');
-        if (soc.instagram) document.getElementById('socialIg').value = soc.instagram;
-        if (soc.twitter) document.getElementById('socialTw').value = soc.twitter;
-        if (soc.linkedin) document.getElementById('socialLi').value = soc.linkedin;
-        if (soc.youtube) document.getElementById('socialYt').value = soc.youtube;
-        const c = JSON.parse(localStorage.getItem('color_settings') || '{}');
-        if (c.primary) document.getElementById('colorPrimary').value = c.primary;
+    function loadSettings() { 
+        // Footer
+        const f = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}'); 
+        if (f.company) document.getElementById('footerCompany').value = f.company; 
+        if (f.year) document.getElementById('footerYear').value = f.year; 
+        
+        // Sosyal Medya
+        const soc = JSON.parse(localStorage.getItem('social_links') || '{}'); 
+        if (soc.instagram) document.getElementById('socialIg').value = soc.instagram; 
+        if (soc.twitter) document.getElementById('socialTw').value = soc.twitter; 
+        if (soc.linkedin) document.getElementById('socialLi').value = soc.linkedin; 
+        if (soc.youtube) document.getElementById('socialYt').value = soc.youtube; 
+        
+        // Renkler
+        const c = JSON.parse(localStorage.getItem('color_settings') || '{}'); 
+        if (c.primary) document.getElementById('colorPrimary').value = c.primary; 
         if (c.iconBg) document.getElementById('colorIconBg').value = c.iconBg;
+        
+        // SEO
         const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
         if (seo.title) document.getElementById('seoTitle').value = seo.title;
         if (seo.description) document.getElementById('seoDesc').value = seo.description;
         if (seo.keywords) document.getElementById('seoKeywords').value = seo.keywords;
+        
+        // Tema
         const theme = JSON.parse(localStorage.getItem('theme_settings') || '{}');
         if (theme.defaultTheme) document.getElementById('defaultTheme').value = theme.defaultTheme;
         if (theme.allowToggle !== undefined) document.getElementById('allowDarkToggle').checked = theme.allowToggle;
     }
-
-    function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Footer kaydedildi', 'success'); }
-    function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Sosyal medya kaydedildi', 'success'); }
-    function saveColors() { localStorage.setItem('color_settings', JSON.stringify({ primary: document.getElementById('colorPrimary').value, iconBg: document.getElementById('colorIconBg').value })); toast('Renkler kaydedildi', 'success'); }
-    function resetColors() { document.getElementById('colorPrimary').value = '#d4af37'; document.getElementById('colorIconBg').value = '#d4af37'; localStorage.removeItem('color_settings'); toast('Renkler sıfırlandı', 'success'); }
-    function saveSeoSettings() { localStorage.setItem('seo_settings', JSON.stringify({ title: document.getElementById('seoTitle').value, description: document.getElementById('seoDesc').value, keywords: document.getElementById('seoKeywords').value })); toast('SEO ayarları kaydedildi', 'success'); }
-    function saveThemeSettings() { localStorage.setItem('theme_settings', JSON.stringify({ defaultTheme: document.getElementById('defaultTheme').value, allowToggle: document.getElementById('allowDarkToggle').checked })); toast('Tema ayarları kaydedildi', 'success'); }
+    
+    function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
+    function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
+    function saveColors() { localStorage.setItem('color_settings', JSON.stringify({ primary: document.getElementById('colorPrimary').value, iconBg: document.getElementById('colorIconBg').value })); toast('Kaydedildi', 'success'); }
+    function resetColors() { document.getElementById('colorPrimary').value = '#d4af37'; document.getElementById('colorIconBg').value = '#d4af37'; localStorage.removeItem('color_settings'); toast('Sıfırlandı', 'success'); }
+    
+    // SEO SETTINGS
+    function saveSeoSettings() {
+        const seo = {
+            title: document.getElementById('seoTitle').value,
+            description: document.getElementById('seoDesc').value,
+            keywords: document.getElementById('seoKeywords').value
+        };
+        localStorage.setItem('seo_settings', JSON.stringify(seo));
+        toast('SEO ayarları kaydedildi', 'success');
+    }
+    
+    // TEMA SETTINGS
+    function saveThemeSettings() {
+        const theme = {
+            defaultTheme: document.getElementById('defaultTheme').value,
+            allowToggle: document.getElementById('allowDarkToggle').checked
+        };
+        localStorage.setItem('theme_settings', JSON.stringify(theme));
+        toast('Tema ayarları kaydedildi', 'success');
+    }
 
     // LOGO
-    function loadLogo() {
-        const logo = localStorage.getItem('site_logo');
-        if (logo) {
-            document.getElementById('logoPreview').src = logo;
-            document.getElementById('logoPreview').style.display = 'block';
-            document.getElementById('logoPlaceholder').style.display = 'none';
+    function loadLogo() { 
+        const logo = localStorage.getItem('site_logo'); 
+        if (logo) { 
+            document.getElementById('logoPreview').src = logo; 
+            document.getElementById('logoPreview').style.display = 'block'; 
+            document.getElementById('logoPlaceholder').style.display = 'none'; 
             document.getElementById('deleteLogoBtn').style.display = 'block';
             document.getElementById('sidebarLogo').innerHTML = `<img src="${logo}">`;
+            // SaÄŸ alt sabit logo
+            document.getElementById('fixedLogoImg').src = logo;
+            document.getElementById('fixedLogo').style.display = 'block';
         } else {
             document.getElementById('logoPreview').style.display = 'none';
             document.getElementById('logoPlaceholder').style.display = 'block';
             document.getElementById('deleteLogoBtn').style.display = 'none';
             document.getElementById('sidebarLogo').innerHTML = 'CEE';
+            document.getElementById('fixedLogo').style.display = 'none';
         }
     }
-    function uploadLogo(input) {
-        const f = input.files[0];
-        if (!f) return;
-        const reader = new FileReader();
-        reader.onload = e => { localStorage.setItem('site_logo', e.target.result); loadLogo(); toast('Logo yüklendi', 'success'); };
-        reader.readAsDataURL(f);
+    function uploadLogo(input) { 
+        const f = input.files[0]; 
+        if (!f) return; 
+        const reader = new FileReader(); 
+        reader.onload = e => { 
+            localStorage.setItem('site_logo', e.target.result); 
+            loadLogo(); 
+            toast('Logo yüklendi', 'success'); 
+        }; 
+        reader.readAsDataURL(f); 
     }
     function deleteLogo() {
-        if (confirm('Logoyu silmek istediğinize emin misiniz?')) {
+        if (confirm('Logoyu silmek istediÄŸinize emin misiniz?')) {
             localStorage.removeItem('site_logo');
             loadLogo();
             toast('Logo silindi', 'success');
@@ -2512,187 +1197,69 @@
     }
 
     // SECURITY
-    function changePassword() {
-        const u = document.getElementById('newUser').value;
-        const p = document.getElementById('newPass').value;
-        const pc = document.getElementById('newPassConfirm').value;
-        if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; }
-        if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; }
-        if (u) credentials.username = u;
-        if (p) credentials.password = p;
-        localStorage.setItem('cee_credentials', JSON.stringify(credentials));
-        document.getElementById('newUser').value = '';
-        document.getElementById('newPass').value = '';
-        document.getElementById('newPassConfirm').value = '';
-        toast('Giriş bilgileri güncellendi', 'success');
-    }
+    function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; } if (u) credentials.username = u; if (p) credentials.password = p; localStorage.setItem('cee_credentials', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('Güncellendi', 'success'); }
 
     // BACKUP
-    function exportBackup() {
-        const backup = {
-            projects: localStorage.getItem('cee_projects'),
-            services: localStorage.getItem('cee_services'),
-            references: localStorage.getItem('cee_references'),
-            team: localStorage.getItem('cee_team'),
-            faqs: localStorage.getItem('cee_faqs'),
-            categories: localStorage.getItem('cee_categories'),
-            hero: localStorage.getItem('hero_settings'),
-            heroImages: localStorage.getItem('hero_images'),
-            contact: localStorage.getItem('contact_settings'),
-            footer: localStorage.getItem('cee_footer_settings'),
-            social: localStorage.getItem('social_links'),
-            colors: localStorage.getItem('color_settings'),
-            messages: localStorage.getItem('contact_messages'),
+    function exportBackup() { 
+        const backup = { 
+            projects: localStorage.getItem('cee_projects'), 
+            services: localStorage.getItem('cee_services'), 
+            references: localStorage.getItem('cee_references'), 
+            team: localStorage.getItem('cee_team'), 
+            faqs: localStorage.getItem('cee_faqs'), 
+            hero: localStorage.getItem('hero_settings'), 
+            heroImages: localStorage.getItem('hero_images'), 
+            contact: localStorage.getItem('contact_settings'), 
+            footer: localStorage.getItem('cee_footer_settings'), 
+            social: localStorage.getItem('social_links'), 
+            colors: localStorage.getItem('color_settings'), 
+            messages: localStorage.getItem('contact_messages'), 
             logo: localStorage.getItem('site_logo'),
             seo: localStorage.getItem('seo_settings'),
             theme: localStorage.getItem('theme_settings'),
-            date: new Date().toISOString()
-        };
-        const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `cee-backup-${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
-        toast('Yedek indirildi', 'success');
+            date: new Date().toISOString() 
+        }; 
+        const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }); 
+        const a = document.createElement('a'); 
+        a.href = URL.createObjectURL(blob); 
+        a.download = `cee-backup-${new Date().toISOString().split('T')[0]}.json`; 
+        a.click(); 
+        toast('Yedek indirildi', 'success'); 
+    }
+    
+    function importBackup(input) { 
+        const f = input.files[0]; 
+        if (!f) return; 
+        const reader = new FileReader(); 
+        reader.onload = e => { 
+            try { 
+                const b = JSON.parse(e.target.result); 
+                if (b.projects) localStorage.setItem('cee_projects', b.projects); 
+                if (b.services) localStorage.setItem('cee_services', b.services); 
+                if (b.references) localStorage.setItem('cee_references', b.references); 
+                if (b.team) localStorage.setItem('cee_team', b.team); 
+                if (b.faqs) localStorage.setItem('cee_faqs', b.faqs); 
+                if (b.hero) localStorage.setItem('hero_settings', b.hero); 
+                if (b.heroImages) localStorage.setItem('hero_images', b.heroImages); 
+                if (b.contact) localStorage.setItem('contact_settings', b.contact); 
+                if (b.footer) localStorage.setItem('cee_footer_settings', b.footer); 
+                if (b.social) localStorage.setItem('social_links', b.social); 
+                if (b.colors) localStorage.setItem('color_settings', b.colors); 
+                if (b.messages) localStorage.setItem('contact_messages', b.messages); 
+                if (b.logo) localStorage.setItem('site_logo', b.logo);
+                if (b.seo) localStorage.setItem('seo_settings', b.seo);
+                if (b.theme) localStorage.setItem('theme_settings', b.theme);
+                loadAll(); 
+                toast('Yedek yüklendi', 'success'); 
+            } catch(e) { 
+                toast('Geçersiz dosya', 'error'); 
+            } 
+        }; 
+        reader.readAsText(f); 
     }
 
-    function importBackup(input) {
-        const f = input.files[0];
-        if (!f) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-            try {
-                const b = JSON.parse(e.target.result);
-                Object.keys(b).forEach(key => {
-                    if (b[key] && key !== 'date') {
-                        const storageKey = key === 'hero' ? 'hero_settings' : key === 'heroImages' ? 'hero_images' : key === 'contact' ? 'contact_settings' : key === 'footer' ? 'cee_footer_settings' : key === 'social' ? 'social_links' : key === 'colors' ? 'color_settings' : key === 'messages' ? 'contact_messages' : key === 'logo' ? 'site_logo' : key === 'seo' ? 'seo_settings' : key === 'theme' ? 'theme_settings' : `cee_${key}`;
-                        localStorage.setItem(storageKey, b[key]);
-                    }
-                });
-                loadAll();
-                toast('Yedek yüklendi', 'success');
-            } catch(e) { toast('Geçersiz dosya', 'error'); }
-        };
-        reader.readAsText(f);
-    }
-
-    // ========================================
-    // MODALS & LIGHTBOX
-    // ========================================
-    function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; editingIndex = -1; }
-
-    function openLightbox(projectIndex) {
-        const p = projects[projectIndex];
-        if (!p) return;
-        lightboxImages = p.gallery || (p.img ? [p.img] : []);
-        if (lightboxImages.length === 0) return;
-        lightboxIndex = 0;
-        updateLightbox();
-        document.getElementById('lightbox').classList.add('active');
-    }
-    function openSingleLightbox(img) {
-        lightboxImages = [img];
-        lightboxIndex = 0;
-        updateLightbox();
-        document.getElementById('lightbox').classList.add('active');
-    }
-    function updateLightbox() { document.getElementById('lightboxImg').src = lightboxImages[lightboxIndex]; }
-    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
-    function lightboxPrev() { lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length; updateLightbox(); }
-    function lightboxNext() { lightboxIndex = (lightboxIndex + 1) % lightboxImages.length; updateLightbox(); }
-
-    // ========================================
-    // TOAST & LOADING
-    // ========================================
-    function toast(msg, type = 'success') {
-        const box = document.getElementById('toastBox');
-        const t = document.createElement('div');
-        t.className = `toast ${type}`;
-        const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : '⚠️';
-        t.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
-        box.appendChild(t);
-        setTimeout(() => t.remove(), 3000);
-    }
-    function showLoading(text = 'Yükleniyor...') { document.getElementById('loadingText').textContent = text; document.getElementById('loadingOverlay').classList.add('active'); }
-    function hideLoading() { document.getElementById('loadingOverlay').classList.remove('active'); }
-
-    // ========================================
-    // DROPZONE SETUP
-    // ========================================
-    function setupDropzone(dropzoneId, inputId, uploadFn) {
-        const dropzone = document.getElementById(dropzoneId);
-        const input = document.getElementById(inputId);
-        if (!dropzone || !input) return;
-        dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => {
-            e.preventDefault();
-            dropzone.classList.remove('dragover');
-            if (e.dataTransfer.files.length > 0) { input.files = e.dataTransfer.files; uploadFn(input); }
-        });
-    }
-
-    function handleProjectGalleryUpload(files) {
-        Array.from(files).forEach(file => {
-            if (!file.type.startsWith('image/')) return;
-            const reader = new FileReader();
-            reader.onload = e => { currentProjectGallery.push(e.target.result); renderProjectGallery(); };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    function handleTeamPhotoUpload(file) {
-        if (!file || !file.type.startsWith('image/')) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-            teamPhotoData = e.target.result;
-            document.getElementById('teamPhotoPreview').src = e.target.result;
-            document.getElementById('teamPhotoPreview').style.display = 'block';
-            document.getElementById('teamPhotoPlaceholder').style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-    }
-
-    // Initialize dropzones on DOM ready
-    document.addEventListener('DOMContentLoaded', () => {
-        setupDropzone('projectDropzone', 'projectBulkUpload', bulkUploadProjects);
-        setupDropzone('heroDropzone', 'heroImgUpload', uploadHeroImages);
-        setupDropzone('logoDropzone', 'logoUpload', uploadLogo);
-
-        const galleryDropzone = document.getElementById('projectGalleryDropzone');
-        const galleryInput = document.getElementById('projectGalleryUpload');
-        if (galleryDropzone && galleryInput) {
-            galleryDropzone.addEventListener('click', () => galleryInput.click());
-            galleryDropzone.addEventListener('dragover', e => { e.preventDefault(); galleryDropzone.classList.add('dragover'); });
-            galleryDropzone.addEventListener('dragleave', () => galleryDropzone.classList.remove('dragover'));
-            galleryDropzone.addEventListener('drop', e => { e.preventDefault(); galleryDropzone.classList.remove('dragover'); handleProjectGalleryUpload(e.dataTransfer.files); });
-            galleryInput.addEventListener('change', () => { handleProjectGalleryUpload(galleryInput.files); galleryInput.value = ''; });
-        }
-
-        const teamDropzone = document.getElementById('teamPhotoDropzone');
-        const teamInput = document.getElementById('teamPhotoUpload');
-        if (teamDropzone && teamInput) {
-            teamDropzone.addEventListener('click', () => teamInput.click());
-            teamDropzone.addEventListener('dragover', e => { e.preventDefault(); teamDropzone.classList.add('dragover'); });
-            teamDropzone.addEventListener('dragleave', () => teamDropzone.classList.remove('dragover'));
-            teamDropzone.addEventListener('drop', e => { e.preventDefault(); teamDropzone.classList.remove('dragover'); handleTeamPhotoUpload(e.dataTransfer.files[0]); });
-            teamInput.addEventListener('change', () => { handleTeamPhotoUpload(teamInput.files[0]); teamInput.value = ''; });
-        }
-    });
-
-    // Keyboard navigation for lightbox
-    document.addEventListener('keydown', e => {
-        if (!document.getElementById('lightbox').classList.contains('active')) return;
-        if (e.key === 'ArrowLeft') lightboxPrev();
-        if (e.key === 'ArrowRight') lightboxNext();
-    });
-
-    // Close modal on overlay click
-    document.querySelectorAll('.modal-overlay').forEach(m => {
-        m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
-    });
+    // TOAST
+    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
     </script>
 </body>
 </html>
