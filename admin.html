@@ -833,14 +833,40 @@ a{color:inherit;text-decoration:none}
                     <div class="card">
                         <div class="card-header"><span class="card-title">🎨 Renk Ayarları</span></div>
                         <div class="card-body">
+                            <!-- HAZIR TEMALAR -->
+                            <div style="margin-bottom: 25px;">
+                                <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
+                                        <span style="color: #c9a227;">●</span> Klasik Altın
+                                    </button>
+                                    <button onclick="applyTheme('modern')" class="btn" style="padding: 10px 16px; border: 2px solid #3b82f6; background: linear-gradient(135deg, #fff, #f0f7ff); color: #1a1a1a; border-radius: 8px;">
+                                        <span style="color: #3b82f6;">●</span> Modern Mavi
+                                    </button>
+                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #666; background: linear-gradient(135deg, #2c2c2c, #1a1a1a); color: #fff; border-radius: 8px;">
+                                        <span style="color: #c9a227;">●</span> Koyu Mod
+                                    </button>
+                                    <button onclick="applyTheme('warm')" class="btn" style="padding: 10px 16px; border: 2px solid #d97706; background: linear-gradient(135deg, #fffbeb, #fef3c7); color: #1a1a1a; border-radius: 8px;">
+                                        <span style="color: #d97706;">●</span> Sıcak Tonlar
+                                    </button>
+                                    <button onclick="applyTheme('minimal')" class="btn" style="padding: 10px 16px; border: 2px solid #000; background: #fff; color: #1a1a1a; border-radius: 8px;">
+                                        <span style="color: #000;">●</span> Minimalist
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                            
+                            <!-- MANUEL AYARLAR -->
+                            <label class="form-label" style="margin-bottom: 12px; display: block;">veya Manuel Ayarla:</label>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label">Ana Renk (Accent)</label>
-                                    <input type="color" class="form-input" id="colorPrimary" value="#d4af37" style="height:45px;padding:5px;">
+                                    <input type="color" class="form-input" id="colorPrimary" value="#c9a227" style="height:45px;padding:5px;">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Simge Arka Plan</label>
-                                    <input type="color" class="form-input" id="colorIconBg" value="#d4af37" style="height:45px;padding:5px;">
+                                    <input type="color" class="form-input" id="colorIconBg" value="#c9a227" style="height:45px;padding:5px;">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -856,7 +882,7 @@ a{color:inherit;text-decoration:none}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label">Yazı Rengi</label>
-                                    <input type="color" class="form-input" id="colorText" value="#1a1a1a" style="height:45px;padding:5px;">
+                                    <input type="color" class="form-input" id="colorText" value="#2c2c2c" style="height:45px;padding:5px;">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Header/Footer Rengi</label>
@@ -1189,14 +1215,53 @@ a{color:inherit;text-decoration:none}
         toast('Renkler kaydedildi! Sayfayı yenileyin.', 'success'); 
     }
     function resetColors() { 
-        document.getElementById('colorPrimary').value = '#d4af37'; 
-        document.getElementById('colorIconBg').value = '#d4af37'; 
+        document.getElementById('colorPrimary').value = '#c9a227'; 
+        document.getElementById('colorIconBg').value = '#c9a227'; 
         document.getElementById('colorBgMain').value = '#ffffff';
         document.getElementById('colorBgSection').value = '#f5f5f5';
-        document.getElementById('colorText').value = '#1a1a1a';
+        document.getElementById('colorText').value = '#2c2c2c';
         document.getElementById('colorHeader').value = '#1a1a1a';
         localStorage.removeItem('color_settings'); 
         toast('Renkler sıfırlandı!', 'success'); 
+    }
+    
+    // HAZIR TEMA FONKSİYONU
+    function applyTheme(theme) {
+        const themes = {
+            classic: {
+                primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
+                bgSection: '#f5f5f5', text: '#2c2c2c', header: '#1a1a1a'
+            },
+            modern: {
+                primary: '#3b82f6', iconBg: '#3b82f6', bgMain: '#ffffff', 
+                bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a'
+            },
+            dark: {
+                primary: '#c9a227', iconBg: '#c9a227', bgMain: '#1a1a1a', 
+                bgSection: '#2c2c2c', text: '#e5e5e5', header: '#0f0f0f'
+            },
+            warm: {
+                primary: '#d97706', iconBg: '#d97706', bgMain: '#fffbeb', 
+                bgSection: '#fef3c7', text: '#78350f', header: '#451a03'
+            },
+            minimal: {
+                primary: '#000000', iconBg: '#000000', bgMain: '#ffffff', 
+                bgSection: '#fafafa', text: '#171717', header: '#000000'
+            }
+        };
+        
+        const t = themes[theme];
+        if (!t) return;
+        
+        document.getElementById('colorPrimary').value = t.primary;
+        document.getElementById('colorIconBg').value = t.iconBg;
+        document.getElementById('colorBgMain').value = t.bgMain;
+        document.getElementById('colorBgSection').value = t.bgSection;
+        document.getElementById('colorText').value = t.text;
+        document.getElementById('colorHeader').value = t.header;
+        
+        saveColors();
+        toast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' teması uygulandı!', 'success');
     }
     
     // SEO SETTINGS
