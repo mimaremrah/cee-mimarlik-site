@@ -2299,8 +2299,11 @@
             margin: 0;
         }
 
-        .section-title .accent {
-            color: var(--icon-bg, #d4af37) !important;
+        .section-title .accent,
+        .section-title span.accent,
+        h2.section-title .accent,
+        h2.section-title span.accent {
+            color: #d4af37 !important;
             font-weight: 400;
         }
 
@@ -4921,7 +4924,7 @@ window.goToAdmin = goToAdmin;
 <!-- PROJECTS -->
 <section id="projeler">
     <div class="section-header">
-        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects">PROJE<span class="accent">LERİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects">PROJE<span class="accent" style="color: #d4af37 !important;">LERİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
@@ -4941,7 +4944,7 @@ window.goToAdmin = goToAdmin;
 <section id="hakkimizda">
     <div class="section-header">
         <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US">HAKKIMIZDA</div>
-        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are">BİZ <span class="accent">KİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are">BİZ <span class="accent" style="color: #d4af37 !important;">KİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
@@ -4986,7 +4989,7 @@ window.goToAdmin = goToAdmin;
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
             <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
-            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">SUNDUĞUMUZ <span class="accent">HİZMETLER</span></h2>
+            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">SUNDUĞUMUZ <span class="accent" style="color: #d4af37 !important;">HİZMETLER</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -5160,7 +5163,7 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 <section id="sss" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
         <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS">SIK SORULAN SORULAR</div>
-        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">MERAK <span class="accent">EDİLENLER</span></h2>
+        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">MERAK <span class="accent" style="color: #d4af37 !important;">EDİLENLER</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -5213,7 +5216,7 @@ loadFaqs();
 <section id="iletisim">
     <div class="section-header">
         <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</div>
-        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">BİZE <span class="accent">ULAŞIN</span></h2>
+        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">BİZE <span class="accent" style="color: #d4af37 !important;">ULAŞIN</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -9233,6 +9236,7 @@ function loadSiteSettings() {
             // Section title içindeki .accent span'ları
             document.querySelectorAll('.section-title .accent').forEach(el => {
                 el.style.setProperty('color', colorSettings.iconBg, 'important');
+                el.setAttribute('style', `color: ${colorSettings.iconBg} !important;`);
             });
             
             // Section title ana rengi koyu kalsın
