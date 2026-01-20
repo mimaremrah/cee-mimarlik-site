@@ -7,8 +7,8 @@
     <!-- GLOBAL TEMA AYARLARI - Tüm cihazlarda aynı görünüm için -->
     <script>
     // CEE MİMARLIK - Site Tema Ayarları
-    // Admin panelden değiştirdiğinizde bu kısmı güncelleyin
-    const SITE_THEME = {
+    // Admin panelden değiştirilir - bu sadece varsayılan
+    const SITE_THEME_DEFAULT = {
         primary: '#5a6677',
         iconBg: '#5a6677',
         bgMain: '#ffffff',
@@ -17,9 +17,13 @@
         header: '#1a202c'
     };
     
-    // Tema ayarlarını localStorage'a yükle
+    // Tema ayarlarını localStorage'a yükle - SADECE YOKSA veya BOŞSA
     if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('color_settings', JSON.stringify(SITE_THEME));
+        const existingSettings = localStorage.getItem('color_settings');
+        // Sadece hiç ayar yoksa veya boş obje ise varsayılanı yaz
+        if (!existingSettings || existingSettings === '{}' || existingSettings === 'null') {
+            localStorage.setItem('color_settings', JSON.stringify(SITE_THEME_DEFAULT));
+        }
     }
     </script>
     
@@ -9982,764 +9986,83 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
 
 </body>
 
-</html>
-
-<!-- KAPSAMLI DARK MODE, CROSS-BROWSER VE MOBİL CSS -->
-<style>
-/* ========================================
-   DARK MODE - TUTARLI RENK PALETİ
-   ======================================== */
-body.dark-mode {
-    --dm-bg: #0f172a;
-    --dm-bg-secondary: #1e293b;
-    --dm-bg-card: #1e293b;
-    --dm-text: #f1f5f9;
-    --dm-text-secondary: #94a3b8;
-    --dm-border: #334155;
-    --dm-accent: #5a6677;
-    --dm-accent-light: #7a8694;
-    
-    background: var(--dm-bg) !important;
-    color: var(--dm-text) !important;
-}
-
-/* Ana Arkaplan */
-body.dark-mode,
-body.dark-mode #hizmetler,
-body.dark-mode #referanslar,
-body.dark-mode #iletisim,
-body.dark-mode #projeler,
-body.dark-mode #hakkimizda,
-body.dark-mode #ekip,
-body.dark-mode section {
-    background: var(--dm-bg) !important;
-}
-
-/* Header */
-body.dark-mode header {
-    background: rgba(15, 23, 42, 0.95) !important;
-    border-bottom: 1px solid var(--dm-border) !important;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-}
-
-body.dark-mode header.scrolled {
-    background: rgba(15, 23, 42, 0.98) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.dark-mode .logo-container {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.9)) !important;
-    border-color: var(--dm-accent) !important;
-}
-
-body.dark-mode .logo-text,
-body.dark-mode .logo-title {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .logo-subtitle {
-    color: var(--dm-text-secondary) !important;
-}
-
-/* Navigation */
-body.dark-mode nav a,
-body.dark-mode .nav-links a {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode nav a:hover,
-body.dark-mode .nav-links a:hover {
-    color: var(--dm-accent) !important;
-}
-
-/* Hero Section */
-body.dark-mode .hero-section,
-body.dark-mode .hero {
-    background: var(--dm-bg) !important;
-}
-
-body.dark-mode .hero-title,
-body.dark-mode .hero-content h1 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .hero-description,
-body.dark-mode .hero-content p {
-    color: var(--dm-text-secondary) !important;
-}
-
-body.dark-mode .hero-overlay {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75)) !important;
-}
-
-/* Section Titles */
-body.dark-mode .section-title,
-body.dark-mode .section-header h2,
-body.dark-mode h2,
-body.dark-mode h3 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .section-label,
-body.dark-mode .section-subtitle,
-body.dark-mode p {
-    color: var(--dm-text-secondary) !important;
-}
-
-/* Kartlar - Hizmetler */
-body.dark-mode .service-card-v2,
-body.dark-mode .service-card {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.dark-mode .service-card-v2 h3,
-body.dark-mode .service-card h3 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .service-card-v2 p,
-body.dark-mode .service-card p {
-    color: var(--dm-text-secondary) !important;
-}
-
-body.dark-mode .service-card-v2:hover,
-body.dark-mode .service-card:hover {
-    border-bottom-color: var(--dm-accent) !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* Kartlar - Referanslar */
-body.dark-mode .ref-card {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-}
-
-body.dark-mode .ref-card h4 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .ref-card p {
-    color: var(--dm-text-secondary) !important;
-}
-
-body.dark-mode .ref-card:hover {
-    background: var(--dm-bg-secondary) !important;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* Projeler */
-body.dark-mode .project-card,
-body.dark-mode .proje-card {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-}
-
-body.dark-mode .project-card h3,
-body.dark-mode .proje-card h3 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .project-overlay {
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent) !important;
-}
-
-/* FAQ */
-body.dark-mode .faq-item {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-}
-
-body.dark-mode .faq-question,
-body.dark-mode .faq-item h3 {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .faq-answer,
-body.dark-mode .faq-answer p {
-    color: var(--dm-text-secondary) !important;
-}
-
-/* İletişim */
-body.dark-mode #iletisim {
-    background: var(--dm-bg) !important;
-}
-
-body.dark-mode .contact-icon-circle {
-    background: linear-gradient(135deg, var(--dm-accent), var(--dm-accent-light)) !important;
-}
-
-body.dark-mode #iletisim input,
-body.dark-mode #iletisim textarea,
-body.dark-mode #iletisim select,
-body.dark-mode .form-input,
-body.dark-mode .form-textarea {
-    background: var(--dm-bg-card) !important;
-    border-color: var(--dm-border) !important;
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode #iletisim input::placeholder,
-body.dark-mode #iletisim textarea::placeholder {
-    color: var(--dm-text-secondary) !important;
-}
-
-body.dark-mode #iletisim input:focus,
-body.dark-mode #iletisim textarea:focus,
-body.dark-mode #iletisim select:focus {
-    border-color: var(--dm-accent) !important;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
-}
-
-/* Footer */
-body.dark-mode footer {
-    background: var(--dm-bg-secondary) !important;
-    border-top: 1px solid var(--dm-border) !important;
-}
-
-body.dark-mode .footer-copyright,
-body.dark-mode footer p {
-    color: var(--dm-text-secondary) !important;
-}
-
-body.dark-mode #footerCompany {
-    color: var(--dm-accent) !important;
-}
-
-/* WhatsApp & Chat Buttons */
-body.dark-mode .whatsapp-notification {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-    color: var(--dm-text) !important;
-}
-
-/* AI Assistant Panel */
-body.dark-mode .ai-assistant-panel,
-body.dark-mode .ai-panel-messages,
-body.dark-mode .ai-chat-window {
-    background: var(--dm-bg) !important;
-    border-color: var(--dm-border) !important;
-}
-
-body.dark-mode .ai-panel-bubble {
-    background: var(--dm-bg-card) !important;
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .ai-panel-input,
-body.dark-mode .ai-assistant-input input {
-    background: var(--dm-bg-card) !important;
-    border-color: var(--dm-border) !important;
-    color: var(--dm-text) !important;
-}
-
-/* Toast Notifications */
-body.dark-mode .toast {
-    background: var(--dm-bg-card) !important;
-    border-color: var(--dm-border) !important;
-    color: var(--dm-text) !important;
-}
-
-/* Scroll Progress */
-body.dark-mode .scroll-progress-circle {
-    background: var(--dm-bg-card) !important;
-}
-
-/* Social Sidebar */
-body.dark-mode .social-sidebar-content {
-    background: var(--dm-bg-card) !important;
-}
-
-body.dark-mode .social-sidebar-header {
-    border-bottom-color: var(--dm-border) !important;
-    color: var(--dm-text) !important;
-}
-
-/* Mobil Menu */
-body.dark-mode .mobile-menu {
-    background: var(--dm-bg) !important;
-}
-
-body.dark-mode .mobile-menu a {
-    color: var(--dm-text) !important;
-    border-bottom-color: var(--dm-border) !important;
-}
-
-/* Ekip */
-body.dark-mode .team-card {
-    background: var(--dm-bg-card) !important;
-    border: 1px solid var(--dm-border) !important;
-}
-
-body.dark-mode .team-card h4,
-body.dark-mode .team-name {
-    color: var(--dm-text) !important;
-}
-
-body.dark-mode .team-role {
-    color: var(--dm-text-secondary) !important;
-}
-
-/* ========================================
-   CROSS-BROWSER UYUMLULUK
-   ======================================== */
-
-/* Flexbox */
-.flex-center {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-/* Grid - Eski tarayıcı desteği */
-@supports not (display: grid) {
-    .services-grid,
-    .references-grid,
-    .project-grid,
-    #servicesGrid,
-    #referencesGrid {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
-    
-    .services-grid > *,
-    .references-grid > *,
-    #servicesGrid > *,
-    #referencesGrid > * {
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 0 calc(33.333% - 20px);
-        -ms-flex: 0 0 calc(33.333% - 20px);
-        flex: 0 0 calc(33.333% - 20px);
-        margin: 10px;
-    }
-}
-
-/* Transitions */
-* {
-    -webkit-transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-    -o-transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-}
-
-/* Transform */
-.service-card-v2:hover,
-.ref-card:hover,
-.project-card:hover {
-    -webkit-transform: translateY(-8px);
-    -ms-transform: translateY(-8px);
-    transform: translateY(-8px);
-}
-
-/* Backdrop Filter */
-header,
-.modal-overlay {
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-}
-
-/* Box Shadow */
-.card,
-.service-card-v2,
-.ref-card {
-    -webkit-box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-}
-
-/* Border Radius */
-.btn,
-.card,
-input,
-textarea,
-select {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-}
-
-/* User Select */
-.no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Appearance */
-input,
-textarea,
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-/* ========================================
-   MOBİL RESPONSIVE
-   ======================================== */
-
-/* Tablet - 1024px */
-@media screen and (max-width: 1024px) {
-    .header-content {
-        padding: 0 20px !important;
-    }
-    
-    #servicesGrid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    #referencesGrid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    .hero-title,
-    .hero-content h1 {
-        font-size: 36px !important;
-    }
-    
-    .section-title,
-    h2 {
-        font-size: 32px !important;
-    }
-}
-
-/* Mobil - 768px */
-@media screen and (max-width: 768px) {
-    /* Header */
-    .header-content {
-        padding: 0 15px !important;
-    }
-    
-    .nav-links {
-        display: none !important;
-    }
-    
-    .mobile-menu-btn {
-        display: flex !important;
-    }
-    
-    /* Hero */
-    .hero-content {
-        padding: 0 20px !important;
-        text-align: center !important;
-    }
-    
-    .hero-title,
-    .hero-content h1 {
-        font-size: 28px !important;
-        line-height: 1.3 !important;
-    }
-    
-    .hero-description,
-    .hero-content p {
-        font-size: 14px !important;
-    }
-    
-    /* Sections */
-    section {
-        padding: 60px 0 !important;
-    }
-    
-    .section-title,
-    h2 {
-        font-size: 26px !important;
-    }
-    
-    /* Hizmetler */
-    #servicesGrid {
-        grid-template-columns: 1fr !important;
-        gap: 15px !important;
-        padding: 0 15px !important;
-    }
-    
-    .service-card-v2 {
-        padding: 30px 25px !important;
-    }
-    
-    .service-card-v2 h3 {
-        font-size: 16px !important;
-    }
-    
-    .service-card-v2 p {
-        font-size: 13px !important;
-    }
-    
-    /* Referanslar */
-    #referencesGrid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
-        padding: 0 15px !important;
-    }
-    
-    .ref-card {
-        padding: 25px 15px !important;
-    }
-    
-    .ref-card h4 {
-        font-size: 14px !important;
-    }
-    
-    /* İletişim */
-    .contact-grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-    }
-    
-    #iletisim > div {
-        padding: 0 15px !important;
-    }
-    
-    /* Footer */
-    footer {
-        padding: 20px 15px !important;
-    }
-    
-    .footer-bottom {
-        flex-direction: column !important;
-        gap: 15px !important;
-        text-align: center !important;
-    }
-    
-    .footer-copyright {
-        font-size: 12px !important;
-    }
-}
-
-/* Küçük Mobil - 480px */
-@media screen and (max-width: 480px) {
-    .hero-title,
-    .hero-content h1 {
-        font-size: 24px !important;
-    }
-    
-    .section-title,
-    h2 {
-        font-size: 22px !important;
-    }
-    
-    #referencesGrid {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .service-card-v2 {
-        padding: 25px 20px !important;
-    }
-    
-    .ref-card {
-        padding: 20px !important;
-    }
-    
-    .ref-icon {
-        width: 60px !important;
-        height: 60px !important;
-        font-size: 28px !important;
-    }
-    
-    /* Buttons */
-    .btn,
-    button[type="submit"] {
-        width: 100% !important;
-        padding: 14px 20px !important;
-        font-size: 14px !important;
-    }
-    
-    /* Forms */
-    input,
-    textarea,
-    select {
-        font-size: 16px !important; /* iOS zoom önleme */
-        padding: 12px !important;
-    }
-}
-
-/* Touch Device Optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .service-card-v2:hover,
-    .ref-card:hover,
-    .project-card:hover {
-        -webkit-transform: none;
-        -ms-transform: none;
-        transform: none;
-    }
-    
-    /* Daha büyük dokunma alanları */
-    .nav-links a,
-    .mobile-menu a {
-        padding: 12px 16px !important;
-        min-height: 44px !important;
-    }
-    
-    button,
-    .btn,
-    a[href] {
-        min-height: 44px !important;
-        min-width: 44px !important;
-    }
-}
-
-/* Safari iOS Fix */
-@supports (-webkit-touch-callout: none) {
-    body {
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    input,
-    textarea {
-        font-size: 16px !important;
-    }
-}
-
-/* Firefox Fix */
-@-moz-document url-prefix() {
-    .service-card-v2,
-    .ref-card {
-        -moz-box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-    }
-}
-
-/* High DPI Screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    img {
-        image-rendering: -webkit-optimize-contrast;
-    }
-}
-
-/* Print Styles */
-@media print {
-    body.dark-mode {
-        background: white !important;
-        color: black !important;
-    }
-    
-    header,
-    footer,
-    .whatsapp-float,
-    .ai-assistant-panel {
-        display: none !important;
-    }
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        -webkit-animation-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        -webkit-animation-iteration-count: 1 !important;
-        animation-iteration-count: 1 !important;
-        -webkit-transition-duration: 0.01ms !important;
-        -o-transition-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-</style>
-
+<!-- RENK AYARLARI - SAYFA SONUNDA ÇALIŞIR -->
 <script>
-// FIX: Sayfa yüklendiğinde projeleri göster
-if (typeof toggleChatMenu === 'undefined') {
-    window.toggleChatMenu = function() {};
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        var saved = localStorage.getItem('cee_projects');
-        if (saved) window.projects = JSON.parse(saved);
-    } catch(e) {}
-    
-    setTimeout(function() {
-        if (typeof renderProjects === 'function') {
-            renderProjects();
-        }
-        if (typeof initHeroSlider === 'function') {
-            initHeroSlider();
-        }
-        
-        // Tüm ikonları ve butonları güncelle
-        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
-        if (colorSettings.iconBg) {
-            var accentColor = colorSettings.iconBg;
-            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
-            
-            // İkonlar
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
-                icon.style.setProperty('background', gradientBg, 'important');
-            });
-            
-            // Takip Et butonu
-            var socialTrigger = document.querySelector('.social-sidebar-trigger');
-            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
-            
-            // Chat butonu
-            var chatBtn = document.querySelector('.unified-chat-btn');
-            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
-        }
-    }, 100);
-    
-    // 500ms sonra tekrar güncelle
-    setTimeout(function() {
-        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
-        if (colorSettings.iconBg) {
-            var accentColor = colorSettings.iconBg;
-            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
-            
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
-                icon.style.setProperty('background', gradientBg, 'important');
-            });
-            
-            var socialTrigger = document.querySelector('.social-sidebar-trigger');
-            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
-            
-            var chatBtn = document.querySelector('.unified-chat-btn');
-            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
-        }
-    }, 500);
-    
-    // 1 saniye sonra da güncelle (geç yüklenen içerik için)
-    setTimeout(function() {
-        var colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
-        if (colorSettings.iconBg) {
-            var accentColor = colorSettings.iconBg;
-            var gradientBg = 'linear-gradient(135deg, ' + accentColor + ', ' + lightenColor(accentColor, 15) + ')';
-            
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(icon) {
-                icon.style.setProperty('background', gradientBg, 'important');
-            });
-            
-            var socialTrigger = document.querySelector('.social-sidebar-trigger');
-            if (socialTrigger) socialTrigger.style.setProperty('background', accentColor, 'important');
-            
-            var chatBtn = document.querySelector('.unified-chat-btn');
-            if (chatBtn) chatBtn.style.setProperty('background', accentColor, 'important');
-        }
-    }, 1000);
-    
-    // Admin panelden gelindiyse, geri dönüş butonu göster
-    if (sessionStorage.getItem('fromAdmin') === 'true') {
-        const adminBtn = document.createElement('a');
-        adminBtn.href = 'admin.html';
-        adminBtn.innerHTML = '⚙️ Admin Panel';
-        adminBtn.style.cssText = 'position:fixed;top:20px;right:20px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:12px 20px;border-radius:25px;text-decoration:none;font-weight:600;z-index:9999;box-shadow:0 4px 15px rgba(102,126,234,0.4);transition:all 0.3s ease;';
-        adminBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; };
-        adminBtn.onmouseout = function() { this.style.transform = 'scale(1)'; };
-        document.body.appendChild(adminBtn);
+(function() {
+    function lighten(color, percent) {
+        if (!color || color.length < 4) return '#7a8694';
+        try {
+            const num = parseInt(color.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.min(255, Math.max(0, (num >> 16) + amt));
+            const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amt));
+            const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
+            return '#' + ((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1);
+        } catch(e) { return '#7a8694'; }
     }
-});
+    
+    function applyColors() {
+        try {
+            const cs = JSON.parse(localStorage.getItem('color_settings') || '{}');
+            if (!cs || Object.keys(cs).length === 0) return;
+            
+            const accent = cs.iconBg || '#5a6677';
+            const accentLight = lighten(accent, 15);
+            const bgMain = cs.bgMain || '#ffffff';
+            const bgSection = cs.bgSection || '#f8f9fa';
+            const textColor = cs.text || '#2d3748';
+            const headerColor = cs.header || '#1a202c';
+            
+            // CSS Variables
+            document.documentElement.style.setProperty('--accent-gold', accent);
+            document.documentElement.style.setProperty('--accent-gold-light', accentLight);
+            document.documentElement.style.setProperty('--bg-primary', bgMain);
+            document.documentElement.style.setProperty('--bg-secondary', bgSection);
+            
+            // Body & Sections
+            document.body.style.backgroundColor = bgMain;
+            document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
+            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
+            
+            // Header & Footer
+            document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
+            document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
+            
+            const isDark = ['#1a1a1a','#000000','#0f172a','#0f0f0f','#451a03','#1a202c'].includes(headerColor);
+            document.querySelectorAll('nav a').forEach(a => a.style.color = isDark ? '#fff' : '#1a1a1a');
+            const logo = document.querySelector('.logo-text');
+            if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
+            
+            // Accent elements
+            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
+            document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
+            
+            // Icons with gradient
+            const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
+            
+            // Buttons
+            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
+            
+            // Text
+            document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
+            
+            console.log('✅ Renkler uygulandı');
+        } catch(e) { console.error('Renk hatası:', e); }
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyColors);
+    } else {
+        applyColors();
+    }
+    setTimeout(applyColors, 500);
+    setTimeout(applyColors, 1000);
+    setTimeout(applyColors, 2000);
+})();
 </script>
+</body>
+</html>
