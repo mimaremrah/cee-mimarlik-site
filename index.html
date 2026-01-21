@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- GLOBAL TEMA AYARLARI - Light & Dark Ayri -->
+    <!-- GLOBAL TEMA AYARLARI - Tüm cihazlarda aynı görünüm için -->
     <script>
-    // CEE MIMARLIK - Site Tema Ayarlari (Light & Dark Ayri)
-    const LIGHT_DEFAULT = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
-    const DARK_DEFAULT = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
+    // CEE MİMARLIK - Site Tema Ayarları
+    // Admin panelden değiştirilir - bu sadece varsayılan
+    const SITE_THEME_DEFAULT = {
+        primary: '#5a6677',
+        iconBg: '#5a6677',
+        bgMain: '#ffffff',
+        bgSection: '#f8f9fa',
+        text: '#2d3748',
+        header: '#1a202c'
+    };
+    
+    // Tema ayarlarını localStorage'a yükle - SADECE YOKSA veya BOŞSA
     if (typeof localStorage !== 'undefined') {
-        if (!localStorage.getItem('light_color_settings')) localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_DEFAULT));
-        if (!localStorage.getItem('dark_color_settings')) localStorage.setItem('dark_color_settings', JSON.stringify(DARK_DEFAULT));
+        const existingSettings = localStorage.getItem('color_settings');
+        // Sadece hiç ayar yoksa veya boş obje ise varsayılanı yaz
+        if (!existingSettings || existingSettings === '{}' || existingSettings === 'null') {
+            localStorage.setItem('color_settings', JSON.stringify(SITE_THEME_DEFAULT));
+        }
     }
     </script>
     
@@ -110,7 +122,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
-            "addressRegion": "TekirdaÃ„Å¸",
+            "addressRegion": "Tekirdağ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -174,7 +186,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -2915,7 +2927,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -3397,7 +3409,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - SaÃ„Å¸da */
+        /* Notification Bubble - Sağda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -5111,7 +5123,7 @@ function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global eriÃ…Å¸im
+// Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -5155,7 +5167,7 @@ window.goToAdmin = goToAdmin;
             <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÃ„Å¸iÃ…Å¸tir" style="display: flex; align-items: center; gap: 6px;">
+            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
                 <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
                     <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                         <rect fill="#E30A17" width="1200" height="800"/>
@@ -5213,8 +5225,8 @@ window.goToAdmin = goToAdmin;
         <a href="#iletisim" class="hero-cta" data-tr="İLETİŞİME GEÇİN" data-en="CONTACT US">İLETİŞİME GEÇİN</a>
     </div>
     
-    <button class="hero-nav prev" onclick="changeSlide(-1)">â€¹</button>
-    <button class="hero-nav next" onclick="changeSlide(1)">â€º</button>
+    <button class="hero-nav prev" onclick="changeSlide(-1)">"¹</button>
+    <button class="hero-nav next" onclick="changeSlide(1)">"º</button>
     
     <div class="hero-progress" id="heroProgress"></div>
     <div class="hero-indicators" id="heroIndicators"></div>
@@ -5348,7 +5360,7 @@ function loadServicesSection() {
                 <div style="width: ${iconSize}px; height: ${iconSize}px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: #333;" class="service-icon-v2">
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
-                <span style="font-size: 52px; font-weight: 600; color: rgba(0,0,0,0.04); line-height: 1; letter-spacing: -3px;">${String(i + 1).padStart(2, '0')}</span>
+                <span style="font-size: 48px; font-weight: 500; color: rgba(0,0,0,0.03); line-height: 1; letter-spacing: -2px;">${String(i + 1).padStart(2, '0')}</span>
             </div>
             <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
             <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
@@ -5674,7 +5686,7 @@ loadFaqs();
                             <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
                             <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
                             <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="DiÃ„Å¸er" data-tr="DiÃ„Å¸er" data-en="Other">DiÃ„Å¸er</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
                         </select>
                     </div>
                     
@@ -5783,7 +5795,7 @@ function handlePhoneClick() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Mobilde doÃ„Å¸rudan arama yap
+        // Mobilde doğrudan arama yap
         window.location.href = 'tel:+' + fullPhone;
     } else {
         // Bilgisayarda WhatsApp aç
@@ -5944,7 +5956,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         
         // Admin paneline mesaj kaydet
         let messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        messages.unshift(formData); // En yeni baÃ…Å¸a ekle
+        messages.unshift(formData); // En yeni başa ekle
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
@@ -6023,7 +6035,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAÃ„Å¾ TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -6039,7 +6051,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">ðŸ‘‹</div>
-            <h3>HoÃ…Å¸geldiniz!</h3>
+            <h3>Hoşgeldiniz!</h3>
             <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
@@ -6170,7 +6182,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
                 <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
                 <p data-tr="Tıklayın veya sürükleyip bırakın" data-en="Click or drag and drop">Tıklayın veya sürükleyip bırakın</p>
-                <span class="file-info">Max 50MB â€¢ DWG, DXF</span>
+                <span class="file-info">Max 50MB "¢ DWG, DXF</span>
             </div>
             <input type="file" id="converterFileInput" accept=".dwg,.dxf" style="display: none;" onchange="handleConverterFile(this.files[0])">
             
@@ -6278,7 +6290,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
                 <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
                 <p data-tr="Yüksek versiyon DWG dosyanızı yükleyin" data-en="Upload your high version DWG file">Yüksek versiyon DWG dosyanızı yükleyin</p>
-                <span class="file-info">Max 50MB â€¢ DWG Format</span>
+                <span class="file-info">Max 50MB "¢ DWG Format</span>
             </div>
             <input type="file" id="downgradeFileInput" accept=".dwg" style="display: none;" onchange="handleDowngradeFile(this.files[0])">
             
@@ -6448,8 +6460,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <strong>CEE MİMARLIK</strong> olarak sadece bu hizmetlere kolay erişim sağlıyoruz. 
                     Siteye yeni sekmede yönlendirileceksiniz.<br><br>
                     <strong style="color: #667eea;">ðŸ’¡ Geri Dönmek İçin:</strong><br>
-                    â€¢ Tarayıcınızın bu sekmesine geri dönün<br>
-                    â€¢ Veya tarayıcı geri (<) butonunu kullanın
+                    "¢ Tarayıcınızın bu sekmesine geri dönün<br>
+                    "¢ Veya tarayıcı geri (<) butonunu kullanın
                 </p>
             </div>
         </div>
@@ -6678,7 +6690,7 @@ const defaultProjects = [
         title: 'Ofis Binası',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'TekirdaÃ„Å¸',
+        location: 'Tekirdağ',
         area: '1200mÂ²',
         row: 'top'
     },
@@ -6817,7 +6829,7 @@ function setupHero() {
         return;
     }
     
-    // Slides - Sadece fotoÃ„Å¸raf
+    // Slides - Sadece fotoğraf
     slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
@@ -7056,7 +7068,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÃ…Å¸ Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -7074,11 +7086,11 @@ function loadTeam() {
     // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
     let team = defaultTeamMembers;
     
-    // Placeholder fotoÃ„Å¸raf
+    // Placeholder fotoğraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3EðŸ‘¤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluÃ…Å¸tur (MADDE 2)
+        // Sosyal medya linkleri oluştur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">âœ‰ï¸</a>';
@@ -7168,22 +7180,17 @@ function incrementClickCount(projectId) {
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    var isDark = document.body.classList.contains('dark-mode');
-    var btn = document.getElementById('themeBtn');
-    if(btn) btn.textContent = isDark ? '☀️' : '🌙';
+    const isDark = document.body.classList.contains('dark-mode');
+    document.getElementById('themeBtn').textContent = isDark ? 'â˜€ï¸' : 'ðŸŒ™';
     localStorage.setItem('cee_public_dark', isDark);
-    if (typeof applyColors === 'function') setTimeout(applyColors, 10);
 }
 
 function loadDarkMode() {
-    var isDark = localStorage.getItem('cee_public_dark') === 'true';
+    const isDark = localStorage.getItem('cee_public_dark') === 'true';
     if (isDark) {
         document.body.classList.add('dark-mode');
-        var btn = document.getElementById('themeBtn');
-        if(btn) btn.textContent = '☀️';
+        document.getElementById('themeBtn').textContent = 'â˜€ï¸';
     }
-    if (typeof applyColors === 'function') setTimeout(applyColors, 50);
-}
 }
 
 function toggleLanguage() {
@@ -7326,7 +7333,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuÃ…Å¸u ile kapat
+// ESC tuşu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -7486,11 +7493,11 @@ Profesyonel çizim hizmetlerimiz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('yangın') || lowerMsg.includes('yangin')) {
         return `<strong>ðŸ”¥ Yangın Yönetmeliği</strong><br><br>
 <strong>Yangın Merdiveni:</strong><br>
-â€¢ Zorunluluk: 4+ katlı binalar<br>
-â€¢ Genişlik: Min. 1.20m (konut), 1.50m (kamu)<br>
-â€¢ Basamak: 28cm genişlik, Max 19cm yükseklik<br>
-â€¢ Koridor: Min. 1.20m<br>
-â€¢ Kapı: EI 60 (60 dk dayanımlı)<br><br>
+"¢ Zorunluluk: 4+ katlı binalar<br>
+"¢ Genişlik: Min. 1.20m (konut), 1.50m (kamu)<br>
+"¢ Basamak: 28cm genişlik, Max 19cm yükseklik<br>
+"¢ Koridor: Min. 1.20m<br>
+"¢ Kapı: EI 60 (60 dk dayanımlı)<br><br>
 <strong>Yangın Yalıtımı:</strong><br>
 Bodrum: EI 120 | Kat arası: EI 60<br><br>
 Detaylı yangın raporu: <strong>(0537) 327 87 65</strong>`;
@@ -7499,14 +7506,14 @@ Detaylı yangın raporu: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('merdiven') && !lowerMsg.includes('yangın')) {
         return `<strong>ðŸªœ Merdiven Ölçüleri</strong><br><br>
 <strong>Konut:</strong><br>
-â€¢ Basamak genişliği: Min. 28 cm<br>
-â€¢ Basamak yüksekliği: Max. 18 cm<br>
-â€¢ Merdiven genişliği: Min. 90 cm<br>
-â€¢ <strong>Formül:</strong> 2h + g = 60-65 cm<br><br>
+"¢ Basamak genişliği: Min. 28 cm<br>
+"¢ Basamak yüksekliği: Max. 18 cm<br>
+"¢ Merdiven genişliği: Min. 90 cm<br>
+"¢ <strong>Formül:</strong> 2h + g = 60-65 cm<br><br>
 <strong>Kamu Yapıları:</strong><br>
-â€¢ Basamak genişliği: Min. 30 cm<br>
-â€¢ Basamak yüksekliği: Max. 17 cm<br>
-â€¢ Merdiven genişliği: Min. 1.50 m<br><br>
+"¢ Basamak genişliği: Min. 30 cm<br>
+"¢ Basamak yüksekliği: Max. 17 cm<br>
+"¢ Merdiven genişliği: Min. 1.50 m<br><br>
 <strong>Korkuluk:</strong> Min. 90 cm yükseklik<br><br>
 Merdiven tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -7517,9 +7524,9 @@ Emsal = Toplam İnşaat Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
 500 mÂ² arsa Ã— 1.5 emsal = <strong>750 mÂ² inşaat</strong><br><br>
 <strong>Önemli:</strong><br>
-â€¢ Bodrum katlar emsale dahil değil<br>
-â€¢ Her bölgede farklı<br>
-â€¢ İmar planında belirtilir<br><br>
+"¢ Bodrum katlar emsale dahil değil<br>
+"¢ Her bölgede farklı<br>
+"¢ İmar planında belirtilir<br><br>
 Arsanızın emsal hesabı: <strong>(0537) 327 87 65</strong>`;
     }
     
@@ -7527,11 +7534,11 @@ Arsanızın emsal hesabı: <strong>(0537) 327 87 65</strong>`;
         return `<strong>ðŸ›¡ï¸ Sığınak Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 2000 mÂ² üzeri binalar<br><br>
 <strong>Teknik Özellikler:</strong><br>
-â€¢ Alan: İnşaat alanının %2'si<br>
-â€¢ Tavan: Min. 2.20 m<br>
-â€¢ Duvar: Min. 30 cm betonarme<br>
-â€¢ Kapı: Gaz sızdırmaz<br>
-â€¢ Havalandırma: Özel sistem<br><br>
+"¢ Alan: İnşaat alanının %2'si<br>
+"¢ Tavan: Min. 2.20 m<br>
+"¢ Duvar: Min. 30 cm betonarme<br>
+"¢ Kapı: Gaz sızdırmaz<br>
+"¢ Havalandırma: Özel sistem<br><br>
 Sığınak projesi: <strong>(0537) 327 87 65</strong>`;
     }
     
@@ -7570,7 +7577,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>DuÃ…Å¸:</strong> Min. 80 x 80 cm<br>
+<strong>Duş:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -7578,7 +7585,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>ðŸšª Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana GiriÃ…Å¸:</strong> Min. 120 cm<br>
+<strong>Ana Giriş:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -7614,7 +7621,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>ðŸ›— Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kiÃ…Å¸i)<br>
+<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -7624,12 +7631,12 @@ Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
         return `<strong>Merhaba! ðŸ‘‹</strong><br><br>
 Ben <strong>CEE MİMARLIK</strong>'ın müşteri temsilcisiyim. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
 <strong>Uzmanlık alanlarım:</strong><br>
-â€¢ İmar mevzuatı (Emsal, TAKS, KAKS)<br>
-â€¢ Yangın güvenliği<br>
-â€¢ Merdiven ölçüleri<br>
-â€¢ Isı yalıtımı & BEP<br>
-â€¢ Otopark, mutfak, banyo tasarımı<br>
-â€¢ İnşaat ruhsatı süreçleri<br><br>
+"¢ İmar mevzuatı (Emsal, TAKS, KAKS)<br>
+"¢ Yangın güvenliği<br>
+"¢ Merdiven ölçüleri<br>
+"¢ Isı yalıtımı & BEP<br>
+"¢ Otopark, mutfak, banyo tasarımı<br>
+"¢ İnşaat ruhsatı süreçleri<br><br>
 Sormak istediğiniz bir konu var mı? ðŸ—ï¸`;
     }
     
@@ -7639,10 +7646,10 @@ Sormak istediğiniz bir konu var mı? ðŸ—ï¸`;
 Telefon: <strong>(0537) 327 87 65</strong><br>
 Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-â€¢ Mimari Proje & İç Mimari<br>
-â€¢ Yapı Ruhsatı İşlemleri<br>
-â€¢ 3D Görselleştirme<br>
-â€¢ Şantiye Yönetimi<br><br>
+"¢ Mimari Proje & İç Mimari<br>
+"¢ Yapı Ruhsatı İşlemleri<br>
+"¢ 3D Görselleştirme<br>
+"¢ Şantiye Yönetimi<br><br>
 Size en kısa sürede dönüş yapacağız! ðŸ—ï¸`;
     }
 }
@@ -7948,7 +7955,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doÃ„Å¸rama'],
+        pencere: ['pencere', 'window', 'cam', 'doğrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -7980,38 +7987,38 @@ function getSmartResponse(message) {
 <strong>Kesit & Görünüş:</strong> 1/50, 1/100<br>
 <strong>Detaylar:</strong> 1/1, 1/2, 1/5, 1/10, 1/20<br><br>
 <strong>Kağıt Boyutları:</strong><br>
-â€¢ A0: 841 x 1189 mm<br>
-â€¢ A1: 594 x 841 mm<br>
-â€¢ A2: 420 x 594 mm<br>
-â€¢ A3: 297 x 420 mm<br><br>
+"¢ A0: 841 x 1189 mm<br>
+"¢ A1: 594 x 841 mm<br>
+"¢ A2: 420 x 594 mm<br>
+"¢ A3: 297 x 420 mm<br><br>
 Profesyonel çizim hizmeti: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'yangin') {
         return `<strong>ðŸ”¥ Yangın Yönetmeliği</strong><br><br>
 <strong>Yangın Merdiveni:</strong><br>
-â€¢ Zorunluluk: 4+ katlı binalar<br>
-â€¢ Genişlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
-â€¢ Basamak: 28 cm genişlik, max 19 cm yükseklik<br>
-â€¢ Kapı: EI 60 (60 dk yangın dayanımlı)<br><br>
+"¢ Zorunluluk: 4+ katlı binalar<br>
+"¢ Genişlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
+"¢ Basamak: 28 cm genişlik, max 19 cm yükseklik<br>
+"¢ Kapı: EI 60 (60 dk yangın dayanımlı)<br><br>
 <strong>Yangın Yalıtımı:</strong><br>
-â€¢ Bodrum: EI 120<br>
-â€¢ Kat arası: EI 60<br>
-â€¢ Cephe: E 30-60<br><br>
+"¢ Bodrum: EI 120<br>
+"¢ Kat arası: EI 60<br>
+"¢ Cephe: E 30-60<br><br>
 Yangın projesi için: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'merdiven') {
         return `<strong>ðŸªœ Merdiven Ölçüleri</strong><br><br>
 <strong>KONUT:</strong><br>
-â€¢ Basamak genişliği: Min. 28 cm<br>
-â€¢ Yükseklik: Max. 18 cm<br>
-â€¢ Merdiven genişliği: Min. 90 cm<br>
-â€¢ Formül: 2h + g = 60-65 cm âœ“<br><br>
+"¢ Basamak genişliği: Min. 28 cm<br>
+"¢ Yükseklik: Max. 18 cm<br>
+"¢ Merdiven genişliği: Min. 90 cm<br>
+"¢ Formül: 2h + g = 60-65 cm âœ“<br><br>
 <strong>KAMU YAPILARI:</strong><br>
-â€¢ Basamak genişliği: Min. 30 cm<br>
-â€¢ Yükseklik: Max. 17 cm<br>
-â€¢ Genişlik: Min. 1.50 m<br><br>
+"¢ Basamak genişliği: Min. 30 cm<br>
+"¢ Yükseklik: Max. 17 cm<br>
+"¢ Genişlik: Min. 1.50 m<br><br>
 <strong>Korkuluk:</strong> Min. 90 cm<br><br>
 Merdiven projesi: ${phoneLink}`;
     }
@@ -8020,13 +8027,13 @@ Merdiven projesi: ${phoneLink}`;
         return `<strong>ðŸ“Š Emsal (KAKS)</strong><br><br>
 <strong>Tanım:</strong> Toplam İnşaat Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
-â€¢ 500 mÂ² arsa<br>
-â€¢ 1.5 emsal<br>
-â€¢ <strong>Toplam İnşaat: 750 mÂ²</strong><br><br>
+"¢ 500 mÂ² arsa<br>
+"¢ 1.5 emsal<br>
+"¢ <strong>Toplam İnşaat: 750 mÂ²</strong><br><br>
 <strong>Önemli:</strong><br>
-â€¢ Bodrum katlar emsale dahil DEĞİL<br>
-â€¢ Her bölgede farklıdır<br>
-â€¢ İmar planında belirtilir<br><br>
+"¢ Bodrum katlar emsale dahil DEĞİL<br>
+"¢ Her bölgede farklıdır<br>
+"¢ İmar planında belirtilir<br><br>
 Emsal hesabı: ${phoneLink}`;
     }
     
@@ -8034,22 +8041,22 @@ Emsal hesabı: ${phoneLink}`;
         return `<strong>ðŸ›¡ï¸ Sığınak Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 2000 mÂ² ve üzeri<br><br>
 <strong>Teknik Özellikler:</strong><br>
-â€¢ Alan: İnşaat alanının %2'si<br>
-â€¢ Tavan: Min. 2.20 m<br>
-â€¢ Duvar: Min. 30 cm betonarme<br>
-â€¢ Kapı: Gaz sızdırmaz<br>
-â€¢ Havalandırma: Özel sistem<br><br>
+"¢ Alan: İnşaat alanının %2'si<br>
+"¢ Tavan: Min. 2.20 m<br>
+"¢ Duvar: Min. 30 cm betonarme<br>
+"¢ Kapı: Gaz sızdırmaz<br>
+"¢ Havalandırma: Özel sistem<br><br>
 Sığınak projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'otopark') {
         return `<strong>ðŸš— Otopark Yönetmeliği</strong><br><br>
 <strong>Araç Yeri:</strong><br>
-â€¢ Standart: 2.30 x 5.00 m<br>
-â€¢ Engelli: 3.70 x 5.00 m<br><br>
+"¢ Standart: 2.30 x 5.00 m<br>
+"¢ Engelli: 3.70 x 5.00 m<br><br>
 <strong>Koridor:</strong><br>
-â€¢ İki yönlü: Min. 6.00 m<br>
-â€¢ Tek yönlü: Min. 3.50 m<br><br>
+"¢ İki yönlü: Min. 6.00 m<br>
+"¢ Tek yönlü: Min. 3.50 m<br><br>
 <strong>Tavan:</strong> Min. 2.30 m<br>
 <strong>Havalandırma:</strong> Mekanik (kapalı)<br><br>
 Otopark projesi: ${phoneLink}`;
@@ -8062,22 +8069,22 @@ Otopark projesi: ${phoneLink}`;
 <strong>Taban:</strong> Min. 5 cm<br>
 <strong>Cam:</strong> Çift cam, Uâ‰¤1.8<br><br>
 <strong>BEP Belgesi:</strong><br>
-â€¢ 2011'den beri zorunlu<br>
-â€¢ Enerji sınıfı: A-G arası<br><br>
+"¢ 2011'den beri zorunlu<br>
+"¢ Enerji sınıfı: A-G arası<br><br>
 BEP belgesi düzenleme: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'ruhsat') {
         return `<strong>ðŸ“‹ İnşaat Ruhsatı</strong><br><br>
 <strong>Gerekli Belgeler:</strong><br>
-â€¢ Tapu<br>
-â€¢ İmar durumu<br>
-â€¢ Mimari proje (3 takım)<br>
-â€¢ Statik proje<br>
-â€¢ Elektrik projesi<br>
-â€¢ Mekanik proje<br>
-â€¢ Zemin etüdü<br>
-â€¢ Aplikasyon<br><br>
+"¢ Tapu<br>
+"¢ İmar durumu<br>
+"¢ Mimari proje (3 takım)<br>
+"¢ Statik proje<br>
+"¢ Elektrik projesi<br>
+"¢ Mekanik proje<br>
+"¢ Zemin etüdü<br>
+"¢ Aplikasyon<br><br>
 <strong>Süre:</strong> 2-4 ay<br><br>
 Ruhsat hizmeti: ${phoneLink}`;
     }
@@ -8086,43 +8093,43 @@ Ruhsat hizmeti: ${phoneLink}`;
         return `<strong>ðŸ“ TAKS (Taban Alanı Katsayısı)</strong><br><br>
 <strong>Formül:</strong> Taban Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
-â€¢ 500 mÂ² arsa<br>
-â€¢ TAKS: 0.40<br>
-â€¢ <strong>Taban Alanı: 200 mÂ²</strong><br><br>
-<strong>Tipik DeÃ„Å¸erler:</strong><br>
-â€¢ Konut: 0.30 - 0.40<br>
-â€¢ Ticaret: 0.60 - 0.80<br><br>
+"¢ 500 mÂ² arsa<br>
+"¢ TAKS: 0.40<br>
+"¢ <strong>Taban Alanı: 200 mÂ²</strong><br><br>
+<strong>Tipik Değerler:</strong><br>
+"¢ Konut: 0.30 - 0.40<br>
+"¢ Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'deprem') {
         return `<strong>ðŸ—ï¸ Deprem Yönetmeliği (TBDY 2018)</strong><br><br>
 <strong>Zorunluluklar:</strong><br>
-â€¢ Zemin etüdü raporu<br>
-â€¢ Deprem bölgesi analizi<br>
-â€¢ Yapı yükseklik kontrolü<br>
-â€¢ Betonarme yapı sistemi<br><br>
+"¢ Zemin etüdü raporu<br>
+"¢ Deprem bölgesi analizi<br>
+"¢ Yapı yükseklik kontrolü<br>
+"¢ Betonarme yapı sistemi<br><br>
 <strong>Zemin Sınıfları:</strong><br>
-â€¢ ZA: Sağlam kayalar<br>
-â€¢ ZB: Az ayrışmış kayalar<br>
-â€¢ ZC: Sıkı kum/kil<br>
-â€¢ ZD: Gevşek kum/kil<br>
-â€¢ ZE: Yumuşak killer<br><br>
+"¢ ZA: Sağlam kayalar<br>
+"¢ ZB: Az ayrışmış kayalar<br>
+"¢ ZC: Sıkı kum/kil<br>
+"¢ ZD: Gevşek kum/kil<br>
+"¢ ZE: Yumuşak killer<br><br>
 Deprem projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'cephe') {
         return `<strong>ðŸ¢ Cephe Sistemleri</strong><br><br>
 <strong>Cephe Türleri:</strong><br>
-â€¢ Klasik sıva cephe<br>
-â€¢ Giydirme cephe<br>
-â€¢ Cam cephe<br>
-â€¢ Kompozit panel<br>
-â€¢ Doğal taş kaplama<br><br>
+"¢ Klasik sıva cephe<br>
+"¢ Giydirme cephe<br>
+"¢ Cam cephe<br>
+"¢ Kompozit panel<br>
+"¢ Doğal taş kaplama<br><br>
 <strong>Önemli Noktalar:</strong><br>
-â€¢ Isı yalıtımı zorunlu<br>
-â€¢ Yangın geçişini önleme<br>
-â€¢ Su yalıtımı detayları<br><br>
+"¢ Isı yalıtımı zorunlu<br>
+"¢ Yangın geçişini önleme<br>
+"¢ Su yalıtımı detayları<br><br>
 Cephe tasarımı: ${phoneLink}`;
     }
     
@@ -8134,13 +8141,13 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat iÃ…Å¸lemleri<br><br>
+6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-â€¢ Konut projeleri<br>
-â€¢ Villa projeleri<br>
-â€¢ Ticari yapılar<br>
-â€¢ İç mimari<br>
-â€¢ 3D görselleştirme<br><br>
+"¢ Konut projeleri<br>
+"¢ Villa projeleri<br>
+"¢ Ticari yapılar<br>
+"¢ İç mimari<br>
+"¢ 3D görselleştirme<br><br>
 Proje teklifi: ${phoneLink}`;
     }
     
@@ -8148,10 +8155,10 @@ Proje teklifi: ${phoneLink}`;
     else if (lowerMsg.includes('fiyat') || lowerMsg.includes('ücret') || lowerMsg.includes('ne kadar')) {
         return `<strong>ðŸ’° Fiyat Bilgisi</strong><br><br>
 Projelerimiz için fiyat, projenizin özelliklerine göre değişmektedir:<br><br>
-â€¢ Proje türü (konut, villa, ticari)<br>
-â€¢ Alan büyüklüğü<br>
-â€¢ Detay seviyesi<br>
-â€¢ Ek hizmetler (3D, ruhsat, vb.)<br><br>
+"¢ Proje türü (konut, villa, ticari)<br>
+"¢ Alan büyüklüğü<br>
+"¢ Detay seviyesi<br>
+"¢ Ek hizmetler (3D, ruhsat, vb.)<br><br>
 <strong>Detaylı fiyat teklifi için:</strong><br>
 ðŸ“ž ${phoneLink}<br>
 ðŸ“ Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ`;
@@ -8161,12 +8168,12 @@ Projelerimiz için fiyat, projenizin özelliklerine göre değişmektedir:<br><b
         return `Merhaba! ðŸ‘‹<br><br>
 Size nasıl yardımcı olabilirim?<br><br>
 <strong>Sorabilecekleriniz:</strong><br>
-â€¢ Piyes ölçüleri<br>
-â€¢ Yangın, merdiven, otopark yönetmelikleri<br>
-â€¢ Emsal, TAKS hesaplamaları<br>
-â€¢ İnşaat ruhsatı<br>
-â€¢ Cephe sistemleri<br>
-â€¢ Proje fiyatları<br><br>
+"¢ Piyes ölçüleri<br>
+"¢ Yangın, merdiven, otopark yönetmelikleri<br>
+"¢ Emsal, TAKS hesaplamaları<br>
+"¢ İnşaat ruhsatı<br>
+"¢ Cephe sistemleri<br>
+"¢ Proje fiyatları<br><br>
 Sorunuzu yazabilirsiniz! ðŸ—ï¸`;
     }
     
@@ -8453,59 +8460,59 @@ function getAiAnswer(question) {
         // Villa projeleri
         villa: `ðŸ¡ <b>Villa Projeleri:</b><br><br>
 Villa projelerimizde modern mimari ve fonksiyonel tasarım anlayışı sunuyoruz:<br><br>
-â€¢ <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
-â€¢ <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
-â€¢ <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
-â€¢ <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
+"¢ <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
+"¢ <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
+"¢ <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
+"¢ <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
 Detaylı bilgi için mesaj atabilirsiniz!`,
 
         // Tasarım süreci
         tasarim: `ðŸ“ <b>Mimari Tasarım Sürecimiz:</b><br><br>
 <b>1. İhtiyaç Analizi (1-2 hafta)</b><br>
-â€¢ İlk görüşme ve saha keşfi<br>
-â€¢ Bütçe belirleme<br><br>
+"¢ İlk görüşme ve saha keşfi<br>
+"¢ Bütçe belirleme<br><br>
 <b>2. Ön Tasarım (2-3 hafta)</b><br>
-â€¢ Konsept eskizler ve 3D modelleme<br><br>
+"¢ Konsept eskizler ve 3D modelleme<br><br>
 <b>3. Uygulama Projesi (4-6 hafta)</b><br>
-â€¢ Detaylı çizimler ve statik hesaplar<br><br>
+"¢ Detaylı çizimler ve statik hesaplar<br><br>
 <b>4. Ruhsat ve Uygulama</b><br>
-â€¢ Belediye onayları ve şantiye takibi`,
+"¢ Belediye onayları ve şantiye takibi`,
 
         // İç mimarlık
         ic: `ðŸ›‹ï¸ <b>İç Mimarlık Hizmetlerimiz:</b><br><br>
-â€¢ Mekan Planlaması<br>
-â€¢ Mobilya Tasarımı (özel üretim)<br>
-â€¢ Malzeme Seçimi<br>
-â€¢ Aydınlatma Tasarımı<br>
-â€¢ Renk Paleti Oluşturma<br>
-â€¢ 3D Görselleştirme<br><br>
+"¢ Mekan Planlaması<br>
+"¢ Mobilya Tasarımı (özel üretim)<br>
+"¢ Malzeme Seçimi<br>
+"¢ Aydınlatma Tasarımı<br>
+"¢ Renk Paleti Oluşturma<br>
+"¢ 3D Görselleştirme<br><br>
 Portföyümüzü inceleyebilirsiniz!`,
 
         // TAKS KAKS
         taks: `ðŸ“Š <b>TAKS ve KAKS Nedir?</b><br><br>
 <b>TAKS (Taban Alanı Kat Sayısı):</b><br>
 Yapının taban alanının parsel alanına oranıdır.<br>
-â€¢ Formül: TAKS = Taban Alanı / Parsel Alanı<br>
-â€¢ Örnek: 500mÂ² parselde TAKS=0.40 ise max taban 200mÂ²<br><br>
+"¢ Formül: TAKS = Taban Alanı / Parsel Alanı<br>
+"¢ Örnek: 500mÂ² parselde TAKS=0.40 ise max taban 200mÂ²<br><br>
 <b>KAKS (Kat Alanı Kat Sayısı):</b><br>
 Toplam inşaat alanının parsel alanına oranıdır.<br>
-â€¢ Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
-â€¢ Örnek: KAKS=1.5 ise 500mÂ² parselde max 750mÂ² inşaat<br><br>
+"¢ Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
+"¢ Örnek: KAKS=1.5 ise 500mÂ² parselde max 750mÂ² inşaat<br><br>
 <b>Emsal:</b> KAKS ile aynı anlama gelir.`,
 
         // İmar
         imar: `ðŸ›ï¸ <b>İmar Mevzuatı Bilgileri:</b><br><br>
 <b>Önemli Kavramlar:</b><br>
-â€¢ <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
-â€¢ <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
-â€¢ <b>H max:</b> Maksimum bina yüksekliği<br>
-â€¢ <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
+"¢ <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
+"¢ <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
+"¢ <b>H max:</b> Maksimum bina yüksekliği<br>
+"¢ <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
 <b>Başvuru İçin Gerekli Belgeler:</b><br>
-â€¢ Tapu fotokopisi<br>
-â€¢ İmar durumu belgesi<br>
-â€¢ Mimari proje<br>
-â€¢ Statik proje<br>
-â€¢ Mekanik proje`,
+"¢ Tapu fotokopisi<br>
+"¢ İmar durumu belgesi<br>
+"¢ Mimari proje<br>
+"¢ Statik proje<br>
+"¢ Mekanik proje`,
 
         // Ruhsat
         ruhsat: `ðŸ“‹ <b>Yapı Ruhsatı Süreci:</b><br><br>
@@ -8515,101 +8522,101 @@ Toplam inşaat alanının parsel alanına oranıdır.<br>
 âœ… Mekanik (Tesisat) Proje<br>
 âœ… Elektrik Proje<br><br>
 <b>Gerekli Belgeler:</b><br>
-â€¢ Tapu fotokopisi<br>
-â€¢ İmar durum belgesi<br>
-â€¢ Zemin etüdü raporu<br>
-â€¢ Harita aplikasyonu<br><br>
+"¢ Tapu fotokopisi<br>
+"¢ İmar durum belgesi<br>
+"¢ Zemin etüdü raporu<br>
+"¢ Harita aplikasyonu<br><br>
 <b>Süre:</b> Ortalama 2-4 ay (belediyeye göre değişir)`,
 
         // Deprem yönetmeliği
         deprem: `ðŸ—ï¸ <b>Türkiye Bina Deprem Yönetmeliği (TBDY 2018):</b><br><br>
 <b>Temel Prensipler:</b><br>
-â€¢ Dayanım esaslı tasarım<br>
-â€¢ Süneklik sınıfları (sınırlı, normal, yüksek)<br>
-â€¢ Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
+"¢ Dayanım esaslı tasarım<br>
+"¢ Süneklik sınıfları (sınırlı, normal, yüksek)<br>
+"¢ Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
 <b>Yapı Düzensizlikleri:</b><br>
-â€¢ A Tipi (Plan): Burulma, döşeme süreksizliği<br>
-â€¢ B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
+"¢ A Tipi (Plan): Burulma, döşeme süreksizliği<br>
+"¢ B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
 <b>Önemli:</b> Tüm projelerimiz TBDY 2018'e uygundur.`,
 
         // Yangın yönetmeliği
         yangin: `ðŸ”¥ <b>Binaların Yangından Korunması Yönetmeliği:</b><br><br>
 <b>Kaçış Yolları:</b><br>
-â€¢ Min genişlik: 80cm (konut), 120cm (ticari)<br>
-â€¢ Merdiven genişliği: Min 120cm<br><br>
+"¢ Min genişlik: 80cm (konut), 120cm (ticari)<br>
+"¢ Merdiven genişliği: Min 120cm<br><br>
 <b>Yangın Merdiveni Zorunluluğu:</b><br>
-â€¢ 21.50m üzeri binalar<br>
-â€¢ 30 kişiyi aşan katlar<br><br>
+"¢ 21.50m üzeri binalar<br>
+"¢ 30 kişiyi aşan katlar<br><br>
 <b>Yangın Kompartımanı:</b><br>
-â€¢ Her 2500mÂ²'de bölme<br>
-â€¢ 2 saat yangın dayanımı`,
+"¢ Her 2500mÂ²'de bölme<br>
+"¢ 2 saat yangın dayanımı`,
 
         // Maliyet
         maliyet: `ðŸ’° <b>Proje Maliyetleri:</b><br><br>
 <b>Mimari Proje (mÂ² bazlı):</b><br>
-â€¢ Villa: 150-300 TL/mÂ²<br>
-â€¢ Apartman: 100-200 TL/mÂ²<br>
-â€¢ İç Mekan: 80-150 TL/mÂ²<br>
-â€¢ Ticari: 120-250 TL/mÂ²<br><br>
+"¢ Villa: 150-300 TL/mÂ²<br>
+"¢ Apartman: 100-200 TL/mÂ²<br>
+"¢ İç Mekan: 80-150 TL/mÂ²<br>
+"¢ Ticari: 120-250 TL/mÂ²<br><br>
 <b>Not:</b> Fiyatlar proje kapsamına göre değişir.<br>
 Net fiyat için proje detaylarınızı paylaşın!`,
 
         // Çekme mesafeleri
         cekme: `ðŸ“ <b>Çekme Mesafeleri:</b><br><br>
 <b>Ayrık Yapı Düzeni:</b><br>
-â€¢ Ön bahçe: Min 5m (yola göre değişir)<br>
-â€¢ Arka bahçe: Min 3m (H/2 kuralı)<br>
-â€¢ Yan bahçe: Min 3m<br><br>
+"¢ Ön bahçe: Min 5m (yola göre değişir)<br>
+"¢ Arka bahçe: Min 3m (H/2 kuralı)<br>
+"¢ Yan bahçe: Min 3m<br><br>
 <b>Bitişik Yapı Düzeni:</b><br>
-â€¢ Sadece ön ve arka bahçe çekmesi<br><br>
+"¢ Sadece ön ve arka bahçe çekmesi<br><br>
 <b>Not:</b> İmar planına göre değişiklik gösterebilir.`,
 
         // Kat yüksekliği
         kat: `ðŸ“ <b>Kat Yüksekliği Standartları:</b><br><br>
 <b>Konutlarda:</b><br>
-â€¢ Min döşemeden tavana: 2.40m<br>
-â€¢ Brüt kat yüksekliği: 2.80-3.00m<br><br>
+"¢ Min döşemeden tavana: 2.40m<br>
+"¢ Brüt kat yüksekliği: 2.80-3.00m<br><br>
 <b>Ticari Alanlarda:</b><br>
-â€¢ Min temiz yükseklik: 2.60m<br>
-â€¢ Bodrum: Min 2.40m<br><br>
+"¢ Min temiz yükseklik: 2.60m<br>
+"¢ Bodrum: Min 2.40m<br><br>
 <b>Asansör Zorunluluğu:</b><br>
-â€¢ 4 kattan fazla binalarda zorunlu`,
+"¢ 4 kattan fazla binalarda zorunlu`,
 
         // Otopark
         otopark: `ðŸš— <b>Otopark Yönetmeliği:</b><br><br>
 <b>Konut:</b><br>
-â€¢ 0-75mÂ²: 1 araç / 2 daire<br>
-â€¢ 75-150mÂ²: 1 araç / daire<br>
-â€¢ 150mÂ² üzeri: 2 araç / daire<br><br>
+"¢ 0-75mÂ²: 1 araç / 2 daire<br>
+"¢ 75-150mÂ²: 1 araç / daire<br>
+"¢ 150mÂ² üzeri: 2 araç / daire<br><br>
 <b>Ticari:</b><br>
-â€¢ Ofis: 1 araç / 30mÂ²<br>
-â€¢ Mağaza: 1 araç / 50mÂ²<br><br>
+"¢ Ofis: 1 araç / 30mÂ²<br>
+"¢ Mağaza: 1 araç / 50mÂ²<br><br>
 <b>Otopark Boyutları:</b><br>
-â€¢ Min 2.50 x 5.00m`,
+"¢ Min 2.50 x 5.00m`,
 
         // 3D
         '3d': `ðŸŽ¨ <b>3D Görselleştirme:</b><br><br>
-â€¢ Fotorealistik görüntüler<br>
-â€¢ Gündüz/gece sahneleri<br>
-â€¢ İç ve dış mekan renderleri<br>
-â€¢ 360Â° sanal tur<br>
-â€¢ Video animasyon<br><br>
+"¢ Fotorealistik görüntüler<br>
+"¢ Gündüz/gece sahneleri<br>
+"¢ İç ve dış mekan renderleri<br>
+"¢ 360Â° sanal tur<br>
+"¢ Video animasyon<br><br>
 Projenizi yaşamadan önce görün!`,
 
         // Süre
         sure: `â±ï¸ <b>Proje Süreleri:</b><br><br>
-â€¢ Villa Projesi: 6-8 hafta<br>
-â€¢ Konut İç Mekan: 3-4 hafta<br>
-â€¢ Ticari Mekan: 4-6 hafta<br>
-â€¢ Ruhsat Süreci: 2-4 ay<br><br>
+"¢ Villa Projesi: 6-8 hafta<br>
+"¢ Konut İç Mekan: 3-4 hafta<br>
+"¢ Ticari Mekan: 4-6 hafta<br>
+"¢ Ruhsat Süreci: 2-4 ay<br><br>
 Acil projeler için hızlandırılmış seçeneklerimiz var!`,
 
         // Ödeme
         odeme: `ðŸ’³ <b>Ödeme Koşulları:</b><br><br>
 <b>Standart Plan:</b><br>
-â€¢ %40 - Sözleşmede<br>
-â€¢ %30 - Ön tasarım onayında<br>
-â€¢ %30 - Proje tesliminde<br><br>
+"¢ %40 - Sözleşmede<br>
+"¢ %30 - Ön tasarım onayında<br>
+"¢ %30 - Proje tesliminde<br><br>
 Özel ödeme planları için görüşebiliriz!`,
 
         // Default
@@ -8629,7 +8636,7 @@ CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
 Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // GeliÃ…Å¸miÃ…Å¸ anahtar kelime eÃ…Å¸leÃ…Å¸tirme
+    // Gelişmiş anahtar kelime eşleştirme
     if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
     } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
@@ -9108,7 +9115,7 @@ function loadVideos() {
                 <video class="video-thumbnail" muted>
                     <source src="${video.img}" type="video/mp4">
                 </video>
-                <div class="video-play-btn">Ã¢â€“Â¶</div>
+                <div class="video-play-btn">â"“Â¶</div>
                 <div class="video-title">${video.title || 'Video'}</div>
             </div>
         `).join('');
@@ -9118,7 +9125,7 @@ function loadVideos() {
     videoHTML += demoVideos.map(video => `
         <div class="video-item" onclick="openVideo('${video.id}', 'youtube')">
             <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
-            <div class="video-play-btn">Ã¢â€“Â¶</div>
+            <div class="video-play-btn">â"“Â¶</div>
             <div class="video-title">${video.title}</div>
         </div>
     `).join('');
@@ -9360,7 +9367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // Ã¢Å¡Â¡ PERFORMANCE OPTIMIZATION
+    // âÅ¡Â¡ PERFORMANCE OPTIMIZATION
     // ============================================
     
     // 1. LAZY LOADING IMAGES
@@ -9552,7 +9559,7 @@ function loadSiteSettings() {
         if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ðŸ“·</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
         if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #5a6677, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">ð•</a>`;
-        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">Ã¢â€“Â¶</a>`;
+        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â"“Â¶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
     
@@ -9794,11 +9801,11 @@ function lightenColor(color, percent) {
                 <strong>Merhaba! ðŸ‘‹</strong><br><br>
                 Ben CEE MİMARLIK'ın AI asistanıyım. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
                 <strong>Yardımcı olabileceğim konular:</strong><br>
-                â€¢ İmar planı ve imar durumu<br>
-                â€¢ Piyes ölçüleri ve teknik çizimler<br>
-                â€¢ Yangın, merdiven, otopark yönetmelikleri<br>
-                â€¢ İnşaat ruhsatı süreçleri<br>
-                â€¢ Mimari proje hazırlama<br><br>
+                "¢ İmar planı ve imar durumu<br>
+                "¢ Piyes ölçüleri ve teknik çizimler<br>
+                "¢ Yangın, merdiven, otopark yönetmelikleri<br>
+                "¢ İnşaat ruhsatı süreçleri<br>
+                "¢ Mimari proje hazırlama<br><br>
                 Aklınıza takılan soruyu sorabilirsiniz! ðŸ—ï¸
             </div>
         </div>
@@ -10086,110 +10093,63 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
     
     function applyColors() {
         try {
-            var isDarkMode = document.body.classList.contains('dark-mode');
-            var cs;
-            if (isDarkMode) {
-                cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
-            } else {
-                cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
-            }
+            const cs = JSON.parse(localStorage.getItem('color_settings') || '{}');
+            if (!cs || Object.keys(cs).length === 0) return;
             
-            var accent = cs.iconBg || cs.primary || '#5a6677';
-            var accentLight = lighten(accent, 15);
-            var bgMain = cs.bgMain;
-            var bgSection = cs.bgSection;
-            var textColor = cs.text;
-            var headerColor = cs.header;
-            var iconSize = localStorage.getItem('icon_size') || 60;
+            const accent = cs.iconBg || '#5a6677';
+            const accentLight = lighten(accent, 15);
+            const bgMain = cs.bgMain || '#ffffff';
+            const bgSection = cs.bgSection || '#f8f9fa';
+            const textColor = cs.text || '#2d3748';
+            const headerColor = cs.header || '#1a202c';
+            const iconSize = cs.iconSize || 60;
             
             // CSS Variables
             document.documentElement.style.setProperty('--accent-gold', accent);
+            document.documentElement.style.setProperty('--accent-gold-light', accentLight);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
-            document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
-            // ARKA PLAN - TUM ELEMENTLERE UYGULA
-            document.body.style.setProperty('background-color', bgMain, 'important');
-            document.body.style.setProperty('background', bgMain, 'important');
-            document.documentElement.style.setProperty('background-color', bgMain, 'important');
-            
-            // Tum section'lara uygula
-            document.querySelectorAll('section').forEach(function(s) {
-                s.style.setProperty('background-color', bgMain, 'important');
-                s.style.setProperty('background', bgMain, 'important');
-            });
-            
-            // Ozel section'lar
-            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip').forEach(function(s) {
-                s.style.setProperty('background-color', bgSection, 'important');
-                s.style.setProperty('background', bgSection, 'important');
-            });
-            
-            // Container ve wrapper'lar
-            document.querySelectorAll('.container, .wrapper, main, .main-content, .page-content').forEach(function(el) {
-                el.style.setProperty('background-color', bgMain, 'important');
-            });
-            
-            // Header & Footer
-            document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
-                el.style.setProperty('background-color', headerColor, 'important');
-            });
-            document.querySelectorAll('footer, .footer').forEach(function(el) {
-                el.style.setProperty('background-color', headerColor, 'important');
-            });
-            
-            // Nav link renkleri
-            var isHeaderDark = headerColor && (headerColor.toLowerCase() === '#1a1a1a' || headerColor.toLowerCase() === '#000000' || headerColor.toLowerCase() === '#111111' || headerColor.toLowerCase() === '#0f0f0f' || headerColor.toLowerCase() === '#1a202c' || headerColor.toLowerCase() === '#0f172a');
-            document.querySelectorAll('nav a, .nav-link').forEach(function(a) {
-                a.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
-            });
-            var logo = document.querySelector('.logo-text');
-            if (logo) logo.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
-            
-            // Accent elementler
-            document.querySelectorAll('.hero-brand').forEach(function(el) { el.style.color = accent; });
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(function(el) { el.style.background = accent; });
-            document.querySelectorAll('.section-title .accent').forEach(function(el) { el.style.setProperty('color', accent, 'important'); });
-            document.querySelectorAll('.section-decoration .dot').forEach(function(el) { el.style.background = accent; });
-            
-            // Ikon gradient
-            var grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(el) {
-                el.style.setProperty('background', grad, 'important');
+            // İkon boyutlarını güncelle
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
                 el.style.width = iconSize + 'px';
                 el.style.height = iconSize + 'px';
             });
             
-            // Butonlar
-            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(function(el) { el.style.background = accent; });
-            document.querySelectorAll('.filter-btn.active').forEach(function(el) { el.style.background = accent; el.style.borderColor = accent; });
+            // Body & Sections
+            document.body.style.backgroundColor = bgMain;
+            document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
+            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
             
-            // YAZI RENKLERI - TUM METINLERE UYGULA
-            document.querySelectorAll('.section-title, .section-label, h1, h2, h3, h4, h5, h6').forEach(function(el) {
-                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero')) {
-                    el.style.setProperty('color', textColor, 'important');
-                }
-            });
+            // Header & Footer
+            document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
+            document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
             
-            document.querySelectorAll('p, span, li, td, th, label, .text, .desc, .description').forEach(function(el) {
-                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button') && !el.closest('.btn')) {
-                    el.style.setProperty('color', textColor, 'important');
-                }
-            });
+            const isDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c'].includes(headerColor);
+            document.querySelectorAll('nav a').forEach(a => a.style.color = isDark ? '#fff' : '#1a1a1a');
+            const logo = document.querySelector('.logo-text');
+            if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
             
-            // Kartlar
-            document.querySelectorAll('.service-card, .service-card-v2, .ref-card, .faq-item, .team-member, .project-item').forEach(function(el) {
-                el.style.setProperty('background-color', isDarkMode ? '#1a1a1a' : '#fff', 'important');
-            });
+            // Accent elements
+            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
+            document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
             
-            document.querySelectorAll('.service-card h3, .service-card p, .service-card-v2 h3, .service-card-v2 p, .ref-card h4, .ref-card p, .faq-item h3, .faq-answer, .faq-answer p').forEach(function(el) {
-                el.style.setProperty('color', textColor, 'important');
-            });
+            // Icons with gradient
+            const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
             
-            console.log('Renkler uygulandi (' + (isDarkMode ? 'Dark' : 'Light') + ')');
-        } catch(e) { console.error('Renk hatasi:', e); }
+            // Buttons
+            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
+            
+            // Text
+            document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
+            
+            console.log('âœ… Renkler uygulandı');
+        } catch(e) { console.error('Renk hatası:', e); }
     }
     
     if (document.readyState === 'loading') {
