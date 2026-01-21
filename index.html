@@ -5370,7 +5370,7 @@ function loadServicesSection() {
                 <div style="width: ${iconSize}px; height: ${iconSize}px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: #333;" class="service-icon-v2">
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
-                <span style="font-size: 48px; font-weight: 500; color: rgba(0,0,0,0.03); line-height: 1; letter-spacing: -2px;">${String(i + 1).padStart(2, '0')}</span>
+                <span class="service-number" style="font-size: 48px; font-weight: 600; line-height: 1; letter-spacing: -2px;">${String(i + 1).padStart(2, '0')}</span>
             </div>
             <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
             <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
@@ -7194,9 +7194,14 @@ function toggleDarkMode() {
     var btn = document.getElementById('themeBtn');
     if (btn) btn.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('cee_public_dark', isDark);
-    // Mod değiştiğinde renkleri yeniden uygula
+    
+    // Mod değiştiğinde renkleri HEMEN ve birden fazla kez uygula
     if (typeof applyColors === 'function') {
+        applyColors(); // Hemen
+        setTimeout(applyColors, 10);
         setTimeout(applyColors, 50);
+        setTimeout(applyColors, 150);
+        setTimeout(applyColors, 300);
     }
 }
 
@@ -7209,7 +7214,9 @@ function loadDarkMode() {
     }
     // Sayfa yüklendiğinde renkleri uygula
     if (typeof applyColors === 'function') {
+        applyColors();
         setTimeout(applyColors, 100);
+        setTimeout(applyColors, 300);
     }
 }
 
@@ -10225,6 +10232,15 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             
             document.querySelectorAll('.service-card h3, .service-card p, .service-card-v2 h3, .service-card-v2 p, .ref-card h4, .ref-card p, .faq-item h3, .faq-answer, .faq-answer p').forEach(function(el) {
                 el.style.setProperty('color', textColor, 'important');
+            });
+            
+            // Hizmet numaraları (01, 02, 03...)
+            var numSettings = JSON.parse(localStorage.getItem('number_settings') || '{}');
+            var numberColor = numSettings.color || (isDarkMode ? '#ffffff' : '#000000');
+            var numberOpacity = (numSettings.opacity || 4) / 100;
+            document.querySelectorAll('.service-number').forEach(function(el) {
+                el.style.setProperty('color', numberColor, 'important');
+                el.style.setProperty('opacity', numberOpacity, 'important');
             });
             
             console.log('✅ Renkler uygulandı (' + (isDarkMode ? 'Karanlık' : 'Aydınlık') + ' mod)');
