@@ -343,7 +343,7 @@ a{color:inherit;text-decoration:none}
     <div class="login-overlay" id="loginScreen">
         <div class="login-box">
             <div class="login-logo">
-                <div class="login-logo-icon">ðŸ </div>
+                <div class="login-logo-icon">🏠</div>
                 <h1 class="login-title">Yönetim Paneli</h1>
                 <p class="login-subtitle">CEE Mimarlık Admin Girişi</p>
             </div>
@@ -352,12 +352,12 @@ a{color:inherit;text-decoration:none}
                 <input type="text" class="form-input" id="loginUsername" placeholder="admin">
             </div>
             <div class="form-group">
-                <label class="form-label">Şifre</label>
-                <input type="password" class="form-input" id="loginPassword" placeholder=""¢"¢"¢"¢"¢"¢"¢"¢">
+                <label class="form-label">Åžifre</label>
+                <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
             </div>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">Giriş Yap</button>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">GiriÅŸ Yap</button>
             <p style="text-align: center; margin-top: 15px; font-size: 12px;">
-                <a href="index.html" style="color: var(--primary);">â† Ana Sayfaya Dön</a>
+                <a href="index.html" style="color: var(--primary);">← Ana Sayfaya Dön</a>
             </p>
         </div>
     </div>
@@ -378,13 +378,13 @@ a{color:inherit;text-decoration:none}
                 <div class="nav-section">
                     <div class="nav-section-title">Ana Menü</div>
                     <a class="nav-item active" onclick="showSection('dashboard', this)">
-                        <span class="nav-item-icon">ðŸ“Š</span> Dashboard
+                        <span class="nav-item-icon">📊</span> Dashboard
                     </a>
                     <a class="nav-item" onclick="showSection('projects', this)">
-                        <span class="nav-item-icon">ðŸ—ï¸</span> Projeler
+                        <span class="nav-item-icon">🏗️</span> Projeler
                     </a>
                     <a class="nav-item" onclick="showSection('messages', this)">
-                        <span class="nav-item-icon">ðŸ’¬</span> Mesajlar
+                        <span class="nav-item-icon">💬</span> Mesajlar
                         <span class="nav-badge" id="msgBadge" style="display:none;">0</span>
                     </a>
                 </div>
@@ -392,38 +392,38 @@ a{color:inherit;text-decoration:none}
                 <div class="nav-section">
                     <div class="nav-section-title">İçerik Yönetimi</div>
                     <a class="nav-item" onclick="showSection('hero', this)">
-                        <span class="nav-item-icon">ðŸŽ¨</span> Hero Alanı
+                        <span class="nav-item-icon">🎨</span> Hero Alanı
                     </a>
                     <a class="nav-item" onclick="showSection('services', this)">
-                        <span class="nav-item-icon">ðŸ› ï¸</span> Hizmetler
+                        <span class="nav-item-icon">🛠️</span> Hizmetler
                     </a>
                     <a class="nav-item" onclick="showSection('references', this)">
-                        <span class="nav-item-icon">ðŸ¢</span> Referanslar
+                        <span class="nav-item-icon">🏢</span> Referanslar
                     </a>
                     <a class="nav-item" onclick="showSection('team', this)">
-                        <span class="nav-item-icon">ðŸ‘¥</span> Ekip
+                        <span class="nav-item-icon">👥</span> Ekip
                     </a>
                     <a class="nav-item" onclick="showSection('faq', this)">
-                        <span class="nav-item-icon">â“</span> SSS
+                        <span class="nav-item-icon">❓</span> SSS
                     </a>
                 </div>
 
                 <div class="nav-section">
                     <div class="nav-section-title">Ayarlar</div>
                     <a class="nav-item" onclick="showSection('contact', this)">
-                        <span class="nav-item-icon">ðŸ“ž</span> İletişim Bilgileri
+                        <span class="nav-item-icon">📞</span> İletişim Bilgileri
                     </a>
                     <a class="nav-item" onclick="showSection('settings', this)">
-                        <span class="nav-item-icon">âš™ï¸</span> Site Ayarları
+                        <span class="nav-item-icon">⚙️</span> Site Ayarları
                     </a>
                     <a class="nav-item" onclick="showSection('security', this)">
-                        <span class="nav-item-icon">ðŸ”’</span> Güvenlik
+                        <span class="nav-item-icon">🔒</span> Güvenlik
                     </a>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸ‘ï¸ Siteyi Görüntüle</a>
+                <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">👁️ Siteyi Görüntüle</a>
                 <div class="user-box">
                     <div class="user-avatar">A</div>
                     <div style="flex:1;">
@@ -431,7 +431,7 @@ a{color:inherit;text-decoration:none}
                         <div class="user-role">Yönetici</div>
                     </div>
                 </div>
-                <button class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 10px;" onclick="logout()">ðŸšª Çıkış</button>
+                <button class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 10px;" onclick="logout()">🚪 Çıkış</button>
             </div>
         </aside>
 
@@ -445,28 +445,28 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">Site özeti ve hızlı işlemler</p>
                     </div>
                     <div class="header-actions">
-                        <a href="index.html" target="_blank" class="btn btn-secondary">ðŸ‘ï¸ Siteyi Gör</a>
+                        <a href="index.html" target="_blank" class="btn btn-secondary">👁️ Siteyi Gör</a>
                     </div>
                 </div>
 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon blue">ðŸ—ï¸</div>
+                        <div class="stat-icon blue">🏗️</div>
                         <div class="stat-value" id="statProjects">0</div>
                         <div class="stat-label">Proje</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon green">ðŸ’¬</div>
+                        <div class="stat-icon green">💬</div>
                         <div class="stat-value" id="statMessages">0</div>
                         <div class="stat-label">Mesaj</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon yellow">ðŸ› ï¸</div>
+                        <div class="stat-icon yellow">🛠️</div>
                         <div class="stat-value" id="statServices">0</div>
                         <div class="stat-label">Hizmet</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon purple">ðŸ¢</div>
+                        <div class="stat-icon purple">🏢</div>
                         <div class="stat-value" id="statRefs">0</div>
                         <div class="stat-label">Referans</div>
                     </div>
@@ -475,24 +475,24 @@ a{color:inherit;text-decoration:none}
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">âš¡ Hızlı İşlemler</span>
+                            <span class="card-title">⚡ Hızlı İşlemler</span>
                         </div>
                         <div class="card-body">
                             <div class="quick-grid">
                                 <div class="quick-card" onclick="showSection('projects')">
-                                    <div class="quick-card-icon">ðŸ“¸</div>
+                                    <div class="quick-card-icon">📸</div>
                                     <div class="quick-card-label">Proje Ekle</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('hero')">
-                                    <div class="quick-card-icon">ðŸŽ¨</div>
+                                    <div class="quick-card-icon">🎨</div>
                                     <div class="quick-card-label">Hero Düzenle</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('contact')">
-                                    <div class="quick-card-icon">ðŸ“ž</div>
+                                    <div class="quick-card-icon">📞</div>
                                     <div class="quick-card-label">İletişim</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('settings')">
-                                    <div class="quick-card-icon">âš™ï¸</div>
+                                    <div class="quick-card-icon">⚙️</div>
                                     <div class="quick-card-label">Ayarlar</div>
                                 </div>
                             </div>
@@ -501,13 +501,13 @@ a{color:inherit;text-decoration:none}
 
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">ðŸ’¬ Son Mesajlar</span>
+                            <span class="card-title">💬 Son Mesajlar</span>
                             <button class="btn btn-sm btn-secondary" onclick="showSection('messages')">Tümü</button>
                         </div>
                         <div class="card-body" style="padding: 0; max-height: 260px; overflow-y: auto;">
                             <div id="recentMsgs">
                                 <div class="empty-state">
-                                    <div class="empty-icon">ðŸ“­</div>
+                                    <div class="empty-icon">📭</div>
                                     <div class="empty-text">Henüz mesaj yok</div>
                                 </div>
                             </div>
@@ -525,14 +525,14 @@ a{color:inherit;text-decoration:none}
                     </div>
                     <div class="header-actions">
                         <input type="file" id="projectUpload" accept="image/*" multiple style="display:none;" onchange="uploadProjects(this)">
-                        <button class="btn btn-primary" onclick="document.getElementById('projectUpload').click()">âÅ¾"¢ Proje Ekle</button>
+                        <button class="btn btn-primary" onclick="document.getElementById('projectUpload').click()">âž• Proje Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">ðŸ—ï¸ Tüm Projeler</span>
-                        <input type="text" class="form-input" placeholder="ðŸ” Ara..." style="width: 200px;" onkeyup="filterProjects(this.value)">
+                        <span class="card-title">🏗️ Tüm Projeler</span>
+                        <input type="text" class="form-input" placeholder="🔍 Ara..." style="width: 200px;" onkeyup="filterProjects(this.value)">
                     </div>
                     <div class="card-body">
                         <div class="project-grid" id="projectGrid"></div>
@@ -548,7 +548,7 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">İletişim formundan gelen mesajlar</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-danger" onclick="clearMessages()">ðŸ—‘ï¸ Tümünü Sil</button>
+                        <button class="btn btn-danger" onclick="clearMessages()">🗑️ Tümünü Sil</button>
                     </div>
                 </div>
 
@@ -598,15 +598,15 @@ a{color:inherit;text-decoration:none}
                             <label class="form-label">Buton Metni</label>
                             <input type="text" class="form-input" id="heroBtn" value="İLETİŞİME GEÇİN">
                         </div>
-                        <button class="btn btn-primary" onclick="saveHero()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">ðŸ–¼ï¸ Hero Görselleri (Slider)</span>
+                        <span class="card-title">🖼️ Hero Görselleri (Slider)</span>
                         <input type="file" id="heroImgUpload" accept="image/*" multiple style="display:none;" onchange="uploadHeroImages(this)">
-                        <button class="btn btn-sm btn-secondary" onclick="document.getElementById('heroImgUpload').click()">âž• Görsel Ekle</button>
+                        <button class="btn btn-sm btn-secondary" onclick="document.getElementById('heroImgUpload').click()">➕ Görsel Ekle</button>
                     </div>
                     <div class="card-body">
                         <div class="project-grid" id="heroImagesGrid"></div>
@@ -622,14 +622,14 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">Sunulan hizmetleri yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addService()">âÅ¾"¢ Yeni Hizmet</button>
+                        <button class="btn btn-primary" onclick="addService()">âž• Yeni Hizmet</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="servicesList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveServices()">ðŸ’¾ Hizmetleri Kaydet</button>
+                        <button class="btn btn-success" onclick="saveServices()">💾 Hizmetleri Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -642,14 +642,14 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">Çalıştığınız kurumlar</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addReference()">âÅ¾"¢ Yeni Referans</button>
+                        <button class="btn btn-primary" onclick="addReference()">âž• Yeni Referans</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="refsList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveReferences()">ðŸ’¾ Referansları Kaydet</button>
+                        <button class="btn btn-success" onclick="saveReferences()">💾 Referansları Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -662,14 +662,14 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">Ekip üyelerini yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addTeamMember()">âž• Üye Ekle</button>
+                        <button class="btn btn-primary" onclick="addTeamMember()">➕ Üye Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="teamList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveTeam()">ðŸ’¾ Ekibi Kaydet</button>
+                        <button class="btn btn-success" onclick="saveTeam()">💾 Ekibi Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -682,14 +682,14 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">SSS bölümünü yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addFaq()">âÅ¾"¢ Soru Ekle</button>
+                        <button class="btn btn-primary" onclick="addFaq()">âž• Soru Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="faqList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveFaqs()">ðŸ’¾ SSS Kaydet</button>
+                        <button class="btn btn-success" onclick="saveFaqs()">💾 SSS Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -699,45 +699,45 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">İletişim Bilgileri</h1>
-                        <p class="page-subtitle">Site genelindeki iletişim bilgileri</p>
+                        <p class="page-subtitle">Site genelindeki iletiÅŸim bilgileri</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">ðŸ“ Adres</label>
+                            <label class="form-label">📍 Adres</label>
                             <textarea class="form-textarea" id="contactAddr" rows="2">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ“ž Telefon</label>
+                                <label class="form-label">📞 Telefon</label>
                                 <input type="tel" class="form-input" id="contactPhone" value="+90 537 327 87 65">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ðŸ“± WhatsApp</label>
+                                <label class="form-label">📱 WhatsApp</label>
                                 <input type="tel" class="form-input" id="contactWa" value="+90 537 327 87 65">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">âœ‰ï¸ E-posta</label>
+                            <label class="form-label">✉️ E-posta</label>
                             <input type="email" class="form-input" id="contactEmail" value="ceemimarlik@gmail.com">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">ðŸ—ºï¸ Google Maps Linki</label>
+                            <label class="form-label">🗺️ Google Maps Linki</label>
                             <input type="url" class="form-input" id="contactMap" placeholder="https://maps.google.com/...">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ• Çalışma Saatleri</label>
+                                <label class="form-label">🕐 Çalışma Saatleri</label>
                                 <input type="text" class="form-input" id="contactHours" value="Pazartesi - Cuma: 09:00 - 18:00">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ðŸ“… Hafta Sonu</label>
+                                <label class="form-label">📅 Hafta Sonu</label>
                                 <input type="text" class="form-input" id="contactWeekend" value="Cumartesi - Pazar: Kapalı">
                             </div>
                         </div>
-                        <button class="btn btn-primary" onclick="saveContact()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveContact()">💾 Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -754,14 +754,14 @@ a{color:inherit;text-decoration:none}
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">ðŸ–¼ï¸ Site Logosu</span>
-                            <button class="btn btn-sm btn-danger" id="deleteLogoBtn" style="display:none;" onclick="deleteLogo()">ðŸ—‘ï¸ Sil</button>
+                            <span class="card-title">🖼️ Site Logosu</span>
+                            <button class="btn btn-sm btn-danger" id="deleteLogoBtn" style="display:none;" onclick="deleteLogo()">🗑️ Sil</button>
                         </div>
                         <div class="card-body">
                             <div class="upload-area" id="logoUploadArea" onclick="document.getElementById('logoUpload').click()">
                                 <img id="logoPreview" src="" style="max-width: 180px; max-height: 100px; display: none;">
                                 <div id="logoPlaceholder">
-                                    <div class="upload-icon">ðŸ“¤</div>
+                                    <div class="upload-icon">📤</div>
                                     <div class="upload-text">Logo yüklemek için tıklayın</div>
                                 </div>
                             </div>
@@ -771,14 +771,14 @@ a{color:inherit;text-decoration:none}
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸŒ™ Tema Ayarları</span></div>
+                        <div class="card-header"><span class="card-title">🌙 Tema Ayarları</span></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Varsayılan Tema</label>
                                 <select class="form-input" id="defaultTheme">
-                                    <option value="light">â˜€ï¸ Açık Tema (Light)</option>
-                                    <option value="dark">ðŸŒ™ Koyu Tema (Dark)</option>
-                                    <option value="auto">ðŸ”„ Sistem Ayarına Göre</option>
+                                    <option value="light">☀️ Açık Tema (Light)</option>
+                                    <option value="dark">🌙 Koyu Tema (Dark)</option>
+                                    <option value="auto">🔄 Sistem Ayarına Göre</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -787,13 +787,13 @@ a{color:inherit;text-decoration:none}
                                     Kullanıcıların tema değiştirmesine izin ver
                                 </label>
                             </div>
-                            <button class="btn btn-primary" onclick="saveThemeSettings()">ðŸ’¾ Kaydet</button>
+                            <button class="btn btn-primary" onclick="saveThemeSettings()">💾 Kaydet</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><span class="card-title">ðŸ” SEO Ayarları</span></div>
+                    <div class="card-header"><span class="card-title">🔍 SEO Ayarları</span></div>
                     <div class="card-body">
                         <div class="form-group">
                             <label class="form-label">Site Başlığı (Title)</label>
@@ -810,13 +810,13 @@ a{color:inherit;text-decoration:none}
                             <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlık, çorlu mimar, proje, ruhsat, iç mimarlık">
                             <small style="color: var(--text-secondary); font-size: 11px;">Virgülle ayırarak yazın</small>
                         </div>
-                        <button class="btn btn-primary" onclick="saveSeoSettings()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveSeoSettings()">💾 Kaydet</button>
                     </div>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ“„ Footer</span></div>
+                        <div class="card-header"><span class="card-title">📄 Footer</span></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Şirket Adı</label>
@@ -826,125 +826,113 @@ a{color:inherit;text-decoration:none}
                                 <label class="form-label">Yıl</label>
                                 <input type="number" class="form-input" id="footerYear" value="2026">
                             </div>
-                            <button class="btn btn-primary" onclick="saveFooter()">ðŸ’¾ Kaydet</button>
+                            <button class="btn btn-primary" onclick="saveFooter()">💾 Kaydet</button>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸŽ¨ Renk Ayarları</span></div>
+                        <div class="card-header"><span class="card-title">🎨 Renk Ayarları (Aydınlık & Karanlık Mod Ayrı)</span></div>
                         <div class="card-body">
-                            <!-- HAZIR TEMALAR -->
-                            <div style="margin-bottom: 25px;">
-                                <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
-                                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #5a6677; background: linear-gradient(135deg, #f8f9fa, #e2e8f0); color: #1a202c; border-radius: 8px;">
-                                        <span style="color: #5a6677;">â—</span> CEE Özel
-                                    </button>
-                                    <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #c9a227;">â—</span> Klasik Altın
-                                    </button>
-                                    <button onclick="applyTheme('modern')" class="btn" style="padding: 10px 16px; border: 2px solid #3b82f6; background: linear-gradient(135deg, #fff, #f0f7ff); color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #3b82f6;">â—</span> Modern Mavi
-                                    </button>
-                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #666; background: linear-gradient(135deg, #2c2c2c, #1a1a1a); color: #fff; border-radius: 8px;">
-                                        <span style="color: #c9a227;">â—</span> Koyu Mod
-                                    </button>
-                                    <button onclick="applyTheme('warm')" class="btn" style="padding: 10px 16px; border: 2px solid #d97706; background: linear-gradient(135deg, #fffbeb, #fef3c7); color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #d97706;">â—</span> Sıcak Tonlar
-                                    </button>
-                                    <button onclick="applyTheme('minimal')" class="btn" style="padding: 10px 16px; border: 2px solid #000; background: #fff; color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #000;">â—</span> Minimalist
-                                    </button>
+                            <!-- MOD SEÇİMİ -->
+                            <div style="display:flex;gap:0;margin-bottom:25px;border-radius:10px;overflow:hidden;border:2px solid #334155;">
+                                <button id="tabLight" onclick="switchColorTab('light')" style="flex:1;padding:14px 20px;background:#fbbf24;color:#1a1a1a;font-weight:600;border:none;cursor:pointer;font-size:14px;">☀️ Aydınlık Mod</button>
+                                <button id="tabDark" onclick="switchColorTab('dark')" style="flex:1;padding:14px 20px;background:#334155;color:#94a3b8;font-weight:600;border:none;cursor:pointer;font-size:14px;">🌙 Karanlık Mod</button>
+                            </div>
+                            
+                            <!-- AYDINLIK MOD AYARLARI -->
+                            <div id="lightModeSettings">
+                                <div style="background:#fef9c3;padding:15px;border-radius:10px;margin-bottom:20px;border:1px solid #eab308;">
+                                    <strong style="color:#a16207;">☀️ Aydınlık Mod Renkleri</strong>
+                                    <p style="font-size:12px;color:#854d0e;margin-top:5px;">Kullanıcı aydınlık modda iken görünecek renkler</p>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Ana Renk</label><input type="color" class="form-input" id="lightColorPrimary" value="#5a6677" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Simge Arka Plan</label><input type="color" class="form-input" id="lightColorIconBg" value="#5a6677" style="height:45px;padding:5px;"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Sayfa Arka Plan</label><input type="color" class="form-input" id="lightColorBgMain" value="#ffffff" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Section Arka Plan</label><input type="color" class="form-input" id="lightColorBgSection" value="#f8f9fa" style="height:45px;padding:5px;"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Yazı Rengi</label><input type="color" class="form-input" id="lightColorText" value="#2d3748" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Header/Footer</label><input type="color" class="form-input" id="lightColorHeader" value="#1a202c" style="height:45px;padding:5px;"></div>
+                                </div>
+                                <div style="margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;">
+                                    <button onclick="applyLightTheme('cee')" class="btn" style="padding:8px 14px;background:#f8f9fa;border:2px solid #5a6677;color:#1a202c;border-radius:6px;font-size:13px;">CEE Özel</button>
+                                    <button onclick="applyLightTheme('classic')" class="btn" style="padding:8px 14px;background:#fff;border:2px solid #c9a227;color:#1a1a1a;border-radius:6px;font-size:13px;">Klasik Altın</button>
+                                    <button onclick="applyLightTheme('modern')" class="btn" style="padding:8px 14px;background:#f0f7ff;border:2px solid #3b82f6;color:#1a1a1a;border-radius:6px;font-size:13px;">Modern Mavi</button>
                                 </div>
                             </div>
                             
-                            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                            
-                            <!-- MANUEL AYARLAR -->
-                            <label class="form-label" style="margin-bottom: 12px; display: block;">veya Manuel Ayarla:</label>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Ana Renk (Accent)</label>
-                                    <input type="color" class="form-input" id="colorPrimary" value="#5a6677" style="height:45px;padding:5px;">
+                            <!-- KARANLIK MOD AYARLARI -->
+                            <div id="darkModeSettings" style="display:none;">
+                                <div style="background:#1e293b;padding:15px;border-radius:10px;margin-bottom:20px;border:1px solid #334155;">
+                                    <strong style="color:#fbbf24;">🌙 Karanlık Mod Renkleri</strong>
+                                    <p style="font-size:12px;color:#94a3b8;margin-top:5px;">Kullanıcı karanlık modda iken görünecek renkler</p>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Simge Arka Plan</label>
-                                    <input type="color" class="form-input" id="colorIconBg" value="#5a6677" style="height:45px;padding:5px;">
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Ana Renk</label><input type="color" class="form-input" id="darkColorPrimary" value="#5a6677" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Simge Arka Plan</label><input type="color" class="form-input" id="darkColorIconBg" value="#5a6677" style="height:45px;padding:5px;"></div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Sayfa Arka Plan</label>
-                                    <input type="color" class="form-input" id="colorBgMain" value="#ffffff" style="height:45px;padding:5px;">
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Sayfa Arka Plan</label><input type="color" class="form-input" id="darkColorBgMain" value="#111111" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Section Arka Plan</label><input type="color" class="form-input" id="darkColorBgSection" value="#1a1a1a" style="height:45px;padding:5px;"></div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Section Arka Plan</label>
-                                    <input type="color" class="form-input" id="colorBgSection" value="#f5f5f5" style="height:45px;padding:5px;">
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Yazı Rengi</label><input type="color" class="form-input" id="darkColorText" value="#e2e8f0" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Header/Footer</label><input type="color" class="form-input" id="darkColorHeader" value="#0f0f0f" style="height:45px;padding:5px;"></div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label class="form-label">Yazı Rengi</label>
-                                    <input type="color" class="form-input" id="colorText" value="#2c2c2c" style="height:45px;padding:5px;">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Header/Footer Rengi</label>
-                                    <input type="color" class="form-input" id="colorHeader" value="#1a1a1a" style="height:45px;padding:5px;">
+                                <div style="margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;">
+                                    <button onclick="applyDarkTheme('midnight')" class="btn" style="padding:8px 14px;background:#1a1a1a;border:2px solid #5a6677;color:#e2e8f0;border-radius:6px;font-size:13px;">Gece Yarısı</button>
+                                    <button onclick="applyDarkTheme('gold')" class="btn" style="padding:8px 14px;background:#111;border:2px solid #c9a227;color:#c9a227;border-radius:6px;font-size:13px;">Altın Gece</button>
+                                    <button onclick="applyDarkTheme('blue')" class="btn" style="padding:8px 14px;background:#0f172a;border:2px solid #3b82f6;color:#60a5fa;border-radius:6px;font-size:13px;">Koyu Mavi</button>
                                 </div>
                             </div>
                             
-                            <!-- İKON BOYUTU AYARI -->
-                            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5;">
-                                <label class="form-label" style="margin-bottom: 12px; display: block;">Simge Boyutu: <span id="iconSizeValue">60</span>px</label>
-                                <input type="range" id="iconSize" min="40" max="100" value="60" style="width: 100%; cursor: pointer;" oninput="document.getElementById('iconSizeValue').textContent = this.value">
+                            <!-- İKON BOYUTU -->
+                            <div style="margin-top:25px;padding-top:20px;border-top:1px solid #e5e5e5;">
+                                <label class="form-label">Simge Boyutu: <span id="iconSizeValue">60</span>px</label>
+                                <input type="range" id="iconSize" min="40" max="100" value="60" style="width:100%;cursor:pointer;margin-top:10px;" oninput="document.getElementById('iconSizeValue').textContent=this.value">
                             </div>
                             
-                            <div style="margin-top: 20px;">
-                            <button class="btn btn-primary" onclick="saveColors()">ðŸ’¾ Kaydet</button>
-                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="resetColors()">ðŸ”„ Sıfırla</button>
-                            <button class="btn" style="margin-left:10px; background: #10b981; color: white;" onclick="exportThemeCode()">ðŸ“‹ Kodu Kopyala (Tüm Cihazlar)</button>
+                            <!-- BUTONLAR -->
+                            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+                                <button class="btn btn-primary" onclick="saveAllColors()">💾 Tümünü Kaydet</button>
+                                <button class="btn btn-secondary" onclick="resetAllColors()">🔄 Sıfırla</button>
+                            </div>
                             
-                            <!-- Tema Kodu Modal -->
-                            <div id="themeCodeModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
-                                <div style="background: white; border-radius: 16px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
-                                    <h3 style="margin: 0 0 20px 0; color: #1a1a1a;">ðŸ“‹ Tema Kodu</h3>
-                                    <p style="color: #666; margin-bottom: 15px;">Bu kodu <strong>index.html</strong> dosyasının başındaki <code>SITE_THEME</code> kısmıyla değiştirin:</p>
-                                    <textarea id="themeCodeOutput" readonly style="width: 100%; height: 200px; font-family: monospace; font-size: 12px; padding: 15px; border: 2px solid #e5e5e5; border-radius: 8px; background: #f8f9fa; resize: none;"></textarea>
-                                    <div style="margin-top: 20px; display: flex; gap: 10px;">
-                                        <button onclick="copyThemeCode()" class="btn btn-primary" style="flex: 1;">ðŸ“‹ Kopyala</button>
-                                        <button onclick="downloadUpdatedIndex()" class="btn" style="flex: 1; background: #3b82f6; color: white;">ðŸ“¥ Güncel index.html İndir</button>
-                                        <button onclick="closeThemeModal()" class="btn btn-secondary">Kapat</button>
-                                    </div>
-                                </div>
+                            <!-- BİLGİ -->
+                            <div style="margin-top:15px;padding:12px;background:rgba(16,185,129,0.1);border-radius:8px;border:1px solid #10b981;">
+                                <p style="font-size:12px;color:#047857;margin:0;"><strong>💡 İpucu:</strong> Aydınlık ve karanlık mod renkleri birbirinden tamamen bağımsız! Kullanıcı hangi modda ise o modun renkleri uygulanır.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><span class="card-title">ðŸ“± Sosyal Medya</span></div>
+                    <div class="card-header"><span class="card-title">📱 Sosyal Medya</span></div>
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ“· Instagram</label>
+                                <label class="form-label">📷 Instagram</label>
                                 <input type="url" class="form-input" id="socialIg" placeholder="https://instagram.com/...">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ð• Twitter / X</label>
+                                <label class="form-label">𝕏 Twitter / X</label>
                                 <input type="url" class="form-input" id="socialTw" placeholder="https://twitter.com/...">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ’¼ LinkedIn</label>
+                                <label class="form-label">💼 LinkedIn</label>
                                 <input type="url" class="form-input" id="socialLi" placeholder="https://linkedin.com/...">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">â–¶ï¸ YouTube</label>
+                                <label class="form-label">▶️ YouTube</label>
                                 <input type="url" class="form-input" id="socialYt" placeholder="https://youtube.com/...">
                             </div>
                         </div>
-                        <button class="btn btn-primary" onclick="saveSocial()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveSocial()">💾 Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -954,38 +942,38 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Güvenlik</h1>
-                        <p class="page-subtitle">Giriş bilgileri ve yedekleme</p>
+                        <p class="page-subtitle">GiriÅŸ bilgileri ve yedekleme</p>
                     </div>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ”’ Şifre Değiştir</span></div>
+                        <div class="card-header"><span class="card-title">🔒 Şifre Değiştir</span></div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Yeni Kullanıcı Adı</label>
                                 <input type="text" class="form-input" id="newUser" placeholder="admin">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Yeni Şifre</label>
-                                <input type="password" class="form-input" id="newPass" placeholder=""¢"¢"¢"¢"¢"¢"¢"¢">
+                                <label class="form-label">Yeni Åžifre</label>
+                                <input type="password" class="form-input" id="newPass" placeholder="••••••••">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Şifre Tekrar</label>
-                                <input type="password" class="form-input" id="newPassConfirm" placeholder=""¢"¢"¢"¢"¢"¢"¢"¢">
+                                <label class="form-label">Åžifre Tekrar</label>
+                                <input type="password" class="form-input" id="newPassConfirm" placeholder="••••••••">
                             </div>
-                            <button class="btn btn-primary" onclick="changePassword()">ðŸ’¾ Güncelle</button>
+                            <button class="btn btn-primary" onclick="changePassword()">💾 Güncelle</button>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ’¾ Yedekleme</span></div>
+                        <div class="card-header"><span class="card-title">💾 Yedekleme</span></div>
                         <div class="card-body">
                             <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 13px;">
                                 Tüm site verilerini yedekleyin veya geri yükleyin.
                             </p>
-                            <button class="btn btn-secondary" onclick="exportBackup()">ðŸ“¥ Yedeği İndir</button>
-                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="document.getElementById('backupFile').click()">ðŸ“¤ Yedeği Yükle</button>
+                            <button class="btn btn-secondary" onclick="exportBackup()">📥 Yedeği İndir</button>
+                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="document.getElementById('backupFile').click()">📤 Yedeği Yükle</button>
                             <input type="file" id="backupFile" accept=".json" style="display:none;" onchange="importBackup(this)">
                         </div>
                     </div>
@@ -1015,7 +1003,7 @@ a{color:inherit;text-decoration:none}
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminLayout').style.display = 'flex';
             loadAll();
-            toast('Hoş geldiniz!', 'success');
+            toast('HoÅŸ geldiniz!', 'success');
         } else {
             toast('Hatalı giriş bilgileri!', 'error');
         }
@@ -1048,16 +1036,16 @@ a{color:inherit;text-decoration:none}
     let projects = [], services = [], refs = [], team = [], faqs = [], heroImages = [];
 
     const defaultServices = [
-        { icon: 'ðŸ ', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarımlar' },
-        { icon: 'ðŸ“', title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel tasarımlar' },
-        { icon: 'ðŸ—ï¸', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
-        { icon: 'ðŸ“‹', title: 'Ruhsat İşlemleri', desc: 'Tüm resmi işlemler için danışmanlık' }
+        { icon: '🏠', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarımlar' },
+        { icon: '📐', title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel tasarımlar' },
+        { icon: '🏗️', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
+        { icon: '📋', title: 'Ruhsat İşlemleri', desc: 'Tüm resmi işlemler için danışmanlık' }
     ];
 
     const defaultRefs = [
-        { icon: 'ðŸ›ï¸', title: 'Kamu Kurumları', desc: 'Devlet projeleri' },
-        { icon: 'ðŸ¢', title: 'Özel Sektör', desc: 'Ticari projeler' },
-        { icon: 'ðŸ ', title: 'Bireysel', desc: 'Konut projeleri' }
+        { icon: '🏛️', title: 'Kamu Kurumları', desc: 'Devlet projeleri' },
+        { icon: '🏢', title: 'Özel Sektör', desc: 'Ticari projeler' },
+        { icon: '🏠', title: 'Bireysel', desc: 'Konut projeleri' }
     ];
 
     function loadAll() {
@@ -1085,8 +1073,8 @@ a{color:inherit;text-decoration:none}
     // PROJECTS
     function renderProjects() {
         const grid = document.getElementById('projectGrid');
-        if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">ðŸ—ï¸</div><div class="empty-text">Henüz proje yok</div></div>'; return; }
-        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'İsimsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">âœï¸</button><button onclick="deleteProject(${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🏗️</div><div class="empty-text">Henüz proje yok</div></div>'; return; }
+        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'İsimsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">✏️</button><button onclick="deleteProject(${i})">🗑️</button></div></div>`).join('');
     }
 
     function uploadProjects(input) {
@@ -1109,8 +1097,8 @@ a{color:inherit;text-decoration:none}
     function loadMessages() { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); renderMsgs(msgs.slice(0, 4), 'recentMsgs'); renderMsgs(msgs, 'allMsgs'); }
     function renderMsgs(msgs, id) {
         const el = document.getElementById(id);
-        if (msgs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ“­</div><div class="empty-text">Henüz mesaj yok</div></div>'; return; }
-        el.innerHTML = msgs.map((m, i) => `<div class="msg-item ${!m.read ? 'msg-unread' : ''}"><div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div><div class="msg-content"><div class="msg-header"><span class="msg-name">${m.name}</span><span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span></div><div class="msg-subject">${m.subject || 'Konu yok'}</div><div class="msg-preview">${m.message}</div></div>${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="deleteMsg(${i})">ðŸ—‘ï¸</button>` : ''}</div>`).join('');
+        if (msgs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">Henüz mesaj yok</div></div>'; return; }
+        el.innerHTML = msgs.map((m, i) => `<div class="msg-item ${!m.read ? 'msg-unread' : ''}"><div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div><div class="msg-content"><div class="msg-header"><span class="msg-name">${m.name}</span><span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span></div><div class="msg-subject">${m.subject || 'Konu yok'}</div><div class="msg-preview">${m.message}</div></div>${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="deleteMsg(${i})">🗑️</button>` : ''}</div>`).join('');
         if (id === 'allMsgs') { msgs.forEach(m => m.read = true); localStorage.setItem('contact_messages', JSON.stringify(msgs)); updateStats(); }
     }
     function deleteMsg(i) { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); msgs.splice(i, 1); localStorage.setItem('contact_messages', JSON.stringify(msgs)); loadMessages(); updateStats(); toast('Silindi', 'success'); }
@@ -1119,28 +1107,28 @@ a{color:inherit;text-decoration:none}
     // SERVICES
     function renderServices() {
         const el = document.getElementById('servicesList');
-        if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ› ï¸</div><div class="empty-text">Hizmet yok</div></div>'; return; }
-        el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>â–²</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>â–¼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div></div>'; return; }
+        el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">🗑️</button></div></div>`).join('');
     }
-    function addService() { const icon = prompt('Emoji:', 'ðŸ '); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || 'ðŸ ', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
+    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
     function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet güncellendi', 'success'); } }
     function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); }
 
     // REFERENCES
     function renderRefs() {
         const el = document.getElementById('refsList');
-        if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ¢</div><div class="empty-text">Referans yok</div></div>'; return; }
-        el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>â–²</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>â–¼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div></div>'; return; }
+        el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">🗑️</button></div></div>`).join('');
     }
-    function addReference() { const icon = prompt('Emoji:', 'ðŸ¢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || 'ðŸ¢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
+    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
     function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans güncellendi', 'success'); } }
     function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); }
 
     // TEAM
     function renderTeam() {
         const el = document.getElementById('teamList');
-        if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ‘¥</div><div class="empty-text">Ekip üyesi yok</div></div>'; return; }
-        el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">ðŸ‘¤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Ekip üyesi yok</div></div>'; return; }
+        el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">👤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">🗑️</button></div></div>`).join('');
     }
     function addTeamMember() { const name = prompt('İsim:', ''); const role = prompt('Pozisyon:', ''); if (name) { team.push({ name, role }); renderTeam(); toast('Eklendi', 'success'); } }
     function editTeamMember(i) { const t = team[i]; const name = prompt('İsim:', t.name); const role = prompt('Pozisyon:', t.role); if (name) { team[i] = { ...t, name, role }; renderTeam(); toast('Güncellendi', 'success'); } }
@@ -1149,8 +1137,8 @@ a{color:inherit;text-decoration:none}
     // FAQ
     function renderFaqs() {
         const el = document.getElementById('faqList');
-        if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">â“</div><div class="empty-text">Soru yok</div></div>'; return; }
-        el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">â“</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">❓</div><div class="empty-text">Soru yok</div></div>'; return; }
+        el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">❓</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">🗑️</button></div></div>`).join('');
     }
     function addFaq() { const q = prompt('Soru:', ''); const a = prompt('Cevap:', ''); if (q) { faqs.push({ question: q, answer: a }); renderFaqs(); toast('Eklendi', 'success'); } }
     function editFaq(i) { const f = faqs[i]; const q = prompt('Soru:', f.question || f.questionTr); const a = prompt('Cevap:', f.answer || f.answerTr); if (q) { faqs[i] = { question: q, answer: a }; renderFaqs(); toast('Güncellendi', 'success'); } }
@@ -1159,8 +1147,8 @@ a{color:inherit;text-decoration:none}
     // HERO IMAGES
     function renderHeroImages() {
         const el = document.getElementById('heroImagesGrid');
-        if (heroImages.length === 0) { el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">ðŸ–¼ï¸</div><div class="empty-text">Hero görseli yok</div></div>'; return; }
-        el.innerHTML = heroImages.map((img, i) => `<div class="project-card"><img src="${img}" class="project-img"><div class="project-actions"><button onclick="deleteHeroImage(${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (heroImages.length === 0) { el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🖼️</div><div class="empty-text">Hero görseli yok</div></div>'; return; }
+        el.innerHTML = heroImages.map((img, i) => `<div class="project-card"><img src="${img}" class="project-img"><div class="project-actions"><button onclick="deleteHeroImage(${i})">🗑️</button></div></div>`).join('');
     }
     function uploadHeroImages(input) { for (let f of input.files) { const reader = new FileReader(); reader.onload = e => { heroImages.push(e.target.result); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Eklendi', 'success'); }; reader.readAsDataURL(f); } input.value = ''; }
     function deleteHeroImage(i) { if (confirm('Silmek istiyor musunuz?')) { heroImages.splice(i, 1); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Silindi', 'success'); } }
@@ -1206,18 +1194,28 @@ a{color:inherit;text-decoration:none}
         if (soc.linkedin) document.getElementById('socialLi').value = soc.linkedin; 
         if (soc.youtube) document.getElementById('socialYt').value = soc.youtube; 
         
-        // Renkler
-        const c = JSON.parse(localStorage.getItem('color_settings') || '{}'); 
-        if (c.primary) document.getElementById('colorPrimary').value = c.primary; 
-        if (c.iconBg) document.getElementById('colorIconBg').value = c.iconBg;
-        if (c.bgMain) document.getElementById('colorBgMain').value = c.bgMain;
-        if (c.bgSection) document.getElementById('colorBgSection').value = c.bgSection;
-        if (c.text) document.getElementById('colorText').value = c.text;
-        if (c.header) document.getElementById('colorHeader').value = c.header;
-        if (c.iconSize) {
-            document.getElementById('iconSize').value = c.iconSize;
-            document.getElementById('iconSizeValue').textContent = c.iconSize;
-        }
+        // Aydınlık Mod Renkleri
+        const lc = JSON.parse(localStorage.getItem('light_color_settings') || '{}'); 
+        document.getElementById('lightColorPrimary').value = lc.primary || '#5a6677'; 
+        document.getElementById('lightColorIconBg').value = lc.iconBg || '#5a6677';
+        document.getElementById('lightColorBgMain').value = lc.bgMain || '#ffffff';
+        document.getElementById('lightColorBgSection').value = lc.bgSection || '#f8f9fa';
+        document.getElementById('lightColorText').value = lc.text || '#2d3748';
+        document.getElementById('lightColorHeader').value = lc.header || '#1a202c';
+        
+        // Karanlık Mod Renkleri
+        const dc = JSON.parse(localStorage.getItem('dark_color_settings') || '{}'); 
+        document.getElementById('darkColorPrimary').value = dc.primary || '#5a6677'; 
+        document.getElementById('darkColorIconBg').value = dc.iconBg || '#5a6677';
+        document.getElementById('darkColorBgMain').value = dc.bgMain || '#111111';
+        document.getElementById('darkColorBgSection').value = dc.bgSection || '#1a1a1a';
+        document.getElementById('darkColorText').value = dc.text || '#e2e8f0';
+        document.getElementById('darkColorHeader').value = dc.header || '#0f0f0f';
+        
+        // İkon Boyutu
+        const iSize = localStorage.getItem('icon_size') || '60';
+        document.getElementById('iconSize').value = iSize;
+        document.getElementById('iconSizeValue').textContent = iSize;
         
         // SEO
         const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
@@ -1233,75 +1231,121 @@ a{color:inherit;text-decoration:none}
     
     function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
     function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
-    function saveColors() { 
-        localStorage.setItem('color_settings', JSON.stringify({ 
-            primary: document.getElementById('colorPrimary').value, 
-            iconBg: document.getElementById('colorIconBg').value,
-            bgMain: document.getElementById('colorBgMain').value,
-            bgSection: document.getElementById('colorBgSection').value,
-            text: document.getElementById('colorText').value,
-            header: document.getElementById('colorHeader').value,
-            iconSize: document.getElementById('iconSize').value
-        })); 
-        toast('Renkler kaydedildi! Sayfayı yenileyin.', 'success'); 
+    
+    // MOD SEKME DEĞİŞTİRME
+    function switchColorTab(mode) {
+        if (mode === 'light') {
+            document.getElementById('lightModeSettings').style.display = 'block';
+            document.getElementById('darkModeSettings').style.display = 'none';
+            document.getElementById('tabLight').style.background = '#fbbf24';
+            document.getElementById('tabLight').style.color = '#1a1a1a';
+            document.getElementById('tabDark').style.background = '#334155';
+            document.getElementById('tabDark').style.color = '#94a3b8';
+        } else {
+            document.getElementById('lightModeSettings').style.display = 'none';
+            document.getElementById('darkModeSettings').style.display = 'block';
+            document.getElementById('tabDark').style.background = '#3b82f6';
+            document.getElementById('tabDark').style.color = '#fff';
+            document.getElementById('tabLight').style.background = '#334155';
+            document.getElementById('tabLight').style.color = '#94a3b8';
+        }
     }
-    function resetColors() { 
-        document.getElementById('colorPrimary').value = '#5a6677'; 
-        document.getElementById('colorIconBg').value = '#5a6677'; 
-        document.getElementById('colorBgMain').value = '#ffffff';
-        document.getElementById('colorBgSection').value = '#f8f9fa';
-        document.getElementById('colorText').value = '#2d3748';
-        document.getElementById('colorHeader').value = '#1a202c';
+    
+    // AYDINLIK MOD HAZIR TEMALAR
+    function applyLightTheme(t) {
+        const themes = {
+            cee: {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'},
+            classic: {primary:'#c9a227',iconBg:'#c9a227',bgMain:'#ffffff',bgSection:'#f5f5f5',text:'#2c2c2c',header:'#1a1a1a'},
+            modern: {primary:'#3b82f6',iconBg:'#3b82f6',bgMain:'#ffffff',bgSection:'#f0f7ff',text:'#1e293b',header:'#0f172a'}
+        };
+        const th = themes[t]; if(!th)return;
+        document.getElementById('lightColorPrimary').value = th.primary;
+        document.getElementById('lightColorIconBg').value = th.iconBg;
+        document.getElementById('lightColorBgMain').value = th.bgMain;
+        document.getElementById('lightColorBgSection').value = th.bgSection;
+        document.getElementById('lightColorText').value = th.text;
+        document.getElementById('lightColorHeader').value = th.header;
+        toast('Aydınlık tema ayarlandı!', 'success');
+    }
+    
+    // KARANLIK MOD HAZIR TEMALAR
+    function applyDarkTheme(t) {
+        const themes = {
+            midnight: {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'},
+            gold: {primary:'#c9a227',iconBg:'#c9a227',bgMain:'#0f0f0f',bgSection:'#1a1a1a',text:'#fef3c7',header:'#000000'},
+            blue: {primary:'#3b82f6',iconBg:'#3b82f6',bgMain:'#0f172a',bgSection:'#1e293b',text:'#e0f2fe',header:'#020617'}
+        };
+        const th = themes[t]; if(!th)return;
+        document.getElementById('darkColorPrimary').value = th.primary;
+        document.getElementById('darkColorIconBg').value = th.iconBg;
+        document.getElementById('darkColorBgMain').value = th.bgMain;
+        document.getElementById('darkColorBgSection').value = th.bgSection;
+        document.getElementById('darkColorText').value = th.text;
+        document.getElementById('darkColorHeader').value = th.header;
+        toast('Karanlık tema ayarlandı!', 'success');
+    }
+    
+    // TÜM RENKLERİ KAYDET
+    function saveAllColors() { 
+        localStorage.setItem('light_color_settings', JSON.stringify({ 
+            primary: document.getElementById('lightColorPrimary').value, 
+            iconBg: document.getElementById('lightColorIconBg').value,
+            bgMain: document.getElementById('lightColorBgMain').value,
+            bgSection: document.getElementById('lightColorBgSection').value,
+            text: document.getElementById('lightColorText').value,
+            header: document.getElementById('lightColorHeader').value
+        }));
+        localStorage.setItem('dark_color_settings', JSON.stringify({ 
+            primary: document.getElementById('darkColorPrimary').value, 
+            iconBg: document.getElementById('darkColorIconBg').value,
+            bgMain: document.getElementById('darkColorBgMain').value,
+            bgSection: document.getElementById('darkColorBgSection').value,
+            text: document.getElementById('darkColorText').value,
+            header: document.getElementById('darkColorHeader').value
+        }));
+        localStorage.setItem('icon_size', document.getElementById('iconSize').value);
+        toast('Tüm renkler kaydedildi! Sayfayı yenileyin.', 'success'); 
+    }
+    
+    // TÜM RENKLERİ SIFIRLA
+    function resetAllColors() { 
+        // Aydınlık mod varsayılanları
+        document.getElementById('lightColorPrimary').value = '#5a6677'; 
+        document.getElementById('lightColorIconBg').value = '#5a6677'; 
+        document.getElementById('lightColorBgMain').value = '#ffffff';
+        document.getElementById('lightColorBgSection').value = '#f8f9fa';
+        document.getElementById('lightColorText').value = '#2d3748';
+        document.getElementById('lightColorHeader').value = '#1a202c';
+        // Karanlık mod varsayılanları
+        document.getElementById('darkColorPrimary').value = '#5a6677'; 
+        document.getElementById('darkColorIconBg').value = '#5a6677'; 
+        document.getElementById('darkColorBgMain').value = '#111111';
+        document.getElementById('darkColorBgSection').value = '#1a1a1a';
+        document.getElementById('darkColorText').value = '#e2e8f0';
+        document.getElementById('darkColorHeader').value = '#0f0f0f';
+        // İkon boyutu
         document.getElementById('iconSize').value = '60';
         document.getElementById('iconSizeValue').textContent = '60';
-        localStorage.removeItem('color_settings'); 
-        toast('CEE Özel tema uygulandı!', 'success'); 
+        // LocalStorage temizle
+        localStorage.removeItem('light_color_settings');
+        localStorage.removeItem('dark_color_settings');
+        localStorage.removeItem('icon_size');
+        toast('Tüm renkler sıfırlandı!', 'success'); 
     }
     
-    // HAZIR TEMA FONKSİYONU
+    // ESKİ FONKSİYONLAR (geriye uyumluluk için)
+    function saveColors() { saveAllColors(); }
+    function resetColors() { resetAllColors(); }
     function applyTheme(theme) {
-        const themes = {
-            cee: {
-                primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', 
-                bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c'
-            },
-            classic: {
-                primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
-                bgSection: '#f5f5f5', text: '#2c2c2c', header: '#1a1a1a'
-            },
-            modern: {
-                primary: '#3b82f6', iconBg: '#3b82f6', bgMain: '#ffffff', 
-                bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a'
-            },
-            dark: {
-                primary: '#c9a227', iconBg: '#c9a227', bgMain: '#1a1a1a', 
-                bgSection: '#2c2c2c', text: '#e5e5e5', header: '#0f0f0f'
-            },
-            warm: {
-                primary: '#d97706', iconBg: '#d97706', bgMain: '#fffbeb', 
-                bgSection: '#fef3c7', text: '#78350f', header: '#451a03'
-            },
-            minimal: {
-                primary: '#000000', iconBg: '#000000', bgMain: '#ffffff', 
-                bgSection: '#fafafa', text: '#171717', header: '#000000'
-            }
-        };
-        
-        const t = themes[theme];
-        if (!t) return;
-        
-        document.getElementById('colorPrimary').value = t.primary;
-        document.getElementById('colorIconBg').value = t.iconBg;
-        document.getElementById('colorBgMain').value = t.bgMain;
-        document.getElementById('colorBgSection').value = t.bgSection;
-        document.getElementById('colorText').value = t.text;
-        document.getElementById('colorHeader').value = t.header;
-        
-        saveColors();
-        toast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' teması uygulandı!', 'success');
+        // Aydınlık modda ise light theme uygula
+        if (theme === 'dark') {
+            applyDarkTheme('midnight');
+        } else {
+            applyLightTheme(theme === 'cee' ? 'cee' : theme === 'classic' ? 'classic' : 'modern');
+        }
     }
     
-    // TEMA KODU DIŞA AKTARMA
+    // TEMA KODU DIÅžA AKTARMA
     function exportThemeCode() {
         const theme = {
             primary: document.getElementById('colorPrimary').value,
@@ -1419,7 +1463,7 @@ a{color:inherit;text-decoration:none}
             document.getElementById('logoPlaceholder').style.display = 'none'; 
             document.getElementById('deleteLogoBtn').style.display = 'block';
             document.getElementById('sidebarLogo').innerHTML = `<img src="${logo}">`;
-            // Sağ alt sabit logo
+            // SaÄŸ alt sabit logo
             document.getElementById('fixedLogoImg').src = logo;
             document.getElementById('fixedLogo').style.display = 'block';
         } else {
@@ -1442,7 +1486,7 @@ a{color:inherit;text-decoration:none}
         reader.readAsDataURL(f); 
     }
     function deleteLogo() {
-        if (confirm('Logoyu silmek istediğinize emin misiniz?')) {
+        if (confirm('Logoyu silmek istediÄŸinize emin misiniz?')) {
             localStorage.removeItem('site_logo');
             loadLogo();
             toast('Logo silindi', 'success');
@@ -1512,7 +1556,7 @@ a{color:inherit;text-decoration:none}
     }
 
     // TOAST
-    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? 'âœ…' : 'âŒ'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
+    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
     </script>
 </body>
 </html>
