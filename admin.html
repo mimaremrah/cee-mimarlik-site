@@ -19,14 +19,14 @@ input,button,select,textarea{font-family:inherit;font-size:inherit;-webkit-appea
 @media(max-width:768px){input,select,textarea{font-size:16px!important}}
 img,video{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
-::selection{background:#d4af37;color:#fff}
-::-moz-selection{background:#d4af37;color:#fff}
+::selection{background:#5a6677;color:#fff}
+::-moz-selection{background:#5a6677;color:#fff}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #d4af37;
+            --primary: #5a6677;
             --primary-dark: #b8962e;
             --bg-dark: #0f172a;
             --bg-card: #1e293b;
@@ -837,6 +837,9 @@ a{color:inherit;text-decoration:none}
                             <div style="margin-bottom: 25px;">
                                 <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
                                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #5a6677; background: linear-gradient(135deg, #f8f9fa, #e2e8f0); color: #1a202c; border-radius: 8px;">
+                                        <span style="color: #5a6677;">●</span> CEE Özel
+                                    </button>
                                     <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #c9a227;">●</span> Klasik Altın
                                     </button>
@@ -862,11 +865,11 @@ a{color:inherit;text-decoration:none}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label">Ana Renk (Accent)</label>
-                                    <input type="color" class="form-input" id="colorPrimary" value="#c9a227" style="height:45px;padding:5px;">
+                                    <input type="color" class="form-input" id="colorPrimary" value="#5a6677" style="height:45px;padding:5px;">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Simge Arka Plan</label>
-                                    <input type="color" class="form-input" id="colorIconBg" value="#c9a227" style="height:45px;padding:5px;">
+                                    <input type="color" class="form-input" id="colorIconBg" value="#5a6677" style="height:45px;padding:5px;">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -889,8 +892,31 @@ a{color:inherit;text-decoration:none}
                                     <input type="color" class="form-input" id="colorHeader" value="#1a1a1a" style="height:45px;padding:5px;">
                                 </div>
                             </div>
+                            
+                            <!-- İKON BOYUTU AYARI -->
+                            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5;">
+                                <label class="form-label" style="margin-bottom: 12px; display: block;">Simge Boyutu: <span id="iconSizeValue">60</span>px</label>
+                                <input type="range" id="iconSize" min="40" max="100" value="60" style="width: 100%; cursor: pointer;" oninput="document.getElementById('iconSizeValue').textContent = this.value">
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
                             <button class="btn btn-primary" onclick="saveColors()">💾 Kaydet</button>
                             <button class="btn btn-secondary" style="margin-left:10px;" onclick="resetColors()">🔄 Sıfırla</button>
+                            <button class="btn" style="margin-left:10px; background: #10b981; color: white;" onclick="exportThemeCode()">📋 Kodu Kopyala (Tüm Cihazlar)</button>
+                            
+                            <!-- Tema Kodu Modal -->
+                            <div id="themeCodeModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+                                <div style="background: white; border-radius: 16px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                                    <h3 style="margin: 0 0 20px 0; color: #1a1a1a;">📋 Tema Kodu</h3>
+                                    <p style="color: #666; margin-bottom: 15px;">Bu kodu <strong>index.html</strong> dosyasının başındaki <code>SITE_THEME</code> kısmıyla değiştirin:</p>
+                                    <textarea id="themeCodeOutput" readonly style="width: 100%; height: 200px; font-family: monospace; font-size: 12px; padding: 15px; border: 2px solid #e5e5e5; border-radius: 8px; background: #f8f9fa; resize: none;"></textarea>
+                                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                                        <button onclick="copyThemeCode()" class="btn btn-primary" style="flex: 1;">📋 Kopyala</button>
+                                        <button onclick="downloadUpdatedIndex()" class="btn" style="flex: 1; background: #3b82f6; color: white;">📥 Güncel index.html İndir</button>
+                                        <button onclick="closeThemeModal()" class="btn btn-secondary">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1188,6 +1214,10 @@ a{color:inherit;text-decoration:none}
         if (c.bgSection) document.getElementById('colorBgSection').value = c.bgSection;
         if (c.text) document.getElementById('colorText').value = c.text;
         if (c.header) document.getElementById('colorHeader').value = c.header;
+        if (c.iconSize) {
+            document.getElementById('iconSize').value = c.iconSize;
+            document.getElementById('iconSizeValue').textContent = c.iconSize;
+        }
         
         // SEO
         const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
@@ -1210,24 +1240,31 @@ a{color:inherit;text-decoration:none}
             bgMain: document.getElementById('colorBgMain').value,
             bgSection: document.getElementById('colorBgSection').value,
             text: document.getElementById('colorText').value,
-            header: document.getElementById('colorHeader').value
+            header: document.getElementById('colorHeader').value,
+            iconSize: document.getElementById('iconSize').value
         })); 
         toast('Renkler kaydedildi! Sayfayı yenileyin.', 'success'); 
     }
     function resetColors() { 
-        document.getElementById('colorPrimary').value = '#c9a227'; 
-        document.getElementById('colorIconBg').value = '#c9a227'; 
+        document.getElementById('colorPrimary').value = '#5a6677'; 
+        document.getElementById('colorIconBg').value = '#5a6677'; 
         document.getElementById('colorBgMain').value = '#ffffff';
-        document.getElementById('colorBgSection').value = '#f5f5f5';
-        document.getElementById('colorText').value = '#2c2c2c';
-        document.getElementById('colorHeader').value = '#1a1a1a';
+        document.getElementById('colorBgSection').value = '#f8f9fa';
+        document.getElementById('colorText').value = '#2d3748';
+        document.getElementById('colorHeader').value = '#1a202c';
+        document.getElementById('iconSize').value = '60';
+        document.getElementById('iconSizeValue').textContent = '60';
         localStorage.removeItem('color_settings'); 
-        toast('Renkler sıfırlandı!', 'success'); 
+        toast('CEE Özel tema uygulandı!', 'success'); 
     }
     
     // HAZIR TEMA FONKSİYONU
     function applyTheme(theme) {
         const themes = {
+            cee: {
+                primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', 
+                bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c'
+            },
             classic: {
                 primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
                 bgSection: '#f5f5f5', text: '#2c2c2c', header: '#1a1a1a'
@@ -1262,6 +1299,94 @@ a{color:inherit;text-decoration:none}
         
         saveColors();
         toast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' teması uygulandı!', 'success');
+    }
+    
+    // TEMA KODU DIŞA AKTARMA
+    function exportThemeCode() {
+        const theme = {
+            primary: document.getElementById('colorPrimary').value,
+            iconBg: document.getElementById('colorIconBg').value,
+            bgMain: document.getElementById('colorBgMain').value,
+            bgSection: document.getElementById('colorBgSection').value,
+            text: document.getElementById('colorText').value,
+            header: document.getElementById('colorHeader').value
+        };
+        
+        const code = `    <!-- GLOBAL TEMA AYARLARI - Tüm cihazlarda aynı görünüm için -->
+    <script>
+    // CEE MİMARLIK - Site Tema Ayarları
+    // Admin panelden değiştirdiğinizde bu kısmı güncelleyin
+    const SITE_THEME = {
+        primary: '${theme.primary}',
+        iconBg: '${theme.iconBg}',
+        bgMain: '${theme.bgMain}',
+        bgSection: '${theme.bgSection}',
+        text: '${theme.text}',
+        header: '${theme.header}'
+    };
+    
+    // Tema ayarlarını localStorage'a yükle
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('color_settings', JSON.stringify(SITE_THEME));
+    }
+    <\/script>`;
+        
+        document.getElementById('themeCodeOutput').value = code;
+        document.getElementById('themeCodeModal').style.display = 'flex';
+    }
+    
+    function copyThemeCode() {
+        const textarea = document.getElementById('themeCodeOutput');
+        textarea.select();
+        document.execCommand('copy');
+        toast('Kod kopyalandı! index.html dosyasına yapıştırın.', 'success');
+    }
+    
+    function downloadUpdatedIndex() {
+        const theme = {
+            primary: document.getElementById('colorPrimary').value,
+            iconBg: document.getElementById('colorIconBg').value,
+            bgMain: document.getElementById('colorBgMain').value,
+            bgSection: document.getElementById('colorBgSection').value,
+            text: document.getElementById('colorText').value,
+            header: document.getElementById('colorHeader').value
+        };
+        
+        // Güncel index.html oluştur
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                // SITE_THEME kısmını güncelle
+                const newThemeCode = `const SITE_THEME = {
+        primary: '${theme.primary}',
+        iconBg: '${theme.iconBg}',
+        bgMain: '${theme.bgMain}',
+        bgSection: '${theme.bgSection}',
+        text: '${theme.text}',
+        header: '${theme.header}'
+    };`;
+                
+                html = html.replace(/const SITE_THEME = \{[^}]+\};/s, newThemeCode);
+                
+                // Dosyayı indir
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                toast('index.html indirildi! GitHub\'a yükleyin.', 'success');
+                closeThemeModal();
+            })
+            .catch(err => {
+                toast('Hata: ' + err.message, 'error');
+            });
+    }
+    
+    function closeThemeModal() {
+        document.getElementById('themeCodeModal').style.display = 'none';
     }
     
     // SEO SETTINGS
