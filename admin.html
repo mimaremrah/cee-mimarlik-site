@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CEE MimarlÄ±k - YÃ¶netim Paneli">
+    <meta name="description" content="CEE Mimarlık - Yönetim Paneli">
     <meta name="robots" content="noindex, nofollow">
-    <title>CEE MimarlÄ±k | YÃ¶netim Paneli</title>
+    <title>CEE Mimarlık | Yönetim Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 /* Cross-Browser & Mobile Uyumluluk */
@@ -343,21 +343,21 @@ a{color:inherit;text-decoration:none}
     <div class="login-overlay" id="loginScreen">
         <div class="login-box">
             <div class="login-logo">
-                <div class="login-logo-icon">ðŸ </div>
-                <h1 class="login-title">YÃ¶netim Paneli</h1>
-                <p class="login-subtitle">CEE MimarlÄ±k Admin GiriÅŸi</p>
+                <div class="login-logo-icon">🏠</div>
+                <h1 class="login-title">Yönetim Paneli</h1>
+                <p class="login-subtitle">CEE Mimarlık Admin Girişi</p>
             </div>
             <div class="form-group">
-                <label class="form-label">KullanÄ±cÄ± AdÄ±</label>
+                <label class="form-label">Kullanıcı Adı</label>
                 <input type="text" class="form-input" id="loginUsername" placeholder="admin">
             </div>
             <div class="form-group">
-                <label class="form-label">Ã…Å¾ifre</label>
-                <input type="password" class="form-input" id="loginPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                <label class="form-label">Åžifre</label>
+                <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
             </div>
             <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">GiriÅŸ Yap</button>
             <p style="text-align: center; margin-top: 15px; font-size: 12px;">
-                <a href="index.html" style="color: var(--primary);">â† Ana Sayfaya DÃ¶n</a>
+                <a href="index.html" style="color: var(--primary);">← Ana Sayfaya Dön</a>
             </p>
         </div>
     </div>
@@ -369,69 +369,69 @@ a{color:inherit;text-decoration:none}
             <div class="sidebar-header">
                 <div class="sidebar-logo" id="sidebarLogo">CEE</div>
                 <div>
-                    <div class="sidebar-title">CEE MimarlÄ±k</div>
-                    <div class="sidebar-subtitle">YÃ¶netim Paneli</div>
+                    <div class="sidebar-title">CEE Mimarlık</div>
+                    <div class="sidebar-subtitle">Yönetim Paneli</div>
                 </div>
             </div>
 
             <nav class="sidebar-nav">
                 <div class="nav-section">
-                    <div class="nav-section-title">Ana MenÃ¼</div>
+                    <div class="nav-section-title">Ana Menü</div>
                     <a class="nav-item active" onclick="showSection('dashboard', this)">
-                        <span class="nav-item-icon">ðŸ“Š</span> Dashboard
+                        <span class="nav-item-icon">📊</span> Dashboard
                     </a>
                     <a class="nav-item" onclick="showSection('projects', this)">
-                        <span class="nav-item-icon">ðŸ—ï¸</span> Projeler
+                        <span class="nav-item-icon">🏗️</span> Projeler
                     </a>
                     <a class="nav-item" onclick="showSection('messages', this)">
-                        <span class="nav-item-icon">ðŸ’¬</span> Mesajlar
+                        <span class="nav-item-icon">💬</span> Mesajlar
                         <span class="nav-badge" id="msgBadge" style="display:none;">0</span>
                     </a>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-section-title">Ä°Ã§erik YÃ¶netimi</div>
+                    <div class="nav-section-title">İçerik Yönetimi</div>
                     <a class="nav-item" onclick="showSection('hero', this)">
-                        <span class="nav-item-icon">ðŸŽ¨</span> Hero AlanÄ±
+                        <span class="nav-item-icon">🎨</span> Hero Alanı
                     </a>
                     <a class="nav-item" onclick="showSection('services', this)">
-                        <span class="nav-item-icon">ðŸ› ï¸</span> Hizmetler
+                        <span class="nav-item-icon">🛠️</span> Hizmetler
                     </a>
                     <a class="nav-item" onclick="showSection('references', this)">
-                        <span class="nav-item-icon">ðŸ¢</span> Referanslar
+                        <span class="nav-item-icon">🏢</span> Referanslar
                     </a>
                     <a class="nav-item" onclick="showSection('team', this)">
-                        <span class="nav-item-icon">ðŸ‘¥</span> Ekip
+                        <span class="nav-item-icon">👥</span> Ekip
                     </a>
                     <a class="nav-item" onclick="showSection('faq', this)">
-                        <span class="nav-item-icon">â“</span> SSS
+                        <span class="nav-item-icon">❓</span> SSS
                     </a>
                 </div>
 
                 <div class="nav-section">
                     <div class="nav-section-title">Ayarlar</div>
                     <a class="nav-item" onclick="showSection('contact', this)">
-                        <span class="nav-item-icon">ðŸ“ž</span> Ä°letiÅŸim Bilgileri
+                        <span class="nav-item-icon">📞</span> İletişim Bilgileri
                     </a>
                     <a class="nav-item" onclick="showSection('settings', this)">
-                        <span class="nav-item-icon">âš™ï¸</span> Site AyarlarÄ±
+                        <span class="nav-item-icon">⚙️</span> Site Ayarları
                     </a>
                     <a class="nav-item" onclick="showSection('security', this)">
-                        <span class="nav-item-icon">ðŸ”’</span> GÃ¼venlik
+                        <span class="nav-item-icon">🔒</span> Güvenlik
                     </a>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸ‘ï¸ Siteyi GÃ¶rÃ¼ntÃ¼le</a>
+                <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">👁️ Siteyi Görüntüle</a>
                 <div class="user-box">
                     <div class="user-avatar">A</div>
                     <div style="flex:1;">
                         <div class="user-name">Admin</div>
-                        <div class="user-role">YÃ¶netici</div>
+                        <div class="user-role">Yönetici</div>
                     </div>
                 </div>
-                <button class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 10px;" onclick="logout()">ðŸšª Ã‡Ä±kÄ±ÅŸ</button>
+                <button class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 10px;" onclick="logout()">🚪 Çıkış</button>
             </div>
         </aside>
 
@@ -442,31 +442,31 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Dashboard</h1>
-                        <p class="page-subtitle">Site Ã¶zeti ve hÄ±zlÄ± iÅŸlemler</p>
+                        <p class="page-subtitle">Site özeti ve hızlı işlemler</p>
                     </div>
                     <div class="header-actions">
-                        <a href="index.html" target="_blank" class="btn btn-secondary">ðŸ‘ï¸ Siteyi GÃ¶r</a>
+                        <a href="index.html" target="_blank" class="btn btn-secondary">👁️ Siteyi Gör</a>
                     </div>
                 </div>
 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon blue">ðŸ—ï¸</div>
+                        <div class="stat-icon blue">🏗️</div>
                         <div class="stat-value" id="statProjects">0</div>
                         <div class="stat-label">Proje</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon green">ðŸ’¬</div>
+                        <div class="stat-icon green">💬</div>
                         <div class="stat-value" id="statMessages">0</div>
                         <div class="stat-label">Mesaj</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon yellow">ðŸ› ï¸</div>
+                        <div class="stat-icon yellow">🛠️</div>
                         <div class="stat-value" id="statServices">0</div>
                         <div class="stat-label">Hizmet</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon purple">ðŸ¢</div>
+                        <div class="stat-icon purple">🏢</div>
                         <div class="stat-value" id="statRefs">0</div>
                         <div class="stat-label">Referans</div>
                     </div>
@@ -475,24 +475,24 @@ a{color:inherit;text-decoration:none}
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">âš¡ HÄ±zlÄ± Ä°ÅŸlemler</span>
+                            <span class="card-title">⚡ Hızlı İşlemler</span>
                         </div>
                         <div class="card-body">
                             <div class="quick-grid">
                                 <div class="quick-card" onclick="showSection('projects')">
-                                    <div class="quick-card-icon">ðŸ“¸</div>
+                                    <div class="quick-card-icon">📸</div>
                                     <div class="quick-card-label">Proje Ekle</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('hero')">
-                                    <div class="quick-card-icon">ðŸŽ¨</div>
-                                    <div class="quick-card-label">Hero DÃ¼zenle</div>
+                                    <div class="quick-card-icon">🎨</div>
+                                    <div class="quick-card-label">Hero Düzenle</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('contact')">
-                                    <div class="quick-card-icon">ðŸ“ž</div>
-                                    <div class="quick-card-label">Ä°letiÅŸim</div>
+                                    <div class="quick-card-icon">📞</div>
+                                    <div class="quick-card-label">İletişim</div>
                                 </div>
                                 <div class="quick-card" onclick="showSection('settings')">
-                                    <div class="quick-card-icon">âš™ï¸</div>
+                                    <div class="quick-card-icon">⚙️</div>
                                     <div class="quick-card-label">Ayarlar</div>
                                 </div>
                             </div>
@@ -501,14 +501,14 @@ a{color:inherit;text-decoration:none}
 
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">ðŸ’¬ Son Mesajlar</span>
-                            <button class="btn btn-sm btn-secondary" onclick="showSection('messages')">TÃ¼mÃ¼</button>
+                            <span class="card-title">💬 Son Mesajlar</span>
+                            <button class="btn btn-sm btn-secondary" onclick="showSection('messages')">Tümü</button>
                         </div>
                         <div class="card-body" style="padding: 0; max-height: 260px; overflow-y: auto;">
                             <div id="recentMsgs">
                                 <div class="empty-state">
-                                    <div class="empty-icon">ðŸ“­</div>
-                                    <div class="empty-text">HenÃ¼z mesaj yok</div>
+                                    <div class="empty-icon">📭</div>
+                                    <div class="empty-text">Henüz mesaj yok</div>
                                 </div>
                             </div>
                         </div>
@@ -521,18 +521,18 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Projeler</h1>
-                        <p class="page-subtitle">Proje galerisi yÃ¶netimi</p>
+                        <p class="page-subtitle">Proje galerisi yönetimi</p>
                     </div>
                     <div class="header-actions">
                         <input type="file" id="projectUpload" accept="image/*" multiple style="display:none;" onchange="uploadProjects(this)">
-                        <button class="btn btn-primary" onclick="document.getElementById('projectUpload').click()">Ã¢Å¾â€¢ Proje Ekle</button>
+                        <button class="btn btn-primary" onclick="document.getElementById('projectUpload').click()">âž• Proje Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">ðŸ—ï¸ TÃ¼m Projeler</span>
-                        <input type="text" class="form-input" placeholder="ðŸ” Ara..." style="width: 200px;" onkeyup="filterProjects(this.value)">
+                        <span class="card-title">🏗️ Tüm Projeler</span>
+                        <input type="text" class="form-input" placeholder="🔍 Ara..." style="width: 200px;" onkeyup="filterProjects(this.value)">
                     </div>
                     <div class="card-body">
                         <div class="project-grid" id="projectGrid"></div>
@@ -545,10 +545,10 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Mesajlar</h1>
-                        <p class="page-subtitle">Ä°letiÅŸim formundan gelen mesajlar</p>
+                        <p class="page-subtitle">İletişim formundan gelen mesajlar</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-danger" onclick="clearMessages()">ðŸ—‘ï¸ TÃ¼mÃ¼nÃ¼ Sil</button>
+                        <button class="btn btn-danger" onclick="clearMessages()">🗑️ Tümünü Sil</button>
                     </div>
                 </div>
 
@@ -563,20 +563,20 @@ a{color:inherit;text-decoration:none}
             <section class="content-section" id="section-hero">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Hero AlanÄ±</h1>
-                        <p class="page-subtitle">Ana sayfa hero bÃ¶lÃ¼mÃ¼</p>
+                        <h1 class="page-title">Hero Alanı</h1>
+                        <p class="page-subtitle">Ana sayfa hero bölümü</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Marka AdÄ± (BÃ¼yÃ¼k BaÅŸlÄ±k)</label>
-                            <input type="text" class="form-input" id="heroBrand" value="CEE MÄ°MARLIK">
+                            <label class="form-label">Marka Adı (Büyük Başlık)</label>
+                            <input type="text" class="form-input" id="heroBrand" value="CEE MİMARLIK">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">AÃ§Ä±klama Metni</label>
-                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE MimarlÄ±k olarak yaÅŸam alanlarÄ±nÄ±zÄ±, ofislerinizi, villalarÄ±nÄ±zÄ± ve ticari projelerinizi mÃ¼ÅŸterilerimizin beklentilerine gÃ¶re yeniden ÅŸekillendiriyoruz.</textarea>
+                            <label class="form-label">Açıklama Metni</label>
+                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz.</textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -584,29 +584,29 @@ a{color:inherit;text-decoration:none}
                                 <input type="range" class="form-input" id="heroSize" min="32" max="80" value="52" style="padding:5px;" oninput="document.getElementById('heroSizeVal').textContent=this.value+'px'">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Font KalÄ±nlÄ±ÄŸÄ±</label>
+                                <label class="form-label">Font Kalınlığı</label>
                                 <select class="form-select" id="heroWeight">
-                                    <option value="300">Ä°nce</option>
+                                    <option value="300">İnce</option>
                                     <option value="400">Normal</option>
                                     <option value="500">Orta</option>
-                                    <option value="600" selected>KalÄ±n</option>
-                                    <option value="700">Ã‡ok KalÄ±n</option>
+                                    <option value="600" selected>Kalın</option>
+                                    <option value="700">Çok Kalın</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Buton Metni</label>
-                            <input type="text" class="form-input" id="heroBtn" value="Ä°LETÄ°ÅžÄ°ME GEÃ‡Ä°N">
+                            <input type="text" class="form-input" id="heroBtn" value="İLETİŞİME GEÇİN">
                         </div>
-                        <button class="btn btn-primary" onclick="saveHero()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">ðŸ–¼ï¸ Hero GÃ¶rselleri (Slider)</span>
+                        <span class="card-title">🖼️ Hero Görselleri (Slider)</span>
                         <input type="file" id="heroImgUpload" accept="image/*" multiple style="display:none;" onchange="uploadHeroImages(this)">
-                        <button class="btn btn-sm btn-secondary" onclick="document.getElementById('heroImgUpload').click()">âž• GÃ¶rsel Ekle</button>
+                        <button class="btn btn-sm btn-secondary" onclick="document.getElementById('heroImgUpload').click()">➕ Görsel Ekle</button>
                     </div>
                     <div class="card-body">
                         <div class="project-grid" id="heroImagesGrid"></div>
@@ -619,17 +619,17 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Hizmetler</h1>
-                        <p class="page-subtitle">Sunulan hizmetleri yÃ¶netin</p>
+                        <p class="page-subtitle">Sunulan hizmetleri yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addService()">Ã¢Å¾â€¢ Yeni Hizmet</button>
+                        <button class="btn btn-primary" onclick="addService()">âž• Yeni Hizmet</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="servicesList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveServices()">ðŸ’¾ Hizmetleri Kaydet</button>
+                        <button class="btn btn-success" onclick="saveServices()">💾 Hizmetleri Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -639,17 +639,17 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Referanslar</h1>
-                        <p class="page-subtitle">Ã‡alÄ±ÅŸtÄ±ÄŸÄ±nÄ±z kurumlar</p>
+                        <p class="page-subtitle">Çalıştığınız kurumlar</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addReference()">Ã¢Å¾â€¢ Yeni Referans</button>
+                        <button class="btn btn-primary" onclick="addReference()">âž• Yeni Referans</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="refsList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveReferences()">ðŸ’¾ ReferanslarÄ± Kaydet</button>
+                        <button class="btn btn-success" onclick="saveReferences()">💾 Referansları Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -659,17 +659,17 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Ekip</h1>
-                        <p class="page-subtitle">Ekip Ã¼yelerini yÃ¶netin</p>
+                        <p class="page-subtitle">Ekip üyelerini yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addTeamMember()">âž• Ãœye Ekle</button>
+                        <button class="btn btn-primary" onclick="addTeamMember()">➕ Üye Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="teamList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveTeam()">ðŸ’¾ Ekibi Kaydet</button>
+                        <button class="btn btn-success" onclick="saveTeam()">💾 Ekibi Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -678,18 +678,18 @@ a{color:inherit;text-decoration:none}
             <section class="content-section" id="section-faq">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">SÄ±kÃ§a Sorulan Sorular</h1>
-                        <p class="page-subtitle">SSS bÃ¶lÃ¼mÃ¼nÃ¼ yÃ¶netin</p>
+                        <h1 class="page-title">Sıkça Sorulan Sorular</h1>
+                        <p class="page-subtitle">SSS bölümünü yönetin</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary" onclick="addFaq()">Ã¢Å¾â€¢ Soru Ekle</button>
+                        <button class="btn btn-primary" onclick="addFaq()">âž• Soru Ekle</button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body" id="faqList"></div>
                     <div style="padding: 15px 20px; border-top: 1px solid var(--border);">
-                        <button class="btn btn-success" onclick="saveFaqs()">ðŸ’¾ SSS Kaydet</button>
+                        <button class="btn btn-success" onclick="saveFaqs()">💾 SSS Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -698,7 +698,7 @@ a{color:inherit;text-decoration:none}
             <section class="content-section" id="section-contact">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Ä°letiÅŸim Bilgileri</h1>
+                        <h1 class="page-title">İletişim Bilgileri</h1>
                         <p class="page-subtitle">Site genelindeki iletiÅŸim bilgileri</p>
                     </div>
                 </div>
@@ -706,38 +706,38 @@ a{color:inherit;text-decoration:none}
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">ðŸ“ Adres</label>
-                            <textarea class="form-textarea" id="contactAddr" rows="2">CEE MÄ°MARLIK, Hatip, Ali Osman Ã‡elebi Blv. No:52 A Blok Kat 1 No:3, 59860 Ã‡orlu/TekirdaÄŸ</textarea>
+                            <label class="form-label">📍 Adres</label>
+                            <textarea class="form-textarea" id="contactAddr" rows="2">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ“ž Telefon</label>
+                                <label class="form-label">📞 Telefon</label>
                                 <input type="tel" class="form-input" id="contactPhone" value="+90 537 327 87 65">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ðŸ“± WhatsApp</label>
+                                <label class="form-label">📱 WhatsApp</label>
                                 <input type="tel" class="form-input" id="contactWa" value="+90 537 327 87 65">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">âœ‰ï¸ E-posta</label>
+                            <label class="form-label">✉️ E-posta</label>
                             <input type="email" class="form-input" id="contactEmail" value="ceemimarlik@gmail.com">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">ðŸ—ºï¸ Google Maps Linki</label>
+                            <label class="form-label">🗺️ Google Maps Linki</label>
                             <input type="url" class="form-input" id="contactMap" placeholder="https://maps.google.com/...">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ• Ã‡alÄ±ÅŸma Saatleri</label>
+                                <label class="form-label">🕐 Çalışma Saatleri</label>
                                 <input type="text" class="form-input" id="contactHours" value="Pazartesi - Cuma: 09:00 - 18:00">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ðŸ“… Hafta Sonu</label>
-                                <input type="text" class="form-input" id="contactWeekend" value="Cumartesi - Pazar: KapalÄ±">
+                                <label class="form-label">📅 Hafta Sonu</label>
+                                <input type="text" class="form-input" id="contactWeekend" value="Cumartesi - Pazar: Kapalı">
                             </div>
                         </div>
-                        <button class="btn btn-primary" onclick="saveContact()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveContact()">💾 Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -746,7 +746,7 @@ a{color:inherit;text-decoration:none}
             <section class="content-section" id="section-settings">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Site AyarlarÄ±</h1>
+                        <h1 class="page-title">Site Ayarları</h1>
                         <p class="page-subtitle">Logo, SEO, tema ve sosyal medya</p>
                     </div>
                 </div>
@@ -754,79 +754,79 @@ a{color:inherit;text-decoration:none}
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
-                            <span class="card-title">ðŸ–¼ï¸ Site Logosu</span>
-                            <button class="btn btn-sm btn-danger" id="deleteLogoBtn" style="display:none;" onclick="deleteLogo()">ðŸ—‘ï¸ Sil</button>
+                            <span class="card-title">🖼️ Site Logosu</span>
+                            <button class="btn btn-sm btn-danger" id="deleteLogoBtn" style="display:none;" onclick="deleteLogo()">🗑️ Sil</button>
                         </div>
                         <div class="card-body">
                             <div class="upload-area" id="logoUploadArea" onclick="document.getElementById('logoUpload').click()">
                                 <img id="logoPreview" src="" style="max-width: 180px; max-height: 100px; display: none;">
                                 <div id="logoPlaceholder">
-                                    <div class="upload-icon">ðŸ“¤</div>
-                                    <div class="upload-text">Logo yÃ¼klemek iÃ§in tÄ±klayÄ±n</div>
+                                    <div class="upload-icon">📤</div>
+                                    <div class="upload-text">Logo yüklemek için tıklayın</div>
                                 </div>
                             </div>
                             <input type="file" id="logoUpload" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
-                            <p style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; text-align: center;">PNG veya SVG Ã¶nerilir (ÅŸeffaf arka plan)</p>
+                            <p style="font-size: 11px; color: var(--text-secondary); margin-top: 10px; text-align: center;">PNG veya SVG önerilir (şeffaf arka plan)</p>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸŒ™ Tema AyarlarÄ±</span></div>
+                        <div class="card-header"><span class="card-title">🌙 Tema Ayarları</span></div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label class="form-label">VarsayÄ±lan Tema</label>
+                                <label class="form-label">Varsayılan Tema</label>
                                 <select class="form-input" id="defaultTheme">
-                                    <option value="light">â˜€ï¸ AÃ§Ä±k Tema (Light)</option>
-                                    <option value="dark">ðŸŒ™ Koyu Tema (Dark)</option>
-                                    <option value="auto">ðŸ”„ Sistem AyarÄ±na GÃ¶re</option>
+                                    <option value="light">☀️ Açık Tema (Light)</option>
+                                    <option value="dark">🌙 Koyu Tema (Dark)</option>
+                                    <option value="auto">🔄 Sistem Ayarına Göre</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" style="display: flex; align-items: center; gap: 10px;">
                                     <input type="checkbox" id="allowDarkToggle" checked style="width: 18px; height: 18px;">
-                                    KullanÄ±cÄ±larÄ±n tema deÄŸiÅŸtirmesine izin ver
+                                    Kullanıcıların tema değiştirmesine izin ver
                                 </label>
                             </div>
-                            <button class="btn btn-primary" onclick="saveThemeSettings()">ðŸ’¾ Kaydet</button>
+                            <button class="btn btn-primary" onclick="saveThemeSettings()">💾 Kaydet</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><span class="card-title">ðŸ” SEO AyarlarÄ±</span></div>
+                    <div class="card-header"><span class="card-title">🔍 SEO Ayarları</span></div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Site BaÅŸlÄ±ÄŸÄ± (Title)</label>
-                            <input type="text" class="form-input" id="seoTitle" placeholder="CEE MimarlÄ±k - Profesyonel Mimari Proje Hizmetleri" maxlength="60">
-                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 60 karakter Ã¶nerilir</small>
+                            <label class="form-label">Site Başlığı (Title)</label>
+                            <input type="text" class="form-input" id="seoTitle" placeholder="CEE Mimarlık - Profesyonel Mimari Proje Hizmetleri" maxlength="60">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 60 karakter önerilir</small>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Site AÃ§Ä±klamasÄ± (Meta Description)</label>
-                            <textarea class="form-textarea" id="seoDesc" rows="3" placeholder="CEE MimarlÄ±k olarak Ã‡orlu ve Ã§evresinde mimari proje, ruhsat iÅŸlemleri, iÃ§ mimarlÄ±k ve 3D gÃ¶rselleÅŸtirme hizmetleri sunuyoruz." maxlength="160"></textarea>
-                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 160 karakter Ã¶nerilir</small>
+                            <label class="form-label">Site Açıklaması (Meta Description)</label>
+                            <textarea class="form-textarea" id="seoDesc" rows="3" placeholder="CEE Mimarlık olarak Çorlu ve çevresinde mimari proje, ruhsat işlemleri, iç mimarlık ve 3D görselleştirme hizmetleri sunuyoruz." maxlength="160"></textarea>
+                            <small style="color: var(--text-secondary); font-size: 11px;">Maksimum 160 karakter önerilir</small>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Anahtar Kelimeler (Keywords)</label>
-                            <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlÄ±k, Ã§orlu mimar, proje, ruhsat, iÃ§ mimarlÄ±k">
-                            <small style="color: var(--text-secondary); font-size: 11px;">VirgÃ¼lle ayÄ±rarak yazÄ±n</small>
+                            <input type="text" class="form-input" id="seoKeywords" placeholder="mimarlık, çorlu mimar, proje, ruhsat, iç mimarlık">
+                            <small style="color: var(--text-secondary); font-size: 11px;">Virgülle ayırarak yazın</small>
                         </div>
-                        <button class="btn btn-primary" onclick="saveSeoSettings()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveSeoSettings()">💾 Kaydet</button>
                     </div>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ“„ Footer</span></div>
+                        <div class="card-header"><span class="card-title">📄 Footer</span></div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label class="form-label">Åžirket AdÄ±</label>
-                                <input type="text" class="form-input" id="footerCompany" value="CEE MÄ°MARLIK">
+                                <label class="form-label">Şirket Adı</label>
+                                <input type="text" class="form-input" id="footerCompany" value="CEE MİMARLIK">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">YÄ±l</label>
+                                <label class="form-label">Yıl</label>
                                 <input type="number" class="form-input" id="footerYear" value="2026">
                             </div>
-                            <button class="btn btn-primary" onclick="saveFooter()">ðŸ’¾ Kaydet</button>
+                            <button class="btn btn-primary" onclick="saveFooter()">💾 Kaydet</button>
                         </div>
                     </div>
 
@@ -982,29 +982,29 @@ a{color:inherit;text-decoration:none}
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><span class="card-title">ðŸ“± Sosyal Medya</span></div>
+                    <div class="card-header"><span class="card-title">📱 Sosyal Medya</span></div>
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ“· Instagram</label>
+                                <label class="form-label">📷 Instagram</label>
                                 <input type="url" class="form-input" id="socialIg" placeholder="https://instagram.com/...">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">ð• Twitter / X</label>
+                                <label class="form-label">𝕏 Twitter / X</label>
                                 <input type="url" class="form-input" id="socialTw" placeholder="https://twitter.com/...">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">ðŸ’¼ LinkedIn</label>
+                                <label class="form-label">💼 LinkedIn</label>
                                 <input type="url" class="form-input" id="socialLi" placeholder="https://linkedin.com/...">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">â–¶ï¸ YouTube</label>
+                                <label class="form-label">▶️ YouTube</label>
                                 <input type="url" class="form-input" id="socialYt" placeholder="https://youtube.com/...">
                             </div>
                         </div>
-                        <button class="btn btn-primary" onclick="saveSocial()">ðŸ’¾ Kaydet</button>
+                        <button class="btn btn-primary" onclick="saveSocial()">💾 Kaydet</button>
                     </div>
                 </div>
             </section>
@@ -1013,39 +1013,39 @@ a{color:inherit;text-decoration:none}
             <section class="content-section" id="section-security">
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">GÃ¼venlik</h1>
+                        <h1 class="page-title">Güvenlik</h1>
                         <p class="page-subtitle">GiriÅŸ bilgileri ve yedekleme</p>
                     </div>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ”’ Åžifre DeÄŸiÅŸtir</span></div>
+                        <div class="card-header"><span class="card-title">🔒 Şifre Değiştir</span></div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label class="form-label">Yeni KullanÄ±cÄ± AdÄ±</label>
+                                <label class="form-label">Yeni Kullanıcı Adı</label>
                                 <input type="text" class="form-input" id="newUser" placeholder="admin">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Yeni Ã…Å¾ifre</label>
-                                <input type="password" class="form-input" id="newPass" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                                <label class="form-label">Yeni Åžifre</label>
+                                <input type="password" class="form-input" id="newPass" placeholder="••••••••">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Ã…Å¾ifre Tekrar</label>
-                                <input type="password" class="form-input" id="newPassConfirm" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                                <label class="form-label">Åžifre Tekrar</label>
+                                <input type="password" class="form-input" id="newPassConfirm" placeholder="••••••••">
                             </div>
-                            <button class="btn btn-primary" onclick="changePassword()">ðŸ’¾ GÃ¼ncelle</button>
+                            <button class="btn btn-primary" onclick="changePassword()">💾 Güncelle</button>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">ðŸ’¾ Yedekleme</span></div>
+                        <div class="card-header"><span class="card-title">💾 Yedekleme</span></div>
                         <div class="card-body">
                             <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 13px;">
-                                TÃ¼m site verilerini yedekleyin veya geri yÃ¼kleyin.
+                                Tüm site verilerini yedekleyin veya geri yükleyin.
                             </p>
-                            <button class="btn btn-secondary" onclick="exportBackup()">ðŸ“¥ YedeÄŸi Ä°ndir</button>
-                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="document.getElementById('backupFile').click()">ðŸ“¤ YedeÄŸi YÃ¼kle</button>
+                            <button class="btn btn-secondary" onclick="exportBackup()">📥 Yedeği İndir</button>
+                            <button class="btn btn-secondary" style="margin-left:10px;" onclick="document.getElementById('backupFile').click()">📤 Yedeği Yükle</button>
                             <input type="file" id="backupFile" accept=".json" style="display:none;" onchange="importBackup(this)">
                         </div>
                     </div>
@@ -1057,7 +1057,7 @@ a{color:inherit;text-decoration:none}
     <!-- TOAST -->
     <div class="toast-container" id="toastBox"></div>
 
-    <!-- SAÄž ALT SABÄ°T LOGO -->
+    <!-- SAĞ ALT SABİT LOGO -->
     <div id="fixedLogo" style="position: fixed; bottom: 20px; right: 20px; z-index: 50; display: none;">
         <img id="fixedLogoImg" src="" style="max-width: 120px; max-height: 60px; opacity: 0.7; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
     </div>
@@ -1077,7 +1077,7 @@ a{color:inherit;text-decoration:none}
             loadAll();
             toast('HoÅŸ geldiniz!', 'success');
         } else {
-            toast('HatalÄ± giriÅŸ bilgileri!', 'error');
+            toast('Hatalı giriş bilgileri!', 'error');
         }
     }
 
@@ -1108,16 +1108,16 @@ a{color:inherit;text-decoration:none}
     let projects = [], services = [], refs = [], team = [], faqs = [], heroImages = [];
 
     const defaultServices = [
-        { icon: 'ðŸ ', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarÄ±mlar' },
-        { icon: 'ðŸ“', title: 'Ä°Ã§ MimarlÄ±k', desc: 'YaÅŸam alanlarÄ±nÄ±z iÃ§in Ã¶zel tasarÄ±mlar' },
-        { icon: 'ðŸ—ï¸', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
-        { icon: 'ðŸ“‹', title: 'Ruhsat Ä°ÅŸlemleri', desc: 'TÃ¼m resmi iÅŸlemler iÃ§in danÄ±ÅŸmanlÄ±k' }
+        { icon: '🏠', title: 'Mimari Proje', desc: 'Modern ve fonksiyonel mimari tasarımlar' },
+        { icon: '📐', title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel tasarımlar' },
+        { icon: '🏗️', title: 'Tadilat', desc: 'Profesyonel tadilat ve renovasyon' },
+        { icon: '📋', title: 'Ruhsat İşlemleri', desc: 'Tüm resmi işlemler için danışmanlık' }
     ];
 
     const defaultRefs = [
-        { icon: 'ðŸ›ï¸', title: 'Kamu KurumlarÄ±', desc: 'Devlet projeleri' },
-        { icon: 'ðŸ¢', title: 'Ã–zel SektÃ¶r', desc: 'Ticari projeler' },
-        { icon: 'ðŸ ', title: 'Bireysel', desc: 'Konut projeleri' }
+        { icon: '🏛️', title: 'Kamu Kurumları', desc: 'Devlet projeleri' },
+        { icon: '🏢', title: 'Özel Sektör', desc: 'Ticari projeler' },
+        { icon: '🏠', title: 'Bireysel', desc: 'Konut projeleri' }
     ];
 
     function loadAll() {
@@ -1145,15 +1145,15 @@ a{color:inherit;text-decoration:none}
     // PROJECTS
     function renderProjects() {
         const grid = document.getElementById('projectGrid');
-        if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">ðŸ—ï¸</div><div class="empty-text">HenÃ¼z proje yok</div></div>'; return; }
-        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'Ä°simsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">âœï¸</button><button onclick="deleteProject(${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🏗️</div><div class="empty-text">Henüz proje yok</div></div>'; return; }
+        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'İsimsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">✏️</button><button onclick="deleteProject(${i})">🗑️</button></div></div>`).join('');
     }
 
     function uploadProjects(input) {
         for (let f of input.files) {
             const reader = new FileReader();
             reader.onload = e => {
-                const title = prompt('Proje AdÄ±:', f.name.replace(/\.[^.]+$/, ''));
+                const title = prompt('Proje Adı:', f.name.replace(/\.[^.]+$/, ''));
                 if (title !== null) { projects.push({ img: e.target.result, title, category: 'Genel' }); localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); updateStats(); toast('Proje eklendi', 'success'); }
             };
             reader.readAsDataURL(f);
@@ -1161,7 +1161,7 @@ a{color:inherit;text-decoration:none}
         input.value = '';
     }
 
-    function editProject(i) { const p = projects[i]; const title = prompt('Proje AdÄ±:', p.title); if (title !== null) { projects[i].title = title; projects[i].category = prompt('Kategori:', p.category || 'Genel') || 'Genel'; localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); toast('GÃ¼ncellendi', 'success'); } }
+    function editProject(i) { const p = projects[i]; const title = prompt('Proje Adı:', p.title); if (title !== null) { projects[i].title = title; projects[i].category = prompt('Kategori:', p.category || 'Genel') || 'Genel'; localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); toast('Güncellendi', 'success'); } }
     function deleteProject(i) { if (confirm('Silmek istiyor musunuz?')) { projects.splice(i, 1); localStorage.setItem('cee_projects', JSON.stringify(projects)); renderProjects(); updateStats(); toast('Silindi', 'success'); } }
     function filterProjects(q) { document.querySelectorAll('.project-card').forEach(c => { c.style.display = c.querySelector('.project-title').textContent.toLowerCase().includes(q.toLowerCase()) ? 'block' : 'none'; }); }
 
@@ -1169,58 +1169,58 @@ a{color:inherit;text-decoration:none}
     function loadMessages() { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); renderMsgs(msgs.slice(0, 4), 'recentMsgs'); renderMsgs(msgs, 'allMsgs'); }
     function renderMsgs(msgs, id) {
         const el = document.getElementById(id);
-        if (msgs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ“­</div><div class="empty-text">HenÃ¼z mesaj yok</div></div>'; return; }
-        el.innerHTML = msgs.map((m, i) => `<div class="msg-item ${!m.read ? 'msg-unread' : ''}"><div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div><div class="msg-content"><div class="msg-header"><span class="msg-name">${m.name}</span><span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span></div><div class="msg-subject">${m.subject || 'Konu yok'}</div><div class="msg-preview">${m.message}</div></div>${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="deleteMsg(${i})">ðŸ—‘ï¸</button>` : ''}</div>`).join('');
+        if (msgs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">Henüz mesaj yok</div></div>'; return; }
+        el.innerHTML = msgs.map((m, i) => `<div class="msg-item ${!m.read ? 'msg-unread' : ''}"><div class="msg-avatar">${(m.name || 'A')[0].toUpperCase()}</div><div class="msg-content"><div class="msg-header"><span class="msg-name">${m.name}</span><span class="msg-time">${new Date(m.timestamp || m.date).toLocaleDateString('tr-TR')}</span></div><div class="msg-subject">${m.subject || 'Konu yok'}</div><div class="msg-preview">${m.message}</div></div>${id === 'allMsgs' ? `<button class="btn btn-sm btn-danger" onclick="deleteMsg(${i})">🗑️</button>` : ''}</div>`).join('');
         if (id === 'allMsgs') { msgs.forEach(m => m.read = true); localStorage.setItem('contact_messages', JSON.stringify(msgs)); updateStats(); }
     }
     function deleteMsg(i) { const msgs = JSON.parse(localStorage.getItem('contact_messages') || '[]'); msgs.splice(i, 1); localStorage.setItem('contact_messages', JSON.stringify(msgs)); loadMessages(); updateStats(); toast('Silindi', 'success'); }
-    function clearMessages() { if (confirm('TÃ¼m mesajlarÄ± silmek istiyor musunuz?')) { localStorage.setItem('contact_messages', '[]'); loadMessages(); updateStats(); toast('TÃ¼mÃ¼ silindi', 'success'); } }
+    function clearMessages() { if (confirm('Tüm mesajları silmek istiyor musunuz?')) { localStorage.setItem('contact_messages', '[]'); loadMessages(); updateStats(); toast('Tümü silindi', 'success'); } }
 
     // SERVICES
     function renderServices() {
         const el = document.getElementById('servicesList');
-        if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ› ï¸</div><div class="empty-text">Hizmet yok</div></div>'; return; }
-        el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>â–²</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>â–¼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div></div>'; return; }
+        el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">🗑️</button></div></div>`).join('');
     }
-    function addService() { const icon = prompt('Emoji:', 'ðŸ '); const title = prompt('BaÅŸlÄ±k:', ''); const desc = prompt('AÃ§Ä±klama:', ''); if (title) { services.push({ icon: icon || 'ðŸ ', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
-    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('BaÅŸlÄ±k:', s.title || s.titleTr); const desc = prompt('AÃ§Ä±klama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet gÃ¼ncellendi', 'success'); } }
+    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
+    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet güncellendi', 'success'); } }
     function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); }
 
     // REFERENCES
     function renderRefs() {
         const el = document.getElementById('refsList');
-        if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ¢</div><div class="empty-text">Referans yok</div></div>'; return; }
-        el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>â–²</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>â–¼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div></div>'; return; }
+        el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">🗑️</button></div></div>`).join('');
     }
-    function addReference() { const icon = prompt('Emoji:', 'ðŸ¢'); const title = prompt('BaÅŸlÄ±k:', ''); const desc = prompt('AÃ§Ä±klama:', ''); if (title) { refs.push({ icon: icon || 'ðŸ¢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
-    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('BaÅŸlÄ±k:', r.title || r.titleTr); const desc = prompt('AÃ§Ä±klama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans gÃ¼ncellendi', 'success'); } }
+    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
+    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans güncellendi', 'success'); } }
     function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); }
 
     // TEAM
     function renderTeam() {
         const el = document.getElementById('teamList');
-        if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ‘¥</div><div class="empty-text">Ekip Ã¼yesi yok</div></div>'; return; }
-        el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">ðŸ‘¤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Ekip üyesi yok</div></div>'; return; }
+        el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">👤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">🗑️</button></div></div>`).join('');
     }
-    function addTeamMember() { const name = prompt('Ä°sim:', ''); const role = prompt('Pozisyon:', ''); if (name) { team.push({ name, role }); renderTeam(); toast('Eklendi', 'success'); } }
-    function editTeamMember(i) { const t = team[i]; const name = prompt('Ä°sim:', t.name); const role = prompt('Pozisyon:', t.role); if (name) { team[i] = { ...t, name, role }; renderTeam(); toast('GÃ¼ncellendi', 'success'); } }
+    function addTeamMember() { const name = prompt('İsim:', ''); const role = prompt('Pozisyon:', ''); if (name) { team.push({ name, role }); renderTeam(); toast('Eklendi', 'success'); } }
+    function editTeamMember(i) { const t = team[i]; const name = prompt('İsim:', t.name); const role = prompt('Pozisyon:', t.role); if (name) { team[i] = { ...t, name, role }; renderTeam(); toast('Güncellendi', 'success'); } }
     function saveTeam() { localStorage.setItem('cee_team', JSON.stringify(team)); toast('Kaydedildi', 'success'); }
 
     // FAQ
     function renderFaqs() {
         const el = document.getElementById('faqList');
-        if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">â“</div><div class="empty-text">Soru yok</div></div>'; return; }
-        el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">â“</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">âœï¸</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">❓</div><div class="empty-text">Soru yok</div></div>'; return; }
+        el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">❓</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">🗑️</button></div></div>`).join('');
     }
     function addFaq() { const q = prompt('Soru:', ''); const a = prompt('Cevap:', ''); if (q) { faqs.push({ question: q, answer: a }); renderFaqs(); toast('Eklendi', 'success'); } }
-    function editFaq(i) { const f = faqs[i]; const q = prompt('Soru:', f.question || f.questionTr); const a = prompt('Cevap:', f.answer || f.answerTr); if (q) { faqs[i] = { question: q, answer: a }; renderFaqs(); toast('GÃ¼ncellendi', 'success'); } }
+    function editFaq(i) { const f = faqs[i]; const q = prompt('Soru:', f.question || f.questionTr); const a = prompt('Cevap:', f.answer || f.answerTr); if (q) { faqs[i] = { question: q, answer: a }; renderFaqs(); toast('Güncellendi', 'success'); } }
     function saveFaqs() { localStorage.setItem('cee_faqs', JSON.stringify(faqs)); toast('Kaydedildi', 'success'); }
 
     // HERO IMAGES
     function renderHeroImages() {
         const el = document.getElementById('heroImagesGrid');
-        if (heroImages.length === 0) { el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">ðŸ–¼ï¸</div><div class="empty-text">Hero gÃ¶rseli yok</div></div>'; return; }
-        el.innerHTML = heroImages.map((img, i) => `<div class="project-card"><img src="${img}" class="project-img"><div class="project-actions"><button onclick="deleteHeroImage(${i})">ðŸ—‘ï¸</button></div></div>`).join('');
+        if (heroImages.length === 0) { el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🖼️</div><div class="empty-text">Hero görseli yok</div></div>'; return; }
+        el.innerHTML = heroImages.map((img, i) => `<div class="project-card"><img src="${img}" class="project-img"><div class="project-actions"><button onclick="deleteHeroImage(${i})">🗑️</button></div></div>`).join('');
     }
     function uploadHeroImages(input) { for (let f of input.files) { const reader = new FileReader(); reader.onload = e => { heroImages.push(e.target.result); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Eklendi', 'success'); }; reader.readAsDataURL(f); } input.value = ''; }
     function deleteHeroImage(i) { if (confirm('Silmek istiyor musunuz?')) { heroImages.splice(i, 1); localStorage.setItem('hero_images', JSON.stringify(heroImages)); renderHeroImages(); toast('Silindi', 'success'); } }
@@ -1573,7 +1573,7 @@ a{color:inherit;text-decoration:none}
             keywords: document.getElementById('seoKeywords').value
         };
         localStorage.setItem('seo_settings', JSON.stringify(seo));
-        toast('SEO ayarlarÄ± kaydedildi', 'success');
+        toast('SEO ayarları kaydedildi', 'success');
     }
     
     // TEMA SETTINGS
@@ -1583,7 +1583,7 @@ a{color:inherit;text-decoration:none}
             allowToggle: document.getElementById('allowDarkToggle').checked
         };
         localStorage.setItem('theme_settings', JSON.stringify(theme));
-        toast('Tema ayarlarÄ± kaydedildi', 'success');
+        toast('Tema ayarları kaydedildi', 'success');
     }
 
     // LOGO
@@ -1613,7 +1613,7 @@ a{color:inherit;text-decoration:none}
         reader.onload = e => { 
             localStorage.setItem('site_logo', e.target.result); 
             loadLogo(); 
-            toast('Logo yÃ¼klendi', 'success'); 
+            toast('Logo yüklendi', 'success'); 
         }; 
         reader.readAsDataURL(f); 
     }
@@ -1626,7 +1626,7 @@ a{color:inherit;text-decoration:none}
     }
 
     // SECURITY
-    function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Åžifreler eÅŸleÅŸmiyor', 'error'); return; } if (u) credentials.username = u; if (p) credentials.password = p; localStorage.setItem('cee_credentials', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('GÃ¼ncellendi', 'success'); }
+    function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; } if (u) credentials.username = u; if (p) credentials.password = p; localStorage.setItem('cee_credentials', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('Güncellendi', 'success'); }
 
     // BACKUP
     function exportBackup() { 
@@ -1679,16 +1679,16 @@ a{color:inherit;text-decoration:none}
                 if (b.seo) localStorage.setItem('seo_settings', b.seo);
                 if (b.theme) localStorage.setItem('theme_settings', b.theme);
                 loadAll(); 
-                toast('Yedek yÃ¼klendi', 'success'); 
+                toast('Yedek yüklendi', 'success'); 
             } catch(e) { 
-                toast('GeÃ§ersiz dosya', 'error'); 
+                toast('Geçersiz dosya', 'error'); 
             } 
         }; 
         reader.readAsText(f); 
     }
 
     // TOAST
-    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? 'âœ…' : 'âŒ'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
+    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
     </script>
 </body>
 </html>
