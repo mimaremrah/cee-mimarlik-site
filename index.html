@@ -6,10 +6,9 @@
     
     <!-- GLOBAL TEMA AYARLARI - Light & Dark Mode Ayrı -->
     <script>
-    // CEE MİMARLIK - Site Tema Ayarları
-    // Admin panelden değiştirilir - bu sadece varsayılan
+    // CEE MİMARLIK - Site Tema Ayarları (Light & Dark Ayrı)
     
-    // AYDINLIK MOD VARSAYILAN RENKLERİ
+    // AYDINLIK MOD VARSAYILAN
     const LIGHT_THEME_DEFAULT = {
         primary: '#5a6677',
         iconBg: '#5a6677',
@@ -19,7 +18,7 @@
         header: '#1a202c'
     };
     
-    // KARANLIK MOD VARSAYILAN RENKLERİ
+    // KARANLIK MOD VARSAYILAN
     const DARK_THEME_DEFAULT = {
         primary: '#5a6677',
         iconBg: '#5a6677',
@@ -31,15 +30,10 @@
     
     // Tema ayarlarını localStorage'a yükle - SADECE YOKSA
     if (typeof localStorage !== 'undefined') {
-        // Light Mode
-        const existingLight = localStorage.getItem('light_color_settings');
-        if (!existingLight || existingLight === '{}' || existingLight === 'null') {
+        if (!localStorage.getItem('light_color_settings')) {
             localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_THEME_DEFAULT));
         }
-        
-        // Dark Mode
-        const existingDark = localStorage.getItem('dark_color_settings');
-        if (!existingDark || existingDark === '{}' || existingDark === 'null') {
+        if (!localStorage.getItem('dark_color_settings')) {
             localStorage.setItem('dark_color_settings', JSON.stringify(DARK_THEME_DEFAULT));
         }
     }
@@ -7201,6 +7195,11 @@ function toggleDarkMode() {
     const isDark = document.body.classList.contains('dark-mode');
     document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('cee_public_dark', isDark);
+    
+    // Mod değiştiğinde renkleri yeniden uygula
+    if (typeof applyColors === 'function') {
+        setTimeout(applyColors, 50);
+    }
 }
 
 function loadDarkMode() {
@@ -7208,6 +7207,10 @@ function loadDarkMode() {
     if (isDark) {
         document.body.classList.add('dark-mode');
         document.getElementById('themeBtn').textContent = '☀️';
+    }
+    // Sayfa yüklendiğinde renkleri uygula
+    if (typeof applyColors === 'function') {
+        setTimeout(applyColors, 100);
     }
 }
 
@@ -10118,13 +10121,11 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             let cs;
             if (isDarkMode) {
                 cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-                // Varsayılan dark değerler
                 if (!cs || Object.keys(cs).length === 0) {
                     cs = { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#111111', bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f' };
                 }
             } else {
                 cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-                // Varsayılan light değerler
                 if (!cs || Object.keys(cs).length === 0) {
                     cs = { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c' };
                 }
@@ -10143,8 +10144,8 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             document.documentElement.style.setProperty('--accent-gold-light', accentLight);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
+            document.documentElement.style.setProperty('--text-color', textColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
-            document.documentElement.style.setProperty('--text-primary', textColor);
             
             // İkon boyutlarını güncelle
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
@@ -10154,6 +10155,7 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             
             // Body & Sections
             document.body.style.backgroundColor = bgMain;
+            document.body.style.color = textColor;
             document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
             document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
             
@@ -10161,7 +10163,7 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
             document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
             
-            const isHeaderDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c','#0f172a','#020617','#0c0a09'].includes(headerColor);
+            const isHeaderDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c','#0f172a','#020617'].includes(headerColor);
             document.querySelectorAll('nav a').forEach(a => a.style.color = isHeaderDark ? '#fff' : '#1a1a1a');
             const logo = document.querySelector('.logo-text');
             if (logo) logo.style.color = isHeaderDark ? '#fff' : '#1a1a1a';
@@ -10180,11 +10182,40 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
             document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
             
-            // Text
-            document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
-            document.querySelectorAll('p, .service-card p, .faq-answer p').forEach(el => el.style.color = textColor);
+            // ===== TÜM YAZI RENKLERİNİ UYGULA =====
+            // Section başlıkları
+            document.querySelectorAll('.section-title').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('.section-label').forEach(el => el.style.setProperty('color', textColor, 'important'));
             
-            console.log('✅ Renkler uygulandı (' + (isDarkMode ? 'Dark' : 'Light') + ' Mode)');
+            // Paragraflar ve açıklamalar
+            document.querySelectorAll('p').forEach(el => {
+                if (!el.closest('footer') && !el.closest('.hero-content')) {
+                    el.style.setProperty('color', textColor, 'important');
+                }
+            });
+            
+            // Hizmet kartları
+            document.querySelectorAll('.service-card h3, .service-card-v2 h3').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('.service-card p, .service-card-v2 p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            // FAQ bölümü
+            document.querySelectorAll('.faq-item h3, .faq-question').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('.faq-answer, .faq-answer p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            // Referans kartları
+            document.querySelectorAll('.ref-card h4, .reference-item h4').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('.ref-card p, .reference-item p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            // İletişim bilgileri
+            document.querySelectorAll('.contact-info-text, .location-info').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            // Ekip bölümü
+            document.querySelectorAll('.team-member h3, .team-member p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            // Proje açıklamaları
+            document.querySelectorAll('.project-info h3, .project-info p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            
+            console.log('✅ Renkler uygulandı (' + (isDarkMode ? 'Karanlık' : 'Aydınlık') + ' Mod)');
         } catch(e) { console.error('Renk hatası:', e); }
     }
     
