@@ -4,38 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- GLOBAL TEMA AYARLARI - Light & Dark Mode Ayrı -->
+    <!-- GLOBAL TEMA AYARLARI - Light & Dark Ayri -->
     <script>
-    // CEE MİMARLIK - Site Tema Ayarları (Light & Dark Ayrı)
-    
-    // AYDINLIK MOD VARSAYILAN
-    const LIGHT_THEME_DEFAULT = {
-        primary: '#5a6677',
-        iconBg: '#5a6677',
-        bgMain: '#ffffff',
-        bgSection: '#f8f9fa',
-        text: '#2d3748',
-        header: '#1a202c'
-    };
-    
-    // KARANLIK MOD VARSAYILAN
-    const DARK_THEME_DEFAULT = {
-        primary: '#5a6677',
-        iconBg: '#5a6677',
-        bgMain: '#111111',
-        bgSection: '#1a1a1a',
-        text: '#e2e8f0',
-        header: '#0f0f0f'
-    };
-    
-    // Tema ayarlarını localStorage'a yükle - SADECE YOKSA
+    // CEE MIMARLIK - Site Tema Ayarlari
+    const LIGHT_DEFAULT = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
+    const DARK_DEFAULT = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
     if (typeof localStorage !== 'undefined') {
-        if (!localStorage.getItem('light_color_settings')) {
-            localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_THEME_DEFAULT));
-        }
-        if (!localStorage.getItem('dark_color_settings')) {
-            localStorage.setItem('dark_color_settings', JSON.stringify(DARK_THEME_DEFAULT));
-        }
+        if (!localStorage.getItem('light_color_settings')) localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_DEFAULT));
+        if (!localStorage.getItem('dark_color_settings')) localStorage.setItem('dark_color_settings', JSON.stringify(DARK_DEFAULT));
     }
     </script>
     
@@ -7192,26 +7168,21 @@ function incrementClickCount(projectId) {
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    var isDark = document.body.classList.contains('dark-mode');
+    var btn = document.getElementById('themeBtn');
+    if(btn) btn.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('cee_public_dark', isDark);
-    
-    // Mod değiştiğinde renkleri yeniden uygula
-    if (typeof applyColors === 'function') {
-        setTimeout(applyColors, 50);
-    }
+    if (typeof applyColors === 'function') setTimeout(applyColors, 10);
 }
 
 function loadDarkMode() {
-    const isDark = localStorage.getItem('cee_public_dark') === 'true';
+    var isDark = localStorage.getItem('cee_public_dark') === 'true';
     if (isDark) {
         document.body.classList.add('dark-mode');
-        document.getElementById('themeBtn').textContent = '☀️';
+        var btn = document.getElementById('themeBtn');
+        if(btn) btn.textContent = '☀️';
     }
-    // Sayfa yüklendiğinde renkleri uygula
-    if (typeof applyColors === 'function') {
-        setTimeout(applyColors, 100);
-    }
+    if (typeof applyColors === 'function') setTimeout(applyColors, 50);
 }
 
 function toggleLanguage() {
@@ -10114,109 +10085,110 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
     
     function applyColors() {
         try {
-            // Dark mode kontrolü
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            
-            // Moda göre doğru renk ayarlarını al
-            let cs;
+            var isDarkMode = document.body.classList.contains('dark-mode');
+            var cs;
             if (isDarkMode) {
                 cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-                if (!cs || Object.keys(cs).length === 0) {
-                    cs = { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#111111', bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f' };
-                }
+                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
             } else {
                 cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-                if (!cs || Object.keys(cs).length === 0) {
-                    cs = { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c' };
-                }
+                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
             }
             
-            const accent = cs.iconBg || cs.primary || '#5a6677';
-            const accentLight = lighten(accent, 15);
-            const bgMain = cs.bgMain || (isDarkMode ? '#111111' : '#ffffff');
-            const bgSection = cs.bgSection || (isDarkMode ? '#1a1a1a' : '#f8f9fa');
-            const textColor = cs.text || (isDarkMode ? '#e2e8f0' : '#2d3748');
-            const headerColor = cs.header || (isDarkMode ? '#0f0f0f' : '#1a202c');
-            const iconSize = localStorage.getItem('icon_size') || 60;
+            var accent = cs.iconBg || cs.primary || '#5a6677';
+            var accentLight = lighten(accent, 15);
+            var bgMain = cs.bgMain;
+            var bgSection = cs.bgSection;
+            var textColor = cs.text;
+            var headerColor = cs.header;
+            var iconSize = localStorage.getItem('icon_size') || 60;
             
             // CSS Variables
             document.documentElement.style.setProperty('--accent-gold', accent);
-            document.documentElement.style.setProperty('--accent-gold-light', accentLight);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
             document.documentElement.style.setProperty('--text-color', textColor);
-            document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
-            // İkon boyutlarını güncelle
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
+            // ARKA PLAN - TUM ELEMENTLERE UYGULA
+            document.body.style.setProperty('background-color', bgMain, 'important');
+            document.body.style.setProperty('background', bgMain, 'important');
+            document.documentElement.style.setProperty('background-color', bgMain, 'important');
+            
+            // Tum section'lara uygula
+            document.querySelectorAll('section').forEach(function(s) {
+                s.style.setProperty('background-color', bgMain, 'important');
+                s.style.setProperty('background', bgMain, 'important');
+            });
+            
+            // Ozel section'lar
+            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip').forEach(function(s) {
+                s.style.setProperty('background-color', bgSection, 'important');
+                s.style.setProperty('background', bgSection, 'important');
+            });
+            
+            // Container ve wrapper'lar
+            document.querySelectorAll('.container, .wrapper, main, .main-content, .page-content').forEach(function(el) {
+                el.style.setProperty('background-color', bgMain, 'important');
+            });
+            
+            // Header & Footer
+            document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
+                el.style.setProperty('background-color', headerColor, 'important');
+            });
+            document.querySelectorAll('footer, .footer').forEach(function(el) {
+                el.style.setProperty('background-color', headerColor, 'important');
+            });
+            
+            // Nav link renkleri
+            var isHeaderDark = headerColor && (headerColor.toLowerCase() === '#1a1a1a' || headerColor.toLowerCase() === '#000000' || headerColor.toLowerCase() === '#111111' || headerColor.toLowerCase() === '#0f0f0f' || headerColor.toLowerCase() === '#1a202c' || headerColor.toLowerCase() === '#0f172a');
+            document.querySelectorAll('nav a, .nav-link').forEach(function(a) {
+                a.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
+            });
+            var logo = document.querySelector('.logo-text');
+            if (logo) logo.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
+            
+            // Accent elementler
+            document.querySelectorAll('.hero-brand').forEach(function(el) { el.style.color = accent; });
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(function(el) { el.style.background = accent; });
+            document.querySelectorAll('.section-title .accent').forEach(function(el) { el.style.setProperty('color', accent, 'important'); });
+            document.querySelectorAll('.section-decoration .dot').forEach(function(el) { el.style.background = accent; });
+            
+            // Ikon gradient
+            var grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(el) {
+                el.style.setProperty('background', grad, 'important');
                 el.style.width = iconSize + 'px';
                 el.style.height = iconSize + 'px';
             });
             
-            // Body & Sections
-            document.body.style.backgroundColor = bgMain;
-            document.body.style.color = textColor;
-            document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
-            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
+            // Butonlar
+            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(function(el) { el.style.background = accent; });
+            document.querySelectorAll('.filter-btn.active').forEach(function(el) { el.style.background = accent; el.style.borderColor = accent; });
             
-            // Header & Footer
-            document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
-            document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
-            
-            const isHeaderDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c','#0f172a','#020617'].includes(headerColor);
-            document.querySelectorAll('nav a').forEach(a => a.style.color = isHeaderDark ? '#fff' : '#1a1a1a');
-            const logo = document.querySelector('.logo-text');
-            if (logo) logo.style.color = isHeaderDark ? '#fff' : '#1a1a1a';
-            
-            // Accent elements
-            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
-            document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
-            document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
-            
-            // Icons with gradient
-            const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
-            
-            // Buttons
-            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
-            document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
-            
-            // ===== TÜM YAZI RENKLERİNİ UYGULA =====
-            // Section başlıkları
-            document.querySelectorAll('.section-title').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            document.querySelectorAll('.section-label').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            
-            // Paragraflar ve açıklamalar
-            document.querySelectorAll('p').forEach(el => {
-                if (!el.closest('footer') && !el.closest('.hero-content')) {
+            // YAZI RENKLERI - TUM METINLERE UYGULA
+            document.querySelectorAll('.section-title, .section-label, h1, h2, h3, h4, h5, h6').forEach(function(el) {
+                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero')) {
                     el.style.setProperty('color', textColor, 'important');
                 }
             });
             
-            // Hizmet kartları
-            document.querySelectorAll('.service-card h3, .service-card-v2 h3').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            document.querySelectorAll('.service-card p, .service-card-v2 p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('p, span, li, td, th, label, .text, .desc, .description').forEach(function(el) {
+                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button') && !el.closest('.btn')) {
+                    el.style.setProperty('color', textColor, 'important');
+                }
+            });
             
-            // FAQ bölümü
-            document.querySelectorAll('.faq-item h3, .faq-question').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            document.querySelectorAll('.faq-answer, .faq-answer p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            // Kartlar
+            document.querySelectorAll('.service-card, .ref-card, .faq-item, .team-member, .project-item').forEach(function(el) {
+                el.style.setProperty('background-color', isDarkMode ? '#1a1a1a' : '#fff', 'important');
+            });
             
-            // Referans kartları
-            document.querySelectorAll('.ref-card h4, .reference-item h4').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            document.querySelectorAll('.ref-card p, .reference-item p').forEach(el => el.style.setProperty('color', textColor, 'important'));
+            document.querySelectorAll('.service-card h3, .service-card p, .ref-card h4, .ref-card p, .faq-item h3, .faq-answer, .faq-answer p').forEach(function(el) {
+                el.style.setProperty('color', textColor, 'important');
+            });
             
-            // İletişim bilgileri
-            document.querySelectorAll('.contact-info-text, .location-info').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            
-            // Ekip bölümü
-            document.querySelectorAll('.team-member h3, .team-member p').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            
-            // Proje açıklamaları
-            document.querySelectorAll('.project-info h3, .project-info p').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            
-            console.log('✅ Renkler uygulandı (' + (isDarkMode ? 'Karanlık' : 'Aydınlık') + ' Mod)');
-        } catch(e) { console.error('Renk hatası:', e); }
+            console.log('Renkler uygulandi (' + (isDarkMode ? 'Dark' : 'Light') + ')');
+        } catch(e) { console.error('Renk hatasi:', e); }
     }
     
     if (document.readyState === 'loading') {

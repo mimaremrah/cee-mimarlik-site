@@ -831,133 +831,73 @@ a{color:inherit;text-decoration:none}
                     </div>
 
                     <div class="card">
-                        <div class="card-header"><span class="card-title">🎨 Renk Ayarları (Aydınlık & Karanlık Mod Ayrı)</span></div>
+                        <div class="card-header"><span class="card-title">🎨 Renk Ayarlari (Aydinlik & Karanlik Mod Ayri)</span></div>
                         <div class="card-body">
-                            <!-- MOD SEKMELERİ -->
-                            <div style="display: flex; gap: 0; margin-bottom: 25px; border-radius: 10px; overflow: hidden; border: 2px solid #334155;">
-                                <button id="tabLight" onclick="switchColorTab('light')" class="btn" style="flex: 1; padding: 14px 20px; border-radius: 0; background: #fbbf24; color: #1a1a1a; font-weight: 600; border: none;">
-                                    ☀️ Aydınlık Mod
-                                </button>
-                                <button id="tabDark" onclick="switchColorTab('dark')" class="btn" style="flex: 1; padding: 14px 20px; border-radius: 0; background: #334155; color: #94a3b8; font-weight: 600; border: none;">
-                                    🌙 Karanlık Mod
-                                </button>
+                            <div style="display:flex;gap:0;margin-bottom:25px;border-radius:10px;overflow:hidden;border:2px solid #334155;">
+                                <button id="tabLight" onclick="switchColorTab('light')" style="flex:1;padding:14px 20px;background:#fbbf24;color:#1a1a1a;font-weight:600;border:none;cursor:pointer;">☀️ Aydinlik Mod</button>
+                                <button id="tabDark" onclick="switchColorTab('dark')" style="flex:1;padding:14px 20px;background:#334155;color:#94a3b8;font-weight:600;border:none;cursor:pointer;">🌙 Karanlik Mod</button>
                             </div>
                             
-                            <!-- LIGHT MODE AYARLARI -->
                             <div id="lightModeSettings">
-                                <div style="background: linear-gradient(135deg, #fef9c3, #fef08a); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #eab308;">
-                                    <strong style="color: #a16207;">☀️ Aydınlık Mod Renkleri</strong>
-                                    <p style="font-size: 12px; color: #854d0e; margin-top: 5px;">Kullanıcı aydınlık modda iken görünecek renkler</p>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Ana Renk (Accent)</label>
-                                        <input type="color" class="form-input" id="lightColorPrimary" value="#5a6677" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Simge Arka Plan</label>
-                                        <input type="color" class="form-input" id="lightColorIconBg" value="#5a6677" style="height:45px;padding:5px;">
-                                    </div>
+                                <div style="background:#fef9c3;padding:15px;border-radius:10px;margin-bottom:20px;border:1px solid #eab308;">
+                                    <strong style="color:#a16207;">☀️ Aydinlik Mod Renkleri</strong>
+                                    <p style="font-size:12px;color:#854d0e;margin-top:5px;">Kullanici aydinlik modda iken gorunecek renkler</p>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Sayfa Arka Plan</label>
-                                        <input type="color" class="form-input" id="lightColorBgMain" value="#ffffff" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Section Arka Plan</label>
-                                        <input type="color" class="form-input" id="lightColorBgSection" value="#f8f9fa" style="height:45px;padding:5px;">
-                                    </div>
+                                    <div class="form-group"><label class="form-label">Ana Renk</label><input type="color" class="form-input" id="lightColorPrimary" value="#5a6677" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Simge Arka Plan</label><input type="color" class="form-input" id="lightColorIconBg" value="#5a6677" style="height:45px;padding:5px;"></div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Yazı Rengi (Tüm Metinler)</label>
-                                        <input type="color" class="form-input" id="lightColorText" value="#2d3748" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Header/Footer Rengi</label>
-                                        <input type="color" class="form-input" id="lightColorHeader" value="#1a202c" style="height:45px;padding:5px;">
-                                    </div>
+                                    <div class="form-group"><label class="form-label">Sayfa Arka Plan</label><input type="color" class="form-input" id="lightColorBgMain" value="#ffffff" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Section Arka Plan</label><input type="color" class="form-input" id="lightColorBgSection" value="#f8f9fa" style="height:45px;padding:5px;"></div>
                                 </div>
-                                
-                                <!-- HAZIR LIGHT TEMALAR -->
-                                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5;">
-                                    <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Aydınlık Tema:</label>
-                                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                        <button onclick="applyLightTheme('cee')" class="btn" style="padding: 8px 12px; border: 2px solid #5a6677; background: #f8f9fa; color: #1a202c; border-radius: 8px; font-size: 12px;">CEE Özel</button>
-                                        <button onclick="applyLightTheme('classic')" class="btn" style="padding: 8px 12px; border: 2px solid #c9a227; background: #fff; color: #1a1a1a; border-radius: 8px; font-size: 12px;">Klasik Altın</button>
-                                        <button onclick="applyLightTheme('modern')" class="btn" style="padding: 8px 12px; border: 2px solid #3b82f6; background: #f0f7ff; color: #1a1a1a; border-radius: 8px; font-size: 12px;">Modern Mavi</button>
-                                        <button onclick="applyLightTheme('warm')" class="btn" style="padding: 8px 12px; border: 2px solid #d97706; background: #fffbeb; color: #1a1a1a; border-radius: 8px; font-size: 12px;">Sıcak</button>
-                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Yazi Rengi</label><input type="color" class="form-input" id="lightColorText" value="#2d3748" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Header/Footer</label><input type="color" class="form-input" id="lightColorHeader" value="#1a202c" style="height:45px;padding:5px;"></div>
+                                </div>
+                                <div style="margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;">
+                                    <button onclick="applyLightTheme('cee')" class="btn btn-sm" style="background:#f8f9fa;border:2px solid #5a6677;color:#1a202c;">CEE Ozel</button>
+                                    <button onclick="applyLightTheme('classic')" class="btn btn-sm" style="background:#fff;border:2px solid #c9a227;color:#1a1a1a;">Klasik Altin</button>
+                                    <button onclick="applyLightTheme('modern')" class="btn btn-sm" style="background:#f0f7ff;border:2px solid #3b82f6;color:#1a1a1a;">Modern Mavi</button>
                                 </div>
                             </div>
                             
-                            <!-- DARK MODE AYARLARI -->
-                            <div id="darkModeSettings" style="display: none;">
-                                <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #334155;">
-                                    <strong style="color: #fbbf24;">🌙 Karanlık Mod Renkleri</strong>
-                                    <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">Kullanıcı karanlık modda iken görünecek renkler</p>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Ana Renk (Accent)</label>
-                                        <input type="color" class="form-input" id="darkColorPrimary" value="#5a6677" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Simge Arka Plan</label>
-                                        <input type="color" class="form-input" id="darkColorIconBg" value="#5a6677" style="height:45px;padding:5px;">
-                                    </div>
+                            <div id="darkModeSettings" style="display:none;">
+                                <div style="background:#1e293b;padding:15px;border-radius:10px;margin-bottom:20px;border:1px solid #334155;">
+                                    <strong style="color:#fbbf24;">🌙 Karanlik Mod Renkleri</strong>
+                                    <p style="font-size:12px;color:#94a3b8;margin-top:5px;">Kullanici karanlik modda iken gorunecek renkler</p>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Sayfa Arka Plan</label>
-                                        <input type="color" class="form-input" id="darkColorBgMain" value="#111111" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Section Arka Plan</label>
-                                        <input type="color" class="form-input" id="darkColorBgSection" value="#1a1a1a" style="height:45px;padding:5px;">
-                                    </div>
+                                    <div class="form-group"><label class="form-label">Ana Renk</label><input type="color" class="form-input" id="darkColorPrimary" value="#5a6677" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Simge Arka Plan</label><input type="color" class="form-input" id="darkColorIconBg" value="#5a6677" style="height:45px;padding:5px;"></div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label class="form-label">Yazı Rengi (Tüm Metinler)</label>
-                                        <input type="color" class="form-input" id="darkColorText" value="#e2e8f0" style="height:45px;padding:5px;">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Header/Footer Rengi</label>
-                                        <input type="color" class="form-input" id="darkColorHeader" value="#0f0f0f" style="height:45px;padding:5px;">
-                                    </div>
+                                    <div class="form-group"><label class="form-label">Sayfa Arka Plan</label><input type="color" class="form-input" id="darkColorBgMain" value="#111111" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Section Arka Plan</label><input type="color" class="form-input" id="darkColorBgSection" value="#1a1a1a" style="height:45px;padding:5px;"></div>
                                 </div>
-                                
-                                <!-- HAZIR DARK TEMALAR -->
-                                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #334155;">
-                                    <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Karanlık Tema:</label>
-                                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                        <button onclick="applyDarkTheme('midnight')" class="btn" style="padding: 8px 12px; border: 2px solid #5a6677; background: #1a1a1a; color: #e2e8f0; border-radius: 8px; font-size: 12px;">Gece Yarısı</button>
-                                        <button onclick="applyDarkTheme('gold')" class="btn" style="padding: 8px 12px; border: 2px solid #c9a227; background: #111; color: #c9a227; border-radius: 8px; font-size: 12px;">Altın Gece</button>
-                                        <button onclick="applyDarkTheme('blue')" class="btn" style="padding: 8px 12px; border: 2px solid #3b82f6; background: #0f172a; color: #60a5fa; border-radius: 8px; font-size: 12px;">Koyu Mavi</button>
-                                        <button onclick="applyDarkTheme('pure')" class="btn" style="padding: 8px 12px; border: 2px solid #444; background: #000; color: #fff; border-radius: 8px; font-size: 12px;">Saf Siyah</button>
-                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group"><label class="form-label">Yazi Rengi</label><input type="color" class="form-input" id="darkColorText" value="#e2e8f0" style="height:45px;padding:5px;"></div>
+                                    <div class="form-group"><label class="form-label">Header/Footer</label><input type="color" class="form-input" id="darkColorHeader" value="#0f0f0f" style="height:45px;padding:5px;"></div>
+                                </div>
+                                <div style="margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;">
+                                    <button onclick="applyDarkTheme('midnight')" class="btn btn-sm" style="background:#1a1a1a;border:2px solid #5a6677;color:#e2e8f0;">Gece Yarisi</button>
+                                    <button onclick="applyDarkTheme('gold')" class="btn btn-sm" style="background:#111;border:2px solid #c9a227;color:#c9a227;">Altin Gece</button>
+                                    <button onclick="applyDarkTheme('blue')" class="btn btn-sm" style="background:#0f172a;border:2px solid #3b82f6;color:#60a5fa;">Koyu Mavi</button>
                                 </div>
                             </div>
                             
-                            <!-- İKON BOYUTU -->
-                            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e5e5;">
-                                <label class="form-label" style="margin-bottom: 12px; display: block;">Simge Boyutu: <span id="iconSizeValue">60</span>px</label>
-                                <input type="range" id="iconSize" min="40" max="100" value="60" style="width: 100%; cursor: pointer;" oninput="document.getElementById('iconSizeValue').textContent = this.value">
+                            <div style="margin-top:25px;padding-top:20px;border-top:1px solid #e5e5e5;">
+                                <label class="form-label">Simge Boyutu: <span id="iconSizeValue">60</span>px</label>
+                                <input type="range" id="iconSize" min="40" max="100" value="60" style="width:100%;cursor:pointer;margin-top:10px;" oninput="document.getElementById('iconSizeValue').textContent=this.value">
                             </div>
                             
-                            <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
-                                <button class="btn btn-primary" onclick="saveAllColors()">💾 Tümünü Kaydet</button>
-                                <button class="btn btn-secondary" onclick="resetAllColors()">🔄 Varsayılana Dön</button>
+                            <div style="margin-top:20px;display:flex;gap:10px;">
+                                <button class="btn btn-primary" onclick="saveAllColors()">💾 Tumunu Kaydet</button>
+                                <button class="btn btn-secondary" onclick="resetAllColors()">🔄 Sifirla</button>
                             </div>
                             
-                            <div style="margin-top: 15px; padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid #10b981;">
-                                <p style="font-size: 12px; color: #047857; margin: 0;">
-                                    <strong>💡 İpucu:</strong> Aydınlık ve karanlık mod renkleri birbirinden bağımsız. Birinde yaptığınız değişiklik diğerini etkilemez!
-                                </p>
+                            <div style="margin-top:15px;padding:12px;background:rgba(16,185,129,0.1);border-radius:8px;border:1px solid #10b981;">
+                                <p style="font-size:12px;color:#047857;margin:0;"><strong>💡 Ipucu:</strong> Aydinlik ve karanlik mod renkleri birbirinden bagimsiz!</p>
                             </div>
                         </div>
                     </div>
@@ -1249,27 +1189,25 @@ a{color:inherit;text-decoration:none}
         if (soc.youtube) document.getElementById('socialYt').value = soc.youtube; 
         
         // Light Mode Renkler
-        const lightC = JSON.parse(localStorage.getItem('light_color_settings') || '{}'); 
-        document.getElementById('lightColorPrimary').value = lightC.primary || '#5a6677'; 
-        document.getElementById('lightColorIconBg').value = lightC.iconBg || '#5a6677';
-        document.getElementById('lightColorBgMain').value = lightC.bgMain || '#ffffff';
-        document.getElementById('lightColorBgSection').value = lightC.bgSection || '#f8f9fa';
-        document.getElementById('lightColorText').value = lightC.text || '#2d3748';
-        document.getElementById('lightColorHeader').value = lightC.header || '#1a202c';
-        
+        const lc = JSON.parse(localStorage.getItem('light_color_settings') || '{}'); 
+        document.getElementById('lightColorPrimary').value = lc.primary || '#5a6677'; 
+        document.getElementById('lightColorIconBg').value = lc.iconBg || '#5a6677';
+        document.getElementById('lightColorBgMain').value = lc.bgMain || '#ffffff';
+        document.getElementById('lightColorBgSection').value = lc.bgSection || '#f8f9fa';
+        document.getElementById('lightColorText').value = lc.text || '#2d3748';
+        document.getElementById('lightColorHeader').value = lc.header || '#1a202c';
         // Dark Mode Renkler
-        const darkC = JSON.parse(localStorage.getItem('dark_color_settings') || '{}'); 
-        document.getElementById('darkColorPrimary').value = darkC.primary || '#5a6677'; 
-        document.getElementById('darkColorIconBg').value = darkC.iconBg || '#5a6677';
-        document.getElementById('darkColorBgMain').value = darkC.bgMain || '#111111';
-        document.getElementById('darkColorBgSection').value = darkC.bgSection || '#1a1a1a';
-        document.getElementById('darkColorText').value = darkC.text || '#e2e8f0';
-        document.getElementById('darkColorHeader').value = darkC.header || '#0f0f0f';
-        
-        // İkon Boyutu
-        const iconSize = localStorage.getItem('icon_size') || '60';
-        document.getElementById('iconSize').value = iconSize;
-        document.getElementById('iconSizeValue').textContent = iconSize;
+        const dc = JSON.parse(localStorage.getItem('dark_color_settings') || '{}'); 
+        document.getElementById('darkColorPrimary').value = dc.primary || '#5a6677'; 
+        document.getElementById('darkColorIconBg').value = dc.iconBg || '#5a6677';
+        document.getElementById('darkColorBgMain').value = dc.bgMain || '#111111';
+        document.getElementById('darkColorBgSection').value = dc.bgSection || '#1a1a1a';
+        document.getElementById('darkColorText').value = dc.text || '#e2e8f0';
+        document.getElementById('darkColorHeader').value = dc.header || '#0f0f0f';
+        // Ikon Boyutu
+        const iSize = localStorage.getItem('icon_size') || '60';
+        document.getElementById('iconSize').value = iSize;
+        document.getElementById('iconSizeValue').textContent = iSize;
         
         // SEO
         const seo = JSON.parse(localStorage.getItem('seo_settings') || '{}');
@@ -1286,69 +1224,56 @@ a{color:inherit;text-decoration:none}
     function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
     function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
     
-    // MOD SEKMELERİ
     function switchColorTab(mode) {
-        const lightSettings = document.getElementById('lightModeSettings');
-        const darkSettings = document.getElementById('darkModeSettings');
-        const tabLight = document.getElementById('tabLight');
-        const tabDark = document.getElementById('tabDark');
-        
         if (mode === 'light') {
-            lightSettings.style.display = 'block';
-            darkSettings.style.display = 'none';
-            tabLight.style.background = '#fbbf24';
-            tabLight.style.color = '#1a1a1a';
-            tabDark.style.background = '#334155';
-            tabDark.style.color = '#94a3b8';
+            document.getElementById('lightModeSettings').style.display = 'block';
+            document.getElementById('darkModeSettings').style.display = 'none';
+            document.getElementById('tabLight').style.background = '#fbbf24';
+            document.getElementById('tabLight').style.color = '#1a1a1a';
+            document.getElementById('tabDark').style.background = '#334155';
+            document.getElementById('tabDark').style.color = '#94a3b8';
         } else {
-            lightSettings.style.display = 'none';
-            darkSettings.style.display = 'block';
-            tabDark.style.background = '#3b82f6';
-            tabDark.style.color = '#ffffff';
-            tabLight.style.background = '#334155';
-            tabLight.style.color = '#94a3b8';
+            document.getElementById('lightModeSettings').style.display = 'none';
+            document.getElementById('darkModeSettings').style.display = 'block';
+            document.getElementById('tabDark').style.background = '#3b82f6';
+            document.getElementById('tabDark').style.color = '#fff';
+            document.getElementById('tabLight').style.background = '#334155';
+            document.getElementById('tabLight').style.color = '#94a3b8';
         }
     }
     
-    // LIGHT MODE TEMALAR
-    function applyLightTheme(theme) {
+    function applyLightTheme(t) {
         const themes = {
-            cee: { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c' },
-            classic: { primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', bgSection: '#f5f5f5', text: '#2c2c2c', header: '#1a1a1a' },
-            modern: { primary: '#3b82f6', iconBg: '#3b82f6', bgMain: '#ffffff', bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a' },
-            warm: { primary: '#d97706', iconBg: '#d97706', bgMain: '#fffbeb', bgSection: '#fef3c7', text: '#78350f', header: '#451a03' }
+            cee: {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'},
+            classic: {primary:'#c9a227',iconBg:'#c9a227',bgMain:'#ffffff',bgSection:'#f5f5f5',text:'#2c2c2c',header:'#1a1a1a'},
+            modern: {primary:'#3b82f6',iconBg:'#3b82f6',bgMain:'#ffffff',bgSection:'#f0f7ff',text:'#1e293b',header:'#0f172a'}
         };
-        const t = themes[theme];
-        if (!t) return;
-        document.getElementById('lightColorPrimary').value = t.primary;
-        document.getElementById('lightColorIconBg').value = t.iconBg;
-        document.getElementById('lightColorBgMain').value = t.bgMain;
-        document.getElementById('lightColorBgSection').value = t.bgSection;
-        document.getElementById('lightColorText').value = t.text;
-        document.getElementById('lightColorHeader').value = t.header;
-        toast('Aydınlık tema ayarlandı! Kaydetmeyi unutmayın.', 'success');
+        const th = themes[t]; if(!th)return;
+        document.getElementById('lightColorPrimary').value = th.primary;
+        document.getElementById('lightColorIconBg').value = th.iconBg;
+        document.getElementById('lightColorBgMain').value = th.bgMain;
+        document.getElementById('lightColorBgSection').value = th.bgSection;
+        document.getElementById('lightColorText').value = th.text;
+        document.getElementById('lightColorHeader').value = th.header;
+        toast('Aydinlik tema ayarlandi!', 'success');
     }
     
-    // DARK MODE TEMALAR
-    function applyDarkTheme(theme) {
+    function applyDarkTheme(t) {
         const themes = {
-            midnight: { primary: '#5a6677', iconBg: '#5a6677', bgMain: '#111111', bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f' },
-            gold: { primary: '#c9a227', iconBg: '#c9a227', bgMain: '#0f0f0f', bgSection: '#1a1a1a', text: '#fef3c7', header: '#000000' },
-            blue: { primary: '#3b82f6', iconBg: '#3b82f6', bgMain: '#0f172a', bgSection: '#1e293b', text: '#e0f2fe', header: '#020617' },
-            pure: { primary: '#ffffff', iconBg: '#444444', bgMain: '#000000', bgSection: '#111111', text: '#ffffff', header: '#000000' }
+            midnight: {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'},
+            gold: {primary:'#c9a227',iconBg:'#c9a227',bgMain:'#0f0f0f',bgSection:'#1a1a1a',text:'#fef3c7',header:'#000000'},
+            blue: {primary:'#3b82f6',iconBg:'#3b82f6',bgMain:'#0f172a',bgSection:'#1e293b',text:'#e0f2fe',header:'#020617'}
         };
-        const t = themes[theme];
-        if (!t) return;
-        document.getElementById('darkColorPrimary').value = t.primary;
-        document.getElementById('darkColorIconBg').value = t.iconBg;
-        document.getElementById('darkColorBgMain').value = t.bgMain;
-        document.getElementById('darkColorBgSection').value = t.bgSection;
-        document.getElementById('darkColorText').value = t.text;
-        document.getElementById('darkColorHeader').value = t.header;
-        toast('Karanlık tema ayarlandı! Kaydetmeyi unutmayın.', 'success');
+        const th = themes[t]; if(!th)return;
+        document.getElementById('darkColorPrimary').value = th.primary;
+        document.getElementById('darkColorIconBg').value = th.iconBg;
+        document.getElementById('darkColorBgMain').value = th.bgMain;
+        document.getElementById('darkColorBgSection').value = th.bgSection;
+        document.getElementById('darkColorText').value = th.text;
+        document.getElementById('darkColorHeader').value = th.header;
+        toast('Karanlik tema ayarlandi!', 'success');
     }
     
-    // TÜM RENKLERİ KAYDET
     function saveAllColors() { 
         localStorage.setItem('light_color_settings', JSON.stringify({ 
             primary: document.getElementById('lightColorPrimary').value, 
@@ -1358,7 +1283,6 @@ a{color:inherit;text-decoration:none}
             text: document.getElementById('lightColorText').value,
             header: document.getElementById('lightColorHeader').value
         }));
-        
         localStorage.setItem('dark_color_settings', JSON.stringify({ 
             primary: document.getElementById('darkColorPrimary').value, 
             iconBg: document.getElementById('darkColorIconBg').value,
@@ -1367,37 +1291,29 @@ a{color:inherit;text-decoration:none}
             text: document.getElementById('darkColorText').value,
             header: document.getElementById('darkColorHeader').value
         }));
-        
         localStorage.setItem('icon_size', document.getElementById('iconSize').value);
-        
-        toast('Hem aydınlık hem karanlık mod renkleri kaydedildi!', 'success'); 
+        toast('Tum renkler kaydedildi!', 'success'); 
     }
     
-    // VARSAYILANA DÖN
     function resetAllColors() { 
-        // Light
         document.getElementById('lightColorPrimary').value = '#5a6677'; 
         document.getElementById('lightColorIconBg').value = '#5a6677'; 
         document.getElementById('lightColorBgMain').value = '#ffffff';
         document.getElementById('lightColorBgSection').value = '#f8f9fa';
         document.getElementById('lightColorText').value = '#2d3748';
         document.getElementById('lightColorHeader').value = '#1a202c';
-        // Dark
         document.getElementById('darkColorPrimary').value = '#5a6677'; 
         document.getElementById('darkColorIconBg').value = '#5a6677'; 
         document.getElementById('darkColorBgMain').value = '#111111';
         document.getElementById('darkColorBgSection').value = '#1a1a1a';
         document.getElementById('darkColorText').value = '#e2e8f0';
         document.getElementById('darkColorHeader').value = '#0f0f0f';
-        // Icon
         document.getElementById('iconSize').value = '60';
         document.getElementById('iconSizeValue').textContent = '60';
-        
         localStorage.removeItem('light_color_settings');
         localStorage.removeItem('dark_color_settings');
         localStorage.removeItem('icon_size');
-        
-        toast('Tüm renkler varsayılana döndürüldü!', 'success'); 
+        toast('Tum renkler sifirlandi!', 'success'); 
     }
     
     // TEMA KODU DIÅžA AKTARMA
