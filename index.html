@@ -2127,16 +2127,9 @@
                 max-width: none;
                 text-align: center;
             }
-            .hero-content-lares > div:first-child {
-                display: block !important;
-            }
-            .hero-content-lares > div:first-child > div {
-                flex-direction: column !important;
-                gap: 15px !important;
-            }
             .hero-brand {
-                font-size: 28px !important;
-                letter-spacing: 8px !important;
+                font-size: 40px;
+                letter-spacing: 6px;
             }
             .hero-brand .mimarlik-text {
                 letter-spacing: 8px;
@@ -2144,15 +2137,9 @@
         }
         
         @media (max-width: 600px) {
-            .hero-content-lares > div:first-child {
-                padding: 15px 20px !important;
-            }
-            .hero-content-lares > div:first-child img {
-                height: 60px !important;
-            }
             .hero-brand {
-                font-size: 22px !important;
-                letter-spacing: 6px !important;
+                font-size: 32px;
+                letter-spacing: 4px;
             }
             .hero-brand .mimarlik-text {
                 letter-spacing: 6px;
@@ -5212,11 +5199,12 @@ window.goToAdmin = goToAdmin;
 <!-- HEADER -->
 <header role="banner">
     <div class="header-content">
-        <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer;">
+        <div class="logo-container">
             <div class="logo-top">
-                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="height: 50px; width: auto;">
+                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="height:50px;width:auto;">
             </div>
-        </a>
+            <div class="logo-subtitle" id="headerSlogan" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS">MİMARLIK & YAPI SİSTEMLERİ</div>
+        </div>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
@@ -5293,25 +5281,11 @@ window.goToAdmin = goToAdmin;
 <section class="hero" id="anasayfa">
     <div id="heroSlider"></div>
     
-    <!-- Premium Hero İçerik -->
+    <!-- Lares Tarzı İçerik -->
     <div class="hero-content-lares">
-        <!-- Logo Badge -->
-        <div style="display: inline-block; margin-bottom: 25px; padding: 20px 30px; background: rgba(0,0,0,0.35); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;">
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <img src="logo.png" alt="CEE Mimarlık" style="height: 80px; width: auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)) brightness(1.1);">
-                <div>
-                    <h1 class="hero-brand" id="heroBrand" style="font-size: 32px; letter-spacing: 10px; margin: 0;"><span class="mimarlik-text" style="color: #fff !important; font-weight: 300;">MİMARLIK</span></h1>
-                    <div style="font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.6); margin-top: 8px; text-transform: uppercase;">YAPI SİSTEMLERİ</div>
-                </div>
-            </div>
-        </div>
-        
-        <p class="hero-description" id="heroDescription" data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz." data-en="We bring your living spaces, offices, villas and commercial projects to life with turnkey design and implementation services from A to Z.">Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz.</p>
-        
-        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a href="#projeler" class="hero-cta" style="background: rgba(90,102,119,0.95);" data-tr="PROJELERİMİZ" data-en="OUR PROJECTS">PROJELERİMİZ</a>
-            <a href="#iletisim" class="hero-cta" style="background: transparent; border: 2px solid rgba(255,255,255,0.5);" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a>
-        </div>
+        <h1 class="hero-brand" id="heroBrand"><img src="logo.png" alt="CEE" style="height:60px;width:auto;vertical-align:middle;margin-right:15px;filter:brightness(1.2);"><span class="mimarlik-text">MİMARLIK</span></h1>
+        <p class="hero-description" id="heroDescription" data-tr="CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz." data-en="As CEE Architecture, we reshape your living spaces, offices, villas and commercial projects according to our clients' expectations. Throughout all these processes, we provide turnkey design and implementation services from A to Z.">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</p>
+        <a href="#iletisim" class="hero-cta" data-tr="İLETİŞİME GEÇİN" data-en="CONTACT US">İLETİŞİME GEÇİN</a>
     </div>
     
     <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
