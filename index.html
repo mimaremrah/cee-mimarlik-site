@@ -7290,7 +7290,7 @@ function renderProjects() {
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; opacity: 0.9; pointer-events: none;">▶️</div>
             `;
         } else {
-            mediaHTML = `<img src="${project.img}" alt="${project.title || 'Proje'}" class="project-image" loading="lazy">`;
+            mediaHTML = `<img src="${project.img}" alt="${project.title || 'Proje'}" class="project-image lazy-image" loading="lazy">`;
         }
         
         return `
@@ -7415,7 +7415,7 @@ function loadTeam() {
         
         return '<div class="team-member" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; max-width: 400px;">' +
             '<div style="height: 320px; overflow: hidden; background: #f5f5f5;">' +
-                '<img src="' + (member.photo || placeholderPhoto) + '" alt="' + member.name + '" class="team-photo" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.src=\'' + placeholderPhoto + '\'">' +
+                '<img src="' + (member.photo || placeholderPhoto) + '" alt="' + member.name + '" class="team-photo lazy-image" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" onerror="this.src=\'' + placeholderPhoto + '\'">' +
             '</div>' +
             '<div style="padding: 25px; text-align: center;">' +
                 '<h3 style="font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 8px;">' + member.name + '</h3>' +
@@ -10635,6 +10635,219 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
     setTimeout(applyColors, 500);
     setTimeout(applyColors, 1000);
     setTimeout(applyColors, 2000);
+})();
+</script>
+
+<!-- ============================================
+     LAZY LOADING SİSTEMİ - PERFORMANS OPTİMİZASYONU
+     ============================================ -->
+<style>
+/* Lazy Loading CSS */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Placeholder blur efekti */
+.lazy-container {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+}
+
+.lazy-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.lazy-container.loaded::before {
+    display: none;
+}
+
+/* Skeleton loading */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+body.dark-mode .lazy-container {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+body.dark-mode .skeleton {
+    background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+</style>
+
+<script>
+// ============================================
+// GELİŞMİŞ LAZY LOADING SİSTEMİ
+// ============================================
+(function() {
+    'use strict';
+    
+    // Intersection Observer desteği kontrolü
+    if (!('IntersectionObserver' in window)) {
+        // Eski tarayıcılar için fallback - tüm resimleri hemen yükle
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+            }
+            img.classList.add('loaded');
+        });
+        return;
+    }
+    
+    // Lazy Load Observer
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // data-src varsa kullan
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+                
+                // Yükleme tamamlandığında
+                img.onload = function() {
+                    img.classList.add('loaded');
+                    const container = img.closest('.lazy-container');
+                    if (container) {
+                        container.classList.add('loaded');
+                    }
+                };
+                
+                // Hata durumunda
+                img.onerror = function() {
+                    img.classList.add('loaded');
+                    console.warn('Resim yüklenemedi:', img.src);
+                };
+                
+                // Zaten yüklüyse
+                if (img.complete) {
+                    img.classList.add('loaded');
+                }
+                
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '100px 0px', // 100px önceden yüklemeye başla
+        threshold: 0.01
+    });
+    
+    // Video Lazy Load Observer
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const video = entry.target;
+                
+                // Video kaynaklarını yükle
+                video.querySelectorAll('source[data-src]').forEach(source => {
+                    source.src = source.dataset.src;
+                });
+                
+                video.load();
+                observer.unobserve(video);
+            }
+        });
+    }, {
+        rootMargin: '200px 0px',
+        threshold: 0.01
+    });
+    
+    // iframe Lazy Load Observer (YouTube, Maps vb.)
+    const iframeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const iframe = entry.target;
+                
+                if (iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+                
+                observer.unobserve(iframe);
+            }
+        });
+    }, {
+        rootMargin: '300px 0px',
+        threshold: 0.01
+    });
+    
+    // Lazy loading'i başlat
+    function initLazyLoading() {
+        // Tüm lazy resimleri observe et
+        document.querySelectorAll('img[loading="lazy"], img.lazy-image').forEach(img => {
+            imageObserver.observe(img);
+        });
+        
+        // Video'ları observe et
+        document.querySelectorAll('video[data-lazy]').forEach(video => {
+            videoObserver.observe(video);
+        });
+        
+        // iframe'leri observe et
+        document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+            iframeObserver.observe(iframe);
+        });
+        
+        console.log('✅ Lazy loading sistemi aktif');
+    }
+    
+    // Sayfa yüklendiğinde başlat
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLazyLoading);
+    } else {
+        initLazyLoading();
+    }
+    
+    // Dinamik içerik için MutationObserver
+    const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) { // Element node
+                    // Yeni eklenen lazy image'ları observe et
+                    if (node.matches && node.matches('img[loading="lazy"], img.lazy-image')) {
+                        imageObserver.observe(node);
+                    }
+                    // İç içe olanları da kontrol et
+                    node.querySelectorAll && node.querySelectorAll('img[loading="lazy"], img.lazy-image').forEach(img => {
+                        imageObserver.observe(img);
+                    });
+                }
+            });
+        });
+    });
+    
+    // Body'yi izle (dinamik eklenen içerikler için)
+    mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
 })();
 </script>
 </body>
