@@ -6262,6 +6262,45 @@ document.getElementById('contactForm').addEventListener('submit', async function
         messages.unshift(formData); // En yeni başa ekle
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
+        // ============================================
+        // WEB3FORMS İLE E-POSTA GÖNDERİMİ
+        // ============================================
+        // Not: Web3Forms ücretsiz plan - https://web3forms.com adresinden API key alın
+        // API key'i kendi key'inizle değiştirin
+        const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE'; // <- Buraya kendi key'inizi yazın
+        
+        // E-posta gönderimi (Web3Forms yapılandırılmışsa)
+        if (WEB3FORMS_KEY !== 'YOUR_ACCESS_KEY_HERE') {
+            try {
+                const emailResponse = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        access_key: WEB3FORMS_KEY,
+                        subject: `🏗️ CEE Mimarlık - Yeni İletişim Formu: ${subject}`,
+                        from_name: 'CEE Mimarlık Web Sitesi',
+                        name: safeName,
+                        email: email,
+                        phone: phone,
+                        konu: subject,
+                        message: safeMessage,
+                        redirect: false
+                    })
+                });
+                
+                const result = await emailResponse.json();
+                if (!result.success) {
+                    console.warn('E-posta gönderilemedi:', result);
+                }
+            } catch (emailError) {
+                console.warn('E-posta gönderim hatası:', emailError);
+                // E-posta gönderilemese bile localStorage'a kaydedildi, devam et
+            }
+        }
+        // ============================================
+        
         // Success
         statusEl.textContent = '✅ Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.';
         statusEl.style.background = '#4CAF50';
@@ -6924,14 +6963,17 @@ body.dark-mode .btn-secondary {
 
 <footer>
     <div class="footer-content">
-        <div class="footer-bottom" style="border-top: none; padding-top: 0; display: flex; justify-content: center; align-items: center;">
+        <div class="footer-bottom" style="border-top: none; padding-top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px;">
             <div style="display: flex; align-items: center; gap: 15px; justify-content: center;">
                 <img src="" id="footerLogo" class="site-logo" style="height: 50px; display: none;" alt="CEE Mimarlık">
                 <p class="footer-copyright" style="margin: 0; text-align: center; color: #1a1a1a;">
-                    © <span id="footerYear">2026</span> 
+                    © <span id="footerYear">2025</span> 
                     <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #1a1a1a; font-weight: 600;">CEE MİMARLIK</span> 
                     <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
                 </p>
+            </div>
+            <div style="display: flex; gap: 20px; font-size: 13px;">
+                <a href="gizlilik.html" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#5a6677'" onmouseout="this.style.color='#666'">Gizlilik Politikası & KVKK</a>
             </div>
         </div>
     </div>
