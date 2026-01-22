@@ -1925,98 +1925,105 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-            transition: all 0.4s ease;
-            margin-left: 0;
-            padding: 8px 15px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(212, 175, 55, 0.1);
-        }
-
-        body.dark-mode .logo-container {
-            background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(40,40,40,0.9) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(212, 175, 55, 0.15);
-        }
-
-        .logo-top {
+        /* ============================================
+           HEADER LOGO - RESİM TABANLI
+           ============================================ */
+        .logo-link {
             display: flex;
             align-items: center;
-            gap: 0;
+            gap: 15px;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
-
-        .site-logo {
-            height: 100px;
+        
+        .header-logo-img {
+            height: 50px;
             width: auto;
-            transition: all 0.4s ease;
             object-fit: contain;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
-
-        header.scrolled .site-logo {
-            height: 60px;
+        
+        .logo-link:hover .header-logo-img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 12px rgba(90,102,119,0.3));
         }
-
-        header.scrolled .logo-container {
-            padding: 5px 12px;
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
+        
+        header.scrolled .header-logo-img {
+            height: 38px;
         }
-
-        body.dark-mode header.scrolled .logo-container {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
+        
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
-
-        .logo-text {
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 8px;
+        
+        .logo-main-text {
+            font-family: var(--font-display, 'Inter', -apple-system, sans-serif);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
             color: #5a6677;
             text-transform: uppercase;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
-
-        header.scrolled .logo-text {
-            font-size: 22px;
-            letter-spacing: 6px;
-        }
-
-        .logo-subtitle {
-            font-size: 9px;
+        
+        .logo-tagline {
+            font-family: var(--font-primary, 'Inter', sans-serif);
+            font-size: 8px;
             font-weight: 500;
             letter-spacing: 2px;
             color: #888;
             text-transform: uppercase;
             opacity: 1;
-            white-space: nowrap;
-            margin-top: 4px;
-            padding-left: 2px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            padding-top: 5px;
             transition: all 0.4s ease;
         }
-
-        header.scrolled .logo-subtitle {
-            opacity: 0;
-            font-size: 0;
-            margin-top: 0;
-            padding-top: 0;
-            border-top: none;
-            height: 0;
-            overflow: hidden;
+        
+        /* Hover efektleri */
+        .logo-link:hover .logo-main-text {
+            color: #4a5568;
         }
-
-        body.dark-mode .logo-subtitle {
-            color: #aaa;
-            border-top-color: rgba(212, 175, 55, 0.4);
+        
+        /* Dark mode */
+        body.dark-mode .header-logo-img {
+            filter: drop-shadow(0 2px 8px rgba(255,255,255,0.1)) brightness(1.15);
+        }
+        
+        body.dark-mode .logo-link:hover .header-logo-img {
+            filter: drop-shadow(0 4px 15px rgba(255,255,255,0.2)) brightness(1.2);
+        }
+        
+        body.dark-mode .logo-main-text {
+            color: #8fa3bd;
+        }
+        
+        body.dark-mode .logo-tagline {
+            color: #718096;
+        }
+        
+        body.dark-mode .logo-link:hover .logo-main-text {
+            color: #a8bdd4;
+        }
+        
+        /* Scroll durumu - kompakt logo */
+        header.scrolled .logo-text-group {
+            display: none;
+        }
+        
+        /* Eski stiller gizle */
+        .header-logo, .header-logo-text, .header-logo-dot {
+            display: none !important;
+        }
+        
+        .logo-container, .logo-text, .logo-subtitle {
+            display: none !important;
+        }
+        
+        .logo-main, .logo-cee, .logo-separator, .logo-mimarlik {
+            display: none !important;
         }
 
         /* Mobile Menu Toggle */
@@ -2139,7 +2146,7 @@
             right: 8%;
             transform: translateY(-50%);
             z-index: 10;
-            max-width: 550px;
+            max-width: 600px;
             text-align: left;
         }
         
@@ -2153,41 +2160,126 @@
             to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
         }
         
-        .hero-brand {
-            font-size: 52px;
-            font-weight: 700;
-            letter-spacing: 8px;
-            color: #ffffff;
-            margin: 0 0 30px 0;
-            text-transform: uppercase;
-            line-height: 1.1;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+        /* ============================================
+           PREMİUM HERO LOGO BADGE
+           ============================================ */
+        .hero-logo-badge {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
             -webkit-animation: heroFadeIn 1s ease-out;
             animation: heroFadeIn 1s ease-out;
         }
         
+        .hero-logo-inner {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px 35px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        
+        .hero-logo-badge:hover .hero-logo-inner {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        
+        .hero-logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(90,102,119,0.3) 0%, transparent 70%);
+            filter: blur(30px);
+            z-index: 1;
+            opacity: 0.7;
+            transition: all 0.4s ease;
+        }
+        
+        .hero-logo-badge:hover .hero-logo-glow {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        
+        .hero-logo-icon {
+            width: 120px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .hero-logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3)) brightness(1.1);
+            transition: all 0.4s ease;
+        }
+        
+        .hero-logo-badge:hover .hero-logo-image {
+            filter: drop-shadow(0 6px 20px rgba(0,0,0,0.4)) brightness(1.2);
+            transform: scale(1.05);
+        }
+        
+        .hero-logo-icon svg {
+            display: none; /* SVG gizle, resim kullan */
+        }
+        
+        .hero-logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .hero-brand {
+            font-size: 38px;
+            font-weight: 300;
+            letter-spacing: 12px;
+            color: #ffffff;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        
         .hero-brand .cee-text {
-            color: #5a6677 !important;
-            display: block;
-            font-weight: 800;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
+            display: none; /* Logo resmi zaten CEE içeriyor */
         }
         
         .hero-brand .mimarlik-text {
             color: #ffffff !important;
-            display: block;
-            font-weight: 600;
+            font-weight: 300;
             letter-spacing: 12px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero-logo-tagline {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.15);
         }
         
         .hero-description {
             font-family: var(--font-primary);
-            font-size: var(--text-base);
-            line-height: var(--leading-relaxed);
-            color: #ffffff;
-            color: rgba(255,255,255,0.92);
-            font-weight: var(--font-light);
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
             margin-bottom: 35px;
             text-shadow: 0 2px 15px rgba(0,0,0,0.5);
             max-width: 500px;
@@ -2195,36 +2287,56 @@
             animation: heroFadeIn 1s ease-out 0.2s both;
         }
         
-        .hero-cta {
-            display: inline-block;
-            padding: 16px 45px;
-            background: var(--text-accent);
-            background: rgba(90,102,119,0.95);
-            color: #ffffff !important;
-            text-decoration: none;
-            font-family: var(--font-primary);
-            font-size: var(--text-sm);
-            font-weight: var(--font-semibold);
-            letter-spacing: var(--tracking-wider);
-            text-transform: uppercase;
-            -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-            border-radius: 50px;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        /* Hero CTA Butonları */
+        .hero-cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
             -webkit-animation: heroFadeIn 1s ease-out 0.4s both;
             animation: heroFadeIn 1s ease-out 0.4s both;
         }
         
-        .hero-cta:hover {
-            background: #5a6677; /* IE fallback */
-            background: rgba(90,102,119,1);
-            -webkit-transform: translateY(-3px);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 35px;
+            text-decoration: none;
+            font-family: var(--font-primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
+        .hero-cta.primary {
+            background: rgba(90,102,119,0.95);
+            color: #ffffff !important;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .hero-cta.primary:hover {
+            background: rgba(90,102,119,1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(90,102,119,0.4);
+        }
+        
+        .hero-cta.secondary {
+            background: transparent;
+            color: #ffffff !important;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .hero-cta.secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.8);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
         @media (max-width: 992px) {
             .hero-content-lares {
                 right: 5%;
@@ -2232,25 +2344,89 @@
                 max-width: none;
                 text-align: center;
             }
-            .hero-brand {
-                font-size: 40px;
-                letter-spacing: 6px;
+            
+            .hero-logo-badge {
+                display: block;
             }
+            
+            .hero-logo-inner {
+                flex-direction: column;
+                padding: 30px;
+                gap: 15px;
+            }
+            
+            .hero-logo-text {
+                align-items: center;
+            }
+            
+            .hero-brand {
+                font-size: 36px;
+                letter-spacing: 4px;
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            
             .hero-brand .mimarlik-text {
                 letter-spacing: 8px;
+            }
+            
+            .hero-description {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-cta-group {
+                justify-content: center;
             }
         }
         
         @media (max-width: 600px) {
+            /* HEADER LOGO - KÜÇÜK EKRAN */
+            .header-logo-img {
+                height: 35px;
+            }
+            
+            .logo-text-group {
+                display: none;
+            }
+            
+            header.scrolled .header-logo-img {
+                height: 30px;
+            }
+            
+            /* HERO LOGO - KÜÇÜK EKRAN */
+            .hero-logo-inner {
+                padding: 20px 25px;
+            }
+            
+            .hero-logo-icon {
+                width: 80px;
+                height: 65px;
+            }
+            
             .hero-brand {
-                font-size: 32px;
-                letter-spacing: 4px;
+                font-size: 28px;
+                letter-spacing: 3px;
             }
+            
             .hero-brand .mimarlik-text {
-                letter-spacing: 6px;
+                letter-spacing: 5px;
             }
+            
+            .hero-logo-tagline {
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+            
             .hero-description {
                 font-size: 14px;
+            }
+            
+            .hero-cta {
+                padding: 14px 28px;
+                font-size: 12px;
             }
         }
 
@@ -4187,6 +4363,37 @@
 
         /* MOBILE */
         @media (max-width: 768px) {
+            /* LOGO - MOBILE */
+            .logo-link {
+                padding: 8px 0;
+            }
+            
+            .logo-cee {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+            
+            .logo-separator {
+                width: 3px;
+                height: 3px;
+                margin: 0 6px;
+            }
+            
+            .logo-mimarlik {
+                font-size: 20px;
+                letter-spacing: 3px;
+            }
+            
+            .logo-tagline {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+            
+            header.scrolled .logo-cee,
+            header.scrolled .logo-mimarlik {
+                font-size: 16px;
+            }
+            
             /* UNIFIED CHAT - MOBILE */
             .unified-chat-btn {
                 bottom: 20px;
@@ -5332,12 +5539,15 @@ window.goToAdmin = goToAdmin;
 <!-- HEADER -->
 <header role="banner">
     <div class="header-content">
-        <div class="logo-container">
-            <div class="logo-top">
-                <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
+        <!-- LOGO RESMİ + TEXT -->
+        <a href="#anasayfa" class="logo-link" onclick="smoothScrollToTop(event)">
+            <img src="logo.png" alt="CEE Mimarlık Logo" class="header-logo-img" id="headerLogoImg">
+            <div class="logo-text-group">
+                <span class="logo-main-text">MİMARLIK</span>
+                <span class="logo-tagline">YAPI SİSTEMLERİ</span>
             </div>
-            <div class="logo-subtitle" id="headerSlogan" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS">MİMARLIK & YAPI SİSTEMLERİ</div>
-        </div>
+        </a>
+        
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
@@ -5414,11 +5624,30 @@ window.goToAdmin = goToAdmin;
 <section class="hero" id="anasayfa">
     <div id="heroSlider"></div>
     
-    <!-- Lares Tarzı İçerik -->
+    <!-- Premium Hero İçerik -->
     <div class="hero-content-lares">
-        <h1 class="hero-brand" id="heroBrand"><span class="cee-text">CEE</span><span class="mimarlik-text">MİMARLIK</span></h1>
-        <p class="hero-description" id="heroDescription" data-tr="CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz." data-en="As CEE Architecture, we reshape your living spaces, offices, villas and commercial projects according to our clients' expectations. Throughout all these processes, we provide turnkey design and implementation services from A to Z.">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</p>
-        <a href="#iletisim" class="hero-cta" data-tr="İLETİŞİME GEÇİN" data-en="CONTACT US">İLETİŞİME GEÇİN</a>
+        <!-- Logo Badge - Etkileyici tasarım -->
+        <div class="hero-logo-badge">
+            <div class="hero-logo-inner">
+                <div class="hero-logo-icon">
+                    <img src="logo.png" alt="CEE Mimarlık" class="hero-logo-image" id="heroLogoImg">
+                </div>
+                <div class="hero-logo-text">
+                    <h1 class="hero-brand" id="heroBrand">
+                        <span class="mimarlik-text">MİMARLIK</span>
+                    </h1>
+                    <div class="hero-logo-tagline">YAPI SİSTEMLERİ</div>
+                </div>
+            </div>
+            <div class="hero-logo-glow"></div>
+        </div>
+        
+        <p class="hero-description" id="heroDescription" data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz." data-en="We bring your living spaces, offices, villas and commercial projects to life with turnkey design and implementation services from A to Z.">Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz.</p>
+        
+        <div class="hero-cta-group">
+            <a href="#projeler" class="hero-cta primary" data-tr="PROJELERİMİZ" data-en="OUR PROJECTS">PROJELERİMİZ</a>
+            <a href="#iletisim" class="hero-cta secondary" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</a>
+        </div>
     </div>
     
     <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
@@ -7028,6 +7257,15 @@ const defaultProjects = [
         row: 'top'
     }
 ];
+
+// Logo tıklandığında yukarı kaydırma
+function smoothScrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 
 function init() {
     loadFromLocalStorage();
