@@ -34,6 +34,25 @@
         if (!localStorage.getItem('dark_color_settings')) {
             localStorage.setItem('dark_color_settings', JSON.stringify(DARK_THEME_DEFAULT));
         }
+        
+        // CSS Variables'ı HEMEN ayarla (sayfa yüklenmeden önce)
+        var isDarkMode = localStorage.getItem('cee_public_dark') === 'true';
+        var themeSettings;
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark-mode');
+            themeSettings = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
+            if (!themeSettings.bgMain) themeSettings = DARK_THEME_DEFAULT;
+        } else {
+            themeSettings = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+            if (!themeSettings.bgMain) themeSettings = LIGHT_THEME_DEFAULT;
+        }
+        
+        // CSS Variables'ı hemen uygula
+        document.documentElement.style.setProperty('--bg', themeSettings.bgMain);
+        document.documentElement.style.setProperty('--bg-primary', themeSettings.bgMain);
+        document.documentElement.style.setProperty('--bg-secondary', themeSettings.bgSection);
+        document.documentElement.style.setProperty('--text-color', themeSettings.text);
+        document.documentElement.style.setProperty('--header-bg', themeSettings.header);
     }
     </script>
     
@@ -1775,10 +1794,17 @@
             --primary: #e0e0e0;
             --secondary: #b0b0b0;
             --accent: #ffffff;
-            --bg: #1a1a1a;
-            --white: #2c2c2c;
+            --bg: var(--bg-primary, #1a1a1a);
+            --white: var(--bg-secondary, #2c2c2c);
             --border: #333;
             --shadow: rgba(255, 255, 255, 0.05);
+            background-color: var(--bg-primary, #1a1a1a) !important;
+            background: var(--bg-primary, #1a1a1a) !important;
+        }
+        
+        body:not(.dark-mode) {
+            background-color: var(--bg-primary, #ffffff) !important;
+            background: var(--bg-primary, #ffffff) !important;
         }
 
         /* HEADER & NAV */
@@ -1803,12 +1829,20 @@
         }
 
         body.dark-mode header {
-            background: rgba(20, 20, 20, 0.97);
+            background: var(--header-bg, rgba(20, 20, 20, 0.97)) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         body.dark-mode header.scrolled {
-            background: rgba(20, 20, 20, 0.98);
+            background: var(--header-bg, rgba(20, 20, 20, 0.98)) !important;
+        }
+        
+        body:not(.dark-mode) header {
+            background: var(--header-bg, rgba(255, 255, 255, 0.97)) !important;
+        }
+        
+        body:not(.dark-mode) header.scrolled {
+            background: var(--header-bg, rgba(255, 255, 255, 0.98)) !important;
         }
 
         .header-content {
@@ -4532,11 +4566,11 @@
         body.dark-mode .section-title { color: #e2e8f0 !important; }
         body.dark-mode .section-title .accent { color: #5a6677 !important; }
         body.dark-mode .section-label { color: #94a3b8 !important; }
-        body.dark-mode #referanslar, body.dark-mode .references-section { background: #111111 !important; }
+        /* body.dark-mode #referanslar - JS tarafından kontrol ediliyor */
         body.dark-mode .partner-card, body.dark-mode .reference-card { background: #1a1a1a !important; }
         body.dark-mode .partner-card p, body.dark-mode .partner-card span, body.dark-mode .reference-card p { color: #94a3b8 !important; }
         body.dark-mode .location-card { background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%) !important; }
-        body.dark-mode #location { background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%) !important; }
+        /* body.dark-mode #location - JS tarafından kontrol ediliyor */
         
         /* =============================================
            MADDE 1: OFİS KONUMU RESPONSIVE
@@ -4639,7 +4673,7 @@
         body.dark-mode .service-card { background: #1a1a1a !important; }
         body.dark-mode .service-card h3 { color: #5a6677 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
-        body.dark-mode #referanslar { background: #111111 !important; }
+        /* body.dark-mode #referanslar - JS tarafından kontrol ediliyor */
         body.dark-mode .ref-card { background: #1a1a1a !important; border: 1px solid #333 !important; }
         body.dark-mode .ref-card h4 { color: #e2e8f0 !important; }
         body.dark-mode .ref-card p { color: #94a3b8 !important; }
@@ -7195,28 +7229,107 @@ function toggleDarkMode() {
     if (btn) btn.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('cee_public_dark', isDark);
     
-    // Mod değiştiğinde renkleri HEMEN ve birden fazla kez uygula
+    // CSS Variables'ı hemen güncelle
+    var cs;
+    if (isDark) {
+        cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
+        if (!cs.bgMain) cs = {bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
+    } else {
+        cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+        if (!cs.bgMain) cs = {bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
+    }
+    
+    // CSS Variables güncelle
+    document.documentElement.style.setProperty('--bg', cs.bgMain);
+    document.documentElement.style.setProperty('--bg-primary', cs.bgMain);
+    document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
+    document.documentElement.style.setProperty('--text-color', cs.text);
+    document.documentElement.style.setProperty('--header-bg', cs.header);
+    
+    // Body arka planını HEMEN değiştir
+    document.body.style.setProperty('background-color', cs.bgMain, 'important');
+    document.body.style.setProperty('background', cs.bgMain, 'important');
+    document.documentElement.style.setProperty('background-color', cs.bgMain, 'important');
+    
+    // Tüm section'ları HEMEN güncelle
+    document.querySelectorAll('section').forEach(function(s) {
+        s.style.setProperty('background-color', cs.bgMain, 'important');
+        s.style.setProperty('background', cs.bgMain, 'important');
+    });
+    document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip, #location').forEach(function(s) {
+        s.style.setProperty('background-color', cs.bgSection, 'important');
+        s.style.setProperty('background', cs.bgSection, 'important');
+    });
+    
+    // Header & Footer HEMEN güncelle
+    document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
+        el.style.setProperty('background-color', cs.header, 'important');
+        el.style.setProperty('background', cs.header, 'important');
+    });
+    document.querySelectorAll('footer, .footer').forEach(function(el) {
+        el.style.setProperty('background-color', cs.header, 'important');
+        el.style.setProperty('background', cs.header, 'important');
+    });
+    
+    // Kartları HEMEN güncelle
+    var cardBg = isDark ? cs.bgSection : '#ffffff';
+    document.querySelectorAll('.service-card, .service-card-v2, .ref-card, .faq-item, .team-member, .location-card, .partner-card, .reference-card, .reference-item').forEach(function(el) {
+        el.style.setProperty('background-color', cardBg, 'important');
+        el.style.setProperty('background', cardBg, 'important');
+    });
+    
+    // Yazıları HEMEN güncelle
+    document.querySelectorAll('.section-title, .section-label, h2, h3, h4, p, span, li').forEach(function(el) {
+        if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button') && !el.closest('.btn')) {
+            el.style.setProperty('color', cs.text, 'important');
+        }
+    });
+    
+    // applyColors'ı birden fazla kez çağır
     if (typeof applyColors === 'function') {
-        applyColors(); // Hemen
+        applyColors();
         setTimeout(applyColors, 10);
         setTimeout(applyColors, 50);
-        setTimeout(applyColors, 150);
-        setTimeout(applyColors, 300);
+        setTimeout(applyColors, 100);
+        setTimeout(applyColors, 200);
+        setTimeout(applyColors, 500);
     }
 }
 
 function loadDarkMode() {
     var isDark = localStorage.getItem('cee_public_dark') === 'true';
+    
+    // CSS Variables'ı sayfa yüklenirken hemen ayarla
+    var cs;
     if (isDark) {
         document.body.classList.add('dark-mode');
         var btn = document.getElementById('themeBtn');
         if (btn) btn.textContent = '☀️';
+        cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
+        if (!cs.bgMain) cs = {bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
+    } else {
+        cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+        if (!cs.bgMain) cs = {bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
     }
+    
+    // CSS Variables HEMEN güncelle
+    document.documentElement.style.setProperty('--bg', cs.bgMain);
+    document.documentElement.style.setProperty('--bg-primary', cs.bgMain);
+    document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
+    document.documentElement.style.setProperty('--text-color', cs.text);
+    document.documentElement.style.setProperty('--header-bg', cs.header);
+    
+    // Body arka planını HEMEN değiştir
+    document.body.style.setProperty('background-color', cs.bgMain, 'important');
+    document.body.style.setProperty('background', cs.bgMain, 'important');
+    
     // Sayfa yüklendiğinde renkleri uygula
     if (typeof applyColors === 'function') {
         applyColors();
+        setTimeout(applyColors, 50);
         setTimeout(applyColors, 100);
         setTimeout(applyColors, 300);
+        setTimeout(applyColors, 500);
     }
 }
 
@@ -10146,9 +10259,11 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             // CSS Variables
             document.documentElement.style.setProperty('--accent-gold', accent);
             document.documentElement.style.setProperty('--accent-gold-light', accentLight);
+            document.documentElement.style.setProperty('--bg', bgMain);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
             document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--header-bg', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
             // ARKA PLAN - Tüm elementlere !important ile uygula
@@ -10163,7 +10278,7 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             });
             
             // Özel section'lar (farklı arka plan)
-            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip').forEach(function(s) {
+            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip, #location, #projeler').forEach(function(s) {
                 s.style.setProperty('background-color', bgSection, 'important');
                 s.style.setProperty('background', bgSection, 'important');
             });
@@ -10173,12 +10288,14 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
                 el.style.setProperty('background-color', 'transparent', 'important');
             });
             
-            // Header & Footer
+            // Header & Footer - hem background hem background-color kullan
             document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
                 el.style.setProperty('background-color', headerColor, 'important');
+                el.style.setProperty('background', headerColor, 'important');
             });
             document.querySelectorAll('footer, .footer').forEach(function(el) {
                 el.style.setProperty('background-color', headerColor, 'important');
+                el.style.setProperty('background', headerColor, 'important');
             });
             
             // Nav link renkleri
