@@ -576,8 +576,10 @@
         
         /* IE için sabit renkler */
         .section-title .accent { color: #5a6677; }
-        .hero-brand { color: #5a6677; }
-        .hero-cta { background: #5a6677; }
+        .hero-brand { color: #ffffff; }
+        .hero-brand .cee-text { color: #5a6677 !important; }
+        .hero-brand .mimarlik-text { color: #ffffff !important; }
+        .hero-cta { background: #5a6677; color: #ffffff !important; }
         .logo-text { color: #5a6677; }
         .filter-btn.active { background: linear-gradient(135deg, #5a6677, #7a8694); border-color: #5a6677; color: white; }
         .filter-btn:hover { border-color: #5a6677; color: #5a6677; }
@@ -2040,15 +2042,13 @@
         }
         
         /* Hero Fade-In Animasyonu */
+        @-webkit-keyframes heroFadeIn {
+            from { opacity: 0; -webkit-transform: translateY(30px); transform: translateY(30px); }
+            to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+        }
         @keyframes heroFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; -webkit-transform: translateY(30px); transform: translateY(30px); }
+            to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
         }
         
         .hero-brand {
@@ -2060,52 +2060,62 @@
             text-transform: uppercase;
             line-height: 1.1;
             text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+            -webkit-animation: heroFadeIn 1s ease-out;
             animation: heroFadeIn 1s ease-out;
         }
         
         .hero-brand .cee-text {
-            color: #5a6677;
+            color: #5a6677 !important;
             display: block;
             font-weight: 800;
             text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
         }
         
         .hero-brand .mimarlik-text {
-            color: rgba(255,255,255,0.95);
+            color: #ffffff !important;
             display: block;
             font-weight: 600;
             letter-spacing: 12px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
         }
         
         .hero-description {
             font-size: 15px;
             line-height: 1.9;
+            color: #ffffff; /* IE fallback */
             color: rgba(255,255,255,0.9);
             font-weight: 300;
             margin-bottom: 35px;
             text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            -webkit-animation: heroFadeIn 1s ease-out 0.2s both;
             animation: heroFadeIn 1s ease-out 0.2s both;
         }
         
         .hero-cta {
             display: inline-block;
             padding: 16px 45px;
+            background: #5a6677; /* IE fallback */
             background: rgba(90,102,119,0.9);
-            color: #ffffff;
+            color: #ffffff !important;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
             border-radius: 50px;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            -webkit-animation: heroFadeIn 1s ease-out 0.4s both;
             animation: heroFadeIn 1s ease-out 0.4s both;
         }
         
         .hero-cta:hover {
+            background: #5a6677; /* IE fallback */
             background: rgba(90,102,119,1);
+            -webkit-transform: translateY(-3px);
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
