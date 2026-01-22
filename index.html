@@ -7,26 +7,15 @@
     <!-- GLOBAL TEMA AYARLARI - Aydınlık & Karanlık Mod Ayrı -->
     <script>
     // CEE MİMARLIK - Site Tema Ayarları
-    // Aydınlık ve Karanlık mod renkleri ayrı ayrı saklanır
     const LIGHT_THEME_DEFAULT = {
-        primary: '#5a6677',
-        iconBg: '#5a6677',
-        bgMain: '#ffffff',
-        bgSection: '#f8f9fa',
-        text: '#2d3748',
-        header: '#1a202c'
+        primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff',
+        bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c'
     };
-    
     const DARK_THEME_DEFAULT = {
-        primary: '#5a6677',
-        iconBg: '#5a6677',
-        bgMain: '#111111',
-        bgSection: '#1a1a1a',
-        text: '#e2e8f0',
-        header: '#0f0f0f'
+        primary: '#5a6677', iconBg: '#5a6677', bgMain: '#111111',
+        bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f'
     };
     
-    // Tema ayarlarını localStorage'a yükle - SADECE YOKSA
     if (typeof localStorage !== 'undefined') {
         if (!localStorage.getItem('light_color_settings')) {
             localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_THEME_DEFAULT));
@@ -35,24 +24,17 @@
             localStorage.setItem('dark_color_settings', JSON.stringify(DARK_THEME_DEFAULT));
         }
         
-        // CSS Variables'ı HEMEN ayarla (sayfa yüklenmeden önce)
+        // CSS Variables'ı HEMEN ayarla
         var isDarkMode = localStorage.getItem('cee_public_dark') === 'true';
-        var themeSettings;
-        if (isDarkMode) {
-            document.documentElement.classList.add('dark-mode');
-            themeSettings = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-            if (!themeSettings.bgMain) themeSettings = DARK_THEME_DEFAULT;
-        } else {
-            themeSettings = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-            if (!themeSettings.bgMain) themeSettings = LIGHT_THEME_DEFAULT;
-        }
+        var ts = isDarkMode 
+            ? JSON.parse(localStorage.getItem('dark_color_settings') || '{}')
+            : JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+        if (!ts.bgMain) ts = isDarkMode ? DARK_THEME_DEFAULT : LIGHT_THEME_DEFAULT;
         
-        // CSS Variables'ı hemen uygula
-        document.documentElement.style.setProperty('--bg', themeSettings.bgMain);
-        document.documentElement.style.setProperty('--bg-primary', themeSettings.bgMain);
-        document.documentElement.style.setProperty('--bg-secondary', themeSettings.bgSection);
-        document.documentElement.style.setProperty('--text-color', themeSettings.text);
-        document.documentElement.style.setProperty('--header-bg', themeSettings.header);
+        document.documentElement.style.setProperty('--bg-primary', ts.bgMain);
+        document.documentElement.style.setProperty('--bg-secondary', ts.bgSection);
+        document.documentElement.style.setProperty('--header-bg', ts.header);
+        document.documentElement.style.setProperty('--text-color', ts.text);
     }
     </script>
     
@@ -151,7 +133,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
-            "addressRegion": "TekirdaÄŸ",
+            "addressRegion": "Tekirdağ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -215,7 +197,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -652,7 +634,7 @@
             }
         }
 
-        /* iPhone Notch / Safe Area DesteÄŸi */
+        /* iPhone Notch / Safe Area Desteği */
         body {
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
@@ -855,7 +837,7 @@
             }
         }
 
-        /* Dark Mode Sistem DesteÄŸi */
+        /* Dark Mode Sistem Desteği */
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme]) {
                 color-scheme: dark;
@@ -1794,17 +1776,10 @@
             --primary: #e0e0e0;
             --secondary: #b0b0b0;
             --accent: #ffffff;
-            --bg: var(--bg-primary, #1a1a1a);
-            --white: var(--bg-secondary, #2c2c2c);
+            --bg: #1a1a1a;
+            --white: #2c2c2c;
             --border: #333;
             --shadow: rgba(255, 255, 255, 0.05);
-            background-color: var(--bg-primary, #1a1a1a) !important;
-            background: var(--bg-primary, #1a1a1a) !important;
-        }
-        
-        body:not(.dark-mode) {
-            background-color: var(--bg-primary, #ffffff) !important;
-            background: var(--bg-primary, #ffffff) !important;
         }
 
         /* HEADER & NAV */
@@ -1829,20 +1804,12 @@
         }
 
         body.dark-mode header {
-            background: var(--header-bg, rgba(20, 20, 20, 0.97)) !important;
+            background: rgba(20, 20, 20, 0.97);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         body.dark-mode header.scrolled {
-            background: var(--header-bg, rgba(20, 20, 20, 0.98)) !important;
-        }
-        
-        body:not(.dark-mode) header {
-            background: var(--header-bg, rgba(255, 255, 255, 0.97)) !important;
-        }
-        
-        body:not(.dark-mode) header.scrolled {
-            background: var(--header-bg, rgba(255, 255, 255, 0.98)) !important;
+            background: rgba(20, 20, 20, 0.98);
         }
 
         .header-content {
@@ -2971,7 +2938,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -3453,7 +3420,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - SaÄŸda */
+        /* Notification Bubble - Sağda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -4566,11 +4533,11 @@
         body.dark-mode .section-title { color: #e2e8f0 !important; }
         body.dark-mode .section-title .accent { color: #5a6677 !important; }
         body.dark-mode .section-label { color: #94a3b8 !important; }
-        /* body.dark-mode #referanslar - JS tarafından kontrol ediliyor */
+        body.dark-mode #referanslar, body.dark-mode .references-section { background: #111111 !important; }
         body.dark-mode .partner-card, body.dark-mode .reference-card { background: #1a1a1a !important; }
         body.dark-mode .partner-card p, body.dark-mode .partner-card span, body.dark-mode .reference-card p { color: #94a3b8 !important; }
         body.dark-mode .location-card { background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%) !important; }
-        /* body.dark-mode #location - JS tarafından kontrol ediliyor */
+        body.dark-mode #location { background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%) !important; }
         
         /* =============================================
            MADDE 1: OFİS KONUMU RESPONSIVE
@@ -4673,7 +4640,7 @@
         body.dark-mode .service-card { background: #1a1a1a !important; }
         body.dark-mode .service-card h3 { color: #5a6677 !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
-        /* body.dark-mode #referanslar - JS tarafından kontrol ediliyor */
+        body.dark-mode #referanslar { background: #111111 !important; }
         body.dark-mode .ref-card { background: #1a1a1a !important; border: 1px solid #333 !important; }
         body.dark-mode .ref-card h4 { color: #e2e8f0 !important; }
         body.dark-mode .ref-card p { color: #94a3b8 !important; }
@@ -4952,7 +4919,7 @@
         z-index: 1;
     }
 
-    /* BAÅžLIKLAR */
+    /* BAŞLIKLAR */
     .section-header {
         padding: 50px 20px 30px !important;
         background: transparent !important;
@@ -5167,7 +5134,7 @@ function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global eriÅŸim
+// Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -5211,7 +5178,7 @@ window.goToAdmin = goToAdmin;
             <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir" style="display: flex; align-items: center; gap: 6px;">
+            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
                 <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
                     <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                         <rect fill="#E30A17" width="1200" height="800"/>
@@ -5404,7 +5371,7 @@ function loadServicesSection() {
                 <div style="width: ${iconSize}px; height: ${iconSize}px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: #333;" class="service-icon-v2">
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
-                <span class="service-number" style="font-size: 48px; font-weight: 600; line-height: 1; letter-spacing: -2px;">${String(i + 1).padStart(2, '0')}</span>
+                <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.06); line-height: 1;">${String(i + 1).padStart(2, '0')}</span>
             </div>
             <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
             <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
@@ -5730,7 +5697,7 @@ loadFaqs();
                             <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
                             <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
                             <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="DiÄŸer" data-tr="DiÄŸer" data-en="Other">DiÄŸer</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other">Diğer</option>
                         </select>
                     </div>
                     
@@ -5839,7 +5806,7 @@ function handlePhoneClick() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Mobilde doÄŸrudan arama yap
+        // Mobilde doğrudan arama yap
         window.location.href = 'tel:+' + fullPhone;
     } else {
         // Bilgisayarda WhatsApp aç
@@ -6000,7 +5967,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         
         // Admin paneline mesaj kaydet
         let messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        messages.unshift(formData); // En yeni baÅŸa ekle
+        messages.unshift(formData); // En yeni başa ekle
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
@@ -6079,7 +6046,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -6095,7 +6062,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>HoÅŸgeldiniz!</h3>
+            <h3>Hoşgeldiniz!</h3>
             <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
@@ -6734,7 +6701,7 @@ const defaultProjects = [
         title: 'Ofis Binası',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'TekirdaÄŸ',
+        location: 'Tekirdağ',
         area: '1200m²',
         row: 'top'
     },
@@ -6873,7 +6840,7 @@ function setupHero() {
         return;
     }
     
-    // Slides - Sadece fotoÄŸraf
+    // Slides - Sadece fotoğraf
     slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
@@ -7112,7 +7079,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÅŸ Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -7130,11 +7097,11 @@ function loadTeam() {
     // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
     let team = defaultTeamMembers;
     
-    // Placeholder fotoÄŸraf
+    // Placeholder fotoğraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluÅŸtur (MADDE 2)
+        // Sosyal medya linkleri oluştur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">✉️</a>';
@@ -7229,40 +7196,33 @@ function toggleDarkMode() {
     if (btn) btn.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('cee_public_dark', isDark);
     
-    // CSS Variables'ı hemen güncelle
-    var cs;
-    if (isDark) {
-        cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-        if (!cs.bgMain) cs = {bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
-    } else {
-        cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-        if (!cs.bgMain) cs = {bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
-    }
+    // Renk ayarlarını al
+    var cs = isDark 
+        ? JSON.parse(localStorage.getItem('dark_color_settings') || '{}')
+        : JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+    if (!cs.bgMain) cs = isDark 
+        ? {bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'}
+        : {bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
     
-    // CSS Variables güncelle
-    document.documentElement.style.setProperty('--bg', cs.bgMain);
+    // CSS Variables HEMEN güncelle
     document.documentElement.style.setProperty('--bg-primary', cs.bgMain);
     document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
-    document.documentElement.style.setProperty('--text-color', cs.text);
     document.documentElement.style.setProperty('--header-bg', cs.header);
+    document.documentElement.style.setProperty('--text-color', cs.text);
     
-    // Body arka planını HEMEN değiştir
+    // Body ve tüm elementleri HEMEN güncelle
     document.body.style.setProperty('background-color', cs.bgMain, 'important');
     document.body.style.setProperty('background', cs.bgMain, 'important');
-    document.documentElement.style.setProperty('background-color', cs.bgMain, 'important');
     
-    // Tüm section'ları HEMEN güncelle
     document.querySelectorAll('section').forEach(function(s) {
         s.style.setProperty('background-color', cs.bgMain, 'important');
         s.style.setProperty('background', cs.bgMain, 'important');
     });
-    document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip, #location').forEach(function(s) {
+    document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip, #location, #projeler').forEach(function(s) {
         s.style.setProperty('background-color', cs.bgSection, 'important');
         s.style.setProperty('background', cs.bgSection, 'important');
     });
-    
-    // Header & Footer HEMEN güncelle
-    document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
+    document.querySelectorAll('header, nav, .header').forEach(function(el) {
         el.style.setProperty('background-color', cs.header, 'important');
         el.style.setProperty('background', cs.header, 'important');
     });
@@ -7271,16 +7231,14 @@ function toggleDarkMode() {
         el.style.setProperty('background', cs.header, 'important');
     });
     
-    // Kartları HEMEN güncelle
     var cardBg = isDark ? cs.bgSection : '#ffffff';
-    document.querySelectorAll('.service-card, .service-card-v2, .ref-card, .faq-item, .team-member, .location-card, .partner-card, .reference-card, .reference-item').forEach(function(el) {
+    document.querySelectorAll('.service-card, .service-card-v2, .ref-card, .faq-item, .team-member, .location-card').forEach(function(el) {
         el.style.setProperty('background-color', cardBg, 'important');
         el.style.setProperty('background', cardBg, 'important');
     });
     
-    // Yazıları HEMEN güncelle
     document.querySelectorAll('.section-title, .section-label, h2, h3, h4, p, span, li').forEach(function(el) {
-        if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button') && !el.closest('.btn')) {
+        if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button')) {
             el.style.setProperty('color', cs.text, 'important');
         }
     });
@@ -7288,48 +7246,35 @@ function toggleDarkMode() {
     // applyColors'ı birden fazla kez çağır
     if (typeof applyColors === 'function') {
         applyColors();
-        setTimeout(applyColors, 10);
         setTimeout(applyColors, 50);
-        setTimeout(applyColors, 100);
-        setTimeout(applyColors, 200);
-        setTimeout(applyColors, 500);
+        setTimeout(applyColors, 150);
+        setTimeout(applyColors, 300);
     }
 }
 
 function loadDarkMode() {
     var isDark = localStorage.getItem('cee_public_dark') === 'true';
-    
-    // CSS Variables'ı sayfa yüklenirken hemen ayarla
-    var cs;
     if (isDark) {
         document.body.classList.add('dark-mode');
         var btn = document.getElementById('themeBtn');
         if (btn) btn.textContent = '☀️';
-        cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-        if (!cs.bgMain) cs = {bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
-    } else {
-        cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-        if (!cs.bgMain) cs = {bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
     }
     
-    // CSS Variables HEMEN güncelle
-    document.documentElement.style.setProperty('--bg', cs.bgMain);
-    document.documentElement.style.setProperty('--bg-primary', cs.bgMain);
-    document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
-    document.documentElement.style.setProperty('--text-color', cs.text);
-    document.documentElement.style.setProperty('--header-bg', cs.header);
+    // Renk ayarlarını al ve hemen uygula
+    var cs = isDark 
+        ? JSON.parse(localStorage.getItem('dark_color_settings') || '{}')
+        : JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+    if (cs.bgMain) {
+        document.documentElement.style.setProperty('--bg-primary', cs.bgMain);
+        document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
+        document.documentElement.style.setProperty('--header-bg', cs.header);
+        document.body.style.setProperty('background-color', cs.bgMain, 'important');
+    }
     
-    // Body arka planını HEMEN değiştir
-    document.body.style.setProperty('background-color', cs.bgMain, 'important');
-    document.body.style.setProperty('background', cs.bgMain, 'important');
-    
-    // Sayfa yüklendiğinde renkleri uygula
     if (typeof applyColors === 'function') {
         applyColors();
-        setTimeout(applyColors, 50);
         setTimeout(applyColors, 100);
         setTimeout(applyColors, 300);
-        setTimeout(applyColors, 500);
     }
 }
 
@@ -7473,7 +7418,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuÅŸu ile kapat
+// ESC tuşu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -7717,7 +7662,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
+<strong>Duş:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -7725,7 +7670,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>🚪 Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
+<strong>Ana Giriş:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -7761,7 +7706,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
+<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -8095,7 +8040,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
+        pencere: ['pencere', 'window', 'cam', 'doğrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -8236,7 +8181,7 @@ Ruhsat hizmeti: ${phoneLink}`;
 • 500 m² arsa<br>
 • TAKS: 0.40<br>
 • <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik DeÄŸerler:</strong><br>
+<strong>Tipik Değerler:</strong><br>
 • Konut: 0.30 - 0.40<br>
 • Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
@@ -8281,7 +8226,7 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat iÅŸlemleri<br><br>
+6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
 • Konut projeleri<br>
 • Villa projeleri<br>
@@ -8776,7 +8721,7 @@ CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
 Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // GeliÅŸmiÅŸ anahtar kelime eÅŸleÅŸtirme
+    // Gelişmiş anahtar kelime eşleştirme
     if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
     } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
@@ -9725,7 +9670,7 @@ function loadSiteSettings() {
             root.style.setProperty('--text-primary', colorSettings.text);
         }
         
-        // Dinamik stil oluÅŸtur
+        // Dinamik stil oluştur
         const dynamicStyle = document.createElement('style');
         dynamicStyle.id = 'dynamic-theme';
         dynamicStyle.textContent = `
@@ -10233,134 +10178,62 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
     
     function applyColors() {
         try {
-            // Mevcut mod kontrolü
-            var isDarkMode = document.body.classList.contains('dark-mode');
-            var cs;
+            const cs = JSON.parse(localStorage.getItem('color_settings') || '{}');
+            if (!cs || Object.keys(cs).length === 0) return;
             
-            // Moda göre doğru ayarları yükle
-            if (isDarkMode) {
-                cs = JSON.parse(localStorage.getItem('dark_color_settings') || '{}');
-                // Varsayılan karanlık mod değerleri
-                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#111111',bgSection:'#1a1a1a',text:'#e2e8f0',header:'#0f0f0f'};
-            } else {
-                cs = JSON.parse(localStorage.getItem('light_color_settings') || '{}');
-                // Varsayılan aydınlık mod değerleri
-                if (!cs.bgMain) cs = {primary:'#5a6677',iconBg:'#5a6677',bgMain:'#ffffff',bgSection:'#f8f9fa',text:'#2d3748',header:'#1a202c'};
-            }
-            
-            var accent = cs.iconBg || cs.primary || '#5a6677';
-            var accentLight = lighten(accent, 15);
-            var bgMain = cs.bgMain;
-            var bgSection = cs.bgSection;
-            var textColor = cs.text;
-            var headerColor = cs.header;
-            var iconSize = localStorage.getItem('icon_size') || '60';
+            const accent = cs.iconBg || '#5a6677';
+            const accentLight = lighten(accent, 15);
+            const bgMain = cs.bgMain || '#ffffff';
+            const bgSection = cs.bgSection || '#f8f9fa';
+            const textColor = cs.text || '#2d3748';
+            const headerColor = cs.header || '#1a202c';
+            const iconSize = cs.iconSize || 60;
             
             // CSS Variables
             document.documentElement.style.setProperty('--accent-gold', accent);
             document.documentElement.style.setProperty('--accent-gold-light', accentLight);
-            document.documentElement.style.setProperty('--bg', bgMain);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
-            document.documentElement.style.setProperty('--text-color', textColor);
-            document.documentElement.style.setProperty('--header-bg', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
-            // ARKA PLAN - Tüm elementlere !important ile uygula
-            document.body.style.setProperty('background-color', bgMain, 'important');
-            document.body.style.setProperty('background', bgMain, 'important');
-            document.documentElement.style.setProperty('background-color', bgMain, 'important');
-            
-            // Tüm section'lara uygula
-            document.querySelectorAll('section').forEach(function(s) {
-                s.style.setProperty('background-color', bgMain, 'important');
-                s.style.setProperty('background', bgMain, 'important');
-            });
-            
-            // Özel section'lar (farklı arka plan)
-            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum, #sss, #ekip, #location, #projeler').forEach(function(s) {
-                s.style.setProperty('background-color', bgSection, 'important');
-                s.style.setProperty('background', bgSection, 'important');
-            });
-            
-            // Container ve wrapper'lar
-            document.querySelectorAll('.container, .wrapper, main, .main-content').forEach(function(el) {
-                el.style.setProperty('background-color', 'transparent', 'important');
-            });
-            
-            // Header & Footer - hem background hem background-color kullan
-            document.querySelectorAll('header, nav, .header, .navbar').forEach(function(el) {
-                el.style.setProperty('background-color', headerColor, 'important');
-                el.style.setProperty('background', headerColor, 'important');
-            });
-            document.querySelectorAll('footer, .footer').forEach(function(el) {
-                el.style.setProperty('background-color', headerColor, 'important');
-                el.style.setProperty('background', headerColor, 'important');
-            });
-            
-            // Nav link renkleri
-            var darkHeaders = ['#1a1a1a','#000000','#111111','#0f0f0f','#1a202c','#0f172a','#020617'];
-            var isHeaderDark = darkHeaders.indexOf(headerColor.toLowerCase()) !== -1;
-            document.querySelectorAll('nav a, .nav-link').forEach(function(a) {
-                a.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
-            });
-            var logo = document.querySelector('.logo-text');
-            if (logo) logo.style.setProperty('color', isHeaderDark ? '#fff' : '#1a1a1a', 'important');
-            
-            // İkon boyutları
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(el) {
+            // İkon boyutlarını güncelle
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
                 el.style.width = iconSize + 'px';
                 el.style.height = iconSize + 'px';
             });
             
-            // Accent elementler
-            document.querySelectorAll('.hero-brand').forEach(function(el) { el.style.color = accent; });
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(function(el) { el.style.background = accent; });
-            document.querySelectorAll('.section-title .accent').forEach(function(el) { el.style.setProperty('color', accent, 'important'); });
-            document.querySelectorAll('.section-decoration .dot').forEach(function(el) { el.style.background = accent; });
+            // Body & Sections
+            document.body.style.backgroundColor = bgMain;
+            document.querySelectorAll('section').forEach(s => s.style.backgroundColor = bgMain);
+            document.querySelectorAll('#hizmetler, #referanslar, #ofis-konum').forEach(s => s.style.backgroundColor = bgSection);
             
-            // İkon gradient
-            var grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
-            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(function(el) {
-                el.style.setProperty('background', grad, 'important');
-            });
+            // Header & Footer
+            document.querySelectorAll('header, nav, .header').forEach(el => el.style.backgroundColor = headerColor);
+            document.querySelectorAll('footer, .footer').forEach(el => el.style.backgroundColor = headerColor);
             
-            // Butonlar
-            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(function(el) { el.style.background = accent; });
-            document.querySelectorAll('.filter-btn.active').forEach(function(el) { el.style.background = accent; el.style.borderColor = accent; });
+            const isDark = ['#1a1a1a','#000000','#111111','#0f0f0f','#451a03','#1a202c'].includes(headerColor);
+            document.querySelectorAll('nav a').forEach(a => a.style.color = isDark ? '#fff' : '#1a1a1a');
+            const logo = document.querySelector('.logo-text');
+            if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
             
-            // YAZI RENKLERİ - Tüm metinlere uygula
-            document.querySelectorAll('.section-title, .section-label, h2, h3, h4').forEach(function(el) {
-                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero')) {
-                    el.style.setProperty('color', textColor, 'important');
-                }
-            });
+            // Accent elements
+            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
+            document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
             
-            document.querySelectorAll('p, span, li').forEach(function(el) {
-                if (!el.closest('footer') && !el.closest('header') && !el.closest('.hero') && !el.closest('button') && !el.closest('.btn')) {
-                    el.style.setProperty('color', textColor, 'important');
-                }
-            });
+            // Icons with gradient
+            const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
+            document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
             
-            // Kartlar
-            document.querySelectorAll('.service-card, .service-card-v2, .ref-card, .faq-item, .team-member').forEach(function(el) {
-                el.style.setProperty('background-color', isDarkMode ? cs.bgSection : '#fff', 'important');
-            });
+            // Buttons
+            document.querySelectorAll('.social-sidebar-trigger, .unified-chat-btn').forEach(el => el.style.background = accent);
+            document.querySelectorAll('.filter-btn.active').forEach(el => { el.style.background = accent; el.style.borderColor = accent; });
             
-            document.querySelectorAll('.service-card h3, .service-card p, .service-card-v2 h3, .service-card-v2 p, .ref-card h4, .ref-card p, .faq-item h3, .faq-answer, .faq-answer p').forEach(function(el) {
-                el.style.setProperty('color', textColor, 'important');
-            });
+            // Text
+            document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
             
-            // Hizmet numaraları (01, 02, 03...)
-            var numSettings = JSON.parse(localStorage.getItem('number_settings') || '{}');
-            var numberColor = numSettings.color || (isDarkMode ? '#ffffff' : '#000000');
-            var numberOpacity = (numSettings.opacity || 4) / 100;
-            document.querySelectorAll('.service-number').forEach(function(el) {
-                el.style.setProperty('color', numberColor, 'important');
-                el.style.setProperty('opacity', numberOpacity, 'important');
-            });
-            
-            console.log('✅ Renkler uygulandı (' + (isDarkMode ? 'Karanlık' : 'Aydınlık') + ' mod)');
+            console.log('✅ Renkler uygulandı');
         } catch(e) { console.error('Renk hatası:', e); }
     }
     
