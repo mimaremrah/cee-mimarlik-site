@@ -81,7 +81,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 5. DiÃƒâ€žÃ…Â¸er her Ãƒâ€¦Ã…Â¸ey - Network-first
+  // 5. DiÃƒâ€žşer her Ãƒâ€¦şey - Network-first
   event.respondWith(networkFirst(request));
 });
 

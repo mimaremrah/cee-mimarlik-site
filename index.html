@@ -6517,7 +6517,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
-        statusEl.textContent = 'âœ… Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.';
+        statusEl.textContent = '✅ Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.';
         statusEl.style.background = '#4CAF50';
         statusEl.style.color = 'white';
         statusEl.style.display = 'block';
@@ -6739,7 +6739,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
                 <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
                 <p data-tr="Tıklayın veya sürükleyip bırakın" data-en="Click or drag and drop">Tıklayın veya sürükleyip bırakın</p>
-                <span class="file-info">Max 50MB â€¢ DWG, DXF</span>
+                <span class="file-info">Max 50MB • DWG, DXF</span>
             </div>
             <input type="file" id="converterFileInput" accept=".dwg,.dxf" style="display: none;" onchange="handleConverterFile(this.files[0])">
             
@@ -6847,7 +6847,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
                 <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
                 <p data-tr="Yüksek versiyon DWG dosyanızı yükleyin" data-en="Upload your high version DWG file">Yüksek versiyon DWG dosyanızı yükleyin</p>
-                <span class="file-info">Max 50MB â€¢ DWG Format</span>
+                <span class="file-info">Max 50MB • DWG Format</span>
             </div>
             <input type="file" id="downgradeFileInput" accept=".dwg" style="display: none;" onchange="handleDowngradeFile(this.files[0])">
             
@@ -7017,8 +7017,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <strong>CEE MİMARLIK</strong> olarak sadece bu hizmetlere kolay erişim sağlıyoruz. 
                     Siteye yeni sekmede yönlendirileceksiniz.<br><br>
                     <strong style="color: #667eea;">ðŸ’¡ Geri Dönmek İçin:</strong><br>
-                    â€¢ Tarayıcınızın bu sekmesine geri dönün<br>
-                    â€¢ Veya tarayıcı geri (<) butonunu kullanın
+                    • Tarayıcınızın bu sekmesine geri dönün<br>
+                    • Veya tarayıcı geri (<) butonunu kullanın
                 </p>
             </div>
         </div>
@@ -8124,11 +8124,11 @@ Profesyonel çizim hizmetlerimiz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('yangın') || lowerMsg.includes('yangin')) {
         return `<strong>ðŸ”¥ Yangın Yönetmeliği</strong><br><br>
 <strong>Yangın Merdiveni:</strong><br>
-â€¢ Zorunluluk: 4+ katlı binalar<br>
-â€¢ Genişlik: Min. 1.20m (konut), 1.50m (kamu)<br>
-â€¢ Basamak: 28cm genişlik, Max 19cm yükseklik<br>
-â€¢ Koridor: Min. 1.20m<br>
-â€¢ Kapı: EI 60 (60 dk dayanımlı)<br><br>
+• Zorunluluk: 4+ katlı binalar<br>
+• Genişlik: Min. 1.20m (konut), 1.50m (kamu)<br>
+• Basamak: 28cm genişlik, Max 19cm yükseklik<br>
+• Koridor: Min. 1.20m<br>
+• Kapı: EI 60 (60 dk dayanımlı)<br><br>
 <strong>Yangın Yalıtımı:</strong><br>
 Bodrum: EI 120 | Kat arası: EI 60<br><br>
 Detaylı yangın raporu: <strong>(0537) 327 87 65</strong>`;
@@ -8137,14 +8137,14 @@ Detaylı yangın raporu: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('merdiven') && !lowerMsg.includes('yangın')) {
         return `<strong>ðŸªœ Merdiven Ölçüleri</strong><br><br>
 <strong>Konut:</strong><br>
-â€¢ Basamak genişliği: Min. 28 cm<br>
-â€¢ Basamak yüksekliği: Max. 18 cm<br>
-â€¢ Merdiven genişliği: Min. 90 cm<br>
-â€¢ <strong>Formül:</strong> 2h + g = 60-65 cm<br><br>
+• Basamak genişliği: Min. 28 cm<br>
+• Basamak yüksekliği: Max. 18 cm<br>
+• Merdiven genişliği: Min. 90 cm<br>
+• <strong>Formül:</strong> 2h + g = 60-65 cm<br><br>
 <strong>Kamu Yapıları:</strong><br>
-â€¢ Basamak genişliği: Min. 30 cm<br>
-â€¢ Basamak yüksekliği: Max. 17 cm<br>
-â€¢ Merdiven genişliği: Min. 1.50 m<br><br>
+• Basamak genişliği: Min. 30 cm<br>
+• Basamak yüksekliği: Max. 17 cm<br>
+• Merdiven genişliği: Min. 1.50 m<br><br>
 <strong>Korkuluk:</strong> Min. 90 cm yükseklik<br><br>
 Merdiven tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -8155,9 +8155,9 @@ Emsal = Toplam İnşaat Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
 500 mÂ² arsa Ã— 1.5 emsal = <strong>750 mÂ² inşaat</strong><br><br>
 <strong>Önemli:</strong><br>
-â€¢ Bodrum katlar emsale dahil değil<br>
-â€¢ Her bölgede farklı<br>
-â€¢ İmar planında belirtilir<br><br>
+• Bodrum katlar emsale dahil değil<br>
+• Her bölgede farklı<br>
+• İmar planında belirtilir<br><br>
 Arsanızın emsal hesabı: <strong>(0537) 327 87 65</strong>`;
     }
     
@@ -8165,11 +8165,11 @@ Arsanızın emsal hesabı: <strong>(0537) 327 87 65</strong>`;
         return `<strong>ðŸ›¡ï¸ Sığınak Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 2000 mÂ² üzeri binalar<br><br>
 <strong>Teknik Özellikler:</strong><br>
-â€¢ Alan: İnşaat alanının %2'si<br>
-â€¢ Tavan: Min. 2.20 m<br>
-â€¢ Duvar: Min. 30 cm betonarme<br>
-â€¢ Kapı: Gaz sızdırmaz<br>
-â€¢ Havalandırma: Özel sistem<br><br>
+• Alan: İnşaat alanının %2'si<br>
+• Tavan: Min. 2.20 m<br>
+• Duvar: Min. 30 cm betonarme<br>
+• Kapı: Gaz sızdırmaz<br>
+• Havalandırma: Özel sistem<br><br>
 Sığınak projesi: <strong>(0537) 327 87 65</strong>`;
     }
     
@@ -8262,12 +8262,12 @@ Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
         return `<strong>Merhaba! ðŸ‘‹</strong><br><br>
 Ben <strong>CEE MİMARLIK</strong>'ın müşteri temsilcisiyim. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
 <strong>Uzmanlık alanlarım:</strong><br>
-â€¢ İmar mevzuatı (Emsal, TAKS, KAKS)<br>
-â€¢ Yangın güvenliği<br>
-â€¢ Merdiven ölçüleri<br>
-â€¢ Isı yalıtımı & BEP<br>
-â€¢ Otopark, mutfak, banyo tasarımı<br>
-â€¢ İnşaat ruhsatı süreçleri<br><br>
+• İmar mevzuatı (Emsal, TAKS, KAKS)<br>
+• Yangın güvenliği<br>
+• Merdiven ölçüleri<br>
+• Isı yalıtımı & BEP<br>
+• Otopark, mutfak, banyo tasarımı<br>
+• İnşaat ruhsatı süreçleri<br><br>
 Sormak istediğiniz bir konu var mı? ðŸ—ï¸`;
     }
     
@@ -8277,10 +8277,10 @@ Sormak istediğiniz bir konu var mı? ðŸ—ï¸`;
 Telefon: <strong>(0537) 327 87 65</strong><br>
 Adres: Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-â€¢ Mimari Proje & İç Mimari<br>
-â€¢ Yapı Ruhsatı İşlemleri<br>
-â€¢ 3D Görselleştirme<br>
-â€¢ Şantiye Yönetimi<br><br>
+• Mimari Proje & İç Mimari<br>
+• Yapı Ruhsatı İşlemleri<br>
+• 3D Görselleştirme<br>
+• Şantiye Yönetimi<br><br>
 Size en kısa sürede dönüş yapacağız! ðŸ—ï¸`;
     }
 }
@@ -8618,38 +8618,38 @@ function getSmartResponse(message) {
 <strong>Kesit & Görünüş:</strong> 1/50, 1/100<br>
 <strong>Detaylar:</strong> 1/1, 1/2, 1/5, 1/10, 1/20<br><br>
 <strong>Kağıt Boyutları:</strong><br>
-â€¢ A0: 841 x 1189 mm<br>
-â€¢ A1: 594 x 841 mm<br>
-â€¢ A2: 420 x 594 mm<br>
-â€¢ A3: 297 x 420 mm<br><br>
+• A0: 841 x 1189 mm<br>
+• A1: 594 x 841 mm<br>
+• A2: 420 x 594 mm<br>
+• A3: 297 x 420 mm<br><br>
 Profesyonel çizim hizmeti: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'yangin') {
         return `<strong>ðŸ”¥ Yangın Yönetmeliği</strong><br><br>
 <strong>Yangın Merdiveni:</strong><br>
-â€¢ Zorunluluk: 4+ katlı binalar<br>
-â€¢ Genişlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
-â€¢ Basamak: 28 cm genişlik, max 19 cm yükseklik<br>
-â€¢ Kapı: EI 60 (60 dk yangın dayanımlı)<br><br>
+• Zorunluluk: 4+ katlı binalar<br>
+• Genişlik: Min. 1.20 m (konut), 1.50 m (kamu)<br>
+• Basamak: 28 cm genişlik, max 19 cm yükseklik<br>
+• Kapı: EI 60 (60 dk yangın dayanımlı)<br><br>
 <strong>Yangın Yalıtımı:</strong><br>
-â€¢ Bodrum: EI 120<br>
-â€¢ Kat arası: EI 60<br>
-â€¢ Cephe: E 30-60<br><br>
+• Bodrum: EI 120<br>
+• Kat arası: EI 60<br>
+• Cephe: E 30-60<br><br>
 Yangın projesi için: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'merdiven') {
         return `<strong>ðŸªœ Merdiven Ölçüleri</strong><br><br>
 <strong>KONUT:</strong><br>
-â€¢ Basamak genişliği: Min. 28 cm<br>
-â€¢ Yükseklik: Max. 18 cm<br>
-â€¢ Merdiven genişliği: Min. 90 cm<br>
-â€¢ Formül: 2h + g = 60-65 cm âœ“<br><br>
+• Basamak genişliği: Min. 28 cm<br>
+• Yükseklik: Max. 18 cm<br>
+• Merdiven genişliği: Min. 90 cm<br>
+• Formül: 2h + g = 60-65 cm âœ“<br><br>
 <strong>KAMU YAPILARI:</strong><br>
-â€¢ Basamak genişliği: Min. 30 cm<br>
-â€¢ Yükseklik: Max. 17 cm<br>
-â€¢ Genişlik: Min. 1.50 m<br><br>
+• Basamak genişliği: Min. 30 cm<br>
+• Yükseklik: Max. 17 cm<br>
+• Genişlik: Min. 1.50 m<br><br>
 <strong>Korkuluk:</strong> Min. 90 cm<br><br>
 Merdiven projesi: ${phoneLink}`;
     }
@@ -8658,13 +8658,13 @@ Merdiven projesi: ${phoneLink}`;
         return `<strong>ðŸ“Š Emsal (KAKS)</strong><br><br>
 <strong>Tanım:</strong> Toplam İnşaat Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
-â€¢ 500 mÂ² arsa<br>
-â€¢ 1.5 emsal<br>
-â€¢ <strong>Toplam İnşaat: 750 mÂ²</strong><br><br>
+• 500 mÂ² arsa<br>
+• 1.5 emsal<br>
+• <strong>Toplam İnşaat: 750 mÂ²</strong><br><br>
 <strong>Önemli:</strong><br>
-â€¢ Bodrum katlar emsale dahil DEĞİL<br>
-â€¢ Her bölgede farklıdır<br>
-â€¢ İmar planında belirtilir<br><br>
+• Bodrum katlar emsale dahil DEĞİL<br>
+• Her bölgede farklıdır<br>
+• İmar planında belirtilir<br><br>
 Emsal hesabı: ${phoneLink}`;
     }
     
@@ -8672,22 +8672,22 @@ Emsal hesabı: ${phoneLink}`;
         return `<strong>ðŸ›¡ï¸ Sığınak Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 2000 mÂ² ve üzeri<br><br>
 <strong>Teknik Özellikler:</strong><br>
-â€¢ Alan: İnşaat alanının %2'si<br>
-â€¢ Tavan: Min. 2.20 m<br>
-â€¢ Duvar: Min. 30 cm betonarme<br>
-â€¢ Kapı: Gaz sızdırmaz<br>
-â€¢ Havalandırma: Özel sistem<br><br>
+• Alan: İnşaat alanının %2'si<br>
+• Tavan: Min. 2.20 m<br>
+• Duvar: Min. 30 cm betonarme<br>
+• Kapı: Gaz sızdırmaz<br>
+• Havalandırma: Özel sistem<br><br>
 Sığınak projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'otopark') {
         return `<strong>ðŸš— Otopark Yönetmeliği</strong><br><br>
 <strong>Araç Yeri:</strong><br>
-â€¢ Standart: 2.30 x 5.00 m<br>
-â€¢ Engelli: 3.70 x 5.00 m<br><br>
+• Standart: 2.30 x 5.00 m<br>
+• Engelli: 3.70 x 5.00 m<br><br>
 <strong>Koridor:</strong><br>
-â€¢ İki yönlü: Min. 6.00 m<br>
-â€¢ Tek yönlü: Min. 3.50 m<br><br>
+• İki yönlü: Min. 6.00 m<br>
+• Tek yönlü: Min. 3.50 m<br><br>
 <strong>Tavan:</strong> Min. 2.30 m<br>
 <strong>Havalandırma:</strong> Mekanik (kapalı)<br><br>
 Otopark projesi: ${phoneLink}`;
@@ -8700,22 +8700,22 @@ Otopark projesi: ${phoneLink}`;
 <strong>Taban:</strong> Min. 5 cm<br>
 <strong>Cam:</strong> Çift cam, Uâ‰¤1.8<br><br>
 <strong>BEP Belgesi:</strong><br>
-â€¢ 2011'den beri zorunlu<br>
-â€¢ Enerji sınıfı: A-G arası<br><br>
+• 2011'den beri zorunlu<br>
+• Enerji sınıfı: A-G arası<br><br>
 BEP belgesi düzenleme: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'ruhsat') {
         return `<strong>ðŸ“‹ İnşaat Ruhsatı</strong><br><br>
 <strong>Gerekli Belgeler:</strong><br>
-â€¢ Tapu<br>
-â€¢ İmar durumu<br>
-â€¢ Mimari proje (3 takım)<br>
-â€¢ Statik proje<br>
-â€¢ Elektrik projesi<br>
-â€¢ Mekanik proje<br>
-â€¢ Zemin etüdü<br>
-â€¢ Aplikasyon<br><br>
+• Tapu<br>
+• İmar durumu<br>
+• Mimari proje (3 takım)<br>
+• Statik proje<br>
+• Elektrik projesi<br>
+• Mekanik proje<br>
+• Zemin etüdü<br>
+• Aplikasyon<br><br>
 <strong>Süre:</strong> 2-4 ay<br><br>
 Ruhsat hizmeti: ${phoneLink}`;
     }
@@ -8724,43 +8724,43 @@ Ruhsat hizmeti: ${phoneLink}`;
         return `<strong>ðŸ“ TAKS (Taban Alanı Katsayısı)</strong><br><br>
 <strong>Formül:</strong> Taban Alanı / Arsa Alanı<br><br>
 <strong>Örnek:</strong><br>
-â€¢ 500 mÂ² arsa<br>
-â€¢ TAKS: 0.40<br>
-â€¢ <strong>Taban Alanı: 200 mÂ²</strong><br><br>
+• 500 mÂ² arsa<br>
+• TAKS: 0.40<br>
+• <strong>Taban Alanı: 200 mÂ²</strong><br><br>
 <strong>Tipik Değerler:</strong><br>
-â€¢ Konut: 0.30 - 0.40<br>
-â€¢ Ticaret: 0.60 - 0.80<br><br>
+• Konut: 0.30 - 0.40<br>
+• Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'deprem') {
         return `<strong>ðŸ—ï¸ Deprem Yönetmeliği (TBDY 2018)</strong><br><br>
 <strong>Zorunluluklar:</strong><br>
-â€¢ Zemin etüdü raporu<br>
-â€¢ Deprem bölgesi analizi<br>
-â€¢ Yapı yükseklik kontrolü<br>
-â€¢ Betonarme yapı sistemi<br><br>
+• Zemin etüdü raporu<br>
+• Deprem bölgesi analizi<br>
+• Yapı yükseklik kontrolü<br>
+• Betonarme yapı sistemi<br><br>
 <strong>Zemin Sınıfları:</strong><br>
-â€¢ ZA: Sağlam kayalar<br>
-â€¢ ZB: Az ayrışmış kayalar<br>
-â€¢ ZC: Sıkı kum/kil<br>
-â€¢ ZD: Gevşek kum/kil<br>
-â€¢ ZE: Yumuşak killer<br><br>
+• ZA: Sağlam kayalar<br>
+• ZB: Az ayrışmış kayalar<br>
+• ZC: Sıkı kum/kil<br>
+• ZD: Gevşek kum/kil<br>
+• ZE: Yumuşak killer<br><br>
 Deprem projesi: ${phoneLink}`;
     }
     
     else if (matchedCategory === 'cephe') {
         return `<strong>ðŸ¢ Cephe Sistemleri</strong><br><br>
 <strong>Cephe Türleri:</strong><br>
-â€¢ Klasik sıva cephe<br>
-â€¢ Giydirme cephe<br>
-â€¢ Cam cephe<br>
-â€¢ Kompozit panel<br>
-â€¢ Doğal taş kaplama<br><br>
+• Klasik sıva cephe<br>
+• Giydirme cephe<br>
+• Cam cephe<br>
+• Kompozit panel<br>
+• Doğal taş kaplama<br><br>
 <strong>Önemli Noktalar:</strong><br>
-â€¢ Isı yalıtımı zorunlu<br>
-â€¢ Yangın geçişini önleme<br>
-â€¢ Su yalıtımı detayları<br><br>
+• Isı yalıtımı zorunlu<br>
+• Yangın geçişini önleme<br>
+• Su yalıtımı detayları<br><br>
 Cephe tasarımı: ${phoneLink}`;
     }
     
@@ -8774,11 +8774,11 @@ Cephe tasarımı: ${phoneLink}`;
 5. Uygulama projesi<br>
 6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
-â€¢ Konut projeleri<br>
-â€¢ Villa projeleri<br>
-â€¢ Ticari yapılar<br>
-â€¢ İç mimari<br>
-â€¢ 3D görselleştirme<br><br>
+• Konut projeleri<br>
+• Villa projeleri<br>
+• Ticari yapılar<br>
+• İç mimari<br>
+• 3D görselleştirme<br><br>
 Proje teklifi: ${phoneLink}`;
     }
     
@@ -8786,10 +8786,10 @@ Proje teklifi: ${phoneLink}`;
     else if (lowerMsg.includes('fiyat') || lowerMsg.includes('ücret') || lowerMsg.includes('ne kadar')) {
         return `<strong>ðŸ’° Fiyat Bilgisi</strong><br><br>
 Projelerimiz için fiyat, projenizin özelliklerine göre değişmektedir:<br><br>
-â€¢ Proje türü (konut, villa, ticari)<br>
-â€¢ Alan büyüklüğü<br>
-â€¢ Detay seviyesi<br>
-â€¢ Ek hizmetler (3D, ruhsat, vb.)<br><br>
+• Proje türü (konut, villa, ticari)<br>
+• Alan büyüklüğü<br>
+• Detay seviyesi<br>
+• Ek hizmetler (3D, ruhsat, vb.)<br><br>
 <strong>Detaylı fiyat teklifi için:</strong><br>
 ðŸ“ž ${phoneLink}<br>
 ðŸ“ Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ`;
@@ -8799,12 +8799,12 @@ Projelerimiz için fiyat, projenizin özelliklerine göre değişmektedir:<br><b
         return `Merhaba! ðŸ‘‹<br><br>
 Size nasıl yardımcı olabilirim?<br><br>
 <strong>Sorabilecekleriniz:</strong><br>
-â€¢ Piyes ölçüleri<br>
-â€¢ Yangın, merdiven, otopark yönetmelikleri<br>
-â€¢ Emsal, TAKS hesaplamaları<br>
-â€¢ İnşaat ruhsatı<br>
-â€¢ Cephe sistemleri<br>
-â€¢ Proje fiyatları<br><br>
+• Piyes ölçüleri<br>
+• Yangın, merdiven, otopark yönetmelikleri<br>
+• Emsal, TAKS hesaplamaları<br>
+• İnşaat ruhsatı<br>
+• Cephe sistemleri<br>
+• Proje fiyatları<br><br>
 Sorunuzu yazabilirsiniz! ðŸ—ï¸`;
     }
     
@@ -9091,163 +9091,163 @@ function getAiAnswer(question) {
         // Villa projeleri
         villa: `ðŸ¡ <b>Villa Projeleri:</b><br><br>
 Villa projelerimizde modern mimari ve fonksiyonel tasarım anlayışı sunuyoruz:<br><br>
-â€¢ <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
-â€¢ <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
-â€¢ <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
-â€¢ <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
+• <b>Arazi Analizi:</b> Topoğrafya, manzara, güneşlenme<br>
+• <b>Konsept Tasarım:</b> Size özel mimari çözümler<br>
+• <b>3D Görselleştirme:</b> Projenizi gerçek gibi görün<br>
+• <b>Ruhsat İşlemleri:</b> Tüm yasal süreçler dahil<br><br>
 Detaylı bilgi için mesaj atabilirsiniz!`,
 
         // Tasarım süreci
         tasarim: `ðŸ“ <b>Mimari Tasarım Sürecimiz:</b><br><br>
 <b>1. İhtiyaç Analizi (1-2 hafta)</b><br>
-â€¢ İlk görüşme ve saha keşfi<br>
-â€¢ Bütçe belirleme<br><br>
+• İlk görüşme ve saha keşfi<br>
+• Bütçe belirleme<br><br>
 <b>2. Ön Tasarım (2-3 hafta)</b><br>
-â€¢ Konsept eskizler ve 3D modelleme<br><br>
+• Konsept eskizler ve 3D modelleme<br><br>
 <b>3. Uygulama Projesi (4-6 hafta)</b><br>
-â€¢ Detaylı çizimler ve statik hesaplar<br><br>
+• Detaylı çizimler ve statik hesaplar<br><br>
 <b>4. Ruhsat ve Uygulama</b><br>
-â€¢ Belediye onayları ve şantiye takibi`,
+• Belediye onayları ve şantiye takibi`,
 
         // İç mimarlık
         ic: `ðŸ›‹ï¸ <b>İç Mimarlık Hizmetlerimiz:</b><br><br>
-â€¢ Mekan Planlaması<br>
-â€¢ Mobilya Tasarımı (özel üretim)<br>
-â€¢ Malzeme Seçimi<br>
-â€¢ Aydınlatma Tasarımı<br>
-â€¢ Renk Paleti Oluşturma<br>
-â€¢ 3D Görselleştirme<br><br>
+• Mekan Planlaması<br>
+• Mobilya Tasarımı (özel üretim)<br>
+• Malzeme Seçimi<br>
+• Aydınlatma Tasarımı<br>
+• Renk Paleti Oluşturma<br>
+• 3D Görselleştirme<br><br>
 Portföyümüzü inceleyebilirsiniz!`,
 
         // TAKS KAKS
         taks: `ðŸ“Š <b>TAKS ve KAKS Nedir?</b><br><br>
 <b>TAKS (Taban Alanı Kat Sayısı):</b><br>
 Yapının taban alanının parsel alanına oranıdır.<br>
-â€¢ Formül: TAKS = Taban Alanı / Parsel Alanı<br>
-â€¢ Örnek: 500mÂ² parselde TAKS=0.40 ise max taban 200mÂ²<br><br>
+• Formül: TAKS = Taban Alanı / Parsel Alanı<br>
+• Örnek: 500mÂ² parselde TAKS=0.40 ise max taban 200mÂ²<br><br>
 <b>KAKS (Kat Alanı Kat Sayısı):</b><br>
 Toplam inşaat alanının parsel alanına oranıdır.<br>
-â€¢ Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
-â€¢ Örnek: KAKS=1.5 ise 500mÂ² parselde max 750mÂ² inşaat<br><br>
+• Formül: KAKS = Toplam İnşaat / Parsel Alanı<br>
+• Örnek: KAKS=1.5 ise 500mÂ² parselde max 750mÂ² inşaat<br><br>
 <b>Emsal:</b> KAKS ile aynı anlama gelir.`,
 
         // İmar
         imar: `ðŸ›ï¸ <b>İmar Mevzuatı Bilgileri:</b><br><br>
 <b>Önemli Kavramlar:</b><br>
-â€¢ <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
-â€¢ <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
-â€¢ <b>H max:</b> Maksimum bina yüksekliği<br>
-â€¢ <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
+• <b>İmar Durumu:</b> Parselin yapılaşma şartları<br>
+• <b>Çekme Mesafeleri:</b> Yapının sınırlara uzaklığı<br>
+• <b>H max:</b> Maksimum bina yüksekliği<br>
+• <b>Kat Adedi:</b> İzin verilen kat sayısı<br><br>
 <b>Başvuru İçin Gerekli Belgeler:</b><br>
-â€¢ Tapu fotokopisi<br>
-â€¢ İmar durumu belgesi<br>
-â€¢ Mimari proje<br>
-â€¢ Statik proje<br>
-â€¢ Mekanik proje`,
+• Tapu fotokopisi<br>
+• İmar durumu belgesi<br>
+• Mimari proje<br>
+• Statik proje<br>
+• Mekanik proje`,
 
         // Ruhsat
         ruhsat: `ðŸ“‹ <b>Yapı Ruhsatı Süreci:</b><br><br>
 <b>Gerekli Projeler:</b><br>
-âœ… Mimari Proje<br>
-âœ… Statik Proje<br>
-âœ… Mekanik (Tesisat) Proje<br>
-âœ… Elektrik Proje<br><br>
+✅ Mimari Proje<br>
+✅ Statik Proje<br>
+✅ Mekanik (Tesisat) Proje<br>
+✅ Elektrik Proje<br><br>
 <b>Gerekli Belgeler:</b><br>
-â€¢ Tapu fotokopisi<br>
-â€¢ İmar durum belgesi<br>
-â€¢ Zemin etüdü raporu<br>
-â€¢ Harita aplikasyonu<br><br>
+• Tapu fotokopisi<br>
+• İmar durum belgesi<br>
+• Zemin etüdü raporu<br>
+• Harita aplikasyonu<br><br>
 <b>Süre:</b> Ortalama 2-4 ay (belediyeye göre değişir)`,
 
         // Deprem yönetmeliği
         deprem: `ðŸ—ï¸ <b>Türkiye Bina Deprem Yönetmeliği (TBDY 2018):</b><br><br>
 <b>Temel Prensipler:</b><br>
-â€¢ Dayanım esaslı tasarım<br>
-â€¢ Süneklik sınıfları (sınırlı, normal, yüksek)<br>
-â€¢ Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
+• Dayanım esaslı tasarım<br>
+• Süneklik sınıfları (sınırlı, normal, yüksek)<br>
+• Deprem bölgeleri yerine DD-1, DD-2, DD-3, DD-4<br><br>
 <b>Yapı Düzensizlikleri:</b><br>
-â€¢ A Tipi (Plan): Burulma, döşeme süreksizliği<br>
-â€¢ B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
+• A Tipi (Plan): Burulma, döşeme süreksizliği<br>
+• B Tipi (Düşey): Yumuşak kat, rijitlik düzensizliği<br><br>
 <b>Önemli:</b> Tüm projelerimiz TBDY 2018'e uygundur.`,
 
         // Yangın yönetmeliği
         yangin: `ðŸ”¥ <b>Binaların Yangından Korunması Yönetmeliği:</b><br><br>
 <b>Kaçış Yolları:</b><br>
-â€¢ Min genişlik: 80cm (konut), 120cm (ticari)<br>
-â€¢ Merdiven genişliği: Min 120cm<br><br>
+• Min genişlik: 80cm (konut), 120cm (ticari)<br>
+• Merdiven genişliği: Min 120cm<br><br>
 <b>Yangın Merdiveni Zorunluluğu:</b><br>
-â€¢ 21.50m üzeri binalar<br>
-â€¢ 30 kişiyi aşan katlar<br><br>
+• 21.50m üzeri binalar<br>
+• 30 kişiyi aşan katlar<br><br>
 <b>Yangın Kompartımanı:</b><br>
-â€¢ Her 2500mÂ²'de bölme<br>
-â€¢ 2 saat yangın dayanımı`,
+• Her 2500mÂ²'de bölme<br>
+• 2 saat yangın dayanımı`,
 
         // Maliyet
         maliyet: `ðŸ’° <b>Proje Maliyetleri:</b><br><br>
 <b>Mimari Proje (mÂ² bazlı):</b><br>
-â€¢ Villa: 150-300 TL/mÂ²<br>
-â€¢ Apartman: 100-200 TL/mÂ²<br>
-â€¢ İç Mekan: 80-150 TL/mÂ²<br>
-â€¢ Ticari: 120-250 TL/mÂ²<br><br>
+• Villa: 150-300 TL/mÂ²<br>
+• Apartman: 100-200 TL/mÂ²<br>
+• İç Mekan: 80-150 TL/mÂ²<br>
+• Ticari: 120-250 TL/mÂ²<br><br>
 <b>Not:</b> Fiyatlar proje kapsamına göre değişir.<br>
 Net fiyat için proje detaylarınızı paylaşın!`,
 
         // Çekme mesafeleri
         cekme: `ðŸ“ <b>Çekme Mesafeleri:</b><br><br>
 <b>Ayrık Yapı Düzeni:</b><br>
-â€¢ Ön bahçe: Min 5m (yola göre değişir)<br>
-â€¢ Arka bahçe: Min 3m (H/2 kuralı)<br>
-â€¢ Yan bahçe: Min 3m<br><br>
+• Ön bahçe: Min 5m (yola göre değişir)<br>
+• Arka bahçe: Min 3m (H/2 kuralı)<br>
+• Yan bahçe: Min 3m<br><br>
 <b>Bitişik Yapı Düzeni:</b><br>
-â€¢ Sadece ön ve arka bahçe çekmesi<br><br>
+• Sadece ön ve arka bahçe çekmesi<br><br>
 <b>Not:</b> İmar planına göre değişiklik gösterebilir.`,
 
         // Kat yüksekliği
         kat: `ðŸ“ <b>Kat Yüksekliği Standartları:</b><br><br>
 <b>Konutlarda:</b><br>
-â€¢ Min döşemeden tavana: 2.40m<br>
-â€¢ Brüt kat yüksekliği: 2.80-3.00m<br><br>
+• Min döşemeden tavana: 2.40m<br>
+• Brüt kat yüksekliği: 2.80-3.00m<br><br>
 <b>Ticari Alanlarda:</b><br>
-â€¢ Min temiz yükseklik: 2.60m<br>
-â€¢ Bodrum: Min 2.40m<br><br>
+• Min temiz yükseklik: 2.60m<br>
+• Bodrum: Min 2.40m<br><br>
 <b>Asansör Zorunluluğu:</b><br>
-â€¢ 4 kattan fazla binalarda zorunlu`,
+• 4 kattan fazla binalarda zorunlu`,
 
         // Otopark
         otopark: `ðŸš— <b>Otopark Yönetmeliği:</b><br><br>
 <b>Konut:</b><br>
-â€¢ 0-75mÂ²: 1 araç / 2 daire<br>
-â€¢ 75-150mÂ²: 1 araç / daire<br>
-â€¢ 150mÂ² üzeri: 2 araç / daire<br><br>
+• 0-75mÂ²: 1 araç / 2 daire<br>
+• 75-150mÂ²: 1 araç / daire<br>
+• 150mÂ² üzeri: 2 araç / daire<br><br>
 <b>Ticari:</b><br>
-â€¢ Ofis: 1 araç / 30mÂ²<br>
-â€¢ Mağaza: 1 araç / 50mÂ²<br><br>
+• Ofis: 1 araç / 30mÂ²<br>
+• Mağaza: 1 araç / 50mÂ²<br><br>
 <b>Otopark Boyutları:</b><br>
-â€¢ Min 2.50 x 5.00m`,
+• Min 2.50 x 5.00m`,
 
         // 3D
         '3d': `ðŸŽ¨ <b>3D Görselleştirme:</b><br><br>
-â€¢ Fotorealistik görüntüler<br>
-â€¢ Gündüz/gece sahneleri<br>
-â€¢ İç ve dış mekan renderleri<br>
-â€¢ 360Â° sanal tur<br>
-â€¢ Video animasyon<br><br>
+• Fotorealistik görüntüler<br>
+• Gündüz/gece sahneleri<br>
+• İç ve dış mekan renderleri<br>
+• 360Â° sanal tur<br>
+• Video animasyon<br><br>
 Projenizi yaşamadan önce görün!`,
 
         // Süre
         sure: `â±ï¸ <b>Proje Süreleri:</b><br><br>
-â€¢ Villa Projesi: 6-8 hafta<br>
-â€¢ Konut İç Mekan: 3-4 hafta<br>
-â€¢ Ticari Mekan: 4-6 hafta<br>
-â€¢ Ruhsat Süreci: 2-4 ay<br><br>
+• Villa Projesi: 6-8 hafta<br>
+• Konut İç Mekan: 3-4 hafta<br>
+• Ticari Mekan: 4-6 hafta<br>
+• Ruhsat Süreci: 2-4 ay<br><br>
 Acil projeler için hızlandırılmış seçeneklerimiz var!`,
 
         // Ödeme
         odeme: `ðŸ’³ <b>Ödeme Koşulları:</b><br><br>
 <b>Standart Plan:</b><br>
-â€¢ %40 - Sözleşmede<br>
-â€¢ %30 - Ön tasarım onayında<br>
-â€¢ %30 - Proje tesliminde<br><br>
+• %40 - Sözleşmede<br>
+• %30 - Ön tasarım onayında<br>
+• %30 - Proje tesliminde<br><br>
 Özel ödeme planları için görüşebiliriz!`,
 
         // Default
@@ -10432,11 +10432,11 @@ function lightenColor(color, percent) {
                 <strong>Merhaba! ðŸ‘‹</strong><br><br>
                 Ben CEE MİMARLIK'ın AI asistanıyım. Size mimarlık ve yapı mevzuatı konularında yardımcı olabilirim.<br><br>
                 <strong>Yardımcı olabileceğim konular:</strong><br>
-                â€¢ İmar planı ve imar durumu<br>
-                â€¢ Piyes ölçüleri ve teknik çizimler<br>
-                â€¢ Yangın, merdiven, otopark yönetmelikleri<br>
-                â€¢ İnşaat ruhsatı süreçleri<br>
-                â€¢ Mimari proje hazırlama<br><br>
+                • İmar planı ve imar durumu<br>
+                • Piyes ölçüleri ve teknik çizimler<br>
+                • Yangın, merdiven, otopark yönetmelikleri<br>
+                • İnşaat ruhsatı süreçleri<br>
+                • Mimari proje hazırlama<br><br>
                 Aklınıza takılan soruyu sorabilirsiniz! ðŸ—ï¸
             </div>
         </div>
@@ -10491,7 +10491,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (!window.firebaseDB) {
-        console.log('â„¹ï¸ Firebase bağlantısı yok, localStorage kullanılıyor');
+        console.log('ℹ️ Firebase bağlantısı yok, localStorage kullanılıyor');
         return;
     }
     
@@ -10519,7 +10519,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
         
         if (projects.length > 0) {
-            console.log('âœ… Firebase projeleri yüklendi:', projects.length);
+            console.log('✅ Firebase projeleri yüklendi:', projects.length);
             window.projects = projects;
             
             // Projeleri render et
@@ -10557,7 +10557,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
         
         if (teamMembers.length > 0) {
-            console.log('âœ… Firebase ekip üyeleri yüklendi:', teamMembers.length);
+            console.log('✅ Firebase ekip üyeleri yüklendi:', teamMembers.length);
             // localStorage'a da kaydet (loadTeam fonksiyonu için)
             localStorage.setItem('team_members', JSON.stringify(teamMembers));
             
@@ -10624,7 +10624,7 @@ window.openProjectDetail = function(projectId) {
                 });
                 
                 if (firebaseProjects.length > 0) {
-                    console.log('âœ… Firebase projeleri yüklendi:', firebaseProjects.length);
+                    console.log('✅ Firebase projeleri yüklendi:', firebaseProjects.length);
                     window.firebaseProjects = firebaseProjects;
                     
                     // Proje listesini güncelle
@@ -10635,7 +10635,7 @@ window.openProjectDetail = function(projectId) {
             }
         }
     } catch (error) {
-        console.log('â„¹ï¸ Firebase config bulunamadı, demo modda çalışıyor');
+        console.log('ℹ️ Firebase config bulunamadı, demo modda çalışıyor');
     }
 </script>
 
@@ -10646,7 +10646,7 @@ window.openProjectDetail = function(projectId) {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('âœ… Service Worker kayıtlı'))
+            .then(reg => console.log('✅ Service Worker kayıtlı'))
             .catch(err => console.log('âŒ Service Worker hatası:', err));
     });
 }
@@ -10779,7 +10779,7 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
             // Text
             document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
             
-            console.log('âœ… Renkler uygulandı');
+            console.log('✅ Renkler uygulandı');
         } catch(e) { console.error('Renk hatası:', e); }
     }
     
