@@ -19,13 +19,13 @@ const firebaseConfig = {
     measurementId: "G-WJJRB55W5F"
 };
 
-// Firebase'i baÅŸlat
+// Firebase'i başlat
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Global olarak eriÅŸilebilir yap
+// Global olarak erişilebilir yap
 window.firebaseApp = app;
 window.firebaseAuth = auth;
 window.firebaseDB = db;

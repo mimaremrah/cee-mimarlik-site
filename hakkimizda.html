@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CEE MimarlÄ±k hakkÄ±nda - Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla projeler Ã¼reten deneyimli ekibimizi tanÄ±yÄ±n.">
-    <title>HakkÄ±mÄ±zda - CEE MimarlÄ±k</title>
+    <meta name="description" content="CEE Mimarlık hakkında - Modern mimarlık anlayışıyla projeler üreten deneyimli ekibimizi tanıyın.">
+    <title>Hakkımızda - CEE Mimarlık</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 /* Cross-Browser & Mobile Uyumluluk */
@@ -180,48 +180,48 @@ a{color:inherit;text-decoration:none}
     <!-- HEADER -->
     <div class="header">
         <div class="logo">
-            <img id="siteLogo" src="" alt="CEE MimarlÄ±k" style="display: none;">
-            <h1 id="siteTitle">CEE MÄ°MARLIK</h1>
+            <img id="siteLogo" src="" alt="CEE Mimarlık" style="display: none;">
+            <h1 id="siteTitle">CEE MİMARLIK</h1>
         </div>
     </div>
 
     <!-- CONTENT -->
     <div class="container">
         <a href="index.html" class="back-btn">
-            â† Ana Sayfaya DÃ¶n
+            Ã¢â€ Â Ana Sayfaya Dön
         </a>
 
         <!-- HAKKIMIZDA -->
         <div class="about-section">
-            <h2 id="companyTitle">CEE MimarlÄ±k</h2>
+            <h2 id="companyTitle">CEE Mimarlık</h2>
             <p id="companyDescription">
-                Modern mimarlÄ±k anlayÄ±ÅŸÄ±yla, estetik ve fonksiyonelliÄŸi bir araya getiren projeler Ã¼retiyoruz.
+                Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz.
             </p>
         </div>
 
-        <!-- VÄ°ZYON -->
+        <!-- VİZYON -->
         <div class="about-section">
             <h2>Vizyonumuz</h2>
             <p id="companyVision">
-                SÃ¼rdÃ¼rÃ¼lebilir ve Ã§evre dostu mimari Ã§Ã¶zÃ¼mlerle, yaÅŸam kalitesini artÄ±ran mekanlar yaratmak.
+                Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak.
             </p>
         </div>
 
-        <!-- EKÄ°P -->
+        <!-- EKİP -->
         <div class="about-section">
             <h2>Ekibimiz</h2>
             <div class="team-grid" id="teamGrid">
-                <!-- Dinamik yÃ¼klenecek -->
+                <!-- Dinamik yüklenecek -->
             </div>
         </div>
 
         <a href="index.html" class="back-btn">
-            â† Ana Sayfaya DÃ¶n
+            Ã¢â€ Â Ana Sayfaya Dön
         </a>
     </div>
 
     <script>
-        // Logo yÃ¼kle
+        // Logo yükle
         function loadLogo() {
             const logo = localStorage.getItem('cee_site_logo');
             const logoImg = document.getElementById('siteLogo');
@@ -234,7 +234,7 @@ a{color:inherit;text-decoration:none}
             }
         }
 
-        // HakkÄ±mÄ±zda bilgileri yÃ¼kle
+        // Hakkımızda bilgileri yükle
         function loadAbout() {
             const about = JSON.parse(localStorage.getItem('cee_about_info') || '{}');
             
@@ -243,13 +243,13 @@ a{color:inherit;text-decoration:none}
             if (about.vision) document.getElementById('companyVision').textContent = about.vision;
         }
 
-        // Ekip Ã¼yelerini yÃ¼kle
+        // Ekip üyelerini yükle
         function loadTeam() {
             const members = JSON.parse(localStorage.getItem('cee_team_members') || '[]');
             const grid = document.getElementById('teamGrid');
             
             if (members.length === 0) {
-                grid.innerHTML = '<p style="text-align: center; color: #64748b;">HenÃ¼z ekip Ã¼yesi eklenmedi.</p>';
+                grid.innerHTML = '<p style="text-align: center; color: #64748b;">Henüz ekip üyesi eklenmedi.</p>';
                 return;
             }
             
@@ -259,14 +259,14 @@ a{color:inherit;text-decoration:none}
                     <h3>${m.name}</h3>
                     <div class="title">${m.title}</div>
                     <div class="info">
-                        ${m.education ? `<p><strong>EÃ„Å¸itim:</strong> ${m.education}</p>` : ''}
+                        ${m.education ? `<p><strong>EÃƒâ€žÃ…Â¸itim:</strong> ${m.education}</p>` : ''}
                         ${m.experience ? `<p><strong>Deneyim:</strong> ${m.experience}</p>` : ''}
                     </div>
                 </div>
             `).join('');
         }
 
-        // Sayfa yÃ¼klendiÄŸinde
+        // Sayfa yüklendiğinde
         document.addEventListener('DOMContentLoaded', function() {
             loadLogo();
             loadAbout();
