@@ -94,12 +94,12 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
     <div class="container">
-        <div class="icon pulse">Ã°Å¸â€œÂ¡</div>
+        <div class="icon pulse">📡</div>
         <h1>İnternet Bağlantısı Yok</h1>
         <p>Şu anda çevrimdışısınız. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.</p>
-        <button class="btn" onclick="location.reload()">Ã°Å¸â€â€ž Tekrar Dene</button>
+        <button class="btn" onclick="location.reload()">🔄 Tekrar Dene</button>
         <div class="status">
-            <strong>Offline Mod:</strong> Ãƒâ€“nceden görüntülediğiniz sayfalar kullanılabilir
+            <strong>Offline Mod:</strong> Önceden görüntülediğiniz sayfalar kullanılabilir
         </div>
     </div>
     
@@ -112,7 +112,7 @@ a{color:inherit;text-decoration:none}
         // Bağlantı durumunu göster
         if (navigator.onLine) {
             document.querySelector('.status').innerHTML = 
-                '<strong style="color: #4CAF50;">Ã¢Å“â€¦ Çevrimiçi</strong> - Sayfa yükleniyor...';
+                '<strong style="color: #4CAF50;">✅ Çevrimiçi</strong> - Sayfa yükleniyor...';
             setTimeout(() => location.reload(), 1000);
         }
     </script>

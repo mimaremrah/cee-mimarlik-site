@@ -81,7 +81,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 5. DiÃƒâ€žşer her Ãƒâ€¦şey - Network-first
+  // 5. Diğer her şey - Network-first
   event.respondWith(networkFirst(request));
 });
 
@@ -130,7 +130,7 @@ async function networkFirst(request) {
 
 // Resim cache handler (limit ile)
 async function imageHandler(request) {
-  // Ãƒâ€“nce cache'e bak
+  // Önce cache'e bak
   const cached = await caches.match(request);
   if (cached) {
     return cached;

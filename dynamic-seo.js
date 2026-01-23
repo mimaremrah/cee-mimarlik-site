@@ -109,7 +109,7 @@ function updateSEOMetaTags(project) {
     }
     canonical.setAttribute('href', window.location.href);
     
-    console.log('Ã¢Å“â€¦ SEO meta tagları güncellendi:', project.title);
+    console.log('✅ SEO meta tagları güncellendi:', project.title);
 }
 
 // Export

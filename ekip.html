@@ -448,7 +448,7 @@
 <header>
     <div class="header-content">
         <a href="index.html" class="logo-text">CEE</a>
-        <button class="menu-toggle" onclick="toggleMobileMenu()">Ã¢ËœÂ°</button>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
         <nav id="mainNav">
             <a href="index.html">Ana Sayfa</a>
             <a href="index.html#projeler">Projeler</a>
@@ -483,11 +483,11 @@
             <a href="index.html#hakkimizda">Hakkımızda</a>
             <a href="index.html#iletisim">İletişim</a>
         </div>
-        <div class="footer-copy">Ã‚Â© 2024 CEE Mimarlık. Tüm hakları saklıdır.</div>
+        <div class="footer-copy">© 2024 CEE Mimarlık. Tüm hakları saklıdır.</div>
     </div>
 </footer>
 
-<button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">Ã°Å¸Å’â„¢</button>
+<button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
 
 <script>
 function toggleMobileMenu() {
@@ -497,22 +497,22 @@ function toggleMobileMenu() {
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Ã¢Ëœâ‚¬Ã¯Â¸Â' : 'Ã°Å¸Å’â„¢';
+    document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 }
 
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
-    document.querySelector('.dark-toggle').textContent = 'Ã¢Ëœâ‚¬Ã¯Â¸Â';
+    document.querySelector('.dark-toggle').textContent = '☀️';
 }
 
 const defaultTeam = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÃƒâ€¦ş Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım. Yetenekler: AutoCAD, Revit, SketchUp, Photoshop | 3D Modelleme | Uygulama Projesi | Şantiye Takibi',
-        education: 'Kırklareli ÃƒÅ“niversitesi',
+        education: 'Kırklareli Üniversitesi',
         experience: '15 Yıl',
         projects: '100+ Proje',
         expertise: 'Mimari',
@@ -520,7 +520,7 @@ const defaultTeam = [
     }
 ];
 
-const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3EÃ°Å¸â€˜Â¤%3C/text%3E%3C/svg%3E";
+const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
 
 function loadTeam() {
     const grid = document.getElementById('teamGrid');
@@ -542,7 +542,7 @@ function loadTeam() {
     if (team.length === 0) {
         grid.innerHTML = `
             <div class="empty-state" style="grid-column: 1/-1;">
-                <div class="empty-state-icon">Ã°Å¸â€˜Â¥</div>
+                <div class="empty-state-icon">👥</div>
                 <h3>Henüz ekip üyesi eklenmedi</h3>
                 <p>Admin panelden ekip üyesi ekleyebilirsiniz</p>
             </div>
@@ -563,16 +563,16 @@ function loadTeam() {
                 <div class="team-details">
                     ${member.education ? `
                     <div class="detail-item">
-                        <span class="detail-icon">Ã°Å¸Å½â€œ</span>
+                        <span class="detail-icon">🎓</span>
                         <div class="detail-content">
-                            <div class="detail-label">EÃƒâ€žşitim</div>
+                            <div class="detail-label">Eğitim</div>
                             <div class="detail-value">${member.education}</div>
                         </div>
                     </div>` : ''}
                     
                     ${member.experience ? `
                     <div class="detail-item">
-                        <span class="detail-icon">Ã¢ÂÂ±Ã¯Â¸Â</span>
+                        <span class="detail-icon">⏱️</span>
                         <div class="detail-content">
                             <div class="detail-label">Deneyim</div>
                             <div class="detail-value">${member.experience}</div>
@@ -581,7 +581,7 @@ function loadTeam() {
                     
                     ${member.projects ? `
                     <div class="detail-item">
-                        <span class="detail-icon">Ã°Å¸Ââ€”Ã¯Â¸Â</span>
+                        <span class="detail-icon">🏗️</span>
                         <div class="detail-content">
                             <div class="detail-label">Projeler</div>
                             <div class="detail-value">${member.projects}</div>
@@ -590,7 +590,7 @@ function loadTeam() {
                     
                     ${member.expertise ? `
                     <div class="detail-item">
-                        <span class="detail-icon">Ã¢Â­Â</span>
+                        <span class="detail-icon">⭐</span>
                         <div class="detail-content">
                             <div class="detail-label">Uzmanlık</div>
                             <div class="detail-value">${member.expertise}</div>
@@ -600,7 +600,7 @@ function loadTeam() {
                 
                 ${member.email ? `
                 <div class="team-social">
-                    <a href="mailto:${member.email}" class="social-link" title="E-posta">Ã°Å¸â€œÂ§</a>
+                    <a href="mailto:${member.email}" class="social-link" title="E-posta">📧</a>
                 </div>` : ''}
             </div>
         </div>
