@@ -9,7 +9,7 @@
                 <div style="flex: 1; min-width: 300px;">
                     <p style="margin: 0; font-size: 14px; line-height: 1.6;">
                         🍪 Bu web sitesi, deneyiminizi geliştirmek için çerezler kullanmaktadır. 
-                        Siteyi kullanmaya devam ederek <a href="#" style="color: #667eea; text-decoration: underline;">KVKK</a> ve çerez politikamızı kabul etmiş sayılırsınız.
+                        Siteyi kullanmaya devam ederek <a href="gizlilik.html" target="_blank" style="color: #667eea; text-decoration: underline;">KVKK</a> ve çerez politikamızı kabul etmiş sayılırsınız.
                     </p>
                 </div>
                 <div style="display: flex; gap: 10px;">
