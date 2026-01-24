@@ -5314,177 +5314,166 @@ window.goToAdmin = goToAdmin;
 <section class="hero" id="anasayfa">
     <div id="heroSlider"></div>
     
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- SOL PANEL - MODERN BİNA + LOGO + BADGE'LER -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <div class="hero-left-showcase">
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <!-- BLUEPRINT ANİMASYONU - Plan + Onay                                      -->
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <div class="blueprint-container" id="blueprintContainer">
         
-        <!-- Üst: Logo ve Marka -->
-        <div class="showcase-brand">
-            <div class="brand-logo-wrap">
-                <img src="logo.png" alt="CEE Mimarlık" class="brand-logo-img">
+        <!-- TABLET ÇERÇEVE -->
+        <div class="tablet-frame">
+            <!-- Tablet üst kısım (kamera, sensör) -->
+            <div class="tablet-top">
+                <div class="tablet-camera"></div>
             </div>
-            <div class="brand-info">
-                <span class="brand-name-cee">CEE</span>
-                <span class="brand-name-type">MİMARLIK</span>
-            </div>
-        </div>
-        
-        <!-- Orta: Animasyonlu Bina -->
-        <div class="showcase-building">
-            <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" class="building-svg">
-                <defs>
-                    <pattern id="wallPattern" patternUnits="userSpaceOnUse" width="10" height="10">
-                        <rect width="10" height="10" fill="#e8e8e8"/>
-                        <rect x="0" y="0" width="5" height="5" fill="#e0e0e0" opacity="0.3"/>
-                    </pattern>
-                    <linearGradient id="glassReflect" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#b8d4e8" stop-opacity="0.9"/>
-                        <stop offset="30%" stop-color="#8fc1d8" stop-opacity="0.7"/>
-                        <stop offset="70%" stop-color="#5a9cb8" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#4a8ca8" stop-opacity="0.8"/>
-                    </linearGradient>
-                    <linearGradient id="concrete" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#6b7280"/>
-                        <stop offset="100%" stop-color="#4b5563"/>
-                    </linearGradient>
-                    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="4" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
-                    </filter>
-                    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#5a6677" stop-opacity="0.3"/>
-                        <stop offset="100%" stop-color="#5a6677" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
+            
+            <!-- Tablet ekran -->
+            <div class="tablet-screen">
+                <!-- AutoCAD Grid (plan çizimi sırasında) -->
+                <div class="autocad-grid"></div>
                 
-                <!-- Arka plan glow -->
-                <ellipse cx="100" cy="160" rx="90" ry="140" fill="url(#glowGrad)" class="building-glow"/>
+                <!-- Sinematik arka plan (projeler için) -->
+                <div class="cinema-backdrop"></div>
                 
-                <g class="building-structure" filter="url(#dropShadow)">
-                    <!-- TEMEL -->
-                    <g class="bina-part temel">
-                        <rect x="30" y="290" width="140" height="18" fill="url(#concrete)"/>
-                        <rect x="25" y="305" width="150" height="10" fill="#374151"/>
-                    </g>
-                    <!-- ZEMİN KAT -->
-                    <g class="bina-part zemin-kat">
-                        <rect x="30" y="238" width="140" height="52" fill="url(#wallPattern)" stroke="#9ca3af" stroke-width="0.5"/>
-                        <rect x="75" y="250" width="50" height="40" fill="#374151" rx="2"/>
-                        <rect x="80" y="255" width="18" height="32" fill="url(#glassReflect)" rx="1"/>
-                        <rect x="102" y="255" width="18" height="32" fill="url(#glassReflect)" rx="1"/>
-                        <ellipse cx="117" cy="273" rx="1.5" ry="1.5" fill="#d4a84b"/>
-                        <rect x="70" y="245" width="60" height="5" fill="#5a6677"/>
-                        <rect x="38" y="252" width="28" height="32" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="134" y="252" width="28" height="32" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="30" y="235" width="140" height="3" fill="#5a6677"/>
-                    </g>
-                    <!-- 1. KAT -->
-                    <g class="bina-part kat-1">
-                        <rect x="30" y="183" width="140" height="52" fill="url(#wallPattern)" stroke="#9ca3af" stroke-width="0.5"/>
-                        <rect x="38" y="192" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="72" y="192" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="106" y="192" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="140" y="192" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="30" y="180" width="140" height="3" fill="#5a6677"/>
-                    </g>
-                    <!-- 2. KAT -->
-                    <g class="bina-part kat-2">
-                        <rect x="30" y="128" width="140" height="52" fill="url(#wallPattern)" stroke="#9ca3af" stroke-width="0.5"/>
-                        <rect x="38" y="137" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="72" y="137" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="106" y="137" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="140" y="137" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="30" y="125" width="140" height="3" fill="#5a6677"/>
-                    </g>
-                    <!-- 3. KAT -->
-                    <g class="bina-part kat-3">
-                        <rect x="30" y="73" width="140" height="52" fill="url(#wallPattern)" stroke="#9ca3af" stroke-width="0.5"/>
-                        <rect x="38" y="82" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="72" y="82" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="106" y="82" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="140" y="82" width="26" height="34" fill="url(#glassReflect)" stroke="#6b7280" stroke-width="1"/>
-                        <rect x="30" y="70" width="140" height="3" fill="#5a6677"/>
-                    </g>
-                    <!-- ÇATI -->
-                    <g class="bina-part cati">
-                        <rect x="35" y="55" width="130" height="18" fill="url(#wallPattern)" stroke="#9ca3af" stroke-width="0.5"/>
-                        <rect x="32" y="50" width="136" height="7" fill="#5a6677"/>
-                        <rect x="80" y="35" width="40" height="18" fill="#4b5563" rx="2"/>
-                        <line x1="100" y1="15" x2="100" y2="35" stroke="#5a6677" stroke-width="2"/>
-                        <circle cx="100" cy="12" r="5" fill="none" stroke="#5a6677" stroke-width="1.5"/>
-                    </g>
+                <!-- SVG Blueprint Çizimi -->
+                <svg class="blueprint-svg" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Ev Planı - 2+1 Daire (Düzeltilmiş) -->
+            <g class="floor-plan" filter="url(#glow)">
+                <!-- Oda dolguları -->
+                <rect class="room-fill fill-yatak" x="51" y="41" width="78" height="68" />
+                <rect class="room-fill fill-wc" x="131" y="41" width="38" height="68" />
+                <rect class="room-fill fill-banyo" x="171" y="41" width="38" height="68" />
+                <rect class="room-fill fill-cocuk" x="211" y="41" width="138" height="98" />
+                <rect class="room-fill fill-antre" x="51" y="111" width="158" height="68" />
+                <rect class="room-fill fill-mutfak" x="51" y="181" width="78" height="38" />
+                <rect class="room-fill fill-balkon" x="51" y="221" width="78" height="38" />
+                <rect class="room-fill fill-salon" x="211" y="141" width="138" height="118" />
+                
+                <!-- Dış duvarlar -->
+                <path class="bp-line line-1" d="M50,40 L350,40" />
+                <path class="bp-line line-2" d="M350,40 L350,260" />
+                <path class="bp-line line-3" d="M350,260 L50,260" />
+                <path class="bp-line line-4" d="M50,260 L50,40" />
+                
+                <!-- Üst odalar (Yatak, WC, Banyo, Çocuk) -->
+                <path class="bp-line line-5" d="M130,40 L130,110" />
+                <path class="bp-line line-6" d="M170,40 L170,110" />
+                <path class="bp-line line-7" d="M210,40 L210,140" />
+                <path class="bp-line line-8" d="M130,110 L210,110" />
+                <path class="bp-line line-9" d="M50,110 L130,110" />
+                
+                <!-- Orta bölüm (Antre, Koridor) -->
+                <path class="bp-line line-10" d="M130,110 L130,180" />
+                <path class="bp-line line-11" d="M50,180 L210,180" />
+                <path class="bp-line line-12" d="M210,140 L350,140" />
+                
+                <!-- Alt bölüm (Mutfak, Balkon, Salon) -->
+                <path class="bp-line line-13" d="M210,140 L210,260" />
+                <path class="bp-line line-14" d="M130,180 L130,260" />
+                <path class="bp-line line-15" d="M50,220 L130,220" />
+                
+                <!-- Kapılar -->
+                <path class="bp-line line-16" d="M80,110 L80,95 Q92,95 92,110" />
+                <path class="bp-line line-17" d="M145,110 L145,120 Q155,120 155,110" />
+                <path class="bp-line line-18" d="M185,110 L185,120 Q195,120 195,110" />
+                <path class="bp-line line-19" d="M210,115 L195,115 Q195,127 210,127" />
+                <path class="bp-line line-20" d="M80,180 L80,190 Q92,190 92,180" />
+                <path class="bp-line line-21" d="M80,220 L80,232 Q92,232 92,220" />
+                <path class="bp-line line-22" d="M210,180 L195,180 Q195,192 210,192" />
+                
+                <!-- Pencereler -->
+                <rect class="bp-window win-1" x="65" y="37" width="40" height="6" />
+                <rect class="bp-window win-2" x="270" y="37" width="55" height="6" />
+                <rect class="bp-window win-3" x="47" y="140" width="6" height="30" />
+                <rect class="bp-window win-4" x="347" y="180" width="6" height="50" />
+                <rect class="bp-window win-5" x="250" y="257" width="70" height="6" />
+                
+                <!-- Ölçüler -->
+                <g class="dimensions">
+                    <line class="dim-line dim-1" x1="50" y1="28" x2="350" y2="28" />
+                    <text class="dim-text dim-t1" x="200" y="22">12.50 m</text>
+                    <line class="dim-line dim-2" x1="362" y1="40" x2="362" y2="260" />
+                    <text class="dim-text dim-t2" x="378" y="150" transform="rotate(90 378 150)">9.20 m</text>
                 </g>
-                <!-- Zemin gölgesi -->
-                <ellipse class="bina-part ground-shadow" cx="100" cy="318" rx="80" ry="6" fill="#000" opacity="0.2"/>
-            </svg>
+                
+                <!-- Oda isimleri -->
+                <text class="room-label" x="90" y="80">YATAK ODASI</text>
+                <text class="room-label" x="150" y="80">WC</text>
+                <text class="room-label" x="190" y="80">BANYO</text>
+                <text class="room-label" x="280" y="95">ÇOCUK ODASI</text>
+                <text class="room-label" x="130" y="150">ANTRE</text>
+                <text class="room-label" x="90" y="205">MUTFAK</text>
+                <text class="room-label" x="90" y="245">BALKON</text>
+                <text class="room-label" x="280" y="210">SALON</text>
+            </g>
+            
+            <!-- Modern Onay Checkmark -->
+            <g class="modern-check" id="modernCheck">
+                <circle class="check-circle" cx="200" cy="150" r="40" />
+                <path class="check-mark" d="M175,150 L190,165 L225,130" />
+                <text class="check-text" x="200" y="210">PROJE ONAYLI</text>
+            </g>
+        </svg>
+        
+        <!-- Favori Proje Gösterimi (tablet içinde) -->
+        <div class="project-showcase" id="projectShowcase">
+            <div class="showcase-item"></div>
+            <div class="showcase-item"></div>
+            <div class="showcase-item"></div>
+            <div class="showcase-item"></div>
+            <div class="showcase-item"></div>
         </div>
         
-        <!-- Slogan -->
-        <div class="showcase-tagline">
-            <span class="tagline-line"></span>
-            <span class="tagline-text">TEMELDEN ÇATIYA</span>
-            <span class="tagline-line"></span>
+            </div><!-- tablet-screen sonu -->
+        </div><!-- tablet-frame sonu -->
+        
+        <!-- Ana Mesaj (tablet dışında) -->
+        <div class="blueprint-message" id="bpMessage">
+            <span class="msg-line1">ÇİZİYORUZ • İNŞA EDİYORUZ • TESLİM EDİYORUZ</span>
         </div>
         
-        <!-- Badge'ler -->
-        <div class="showcase-badges">
-            <div class="badge-item">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                </div>
-                <div class="badge-content">
-                    <span class="badge-number">500+</span>
-                    <span class="badge-label">Onaylı Proje</span>
-                </div>
-            </div>
-            <div class="badge-item">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                </div>
-                <div class="badge-content">
-                    <span class="badge-number">15+</span>
-                    <span class="badge-label">Yıl Deneyim</span>
-                </div>
-            </div>
-            <div class="badge-item">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
-                </div>
-                <div class="badge-content">
-                    <span class="badge-number">A-Z</span>
-                    <span class="badge-label">Anahtar Teslim</span>
-                </div>
-            </div>
+        <!-- Logo (tablet dışında) -->
+        <div class="blueprint-logo" id="bpLogo">
+            <span class="bp-cee">CEE</span>
+            <span class="bp-mimarlik">MİMARLIK</span>
         </div>
+        
     </div>
     
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- ORTA - ANA İÇERİK (ORTAYA ALINDI) -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <div class="hero-center-content">
-        <div class="hero-eyebrow">
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <!-- ANA İÇERİK                                                              -->
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <div class="hero-main-content" id="heroMainContent">
+        <div class="content-eyebrow">
             <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Hayalden Gerçeğe</span>
+            <span>Hayalden Gerçeğe</span>
             <span class="eyebrow-line"></span>
         </div>
         
-        <h1 class="hero-main-title">
-            <span class="title-word title-word-1">MİMARİ</span>
-            <span class="title-word title-word-2">MÜKEMMELLİK</span>
+        <h1 class="content-title">
+            <span class="title-line-1">MİMARİ</span>
+            <span class="title-line-2">MÜKEMMELLİK</span>
         </h1>
         
-        <p class="hero-main-desc" data-tr="Yaşam alanlarınızı A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz." data-en="We bring your living spaces to life with turnkey design and implementation services from A to Z.">
-            Yaşam alanlarınızı A'dan Z'ye anahtar teslim projelendirme,<br>tasarım ve uygulama hizmeti ile hayata geçiriyoruz.
+        <p class="content-desc">
+            Yaşam alanlarınızı A'dan Z'ye anahtar teslim<br>projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz.
         </p>
         
-        <div class="hero-cta-group">
-            <a href="#projeler" class="hero-cta-primary">
+        <div class="content-buttons">
+            <a href="#projeler" class="btn-main">
                 <span>PROJELERİMİZ</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#iletisim" class="hero-cta-secondary">
-                <span>İLETİŞİM</span>
-            </a>
+            <a href="#iletisim" class="btn-outline">İLETİŞİM</a>
         </div>
     </div>
     
@@ -5495,399 +5484,668 @@ window.goToAdmin = goToAdmin;
 </section>
 
 <style>
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* YENİ MODERN HERO TASARIMI - CEE MİMARLIK                                   */
-/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════════════ */
+/* CEE MİMARLIK - TABLET BLUEPRINT ANİMASYONU                                       */
+/* ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* SOL PANEL - SHOWCASE */
-.hero-left-showcase {
+.blueprint-container {
     position: absolute;
-    left: 4%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-
-/* Logo ve Marka */
-.showcase-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: showcaseIn 0.8s ease-out 0.2s forwards;
-}
-
-.brand-logo-wrap {
-    width: 60px;
-    height: 60px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 14px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-.brand-logo-img {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-}
-
-.brand-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-name-cee {
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 6px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    line-height: 1;
-}
-
-.brand-name-type {
-    font-size: 10px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 4px;
-    margin-top: 4px;
-}
-
-/* Bina */
-.showcase-building {
-    width: 180px;
-    margin: 10px 0;
-    opacity: 0;
-    animation: showcaseIn 0.8s ease-out 0.4s forwards;
-}
-
-.building-svg {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(5px 10px 20px rgba(0,0,0,0.35));
-}
-
-.building-glow {
-    opacity: 0;
-    animation: glowPulse 3s ease-in-out 3s infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.5; }
-}
-
-/* Bina Animasyonları */
-.bina-part {
-    opacity: 0;
-    transform: translateY(8px);
-}
-.bina-part.temel { animation: buildUp 0.4s ease-out 0.6s forwards; }
-.bina-part.zemin-kat { animation: buildUp 0.4s ease-out 0.9s forwards; }
-.bina-part.kat-1 { animation: buildUp 0.4s ease-out 1.2s forwards; }
-.bina-part.kat-2 { animation: buildUp 0.4s ease-out 1.5s forwards; }
-.bina-part.kat-3 { animation: buildUp 0.4s ease-out 1.8s forwards; }
-.bina-part.cati { animation: buildUp 0.5s ease-out 2.1s forwards; }
-.bina-part.ground-shadow { animation: shadowIn 0.5s ease-out 2.5s forwards; }
-
-@keyframes buildUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shadowIn {
-    from { opacity: 0; transform: scaleX(0.5); }
-    to { opacity: 0.2; transform: scaleX(1); }
-}
-
-/* Slogan */
-.showcase-tagline {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 15px 0 20px;
-    opacity: 0;
-    animation: showcaseIn 0.6s ease-out 2.6s forwards;
-}
-
-.tagline-line {
-    width: 30px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-}
-
-.tagline-text {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.8);
-    text-transform: uppercase;
-}
-
-/* Badge'ler */
-.showcase-badges {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.badge-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.3s ease;
-}
-
-.badge-item:hover {
-    background: rgba(255,255,255,0.15);
-    transform: translateX(0) scale(1.02);
-}
-
-.badge-item:nth-child(1) { animation: badgeSlide 0.5s ease-out 2.8s forwards; }
-.badge-item:nth-child(2) { animation: badgeSlide 0.5s ease-out 3s forwards; }
-.badge-item:nth-child(3) { animation: badgeSlide 0.5s ease-out 3.2s forwards; }
-
-@keyframes badgeSlide {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-.badge-icon {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #5a6677, #4a5567);
-    border-radius: 10px;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
-.badge-icon svg {
-    width: 18px;
-    height: 18px;
-    color: #fff;
-}
-
-.badge-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.badge-number {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-}
-
-.badge-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.6);
-    margin-top: 2px;
-}
-
-/* ORTA İÇERİK */
-.hero-center-content {
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* TABLET ÇERÇEVESİ - SİTEYE ENTEGRE                                               */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.tablet-frame {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 15;
+    width: min(520px, 90vw);
+    background: linear-gradient(145deg, rgba(50,55,65,0.85), rgba(30,35,45,0.9));
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 
+        0 30px 100px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: tabletReveal 0.6s ease-out 0.1s forwards;
+}
+
+/* Köşelerde yumuşak glow */
+.tablet-frame::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    background: radial-gradient(ellipse at center, rgba(100,149,237,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.tablet-top {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0 6px;
+}
+
+.tablet-camera {
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #444 30%, #222 70%);
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 4px rgba(100,149,237,0.3);
+}
+
+.tablet-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #0a1628;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+}
+
+/* Ekran kenarlarında vignette efekti */
+.tablet-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes tabletReveal {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.92) translateY(20px); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); }
+}
+
+/* Tablet fade out */
+.tablet-frame {
+    animation: tabletReveal 0.6s ease-out 0.1s forwards,
+               tabletFadeOut 0.6s ease-in 9.5s forwards;
+}
+
+@keyframes tabletFadeOut {
+    to { opacity: 0; transform: translate(-50%, -50%) scale(0.95) translateY(-10px); }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* AUTOCAD GRİD (plan çizimi sırasında)                                            */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.autocad-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(100,149,237,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,149,237,0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0;
+    animation: gridFadeIn 0.4s ease-out 0.3s forwards,
+               gridFadeOut 0.5s ease-in 5.3s forwards;
+}
+
+@keyframes gridFadeIn {
+    to { opacity: 0.9; }
+}
+
+@keyframes gridFadeOut {
+    to { opacity: 0; }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* PROJE GÖSTERİMİ ARKA PLANI (sinematik mod)                                      */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.cinema-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #151520 50%, #0a0a0a 100%);
+    opacity: 0;
+    z-index: 1;
+    animation: cinemaIn 0.5s ease-out 5.4s forwards,
+               cinemaOut 0.4s ease-in 9.4s forwards;
+}
+
+/* Spotlight efekti */
+.cinema-backdrop::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 60%);
+}
+
+@keyframes cinemaIn {
+    to { opacity: 1; }
+}
+
+@keyframes cinemaOut {
+    to { opacity: 0; }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* SVG BLUEPRINT ÇİZİMİ                                                            */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.blueprint-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    height: auto;
+    z-index: 2;
+}
+
+/* Oda dolguları - hafif renkler */
+.room-fill {
+    opacity: 0;
+    animation: fillReveal 0.3s ease-out forwards;
+}
+
+.fill-yatak { fill: rgba(255,200,150,0.08); animation-delay: 1.8s; }
+.fill-wc { fill: rgba(150,200,255,0.08); animation-delay: 1.85s; }
+.fill-banyo { fill: rgba(150,200,255,0.1); animation-delay: 1.9s; }
+.fill-cocuk { fill: rgba(200,255,200,0.08); animation-delay: 1.95s; }
+.fill-antre { fill: rgba(200,200,200,0.05); animation-delay: 2.0s; }
+.fill-mutfak { fill: rgba(255,220,150,0.08); animation-delay: 2.05s; }
+.fill-balkon { fill: rgba(150,255,200,0.1); animation-delay: 2.1s; }
+.fill-salon { fill: rgba(255,230,200,0.1); animation-delay: 2.15s; }
+
+@keyframes fillReveal {
+    to { opacity: 1; }
+}
+
+/* Çizgi stili */
+.bp-line {
+    fill: none;
+    stroke: rgba(255,255,255,0.9);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+}
+
+/* Çizgiler hızlı sırayla çizilir */
+.line-1 { animation: drawLine 0.35s ease-out 0.3s forwards; }
+.line-2 { animation: drawLine 0.35s ease-out 0.45s forwards; }
+.line-3 { animation: drawLine 0.35s ease-out 0.6s forwards; }
+.line-4 { animation: drawLine 0.35s ease-out 0.75s forwards; }
+.line-5 { animation: drawLine 0.2s ease-out 0.9s forwards; }
+.line-6 { animation: drawLine 0.2s ease-out 0.95s forwards; }
+.line-7 { animation: drawLine 0.2s ease-out 1.0s forwards; }
+.line-8 { animation: drawLine 0.2s ease-out 1.05s forwards; }
+.line-9 { animation: drawLine 0.2s ease-out 1.1s forwards; }
+.line-10 { animation: drawLine 0.2s ease-out 1.15s forwards; }
+.line-11 { animation: drawLine 0.2s ease-out 1.2s forwards; }
+.line-12 { animation: drawLine 0.2s ease-out 1.25s forwards; }
+.line-13 { animation: drawLine 0.2s ease-out 1.3s forwards; }
+.line-14 { animation: drawLine 0.2s ease-out 1.35s forwards; }
+.line-15 { animation: drawLine 0.15s ease-out 1.4s forwards; }
+.line-16 { animation: drawLine 0.1s ease-out 1.45s forwards; }
+.line-17 { animation: drawLine 0.1s ease-out 1.5s forwards; }
+.line-18 { animation: drawLine 0.1s ease-out 1.55s forwards; }
+.line-19 { animation: drawLine 0.1s ease-out 1.6s forwards; }
+.line-20 { animation: drawLine 0.1s ease-out 1.65s forwards; }
+.line-21 { animation: drawLine 0.1s ease-out 1.7s forwards; }
+.line-22 { animation: drawLine 0.1s ease-out 1.75s forwards; }
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Pencereler */
+.bp-window {
+    fill: rgba(135,206,250,0.4);
+    stroke: rgba(255,255,255,0.6);
+    stroke-width: 1;
+    opacity: 0;
+    animation: windowReveal 0.2s ease-out forwards;
+}
+
+.win-1 { animation-delay: 1.8s; }
+.win-2 { animation-delay: 1.85s; }
+.win-3 { animation-delay: 1.9s; }
+.win-4 { animation-delay: 1.95s; }
+.win-5 { animation-delay: 2.0s; }
+
+@keyframes windowReveal {
+    to { opacity: 1; }
+}
+
+/* Ölçü çizgileri */
+.dim-line {
+    stroke: rgba(255,255,255,0.3);
+    stroke-width: 1;
+    stroke-dasharray: 4,3;
+    opacity: 0;
+    animation: dimReveal 0.3s ease-out 2.2s forwards;
+}
+
+.dim-text {
+    fill: rgba(255,255,255,0.5);
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    text-anchor: middle;
+    opacity: 0;
+    animation: dimReveal 0.3s ease-out 2.25s forwards;
+}
+
+@keyframes dimReveal {
+    to { opacity: 1; }
+}
+
+/* Oda isimleri */
+.room-label {
+    fill: rgba(255,255,255,0.6);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-anchor: middle;
+    opacity: 0;
+    animation: labelReveal 0.2s ease-out 2.3s forwards;
+}
+
+@keyframes labelReveal {
+    to { opacity: 1; }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* MODERN CHECK ANİMASYONU                                                         */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.modern-check {
+    opacity: 0;
+    animation: checkReveal 0.4s ease-out 2.6s forwards,
+               checkFadeOut 0.4s ease-in 5.4s forwards;
+}
+
+.check-circle {
+    fill: rgba(16, 185, 129, 0.15);
+    stroke: #10b981;
+    stroke-width: 3;
+    stroke-dasharray: 260;
+    stroke-dashoffset: 260;
+    animation: drawCircle 0.4s ease-out 2.6s forwards;
+}
+
+.check-mark {
+    fill: none;
+    stroke: #10b981;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+    animation: drawCheck 0.3s ease-out 2.9s forwards;
+}
+
+.check-text {
+    fill: #10b981;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-anchor: middle;
+    opacity: 0;
+    animation: labelReveal 0.3s ease-out 3.1s forwards,
+               checkFadeOut 0.4s ease-in 5.4s forwards;
+}
+
+@keyframes checkReveal {
+    to { opacity: 1; }
+}
+
+@keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes checkFadeOut {
+    to { opacity: 0; }
+}
+
+/* Plan fade out - 2sn daha bekle */
+.floor-plan {
+    animation: planFadeOut 0.5s ease-in 5.4s forwards;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* FAVORİ PROJE GÖSTERİMİ (sinematik mod)                                          */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.project-showcase {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.showcase-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    border-radius: 4px;
+    /* Zarif beyaz çerçeve */
+    box-shadow: 
+        inset 0 0 0 2px rgba(255,255,255,0.15),
+        0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* Hafif film grain efekti */
+.showcase-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+.showcase-item:nth-child(1) { animation: showcaseSlide 0.8s ease-in-out 5.6s forwards; }
+.showcase-item:nth-child(2) { animation: showcaseSlide 0.8s ease-in-out 6.4s forwards; }
+.showcase-item:nth-child(3) { animation: showcaseSlide 0.8s ease-in-out 7.2s forwards; }
+.showcase-item:nth-child(4) { animation: showcaseSlide 0.8s ease-in-out 8.0s forwards; }
+.showcase-item:nth-child(5) { animation: showcaseSlide 0.8s ease-in-out 8.8s forwards; }
+
+@keyframes showcaseSlide {
+    0% { opacity: 0; transform: scale(1.03); }
+    12% { opacity: 1; transform: scale(1); }
+    88% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.98); }
+}
+
+/* Showcase container */
+.project-showcase {
+    animation: showcaseReveal 0.3s ease-out 5.5s forwards;
+}
+
+@keyframes showcaseReveal {
+    to { opacity: 1; }
+}
+
+@keyframes planFadeOut {
+    to { opacity: 0; }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* MESAJ                                                                            */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.blueprint-message {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    max-width: 600px;
+    opacity: 0;
+    z-index: 25;
+    animation: msgReveal 0.5s ease-out 9.9s forwards;
+}
+
+.msg-line1 {
+    display: block;
+    font-size: clamp(14px, 2.8vw, 20px);
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 4px;
+}
+
+@keyframes msgReveal {
+    0% { opacity: 0; transform: translate(-50%, -50%) translateY(15px); }
+    100% { opacity: 1; transform: translate(-50%, -50%) translateY(0); }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* LOGO                                                                             */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.blueprint-logo {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    z-index: 25;
+    animation: logoReveal 0.5s ease-out 10.2s forwards;
+}
+
+.bp-cee {
+    display: block;
+    font-size: 38px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 12px;
+}
+
+.bp-mimarlik {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 8px;
+    margin-top: 5px;
+}
+
+@keyframes logoReveal {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* ANA İÇERİK                                                                       */
+/* ────────────────────────────────────────────────────────────────────────────── */
+.hero-main-content {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 30;
+    max-width: 700px;
     padding: 0 20px;
 }
 
-.hero-eyebrow {
+.content-eyebrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 15px;
     opacity: 0;
-    animation: centerIn 0.8s ease-out 0.5s forwards;
+    animation: contentFade 0.4s ease-out 10.5s forwards;
 }
 
 .eyebrow-line {
-    width: 60px;
+    width: 40px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
 }
 
-.eyebrow-text {
-    font-size: 14px;
+.content-eyebrow span:not(.eyebrow-line) {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 4px;
     font-weight: 400;
-    font-style: italic;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 3px;
 }
 
-.hero-main-title {
-    margin: 0 0 30px;
+@keyframes contentFade {
+    to { opacity: 1; }
 }
 
-.title-word {
+.content-title {
+    margin-bottom: 18px;
+}
+
+.title-line-1, .title-line-2 {
     display: block;
-    font-weight: 200;
-    letter-spacing: 15px;
+    font-weight: 300;
+    letter-spacing: 12px;
     text-transform: uppercase;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.4);
     opacity: 0;
+    transform: translateY(15px);
 }
 
-.title-word-1 {
-    font-size: 48px;
-    color: rgba(255,255,255,0.9);
-    animation: titleSlide 0.8s ease-out 0.8s forwards;
-}
-
-.title-word-2 {
-    font-size: 56px;
+.title-line-1 {
+    font-size: 28px;
     color: #fff;
-    margin-top: 5px;
-    animation: titleSlide 0.8s ease-out 1.1s forwards;
+    animation: titleSlideUp 0.4s ease-out 10.7s forwards;
 }
 
-@keyframes titleSlide {
-    from { opacity: 0; transform: translateY(20px); letter-spacing: 25px; }
-    to { opacity: 1; transform: translateY(0); letter-spacing: 15px; }
+.title-line-2 {
+    font-size: 38px;
+    background: linear-gradient(135deg, #fff 0%, #5a6677 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleSlideUp 0.4s ease-out 10.9s forwards;
 }
 
-.hero-main-desc {
+@keyframes titleSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content-desc {
     font-size: 15px;
-    line-height: 1.9;
-    color: rgba(255,255,255,0.8);
-    margin: 0 0 35px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 25px;
     opacity: 0;
-    animation: centerIn 0.8s ease-out 1.5s forwards;
+    animation: contentFade 0.4s ease-out 11.1s forwards;
 }
 
-.hero-cta-group {
+.content-buttons {
     display: flex;
-    justify-content: center;
     gap: 15px;
+    justify-content: center;
     opacity: 0;
-    animation: centerIn 0.8s ease-out 1.8s forwards;
+    animation: contentFade 0.4s ease-out 11.3s forwards;
 }
 
-.hero-cta-primary {
+.btn-main {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 16px 35px;
+    padding: 14px 28px;
     background: linear-gradient(135deg, #5a6677, #4a5567);
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
+    border-radius: 50px;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 50px;
-    border: none;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(90,102,119,0.4);
+    box-shadow: 0 8px 25px rgba(90,102,119,0.4);
 }
 
-.hero-cta-primary svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.3s ease;
-}
+.btn-main svg { width: 18px; height: 18px; }
 
-.hero-cta-primary:hover {
+.btn-main:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(90,102,119,0.5);
+    box-shadow: 0 12px 35px rgba(90,102,119,0.5);
 }
 
-.hero-cta-primary:hover svg {
-    transform: translateX(5px);
-}
-
-.hero-cta-secondary {
+.btn-outline {
     display: inline-flex;
     align-items: center;
-    padding: 16px 35px;
+    justify-content: center;
+    padding: 14px 28px;
     background: transparent;
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
+    border-radius: 50px;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 50px;
-    border: 2px solid rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.3);
     transition: all 0.3s ease;
 }
 
-.hero-cta-secondary:hover {
+.btn-outline:hover {
     background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.5);
     transform: translateY(-3px);
 }
 
-@keyframes showcaseIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes centerIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* RESPONSİVE TASARIM                                                         */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-
-@media (max-width: 1200px) {
-    .hero-left-showcase { left: 2%; width: 270px; padding: 25px 15px; }
-    .hero-center-content { left: 55%; }
-    .title-word-1 { font-size: 40px; }
-    .title-word-2 { font-size: 48px; }
-}
-
-@media (max-width: 1000px) {
-    .hero-left-showcase { display: none; }
-    .hero-center-content { left: 50%; max-width: 90%; }
-}
-
+/* ────────────────────────────────────────────────────────────────────────────── */
+/* RESPONSİVE                                                                       */
+/* ────────────────────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .title-word-1 { font-size: 32px; letter-spacing: 10px; }
-    .title-word-2 { font-size: 38px; letter-spacing: 10px; }
-    .hero-main-desc { font-size: 14px; }
-    .hero-cta-group { flex-direction: column; align-items: center; }
-    .hero-cta-primary, .hero-cta-secondary { width: 100%; max-width: 280px; justify-content: center; }
+    .tablet-frame { width: 94vw; padding: 8px; border-radius: 16px; }
+    .tablet-screen { border-radius: 5px; }
+    .tablet-camera { width: 5px; height: 5px; }
+    .tablet-top { padding: 3px 0 5px; }
+    .autocad-grid { background-size: 16px 16px; }
+    .msg-line1 { letter-spacing: 2px; font-size: 14px; }
+    .bp-cee { font-size: 30px; letter-spacing: 8px; }
+    .bp-mimarlik { font-size: 9px; letter-spacing: 5px; }
+    .blueprint-logo { top: 50%; }
+    .blueprint-message { top: 28%; }
+    .title-line-1 { font-size: 22px; letter-spacing: 6px; }
+    .title-line-2 { font-size: 30px; letter-spacing: 6px; }
+    .content-desc { font-size: 14px; }
+    .content-desc br { display: none; }
+    .content-buttons { flex-direction: column; align-items: center; }
+    .btn-main, .btn-outline { width: 100%; max-width: 260px; justify-content: center; }
+    .hero-main-content { bottom: 4%; }
+    .room-label { font-size: 7px; }
+    .check-text { font-size: 11px; }
 }
 
 @media (max-width: 500px) {
-    .title-word-1 { font-size: 26px; letter-spacing: 6px; }
-    .title-word-2 { font-size: 30px; letter-spacing: 6px; }
-    .eyebrow-text { font-size: 12px; letter-spacing: 2px; }
-    .hero-main-desc br { display: none; }
+    .tablet-frame { width: 96vw; padding: 6px; border-radius: 12px; }
+    .tablet-frame::before { display: none; }
+    .tablet-top { padding: 2px 0 4px; }
+    .autocad-grid { background-size: 14px 14px; }
+    .blueprint-message { top: 26%; }
+    .bp-cee { font-size: 24px; letter-spacing: 6px; }
+    .blueprint-logo { top: 46%; }
+    .title-line-1 { font-size: 18px; letter-spacing: 4px; }
+    .title-line-2 { font-size: 24px; letter-spacing: 4px; }
+    .room-label { font-size: 5px; }
+    .dim-text { font-size: 6px; }
+    .check-circle { r: 28; }
+    .check-text { font-size: 9px; }
+    .hero-main-content { bottom: 3%; }
 }
 </style>
 
@@ -7533,6 +7791,20 @@ function setupHero() {
     
     // Hero içeriğini localStorage'dan yükle
     loadHeroContent();
+    
+    // Favori proje showcase'ini doldur
+    setupProjectShowcase(slidesToUse);
+}
+
+function setupProjectShowcase(projects) {
+    const showcaseItems = document.querySelectorAll('.showcase-item');
+    if (!showcaseItems.length || !projects.length) return;
+    
+    projects.slice(0, 5).forEach((project, index) => {
+        if (showcaseItems[index] && project.img) {
+            showcaseItems[index].style.backgroundImage = `url(${project.img})`;
+        }
+    });
 }
 
 function loadHeroContent() {
