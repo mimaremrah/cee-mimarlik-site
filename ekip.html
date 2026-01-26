@@ -11,95 +11,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #1a1a2e;
-            --accent: #d4af37;
-            --accent-hover: #b8962e;
+            --primary: #5a6677;
+            --accent: #c9a227;
             --text: #2d3748;
-            --secondary: #718096;
+            --text-light: #718096;
             --bg: #ffffff;
-            --bg-alt: #f7f8fa;
+            --bg-alt: #f8f9fa;
             --card-bg: #ffffff;
             --border: #e2e8f0;
         }
-
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
-            overflow-x: hidden;
         }
-
+        
         body.dark-mode {
-            --primary: #0f0f1a;
+            --primary: #6b7a8a;
             --text: #e2e8f0;
-            --secondary: #a0aec0;
+            --text-light: #a0aec0;
             --bg: #1a1a2e;
             --bg-alt: #252542;
             --card-bg: #2d2d44;
             --border: #3d3d5c;
         }
-
-        /* Header */
+        
+        /* HEADER */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: var(--bg);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
         }
-
+        
+        body.dark-mode header { background: rgba(26,26,46,0.95); }
+        
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
-            height: 85px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: 4px;
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
         }
-
-        nav {
-            display: flex;
-            gap: 40px;
+        
+        .logo-wrapper img { height: 45px; width: auto; }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 3px;
+            text-decoration: none;
         }
-
+        
+        nav { display: flex; gap: 35px; }
+        
         nav a {
             color: var(--text);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            padding: 10px 0;
+            padding: 8px 0;
             position: relative;
             transition: color 0.3s ease;
         }
-
-        nav a:hover, nav a.active {
-            color: var(--accent);
-        }
-
+        
+        nav a:hover, nav a.active { color: var(--primary); }
+        
         nav a::after {
             content: '';
             position: absolute;
@@ -107,187 +106,233 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--primary);
             transition: width 0.3s ease;
         }
-
-        nav a:hover::after, nav a.active::after {
-            width: 100%;
+        
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+        
+        .dark-toggle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
-
-        /* Hero Section */
+        
+        .dark-toggle:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        /* PAGE HERO */
         .page-hero {
-            margin-top: 85px;
-            padding: 100px 5%;
-            background: linear-gradient(135deg, var(--primary) 0%, #2d2d44 100%);
+            padding: 160px 5% 80px;
+            background: var(--bg-alt);
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
-
+        
         .page-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding: 8px 20px;
+            background: rgba(90, 102, 119, 0.1);
+            border-radius: 30px;
+        }
+        
         .page-hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 700;
-            color: white;
+            color: var(--text);
             margin-bottom: 20px;
-            position: relative;
         }
-
+        
         .page-hero p {
             font-size: 18px;
-            color: rgba(255,255,255,0.8);
+            color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
-            position: relative;
+            line-height: 1.8;
         }
-
-        /* Team Section */
-        .team-section {
-            padding: 100px 5%;
-            background: var(--bg-alt);
-        }
-
-        .team-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        
+        /* TEAM SECTION */
+        .team-section { padding: 100px 5%; background: var(--bg); }
+        .team-container { max-width: 1400px; margin: 0 auto; }
+        
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 40px;
-            justify-content: center;
         }
-
+        
         .team-card {
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
-            max-width: 400px;
+            transition: all 0.4s ease;
         }
-
+        
         .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
-
+        
         .team-photo-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 120%; /* 5:6 aspect ratio - dikey fotoğraf için */
+            height: 350px;
             overflow: hidden;
-            background: #f0f0f0;
+            background: linear-gradient(135deg, var(--bg-alt) 0%, var(--border) 100%);
         }
-
+        
         .team-photo {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center top;
             transition: transform 0.5s ease;
         }
-
-        .team-card:hover .team-photo {
-            transform: scale(1.05);
-        }
-
-        .team-info {
-            padding: 35px;
-        }
-
+        
+        .team-card:hover .team-photo { transform: scale(1.05); }
+        
+        .team-info { padding: 35px; }
+        
         .team-name {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 8px;
         }
-
+        
         .team-role {
-            font-size: 13px;
-            color: var(--accent);
+            display: inline-block;
+            font-size: 12px;
+            color: var(--primary);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 20px;
-            display: inline-block;
-            padding: 6px 12px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 4px;
+            padding: 6px 14px;
+            background: rgba(90, 102, 119, 0.1);
+            border-radius: 20px;
         }
-
+        
         .team-bio {
             font-size: 15px;
-            color: var(--secondary);
+            color: var(--text-light);
             line-height: 1.9;
             margin-bottom: 25px;
         }
-
+        
         .team-details {
             border-top: 1px solid var(--border);
             padding-top: 25px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
-
-        .detail-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
+        
+        .detail-item { display: flex; align-items: flex-start; gap: 12px; }
+        
         .detail-icon {
-            font-size: 16px;
-            width: 24px;
-            text-align: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
         }
-
-        .detail-content {
-            flex: 1;
-        }
-
+        
+        .detail-content { flex: 1; }
+        
         .detail-label {
             font-size: 11px;
-            color: var(--secondary);
+            color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
-
-        .detail-value {
-            font-size: 14px;
-            color: var(--text);
+        
+        .detail-value { font-size: 14px; color: var(--text); font-weight: 600; }
+        
+        .team-skills {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .skills-label {
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        
+        .skill-tag {
+            padding: 6px 14px;
+            background: var(--bg-alt);
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 500;
+            color: var(--text);
+            border: 1px solid var(--border);
         }
-
-        .team-social {
+        
+        .team-contact {
             display: flex;
             gap: 12px;
             margin-top: 25px;
             padding-top: 20px;
             border-top: 1px solid var(--border);
         }
-
-        .social-link {
+        
+        .contact-link {
             width: 44px;
             height: 44px;
             border-radius: 12px;
@@ -300,20 +345,20 @@
             transition: all 0.3s ease;
             border: 1px solid var(--border);
         }
-
-        .social-link:hover {
-            background: var(--accent);
-            border-color: var(--accent);
+        
+        .contact-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
             transform: translateY(-3px);
         }
-
-        /* Footer */
+        
+        /* FOOTER */
         footer {
-            background: var(--primary);
+            background: #1a1a2e;
             color: white;
             padding: 60px 5%;
         }
-
+        
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -323,77 +368,38 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-
+        
         .footer-logo {
             font-family: 'Playfair Display', serif;
             font-size: 24px;
             font-weight: 700;
             letter-spacing: 3px;
         }
-
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        
+        .footer-links { display: flex; gap: 30px; }
+        
         .footer-links a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s;
         }
-
-        .footer-links a:hover {
-            color: var(--accent);
+        
+        .footer-links a:hover { color: var(--accent); }
+        
+        .footer-copy { color: rgba(255,255,255,0.5); font-size: 13px; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
         }
-
-        .footer-copy {
-            color: rgba(255,255,255,0.5);
-            font-size: 13px;
-        }
-
-        /* Dark Mode Toggle */
-        .dark-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .dark-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text);
-        }
-
-        /* Responsive */
+        
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
+            .menu-toggle { display: block; }
             nav {
                 display: none;
                 position: absolute;
-                top: 85px;
+                top: 80px;
                 left: 0;
                 right: 0;
                 background: var(--bg);
@@ -402,102 +408,79 @@
                 gap: 0;
                 border-bottom: 1px solid var(--border);
             }
-
-            nav.active {
-                display: flex;
-            }
-
-            nav a {
-                padding: 15px 0;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .page-hero h1 {
-                font-size: 36px;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-details {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
+            nav.active { display: flex; }
+            nav a { padding: 15px 0; border-bottom: 1px solid var(--border); }
+            .page-hero h1 { font-size: 36px; }
+            .page-hero p { font-size: 16px; }
+            .team-details { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
-
+        
         .empty-state {
             text-align: center;
-            padding: 80px 20px;
-            color: var(--secondary);
+            padding: 100px 20px;
+            color: var(--text-light);
         }
-
-        .empty-state-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
+        
+        .empty-state-icon { font-size: 80px; margin-bottom: 20px; opacity: 0.5; }
+        .empty-state h3 { font-size: 24px; margin-bottom: 10px; color: var(--text); }
     </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
     <div class="header-content">
-        <a href="index.html" class="logo-text">CEE</a>
-        <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        <a href="index.html" class="logo-wrapper">
+            <img src="" alt="CEE Mimarlık" id="siteLogo" style="display:none; height: 45px; width: auto;">
+            <span class="logo-text" id="siteTitle">CEE</span>
+        </a>
         <nav id="mainNav">
             <a href="index.html">Ana Sayfa</a>
             <a href="index.html#projeler">Projeler</a>
-            <a href="index.html#hakkimizda">Hakkımızda</a>
-            <a href="ekip.html" class="active">Ekibimiz</a>
             <a href="index.html#hizmetler">Hizmetler</a>
+            <a href="index.html#hakkimizda">Hakkımızda</a>
+            <a href="ekip.html" class="active">Ekip</a>
             <a href="index.html#iletisim">İletişim</a>
         </nav>
+        <div class="header-actions">
+            <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
     </div>
 </header>
 
-<!-- Hero -->
 <section class="page-hero">
-    <h1>Uzman Kadromuz</h1>
-    <p>Deneyimli ve tutkulu ekibimizle hayallerinizi gerçeğe dönüştürüyoruz</p>
+    <div class="page-hero-content">
+        <div class="page-label">Profesyonel Ekibimiz</div>
+        <h1>Uzman Kadromuz</h1>
+        <p>20 yılı aşkın tecrübemizle projelerinizi hayata geçiren deneyimli mimarlarımız ve uzman ekibimizle tanışın.</p>
+    </div>
 </section>
 
-<!-- Team Section -->
 <section class="team-section">
     <div class="team-container">
         <div class="team-grid" id="teamGrid"></div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-logo">CEE MİMARLIK</div>
-        <div class="footer-links">
-            <a href="index.html">Ana Sayfa</a>
-            <a href="index.html#projeler">Projeler</a>
-            <a href="index.html#hakkimizda">Hakkımızda</a>
-            <a href="index.html#iletisim">İletişim</a>
-        </div>
-        <div class="footer-copy">© 2024 CEE Mimarlık. Tüm hakları saklıdır.</div>
+<footer style="background: var(--bg-alt); padding: 40px 5%; border-top: 1px solid var(--border);">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="margin: 0; color: var(--text-light); font-size: 14px;">
+            © <span id="footerYear">2024</span> <span style="font-weight: 600; color: var(--text);" id="footerCompany">CEE MİMARLIK</span> Tüm hakları saklıdır.
+        </p>
     </div>
 </footer>
 
-<button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
-
 <script>
-function toggleMobileMenu() {
-    document.getElementById('mainNav').classList.toggle('active');
-}
-
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+}
+
+function toggleMenu() {
+    document.getElementById('mainNav').classList.toggle('active');
 }
 
 if (localStorage.getItem('darkMode') === 'true') {
@@ -505,22 +488,21 @@ if (localStorage.getItem('darkMode') === 'true') {
     document.querySelector('.dark-toggle').textContent = '☀️';
 }
 
-const defaultTeam = [
-    {
-        id: '1',
-        name: 'Emrah İpek',
-        role: 'Baş Mimar',
-        photo: '',
-        bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım. Yetenekler: AutoCAD, Revit, SketchUp, Photoshop | 3D Modelleme | Uygulama Projesi | Şantiye Takibi',
-        education: 'Kırklareli Üniversitesi',
-        experience: '15 Yıl',
-        projects: '100+ Proje',
-        expertise: 'Mimari',
-        email: 'ceemimarlik@gmail.com'
-    }
-];
+const defaultTeam = [{
+    id: '1',
+    name: 'Emrah İpek',
+    role: 'Kurucu & Baş Mimar',
+    photo: '',
+    bio: 'CEE Mimarlık\'ın kurucusu olarak 15 yılı aşkın sektör deneyimine sahibim. Konut, villa, apartman, ofis ve ticari yapılar başta olmak üzere 100\'den fazla projeyi başarıyla tamamladım. Yaratıcı ve çözüm odaklı yaklaşımımla, müşterilerimizin hayallerini gerçeğe dönüştürmeyi hedefliyorum. Konsept geliştirmeden uygulama projesine, şantiye koordinasyonundan teslimata kadar tüm süreçlerde titizlikle çalışıyorum.',
+    education: 'Kırklareli Üniversitesi - Mimarlık',
+    experience: '15+ Yıl',
+    projects: '100+ Proje',
+    expertise: 'Mimari Tasarım & Proje Yönetimi',
+    skills: ['AutoCAD', 'Revit', 'SketchUp', '3D Max', 'Photoshop', 'Lumion', 'Uygulama Projesi', 'Şantiye Yönetimi'],
+    email: 'ceemimarlik@gmail.com'
+}];
 
-const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
+const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ccircle cx='200' cy='140' r='60' fill='%23ccc'/%3E%3Cellipse cx='200' cy='320' rx='100' ry='80' fill='%23ccc'/%3E%3C/svg%3E";
 
 function loadTeam() {
     const grid = document.getElementById('teamGrid');
@@ -531,83 +513,116 @@ function loadTeam() {
         try {
             const parsed = JSON.parse(savedTeam);
             team = parsed.length > 0 ? parsed : defaultTeam;
-        } catch (e) {
-            team = defaultTeam;
-        }
+        } catch (e) { team = defaultTeam; }
     } else {
         team = defaultTeam;
         localStorage.setItem('team_members', JSON.stringify(defaultTeam));
     }
     
     if (team.length === 0) {
-        grid.innerHTML = `
-            <div class="empty-state" style="grid-column: 1/-1;">
-                <div class="empty-state-icon">👥</div>
-                <h3>Henüz ekip üyesi eklenmedi</h3>
-                <p>Admin panelden ekip üyesi ekleyebilirsiniz</p>
-            </div>
-        `;
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">👥</div><h3>Henüz ekip üyesi eklenmedi</h3><p>Admin panelden ekip üyesi ekleyebilirsiniz</p></div>';
         return;
     }
     
-    grid.innerHTML = team.map(member => `
+    grid.innerHTML = team.map(m => `
         <div class="team-card">
             <div class="team-photo-wrapper">
-                <img src="${member.photo || placeholderPhoto}" alt="${member.name}" class="team-photo" onerror="this.src='${placeholderPhoto}'">
+                <img src="${m.photo || placeholderPhoto}" alt="${m.name}" class="team-photo" onerror="this.src='${placeholderPhoto}'">
             </div>
             <div class="team-info">
-                <h2 class="team-name">${member.name}</h2>
-                <div class="team-role">${member.role || member.title || ''}</div>
-                <p class="team-bio">${member.bio || member.description || 'Deneyimli ekip üyemiz.'}</p>
+                <h2 class="team-name">${m.name}</h2>
+                <div class="team-role">${m.role || m.title || ''}</div>
+                <p class="team-bio">${m.bio || m.description || 'Deneyimli ekip üyemiz.'}</p>
                 
                 <div class="team-details">
-                    ${member.education ? `
-                    <div class="detail-item">
-                        <span class="detail-icon">🎓</span>
-                        <div class="detail-content">
-                            <div class="detail-label">Eğitim</div>
-                            <div class="detail-value">${member.education}</div>
-                        </div>
-                    </div>` : ''}
-                    
-                    ${member.experience ? `
-                    <div class="detail-item">
-                        <span class="detail-icon">⏱️</span>
-                        <div class="detail-content">
-                            <div class="detail-label">Deneyim</div>
-                            <div class="detail-value">${member.experience}</div>
-                        </div>
-                    </div>` : ''}
-                    
-                    ${member.projects ? `
-                    <div class="detail-item">
-                        <span class="detail-icon">🏗️</span>
-                        <div class="detail-content">
-                            <div class="detail-label">Projeler</div>
-                            <div class="detail-value">${member.projects}</div>
-                        </div>
-                    </div>` : ''}
-                    
-                    ${member.expertise ? `
-                    <div class="detail-item">
-                        <span class="detail-icon">⭐</span>
-                        <div class="detail-content">
-                            <div class="detail-label">Uzmanlık</div>
-                            <div class="detail-value">${member.expertise}</div>
-                        </div>
-                    </div>` : ''}
+                    ${m.education ? `<div class="detail-item"><div class="detail-icon">🎓</div><div class="detail-content"><div class="detail-label">Eğitim</div><div class="detail-value">${m.education}</div></div></div>` : ''}
+                    ${m.experience ? `<div class="detail-item"><div class="detail-icon">⏱️</div><div class="detail-content"><div class="detail-label">Deneyim</div><div class="detail-value">${m.experience}</div></div></div>` : ''}
+                    ${m.projects ? `<div class="detail-item"><div class="detail-icon">🏗️</div><div class="detail-content"><div class="detail-label">Tamamlanan Proje</div><div class="detail-value">${m.projects}</div></div></div>` : ''}
+                    ${m.expertise ? `<div class="detail-item"><div class="detail-icon">⭐</div><div class="detail-content"><div class="detail-label">Uzmanlık Alanı</div><div class="detail-value">${m.expertise}</div></div></div>` : ''}
                 </div>
                 
-                ${member.email ? `
-                <div class="team-social">
-                    <a href="mailto:${member.email}" class="social-link" title="E-posta">📧</a>
+                ${m.skills && m.skills.length > 0 ? `
+                <div class="team-skills">
+                    <div class="skills-label">Yetenekler & Araçlar</div>
+                    <div class="skills-list">${m.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>
                 </div>` : ''}
+                
+                ${m.email ? `<div class="team-contact"><a href="mailto:${m.email}" class="contact-link" title="E-posta">📧</a></div>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-document.addEventListener('DOMContentLoaded', loadTeam);
+document.addEventListener('DOMContentLoaded', function() {
+    loadTeam();
+    loadSiteSettings();
+    loadFooterSettings();
+    loadMenuItems();
+});
+
+// Site ayarlarını yükle (logo, başlık)
+function loadSiteSettings() {
+    // Logo
+    const siteLogo = localStorage.getItem('site_logo');
+    const logoEl = document.getElementById('siteLogo');
+    const logoText = document.getElementById('siteTitle');
+    
+    if (siteLogo && logoEl) {
+        logoEl.src = siteLogo;
+        logoEl.style.display = 'block';
+        // Logo varsa yazıyı gizle
+        if (logoText) logoText.style.display = 'none';
+    } else {
+        // Logo yoksa yazıyı göster
+        if (logoText) logoText.style.display = 'block';
+    }
+    
+    // Site başlığı (footer'daki şirket adından al)
+    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
+    if (footerSettings.company && logoText) {
+        const firstWord = footerSettings.company.split(' ')[0];
+        logoText.textContent = firstWord;
+    }
+}
+
+// Footer ayarlarını yükle
+function loadFooterSettings() {
+    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
+    
+    if (footerSettings.year) {
+        const yearEl = document.getElementById('footerYear');
+        if (yearEl) yearEl.textContent = footerSettings.year;
+    }
+    
+    if (footerSettings.company) {
+        const companyEl = document.getElementById('footerCompany');
+        if (companyEl) companyEl.textContent = footerSettings.company;
+    }
+}
+
+// Menü öğelerini yükle
+function loadMenuItems() {
+    const saved = localStorage.getItem('cee_menu_items');
+    if (!saved) return;
+    
+    try {
+        const menuItems = JSON.parse(saved);
+        const nav = document.getElementById('mainNav');
+        if (!nav || !menuItems.length) return;
+        
+        // Sadece aktif menü öğelerini göster
+        const activeItems = menuItems.filter(item => item.active);
+        
+        nav.innerHTML = activeItems.map(item => {
+            // Ekip sayfasındaysak ekip linkini aktif yap
+            const isActive = item.link === 'ekip.html' || item.link.includes('ekip');
+            const href = item.link.startsWith('#') ? 'index.html' + item.link : item.link;
+            return `<a href="${href}" ${isActive ? 'class="active"' : ''}>${item.name}</a>`;
+        }).join('');
+    } catch (e) {
+        console.log('Menü yüklenemedi');
+    }
+}
 </script>
 
 </body>

@@ -264,7 +264,12 @@ a{color:inherit;text-decoration:none}
         /* PROJECTS */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
 
-        .project-card { background: var(--bg-dark); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); transition: all 0.2s; }
+        .project-card { background: var(--bg-dark); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); transition: all 0.2s; position: relative; }
+        .project-card.featured { border-color: #f59e0b; }
+        .featured-badge { position: absolute; top: 10px; left: 10px; background: #f59e0b; color: white; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; z-index: 5; }
+        .context-menu { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); overflow: hidden; min-width: 180px; }
+        .context-menu-item { padding: 12px 16px; cursor: pointer; transition: all 0.15s; font-size: 13px; }
+        .context-menu-item:hover { background: var(--primary); color: white; }
         .project-card:hover { border-color: var(--primary); transform: translateY(-2px); }
         .project-img { width: 100%; height: 120px; object-fit: cover; }
         .project-info { padding: 12px; }
@@ -423,7 +428,7 @@ a{color:inherit;text-decoration:none}
             </nav>
 
             <div class="sidebar-footer">
-                <a href="index.html" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">👁️ Siteyi Görüntüle</a>
+                <a href="index.html?from=admin" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">👁️ Siteyi Görüntüle</a>
                 <div class="user-box">
                     <div class="user-avatar">A</div>
                     <div style="flex:1;">
@@ -445,7 +450,7 @@ a{color:inherit;text-decoration:none}
                         <p class="page-subtitle">Site özeti ve hızlı işlemler</p>
                     </div>
                     <div class="header-actions">
-                        <a href="index.html" target="_blank" class="btn btn-secondary">👁️ Siteyi Gör</a>
+                        <a href="index.html?from=admin" target="_blank" class="btn btn-secondary">👁️ Siteyi Gör</a>
                     </div>
                 </div>
 
@@ -805,12 +810,23 @@ a{color:inherit;text-decoration:none}
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Yıl</label>
-                                <input type="number" class="form-input" id="footerYear" value="2026">
+                                <input type="number" class="form-input" id="footerYear" value="2024">
                             </div>
                             <button class="btn btn-primary" onclick="saveFooter()">💾 Kaydet</button>
                         </div>
                     </div>
 
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">🔗 Menü Yönetimi</span></div>
+                        <div class="card-body">
+                            <div id="menuItemsList" style="margin-bottom: 15px;"></div>
+                            <button class="btn btn-secondary btn-sm" onclick="addMenuItem()" style="width: 100%;">➕ Menü Öğesi Ekle</button>
+                            <button class="btn btn-primary" onclick="saveMenuItems()" style="width: 100%; margin-top: 10px;">💾 Menüyü Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
                     <div class="card">
                         <div class="card-header"><span class="card-title">🎨 Renk Ayarları</span></div>
                         <div class="card-body">
@@ -1048,7 +1064,7 @@ a{color:inherit;text-decoration:none}
         team = JSON.parse(localStorage.getItem('cee_team') || '[]'); renderTeam();
         faqs = JSON.parse(localStorage.getItem('cee_faqs') || '[]'); renderFaqs();
         heroImages = JSON.parse(localStorage.getItem('hero_images') || '[]'); renderHeroImages();
-        loadMessages(); loadHero(); loadContact(); loadSettings(); loadLogo(); updateStats();
+        loadMessages(); loadHero(); loadContact(); loadSettings(); loadLogo(); loadMenuItems(); updateStats();
     }
 
     function updateStats() {
@@ -1067,7 +1083,50 @@ a{color:inherit;text-decoration:none}
     function renderProjects() {
         const grid = document.getElementById('projectGrid');
         if (projects.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🏗️</div><div class="empty-text">Henüz proje yok</div></div>'; return; }
-        grid.innerHTML = projects.map((p, i) => `<div class="project-card"><img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img"><div class="project-info"><div class="project-title">${p.title || 'İsimsiz'}</div><div class="project-meta">${p.category || 'Genel'}</div></div><div class="project-actions"><button onclick="editProject(${i})">✏️</button><button onclick="deleteProject(${i})">🗑️</button></div></div>`).join('');
+        grid.innerHTML = projects.map((p, i) => `
+            <div class="project-card" oncontextmenu="showProjectMenu(event, ${i})" data-index="${i}">
+                ${p.featured ? '<div class="featured-badge">⭐ Öne Çıkan</div>' : ''}
+                <img src="${p.img || 'https://via.placeholder.com/300x200?text=Proje'}" class="project-img">
+                <div class="project-info">
+                    <div class="project-title">${p.title || 'İsimsiz'}</div>
+                    <div class="project-meta">${p.category || 'Genel'}</div>
+                </div>
+                <div class="project-actions">
+                    <button onclick="toggleFeatured(${i})" title="${p.featured ? 'Öne çıkarmayı kaldır' : 'Öne çıkar'}">${p.featured ? '⭐' : '☆'}</button>
+                    <button onclick="editProject(${i})">✏️</button>
+                    <button onclick="deleteProject(${i})">🗑️</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Sağ tık menüsü
+    function showProjectMenu(e, i) {
+        e.preventDefault();
+        const existingMenu = document.getElementById('projectContextMenu');
+        if (existingMenu) existingMenu.remove();
+        
+        const p = projects[i];
+        const menu = document.createElement('div');
+        menu.id = 'projectContextMenu';
+        menu.className = 'context-menu';
+        menu.innerHTML = `
+            <div class="context-menu-item" onclick="toggleFeatured(${i})">${p.featured ? '☆ Öne Çıkarmayı Kaldır' : '⭐ Öne Çıkar'}</div>
+            <div class="context-menu-item" onclick="editProject(${i})">✏️ Düzenle</div>
+            <div class="context-menu-item" onclick="deleteProject(${i})">🗑️ Sil</div>
+        `;
+        menu.style.cssText = `position:fixed;top:${e.clientY}px;left:${e.clientX}px;z-index:10000;`;
+        document.body.appendChild(menu);
+        
+        document.addEventListener('click', () => menu.remove(), { once: true });
+    }
+    
+    // Öne çıkarma toggle
+    function toggleFeatured(i) {
+        projects[i].featured = !projects[i].featured;
+        localStorage.setItem('cee_projects', JSON.stringify(projects));
+        renderProjects();
+        toast(projects[i].featured ? 'Proje öne çıkarıldı' : 'Öne çıkarma kaldırıldı', 'success');
     }
 
     function uploadProjects(input) {
@@ -1123,8 +1182,60 @@ a{color:inherit;text-decoration:none}
         if (team.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Ekip üyesi yok</div></div>'; return; }
         el.innerHTML = team.map((t, i) => `<div class="list-item"><div class="list-item-icon">👤</div><div class="list-item-content"><div class="list-item-title">${t.name}</div><div class="list-item-subtitle">${t.role}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editTeamMember(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('team',${i})">🗑️</button></div></div>`).join('');
     }
-    function addTeamMember() { const name = prompt('İsim:', ''); const role = prompt('Pozisyon:', ''); if (name) { team.push({ name, role }); renderTeam(); toast('Eklendi', 'success'); } }
-    function editTeamMember(i) { const t = team[i]; const name = prompt('İsim:', t.name); const role = prompt('Pozisyon:', t.role); if (name) { team[i] = { ...t, name, role }; renderTeam(); toast('Güncellendi', 'success'); } }
+    function addTeamMember() { 
+        const name = prompt('İsim:', ''); 
+        if (!name) return;
+        const role = prompt('Pozisyon:', '');
+        const bio = prompt('Özgeçmiş (detaylı):', '');
+        const education = prompt('Eğitim:', '');
+        const experience = prompt('Deneyim (örn: 15+ Yıl):', '');
+        const projects = prompt('Tamamlanan Proje (örn: 100+ Proje):', '');
+        const expertise = prompt('Uzmanlık Alanı:', '');
+        const skills = prompt('Yetenekler (virgülle ayırın):', '');
+        const email = prompt('E-posta:', '');
+        
+        team.push({ 
+            name, 
+            role, 
+            bio,
+            education,
+            experience,
+            projects,
+            expertise,
+            skills: skills ? skills.split(',').map(s => s.trim()) : [],
+            email
+        }); 
+        renderTeam(); 
+        toast('Ekip üyesi eklendi', 'success'); 
+    }
+    function editTeamMember(i) { 
+        const t = team[i]; 
+        const name = prompt('İsim:', t.name); 
+        if (!name) return;
+        const role = prompt('Pozisyon:', t.role || '');
+        const bio = prompt('Özgeçmiş:', t.bio || '');
+        const education = prompt('Eğitim:', t.education || '');
+        const experience = prompt('Deneyim:', t.experience || '');
+        const projects = prompt('Tamamlanan Proje:', t.projects || '');
+        const expertise = prompt('Uzmanlık Alanı:', t.expertise || '');
+        const skills = prompt('Yetenekler (virgülle ayırın):', t.skills ? t.skills.join(', ') : '');
+        const email = prompt('E-posta:', t.email || '');
+        
+        team[i] = { 
+            ...t, 
+            name, 
+            role,
+            bio,
+            education,
+            experience,
+            projects,
+            expertise,
+            skills: skills ? skills.split(',').map(s => s.trim()) : [],
+            email
+        }; 
+        renderTeam(); 
+        toast('Güncellendi', 'success'); 
+    }
     function saveTeam() { localStorage.setItem('cee_team', JSON.stringify(team)); toast('Kaydedildi', 'success'); }
 
     // FAQ
@@ -1223,6 +1334,66 @@ a{color:inherit;text-decoration:none}
     }
     
     function saveFooter() { localStorage.setItem('cee_footer_settings', JSON.stringify({ company: document.getElementById('footerCompany').value, year: document.getElementById('footerYear').value })); toast('Kaydedildi', 'success'); }
+    
+    // MENÜ YÖNETİMİ
+    let menuItems = [];
+    const defaultMenuItems = [
+        { name: 'Ana Sayfa', link: '#hero', active: true },
+        { name: 'Projeler', link: '#projeler', active: true },
+        { name: 'Hizmetler', link: '#hizmetler', active: true },
+        { name: 'Hakkımızda', link: '#hakkimizda', active: true },
+        { name: 'Ekip', link: 'ekip.html', active: true },
+        { name: 'İletişim', link: '#iletisim', active: true }
+    ];
+    
+    function loadMenuItems() {
+        const saved = localStorage.getItem('cee_menu_items');
+        menuItems = saved ? JSON.parse(saved) : defaultMenuItems;
+        renderMenuItems();
+    }
+    
+    function renderMenuItems() {
+        const container = document.getElementById('menuItemsList');
+        if (!container) return;
+        
+        if (menuItems.length === 0) {
+            container.innerHTML = '<div style="text-align:center; color: var(--text-secondary); padding: 20px;">Menü öğesi yok</div>';
+            return;
+        }
+        
+        container.innerHTML = menuItems.map((item, i) => `
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--bg-darker); border-radius: 8px; margin-bottom: 8px;">
+                <input type="checkbox" ${item.active ? 'checked' : ''} onchange="toggleMenuItem(${i})" style="width: 18px; height: 18px;">
+                <input type="text" value="${item.name}" onchange="updateMenuItemName(${i}, this.value)" style="flex: 1; padding: 8px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); font-size: 13px;">
+                <input type="text" value="${item.link}" onchange="updateMenuItemLink(${i}, this.value)" style="flex: 1; padding: 8px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 4px; color: var(--text-secondary); font-size: 12px;" placeholder="#section veya sayfa.html">
+                <button onclick="moveMenuItem(${i}, -1)" style="padding: 6px 10px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 4px; cursor: pointer;" title="Yukarı">↑</button>
+                <button onclick="moveMenuItem(${i}, 1)" style="padding: 6px 10px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 4px; cursor: pointer;" title="Aşağı">↓</button>
+                <button onclick="deleteMenuItem(${i})" style="padding: 6px 10px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">🗑️</button>
+            </div>
+        `).join('');
+    }
+    
+    function addMenuItem() {
+        menuItems.push({ name: 'Yeni Sayfa', link: '#', active: true });
+        renderMenuItems();
+    }
+    
+    function toggleMenuItem(i) { menuItems[i].active = !menuItems[i].active; }
+    function updateMenuItemName(i, val) { menuItems[i].name = val; }
+    function updateMenuItemLink(i, val) { menuItems[i].link = val; }
+    function deleteMenuItem(i) { menuItems.splice(i, 1); renderMenuItems(); }
+    
+    function moveMenuItem(i, dir) {
+        const newIndex = i + dir;
+        if (newIndex < 0 || newIndex >= menuItems.length) return;
+        [menuItems[i], menuItems[newIndex]] = [menuItems[newIndex], menuItems[i]];
+        renderMenuItems();
+    }
+    
+    function saveMenuItems() {
+        localStorage.setItem('cee_menu_items', JSON.stringify(menuItems));
+        toast('Menü kaydedildi', 'success');
+    }
     function saveSocial() { localStorage.setItem('social_links', JSON.stringify({ instagram: document.getElementById('socialIg').value, twitter: document.getElementById('socialTw').value, linkedin: document.getElementById('socialLi').value, youtube: document.getElementById('socialYt').value })); toast('Kaydedildi', 'success'); }
     function saveColors() { 
         localStorage.setItem('color_settings', JSON.stringify({ 

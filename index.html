@@ -6284,11 +6284,10 @@ function loadServicesSection() {
     
     grid.innerHTML = services.map((s, i) => `
         <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 16px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
-            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 25px;">
+            <div style="display: flex; align-items: flex-start; margin-bottom: 25px;">
                 <div style="width: ${iconSize}px; height: ${iconSize}px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: #333;" class="service-icon-v2">
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
-                <span style="font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.06); line-height: 1;">${String(i + 1).padStart(2, '0')}</span>
             </div>
             <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
             <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
@@ -6316,6 +6315,29 @@ document.addEventListener('DOMContentLoaded', loadServicesSection);
 }
 .service-card-v2:hover .service-icon-v2 svg {
     stroke: white;
+}
+
+/* Dark Mode için Service Card */
+body.dark-mode .service-card-v2 {
+    background: #1e1e2e !important;
+    border-color: #333 !important;
+}
+body.dark-mode .service-card-v2 h3 {
+    color: #e2e8f0 !important;
+}
+body.dark-mode .service-card-v2 p {
+    color: #94a3b8 !important;
+}
+body.dark-mode .service-card-v2 .service-icon-v2 {
+    background: #2d2d44 !important;
+    color: #94a3b8 !important;
+}
+body.dark-mode .service-card-v2:hover .service-icon-v2 {
+    background: #5a6677 !important;
+    color: white !important;
+}
+body.dark-mode #hizmetler {
+    background: #151520 !important;
 }
 @media (max-width: 1024px) {
     #hizmetler > div > div:last-child {
@@ -6764,6 +6786,45 @@ function loadContactInfo() {
 
 // Sayfa yüklendiğinde iletişim bilgilerini yükle
 document.addEventListener('DOMContentLoaded', loadContactInfo);
+
+// Menü öğelerini localStorage'dan yükle
+document.addEventListener('DOMContentLoaded', function() {
+    const saved = localStorage.getItem('cee_menu_items');
+    if (!saved) return; // Kayıtlı menü yoksa varsayılanı kullan
+    
+    try {
+        const menuItems = JSON.parse(saved);
+        const nav = document.getElementById('mainNav');
+        if (!nav || !menuItems.length) return;
+        
+        // E-Hizmetler dropdown'unu kaydet (varsa)
+        const eHizmetler = nav.querySelector('.nav-dropdown');
+        const eHizmetlerHTML = eHizmetler ? eHizmetler.outerHTML : '';
+        
+        // Sadece aktif menü öğelerini göster
+        const activeItems = menuItems.filter(item => item.active);
+        
+        // İletişim'den önceki menü öğelerini oluştur
+        let menuHTML = activeItems.map(item => {
+            // E-Hizmetler veya İletişim değilse normal link oluştur
+            if (item.name.toLowerCase().includes('e-hizmet')) return '';
+            
+            const isExternal = item.link.includes('.html') && !item.link.includes('index');
+            return `<a href="${item.link}" ${isExternal ? '' : 'onclick="closeMobileMenu()"'}>${item.name}</a>`;
+        }).filter(Boolean).join('');
+        
+        // E-Hizmetler dropdown'unu İletişim'den önce ekle
+        if (eHizmetlerHTML && menuHTML.includes('İletişim')) {
+            menuHTML = menuHTML.replace(/<a href="#iletisim"/i, eHizmetlerHTML + '<a href="#iletisim"');
+        } else if (eHizmetlerHTML) {
+            menuHTML += eHizmetlerHTML;
+        }
+        
+        nav.innerHTML = menuHTML;
+    } catch (e) {
+        console.log('Menü yüklenemedi');
+    }
+});
 
 // Simge renklerini localStorage'dan yükle
 document.addEventListener('DOMContentLoaded', function() {
@@ -7553,7 +7614,7 @@ body.dark-mode .btn-secondary {
             <div style="display: flex; align-items: center; gap: 15px; justify-content: center;">
                 <img src="" id="footerLogo" class="site-logo" style="height: 50px; display: none;" alt="CEE Mimarlık">
                 <p class="footer-copyright" style="margin: 0; text-align: center; color: #1a1a1a;">
-                    © <span id="footerYear">2026</span> 
+                    © <span id="footerYear">2024</span> 
                     <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #1a1a1a; font-weight: 600;">CEE MİMARLIK</span> 
                     <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
                 </p>
@@ -11205,6 +11266,45 @@ document.addEventListener('DOMContentLoaded', loadSiteLogo);
     setTimeout(applyColors, 500);
     setTimeout(applyColors, 1000);
     setTimeout(applyColors, 2000);
+})();
+
+// Admin Panele Dön butonu
+(function() {
+    if (window.location.search.includes('from=admin') || sessionStorage.getItem('fromAdmin')) {
+        sessionStorage.setItem('fromAdmin', 'true');
+        
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '← Admin Panel';
+        adminBtn.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        `;
+        adminBtn.onmouseover = function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.boxShadow = '0 6px 25px rgba(0,0,0,0.4)';
+        };
+        adminBtn.onmouseout = function() {
+            this.style.transform = 'translateX(0)';
+            this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        };
+        
+        document.body.appendChild(adminBtn);
+    }
 })();
 </script>
 </body>
