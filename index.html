@@ -5316,7 +5316,7 @@ window.goToAdmin = goToAdmin;
 
 <!-- HERO SLIDER -->
 <section class="hero" id="anasayfa">
-    <div id="heroSlider"></div>
+    <div id="heroSlider" style="opacity: 0; visibility: hidden;"></div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <!-- BLUEPRINT ANİMASYONU - HAYALDEN GERÇEĞE                                 -->
@@ -5480,6 +5480,11 @@ window.goToAdmin = goToAdmin;
     z-index: 20;
     overflow: hidden;
     pointer-events: none;
+    animation: hideContainer 0.5s ease-out 4.5s forwards;
+}
+
+@keyframes hideContainer {
+    to { opacity: 0; visibility: hidden; }
 }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
@@ -5502,11 +5507,11 @@ window.goToAdmin = goToAdmin;
     height: 100%;
     background: #0a0a0a;
     z-index: 10;
-    animation: slideOutLeft 0.8s cubic-bezier(0.65, 0, 0.35, 1) 4s forwards;
+    animation: fadeOutLeft 0.5s ease-out 4.5s forwards;
 }
 
-@keyframes slideOutLeft {
-    to { transform: translateX(-100%); }
+@keyframes fadeOutLeft {
+    to { opacity: 0; visibility: hidden; }
 }
 
 .plan-bg {
@@ -5528,6 +5533,11 @@ window.goToAdmin = goToAdmin;
     width: 50%;
     height: 100%;
     z-index: 5;
+    animation: fadeOutRight 0.5s ease-out 4.5s forwards;
+}
+
+@keyframes fadeOutRight {
+    to { opacity: 0; visibility: hidden; }
 }
 
 
@@ -5582,7 +5592,7 @@ window.goToAdmin = goToAdmin;
     z-index: 15;
     opacity: 0;
     animation: lineAppear 0.3s ease-out 0.3s forwards,
-               lineDisappear 0.4s ease-out 3.8s forwards;
+               lineDisappear 0.3s ease-out 4.3s forwards;
 }
 
 /* DEKORATİF SİMGELER - Çizginin tam ortasında */
@@ -5598,7 +5608,7 @@ window.goToAdmin = goToAdmin;
     z-index: 26;
     opacity: 0;
     animation: lineAppear 0.3s ease-out 0.5s forwards,
-               lineDisappear 0.4s ease-out 3.8s forwards;
+               lineDisappear 0.3s ease-out 4.3s forwards;
 }
 
 /* Küçük elmaslar */
@@ -5729,7 +5739,7 @@ window.goToAdmin = goToAdmin;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 30;
-    animation: mergeContentFadeOut 0.5s ease-out 5.5s forwards;
+    animation: mergeContentFadeOut 0.5s ease-out 4.5s forwards;
 }
 
 @keyframes mergeContentFadeOut {
@@ -5831,7 +5841,7 @@ window.goToAdmin = goToAdmin;
     gap: 15px;
     margin-bottom: 15px;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 5.8s forwards;
+    animation: contentFade 0.4s ease-out 5s forwards;
 }
 
 .eyebrow-line {
@@ -5863,7 +5873,7 @@ window.goToAdmin = goToAdmin;
 .title-line-1 {
     font-size: 24px;
     color: #fff;
-    animation: titleSlideUp 0.4s ease-out 6s forwards;
+    animation: titleSlideUp 0.4s ease-out 5.2s forwards;
 }
 
 .title-line-2 {
@@ -5872,7 +5882,7 @@ window.goToAdmin = goToAdmin;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: titleSlideUp 0.4s ease-out 6.2s forwards;
+    animation: titleSlideUp 0.4s ease-out 5.4s forwards;
 }
 
 @keyframes titleSlideUp { to { opacity: 1; transform: translateY(0); } }
@@ -5883,7 +5893,7 @@ window.goToAdmin = goToAdmin;
     line-height: 1.7;
     margin-bottom: 20px;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 6.4s forwards;
+    animation: contentFade 0.4s ease-out 5.6s forwards;
 }
 
 .content-buttons {
@@ -5891,7 +5901,7 @@ window.goToAdmin = goToAdmin;
     gap: 15px;
     justify-content: center;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 6.6s forwards;
+    animation: contentFade 0.4s ease-out 5.8s forwards;
 }
 
 .btn-main {
@@ -7626,6 +7636,13 @@ function setupHero() {
 }
 
 function setupDiagonalSplit(projects) {
+    // Hero slider'ı baştan gizle - animasyon sırasında görünmesin
+    const heroSlider = document.getElementById('heroSlider');
+    if (heroSlider) {
+        heroSlider.style.opacity = '0';
+        heroSlider.style.visibility = 'hidden';
+    }
+    
     // Sağ taraftaki fotoğraflara ilk 4 favori projeyi ekle
     if (projects.length > 0) {
         for (let i = 0; i < 4; i++) {
@@ -7642,16 +7659,22 @@ function setupDiagonalSplit(projects) {
         const lastPhotoIndex = Math.min(3, projects.length - 1);
         const lastPhoto = projects[lastPhotoIndex];
         if (lastPhoto && lastPhoto.img) {
-            // Hero arka planını güncelle - diagonal kapandıktan sonra
-            setTimeout(() => {
-                const heroSection = document.querySelector('.hero');
-                if (heroSection) {
-                    heroSection.style.backgroundImage = `linear-gradient(to bottom, rgba(10,15,20,0.5), rgba(10,15,20,0.7)), url(${lastPhoto.img})`;
-                    heroSection.style.backgroundSize = 'cover';
-                    heroSection.style.backgroundPosition = 'center center';
-                    heroSection.style.backgroundRepeat = 'no-repeat';
-                }
-            }, 4800); // Diagonal kapandıktan sonra
+            // Hero section'a hemen arka plan ekle (animasyon bitince görünecek)
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.style.backgroundImage = `linear-gradient(to bottom, rgba(10,15,20,0.4), rgba(10,15,20,0.6)), url(${lastPhoto.img})`;
+                heroSection.style.backgroundSize = 'cover';
+                heroSection.style.backgroundPosition = 'center center';
+                heroSection.style.backgroundRepeat = 'no-repeat';
+            }
+            
+            // Auto-slide'ı durdur
+            if (typeof heroAutoSlide !== 'undefined') {
+                clearInterval(heroAutoSlide);
+            }
+            if (typeof heroProgressInterval !== 'undefined') {
+                clearInterval(heroProgressInterval);
+            }
         }
     }
 }
