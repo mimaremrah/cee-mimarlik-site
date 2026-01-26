@@ -3766,6 +3766,25 @@
             margin-top: 0;
             border-top: 1px solid #e5e7eb;
         }
+        
+        body.dark-mode footer {
+            background: #1a1a2e !important;
+            border-top-color: #333 !important;
+        }
+        
+        body.dark-mode .footer-copyright {
+            color: #94a3b8 !important;
+        }
+        
+        body.dark-mode .footer-social-bottom a {
+            background: #2d2d44 !important;
+            color: #94a3b8 !important;
+        }
+        
+        body.dark-mode .footer-social-bottom a:hover {
+            background: #5a6677 !important;
+            color: white !important;
+        }
 
         .footer-content {
             max-width: 1400px;
@@ -4961,6 +4980,17 @@
         --shadow-soft: 0 2px 20px rgba(0,0,0,0.03);
         --shadow-medium: 0 4px 30px rgba(0,0,0,0.06);
         --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* DARK MODE RENK PALETİ */
+    body.dark-mode {
+        --bg-primary: #1a1a2e !important;
+        --bg-secondary: #252542 !important;
+        --bg-accent: #1e1e30 !important;
+        --text-primary: #e2e8f0 !important;
+        --text-secondary: #94a3b8 !important;
+        --text-muted: #64748b !important;
+        --border-light: #3d3d5c !important;
     }
 
     /* TÜM SECTION'LAR - TEK RENK AKIŞI */
@@ -6201,8 +6231,8 @@ window.goToAdmin = goToAdmin;
 <!-- MİMARİ GEÇİŞ BANDI -->
 <div class="architect-divider" id="architectDivider" style="position: relative; height: 80px; background: linear-gradient(135deg, var(--divider-color, #5a6677) 0%, var(--divider-color-light, #6b7a8a) 50%, var(--divider-color, #5a6677) 100%); overflow: hidden;">
     <!-- Üst kenar - açılı beyaz -->
-    <svg viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 20px;">
-        <path d="M0,20 L0,0 L1440,0 L1440,20 L720,10 Z" fill="var(--bg-primary, #ffffff)"/>
+    <svg class="divider-top" viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 20px;">
+        <path d="M0,20 L0,0 L1440,0 L1440,20 L720,10 Z" fill="#ffffff"/>
     </svg>
     
     <!-- Merkez içerik -->
@@ -6217,13 +6247,23 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- Alt kenar - açılı gri -->
-    <svg viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20px;">
-        <path d="M0,0 L720,10 L1440,0 L1440,20 L0,20 Z" fill="var(--bg-secondary, #f8f9fa)"/>
+    <svg class="divider-bottom" viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20px;">
+        <path d="M0,0 L720,10 L1440,0 L1440,20 L0,20 Z" fill="#f8f9fa"/>
     </svg>
 </div>
 
+<style>
+/* Dark mode için divider renkleri */
+body.dark-mode .architect-divider .divider-top path {
+    fill: #1a1a2e !important;
+}
+body.dark-mode .architect-divider .divider-bottom path {
+    fill: #1e1e30 !important;
+}
+</style>
+
 <!-- HİZMETLER SECTION - Modern Minimalist -->
-<section id="hizmetler" style="padding: 80px 0; background: #f8f9fa;">
+<section id="hizmetler" style="padding: 80px 0;">
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
