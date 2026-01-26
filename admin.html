@@ -571,44 +571,13 @@ a{color:inherit;text-decoration:none}
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Ana Başlık (Büyük Yazı)</label>
-                            <input type="text" class="form-input" id="heroTitleLine1" value="CEE" placeholder="CEE">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Ana Başlık Font Kalınlığı</label>
-                                <select class="form-select" id="heroTitleWeight">
-                                    <option value="100">Çok İnce (100)</option>
-                                    <option value="200">İnce (200)</option>
-                                    <option value="300" selected>Light (300)</option>
-                                    <option value="400">Normal (400)</option>
-                                    <option value="500">Medium (500)</option>
-                                    <option value="600">Semi Bold (600)</option>
-                                    <option value="700">Bold (700)</option>
-                                </select>
-                            </div>
+                            <label class="form-label">Tagline (Alt Başlık)</label>
+                            <input type="text" class="form-input" id="heroTagline" value="MİMARLIK & YAPI SİSTEMLERİ" placeholder="MİMARLIK & YAPI SİSTEMLERİ">
+                            <small style="color: #888; font-size: 11px;">Logo altında görünecek yazı</small>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Alt Başlık</label>
-                            <input type="text" class="form-input" id="heroTitleLine2" value="MİMARLIK" placeholder="MİMARLIK">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Alt Başlık Font Kalınlığı</label>
-                                <select class="form-select" id="heroSubtitleWeight">
-                                    <option value="100">Çok İnce (100)</option>
-                                    <option value="200">İnce (200)</option>
-                                    <option value="300" selected>Light (300)</option>
-                                    <option value="400">Normal (400)</option>
-                                    <option value="500">Medium (500)</option>
-                                    <option value="600">Semi Bold (600)</option>
-                                    <option value="700">Bold (700)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Açıklama Metni (HTML: &lt;br&gt;, &lt;strong&gt;)</label>
-                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</textarea>
+                            <label class="form-label">Açıklama Metni</label>
+                            <textarea class="form-textarea" id="heroDesc" rows="3">Yaşam alanlarınızı profesyonel tasarım ve kusursuz uygulamayla hayallerinizin ötesine taşıyoruz.</textarea>
                         </div>
                         <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
@@ -1199,18 +1168,12 @@ a{color:inherit;text-decoration:none}
     // HERO SETTINGS
     function loadHero() { 
         const s = JSON.parse(localStorage.getItem('hero_settings') || '{}'); 
-        if (s.titleLine1 && document.getElementById('heroTitleLine1')) document.getElementById('heroTitleLine1').value = s.titleLine1;
-        if (s.titleLine2 && document.getElementById('heroTitleLine2')) document.getElementById('heroTitleLine2').value = s.titleLine2;
-        if (s.titleWeight && document.getElementById('heroTitleWeight')) document.getElementById('heroTitleWeight').value = s.titleWeight;
-        if (s.subtitleWeight && document.getElementById('heroSubtitleWeight')) document.getElementById('heroSubtitleWeight').value = s.subtitleWeight;
+        if (s.tagline && document.getElementById('heroTagline')) document.getElementById('heroTagline').value = s.tagline;
         if (s.description && document.getElementById('heroDesc')) document.getElementById('heroDesc').value = s.description;
     }
     function saveHero() { 
         localStorage.setItem('hero_settings', JSON.stringify({ 
-            titleLine1: document.getElementById('heroTitleLine1') ? document.getElementById('heroTitleLine1').value : 'CEE',
-            titleLine2: document.getElementById('heroTitleLine2') ? document.getElementById('heroTitleLine2').value : 'MİMARLIK',
-            titleWeight: document.getElementById('heroTitleWeight') ? document.getElementById('heroTitleWeight').value : '300',
-            subtitleWeight: document.getElementById('heroSubtitleWeight') ? document.getElementById('heroSubtitleWeight').value : '300',
+            tagline: document.getElementById('heroTagline') ? document.getElementById('heroTagline').value : 'MİMARLIK & YAPI SİSTEMLERİ',
             description: document.getElementById('heroDesc') ? document.getElementById('heroDesc').value : ''
         })); 
         toast('Kaydedildi', 'success'); 
