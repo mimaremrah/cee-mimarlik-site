@@ -389,6 +389,109 @@
         
         .footer-copy { color: rgba(255,255,255,0.5); font-size: 13px; }
         
+        /* ═══════════════════════════════════════════════════════════════════ */
+        /* DARK MODE - Tüm elementler için                                      */
+        /* ═══════════════════════════════════════════════════════════════════ */
+        body.dark-mode .page-hero {
+            background: var(--bg-alt);
+        }
+        
+        body.dark-mode .page-hero::before {
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        body.dark-mode .page-label {
+            background: rgba(107, 122, 138, 0.2);
+            color: #8b9cb3;
+        }
+        
+        body.dark-mode .team-section {
+            background: var(--bg);
+        }
+        
+        body.dark-mode .team-card {
+            background: var(--card-bg);
+            border-color: var(--border);
+        }
+        
+        body.dark-mode .team-card:hover {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .team-photo-wrapper {
+            background: linear-gradient(135deg, #2d2d44 0%, #3d3d5c 100%);
+        }
+        
+        body.dark-mode .team-name {
+            color: var(--text);
+        }
+        
+        body.dark-mode .team-role {
+            background: rgba(107, 122, 138, 0.2);
+            color: #8b9cb3;
+        }
+        
+        body.dark-mode .team-bio {
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .team-details {
+            border-color: var(--border);
+        }
+        
+        body.dark-mode .detail-icon {
+            background: var(--bg-alt);
+        }
+        
+        body.dark-mode .detail-label {
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .detail-value {
+            color: var(--text);
+        }
+        
+        body.dark-mode .team-skills {
+            border-color: var(--border);
+        }
+        
+        body.dark-mode .skills-label {
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .skill-tag {
+            background: var(--bg-alt);
+            border-color: var(--border);
+            color: var(--text);
+        }
+        
+        body.dark-mode .team-contact {
+            border-color: var(--border);
+        }
+        
+        body.dark-mode .contact-link {
+            background: var(--bg-alt);
+            border-color: var(--border);
+        }
+        
+        body.dark-mode .contact-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        body.dark-mode footer {
+            background: var(--bg-alt);
+            border-color: var(--border);
+        }
+        
+        body.dark-mode footer p {
+            color: var(--text-light) !important;
+        }
+        
+        body.dark-mode footer #footerCompany {
+            color: var(--text) !important;
+        }
+        
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .team-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
