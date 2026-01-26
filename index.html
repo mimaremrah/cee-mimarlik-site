@@ -5348,10 +5348,14 @@ window.goToAdmin = goToAdmin;
                         <path class="bp-line line-2" d="M270,30 L270,210" />
                         <path class="bp-line line-3" d="M270,210 L30,210" />
                         <path class="bp-line line-4" d="M30,30 L30,110" />
-                        <path class="bp-line line-4b" d="M30,125 L30,210" />
+                        <path class="bp-line line-4b" d="M30,125 L30,168" />
+                        <path class="bp-line line-4c" d="M30,192 L30,210" />
                         
                         <!-- Sol dış kapı -->
                         <path class="bp-line line-door-left" d="M30,110 L15,110 Q15,125 30,125" />
+                        
+                        <!-- Mutfak penceresi (sol duvarda, tam ortada) -->
+                        <rect class="bp-window win-mutfak" x="27" y="168" width="6" height="24" />
                         
                         <!-- İç duvarlar -->
                         <path class="bp-line line-5" d="M120,30 L120,90" />
@@ -5359,7 +5363,12 @@ window.goToAdmin = goToAdmin;
                         <path class="bp-line line-7" d="M180,30 L180,130" />
                         <path class="bp-line line-8" d="M120,90 L120,150" />
                         <path class="bp-line line-9" d="M30,150 L120,150" />
-                        <path class="bp-line line-10" d="M180,130 L270,130" />
+                        
+                        <!-- Çocuk-Salon arası duvar (kapı boşluklu) -->
+                        <path class="bp-line line-10" d="M180,130 L210,130" />
+                        <path class="bp-line line-10b" d="M225,130 L270,130" />
+                        <!-- Çocuk odası kapısı (salona açılır) -->
+                        <path class="bp-line line-door-cocuk" d="M210,130 L210,145 Q220,145 225,130" />
                         
                         <!-- HOL-MUTFAK duvarı -->
                         <path class="bp-line line-wall-hol" d="M120,150 L120,175" />
@@ -5386,7 +5395,7 @@ window.goToAdmin = goToAdmin;
                         <text class="room-label" x="225" y="80">ÇOCUK</text>
                         <text class="room-label" x="95" y="125">HOL</text>
                         <text class="room-label" x="75" y="185">MUTFAK</text>
-                        <text class="room-label" x="200" y="175">SALON</text>
+                        <text class="room-label" x="225" y="175">SALON</text>
                     </g>
                 </svg>
             </div>
@@ -5401,14 +5410,12 @@ window.goToAdmin = goToAdmin;
                 </div>
             </div>
             
-            <!-- ORTA ÇİZGİ -->
-            <div class="center-line"></div>
+            <!-- ORTA ÇİZGİ - Sadece ince parlak çizgi -->
+            <div class="diagonal-glow"></div>
             
-            <!-- DEKORATİF SİMGELER -->
-            <div class="diagonal-decorator">
-                <span class="deco-diamond-small"></span>
-                <span class="deco-diamond-big"></span>
-                <span class="deco-diamond-small"></span>
+            <!-- LOGO - Çizginin altında, ortada -->
+            <div class="diagonal-logo">
+                <img src="logo.png" alt="CEE Mimarlık" class="diag-logo-img">
             </div>
             
         </div>
@@ -5434,19 +5441,17 @@ window.goToAdmin = goToAdmin;
     <!-- ANA İÇERİK                                                              -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="hero-main-content" id="heroMainContent">
-        <div class="content-eyebrow">
-            <span class="eyebrow-line"></span>
-            <span>Hayalden Gerçeğe</span>
-            <span class="eyebrow-line"></span>
-        </div>
         
         <h1 class="content-title">
-            <span class="title-line-1">MİMARİ</span>
-            <span class="title-line-2">MÜKEMMELLİK</span>
+            <span class="title-cee" id="heroTitleLine1">CEE</span>
+            <span class="title-mimarlik" id="heroTitleLine2">MİMARLIK & YAPI SİSTEMLERİ</span>
         </h1>
         
-        <p class="content-desc">
-            Yaşam alanlarınızı A'dan Z'ye anahtar teslim<br>projelendirme, tasarım ve uygulama hizmeti ile hayata geçiriyoruz.
+        <div class="title-divider"></div>
+        
+        <p class="content-desc" id="heroDesc">
+            20 yılı aşkın tecrübemizle hayallerinizi profesyonel çizgilerle buluşturuyoruz.<br>
+            Konut, villa, ofis ve ticari projelerinizde <strong>tasarımdan uygulamaya</strong> anahtar teslim çözümler.
         </p>
         
         <div class="content-buttons">
@@ -5480,11 +5485,6 @@ window.goToAdmin = goToAdmin;
     z-index: 20;
     overflow: hidden;
     pointer-events: none;
-    animation: hideContainer 0.5s ease-out 4.5s forwards;
-}
-
-@keyframes hideContainer {
-    to { opacity: 0; visibility: hidden; }
 }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
@@ -5498,46 +5498,37 @@ window.goToAdmin = goToAdmin;
     height: 100%;
 }
 
-/* SOL TARAF - PLAN (Siyah arka plan) */
+/* SOL TARAF - PLAN OVERLAY (Yarı saydam, fotoğraf görünsün) */
 .diagonal-left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: #0a0a0a;
-    z-index: 10;
-    animation: fadeOutLeft 0.5s ease-out 4.5s forwards;
-}
-
-@keyframes fadeOutLeft {
-    to { opacity: 0; visibility: hidden; }
-}
-
-.plan-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0a0a0a;
+    background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(20,25,30,0.7) 100%);
+    clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
+    z-index: 10;
+    animation: diagonalSlideOut 0.8s ease-out 4s forwards;
+}
+
+@keyframes diagonalSlideOut {
+    to { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 0; }
+}
+
+.plan-bg {
+    display: none;
 }
 
 
 
-/* SAĞ TARAF - PROJE */
+/* SAĞ TARAF - PROJE FOTOĞRAFLARI (Tam ekran, arkada) */
 .diagonal-right {
     position: absolute;
     top: 0;
-    left: 50%;
-    width: 50%;
+    left: 0;
+    width: 100%;
     height: 100%;
     z-index: 5;
-    animation: fadeOutRight 0.5s ease-out 4.5s forwards;
-}
-
-@keyframes fadeOutRight {
-    to { opacity: 0; visibility: hidden; }
 }
 
 
@@ -5580,53 +5571,61 @@ window.goToAdmin = goToAdmin;
     100% { opacity: 1; }
 }
 
-/* ORTA ÇİZGİ */
-.center-line {
+/* MODERN DIAGONAL GLOW - İnce parlak çizgi */
+.diagonal-glow {
     position: absolute;
     top: 0;
-    left: 50%;
-    width: 3px;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: var(--diagonal-color, #5a6677);
-    transform: translateX(-50%);
     z-index: 15;
+    pointer-events: none;
     opacity: 0;
-    animation: lineAppear 0.3s ease-out 0.3s forwards,
-               lineDisappear 0.3s ease-out 4.3s forwards;
+    animation: lineAppear 0.5s ease-out 0.3s forwards,
+               lineDisappear 0.5s ease-out 3.5s forwards;
 }
 
-/* DEKORATİF SİMGELER - Çizginin tam ortasında */
-.diagonal-decorator {
+.diagonal-glow::before {
+    content: '';
     position: absolute;
-    top: 50%;
+    top: -5%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    z-index: 26;
+    width: 2px;
+    height: 110%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255,255,255,0.3) 20%,
+        rgba(255,255,255,0.8) 50%,
+        rgba(255,255,255,0.3) 80%,
+        transparent 100%);
+    transform: rotate(-5.7deg);
+    transform-origin: top center;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5),
+                0 0 30px rgba(255,255,255,0.2);
+}
+
+/* DIAGONAL LOGO - Çizginin altında, ortada */
+.diagonal-logo {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
     opacity: 0;
-    animation: lineAppear 0.3s ease-out 0.5s forwards,
-               lineDisappear 0.3s ease-out 4.3s forwards;
+    animation: logoAppear 0.6s ease-out 0.8s forwards,
+               lineDisappear 0.5s ease-out 3.5s forwards;
 }
 
-/* Küçük elmaslar */
-.deco-diamond-small {
-    width: 8px;
-    height: 8px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.7);
-    transform: rotate(45deg);
+.diag-logo-img {
+    height: 60px;
+    width: auto;
+    opacity: 0.5;
+    filter: brightness(2) drop-shadow(0 0 10px rgba(255,255,255,0.3));
 }
 
-/* Büyük ortadaki elmas */
-.deco-diamond-big {
-    width: 14px;
-    height: 14px;
-    background: var(--diagonal-color, #5a6677);
-    border: 2px solid rgba(255,255,255,0.9);
-    transform: rotate(45deg);
+@keyframes logoAppear {
+    from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+    to { opacity: 1; transform: translateX(-50%) scale(1); }
 }
 
 @keyframes lineAppear {
@@ -5643,22 +5642,23 @@ window.goToAdmin = goToAdmin;
 .blueprint-svg {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 400px;
+    width: 45%;
+    max-width: 380px;
     height: auto;
     z-index: 2;
 }
 
-/* Çizgi stili - BEYAZ */
+/* Çizgi stili - BEYAZ + GLOW */
 .bp-line {
     fill: none;
     stroke: rgba(255,255,255,0.95);
-    stroke-width: 1.5;
+    stroke-width: 1.8;
     stroke-linecap: round;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.6));
 }
 
 /* Çizim animasyonları */
@@ -5666,19 +5666,25 @@ window.goToAdmin = goToAdmin;
 .line-2 { animation: drawLine 0.35s ease-out 0.6s forwards; }
 .line-3 { animation: drawLine 0.35s ease-out 0.8s forwards; }
 .line-4 { animation: drawLine 0.25s ease-out 1.0s forwards; }
-.line-4b { animation: drawLine 0.25s ease-out 1.1s forwards; }
+.line-4b { animation: drawLine 0.15s ease-out 1.1s forwards; }
+.line-4c { animation: drawLine 0.1s ease-out 1.15s forwards; }
 .line-door-left { animation: drawLine 0.15s ease-out 1.2s forwards; }
 .line-5 { animation: drawLine 0.2s ease-out 1.3s forwards; }
 .line-6 { animation: drawLine 0.2s ease-out 1.4s forwards; }
 .line-7 { animation: drawLine 0.2s ease-out 1.5s forwards; }
 .line-8 { animation: drawLine 0.2s ease-out 1.6s forwards; }
 .line-9 { animation: drawLine 0.2s ease-out 1.7s forwards; }
-.line-10 { animation: drawLine 0.2s ease-out 1.8s forwards; }
-.line-wall-hol { animation: drawLine 0.15s ease-out 1.9s forwards; }
-.line-wall-hol2 { animation: drawLine 0.15s ease-out 1.95s forwards; }
-.line-door-mutfak { animation: drawLine 0.15s ease-out 2.0s forwards; }
+.line-10 { animation: drawLine 0.15s ease-out 1.8s forwards; }
+.line-10b { animation: drawLine 0.2s ease-out 1.85s forwards; }
+.line-door-cocuk { animation: drawLine 0.15s ease-out 1.9s forwards; }
+.line-wall-hol { animation: drawLine 0.15s ease-out 1.95s forwards; }
+.line-wall-hol2 { animation: drawLine 0.15s ease-out 2.0s forwards; }
+.line-door-mutfak { animation: drawLine 0.15s ease-out 2.05s forwards; }
 .line-11 { animation: drawLine 0.15s ease-out 2.1s forwards; }
-.line-12 { animation: drawLine 0.15s ease-out 2.2s forwards; }
+.line-12 { animation: drawLine 0.15s ease-out 2.15s forwards; }
+
+/* Pencere animasyonları */
+.win-mutfak { animation: windowReveal 0.2s ease-out 2.2s forwards; }
 
 @keyframes drawLine { to { stroke-dashoffset: 0; } }
 
@@ -5718,12 +5724,13 @@ window.goToAdmin = goToAdmin;
 
 /* Oda isimleri */
 .room-label {
-    fill: rgba(255,255,255,0.6);
-    font-size: 7px;
-    font-weight: 400;
-    letter-spacing: 1px;
+    fill: rgba(255,255,255,0.85);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 2px;
     text-anchor: middle;
     opacity: 0;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
     animation: labelReveal 0.2s ease-out 2.6s forwards;
 }
 
@@ -5834,66 +5841,71 @@ window.goToAdmin = goToAdmin;
     padding: 0 20px;
 }
 
-.content-eyebrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    opacity: 0;
-    animation: contentFade 0.4s ease-out 5s forwards;
-}
-
-.eyebrow-line {
-    width: 40px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-}
-
-.content-eyebrow span:not(.eyebrow-line) {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 4px;
-    font-weight: 400;
-}
-
 @keyframes contentFade { to { opacity: 1; } }
 
-.content-title { margin-bottom: 15px; }
+.content-title { 
+    margin-bottom: 20px; 
+    text-align: center;
+}
 
-.title-line-1, .title-line-2 {
+/* CEE - Ana Logo Yazısı */
+.title-cee {
     display: block;
-    font-weight: 300;
-    letter-spacing: 10px;
-    text-transform: uppercase;
+    font-size: 80px;
+    font-weight: var(--hero-title-weight, 200);
+    letter-spacing: 35px;
+    color: #fff;
+    text-shadow: 
+        0 4px 30px rgba(0,0,0,0.4),
+        0 0 60px rgba(255,255,255,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleSlideUp 0.6s ease-out 5s forwards;
+    margin-left: 35px; /* letter-spacing kompanzasyonu */
+}
+
+/* MİMARLIK & YAPI SİSTEMLERİ - Alt Yazı */
+.title-mimarlik {
+    display: block;
+    font-size: 14px;
+    font-weight: var(--hero-subtitle-weight, 400);
+    letter-spacing: 12px;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    margin-top: 15px;
     opacity: 0;
     transform: translateY(15px);
+    animation: titleSlideUp 0.5s ease-out 5.3s forwards;
+    margin-left: 12px; /* letter-spacing kompanzasyonu */
 }
 
-.title-line-1 {
-    font-size: 24px;
-    color: #fff;
-    animation: titleSlideUp 0.4s ease-out 5.2s forwards;
-}
-
-.title-line-2 {
-    font-size: 32px;
-    background: linear-gradient(135deg, #fff 0%, #5a6677 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleSlideUp 0.4s ease-out 5.4s forwards;
+/* Dekoratif çizgi */
+.title-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    margin: 25px auto;
+    opacity: 0;
+    animation: contentFade 0.4s ease-out 5.5s forwards;
 }
 
 @keyframes titleSlideUp { to { opacity: 1; transform: translateY(0); } }
 
 .content-desc {
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.7;
-    margin-bottom: 20px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+    margin-bottom: 30px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 5.6s forwards;
+    animation: contentFade 0.4s ease-out 5.7s forwards;
+}
+
+.content-desc strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 500;
 }
 
 .content-buttons {
@@ -5901,7 +5913,7 @@ window.goToAdmin = goToAdmin;
     gap: 15px;
     justify-content: center;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 5.8s forwards;
+    animation: contentFade 0.4s ease-out 5.9s forwards;
 }
 
 .btn-main {
@@ -5960,8 +5972,8 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .title-line-1 { font-size: 20px; letter-spacing: 6px; }
-    .title-line-2 { font-size: 26px; letter-spacing: 6px; }
+    .title-cee { font-size: 50px; letter-spacing: 20px; margin-left: 20px; }
+    .title-mimarlik { font-size: 11px; letter-spacing: 8px; margin-left: 8px; }
     .content-desc { font-size: 13px; }
     .content-desc br { display: none; }
     .content-buttons { flex-direction: column; align-items: center; }
@@ -5980,8 +5992,8 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .title-line-1 { font-size: 16px; letter-spacing: 4px; }
-    .title-line-2 { font-size: 20px; letter-spacing: 4px; }
+    .title-cee { font-size: 40px; letter-spacing: 15px; margin-left: 15px; }
+    .title-mimarlik { font-size: 9px; letter-spacing: 5px; margin-left: 5px; }
     .diagonal-line::before, .diagonal-line::after { width: 2px; }
     .deco-diamond-big { width: 12px; height: 12px; }
     .deco-diamond-small { width: 6px; height: 6px; }
@@ -7636,7 +7648,7 @@ function setupHero() {
 }
 
 function setupDiagonalSplit(projects) {
-    // Hero slider'ı baştan gizle - animasyon sırasında görünmesin
+    // Hero slider'ı gizle - animasyon sırasında görünmesin
     const heroSlider = document.getElementById('heroSlider');
     if (heroSlider) {
         heroSlider.style.opacity = '0';
@@ -7659,14 +7671,16 @@ function setupDiagonalSplit(projects) {
         const lastPhotoIndex = Math.min(3, projects.length - 1);
         const lastPhoto = projects[lastPhotoIndex];
         if (lastPhoto && lastPhoto.img) {
-            // Hero section'a hemen arka plan ekle (animasyon bitince görünecek)
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                heroSection.style.backgroundImage = `linear-gradient(to bottom, rgba(10,15,20,0.4), rgba(10,15,20,0.6)), url(${lastPhoto.img})`;
-                heroSection.style.backgroundSize = 'cover';
-                heroSection.style.backgroundPosition = 'center center';
-                heroSection.style.backgroundRepeat = 'no-repeat';
-            }
+            // Animasyon bitince hero section'a arka plan ekle
+            setTimeout(() => {
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) {
+                    heroSection.style.backgroundImage = `linear-gradient(to bottom, rgba(10,15,20,0.3), rgba(10,15,20,0.5)), url(${lastPhoto.img})`;
+                    heroSection.style.backgroundSize = 'cover';
+                    heroSection.style.backgroundPosition = 'center center';
+                    heroSection.style.backgroundRepeat = 'no-repeat';
+                }
+            }, 4500);
             
             // Auto-slide'ı durdur
             if (typeof heroAutoSlide !== 'undefined') {
@@ -7682,25 +7696,30 @@ function setupDiagonalSplit(projects) {
 function loadHeroContent() {
     const heroSettings = JSON.parse(localStorage.getItem('hero_settings') || '{}');
     
-    const brandEl = document.getElementById('heroBrand');
-    const descEl = document.getElementById('heroDescription');
-    const ctaEl = document.querySelector('.hero-cta');
-    
-    if (brandEl) {
-        if (heroSettings.brand) brandEl.textContent = heroSettings.brand;
-        if (heroSettings.fontSize) brandEl.style.fontSize = heroSettings.fontSize;
-        if (heroSettings.fontWeight) brandEl.style.fontWeight = heroSettings.fontWeight;
-        if (heroSettings.color) brandEl.style.color = heroSettings.color;
+    // Hero Title Line 1 (CEE)
+    const titleLine1 = document.getElementById('heroTitleLine1');
+    if (titleLine1) {
+        if (heroSettings.titleLine1) titleLine1.textContent = heroSettings.titleLine1;
+        if (heroSettings.titleWeight) {
+            titleLine1.style.fontWeight = heroSettings.titleWeight;
+            document.documentElement.style.setProperty('--hero-title-weight', heroSettings.titleWeight);
+        }
     }
     
+    // Hero Title Line 2 (MİMARLIK & YAPI SİSTEMLERİ)
+    const titleLine2 = document.getElementById('heroTitleLine2');
+    if (titleLine2) {
+        if (heroSettings.titleLine2) titleLine2.textContent = heroSettings.titleLine2;
+        if (heroSettings.subtitleWeight) {
+            titleLine2.style.fontWeight = heroSettings.subtitleWeight;
+            document.documentElement.style.setProperty('--hero-subtitle-weight', heroSettings.subtitleWeight);
+        }
+    }
+    
+    // Description
+    const descEl = document.getElementById('heroDesc');
     if (descEl && heroSettings.description) {
-        descEl.textContent = heroSettings.description;
-        descEl.setAttribute('data-tr', heroSettings.description);
-    }
-    
-    if (ctaEl && heroSettings.buttonText) {
-        ctaEl.textContent = heroSettings.buttonText;
-        ctaEl.setAttribute('data-tr', heroSettings.buttonText);
+        descEl.innerHTML = heroSettings.description;
     }
 }
 

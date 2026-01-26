@@ -352,10 +352,10 @@ a{color:inherit;text-decoration:none}
                 <input type="text" class="form-input" id="loginUsername" placeholder="admin">
             </div>
             <div class="form-group">
-                <label class="form-label">Şifre</label>
+                <label class="form-label">Åžifre</label>
                 <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
             </div>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">Giriş Yap</button>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="login()">GiriÅŸ Yap</button>
             <p style="text-align: center; margin-top: 15px; font-size: 12px;">
                 <a href="index.html" style="color: var(--primary);">← Ana Sayfaya Dön</a>
             </p>
@@ -571,32 +571,44 @@ a{color:inherit;text-decoration:none}
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Marka Adı (Büyük Başlık)</label>
-                            <input type="text" class="form-input" id="heroBrand" value="CEE MİMARLIK">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Açıklama Metni</label>
-                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz.</textarea>
+                            <label class="form-label">Ana Başlık (Büyük Yazı)</label>
+                            <input type="text" class="form-input" id="heroTitleLine1" value="CEE" placeholder="CEE">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Font Boyutu: <span id="heroSizeVal">52px</span></label>
-                                <input type="range" class="form-input" id="heroSize" min="32" max="80" value="52" style="padding:5px;" oninput="document.getElementById('heroSizeVal').textContent=this.value+'px'">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Font Kalınlığı</label>
-                                <select class="form-select" id="heroWeight">
-                                    <option value="300">İnce</option>
-                                    <option value="400">Normal</option>
-                                    <option value="500">Orta</option>
-                                    <option value="600" selected>Kalın</option>
-                                    <option value="700">Çok Kalın</option>
+                                <label class="form-label">Ana Başlık Font Kalınlığı</label>
+                                <select class="form-select" id="heroTitleWeight">
+                                    <option value="100">Çok İnce (100)</option>
+                                    <option value="200" selected>İnce (200)</option>
+                                    <option value="300">Light (300)</option>
+                                    <option value="400">Normal (400)</option>
+                                    <option value="500">Medium (500)</option>
+                                    <option value="600">Semi Bold (600)</option>
+                                    <option value="700">Bold (700)</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Buton Metni</label>
-                            <input type="text" class="form-input" id="heroBtn" value="İLETİŞİME GEÇİN">
+                            <label class="form-label">Alt Başlık</label>
+                            <input type="text" class="form-input" id="heroTitleLine2" value="MİMARLIK & YAPI SİSTEMLERİ" placeholder="MİMARLIK & YAPI SİSTEMLERİ">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Alt Başlık Font Kalınlığı</label>
+                                <select class="form-select" id="heroSubtitleWeight">
+                                    <option value="100">Çok İnce (100)</option>
+                                    <option value="200">İnce (200)</option>
+                                    <option value="300">Light (300)</option>
+                                    <option value="400" selected>Normal (400)</option>
+                                    <option value="500">Medium (500)</option>
+                                    <option value="600">Semi Bold (600)</option>
+                                    <option value="700">Bold (700)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama Metni (HTML: &lt;br&gt;, &lt;strong&gt;)</label>
+                            <textarea class="form-textarea" id="heroDesc" rows="3">20 yılı aşkın tecrübemizle hayallerinizi profesyonel çizgilerle buluşturuyoruz.&lt;br&gt;Konut, villa, ofis ve ticari projelerinizde &lt;strong&gt;tasarımdan uygulamaya&lt;/strong&gt; anahtar teslim çözümler.</textarea>
                         </div>
                         <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
@@ -699,7 +711,7 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">İletişim Bilgileri</h1>
-                        <p class="page-subtitle">Site genelindeki iletişim bilgileri</p>
+                        <p class="page-subtitle">Site genelindeki iletiÅŸim bilgileri</p>
                     </div>
                 </div>
 
@@ -954,7 +966,7 @@ a{color:inherit;text-decoration:none}
                 <div class="page-header">
                     <div>
                         <h1 class="page-title">Güvenlik</h1>
-                        <p class="page-subtitle">Giriş bilgileri ve yedekleme</p>
+                        <p class="page-subtitle">GiriÅŸ bilgileri ve yedekleme</p>
                     </div>
                 </div>
 
@@ -967,11 +979,11 @@ a{color:inherit;text-decoration:none}
                                 <input type="text" class="form-input" id="newUser" placeholder="admin">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Yeni Şifre</label>
+                                <label class="form-label">Yeni Åžifre</label>
                                 <input type="password" class="form-input" id="newPass" placeholder="••••••••">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Şifre Tekrar</label>
+                                <label class="form-label">Åžifre Tekrar</label>
                                 <input type="password" class="form-input" id="newPassConfirm" placeholder="••••••••">
                             </div>
                             <button class="btn btn-primary" onclick="changePassword()">💾 Güncelle</button>
@@ -1015,7 +1027,7 @@ a{color:inherit;text-decoration:none}
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminLayout').style.display = 'flex';
             loadAll();
-            toast('Hoş geldiniz!', 'success');
+            toast('HoÅŸ geldiniz!', 'success');
         } else {
             toast('Hatalı giriş bilgileri!', 'error');
         }
@@ -1185,8 +1197,24 @@ a{color:inherit;text-decoration:none}
     }
 
     // HERO SETTINGS
-    function loadHero() { const s = JSON.parse(localStorage.getItem('hero_settings') || '{}'); if (s.brand) document.getElementById('heroBrand').value = s.brand; if (s.description) document.getElementById('heroDesc').value = s.description; if (s.fontSize) { document.getElementById('heroSize').value = parseInt(s.fontSize); document.getElementById('heroSizeVal').textContent = s.fontSize; } if (s.fontWeight) document.getElementById('heroWeight').value = s.fontWeight; if (s.buttonText) document.getElementById('heroBtn').value = s.buttonText; }
-    function saveHero() { localStorage.setItem('hero_settings', JSON.stringify({ brand: document.getElementById('heroBrand').value, description: document.getElementById('heroDesc').value, fontSize: document.getElementById('heroSize').value + 'px', fontWeight: document.getElementById('heroWeight').value, buttonText: document.getElementById('heroBtn').value })); toast('Kaydedildi', 'success'); }
+    function loadHero() { 
+        const s = JSON.parse(localStorage.getItem('hero_settings') || '{}'); 
+        if (s.titleLine1 && document.getElementById('heroTitleLine1')) document.getElementById('heroTitleLine1').value = s.titleLine1;
+        if (s.titleLine2 && document.getElementById('heroTitleLine2')) document.getElementById('heroTitleLine2').value = s.titleLine2;
+        if (s.titleWeight && document.getElementById('heroTitleWeight')) document.getElementById('heroTitleWeight').value = s.titleWeight;
+        if (s.subtitleWeight && document.getElementById('heroSubtitleWeight')) document.getElementById('heroSubtitleWeight').value = s.subtitleWeight;
+        if (s.description && document.getElementById('heroDesc')) document.getElementById('heroDesc').value = s.description;
+    }
+    function saveHero() { 
+        localStorage.setItem('hero_settings', JSON.stringify({ 
+            titleLine1: document.getElementById('heroTitleLine1') ? document.getElementById('heroTitleLine1').value : 'CEE',
+            titleLine2: document.getElementById('heroTitleLine2') ? document.getElementById('heroTitleLine2').value : 'MİMARLIK & YAPI SİSTEMLERİ',
+            titleWeight: document.getElementById('heroTitleWeight') ? document.getElementById('heroTitleWeight').value : '200',
+            subtitleWeight: document.getElementById('heroSubtitleWeight') ? document.getElementById('heroSubtitleWeight').value : '400',
+            description: document.getElementById('heroDesc') ? document.getElementById('heroDesc').value : ''
+        })); 
+        toast('Kaydedildi', 'success'); 
+    }
 
     // CONTACT SETTINGS
     function loadContact() { const s = JSON.parse(localStorage.getItem('contact_settings') || '{}'); if (s.address) document.getElementById('contactAddr').value = s.address; if (s.phone) document.getElementById('contactPhone').value = s.phone; if (s.whatsapp) document.getElementById('contactWa').value = s.whatsapp; if (s.email) document.getElementById('contactEmail').value = s.email; if (s.mapsLink) document.getElementById('contactMap').value = s.mapsLink; if (s.workHours) document.getElementById('contactHours').value = s.workHours; if (s.weekend) document.getElementById('contactWeekend').value = s.weekend; }
@@ -1301,7 +1329,7 @@ a{color:inherit;text-decoration:none}
         toast(theme.charAt(0).toUpperCase() + theme.slice(1) + ' teması uygulandı!', 'success');
     }
     
-    // TEMA KODU DIŞA AKTARMA
+    // TEMA KODU DIÅžA AKTARMA
     function exportThemeCode() {
         const theme = {
             primary: document.getElementById('colorPrimary').value,
@@ -1419,7 +1447,7 @@ a{color:inherit;text-decoration:none}
             document.getElementById('logoPlaceholder').style.display = 'none'; 
             document.getElementById('deleteLogoBtn').style.display = 'block';
             document.getElementById('sidebarLogo').innerHTML = `<img src="${logo}">`;
-            // Sağ alt sabit logo
+            // SaÄŸ alt sabit logo
             document.getElementById('fixedLogoImg').src = logo;
             document.getElementById('fixedLogo').style.display = 'block';
         } else {
@@ -1442,7 +1470,7 @@ a{color:inherit;text-decoration:none}
         reader.readAsDataURL(f); 
     }
     function deleteLogo() {
-        if (confirm('Logoyu silmek istediğinize emin misiniz?')) {
+        if (confirm('Logoyu silmek istediÄŸinize emin misiniz?')) {
             localStorage.removeItem('site_logo');
             loadLogo();
             toast('Logo silindi', 'success');
