@@ -5444,22 +5444,17 @@ window.goToAdmin = goToAdmin;
         
         <h1 class="content-title">
             <span class="title-cee" id="heroTitleLine1">CEE</span>
-            <span class="title-mimarlik" id="heroTitleLine2">MİMARLIK & YAPI SİSTEMLERİ</span>
+            <span class="title-mimarlik" id="heroTitleLine2">MİMARLIK</span>
         </h1>
         
-        <div class="title-divider"></div>
-        
         <p class="content-desc" id="heroDesc">
-            20 yılı aşkın tecrübemizle hayallerinizi profesyonel çizgilerle buluşturuyoruz.<br>
-            Konut, villa, ofis ve ticari projelerinizde <strong>tasarımdan uygulamaya</strong> anahtar teslim çözümler.
+            CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi<br>
+            müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan<br>
+            Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
         </p>
         
         <div class="content-buttons">
-            <a href="#projeler" class="btn-main">
-                <span>PROJELERİMİZ</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="#iletisim" class="btn-outline">İLETİŞİM</a>
+            <a href="#iletisim" class="btn-main-gold">İLETİŞİME GEÇİN</a>
         </div>
     </div>
     
@@ -5844,67 +5839,54 @@ window.goToAdmin = goToAdmin;
 @keyframes contentFade { to { opacity: 1; } }
 
 .content-title { 
-    margin-bottom: 20px; 
+    margin-bottom: 30px; 
     text-align: center;
 }
 
 /* CEE - Ana Logo Yazısı */
 .title-cee {
     display: block;
-    font-size: 80px;
-    font-weight: var(--hero-title-weight, 200);
-    letter-spacing: 35px;
-    color: #fff;
-    text-shadow: 
-        0 4px 30px rgba(0,0,0,0.4),
-        0 0 60px rgba(255,255,255,0.1);
+    font-size: 72px;
+    font-weight: var(--hero-title-weight, 300);
+    letter-spacing: 25px;
+    color: #c9a227;
     opacity: 0;
     transform: translateY(20px);
     animation: titleSlideUp 0.6s ease-out 5s forwards;
-    margin-left: 35px; /* letter-spacing kompanzasyonu */
+    margin-left: 25px;
 }
 
-/* MİMARLIK & YAPI SİSTEMLERİ - Alt Yazı */
+/* MİMARLIK - Alt Yazı */
 .title-mimarlik {
     display: block;
-    font-size: 14px;
-    font-weight: var(--hero-subtitle-weight, 400);
-    letter-spacing: 12px;
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 2px 15px rgba(0,0,0,0.3);
-    margin-top: 15px;
+    font-size: 52px;
+    font-weight: var(--hero-subtitle-weight, 300);
+    letter-spacing: 18px;
+    color: #c9a227;
+    margin-top: 5px;
     opacity: 0;
     transform: translateY(15px);
     animation: titleSlideUp 0.5s ease-out 5.3s forwards;
-    margin-left: 12px; /* letter-spacing kompanzasyonu */
-}
-
-/* Dekoratif çizgi */
-.title-divider {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-    margin: 25px auto;
-    opacity: 0;
-    animation: contentFade 0.4s ease-out 5.5s forwards;
+    margin-left: 18px;
 }
 
 @keyframes titleSlideUp { to { opacity: 1; transform: translateY(0); } }
 
 .content-desc {
     font-size: 15px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.9;
-    margin-bottom: 30px;
-    max-width: 550px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 5.7s forwards;
+    animation: contentFade 0.4s ease-out 5.5s forwards;
 }
 
 .content-desc strong {
-    color: rgba(255,255,255,0.95);
+    color: #fff;
     font-weight: 500;
 }
 
@@ -5913,7 +5895,28 @@ window.goToAdmin = goToAdmin;
     gap: 15px;
     justify-content: center;
     opacity: 0;
-    animation: contentFade 0.4s ease-out 5.9s forwards;
+    animation: contentFade 0.4s ease-out 5.7s forwards;
+}
+
+/* Altın renkli oval buton */
+.btn-main-gold {
+    display: inline-block;
+    padding: 18px 50px;
+    background: #c9a227;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-main-gold:hover {
+    background: #b8922a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
 }
 
 .btn-main {
@@ -5972,8 +5975,8 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .title-cee { font-size: 50px; letter-spacing: 20px; margin-left: 20px; }
-    .title-mimarlik { font-size: 11px; letter-spacing: 8px; margin-left: 8px; }
+    .title-cee { font-size: 50px; letter-spacing: 18px; margin-left: 18px; }
+    .title-mimarlik { font-size: 36px; letter-spacing: 12px; margin-left: 12px; }
     .content-desc { font-size: 13px; }
     .content-desc br { display: none; }
     .content-buttons { flex-direction: column; align-items: center; }
@@ -5992,8 +5995,8 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .title-cee { font-size: 40px; letter-spacing: 15px; margin-left: 15px; }
-    .title-mimarlik { font-size: 9px; letter-spacing: 5px; margin-left: 5px; }
+    .title-cee { font-size: 36px; letter-spacing: 12px; margin-left: 12px; }
+    .title-mimarlik { font-size: 24px; letter-spacing: 8px; margin-left: 8px; }
     .diagonal-line::before, .diagonal-line::after { width: 2px; }
     .deco-diamond-big { width: 12px; height: 12px; }
     .deco-diamond-small { width: 6px; height: 6px; }

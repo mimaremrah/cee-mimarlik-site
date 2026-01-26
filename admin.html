@@ -579,8 +579,8 @@ a{color:inherit;text-decoration:none}
                                 <label class="form-label">Ana Başlık Font Kalınlığı</label>
                                 <select class="form-select" id="heroTitleWeight">
                                     <option value="100">Çok İnce (100)</option>
-                                    <option value="200" selected>İnce (200)</option>
-                                    <option value="300">Light (300)</option>
+                                    <option value="200">İnce (200)</option>
+                                    <option value="300" selected>Light (300)</option>
                                     <option value="400">Normal (400)</option>
                                     <option value="500">Medium (500)</option>
                                     <option value="600">Semi Bold (600)</option>
@@ -590,7 +590,7 @@ a{color:inherit;text-decoration:none}
                         </div>
                         <div class="form-group">
                             <label class="form-label">Alt Başlık</label>
-                            <input type="text" class="form-input" id="heroTitleLine2" value="MİMARLIK & YAPI SİSTEMLERİ" placeholder="MİMARLIK & YAPI SİSTEMLERİ">
+                            <input type="text" class="form-input" id="heroTitleLine2" value="MİMARLIK" placeholder="MİMARLIK">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -598,8 +598,8 @@ a{color:inherit;text-decoration:none}
                                 <select class="form-select" id="heroSubtitleWeight">
                                     <option value="100">Çok İnce (100)</option>
                                     <option value="200">İnce (200)</option>
-                                    <option value="300">Light (300)</option>
-                                    <option value="400" selected>Normal (400)</option>
+                                    <option value="300" selected>Light (300)</option>
+                                    <option value="400">Normal (400)</option>
                                     <option value="500">Medium (500)</option>
                                     <option value="600">Semi Bold (600)</option>
                                     <option value="700">Bold (700)</option>
@@ -608,7 +608,7 @@ a{color:inherit;text-decoration:none}
                         </div>
                         <div class="form-group">
                             <label class="form-label">Açıklama Metni (HTML: &lt;br&gt;, &lt;strong&gt;)</label>
-                            <textarea class="form-textarea" id="heroDesc" rows="3">20 yılı aşkın tecrübemizle hayallerinizi profesyonel çizgilerle buluşturuyoruz.&lt;br&gt;Konut, villa, ofis ve ticari projelerinizde &lt;strong&gt;tasarımdan uygulamaya&lt;/strong&gt; anahtar teslim çözümler.</textarea>
+                            <textarea class="form-textarea" id="heroDesc" rows="3">CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.</textarea>
                         </div>
                         <button class="btn btn-primary" onclick="saveHero()">💾 Kaydet</button>
                     </div>
@@ -1208,9 +1208,9 @@ a{color:inherit;text-decoration:none}
     function saveHero() { 
         localStorage.setItem('hero_settings', JSON.stringify({ 
             titleLine1: document.getElementById('heroTitleLine1') ? document.getElementById('heroTitleLine1').value : 'CEE',
-            titleLine2: document.getElementById('heroTitleLine2') ? document.getElementById('heroTitleLine2').value : 'MİMARLIK & YAPI SİSTEMLERİ',
-            titleWeight: document.getElementById('heroTitleWeight') ? document.getElementById('heroTitleWeight').value : '200',
-            subtitleWeight: document.getElementById('heroSubtitleWeight') ? document.getElementById('heroSubtitleWeight').value : '400',
+            titleLine2: document.getElementById('heroTitleLine2') ? document.getElementById('heroTitleLine2').value : 'MİMARLIK',
+            titleWeight: document.getElementById('heroTitleWeight') ? document.getElementById('heroTitleWeight').value : '300',
+            subtitleWeight: document.getElementById('heroSubtitleWeight') ? document.getElementById('heroSubtitleWeight').value : '300',
             description: document.getElementById('heroDesc') ? document.getElementById('heroDesc').value : ''
         })); 
         toast('Kaydedildi', 'success'); 
