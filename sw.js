@@ -60,7 +60,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 1. Admin/Login sayfalarÄ± - HÄ°Ã‡BÄ°R ZAMAN cache'leme
+  // 1. Admin/Login sayfaları - HİÇBİR ZAMAN cache'leme
   if (url.pathname.includes('/admin') || 
       url.pathname.includes('/firebase-login') ||
       url.pathname.includes('/panel-')) {
@@ -83,7 +83,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 4. HTML sayfalarÄ± - Network-first
+  // 4. HTML sayfaları - Network-first
   if (request.destination === 'document' || 
       request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(networkFirst(request));
@@ -94,7 +94,7 @@ self.addEventListener('fetch', event => {
   event.respondWith(networkFirst(request));
 });
 
-// Cache-first stratejisi (statik dosyalar iÃ§in)
+// Cache-first stratejisi (statik dosyalar için)
 async function cacheFirst(request) {
   const cached = await caches.match(request);
   if (cached) {
@@ -113,7 +113,7 @@ async function cacheFirst(request) {
   }
 }
 
-// Network-first stratejisi (HTML iÃ§in)
+// Network-first stratejisi (HTML için)
 async function networkFirst(request) {
   try {
     const response = await fetch(request);
@@ -128,10 +128,10 @@ async function networkFirst(request) {
       return cached;
     }
     
-    // Offline sayfasÄ± gÃ¶ster
+    // Offline sayfası göster
     const offlinePage = await caches.match('/offline.html');
     return offlinePage || new Response(
-      '<h1>Offline</h1><p>Ä°nternet baÄŸlantÄ±nÄ±zÄ± kontrol edin.</p>',
+      '<h1>Offline</h1><p>İnternet bağlantınızı kontrol edin.</p>',
       { headers: { 'Content-Type': 'text/html; charset=utf-8' } }
     );
   }
@@ -139,7 +139,7 @@ async function networkFirst(request) {
 
 // Resim cache handler (limit ile)
 async function imageHandler(request) {
-  // Ã–nce cache'e bak
+  // Önce cache'e bak
   const cached = await caches.match(request);
   if (cached) {
     return cached;
@@ -165,7 +165,7 @@ async function imageHandler(request) {
   }
 }
 
-// Background sync iÃ§in (ileride eklenebilir)
+// Background sync için (ileride eklenebilir)
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-forms') {
     event.waitUntil(syncForms());
@@ -174,5 +174,5 @@ self.addEventListener('sync', event => {
 
 async function syncForms() {
   // Form verilerini senkronize et
-  console.log('Background sync Ã§alÄ±ÅŸÄ±yor...');
+  console.log('Background sync çalışıyor...');
 }

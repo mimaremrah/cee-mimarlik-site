@@ -1,13 +1,13 @@
 // ============================================
-// DÄ°NAMÄ°K SEO - PROJECT DETAIL
+// DİNAMİK SEO - PROJECT DETAIL
 // ============================================
 // Bu script'i project-detail.html'e ekleyin
-// Firestore'dan yÃ¼klenen proje bilgileriyle meta taglarÄ± gÃ¼nceller
+// Firestore'dan yüklenen proje bilgileriyle meta tagları günceller
 // ============================================
 
 function updateSEOMetaTags(project) {
-    // Title gÃ¼ncelle
-    document.title = `${project.title} | CEE MimarlÄ±k`;
+    // Title güncelle
+    document.title = `${project.title} | CEE Mimarlık`;
     
     // Meta description
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -16,7 +16,7 @@ function updateSEOMetaTags(project) {
         metaDesc.setAttribute('name', 'description');
         document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', project.description || `CEE MimarlÄ±k - ${project.title} projesi detaylarÄ±`);
+    metaDesc.setAttribute('content', project.description || `CEE Mimarlık - ${project.title} projesi detayları`);
     
     // Meta keywords
     let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -25,7 +25,7 @@ function updateSEOMetaTags(project) {
         metaKeywords.setAttribute('name', 'keywords');
         document.head.appendChild(metaKeywords);
     }
-    const keywords = project.tags ? project.tags.join(', ') : 'mimarlÄ±k, villa, modern tasarÄ±m';
+    const keywords = project.tags ? project.tags.join(', ') : 'mimarlık, villa, modern tasarım';
     metaKeywords.setAttribute('content', keywords);
     
     // Open Graph - Title
@@ -44,7 +44,7 @@ function updateSEOMetaTags(project) {
         ogDesc.setAttribute('property', 'og:description');
         document.head.appendChild(ogDesc);
     }
-    ogDesc.setAttribute('content', project.description || `CEE MimarlÄ±k - ${project.title}`);
+    ogDesc.setAttribute('content', project.description || `CEE Mimarlık - ${project.title}`);
     
     // Open Graph - Image
     let ogImage = document.querySelector('meta[property="og:image"]');
@@ -80,7 +80,7 @@ function updateSEOMetaTags(project) {
         twitterDesc.setAttribute('name', 'twitter:description');
         document.head.appendChild(twitterDesc);
     }
-    twitterDesc.setAttribute('content', project.description || `CEE MimarlÄ±k - ${project.title}`);
+    twitterDesc.setAttribute('content', project.description || `CEE Mimarlık - ${project.title}`);
     
     // Twitter Card - Image
     let twitterImage = document.querySelector('meta[name="twitter:image"]');
@@ -109,7 +109,7 @@ function updateSEOMetaTags(project) {
     }
     canonical.setAttribute('href', window.location.href);
     
-    console.log('âœ… SEO meta taglarÄ± gÃ¼ncellendi:', project.title);
+    console.log('✅ SEO meta tagları güncellendi:', project.title);
 }
 
 // Export
