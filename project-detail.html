@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proje Detay - CEE Mimarlık</title>
-    <meta name="description" content="CEE Mimarlık projesi detayları">
+    <title>Proje Detay - CEE MimarlÄ±k</title>
+    <meta name="description" content="CEE MimarlÄ±k projesi detaylarÄ±">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
 /* Cross-Browser & Mobile Uyumluluk */
@@ -76,33 +76,33 @@ a{color:inherit;text-decoration:none}
 <header>
     <div class="header-content">
         <a href="index.html" class="logo-container">
-            <img src="" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="display: none;">
-            <div class="logo-subtitle" id="headerSlogan">MİMARLIK & YAPI SİSTEMLERİ</div>
+            <img src="" alt="CEE MimarlÄ±k Logo" class="site-logo" id="headerLogo" style="display: none;">
+            <div class="logo-subtitle" id="headerSlogan">MÄ°MARLIK & YAPI SÄ°STEMLERÄ°</div>
         </a>
         <div class="header-actions">
-            <a href="index.html#projeler" class="btn-back">← Projelere Dön</a>
-            <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn">🌙</button>
+            <a href="index.html#projeler" class="btn-back">â† Projelere DÃ¶n</a>
+            <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn">ðŸŒ™</button>
         </div>
     </div>
 </header>
 <main id="mainContent">
-    <div class="loading"><div class="loading-spinner"></div><p>Proje yükleniyor...</p></div>
+    <div class="loading"><div class="loading-spinner"></div><p>Proje yÃ¼kleniyor...</p></div>
 </main>
-<footer><p class="footer-text">© 2026 CEE Mimarlık. Tüm hakları saklıdır.</p></footer>
+<footer><p class="footer-text">Â© 2026 CEE MimarlÄ±k. TÃ¼m haklarÄ± saklÄ±dÄ±r.</p></footer>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('id');
     let projects = [];
     function loadProjects() { const saved = localStorage.getItem('ceeProjects'); if (saved) projects = JSON.parse(saved); return projects; }
     function loadSiteSettings() { const settings = localStorage.getItem('ceeSiteSettings'); if (settings) { const parsed = JSON.parse(settings); if (parsed.logo) { const headerLogo = document.getElementById('headerLogo'); if (headerLogo) { headerLogo.src = parsed.logo; headerLogo.style.display = 'block'; } } if (parsed.headerSlogan) { const slogan = document.getElementById('headerSlogan'); if (slogan) slogan.textContent = parsed.headerSlogan; } } }
-    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙'; }
-    function checkDarkMode() { const isDark = localStorage.getItem('darkMode') === 'true'; if (isDark) { document.body.classList.add('dark-mode'); document.getElementById('themeBtn').textContent = '☀️'; } }
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); document.getElementById('themeBtn').textContent = isDark ? 'â˜€ï¸' : 'ðŸŒ™'; }
+    function checkDarkMode() { const isDark = localStorage.getItem('darkMode') === 'true'; if (isDark) { document.body.classList.add('dark-mode'); document.getElementById('themeBtn').textContent = 'â˜€ï¸'; } }
     function renderProject(project) {
         const main = document.getElementById('mainContent');
-        if (!project) { main.innerHTML = '<div class="not-found"><h2>Proje Bulunamadı</h2><p>Aradığınız proje mevcut değil.</p><a href="index.html#projeler" class="cta-btn" style="margin-top:20px;display:inline-block;">Projelere Dön</a></div>'; return; }
-        const description = project.description || 'Bu proje, modern mimarlık anlayışıyla tasarlanmış olup, estetik ve işlevselliği bir arada sunmaktadır. Proje tasarımından uygulama süreçlerine kadar tüm aşamalar titizlikle yönetilerek, mekânlara teknik açıdan sağlam, estetik ve işlevsel çözümler sunulmaktadır.';
-        main.innerHTML = '<div class="project-hero"><img src="' + project.img + '" alt="' + (project.title || 'Proje') + '"></div><div class="project-info"><h1 class="project-title">' + (project.title || 'Proje Detayı') + '</h1>' + (project.tags && project.tags.length > 0 ? '<div class="project-tags">' + project.tags.map(tag => '<span class="project-tag">' + tag + '</span>').join('') + '</div>' : '') + '<p class="project-description">' + description + '</p></div><div class="project-cta"><h3 class="cta-title">Bu Proje Hakkında Bilgi Almak İster Misiniz?</h3><p class="cta-text">Benzer projeler için bizimle iletişime geçebilirsiniz.</p><a href="index.html#iletisim" class="cta-btn">İletişime Geç</a></div>';
-        document.title = (project.title || 'Proje') + ' - CEE Mimarlık';
+        if (!project) { main.innerHTML = '<div class="not-found"><h2>Proje BulunamadÄ±</h2><p>AradÄ±ÄŸÄ±nÄ±z proje mevcut deÄŸil.</p><a href="index.html#projeler" class="cta-btn" style="margin-top:20px;display:inline-block;">Projelere DÃ¶n</a></div>'; return; }
+        const description = project.description || 'Bu proje, modern mimarlÄ±k anlayÄ±ÅŸÄ±yla tasarlanmÄ±ÅŸ olup, estetik ve iÅŸlevselliÄŸi bir arada sunmaktadÄ±r. Proje tasarÄ±mÄ±ndan uygulama sÃ¼reÃ§lerine kadar tÃ¼m aÅŸamalar titizlikle yÃ¶netilerek, mekÃ¢nlara teknik aÃ§Ä±dan saÄŸlam, estetik ve iÅŸlevsel Ã§Ã¶zÃ¼mler sunulmaktadÄ±r.';
+        main.innerHTML = '<div class="project-hero"><img src="' + project.img + '" alt="' + (project.title || 'Proje') + '"></div><div class="project-info"><h1 class="project-title">' + (project.title || 'Proje DetayÄ±') + '</h1>' + (project.tags && project.tags.length > 0 ? '<div class="project-tags">' + project.tags.map(tag => '<span class="project-tag">' + tag + '</span>').join('') + '</div>' : '') + '<p class="project-description">' + description + '</p></div><div class="project-cta"><h3 class="cta-title">Bu Proje HakkÄ±nda Bilgi Almak Ä°ster Misiniz?</h3><p class="cta-text">Benzer projeler iÃ§in bizimle iletiÅŸime geÃ§ebilirsiniz.</p><a href="index.html#iletisim" class="cta-btn">Ä°letiÅŸime GeÃ§</a></div>';
+        document.title = (project.title || 'Proje') + ' - CEE MimarlÄ±k';
     }
     document.addEventListener('DOMContentLoaded', function() { checkDarkMode(); loadSiteSettings(); const projects = loadProjects(); const project = projects.find(p => p.id === projectId); renderProject(project); });
 </script>

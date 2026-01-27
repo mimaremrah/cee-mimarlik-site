@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerimiz | CEE Mimarlık</title>
+    <meta name="description" content="CEE Mimarlık projelerini keşfedin - Villa, apartman, ofis ve ticari yapı tasarımlarımız.">
+    <meta name="keywords" content="mimarlık projeleri, villa tasarımı, apartman projesi, ofis tasarımı, CEE Mimarlık">
+    <meta name="theme-color" content="#5a6677">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Projelerimiz | CEE Mimarlık">
+    <meta property="og:description" content="Modern mimarlık anlayışıyla hayata geçirdiğimiz projelerimizi keşfedin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ceemimarlik.com/projeler.html">
+    
+    <link rel="canonical" href="https://www.ceemimarlik.com/projeler.html">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #5a6677;
+            --primary-light: #6b7a8a;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        body.dark-mode {
+            --primary: #6b7a8a;
+            --text: #e2e8f0;
+            --text-light: #a0aec0;
+            --bg: #111111;
+            --bg-alt: #1a1a1a;
+            --card-bg: #1e1e1e;
+            --border: #333;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode header { 
+            background: rgba(17,17,17,0.95); 
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-wrapper img { 
+            height: 45px; 
+            width: auto; 
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 3px;
+        }
+        
+        nav { 
+            display: flex; 
+            gap: 35px; 
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active { 
+            color: var(--primary); 
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after, nav a.active::after { 
+            width: 100%; 
+        }
+        
+        .header-actions { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        
+        .dark-toggle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-toggle:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        /* PAGE HERO */
+        .page-hero {
+            padding: 160px 5% 80px;
+            background: var(--bg-alt);
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding: 8px 20px;
+            background: rgba(90, 102, 119, 0.1);
+            border-radius: 30px;
+        }
+        
+        body.dark-mode .page-label {
+            background: rgba(107, 122, 138, 0.2);
+        }
+        
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .page-hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* FILTER TABS */
+        .filter-section {
+            padding: 40px 5%;
+            background: var(--bg);
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 12px 28px;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        /* PROJECTS SECTION */
+        .projects-section {
+            padding: 80px 5%;
+            background: var(--bg);
+        }
+        
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.08);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .view-btn {
+            padding: 12px 30px;
+            background: white;
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .view-btn {
+            transform: translateY(0);
+        }
+        
+        .project-info {
+            padding: 25px;
+        }
+        
+        .project-category {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .project-location {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* STATS BAR */
+        .stats-bar {
+            background: var(--primary);
+            padding: 60px 5%;
+            margin-top: 40px;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 1px;
+        }
+        
+        /* CTA */
+        .cta-section {
+            padding: 100px 5%;
+            background: var(--bg-alt);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(90, 102, 119, 0.3);
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--bg-alt);
+            padding: 40px 5%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        footer p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        footer #footerCompany {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 100px 20px;
+            color: var(--text-light);
+        }
+        
+        .empty-state-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-state h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            
+            nav.active { display: flex; }
+            nav a { padding: 15px 0; border-bottom: 1px solid var(--border); }
+            
+            .page-hero { padding: 140px 5% 60px; }
+            .page-hero h1 { font-size: 36px; }
+            .page-hero p { font-size: 16px; }
+            
+            .filter-section { top: 80px; padding: 20px 5%; }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-item h3 { font-size: 36px; }
+            
+            .cta-section h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo-wrapper">
+            <img src="" alt="CEE Mimarlık" id="siteLogo" style="display:none;">
+            <span class="logo-text" id="siteTitle">CEE</span>
+        </a>
+        <nav id="mainNav">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="projeler.html" class="active">Projeler</a>
+            <a href="hizmetler.html">Hizmetler</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="ekip.html">Ekip</a>
+            <a href="iletisim.html">İletişim</a>
+        </nav>
+        <div class="header-actions">
+            <button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="page-hero-content">
+        <div class="page-label">Portföyümüz</div>
+        <h1>Projelerimiz</h1>
+        <p>Modern mimarlık anlayışıyla hayata geçirdiğimiz villa, apartman, ofis ve ticari yapı projelerimizi keşfedin.</p>
+    </div>
+</section>
+
+<section class="filter-section">
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Tümü</button>
+        <button class="filter-btn" data-filter="villa">Villa</button>
+        <button class="filter-btn" data-filter="apartman">Apartman</button>
+        <button class="filter-btn" data-filter="ofis">Ofis</button>
+        <button class="filter-btn" data-filter="ticari">Ticari</button>
+        <button class="filter-btn" data-filter="konut">Konut</button>
+    </div>
+</section>
+
+<section class="projects-section">
+    <div class="projects-container">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projeler JavaScript ile yüklenecek -->
+        </div>
+    </div>
+</section>
+
+<section class="stats-bar">
+    <div class="stats-container">
+        <div class="stat-item">
+            <h3 id="statProjects">100+</h3>
+            <p>Tamamlanan Proje</p>
+        </div>
+        <div class="stat-item">
+            <h3>15+</h3>
+            <p>Yıllık Deneyim</p>
+        </div>
+        <div class="stat-item">
+            <h3>50+</h3>
+            <p>Mutlu Müşteri</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Müşteri Memnuniyeti</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Projenizi Hayata Geçirelim</h2>
+    <p>Hayalinizdeki mekanı tasarlamak için bizimle iletişime geçin. Ücretsiz keşif ve fiyat teklifi alın.</p>
+    <a href="iletisim.html" class="cta-btn">İletişime Geçin →</a>
+</section>
+
+<footer>
+    <p>© <span id="footerYear">2025</span> <span id="footerCompany">CEE MİMARLIK</span> Tüm hakları saklıdır.</p>
+</footer>
+
+<script>
+// Dark Mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('cee_public_dark', isDark);
+    document.querySelector('.dark-toggle').textContent = isDark ? '☀️' : '🌙';
+}
+
+function toggleMenu() {
+    document.getElementById('mainNav').classList.toggle('active');
+}
+
+// Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode kontrolü
+    if (localStorage.getItem('cee_public_dark') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.dark-toggle').textContent = '☀️';
+    }
+    
+    loadSiteSettings();
+    loadFooterSettings();
+    loadProjects();
+    setupFilters();
+});
+
+// Site ayarlarını yükle
+function loadSiteSettings() {
+    const siteLogo = localStorage.getItem('cee_site_logo') || localStorage.getItem('site_logo');
+    const logoEl = document.getElementById('siteLogo');
+    const logoText = document.getElementById('siteTitle');
+    
+    if (siteLogo && logoEl) {
+        logoEl.src = siteLogo;
+        logoEl.style.display = 'block';
+        if (logoText) logoText.style.display = 'none';
+    }
+    
+    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
+    if (footerSettings.company && logoText) {
+        const firstWord = footerSettings.company.split(' ')[0];
+        logoText.textContent = firstWord;
+    }
+}
+
+// Footer ayarlarını yükle
+function loadFooterSettings() {
+    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
+    
+    document.getElementById('footerYear').textContent = footerSettings.year || new Date().getFullYear();
+    
+    if (footerSettings.company) {
+        document.getElementById('footerCompany').textContent = footerSettings.company;
+    }
+}
+
+// Varsayılan projeler
+const defaultProjects = [
+    {
+        id: '1',
+        title: 'Modern Villa Projesi',
+        category: 'villa',
+        location: 'Çorlu, Tekirdağ',
+        img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800',
+        description: 'Modern mimari çizgilerle tasarlanmış lüks villa projesi.'
+    },
+    {
+        id: '2',
+        title: 'Merkez Apartmanı',
+        category: 'apartman',
+        location: 'Çorlu, Tekirdağ',
+        img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800',
+        description: 'Şehir merkezinde konforlu yaşam alanları sunan apartman projesi.'
+    },
+    {
+        id: '3',
+        title: 'Business Center',
+        category: 'ofis',
+        location: 'Çorlu, Tekirdağ',
+        img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
+        description: 'Modern iş dünyası için tasarlanmış ofis kompleksi.'
+    },
+    {
+        id: '4',
+        title: 'Plaza AVM',
+        category: 'ticari',
+        location: 'Çorlu, Tekirdağ',
+        img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800',
+        description: 'Alışveriş ve eğlence merkezi projesi.'
+    }
+];
+
+// Projeleri yükle
+function loadProjects() {
+    const grid = document.getElementById('projectsGrid');
+    let projects = [];
+    
+    // localStorage'dan projeleri al
+    const savedProjects = localStorage.getItem('cee_projects') || localStorage.getItem('ceeProjects');
+    
+    if (savedProjects) {
+        try {
+            projects = JSON.parse(savedProjects);
+        } catch (e) {
+            projects = defaultProjects;
+        }
+    } else {
+        projects = defaultProjects;
+    }
+    
+    if (projects.length === 0) {
+        grid.innerHTML = `
+            <div class="empty-state" style="grid-column: 1/-1;">
+                <div class="empty-state-icon">🏗️</div>
+                <h3>Henüz proje eklenmedi</h3>
+                <p>Admin panelden proje ekleyebilirsiniz.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Proje sayısını güncelle
+    document.getElementById('statProjects').textContent = projects.length + '+';
+    
+    renderProjects(projects);
+}
+
+// Projeleri render et
+function renderProjects(projects) {
+    const grid = document.getElementById('projectsGrid');
+    
+    grid.innerHTML = projects.map(p => `
+        <div class="project-card" data-category="${p.category || 'konut'}" onclick="goToProject('${p.id}')">
+            <div class="project-image">
+                <img src="${p.img || p.image || 'https://via.placeholder.com/800x600?text=Proje'}" 
+                     alt="${p.title}" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/800x600?text=Proje'">
+                <div class="project-overlay">
+                    <span class="view-btn">Detayları Gör</span>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-category">${getCategoryName(p.category)}</div>
+                <h3 class="project-title">${p.title}</h3>
+                <p class="project-location">📍 ${p.location || 'Çorlu, Tekirdağ'}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Kategori adı al
+function getCategoryName(cat) {
+    const names = {
+        'villa': 'Villa',
+        'apartman': 'Apartman',
+        'ofis': 'Ofis',
+        'ticari': 'Ticari',
+        'konut': 'Konut'
+    };
+    return names[cat] || 'Proje';
+}
+
+// Proje detayına git
+function goToProject(id) {
+    window.location.href = `project-detail.html?id=${id}`;
+}
+
+// Filtreleme
+function setupFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Aktif butonu güncelle
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            filterProjects(filter);
+        });
+    });
+}
+
+function filterProjects(filter) {
+    const cards = document.querySelectorAll('.project-card');
+    
+    cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+</script>
+
+</body>
+</html>

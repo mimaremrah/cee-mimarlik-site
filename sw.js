@@ -1,5 +1,5 @@
 // Service Worker - PWA Offline Support (Advanced)
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `cee-mimarlik-${CACHE_VERSION}`;
 const CACHE_NAME_IMAGES = `cee-images-${CACHE_VERSION}`;
 const MAX_IMAGE_CACHE = 50; // Maksimum 50 resim cache'le
@@ -8,10 +8,19 @@ const MAX_IMAGE_CACHE = 50; // Maksimum 50 resim cache'le
 const STATIC_CACHE = [
   '/',
   '/index.html',
+  '/projeler.html',
+  '/hizmetler.html',
+  '/hakkimizda.html',
+  '/ekip.html',
+  '/iletisim.html',
+  '/project-detail.html',
+  '/gizlilik.html',
   '/offline.html',
   '/404.html',
   '/dynamic-seo.js',
-  '/cookie-consent.js'
+  '/cookie-consent.js',
+  '/manifest.json',
+  '/logo.png'
 ];
 
 // Install - Static cache
@@ -51,7 +60,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 1. Admin/Login sayfaları - HİÇBİR ZAMAN cache'leme
+  // 1. Admin/Login sayfalarÄ± - HÄ°Ã‡BÄ°R ZAMAN cache'leme
   if (url.pathname.includes('/admin') || 
       url.pathname.includes('/firebase-login') ||
       url.pathname.includes('/panel-')) {
@@ -74,18 +83,18 @@ self.addEventListener('fetch', event => {
     return;
   }
   
-  // 4. HTML sayfaları - Network-first
+  // 4. HTML sayfalarÄ± - Network-first
   if (request.destination === 'document' || 
       request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(networkFirst(request));
     return;
   }
   
-  // 5. Diğer her şey - Network-first
+  // 5. DiÄŸer her ÅŸey - Network-first
   event.respondWith(networkFirst(request));
 });
 
-// Cache-first stratejisi (statik dosyalar için)
+// Cache-first stratejisi (statik dosyalar iÃ§in)
 async function cacheFirst(request) {
   const cached = await caches.match(request);
   if (cached) {
@@ -104,7 +113,7 @@ async function cacheFirst(request) {
   }
 }
 
-// Network-first stratejisi (HTML için)
+// Network-first stratejisi (HTML iÃ§in)
 async function networkFirst(request) {
   try {
     const response = await fetch(request);
@@ -119,10 +128,10 @@ async function networkFirst(request) {
       return cached;
     }
     
-    // Offline sayfası göster
+    // Offline sayfasÄ± gÃ¶ster
     const offlinePage = await caches.match('/offline.html');
     return offlinePage || new Response(
-      '<h1>Offline</h1><p>İnternet bağlantınızı kontrol edin.</p>',
+      '<h1>Offline</h1><p>Ä°nternet baÄŸlantÄ±nÄ±zÄ± kontrol edin.</p>',
       { headers: { 'Content-Type': 'text/html; charset=utf-8' } }
     );
   }
@@ -130,7 +139,7 @@ async function networkFirst(request) {
 
 // Resim cache handler (limit ile)
 async function imageHandler(request) {
-  // Önce cache'e bak
+  // Ã–nce cache'e bak
   const cached = await caches.match(request);
   if (cached) {
     return cached;
@@ -156,7 +165,7 @@ async function imageHandler(request) {
   }
 }
 
-// Background sync için (ileride eklenebilir)
+// Background sync iÃ§in (ileride eklenebilir)
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-forms') {
     event.waitUntil(syncForms());
@@ -165,5 +174,5 @@ self.addEventListener('sync', event => {
 
 async function syncForms() {
   // Form verilerini senkronize et
-  console.log('Background sync çalışıyor...');
+  console.log('Background sync Ã§alÄ±ÅŸÄ±yor...');
 }

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CEE Mimarlık - Güvenli giriş sayfası">
+    <meta name="description" content="CEE MimarlÄ±k - GÃ¼venli giriÅŸ sayfasÄ±">
     <meta name="robots" content="noindex, nofollow">
-    <title>CEE | Güvenli Giriş</title>
+    <title>CEE | GÃ¼venli GiriÅŸ</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
 /* Cross-Browser & Mobile Uyumluluk */
@@ -277,7 +277,7 @@ a{color:inherit;text-decoration:none}
 <body>
     <div class="login-container">
         <div class="logo">
-            <h1>🔐 CEE Güvenli Giriş</h1>
+            <h1>ðŸ” CEE GÃ¼venli GiriÅŸ</h1>
             <p>Firebase Authentication</p>
         </div>
 
@@ -285,75 +285,75 @@ a{color:inherit;text-decoration:none}
         
         <div class="loading" id="loadingSpinner">
             <div class="spinner"></div>
-            <p style="margin-top: 10px; color: #667eea;">İşleniyor...</p>
+            <p style="margin-top: 10px; color: #667eea;">Ä°ÅŸleniyor...</p>
         </div>
 
         <!-- LOGIN FORM -->
         <form id="loginForm">
             <div class="form-group">
-                <label>📧 Email</label>
+                <label>ðŸ“§ Email</label>
                 <input type="email" id="loginEmail" placeholder="ornek@email.com" required>
             </div>
             
             <div class="form-group">
-                <label>🔒 Şifre</label>
+                <label>ðŸ”’ Åžifre</label>
                 <div class="password-toggle">
-                    <input type="password" id="loginPassword" placeholder="••••••••" required>
-                    <button type="button" onclick="togglePassword('loginPassword')">👁️</button>
+                    <input type="password" id="loginPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                    <button type="button" onclick="togglePassword('loginPassword')">ðŸ‘ï¸</button>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            <button type="submit" class="btn btn-primary">GiriÅŸ Yap</button>
         </form>
 
         <!-- SIGNUP FORM -->
         <form id="signupForm">
             <div class="form-group">
-                <label>📧 Email</label>
+                <label>ðŸ“§ Email</label>
                 <input type="email" id="signupEmail" placeholder="ornek@email.com" required>
             </div>
             
             <div class="form-group">
-                <label>🔒 Şifre (min 6 karakter)</label>
+                <label>ðŸ”’ Åžifre (min 6 karakter)</label>
                 <div class="password-toggle">
-                    <input type="password" id="signupPassword" placeholder="••••••••" minlength="6" required>
-                    <button type="button" onclick="togglePassword('signupPassword')">👁️</button>
+                    <input type="password" id="signupPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" minlength="6" required>
+                    <button type="button" onclick="togglePassword('signupPassword')">ðŸ‘ï¸</button>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>🔒 Şifre Tekrar</label>
+                <label>ðŸ”’ Åžifre Tekrar</label>
                 <div class="password-toggle">
-                    <input type="password" id="signupPasswordConfirm" placeholder="••••••••" minlength="6" required>
-                    <button type="button" onclick="togglePassword('signupPasswordConfirm')">👁️</button>
+                    <input type="password" id="signupPasswordConfirm" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" minlength="6" required>
+                    <button type="button" onclick="togglePassword('signupPasswordConfirm')">ðŸ‘ï¸</button>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Hesap Oluştur</button>
+            <button type="submit" class="btn btn-primary">Hesap OluÅŸtur</button>
         </form>
 
         <div class="divider"><span>veya</span></div>
 
         <button class="btn btn-google" onclick="signInWithGoogle()">
             <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-            Google ile Giriş
+            Google ile GiriÅŸ
         </button>
 
         <div class="toggle-form">
-            <span id="toggleText">Hesabınız yok mu? <a onclick="toggleForms()">Kayıt Ol</a></span>
+            <span id="toggleText">HesabÄ±nÄ±z yok mu? <a onclick="toggleForms()">KayÄ±t Ol</a></span>
         </div>
 
         <!-- FIREBASE SETUP INFO -->
         <div class="firebase-info">
-            <h4>🔧 Firebase Yapılandırması</h4>
+            <h4>ðŸ”§ Firebase YapÄ±landÄ±rmasÄ±</h4>
             <p>
-                Bu sistem Firebase Authentication kullanır. Çalıştırmak için:
+                Bu sistem Firebase Authentication kullanÄ±r. Ã‡alÄ±ÅŸtÄ±rmak iÃ§in:
             </p>
             <ol style="font-size: 12px; color: #6b7280; margin-top: 10px; padding-left: 20px; line-height: 1.8;">
-                <li><code>FIREBASE_KURULUM.md</code> dosyasını okuyun</li>
-                <li>Firebase Console'dan config alın</li>
-                <li>Aşağıdaki firebaseConfig'i değiştirin</li>
-                <li>Authentication'ı aktif edin</li>
+                <li><code>FIREBASE_KURULUM.md</code> dosyasÄ±nÄ± okuyun</li>
+                <li>Firebase Console'dan config alÄ±n</li>
+                <li>AÅŸaÄŸÄ±daki firebaseConfig'i deÄŸiÅŸtirin</li>
+                <li>Authentication'Ä± aktif edin</li>
             </ol>
         </div>
     </div>
@@ -373,7 +373,7 @@ a{color:inherit;text-decoration:none}
         } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
         // ===================================
-        // BURAYA KENDİ FIREBASE CONFIG'İNİZİ YAPIŞTIRIN!
+        // BURAYA KENDÄ° FIREBASE CONFIG'Ä°NÄ°ZÄ° YAPIÅžTIRIN!
         // ===================================
         const firebaseConfig = {
             apiKey: "BURAYA-API-KEY-GELECEK",
@@ -384,12 +384,12 @@ a{color:inherit;text-decoration:none}
             appId: "BURAYA-APP-ID-GELECEK"
         };
 
-        // Firebase başlat
+        // Firebase baÅŸlat
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // Global erişim için
+        // Global eriÅŸim iÃ§in
         window.auth = auth;
         window.provider = provider;
         window.signInWithPopup = signInWithPopup;
@@ -400,16 +400,16 @@ a{color:inherit;text-decoration:none}
         // ===================================
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // Kullanıcı giriş yapmış
-                console.log('✅ Giriş yapıldı:', user.email);
+                // KullanÄ±cÄ± giriÅŸ yapmÄ±ÅŸ
+                console.log('âœ… GiriÅŸ yapÄ±ldÄ±:', user.email);
                 
                 // Admin panele yönlendir
                 setTimeout(() => {
-                    window.location.href = 'panel-b18f81.html';
+                    window.location.href = 'admin.html';
                 }, 500);
             } else {
-                // Kullanıcı çıkış yapmış
-                console.log('ℹ️ Giriş yapılmadı');
+                // KullanÄ±cÄ± Ã§Ä±kÄ±ÅŸ yapmÄ±ÅŸ
+                console.log('â„¹ï¸ GiriÅŸ yapÄ±lmadÄ±');
             }
         });
 
@@ -427,20 +427,20 @@ a{color:inherit;text-decoration:none}
 
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log('✅ Giriş başarılı:', userCredential.user.email);
-                showAlert('Giriş başarılı! Yönlendiriliyorsunuz...', 'success');
+                console.log('âœ… GiriÅŸ baÅŸarÄ±lÄ±:', userCredential.user.email);
+                showAlert('GiriÅŸ baÅŸarÄ±lÄ±! YÃ¶nlendiriliyorsunuz...', 'success');
             } catch (error) {
-                console.error('❌ Giriş hatası:', error);
-                let errorMessage = 'Giriş başarısız!';
+                console.error('âŒ GiriÅŸ hatasÄ±:', error);
+                let errorMessage = 'GiriÅŸ baÅŸarÄ±sÄ±z!';
                 
                 if (error.code === 'auth/wrong-password') {
-                    errorMessage = 'Hatalı şifre!';
+                    errorMessage = 'HatalÄ± ÅŸifre!';
                 } else if (error.code === 'auth/user-not-found') {
-                    errorMessage = 'Kullanıcı bulunamadı!';
+                    errorMessage = 'KullanÄ±cÄ± bulunamadÄ±!';
                 } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Geçersiz email!';
+                    errorMessage = 'GeÃ§ersiz email!';
                 } else if (error.code === 'auth/too-many-requests') {
-                    errorMessage = 'Çok fazla deneme! Lütfen bekleyin.';
+                    errorMessage = 'Ã‡ok fazla deneme! LÃ¼tfen bekleyin.';
                 }
                 
                 showAlert(errorMessage, 'error');
@@ -460,12 +460,12 @@ a{color:inherit;text-decoration:none}
             const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
 
             if (password !== passwordConfirm) {
-                showAlert('Şifreler eşleşmiyor!', 'error');
+                showAlert('Åžifreler eÅŸleÅŸmiyor!', 'error');
                 return;
             }
 
             if (password.length < 6) {
-                showAlert('Şifre en az 6 karakter olmalı!', 'error');
+                showAlert('Åžifre en az 6 karakter olmalÄ±!', 'error');
                 return;
             }
 
@@ -474,18 +474,18 @@ a{color:inherit;text-decoration:none}
 
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                console.log('✅ Kayıt başarılı:', userCredential.user.email);
-                showAlert('Hesap oluşturuldu! Yönlendiriliyorsunuz...', 'success');
+                console.log('âœ… KayÄ±t baÅŸarÄ±lÄ±:', userCredential.user.email);
+                showAlert('Hesap oluÅŸturuldu! YÃ¶nlendiriliyorsunuz...', 'success');
             } catch (error) {
-                console.error('❌ Kayıt hatası:', error);
-                let errorMessage = 'Kayıt başarısız!';
+                console.error('âŒ KayÄ±t hatasÄ±:', error);
+                let errorMessage = 'KayÄ±t baÅŸarÄ±sÄ±z!';
                 
                 if (error.code === 'auth/email-already-in-use') {
-                    errorMessage = 'Bu email zaten kullanılıyor!';
+                    errorMessage = 'Bu email zaten kullanÄ±lÄ±yor!';
                 } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Geçersiz email!';
+                    errorMessage = 'GeÃ§ersiz email!';
                 } else if (error.code === 'auth/weak-password') {
-                    errorMessage = 'Şifre çok zayıf!';
+                    errorMessage = 'Åžifre Ã§ok zayÄ±f!';
                 }
                 
                 showAlert(errorMessage, 'error');
@@ -506,16 +506,16 @@ a{color:inherit;text-decoration:none}
 
             try {
                 const result = await window.signInWithPopup(window.auth, window.provider);
-                console.log('✅ Google giriş başarılı:', result.user.email);
-                showAlert('Google ile giriş başarılı! Yönlendiriliyorsunuz...', 'success');
+                console.log('âœ… Google giriÅŸ baÅŸarÄ±lÄ±:', result.user.email);
+                showAlert('Google ile giriÅŸ baÅŸarÄ±lÄ±! YÃ¶nlendiriliyorsunuz...', 'success');
             } catch (error) {
-                console.error('❌ Google giriş hatası:', error);
-                let errorMessage = 'Google ile giriş başarısız!';
+                console.error('âŒ Google giriÅŸ hatasÄ±:', error);
+                let errorMessage = 'Google ile giriÅŸ baÅŸarÄ±sÄ±z!';
                 
                 if (error.code === 'auth/popup-closed-by-user') {
-                    errorMessage = 'Giriş penceresi kapatıldı.';
+                    errorMessage = 'GiriÅŸ penceresi kapatÄ±ldÄ±.';
                 } else if (error.code === 'auth/popup-blocked') {
-                    errorMessage = 'Popup engellendi! Tarayıcı ayarlarını kontrol edin.';
+                    errorMessage = 'Popup engellendi! TarayÄ±cÄ± ayarlarÄ±nÄ± kontrol edin.';
                 }
                 
                 showAlert(errorMessage, 'error');
@@ -535,11 +535,11 @@ a{color:inherit;text-decoration:none}
             if (loginForm.style.display !== 'none') {
                 loginForm.style.display = 'none';
                 signupForm.style.display = 'block';
-                toggleText.innerHTML = 'Zaten hesabınız var mı? <a onclick="toggleForms()">Giriş Yap</a>';
+                toggleText.innerHTML = 'Zaten hesabÄ±nÄ±z var mÄ±? <a onclick="toggleForms()">GiriÅŸ Yap</a>';
             } else {
                 loginForm.style.display = 'block';
                 signupForm.style.display = 'none';
-                toggleText.innerHTML = 'Hesabınız yok mu? <a onclick="toggleForms()">Kayıt Ol</a>';
+                toggleText.innerHTML = 'HesabÄ±nÄ±z yok mu? <a onclick="toggleForms()">KayÄ±t Ol</a>';
             }
 
             clearAlert();
@@ -563,7 +563,7 @@ a{color:inherit;text-decoration:none}
             const spinner = document.getElementById('loadingSpinner');
             spinner.classList.toggle('show', show);
             
-            // Formları devre dışı bırak
+            // FormlarÄ± devre dÄ±ÅŸÄ± bÄ±rak
             const forms = document.querySelectorAll('form, button');
             forms.forEach(el => el.style.pointerEvents = show ? 'none' : 'auto');
         }
@@ -571,7 +571,7 @@ a{color:inherit;text-decoration:none}
         // Check if Firebase is configured
         window.addEventListener('load', () => {
             if (firebaseConfig.apiKey === 'BURAYA-API-KEY-GELECEK') {
-                showAlert('⚠️ Firebase yapılandırılmamış! FIREBASE_KURULUM.md dosyasını okuyun.', 'info');
+                showAlert('âš ï¸ Firebase yapÄ±landÄ±rÄ±lmamÄ±ÅŸ! FIREBASE_KURULUM.md dosyasÄ±nÄ± okuyun.', 'info');
             }
         });
     </script>

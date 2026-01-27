@@ -7,9 +7,13 @@
 User-agent: *
 Allow: /
 Allow: /index.html
+Allow: /projeler.html
+Allow: /hizmetler.html
 Allow: /hakkimizda.html
 Allow: /ekip.html
+Allow: /iletisim.html
 Allow: /project-detail.html
+Allow: /gizlilik.html
 Allow: /*.css
 Allow: /*.js
 Allow: /images/

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzman Kadromuz | CEE Mimarlık</title>
-    <meta name="description" content="CEE Mimarlık uzman kadrosu - Deneyimli mimarlarımız ve ekibimizle tanışın.">
+    <title>Uzman Kadromuz | CEE MimarlÄ±k</title>
+    <meta name="description" content="CEE MimarlÄ±k uzman kadrosu - Deneyimli mimarlarÄ±mÄ±z ve ekibimizle tanÄ±ÅŸÄ±n.">
     <meta name="theme-color" content="#2c2c2c">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -389,9 +389,9 @@
         
         .footer-copy { color: rgba(255,255,255,0.5); font-size: 13px; }
         
-        /* ═══════════════════════════════════════════════════════════════════ */
-        /* DARK MODE - Tüm elementler için                                      */
-        /* ═══════════════════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+        /* DARK MODE - TÃ¼m elementler iÃ§in                                      */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         body.dark-mode .page-hero {
             background: var(--bg-alt);
         }
@@ -535,20 +535,20 @@
 <header>
     <div class="header-content">
         <a href="index.html" class="logo-wrapper">
-            <img src="" alt="CEE Mimarlık" id="siteLogo" style="display:none; height: 45px; width: auto;">
+            <img src="" alt="CEE MimarlÄ±k" id="siteLogo" style="display:none; height: 45px; width: auto;">
             <span class="logo-text" id="siteTitle">CEE</span>
         </a>
         <nav id="mainNav">
             <a href="index.html">Ana Sayfa</a>
-            <a href="index.html#projeler">Projeler</a>
-            <a href="index.html#hizmetler">Hizmetler</a>
-            <a href="index.html#hakkimizda">Hakkımızda</a>
+            <a href="projeler.html">Projeler</a>
+            <a href="hizmetler.html">Hizmetler</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
             <a href="ekip.html" class="active">Ekip</a>
-            <a href="index.html#iletisim">İletişim</a>
+            <a href="iletisim.html">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="dark-toggle" onclick="toggleDarkMode()">ðŸŒ™</button>
+            <button class="menu-toggle" onclick="toggleMenu()">â˜°</button>
         </div>
     </div>
 </header>
@@ -557,7 +557,7 @@
     <div class="page-hero-content">
         <div class="page-label">Profesyonel Ekibimiz</div>
         <h1>Uzman Kadromuz</h1>
-        <p>20 yılı aşkın tecrübemizle projelerinizi hayata geçiren deneyimli mimarlarımız ve uzman ekibimizle tanışın.</p>
+        <p>20 yÄ±lÄ± aÅŸkÄ±n tecrÃ¼bemizle projelerinizi hayata geÃ§iren deneyimli mimarlarÄ±mÄ±z ve uzman ekibimizle tanÄ±ÅŸÄ±n.</p>
     </div>
 </section>
 
@@ -570,7 +570,7 @@
 <footer style="background: var(--bg-alt); padding: 40px 5%; border-top: 1px solid var(--border);">
     <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
         <p style="margin: 0; color: var(--text-light); font-size: 14px;">
-            © <span id="footerYear">2024</span> <span style="font-weight: 600; color: var(--text);" id="footerCompany">CEE MİMARLIK</span> Tüm hakları saklıdır.
+            Â© <span id="footerYear">2024</span> <span style="font-weight: 600; color: var(--text);" id="footerCompany">CEE MÄ°MARLIK</span> TÃ¼m haklarÄ± saklÄ±dÄ±r.
         </p>
     </div>
 </footer>
@@ -579,7 +579,7 @@
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? 'â˜€ï¸' : 'ðŸŒ™';
 }
 
 function toggleMenu() {
@@ -588,20 +588,20 @@ function toggleMenu() {
 
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
-    document.querySelector('.dark-toggle').textContent = '☀️';
+    document.querySelector('.dark-toggle').textContent = 'â˜€ï¸';
 }
 
 const defaultTeam = [{
     id: '1',
-    name: 'Emrah İpek',
-    role: 'Kurucu & Baş Mimar',
+    name: 'Emrah Ä°pek',
+    role: 'Kurucu & BaÅŸ Mimar',
     photo: '',
-    bio: 'CEE Mimarlık\'ın kurucusu olarak 15 yılı aşkın sektör deneyimine sahibim. Konut, villa, apartman, ofis ve ticari yapılar başta olmak üzere 100\'den fazla projeyi başarıyla tamamladım. Yaratıcı ve çözüm odaklı yaklaşımımla, müşterilerimizin hayallerini gerçeğe dönüştürmeyi hedefliyorum. Konsept geliştirmeden uygulama projesine, şantiye koordinasyonundan teslimata kadar tüm süreçlerde titizlikle çalışıyorum.',
-    education: 'Kırklareli Üniversitesi - Mimarlık',
-    experience: '15+ Yıl',
+    bio: 'CEE MimarlÄ±k\'Ä±n kurucusu olarak 15 yÄ±lÄ± aÅŸkÄ±n sektÃ¶r deneyimine sahibim. Konut, villa, apartman, ofis ve ticari yapÄ±lar baÅŸta olmak Ã¼zere 100\'den fazla projeyi baÅŸarÄ±yla tamamladÄ±m. YaratÄ±cÄ± ve Ã§Ã¶zÃ¼m odaklÄ± yaklaÅŸÄ±mÄ±mla, mÃ¼ÅŸterilerimizin hayallerini gerÃ§eÄŸe dÃ¶nÃ¼ÅŸtÃ¼rmeyi hedefliyorum. Konsept geliÅŸtirmeden uygulama projesine, ÅŸantiye koordinasyonundan teslimata kadar tÃ¼m sÃ¼reÃ§lerde titizlikle Ã§alÄ±ÅŸÄ±yorum.',
+    education: 'KÄ±rklareli Ãœniversitesi - MimarlÄ±k',
+    experience: '15+ YÄ±l',
     projects: '100+ Proje',
-    expertise: 'Mimari Tasarım & Proje Yönetimi',
-    skills: ['AutoCAD', 'Revit', 'SketchUp', '3D Max', 'Photoshop', 'Lumion', 'Uygulama Projesi', 'Şantiye Yönetimi'],
+    expertise: 'Mimari TasarÄ±m & Proje YÃ¶netimi',
+    skills: ['AutoCAD', 'Revit', 'SketchUp', '3D Max', 'Photoshop', 'Lumion', 'Uygulama Projesi', 'Åžantiye YÃ¶netimi'],
     email: 'ceemimarlik@gmail.com'
 }];
 
@@ -623,7 +623,7 @@ function loadTeam() {
     }
     
     if (team.length === 0) {
-        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">👥</div><h3>Henüz ekip üyesi eklenmedi</h3><p>Admin panelden ekip üyesi ekleyebilirsiniz</p></div>';
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">ðŸ‘¥</div><h3>HenÃ¼z ekip Ã¼yesi eklenmedi</h3><p>Admin panelden ekip Ã¼yesi ekleyebilirsiniz</p></div>';
         return;
     }
     
@@ -635,22 +635,22 @@ function loadTeam() {
             <div class="team-info">
                 <h2 class="team-name">${m.name}</h2>
                 <div class="team-role">${m.role || m.title || ''}</div>
-                <p class="team-bio">${m.bio || m.description || 'Deneyimli ekip üyemiz.'}</p>
+                <p class="team-bio">${m.bio || m.description || 'Deneyimli ekip Ã¼yemiz.'}</p>
                 
                 <div class="team-details">
-                    ${m.education ? `<div class="detail-item"><div class="detail-icon">🎓</div><div class="detail-content"><div class="detail-label">Eğitim</div><div class="detail-value">${m.education}</div></div></div>` : ''}
-                    ${m.experience ? `<div class="detail-item"><div class="detail-icon">⏱️</div><div class="detail-content"><div class="detail-label">Deneyim</div><div class="detail-value">${m.experience}</div></div></div>` : ''}
-                    ${m.projects ? `<div class="detail-item"><div class="detail-icon">🏗️</div><div class="detail-content"><div class="detail-label">Tamamlanan Proje</div><div class="detail-value">${m.projects}</div></div></div>` : ''}
-                    ${m.expertise ? `<div class="detail-item"><div class="detail-icon">⭐</div><div class="detail-content"><div class="detail-label">Uzmanlık Alanı</div><div class="detail-value">${m.expertise}</div></div></div>` : ''}
+                    ${m.education ? `<div class="detail-item"><div class="detail-icon">ðŸŽ“</div><div class="detail-content"><div class="detail-label">EÄŸitim</div><div class="detail-value">${m.education}</div></div></div>` : ''}
+                    ${m.experience ? `<div class="detail-item"><div class="detail-icon">â±ï¸</div><div class="detail-content"><div class="detail-label">Deneyim</div><div class="detail-value">${m.experience}</div></div></div>` : ''}
+                    ${m.projects ? `<div class="detail-item"><div class="detail-icon">ðŸ—ï¸</div><div class="detail-content"><div class="detail-label">Tamamlanan Proje</div><div class="detail-value">${m.projects}</div></div></div>` : ''}
+                    ${m.expertise ? `<div class="detail-item"><div class="detail-icon">â­</div><div class="detail-content"><div class="detail-label">UzmanlÄ±k AlanÄ±</div><div class="detail-value">${m.expertise}</div></div></div>` : ''}
                 </div>
                 
                 ${m.skills && m.skills.length > 0 ? `
                 <div class="team-skills">
-                    <div class="skills-label">Yetenekler & Araçlar</div>
+                    <div class="skills-label">Yetenekler & AraÃ§lar</div>
                     <div class="skills-list">${m.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>
                 </div>` : ''}
                 
-                ${m.email ? `<div class="team-contact"><a href="mailto:${m.email}" class="contact-link" title="E-posta">📧</a></div>` : ''}
+                ${m.email ? `<div class="team-contact"><a href="mailto:${m.email}" class="contact-link" title="E-posta">ðŸ“§</a></div>` : ''}
             </div>
         </div>
     `).join('');
@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadMenuItems();
 });
 
-// Site ayarlarını yükle (logo, başlık)
+// Site ayarlarÄ±nÄ± yÃ¼kle (logo, baÅŸlÄ±k)
 function loadSiteSettings() {
     // Logo
     const siteLogo = localStorage.getItem('site_logo');
@@ -673,14 +673,14 @@ function loadSiteSettings() {
     if (siteLogo && logoEl) {
         logoEl.src = siteLogo;
         logoEl.style.display = 'block';
-        // Logo varsa yazıyı gizle
+        // Logo varsa yazÄ±yÄ± gizle
         if (logoText) logoText.style.display = 'none';
     } else {
-        // Logo yoksa yazıyı göster
+        // Logo yoksa yazÄ±yÄ± gÃ¶ster
         if (logoText) logoText.style.display = 'block';
     }
     
-    // Site başlığı (footer'daki şirket adından al)
+    // Site baÅŸlÄ±ÄŸÄ± (footer'daki ÅŸirket adÄ±ndan al)
     const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
     if (footerSettings.company && logoText) {
         const firstWord = footerSettings.company.split(' ')[0];
@@ -688,7 +688,7 @@ function loadSiteSettings() {
     }
 }
 
-// Footer ayarlarını yükle
+// Footer ayarlarÄ±nÄ± yÃ¼kle
 function loadFooterSettings() {
     const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
     
@@ -703,7 +703,7 @@ function loadFooterSettings() {
     }
 }
 
-// Menü öğelerini yükle
+// MenÃ¼ Ã¶ÄŸelerini yÃ¼kle
 function loadMenuItems() {
     const saved = localStorage.getItem('cee_menu_items');
     if (!saved) return;
@@ -713,17 +713,17 @@ function loadMenuItems() {
         const nav = document.getElementById('mainNav');
         if (!nav || !menuItems.length) return;
         
-        // Sadece aktif menü öğelerini göster
+        // Sadece aktif menÃ¼ Ã¶ÄŸelerini gÃ¶ster
         const activeItems = menuItems.filter(item => item.active);
         
         nav.innerHTML = activeItems.map(item => {
-            // Ekip sayfasındaysak ekip linkini aktif yap
+            // Ekip sayfasÄ±ndaysak ekip linkini aktif yap
             const isActive = item.link === 'ekip.html' || item.link.includes('ekip');
             const href = item.link.startsWith('#') ? 'index.html' + item.link : item.link;
             return `<a href="${href}" ${isActive ? 'class="active"' : ''}>${item.name}</a>`;
         }).join('');
     } catch (e) {
-        console.log('Menü yüklenemedi');
+        console.log('MenÃ¼ yÃ¼klenemedi');
     }
 }
 </script>
