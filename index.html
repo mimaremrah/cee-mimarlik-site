@@ -5475,7 +5475,7 @@ window.goToAdmin = goToAdmin;
         
         <!-- Logo -->
         <div class="hero-logo-wrapper">
-            <img src="logo.png" alt="CEE Mimarlık" class="hero-logo">
+            <img src="" alt="CEE Mimarlık" class="hero-logo" id="heroLogo" style="display: none;">
         </div>
         
         <!-- Tagline -->
@@ -7890,6 +7890,7 @@ function loadFromLocalStorage() {
             const headerLogo = document.getElementById('headerLogo');
             const footerLogo = document.getElementById('footerLogo');
             const waLogo = document.getElementById('waLogo');
+            const heroLogo = document.getElementById('heroLogo');
             const logoText = document.querySelector('.logo-text');
             
             if (headerLogo) {
@@ -7903,6 +7904,10 @@ function loadFromLocalStorage() {
             if (waLogo) {
                 waLogo.src = siteLogo;
                 waLogo.style.display = 'block';
+            }
+            if (heroLogo) {
+                heroLogo.src = siteLogo;
+                heroLogo.style.display = 'block';
             }
             if (logoText) {
                 logoText.style.display = 'none';
