@@ -1853,14 +1853,15 @@
         }
 
         .site-logo {
-            height: 100px;
+            height: 120px;
             width: auto;
             transition: all 0.4s ease;
             object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
         }
 
         header.scrolled .site-logo {
-            height: 60px;
+            height: 70px;
         }
 
         header.scrolled .logo-container {
@@ -4185,8 +4186,8 @@
             .logo-text { font-size: 18px; letter-spacing: 3px; }
             .logo-subtitle { font-size: 6px; letter-spacing: 1.5px; white-space: nowrap; padding-top: 3px; margin-top: 3px; }
             header.scrolled .logo-subtitle { opacity: 0; font-size: 0; height: 0; padding: 0; margin: 0; border: none; }
-            .site-logo { height: 45px; }
-            header.scrolled .site-logo { height: 35px; }
+            .site-logo { height: 60px; }
+            header.scrolled .site-logo { height: 45px; }
             .header-content { padding: 0 15px; }
             .logo-container { padding: 5px 10px; }
             header.scrolled .logo-container { padding: 3px 8px; }
@@ -5269,7 +5270,7 @@ window.goToAdmin = goToAdmin;
     <div class="header-content">
         <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer;">
             <div class="logo-top">
-                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="height: 50px; width: auto;">
+                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo">
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
@@ -5889,16 +5890,32 @@ window.goToAdmin = goToAdmin;
 
 /* Logo Wrapper */
 .hero-logo-wrapper {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
-    animation: heroLogoReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) 5s forwards;
+    animation: heroLogoReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 5s forwards;
 }
 
 .hero-logo {
-    height: 90px;
+    height: 180px;
     width: auto;
-    filter: brightness(0) invert(1) drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.4))
+            drop-shadow(0 0 60px rgba(212,175,55,0.3))
+            drop-shadow(0 8px 32px rgba(0,0,0,0.5));
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    0% {
+        filter: drop-shadow(0 0 30px rgba(255,255,255,0.4))
+                drop-shadow(0 0 60px rgba(212,175,55,0.3))
+                drop-shadow(0 8px 32px rgba(0,0,0,0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px rgba(255,255,255,0.6))
+                drop-shadow(0 0 80px rgba(212,175,55,0.5))
+                drop-shadow(0 8px 32px rgba(0,0,0,0.5));
+    }
 }
 
 @keyframes heroLogoReveal {
@@ -6130,7 +6147,7 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .hero-logo { height: 70px; }
+    .hero-logo { height: 120px; }
     .tagline-text { font-size: 11px; letter-spacing: 4px; }
     .tagline-text::before, .tagline-text::after { width: 25px; }
     .hero-description { font-size: 14px; padding: 0 20px; }
@@ -6153,7 +6170,7 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .hero-logo { height: 55px; }
+    .hero-logo { height: 90px; }
     .tagline-text { font-size: 9px; letter-spacing: 3px; padding: 0 15px; }
     .tagline-text::before, .tagline-text::after { width: 20px; }
     .hero-description { font-size: 13px; line-height: 1.8; }
