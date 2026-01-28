@@ -737,6 +737,32 @@ a{color:inherit;text-decoration:none}
                     </div>
                 </div>
 
+                <!-- HERO AYARLARI -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-header"><span class="card-title">🎯 Hero Bölümü Ayarları</span></div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Ana Başlık (Büyük)</label>
+                                <input type="text" class="form-input" id="heroTitle1" value="CEE" placeholder="CEE">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alt Başlık</label>
+                                <input type="text" class="form-input" id="heroTitle2" value="MİMARLIK" placeholder="MİMARLIK">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Açıklama Metni</label>
+                            <textarea class="form-input" id="heroDesc" rows="3" placeholder="Hero bölümünde görünecek açıklama metni...">Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Buton Metni</label>
+                            <input type="text" class="form-input" id="heroCtaText" value="İletişime Geçin" placeholder="İletişime Geçin">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveHeroSettings()">💾 Hero Ayarlarını Kaydet</button>
+                    </div>
+                </div>
+
                 <div class="grid-2">
                     <div class="card">
                         <div class="card-header">
@@ -834,8 +860,11 @@ a{color:inherit;text-decoration:none}
                             <div style="margin-bottom: 25px;">
                                 <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
                                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #5a6677; background: linear-gradient(135deg, #f8f9fa, #e2e8f0); color: #1a202c; border-radius: 8px;">
-                                        <span style="color: #5a6677;">●</span> CEE Özel
+                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #1a1a2e; background: linear-gradient(135deg, #f8f9fa, #e2e8f0); color: #1a1a2e; border-radius: 8px;">
+                                        <span style="color: #1a1a2e;">●</span> CEE Metalik
+                                    </button>
+                                    <button onclick="applyTheme('premium')" class="btn" style="padding: 10px 16px; border: 2px solid #16213e; background: linear-gradient(135deg, #f8fafc, #e2e8f0); color: #16213e; border-radius: 8px;">
+                                        <span style="color: #16213e;">●</span> Premium
                                     </button>
                                     <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #c9a227;">●</span> Klasik Altın
@@ -843,8 +872,8 @@ a{color:inherit;text-decoration:none}
                                     <button onclick="applyTheme('modern')" class="btn" style="padding: 10px 16px; border: 2px solid #3b82f6; background: linear-gradient(135deg, #fff, #f0f7ff); color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #3b82f6;">●</span> Modern Mavi
                                     </button>
-                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #666; background: linear-gradient(135deg, #2c2c2c, #1a1a1a); color: #fff; border-radius: 8px;">
-                                        <span style="color: #c9a227;">●</span> Koyu Mod
+                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #4a5568; background: linear-gradient(135deg, #1a1a2e, #111111); color: #e2e8f0; border-radius: 8px;">
+                                        <span style="color: #a0aec0;">●</span> Koyu Mod
                                     </button>
                                     <button onclick="applyTheme('warm')" class="btn" style="padding: 10px 16px; border: 2px solid #d97706; background: linear-gradient(135deg, #fffbeb, #fef3c7); color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #d97706;">●</span> Sıcak Tonlar
@@ -1064,7 +1093,7 @@ a{color:inherit;text-decoration:none}
         team = JSON.parse(localStorage.getItem('cee_team') || '[]'); renderTeam();
         faqs = JSON.parse(localStorage.getItem('cee_faqs') || '[]'); renderFaqs();
         heroImages = JSON.parse(localStorage.getItem('hero_images') || '[]'); renderHeroImages();
-        loadMessages(); loadHero(); loadContact(); loadSettings(); loadLogo(); loadMenuItems(); updateStats();
+        loadMessages(); loadHero(); loadHeroSettings(); loadContact(); loadSettings(); loadLogo(); loadMenuItems(); updateStats();
     }
 
     function updateStats() {
@@ -1276,7 +1305,27 @@ a{color:inherit;text-decoration:none}
         toast('Silindi', 'success');
     }
 
-    // HERO SETTINGS
+    // HERO SETTINGS - YENİ
+    function loadHeroSettings() { 
+        const s = JSON.parse(localStorage.getItem('cee_hero_settings') || '{}'); 
+        if (s.title1 && document.getElementById('heroTitle1')) document.getElementById('heroTitle1').value = s.title1;
+        if (s.title2 && document.getElementById('heroTitle2')) document.getElementById('heroTitle2').value = s.title2;
+        if (s.description && document.getElementById('heroDesc')) document.getElementById('heroDesc').value = s.description;
+        if (s.ctaText && document.getElementById('heroCtaText')) document.getElementById('heroCtaText').value = s.ctaText;
+    }
+    
+    function saveHeroSettings() { 
+        const settings = {
+            title1: document.getElementById('heroTitle1') ? document.getElementById('heroTitle1').value : 'CEE',
+            title2: document.getElementById('heroTitle2') ? document.getElementById('heroTitle2').value : 'MİMARLIK',
+            description: document.getElementById('heroDesc') ? document.getElementById('heroDesc').value : '',
+            ctaText: document.getElementById('heroCtaText') ? document.getElementById('heroCtaText').value : 'İletişime Geçin'
+        };
+        localStorage.setItem('cee_hero_settings', JSON.stringify(settings));
+        toast('Hero ayarları kaydedildi! Anasayfayı yenileyin.', 'success'); 
+    }
+
+    // HERO SETTINGS (Eski - uyumluluk için)
     function loadHero() { 
         const s = JSON.parse(localStorage.getItem('hero_settings') || '{}'); 
         if (s.tagline && document.getElementById('heroTagline')) document.getElementById('heroTagline').value = s.tagline;
@@ -1424,8 +1473,12 @@ a{color:inherit;text-decoration:none}
     function applyTheme(theme) {
         const themes = {
             cee: {
-                primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff', 
-                bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c'
+                primary: '#1a1a2e', iconBg: '#4a5568', bgMain: '#ffffff', 
+                bgSection: '#f7fafc', text: '#2d3748', header: '#1a1a2e'
+            },
+            premium: {
+                primary: '#16213e', iconBg: '#16213e', bgMain: '#ffffff', 
+                bgSection: '#f8fafc', text: '#334155', header: '#0f172a'
             },
             classic: {
                 primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
@@ -1436,8 +1489,8 @@ a{color:inherit;text-decoration:none}
                 bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a'
             },
             dark: {
-                primary: '#c9a227', iconBg: '#c9a227', bgMain: '#1a1a1a', 
-                bgSection: '#2c2c2c', text: '#e5e5e5', header: '#0f0f0f'
+                primary: '#a0aec0', iconBg: '#4a5568', bgMain: '#111111', 
+                bgSection: '#1a1a2e', text: '#e2e8f0', header: '#0a0a0f'
             },
             warm: {
                 primary: '#d97706', iconBg: '#d97706', bgMain: '#fffbeb', 

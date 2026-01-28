@@ -5472,13 +5472,10 @@ window.goToAdmin = goToAdmin;
     <!-- LARES TARZI PROFESYONEL İÇERİK                                          -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="hero-content-lares">
-        <!-- Şehir Etiketi -->
-        <div class="hero-location">Çorlu / Tekirdağ</div>
-        
         <!-- Ana Başlık -->
         <h1 class="hero-brand" id="heroBrand">
-            <span class="cee-text">CEE</span>
-            <span class="mimarlik-text">MİMARLIK</span>
+            <span class="cee-text" id="heroTitle1">CEE</span>
+            <span class="mimarlik-text" id="heroTitle2">MİMARLIK</span>
         </h1>
         
         <!-- Açıklama -->
@@ -5487,7 +5484,7 @@ window.goToAdmin = goToAdmin;
         </p>
         
         <!-- CTA Buton -->
-        <a href="#iletisim" class="hero-cta">İletişime Geçin</a>
+        <a href="#iletisim" class="hero-cta" id="heroCta">İletişime Geçin</a>
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
@@ -5906,16 +5903,9 @@ window.goToAdmin = goToAdmin;
     }
 }
 
-/* Şehir Etiketi */
+/* Şehir Etiketi - Gizli */
 .hero-location {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: var(--cee-silver);
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 5.7s forwards;
+    display: none;
 }
 
 /* Ana Başlık Container */
@@ -5937,16 +5927,17 @@ window.goToAdmin = goToAdmin;
         transparent 100%);
 }
 
-/* CEE Yazısı */
+/* CEE Yazısı - Geniş aralıklı */
 .hero-brand .cee-text {
     display: block;
-    font-size: 72px;
+    font-size: 80px;
     font-weight: 800;
-    letter-spacing: 20px;
+    letter-spacing: 45px;
     color: var(--cee-antrasit);
     line-height: 1;
     opacity: 0;
     animation: fadeInUp 0.8s ease 5.9s forwards;
+    margin-right: 40px;
 }
 
 /* MİMARLIK Yazısı */
@@ -11471,8 +11462,38 @@ function loadSiteLogo() {
     }
 }
 
+// Hero ayarlarını yükle
+function loadHeroSettings() {
+    const settings = JSON.parse(localStorage.getItem('cee_hero_settings') || '{}');
+    
+    // Ana başlık (CEE)
+    const title1El = document.getElementById('heroTitle1');
+    if (title1El && settings.title1) {
+        title1El.textContent = settings.title1;
+    }
+    
+    // Alt başlık (MİMARLIK)
+    const title2El = document.getElementById('heroTitle2');
+    if (title2El && settings.title2) {
+        title2El.textContent = settings.title2;
+    }
+    
+    // Açıklama
+    const descEl = document.getElementById('heroDescription');
+    if (descEl && settings.description) {
+        descEl.textContent = settings.description;
+    }
+    
+    // Buton metni
+    const ctaEl = document.getElementById('heroCta');
+    if (ctaEl && settings.ctaText) {
+        ctaEl.textContent = settings.ctaText;
+    }
+}
+
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', loadSiteLogo);
+document.addEventListener('DOMContentLoaded', loadHeroSettings);
 </script>
 
 
