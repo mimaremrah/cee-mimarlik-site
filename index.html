@@ -1834,16 +1834,16 @@
             transition: all 0.4s ease;
             margin-left: 0;
             padding: 8px 15px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(250,250,250,0.95) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.04), 0 0 0 1px rgba(212, 175, 55, 0.1);
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         body.dark-mode .logo-container {
-            background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(40,40,40,0.9) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2), 0 0 0 1px rgba(212, 175, 55, 0.15);
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         .logo-top {
@@ -1857,7 +1857,8 @@
             width: auto;
             transition: all 0.4s ease;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+            background: transparent !important;
         }
 
         header.scrolled .site-logo {
@@ -1867,13 +1868,13 @@
         header.scrolled .logo-container {
             padding: 5px 12px;
             background: transparent;
-            border-color: transparent;
+            border: none;
             box-shadow: none;
         }
 
         body.dark-mode header.scrolled .logo-container {
             background: transparent;
-            border-color: transparent;
+            border: none;
             box-shadow: none;
         }
 
@@ -5268,9 +5269,9 @@ window.goToAdmin = goToAdmin;
 <!-- HEADER -->
 <header role="banner">
     <div class="header-content">
-        <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer;">
+        <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer; background: transparent !important; border: none !important; box-shadow: none !important;">
             <div class="logo-top">
-                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo">
+                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important;">
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
