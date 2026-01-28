@@ -5469,36 +5469,27 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- ANA İÇERİK                                                              -->
+    <!-- ANA İÇERİK - LARES TARZI                                                -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="hero-main-content" id="heroMainContent">
         
-        <!-- Logo -->
-        <div class="hero-logo-wrapper">
-            <img src="" alt="CEE Mimarlık" class="hero-logo" id="heroLogo" style="display: none;">
-        </div>
+        <!-- Şehir Etiketi -->
+        <div class="hero-city">Çorlu / Tekirdağ</div>
         
-        <!-- Tagline -->
-        <div class="hero-tagline">
-            <span class="tagline-text">MİMARLIK & YAPI SİSTEMLERİ</span>
-        </div>
-        
-        <!-- Ayırıcı Çizgi -->
-        <div class="hero-divider"></div>
+        <!-- Ana Başlık -->
+        <h1 class="hero-brand-title">CEE <span>MİMARLIK</span></h1>
         
         <!-- Açıklama -->
         <p class="hero-description" id="heroDesc">
-            Yaşam alanlarınızı profesyonel tasarım ve kusursuz uygulamayla<br>
-            hayallerinizin ötesine taşıyoruz.
+            CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
         </p>
         
-        <!-- Butonlar -->
+        <!-- Buton -->
         <div class="hero-buttons">
-            <a href="#projeler" class="hero-btn-primary">
-                <span>Projelerimiz</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <a href="tel:+905373278765" class="hero-btn-primary">
+                <span>İletişime Geçin</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             </a>
-            <a href="#iletisim" class="hero-btn-secondary">İletişime Geçin</a>
         </div>
         
     </div>
@@ -5869,59 +5860,61 @@ window.goToAdmin = goToAdmin;
 @keyframes taglineIn { to { opacity: 1; } }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
-/* ANA İÇERİK (ALT KISIM)                                                          */
+/* ANA İÇERİK - LARES TARZI SOL HİZALI                                            */
 /* ────────────────────────────────────────────────────────────────────────────── */
 .hero-main-content {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    left: 8%;
+    transform: translateY(-50%);
+    text-align: left;
     z-index: 30;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-/* Blueprint üzerine hafif koyu overlay - okunabilirlik için */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, 
-        rgba(0,0,0,0.1) 0%, 
-        rgba(0,0,0,0.3) 70%,
-        rgba(0,0,0,0.5) 100%);
-    z-index: 5;
-    pointer-events: none;
+    max-width: 600px;
+    padding: 0;
 }
 
 @keyframes contentFade { to { opacity: 1; } }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* HERO CONTENT - Minimal Elegant Tasarım                                       */
+/* HERO CONTENT - LARES TARZI TİPOGRAFİ                                         */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Logo Wrapper */
+/* Logo Wrapper - Gizli, header'da zaten var */
 .hero-logo-wrapper {
+    display: none;
+}
+
+/* Büyük Başlık - Şehir */
+.hero-city {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 8px;
+    color: #5a6677;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 0.8s ease-out 5s forwards;
+}
+
+/* Ana Başlık - Firma Adı */
+.hero-brand-title {
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.1;
     margin-bottom: 30px;
     opacity: 0;
     transform: translateY(30px);
-    animation: heroLogoReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 5s forwards;
+    animation: heroFadeUp 1s ease-out 5.2s forwards;
+}
+
+.hero-brand-title span {
+    color: #5a6677;
 }
 
 .hero-logo {
-    height: 160px;
-    width: auto;
-    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.4));
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.hero-logo:hover {
-    transform: scale(1.03);
-    filter: drop-shadow(2px 6px 12px rgba(0,0,0,0.5));
+    display: none;
 }
 
 @keyframes heroLogoReveal {
@@ -5931,88 +5924,55 @@ window.goToAdmin = goToAdmin;
     }
 }
 
-/* Tagline - Zarif altın çizgi */
+/* Tagline - Gizli, başlık yeterli */
 .hero-tagline {
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: heroFadeUp 0.8s ease-out 5.3s forwards;
+    display: none;
 }
 
 .tagline-text {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 10px;
-    color: #c9a227;
-    text-transform: uppercase;
-    position: relative;
-    padding: 0 30px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    display: none;
 }
 
-.tagline-text::before,
-.tagline-text::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    height: 1px;
-    background: #c9a227;
-    box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
-}
-
-.tagline-text::before {
-    right: 100%;
-}
-
-.tagline-text::after {
-    left: 100%;
-}
-
-/* Ayırıcı Çizgi - kaldırıldı, daha temiz */
+/* Ayırıcı Çizgi - Gizli */
 .hero-divider {
     display: none;
 }
 
-/* Açıklama - Daha güçlü okunabilirlik */
+/* Açıklama - Sol hizalı, daha uzun */
 .hero-description {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
-    color: #2d3748;
-    line-height: 1.8;
-    margin-bottom: 35px;
+    color: #4a5568;
+    line-height: 1.9;
+    margin-bottom: 40px;
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    text-align: left;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
     animation: heroFadeUp 0.6s ease-out 5.5s forwards;
 }
 
-/* Butonlar */
+/* Butonlar - Sol hizalı */
 .hero-buttons {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    gap: 15px;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     opacity: 0;
     transform: translateY(15px);
-    animation: heroFadeUp 0.6s ease-out 5.5s forwards;
+    animation: heroFadeUp 0.6s ease-out 5.6s forwards;
 }
 
-/* Primary Buton - Altın */
+/* Primary Buton - Altın, Lares tarzı */
 .hero-btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 16px 40px;
-    background: linear-gradient(135deg, #c9a227 0%, #a8891f 100%);
+    padding: 18px 35px;
+    background: #c9a227;
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 3px;
     text-decoration: none;
@@ -6153,11 +6113,11 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .hero-logo { height: 120px; }
-    .tagline-text { font-size: 10px; letter-spacing: 6px; }
-    .tagline-text::before, .tagline-text::after { width: 40px; }
-    .hero-description { font-size: 13px; padding: 0 20px; }
-    .hero-btn-primary, .hero-btn-secondary { padding: 14px 30px; font-size: 11px; letter-spacing: 2px; }
+    .hero-main-content { left: 5%; max-width: 90%; padding-right: 20px; }
+    .hero-city { font-size: 11px; letter-spacing: 5px; }
+    .hero-brand-title { font-size: 36px; }
+    .hero-description { font-size: 14px; }
+    .hero-btn-primary { padding: 14px 28px; font-size: 12px; }
     .content-desc { font-size: 13px; }
     .content-desc br { display: none; }
     .content-buttons { flex-direction: column; align-items: center; }
@@ -6176,12 +6136,12 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .hero-logo { height: 90px; }
-    .tagline-text { font-size: 8px; letter-spacing: 4px; padding: 0 20px; }
-    .tagline-text::before, .tagline-text::after { width: 25px; }
-    .hero-description { font-size: 12px; line-height: 1.7; }
-    .hero-buttons { flex-direction: column; gap: 12px; }
-    .hero-btn-primary, .hero-btn-secondary { width: 100%; max-width: 250px; justify-content: center; padding: 14px 25px; }
+    .hero-main-content { left: 20px; right: 20px; max-width: calc(100% - 40px); text-align: center; }
+    .hero-city { font-size: 10px; letter-spacing: 4px; }
+    .hero-brand-title { font-size: 28px; }
+    .hero-description { font-size: 13px; line-height: 1.7; text-align: center; }
+    .hero-buttons { justify-content: center; }
+    .hero-btn-primary { width: 100%; max-width: 250px; justify-content: center; padding: 14px 25px; }
     .diagonal-line::before, .diagonal-line::after { width: 2px; }
     .deco-diamond-big { width: 12px; height: 12px; }
     .deco-diamond-small { width: 6px; height: 6px; }
