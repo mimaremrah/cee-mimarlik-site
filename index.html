@@ -5469,30 +5469,28 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- ANA İÇERİK - LARES TARZI                                                -->
+    <!-- SPOTLIGHT OVERLAY                                                        -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <div class="hero-main-content" id="heroMainContent">
-        
-        <!-- Şehir Etiketi -->
-        <div class="hero-city">Çorlu / Tekirdağ</div>
-        
-        <!-- Ana Başlık -->
-        <h1 class="hero-brand-title">CEE <span>MİMARLIK</span></h1>
-        
-        <!-- Açıklama -->
-        <p class="hero-description" id="heroDesc">
-            CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
-        </p>
-        
-        <!-- Buton -->
-        <div class="hero-buttons">
-            <a href="tel:+905373278765" class="hero-btn-primary">
-                <span>İletişime Geçin</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            </a>
+    <div class="spotlight-overlay" id="spotlightOverlay"></div>
+    
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <!-- MERKEZ İÇERİK                                                           -->
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <div class="hero-center-content">
+        <img src="logo.png" alt="CEE Mimarlık" class="spotlight-logo" id="spotlightLogo">
+        <div class="spotlight-title">
+            CEE
+            <span>MİMARLIK & YAPI SİSTEMLERİ</span>
         </div>
-        
+        <div class="spotlight-tagline">Hayalden Gerçeğe</div>
     </div>
+    
+    <!-- KEŞİF İPUCU -->
+    <div class="spotlight-hint">
+        <div class="hint-text">Keşfetmek için fareyi hareket ettirin</div>
+        <div class="hint-icon"></div>
+    </div>
+    
     </div>
     
     <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
@@ -5500,6 +5498,73 @@ window.goToAdmin = goToAdmin;
     <div class="hero-progress" id="heroProgress"></div>
     <div class="hero-indicators" id="heroIndicators"></div>
 </section>
+
+<!-- SPOTLIGHT EFFECT JAVASCRIPT -->
+<script>
+(function() {
+    const hero = document.querySelector('.hero');
+    const overlay = document.getElementById('spotlightOverlay');
+    const hint = document.querySelector('.spotlight-hint');
+    
+    if (!hero || !overlay) return;
+    
+    let isActive = false;
+    let mouseX = 50;
+    let mouseY = 50;
+    let targetX = 50;
+    let targetY = 50;
+    
+    // Fare hareketi - smooth takip
+    hero.addEventListener('mousemove', function(e) {
+        const rect = hero.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        targetY = ((e.clientY - rect.top) / rect.height) * 100;
+        
+        if (!isActive) {
+            isActive = true;
+            if (hint) hint.style.opacity = '0';
+        }
+    });
+    
+    // Smooth animasyon
+    function animate() {
+        mouseX += (targetX - mouseX) * 0.08;
+        mouseY += (targetY - mouseY) * 0.08;
+        
+        overlay.style.setProperty('--mouse-x', mouseX + '%');
+        overlay.style.setProperty('--mouse-y', mouseY + '%');
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+    
+    // Touch desteği
+    hero.addEventListener('touchmove', function(e) {
+        const touch = e.touches[0];
+        const rect = hero.getBoundingClientRect();
+        targetX = ((touch.clientX - rect.left) / rect.width) * 100;
+        targetY = ((touch.clientY - rect.top) / rect.height) * 100;
+        
+        if (!isActive) {
+            isActive = true;
+            if (hint) hint.style.opacity = '0';
+        }
+    });
+    
+    // Fare çıkınca merkeze dön
+    hero.addEventListener('mouseleave', function() {
+        targetX = 50;
+        targetY = 50;
+    });
+
+    // Logo için localStorage kontrolü
+    const spotlightLogo = document.getElementById('spotlightLogo');
+    const siteLogo = localStorage.getItem('site_logo');
+    if (siteLogo && spotlightLogo) {
+        spotlightLogo.src = siteLogo;
+    }
+})();
+</script>
 
 <style>
 /* ═══════════════════════════════════════════════════════════════════════════════ */
@@ -5860,62 +5925,159 @@ window.goToAdmin = goToAdmin;
 @keyframes taglineIn { to { opacity: 1; } }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
-/* ANA İÇERİK - LARES TARZI SOL HİZALI                                            */
+/* ANA İÇERİK - SPOTLIGHT EFFECT                                                   */
 /* ────────────────────────────────────────────────────────────────────────────── */
 .hero-main-content {
     position: absolute;
     top: 50%;
-    left: 8%;
-    transform: translateY(-50%);
-    text-align: left;
-    z-index: 30;
-    max-width: 600px;
-    padding: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 50;
+    pointer-events: none;
+}
+
+/* Spotlight Overlay - Karanlık katman */
+.spotlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        transparent 0%,
+        transparent 80px,
+        rgba(15, 15, 20, 0.75) 200px,
+        rgba(15, 15, 20, 0.92) 100%);
+    z-index: 25;
+    pointer-events: none;
+    transition: background 0.1s ease-out;
+}
+
+/* Logo ve yazılar spotlight'tan etkilenmesin */
+.hero-center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 60;
+    opacity: 0;
+    animation: spotlightReveal 1.5s ease-out 5.5s forwards;
+}
+
+@keyframes spotlightReveal {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Ana Logo */
+.spotlight-logo {
+    height: 120px;
+    width: auto;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
+    animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(255,255,255,0.3)); }
+    50% { filter: drop-shadow(0 0 50px rgba(255,255,255,0.5)); }
+}
+
+/* Firma Adı */
+.spotlight-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-shadow: 0 0 40px rgba(255,255,255,0.3);
+}
+
+.spotlight-title span {
+    display: block;
+    font-size: clamp(12px, 1.5vw, 16px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: #c9a227;
+    margin-top: 10px;
+}
+
+/* Alt yazı */
+.spotlight-tagline {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+/* Keşfet ipucu */
+.spotlight-hint {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+    text-align: center;
+    opacity: 0;
+    animation: hintFade 1s ease-out 6.5s forwards;
+}
+
+@keyframes hintFade {
+    to { opacity: 1; }
+}
+
+.hint-text {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hint-icon {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    animation: hintBounce 2s ease-in-out infinite;
+}
+
+.hint-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes hintBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+/* Eski elementleri gizle */
+.hero-logo-wrapper,
+.hero-tagline,
+.hero-divider,
+.hero-description,
+.hero-buttons,
+.hero-city,
+.hero-brand-title {
+    display: none !important;
 }
 
 @keyframes contentFade { to { opacity: 1; } }
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* HERO CONTENT - LARES TARZI TİPOGRAFİ                                         */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-
-/* Logo Wrapper - Gizli, header'da zaten var */
-.hero-logo-wrapper {
-    display: none;
-}
-
-/* Büyük Başlık - Şehir */
-.hero-city {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 8px;
-    color: #5a6677;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: heroFadeUp 0.8s ease-out 5s forwards;
-}
-
-/* Ana Başlık - Firma Adı */
-.hero-brand-title {
-    font-size: clamp(42px, 6vw, 72px);
-    font-weight: 700;
-    color: #1a202c;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: heroFadeUp 1s ease-out 5.2s forwards;
-}
-
-.hero-brand-title span {
-    color: #5a6677;
-}
-
-.hero-logo {
-    display: none;
-}
 
 @keyframes heroLogoReveal {
     to { 
@@ -6113,11 +6275,19 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .hero-main-content { left: 5%; max-width: 90%; padding-right: 20px; }
-    .hero-city { font-size: 11px; letter-spacing: 5px; }
-    .hero-brand-title { font-size: 36px; }
-    .hero-description { font-size: 14px; }
-    .hero-btn-primary { padding: 14px 28px; font-size: 12px; }
+    .spotlight-logo { height: 90px; }
+    .spotlight-title { font-size: 32px; letter-spacing: 10px; }
+    .spotlight-title span { font-size: 11px; letter-spacing: 5px; }
+    .spotlight-tagline { font-size: 11px; letter-spacing: 4px; }
+    .spotlight-hint { bottom: 60px; }
+    .hint-text { font-size: 9px; letter-spacing: 3px; }
+    .spotlight-overlay {
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+            transparent 0%,
+            transparent 60px,
+            rgba(15, 15, 20, 0.7) 150px,
+            rgba(15, 15, 20, 0.9) 100%);
+    }
     .content-desc { font-size: 13px; }
     .content-desc br { display: none; }
     .content-buttons { flex-direction: column; align-items: center; }
@@ -6136,12 +6306,18 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .hero-main-content { left: 20px; right: 20px; max-width: calc(100% - 40px); text-align: center; }
-    .hero-city { font-size: 10px; letter-spacing: 4px; }
-    .hero-brand-title { font-size: 28px; }
-    .hero-description { font-size: 13px; line-height: 1.7; text-align: center; }
-    .hero-buttons { justify-content: center; }
-    .hero-btn-primary { width: 100%; max-width: 250px; justify-content: center; padding: 14px 25px; }
+    .spotlight-logo { height: 70px; margin-bottom: 15px; }
+    .spotlight-title { font-size: 26px; letter-spacing: 8px; }
+    .spotlight-title span { font-size: 9px; letter-spacing: 4px; margin-top: 8px; }
+    .spotlight-tagline { font-size: 10px; letter-spacing: 3px; margin-top: 20px; }
+    .spotlight-hint { display: none; }
+    .spotlight-overlay {
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+            transparent 0%,
+            transparent 40px,
+            rgba(15, 15, 20, 0.65) 120px,
+            rgba(15, 15, 20, 0.85) 100%);
+    }
     .diagonal-line::before, .diagonal-line::after { width: 2px; }
     .deco-diamond-big { width: 12px; height: 12px; }
     .deco-diamond-small { width: 6px; height: 6px; }
