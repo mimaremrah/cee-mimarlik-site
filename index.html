@@ -5469,26 +5469,17 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- SPOTLIGHT OVERLAY                                                        -->
+    <!-- LARES TARZI İÇERİK                                                      -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <div class="spotlight-overlay" id="spotlightOverlay"></div>
-    
-    <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- MERKEZ İÇERİK                                                           -->
-    <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <div class="hero-center-content">
-        <img src="logo.png" alt="CEE Mimarlık" class="spotlight-logo" id="spotlightLogo">
-        <div class="spotlight-title">
-            CEE
-            <span>MİMARLIK & YAPI SİSTEMLERİ</span>
-        </div>
-        <div class="spotlight-tagline">Hayalden Gerçeğe</div>
-    </div>
-    
-    <!-- KEŞİF İPUCU -->
-    <div class="spotlight-hint">
-        <div class="hint-text">Keşfetmek için fareyi hareket ettirin</div>
-        <div class="hint-icon"></div>
+    <div class="hero-content-lares">
+        <h1 class="hero-brand" id="heroBrand">
+            <span class="cee-text">CEE</span>
+            <span class="mimarlik-text">MİMARLIK</span>
+        </h1>
+        <p class="hero-description" id="heroDescription">
+            CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
+        </p>
+        <a href="#iletisim" class="hero-cta">İLETİŞİME GEÇİN</a>
     </div>
     
     </div>
@@ -5499,72 +5490,7 @@ window.goToAdmin = goToAdmin;
     <div class="hero-indicators" id="heroIndicators"></div>
 </section>
 
-<!-- SPOTLIGHT EFFECT JAVASCRIPT -->
-<script>
-(function() {
-    const hero = document.querySelector('.hero');
-    const overlay = document.getElementById('spotlightOverlay');
-    const hint = document.querySelector('.spotlight-hint');
-    
-    if (!hero || !overlay) return;
-    
-    let isActive = false;
-    let mouseX = 50;
-    let mouseY = 50;
-    let targetX = 50;
-    let targetY = 50;
-    
-    // Fare hareketi - smooth takip
-    hero.addEventListener('mousemove', function(e) {
-        const rect = hero.getBoundingClientRect();
-        targetX = ((e.clientX - rect.left) / rect.width) * 100;
-        targetY = ((e.clientY - rect.top) / rect.height) * 100;
-        
-        if (!isActive) {
-            isActive = true;
-            if (hint) hint.style.opacity = '0';
-        }
-    });
-    
-    // Smooth animasyon
-    function animate() {
-        mouseX += (targetX - mouseX) * 0.08;
-        mouseY += (targetY - mouseY) * 0.08;
-        
-        overlay.style.setProperty('--mouse-x', mouseX + '%');
-        overlay.style.setProperty('--mouse-y', mouseY + '%');
-        
-        requestAnimationFrame(animate);
-    }
-    animate();
-    
-    // Touch desteği
-    hero.addEventListener('touchmove', function(e) {
-        const touch = e.touches[0];
-        const rect = hero.getBoundingClientRect();
-        targetX = ((touch.clientX - rect.left) / rect.width) * 100;
-        targetY = ((touch.clientY - rect.top) / rect.height) * 100;
-        
-        if (!isActive) {
-            isActive = true;
-            if (hint) hint.style.opacity = '0';
-        }
-    });
-    
-    // Fare çıkınca merkeze dön
-    hero.addEventListener('mouseleave', function() {
-        targetX = 50;
-        targetY = 50;
-    });
-
-    // Logo için localStorage kontrolü
-    const spotlightLogo = document.getElementById('spotlightLogo');
-    const siteLogo = localStorage.getItem('site_logo');
-    if (siteLogo && spotlightLogo) {
-        spotlightLogo.src = siteLogo;
-    }
-})();
-</script>
+<!-- SPOTLIGHT EFFECT JAVASCRIPT KALDIRILDI -->
 
 <style>
 /* ═══════════════════════════════════════════════════════════════════════════════ */
@@ -5925,156 +5851,161 @@ window.goToAdmin = goToAdmin;
 @keyframes taglineIn { to { opacity: 1; } }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
-/* ANA İÇERİK - SPOTLIGHT EFFECT                                                   */
+/* ANA İÇERİK - LARES TARZI SAĞ ALT                                               */
 /* ────────────────────────────────────────────────────────────────────────────── */
 .hero-main-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 50;
-    pointer-events: none;
+    display: none;
 }
 
-/* Spotlight Overlay - Karanlık katman */
-.spotlight-overlay {
+/* Lares Tarzı İçerik */
+.hero-content-lares {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-        transparent 0%,
-        transparent 80px,
-        rgba(15, 15, 20, 0.75) 200px,
-        rgba(15, 15, 20, 0.92) 100%);
-    z-index: 25;
-    pointer-events: none;
-    transition: background 0.1s ease-out;
-}
-
-/* Logo ve yazılar spotlight'tan etkilenmesin */
-.hero-center-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 60;
+    bottom: 12%;
+    right: 8%;
+    z-index: 40;
+    max-width: 550px;
+    text-align: right;
     opacity: 0;
-    animation: spotlightReveal 1.5s ease-out 5.5s forwards;
+    transform: translateY(30px);
+    animation: heroContentReveal 1s ease-out 5.5s forwards;
 }
 
-@keyframes spotlightReveal {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
-    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@keyframes heroContentReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Ana Logo */
-.spotlight-logo {
-    height: 120px;
-    width: auto;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
-    animation: logoPulse 3s ease-in-out infinite;
-}
-
-@keyframes logoPulse {
-    0%, 100% { filter: drop-shadow(0 0 30px rgba(255,255,255,0.3)); }
-    50% { filter: drop-shadow(0 0 50px rgba(255,255,255,0.5)); }
-}
-
-/* Firma Adı */
-.spotlight-title {
-    font-size: clamp(36px, 5vw, 56px);
+/* Ana Başlık */
+.hero-brand {
+    font-size: 52px;
     font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 15px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    text-shadow: 0 0 40px rgba(255,255,255,0.3);
-}
-
-.spotlight-title span {
-    display: block;
-    font-size: clamp(12px, 1.5vw, 16px);
-    font-weight: 400;
     letter-spacing: 8px;
-    color: #c9a227;
-    margin-top: 10px;
-}
-
-/* Alt yazı */
-.spotlight-tagline {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 6px;
-    color: rgba(255,255,255,0.6);
+    color: #ffffff;
+    margin: 0 0 25px 0;
     text-transform: uppercase;
-    margin-top: 30px;
+    line-height: 1.1;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
 }
 
-/* Keşfet ipucu */
-.spotlight-hint {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 60;
-    text-align: center;
-    opacity: 0;
-    animation: hintFade 1s ease-out 6.5s forwards;
+.hero-brand .cee-text {
+    color: #5a6677;
+    display: block;
+    font-weight: 800;
+    font-size: 62px;
+    letter-spacing: 12px;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
 }
 
-@keyframes hintFade {
-    to { opacity: 1; }
+.hero-brand .mimarlik-text {
+    color: rgba(255,255,255,0.95);
+    display: block;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 16px;
+    margin-top: 5px;
 }
 
-.hint-text {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.4);
+/* Açıklama */
+.hero-description {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    max-width: 450px;
+    margin-left: auto;
+}
+
+/* CTA Buton */
+.hero-cta {
+    display: inline-block;
+    padding: 16px 40px;
+    background: rgba(90,102,119,0.9);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-.hint-icon {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    margin: 0 auto;
-    position: relative;
-    animation: hintBounce 2s ease-in-out infinite;
+.hero-cta:hover {
+    background: rgba(90,102,119,1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-.hint-icon::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes hintBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-}
-
-/* Eski elementleri gizle */
+/* Eski spotlight elementlerini gizle */
+.spotlight-overlay,
+.hero-center-content,
+.spotlight-hint,
 .hero-logo-wrapper,
 .hero-tagline,
 .hero-divider,
-.hero-description,
 .hero-buttons,
 .hero-city,
 .hero-brand-title {
     display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-content-lares {
+        right: 5%;
+        left: 5%;
+        bottom: 10%;
+        max-width: none;
+        text-align: center;
+    }
+    .hero-brand {
+        font-size: 40px;
+        letter-spacing: 6px;
+    }
+    .hero-brand .cee-text {
+        font-size: 48px;
+        letter-spacing: 10px;
+    }
+    .hero-brand .mimarlik-text {
+        font-size: 22px;
+        letter-spacing: 12px;
+    }
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content-lares {
+        bottom: 8%;
+    }
+    .hero-brand {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+    .hero-brand .cee-text {
+        font-size: 38px;
+        letter-spacing: 8px;
+    }
+    .hero-brand .mimarlik-text {
+        font-size: 16px;
+        letter-spacing: 8px;
+    }
+    .hero-description {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+    .hero-cta {
+        padding: 14px 30px;
+        font-size: 11px;
+    }
 }
 
 @keyframes contentFade { to { opacity: 1; } }
@@ -6275,19 +6206,6 @@ window.goToAdmin = goToAdmin;
     .logo-mimarlik { letter-spacing: 8px; }
     .slogan-hayal { letter-spacing: 5px; }
     .slogan-gercek { letter-spacing: 6px; }
-    .spotlight-logo { height: 90px; }
-    .spotlight-title { font-size: 32px; letter-spacing: 10px; }
-    .spotlight-title span { font-size: 11px; letter-spacing: 5px; }
-    .spotlight-tagline { font-size: 11px; letter-spacing: 4px; }
-    .spotlight-hint { bottom: 60px; }
-    .hint-text { font-size: 9px; letter-spacing: 3px; }
-    .spotlight-overlay {
-        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-            transparent 0%,
-            transparent 60px,
-            rgba(15, 15, 20, 0.7) 150px,
-            rgba(15, 15, 20, 0.9) 100%);
-    }
     .content-desc { font-size: 13px; }
     .content-desc br { display: none; }
     .content-buttons { flex-direction: column; align-items: center; }
@@ -6306,18 +6224,6 @@ window.goToAdmin = goToAdmin;
     .slogan-hayal { font-size: 18px; letter-spacing: 4px; }
     .slogan-gercek { font-size: 22px; letter-spacing: 5px; }
     .merge-tagline { font-size: 9px; }
-    .spotlight-logo { height: 70px; margin-bottom: 15px; }
-    .spotlight-title { font-size: 26px; letter-spacing: 8px; }
-    .spotlight-title span { font-size: 9px; letter-spacing: 4px; margin-top: 8px; }
-    .spotlight-tagline { font-size: 10px; letter-spacing: 3px; margin-top: 20px; }
-    .spotlight-hint { display: none; }
-    .spotlight-overlay {
-        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-            transparent 0%,
-            transparent 40px,
-            rgba(15, 15, 20, 0.65) 120px,
-            rgba(15, 15, 20, 0.85) 100%);
-    }
     .diagonal-line::before, .diagonal-line::after { width: 2px; }
     .deco-diamond-big { width: 12px; height: 12px; }
     .deco-diamond-small { width: 6px; height: 6px; }
