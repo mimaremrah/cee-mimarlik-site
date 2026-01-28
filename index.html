@@ -5469,6 +5469,11 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SAĞ GRADIENT OVERLAY                                                    -->
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <div class="hero-gradient-overlay"></div>
+    
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
     <!-- LARES TARZI İÇERİK                                                      -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="hero-content-lares">
@@ -5480,6 +5485,14 @@ window.goToAdmin = goToAdmin;
             CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
         </p>
         <a href="#iletisim" class="hero-cta">İLETİŞİME GEÇİN</a>
+    </div>
+    
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SCROLL DOWN INDICATOR                                                   -->
+    <!-- ══════════════════════════════════════════════════════════════════════ -->
+    <div class="scroll-indicator">
+        <div class="scroll-text">Keşfet</div>
+        <div class="scroll-arrow"></div>
     </div>
     
     </div>
@@ -5857,6 +5870,31 @@ window.goToAdmin = goToAdmin;
     display: none;
 }
 
+/* Sol Gradient Overlay - Derinlik ve okunabilirlik */
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to left, 
+        rgba(255,255,255,0.95) 0%,
+        rgba(255,255,255,0.7) 30%,
+        rgba(255,255,255,0.3) 60%,
+        transparent 100%);
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Dark mode için gradient */
+body.dark-mode .hero-gradient-overlay {
+    background: linear-gradient(to left, 
+        rgba(17,17,17,0.95) 0%,
+        rgba(17,17,17,0.7) 30%,
+        rgba(17,17,17,0.3) 60%,
+        transparent 100%);
+}
+
 /* Lares Tarzı İçerik */
 .hero-content-lares {
     position: absolute;
@@ -5887,6 +5925,19 @@ window.goToAdmin = goToAdmin;
     text-transform: uppercase;
     line-height: 1.1;
     text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+/* Dekoratif Dikey Çizgi */
+.hero-brand::before {
+    content: '';
+    position: absolute;
+    right: calc(100% + 25px);
+    top: 5px;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(to bottom, #5a6677, rgba(90,102,119,0.3));
+    border-radius: 2px;
 }
 
 .hero-brand .cee-text {
@@ -5899,7 +5950,7 @@ window.goToAdmin = goToAdmin;
 }
 
 .hero-brand .mimarlik-text {
-    color: rgba(255,255,255,0.95);
+    color: rgba(45,55,72,0.95);
     display: block;
     font-weight: 600;
     font-size: 28px;
@@ -5907,16 +5958,25 @@ window.goToAdmin = goToAdmin;
     margin-top: 5px;
 }
 
+/* Dark mode için yazı renkleri */
+body.dark-mode .hero-brand .mimarlik-text {
+    color: rgba(255,255,255,0.95);
+}
+
 /* Açıklama */
 .hero-description {
     font-size: 14px;
     line-height: 1.9;
-    color: rgba(255,255,255,0.85);
-    font-weight: 300;
+    color: rgba(45,55,72,0.85);
+    font-weight: 400;
     margin-bottom: 30px;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
     max-width: 450px;
     margin-left: auto;
+}
+
+body.dark-mode .hero-description {
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
 }
 
 /* CTA Buton */
@@ -5933,16 +5993,88 @@ window.goToAdmin = goToAdmin;
     transition: all 0.3s ease;
     border-radius: 50px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
 .hero-cta:hover {
     background: rgba(90,102,119,1);
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
 
-/* Eski spotlight elementlerini gizle */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SCROLL DOWN INDICATOR                                                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    text-align: center;
+    opacity: 0;
+    animation: scrollIndicatorFade 1s ease-out 6.5s forwards;
+}
+
+@keyframes scrollIndicatorFade {
+    to { opacity: 1; }
+}
+
+.scroll-text {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(90,102,119,0.6);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+body.dark-mode .scroll-text {
+    color: rgba(255,255,255,0.5);
+}
+
+.scroll-arrow {
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(90,102,119,0.4);
+    border-radius: 12px;
+    margin: 0 auto;
+    position: relative;
+}
+
+body.dark-mode .scroll-arrow {
+    border-color: rgba(255,255,255,0.3);
+}
+
+.scroll-arrow::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: rgba(90,102,119,0.6);
+    border-radius: 2px;
+    animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+body.dark-mode .scroll-arrow::before {
+    background: rgba(255,255,255,0.5);
+}
+
+@keyframes scrollBounce {
+    0%, 100% { 
+        top: 8px; 
+        opacity: 1;
+    }
+    50% { 
+        top: 18px; 
+        opacity: 0.3;
+    }
+}
+
+/* Eski elementleri gizle */
 .spotlight-overlay,
 .hero-center-content,
 .spotlight-hint,
@@ -5960,13 +6092,16 @@ window.goToAdmin = goToAdmin;
     .hero-content-lares {
         right: 5%;
         left: 5%;
-        bottom: 10%;
+        bottom: 15%;
         max-width: none;
         text-align: center;
     }
     .hero-brand {
         font-size: 40px;
         letter-spacing: 6px;
+    }
+    .hero-brand::before {
+        display: none;
     }
     .hero-brand .cee-text {
         font-size: 48px;
@@ -5980,11 +6115,27 @@ window.goToAdmin = goToAdmin;
         margin-left: auto;
         margin-right: auto;
     }
+    .hero-gradient-overlay {
+        width: 100%;
+        background: linear-gradient(to top, 
+            rgba(255,255,255,0.95) 0%,
+            rgba(255,255,255,0.7) 40%,
+            transparent 100%);
+    }
+    body.dark-mode .hero-gradient-overlay {
+        background: linear-gradient(to top, 
+            rgba(17,17,17,0.95) 0%,
+            rgba(17,17,17,0.7) 40%,
+            transparent 100%);
+    }
+    .scroll-indicator {
+        bottom: 20px;
+    }
 }
 
 @media (max-width: 600px) {
     .hero-content-lares {
-        bottom: 8%;
+        bottom: 12%;
     }
     .hero-brand {
         font-size: 32px;
@@ -6005,6 +6156,9 @@ window.goToAdmin = goToAdmin;
     .hero-cta {
         padding: 14px 30px;
         font-size: 11px;
+    }
+    .scroll-indicator {
+        display: none;
     }
 }
 
