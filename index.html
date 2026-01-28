@@ -5469,22 +5469,25 @@ window.goToAdmin = goToAdmin;
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- SAĞ GRADIENT OVERLAY                                                    -->
-    <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <div class="hero-gradient-overlay"></div>
-    
-    <!-- ══════════════════════════════════════════════════════════════════════ -->
-    <!-- LARES TARZI İÇERİK                                                      -->
+    <!-- LARES TARZI PROFESYONEL İÇERİK                                          -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="hero-content-lares">
+        <!-- Şehir Etiketi -->
+        <div class="hero-location">Çorlu / Tekirdağ</div>
+        
+        <!-- Ana Başlık -->
         <h1 class="hero-brand" id="heroBrand">
             <span class="cee-text">CEE</span>
             <span class="mimarlik-text">MİMARLIK</span>
         </h1>
+        
+        <!-- Açıklama -->
         <p class="hero-description" id="heroDescription">
-            CEE Mimarlık olarak yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi müşterilerimizin beklentilerine göre yeniden şekillendiriyoruz. Tüm bu süreçlerde A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti vermekteyiz.
+            Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz.
         </p>
-        <a href="#iletisim" class="hero-cta">İLETİŞİME GEÇİN</a>
+        
+        <!-- CTA Buton -->
+        <a href="#iletisim" class="hero-cta">İletişime Geçin</a>
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
@@ -5864,48 +5867,36 @@ window.goToAdmin = goToAdmin;
 @keyframes taglineIn { to { opacity: 1; } }
 
 /* ────────────────────────────────────────────────────────────────────────────── */
-/* ANA İÇERİK - LARES TARZI SAĞ ALT                                               */
+/* CEE MİMARLIK - PROFESYONEL HERO TASARIMI                                       */
+/* Metalik logo tonlarına uyumlu renk paleti                                      */
 /* ────────────────────────────────────────────────────────────────────────────── */
+
+/* Renk Değişkenleri */
+:root {
+    --cee-antrasit: #1a1a2e;
+    --cee-steel: #16213e;
+    --cee-metal: #4a5568;
+    --cee-silver: #a0aec0;
+    --cee-light: #e2e8f0;
+    --cee-white: #ffffff;
+    --cee-cream: #f7fafc;
+}
+
 .hero-main-content {
     display: none;
 }
 
-/* Sol Gradient Overlay - Derinlik ve okunabilirlik */
-.hero-gradient-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(to left, 
-        rgba(255,255,255,0.95) 0%,
-        rgba(255,255,255,0.7) 30%,
-        rgba(255,255,255,0.3) 60%,
-        transparent 100%);
-    z-index: 15;
-    pointer-events: none;
-}
-
-/* Dark mode için gradient */
-body.dark-mode .hero-gradient-overlay {
-    background: linear-gradient(to left, 
-        rgba(17,17,17,0.95) 0%,
-        rgba(17,17,17,0.7) 30%,
-        rgba(17,17,17,0.3) 60%,
-        transparent 100%);
-}
-
-/* Lares Tarzı İçerik */
+/* Hero İçerik - Sağ Alt */
 .hero-content-lares {
     position: absolute;
-    bottom: 12%;
-    right: 8%;
+    bottom: 10%;
+    right: 6%;
     z-index: 40;
-    max-width: 550px;
+    max-width: 500px;
     text-align: right;
     opacity: 0;
-    transform: translateY(30px);
-    animation: heroContentReveal 1s ease-out 5.5s forwards;
+    transform: translateY(40px);
+    animation: heroContentReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 5.5s forwards;
 }
 
 @keyframes heroContentReveal {
@@ -5915,91 +5906,106 @@ body.dark-mode .hero-gradient-overlay {
     }
 }
 
-/* Ana Başlık */
-.hero-brand {
-    font-size: 52px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    color: #ffffff;
-    margin: 0 0 25px 0;
+/* Şehir Etiketi */
+.hero-location {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--cee-silver);
     text-transform: uppercase;
-    line-height: 1.1;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 5.7s forwards;
+}
+
+/* Ana Başlık Container */
+.hero-brand {
+    margin: 0 0 25px 0;
     position: relative;
 }
 
-/* Dekoratif Dikey Çizgi */
+/* Dekoratif Çizgi - Sol */
 .hero-brand::before {
     content: '';
     position: absolute;
-    right: calc(100% + 25px);
-    top: 5px;
-    width: 3px;
-    height: 80px;
-    background: linear-gradient(to bottom, #5a6677, rgba(90,102,119,0.3));
-    border-radius: 2px;
+    right: calc(100% + 20px);
+    top: 8px;
+    width: 2px;
+    height: 70px;
+    background: linear-gradient(to bottom, 
+        var(--cee-silver) 0%, 
+        transparent 100%);
 }
 
+/* CEE Yazısı */
 .hero-brand .cee-text {
-    color: #5a6677;
     display: block;
+    font-size: 72px;
     font-weight: 800;
-    font-size: 62px;
-    letter-spacing: 12px;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
+    letter-spacing: 20px;
+    color: var(--cee-antrasit);
+    line-height: 1;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 5.9s forwards;
 }
 
+/* MİMARLIK Yazısı */
 .hero-brand .mimarlik-text {
-    color: rgba(45,55,72,0.95);
     display: block;
-    font-weight: 600;
-    font-size: 28px;
-    letter-spacing: 16px;
-    margin-top: 5px;
-}
-
-/* Dark mode için yazı renkleri */
-body.dark-mode .hero-brand .mimarlik-text {
-    color: rgba(255,255,255,0.95);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 12px;
+    color: var(--cee-metal);
+    margin-top: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 6.1s forwards;
 }
 
 /* Açıklama */
 .hero-description {
     font-size: 14px;
     line-height: 1.9;
-    color: rgba(45,55,72,0.85);
+    color: var(--cee-metal);
     font-weight: 400;
     margin-bottom: 30px;
-    max-width: 450px;
+    max-width: 420px;
     margin-left: auto;
-}
-
-body.dark-mode .hero-description {
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 6.3s forwards;
 }
 
 /* CTA Buton */
 .hero-cta {
     display: inline-block;
-    padding: 16px 40px;
-    background: rgba(90,102,119,0.9);
-    color: #ffffff;
+    padding: 15px 35px;
+    background: var(--cee-antrasit);
+    color: var(--cee-white);
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: none;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 6.5s forwards;
 }
 
 .hero-cta:hover {
-    background: rgba(90,102,119,1);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    background: var(--cee-steel);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(26, 26, 46, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
@@ -6013,65 +6019,47 @@ body.dark-mode .hero-description {
     z-index: 50;
     text-align: center;
     opacity: 0;
-    animation: scrollIndicatorFade 1s ease-out 6.5s forwards;
+    animation: fadeIn 1s ease 7s forwards;
 }
 
-@keyframes scrollIndicatorFade {
+@keyframes fadeIn {
     to { opacity: 1; }
 }
 
 .scroll-text {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 3px;
-    color: rgba(90,102,119,0.6);
+    color: var(--cee-silver);
     text-transform: uppercase;
     margin-bottom: 8px;
     font-weight: 500;
 }
 
-body.dark-mode .scroll-text {
-    color: rgba(255,255,255,0.5);
-}
-
 .scroll-arrow {
-    width: 24px;
-    height: 40px;
-    border: 2px solid rgba(90,102,119,0.4);
-    border-radius: 12px;
+    width: 20px;
+    height: 32px;
+    border: 1.5px solid var(--cee-silver);
+    border-radius: 10px;
     margin: 0 auto;
     position: relative;
-}
-
-body.dark-mode .scroll-arrow {
-    border-color: rgba(255,255,255,0.3);
 }
 
 .scroll-arrow::before {
     content: '';
     position: absolute;
-    top: 8px;
+    top: 6px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 8px;
-    background: rgba(90,102,119,0.6);
+    width: 3px;
+    height: 6px;
+    background: var(--cee-metal);
     border-radius: 2px;
     animation: scrollBounce 1.5s ease-in-out infinite;
 }
 
-body.dark-mode .scroll-arrow::before {
-    background: rgba(255,255,255,0.5);
-}
-
 @keyframes scrollBounce {
-    0%, 100% { 
-        top: 8px; 
-        opacity: 1;
-    }
-    50% { 
-        top: 18px; 
-        opacity: 0.3;
-    }
+    0%, 100% { top: 6px; opacity: 1; }
+    50% { top: 14px; opacity: 0.3; }
 }
 
 /* Eski elementleri gizle */
@@ -6083,82 +6071,74 @@ body.dark-mode .scroll-arrow::before {
 .hero-divider,
 .hero-buttons,
 .hero-city,
-.hero-brand-title {
+.hero-brand-title,
+.hero-gradient-overlay {
     display: none !important;
 }
 
-/* Responsive */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 992px) {
     .hero-content-lares {
         right: 5%;
         left: 5%;
-        bottom: 15%;
+        bottom: 12%;
         max-width: none;
         text-align: center;
-    }
-    .hero-brand {
-        font-size: 40px;
-        letter-spacing: 6px;
     }
     .hero-brand::before {
         display: none;
     }
     .hero-brand .cee-text {
-        font-size: 48px;
-        letter-spacing: 10px;
+        font-size: 56px;
+        letter-spacing: 15px;
     }
     .hero-brand .mimarlik-text {
-        font-size: 22px;
-        letter-spacing: 12px;
+        font-size: 16px;
+        letter-spacing: 10px;
     }
     .hero-description {
         margin-left: auto;
         margin-right: auto;
-    }
-    .hero-gradient-overlay {
-        width: 100%;
-        background: linear-gradient(to top, 
-            rgba(255,255,255,0.95) 0%,
-            rgba(255,255,255,0.7) 40%,
-            transparent 100%);
-    }
-    body.dark-mode .hero-gradient-overlay {
-        background: linear-gradient(to top, 
-            rgba(17,17,17,0.95) 0%,
-            rgba(17,17,17,0.7) 40%,
-            transparent 100%);
-    }
-    .scroll-indicator {
-        bottom: 20px;
+        max-width: 500px;
     }
 }
 
 @media (max-width: 600px) {
     .hero-content-lares {
-        bottom: 12%;
+        bottom: 10%;
     }
-    .hero-brand {
-        font-size: 32px;
-        letter-spacing: 4px;
+    .hero-location {
+        font-size: 9px;
+        letter-spacing: 3px;
     }
     .hero-brand .cee-text {
-        font-size: 38px;
-        letter-spacing: 8px;
+        font-size: 42px;
+        letter-spacing: 12px;
     }
     .hero-brand .mimarlik-text {
-        font-size: 16px;
+        font-size: 13px;
         letter-spacing: 8px;
     }
     .hero-description {
         font-size: 13px;
         line-height: 1.8;
+        padding: 0 10px;
     }
     .hero-cta {
         padding: 14px 30px;
-        font-size: 11px;
+        font-size: 10px;
     }
     .scroll-indicator {
-        display: none;
+        bottom: 20px;
+    }
+    .scroll-text {
+        font-size: 8px;
+    }
+    .scroll-arrow {
+        width: 16px;
+        height: 26px;
     }
 }
 
