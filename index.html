@@ -579,9 +579,9 @@
         
         /* IE için sabit renkler */
         .section-title .accent { color: #5a6677; }
-        .hero-brand { color: #ffffff; }
-        .hero-brand .cee-text { color: #5a6677 !important; }
-        .hero-brand .mimarlik-text { color: #ffffff !important; }
+        .hero-brand { color: var(--accent-gold, #1a1a2e); }
+        .hero-brand .cee-text { color: var(--accent-gold, #1a1a2e); }
+        .hero-brand .mimarlik-text { color: var(--text-color, #4a5568); }
         .hero-cta { background: #5a6677; color: #ffffff !important; }
         .logo-text { color: #5a6677; }
         .filter-btn.active { background: linear-gradient(135deg, #5a6677, #7a8694); border-color: #5a6677; color: white; }
@@ -5878,6 +5878,8 @@ window.goToAdmin = goToAdmin;
     --cee-light: #e2e8f0;
     --cee-white: #ffffff;
     --cee-cream: #f7fafc;
+    --accent-gold: #1a1a2e;
+    --text-color: #4a5568;
 }
 
 .hero-main-content {
@@ -5934,7 +5936,7 @@ window.goToAdmin = goToAdmin;
     font-size: 80px;
     font-weight: 800;
     letter-spacing: 45px;
-    color: var(--cee-antrasit);
+    color: var(--accent-gold, #1a1a2e);
     line-height: 1;
     opacity: 0;
     animation: fadeInUp 0.8s ease 5.9s forwards;
@@ -5947,7 +5949,7 @@ window.goToAdmin = goToAdmin;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 12px;
-    color: var(--cee-metal);
+    color: var(--text-color, #4a5568);
     margin-top: 8px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.1s forwards;
@@ -5957,7 +5959,7 @@ window.goToAdmin = goToAdmin;
 .hero-description {
     font-size: 14px;
     line-height: 1.9;
-    color: var(--cee-metal);
+    color: var(--text-color, #4a5568);
     font-weight: 400;
     margin-bottom: 30px;
     max-width: 420px;
@@ -11556,6 +11558,8 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--accent-gold-light', accentLight);
             document.documentElement.style.setProperty('--bg-primary', bgMain);
             document.documentElement.style.setProperty('--bg-secondary', bgSection);
+            document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--header-color', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
             // İkon boyutlarını güncelle
@@ -11580,9 +11584,14 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             
             // Accent elements
             document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
+            document.querySelectorAll('.hero-brand .cee-text').forEach(el => el.style.setProperty('color', accent, 'important'));
+            document.querySelectorAll('.hero-brand .mimarlik-text').forEach(el => el.style.setProperty('color', textColor, 'important'));
             document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
             document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
             document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
+            
+            // Hero dekoratif çizgi
+            document.querySelectorAll('.hero-brand::before').forEach(el => el.style.background = accent);
             
             // Icons with gradient
             const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
