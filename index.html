@@ -5934,7 +5934,7 @@ window.goToAdmin = goToAdmin;
         transparent 100%);
 }
 
-/* CEE Yazısı - Logodaki koyu metalik ton */
+/* CEE Yazısı - Logodaki koyu metalik ton + PARLAKLIK */
 .hero-brand .cee-text {
     display: block;
     font-size: 80px;
@@ -5945,9 +5945,22 @@ window.goToAdmin = goToAdmin;
     opacity: 0;
     animation: fadeInUp 0.8s ease 5.9s forwards;
     margin-right: 40px;
+    /* Metalik Parlaklık Efekti */
+    background: linear-gradient(
+        135deg,
+        #3a3a3a 0%,
+        #6a6a6a 25%,
+        #8a8a8a 50%,
+        #6a6a6a 75%,
+        #3a3a3a 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* MİMARLIK Yazısı - Logodaki orta metalik ton */
+/* MİMARLIK Yazısı - Logodaki orta metalik ton + PARLAKLIK */
 .hero-brand .mimarlik-text {
     display: block;
     font-size: 18px;
@@ -5957,6 +5970,16 @@ window.goToAdmin = goToAdmin;
     margin-top: 8px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.1s forwards;
+    /* Hafif Metalik Efekt */
+    background: linear-gradient(
+        90deg,
+        #5a5a5a 0%,
+        #7a7a7a 50%,
+        #5a5a5a 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Açıklama - Logodaki açık metalik ton */
@@ -5972,11 +5995,18 @@ window.goToAdmin = goToAdmin;
     animation: fadeInUp 0.8s ease 6.3s forwards;
 }
 
-/* CTA Buton - Logodaki koyu metalik ton */
+/* CTA Buton - Logodaki koyu metalik ton + PARLAKLIK */
 .hero-cta {
     display: inline-block;
     padding: 15px 35px;
-    background: #4a4a4a;
+    background: linear-gradient(
+        135deg,
+        #3a3a3a 0%,
+        #5a5a5a 25%,
+        #6a6a6a 50%,
+        #5a5a5a 75%,
+        #3a3a3a 100%
+    );
     color: #ffffff;
     text-decoration: none;
     font-size: 11px;
@@ -5987,12 +6017,43 @@ window.goToAdmin = goToAdmin;
     border: none;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.5s forwards;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Buton üzerinde parlak çizgi animasyonu */
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.hero-cta:hover::before {
+    left: 100%;
 }
 
 .hero-cta:hover {
-    background: #2d2d2d;
+    background: linear-gradient(
+        135deg,
+        #4a4a4a 0%,
+        #6a6a6a 25%,
+        #7a7a7a 50%,
+        #6a6a6a 75%,
+        #4a4a4a 100%
+    );
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 @keyframes fadeInUp {
@@ -6450,10 +6511,32 @@ window.goToAdmin = goToAdmin;
 </div>
 
 <style>
-/* Architect Divider - Varsayılan ve dinamik renk */
+/* Architect Divider - Varsayılan ve dinamik renk + PARLAKLIK */
 .architect-divider {
-    background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 50%, #4a4a4a 100%);
+    background: linear-gradient(
+        135deg,
+        #3a3a3a 0%,
+        #5a5a5a 15%,
+        #7a7a7a 30%,
+        #8a8a8a 50%,
+        #7a7a7a 70%,
+        #5a5a5a 85%,
+        #3a3a3a 100%
+    );
+    position: relative;
 }
+
+/* Parlak üst kenar */
+.architect-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
 /* Dark mode için divider renkleri */
 body.dark-mode .architect-divider .divider-top path {
     fill: #1a1a2e !important;
@@ -11583,6 +11666,18 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
         } catch(e) { return '#6a6a6a'; }
     }
     
+    function darken(color, percent) {
+        if (!color || color.length < 4) return '#3a3a3a';
+        try {
+            const num = parseInt(color.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.min(255, Math.max(0, (num >> 16) - amt));
+            const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) - amt));
+            const B = Math.min(255, Math.max(0, (num & 0x0000FF) - amt));
+            return '#' + ((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1);
+        } catch(e) { return '#3a3a3a'; }
+    }
+    
     function applyColors() {
         try {
             const cs = JSON.parse(localStorage.getItem('color_settings') || '{}');
@@ -11610,11 +11705,58 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--divider-color-light', accentLight);
             document.documentElement.style.setProperty('--diagonal-color', accent);
             
-            // Architect Divider bandını güncelle
+            // Architect Divider bandını güncelle - METALİK PARLAKLIK
             const architectDivider = document.getElementById('architectDivider');
             if (architectDivider) {
-                architectDivider.style.background = `linear-gradient(135deg, ${accent} 0%, ${accentLight} 50%, ${accent} 100%)`;
+                const darkAccent = darken(accent, 20);
+                const lightAccent = lighten(accent, 25);
+                const shineAccent = lighten(accent, 40);
+                architectDivider.style.background = `linear-gradient(135deg, ${darkAccent} 0%, ${accent} 15%, ${lightAccent} 30%, ${shineAccent} 50%, ${lightAccent} 70%, ${accent} 85%, ${darkAccent} 100%)`;
             }
+            
+            // Metalik gradient fonksiyonu
+            function createMetallicGradient(baseColor) {
+                const dark = darken(baseColor, 20);
+                const light = lighten(baseColor, 20);
+                const shine = lighten(baseColor, 35);
+                return `linear-gradient(135deg, ${dark} 0%, ${baseColor} 25%, ${shine} 50%, ${baseColor} 75%, ${dark} 100%)`;
+            }
+            
+            // Metalik stil elementi
+            const metallicStyleId = 'metallic-style';
+            let metallicStyle = document.getElementById(metallicStyleId);
+            if (!metallicStyle) {
+                metallicStyle = document.createElement('style');
+                metallicStyle.id = metallicStyleId;
+                document.head.appendChild(metallicStyle);
+            }
+            
+            const darkAccent = darken(accent, 15);
+            const lightAccent = lighten(accent, 20);
+            const shineAccent = lighten(accent, 35);
+            
+            metallicStyle.textContent = `
+                /* Metalik Butonlar */
+                .hero-cta, .team-cta-btn, .directions-btn {
+                    background: linear-gradient(135deg, ${darkAccent} 0%, ${accent} 25%, ${lightAccent} 50%, ${accent} 75%, ${darkAccent} 100%) !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+                }
+                .hero-cta:hover, .team-cta-btn:hover, .directions-btn:hover {
+                    background: linear-gradient(135deg, ${accent} 0%, ${lightAccent} 25%, ${shineAccent} 50%, ${lightAccent} 75%, ${accent} 100%) !important;
+                }
+                
+                /* Metalik İkonlar */
+                .service-icon-v2, .ref-icon, .contact-icon-circle {
+                    background: linear-gradient(135deg, ${darkAccent} 0%, ${accent} 30%, ${lightAccent} 50%, ${accent} 70%, ${darkAccent} 100%) !important;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+                }
+                
+                /* Filter butonları */
+                .filter-btn.active {
+                    background: linear-gradient(135deg, ${darkAccent}, ${lightAccent}) !important;
+                    border-color: ${accent} !important;
+                }
+            `;
             
             // İkon boyutlarını güncelle
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
