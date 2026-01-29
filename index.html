@@ -5508,18 +5508,19 @@
     /* === FLOATING LOGO - Scroll'da sol üste kayar === */
     #floatingLogo {
         position: fixed;
-        top: 15px;
+        top: -100px;
         left: 15px;
         z-index: 10000;
         opacity: 0;
-        transform: scale(0.3) rotate(-10deg);
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: 
+            top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            opacity 0.6s ease;
         pointer-events: none;
     }
     
     #floatingLogo.visible {
-        opacity: var(--logo-opacity, 1);
-        transform: scale(1) rotate(0deg);
+        top: 15px;
+        opacity: 1;
         pointer-events: auto;
     }
     
@@ -5542,7 +5543,7 @@
             inset 0 2px 0 rgba(255,255,255,0.5),
             inset 0 -2px 0 rgba(0,0,0,0.2),
             0 4px 15px rgba(0,0,0,0.3);
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: all 0.3s ease;
         text-decoration: none;
     }
     
@@ -5550,16 +5551,15 @@
         box-shadow: 
             inset 0 2px 0 rgba(255,255,255,0.6),
             inset 0 -2px 0 rgba(0,0,0,0.3),
-            0 12px 30px rgba(0,0,0,0.4);
-        transform: translateY(-3px) scale(1.05);
+            0 8px 25px rgba(0,0,0,0.4);
+        transform: translateY(-2px);
     }
     
     #floatingLogo img {
-        height: var(--floating-logo-size, 50px);
+        height: 55px;
         width: auto;
         cursor: pointer;
         filter: brightness(1.1) contrast(1.05);
-        transition: all 0.3s ease;
     }
     
     /* Floating logo altındaki yazı - KALDIRILDI */
@@ -8449,20 +8449,10 @@ function applyLogoSettings() {
     
     const opacity = (settings.opacity || 100) / 100;
     const bigSize = settings.bigSize || 70;
-    const smallSize = settings.smallSize || 60;
+    const smallSize = settings.smallSize || 55;
     const footerSize = settings.footerSize || 45;
     
-    // CSS değişkenlerini ayarla
-    document.documentElement.style.setProperty('--floating-logo-size', smallSize + 'px');
-    document.documentElement.style.setProperty('--logo-opacity', opacity);
-    
     styleEl.textContent = `
-        /* CSS Değişkenleri */
-        :root {
-            --floating-logo-size: ${smallSize}px;
-            --logo-opacity: ${opacity};
-        }
-        
         /* Header logo boyutu - sayfa başında */
         #headerLogo, .site-logo {
             height: ${bigSize}px !important;
@@ -8487,7 +8477,7 @@ function applyLogoSettings() {
             visibility: hidden !important;
         }
         
-        /* Floating logo (scroll'da sol üstte) */
+        /* Floating logo (scroll'da sol üstte) - ADMIN BOYUTU */
         #floatingLogo img {
             height: ${smallSize}px !important;
         }
@@ -9735,7 +9725,7 @@ function updateFloatingLogo() {
     // Default değerler
     let logoText = 'CEE MİMARLIK';
     let bigSize = 70;
-    let smallSize = 60;  // Daha büyük default
+    let smallSize = 55;
     let opacity = 1;
     
     // Logo ayarlarını uygula (varsa)
@@ -9745,17 +9735,18 @@ function updateFloatingLogo() {
             const settings = JSON.parse(saved);
             logoText = settings.text || 'CEE MİMARLIK';
             bigSize = settings.bigSize || 70;
-            smallSize = settings.smallSize || 60;
+            smallSize = settings.smallSize || 55;
             opacity = (settings.opacity || 100) / 100;
         } catch(e) {
             console.log('Logo ayarları okunamadı, default kullanılıyor');
         }
     }
     
-    // CSS değişkenlerini ayarla - tüm site için geçerli
-    document.documentElement.style.setProperty('--floating-logo-size', smallSize + 'px');
-    document.documentElement.style.setProperty('--logo-opacity', opacity);
-    document.documentElement.style.setProperty('--header-logo-size', bigSize + 'px');
+    // Floating logo boyutunu DOĞRUDAN uygula
+    if (floatingLogoImg) {
+        floatingLogoImg.style.height = smallSize + 'px';
+        floatingLogoImg.style.width = 'auto';
+    }
     
     // Header logo yazısını güncelle
     if (headerLogoText) {
@@ -9771,21 +9762,13 @@ function updateFloatingLogo() {
         document.head.appendChild(logoStyle);
     }
     logoStyle.textContent = `
-        /* CSS Değişkenleri */
-        :root {
-            --floating-logo-size: ${smallSize}px;
-            --logo-opacity: ${opacity};
-            --header-logo-size: ${bigSize}px;
-        }
-        
         /* Header logo boyutu */
         .logo-wrapper .site-logo,
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        /* Floating logo boyutu ve opaklık */
+        /* Floating logo boyutu ve opaklık - admin panelden */
         #floatingLogo img {
             height: ${smallSize}px !important;
         }
@@ -9802,8 +9785,6 @@ function updateFloatingLogo() {
             width: 0 !important;
             height: 0 !important;
             overflow: hidden !important;
-            transform: scale(0.5);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         header.scrolled .logo-wrapper .site-logo,
         header.scrolled .logo-wrapper #headerLogo {

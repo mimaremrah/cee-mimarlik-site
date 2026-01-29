@@ -824,7 +824,7 @@ a{color:inherit;text-decoration:none}
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Floating Logo (px)</label>
-                                    <input type="number" class="form-input" id="logoSmallSize" value="60" min="30" max="120" style="text-align: center;">
+                                    <input type="number" class="form-input" id="logoSmallSize" value="55" min="30" max="120" style="text-align: center;">
                                     <small style="color: #888; font-size: 10px;">Scroll sonrası metalik kutu</small>
                                 </div>
                             </div>
@@ -1737,7 +1737,7 @@ a{color:inherit;text-decoration:none}
                 const settings = JSON.parse(saved);
                 document.getElementById('logoText').value = settings.text || 'CEE MİMARLIK';
                 document.getElementById('logoBigSize').value = settings.bigSize || 70;
-                document.getElementById('logoSmallSize').value = settings.smallSize || 60;
+                document.getElementById('logoSmallSize').value = settings.smallSize || 55;
                 document.getElementById('logoOpacity').value = settings.opacity || 100;
                 document.getElementById('opacityValue').textContent = settings.opacity || 100;
                 document.getElementById('logoFooterSize').value = settings.footerSize || 45;
@@ -1749,7 +1749,7 @@ a{color:inherit;text-decoration:none}
         const settings = {
             text: document.getElementById('logoText').value || 'CEE MİMARLIK',
             bigSize: parseInt(document.getElementById('logoBigSize').value) || 70,
-            smallSize: parseInt(document.getElementById('logoSmallSize').value) || 60,
+            smallSize: parseInt(document.getElementById('logoSmallSize').value) || 55,
             opacity: parseInt(document.getElementById('logoOpacity').value) || 100,
             footerSize: parseInt(document.getElementById('logoFooterSize').value) || 45
         };
