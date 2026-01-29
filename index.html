@@ -9763,31 +9763,28 @@ window.addEventListener('scroll', () => {
     
     // Header scroll effect + Floating logo (3 Aşama)
     if (header) {
-        // Aşama 2: Hero bölümü geçince floating logo görünsün
-        if (scrollTop > heroEnd) {
-            header.classList.add('scrolled');
-            
-            if (floatingLogo) {
-                floatingLogo.classList.add('visible');
-                
-                // Aşama 3: Hero'dan 300px sonra mini moda geç
-                if (scrollTop > heroEnd + 300) {
-                    if (!floatingLogo.classList.contains('mini-mode')) {
-                        floatingLogo.classList.add('mini-mode');
-                    }
-                } else {
-                    // Aşama 2: Normal floating logo
-                    if (floatingLogo.classList.contains('mini-mode')) {
-                        floatingLogo.classList.remove('mini-mode');
-                    }
-                }
-            }
-        } else {
+        // Aşama 1: Sayfa başı (0-100px) - Header logo görünür
+        if (scrollTop <= 100) {
             header.classList.remove('scrolled');
-            // Aşama 1: Floating logo gizle
             if (floatingLogo) {
                 floatingLogo.classList.remove('visible');
                 floatingLogo.classList.remove('mini-mode');
+            }
+        }
+        // Aşama 2: Scroll başladı ama hero bitmedi (100px - heroEnd) - Floating logo görünür
+        else if (scrollTop > 100 && scrollTop <= heroEnd) {
+            header.classList.add('scrolled');
+            if (floatingLogo) {
+                floatingLogo.classList.add('visible');
+                floatingLogo.classList.remove('mini-mode'); // Normal boyut
+            }
+        }
+        // Aşama 3: Hero bitti (heroEnd sonrası) - Mini logo
+        else if (scrollTop > heroEnd) {
+            header.classList.add('scrolled');
+            if (floatingLogo) {
+                floatingLogo.classList.add('visible');
+                floatingLogo.classList.add('mini-mode'); // Küçük boyut
             }
         }
     }
