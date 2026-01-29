@@ -1864,21 +1864,27 @@
             image-rendering: crisp-edges;
         }
 
+        /* Scroll'da header logosu TAMAMEN GİZLENSİN - floating logo devrede */
         header.scrolled .site-logo {
-            height: 45px;
+            height: 0 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
 
         header.scrolled .logo-container {
-            padding: 5px 12px;
-            background: transparent;
-            border: none;
-            box-shadow: none;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+            pointer-events: none !important;
         }
 
         body.dark-mode header.scrolled .logo-container {
-            background: transparent;
-            border: none;
-            box-shadow: none;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
 
         /* === LOGO ALTI YAZI - Header'da görünür === */
@@ -4209,10 +4215,10 @@
             .logo-subtitle { font-size: 6px; letter-spacing: 1.5px; white-space: nowrap; padding-top: 3px; margin-top: 3px; }
             header.scrolled .logo-subtitle { opacity: 0; font-size: 0; height: 0; padding: 0; margin: 0; border: none; }
             .site-logo { height: 60px; }
-            header.scrolled .site-logo { height: 45px; }
+            header.scrolled .site-logo { height: 0 !important; opacity: 0 !important; visibility: hidden !important; }
             .header-content { padding: 0 15px; }
             .logo-container { padding: 5px 10px; }
-            header.scrolled .logo-container { padding: 3px 8px; }
+            header.scrolled .logo-container { opacity: 0 !important; visibility: hidden !important; width: 0 !important; height: 0 !important; padding: 0 !important; overflow: hidden !important; }
             .hero { height: 50vh; }
             .hero-title { font-size: 36px; letter-spacing: 5px; }
             .hero-subtitle { font-size: 13px; }
@@ -5453,14 +5459,22 @@
         transition: all 0.4s ease;
     }
     
-    /* Scroll'da logo küçülsün */
-    header.scrolled .logo-wrapper .site-logo,
-    header.scrolled .logo-wrapper #headerLogo {
-        height: 45px;
+    /* Scroll'da header logosu TAMAMEN GİZLENSİN - floating logo devrede */
+    header.scrolled .logo-wrapper {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
-    header.scrolled .logo-wrapper {
-        gap: 0;
+    header.scrolled .logo-wrapper .site-logo,
+    header.scrolled .logo-wrapper #headerLogo {
+        height: 0 !important;
+        opacity: 0 !important;
     }
     
     /* Logo altı yazı - HEADER */
@@ -8439,10 +8453,28 @@ function applyLogoSettings() {
     const footerSize = settings.footerSize || 45;
     
     styleEl.textContent = `
-        /* Header logo boyutu */
+        /* Header logo boyutu - sayfa başında */
         #headerLogo, .site-logo {
             height: ${bigSize}px !important;
             opacity: ${opacity} !important;
+        }
+        
+        /* Scroll'da header logosu TAMAMEN GİZLENSİN */
+        header.scrolled .logo-container,
+        header.scrolled .logo-wrapper {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            pointer-events: none !important;
+        }
+        
+        header.scrolled #headerLogo,
+        header.scrolled .site-logo {
+            height: 0 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
         
         /* Floating logo (scroll'da sol üstte) */
@@ -9718,7 +9750,7 @@ function updateFloatingLogo() {
         headerLogoText.style.display = 'block';
     }
     
-    // Header logo boyutu için CSS ekle
+    // Header logo boyutu için CSS ekle - scroll'da tamamen gizle
     let logoStyle = document.getElementById('logo-size-style');
     if (!logoStyle) {
         logoStyle = document.createElement('style');
@@ -9730,9 +9762,19 @@ function updateFloatingLogo() {
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
         }
+        /* Scroll'da header logosu TAMAMEN GİZLENSİN */
+        header.scrolled .logo-wrapper {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
         header.scrolled .logo-wrapper .site-logo,
         header.scrolled .logo-wrapper #headerLogo {
-            height: ${smallSize}px !important;
+            height: 0 !important;
+            opacity: 0 !important;
         }
     `;
 }
