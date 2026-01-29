@@ -1881,8 +1881,9 @@
             box-shadow: none;
         }
 
-        /* === LOGO ALTI YAZI === */
+        /* === LOGO ALTI YAZI - Header'da görünür === */
         .logo-text {
+            display: block;
             font-size: 10px;
             font-weight: 600;
             letter-spacing: 4px;
@@ -1893,13 +1894,13 @@
             max-height: 25px;
             overflow: hidden;
             margin-top: 3px;
+            text-align: center;
         }
 
         header.scrolled .logo-text {
             opacity: 0;
             max-height: 0;
             margin-top: 0;
-            font-size: 0;
         }
 
         .logo-subtitle {
@@ -5462,29 +5463,32 @@
         gap: 0;
     }
     
-    /* Logo altı yazı */
+    /* Logo altı yazı - HEADER */
     .logo-text {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        color: #505050;
-        opacity: 1;
-        max-height: 20px;
+        display: block !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        letter-spacing: 3px !important;
+        color: #505050 !important;
+        opacity: 1 !important;
+        max-height: 20px !important;
         overflow: hidden;
         transition: all 0.4s ease;
         white-space: nowrap;
+        text-align: center;
+        margin-top: 2px;
     }
     
     /* Scroll'da yazı kaybolsun */
     header.scrolled .logo-text {
-        opacity: 0;
-        max-height: 0;
-        margin: 0;
-        padding: 0;
+        opacity: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     body.dark-mode .logo-text {
-        color: #c0c0c0;
+        color: #c0c0c0 !important;
     }
     
     /* === FLOATING LOGO - Scroll'da sol üste kayar === */
@@ -5548,33 +5552,36 @@
     
     /* Floating logo altındaki yazı */
     .floating-logo-text {
-        font-size: 9px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        color: #1a1a1a;
-        text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        display: block !important;
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        letter-spacing: 3px !important;
+        color: #1a1a1a !important;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.4) !important;
         white-space: nowrap;
         max-height: 15px;
-        opacity: 1;
+        opacity: 1 !important;
         overflow: hidden;
         transition: all 0.4s ease;
+        text-align: center;
+        line-height: 1.2;
     }
     
     /* Scroll derinleştikçe yazı kaybolsun */
     #floatingLogo.hide-text .floating-logo-text {
-        opacity: 0;
-        max-height: 0;
-        margin: 0;
-        padding: 0;
+        opacity: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     #floatingLogo.hide-text a {
-        padding: 10px 14px;
-        gap: 0;
+        padding: 10px 14px !important;
+        gap: 0 !important;
     }
     
     #floatingLogo.hide-text img {
-        height: 35px;
+        height: 35px !important;
     }
     
     /* Dark mode */
@@ -9703,49 +9710,59 @@ function updateFloatingLogo() {
         floatingLogoImg.src = siteLogo;
     }
     
-    // Logo ayarlarını uygula
+    // Default değerler
+    let logoText = 'CEE MİMARLIK';
+    let bigSize = 70;
+    let smallSize = 45;
+    let opacity = 1;
+    
+    // Logo ayarlarını uygula (varsa)
     const saved = localStorage.getItem('cee_logo_settings');
     if (saved) {
         try {
             const settings = JSON.parse(saved);
-            const logoText = settings.text || 'CEE MİMARLIK';
-            const bigSize = settings.bigSize || 70;
-            const smallSize = settings.smallSize || 45;
-            const opacity = (settings.opacity || 100) / 100;
-            
-            // Floating logo ayarları
-            if (floatingLogoImg) {
-                floatingLogoImg.style.height = smallSize + 'px';
-                floatingLogoImg.style.opacity = opacity;
-            }
-            
-            // Logo yazılarını güncelle
-            if (floatingLogoText) {
-                floatingLogoText.textContent = logoText;
-            }
-            if (headerLogoText) {
-                headerLogoText.textContent = logoText;
-            }
-            
-            // Header logo boyutu için CSS ekle
-            let logoStyle = document.getElementById('logo-size-style');
-            if (!logoStyle) {
-                logoStyle = document.createElement('style');
-                logoStyle.id = 'logo-size-style';
-                document.head.appendChild(logoStyle);
-            }
-            logoStyle.textContent = `
-                .logo-wrapper .site-logo,
-                .logo-wrapper #headerLogo {
-                    height: ${bigSize}px !important;
-                }
-                header.scrolled .logo-wrapper .site-logo,
-                header.scrolled .logo-wrapper #headerLogo {
-                    height: ${smallSize}px !important;
-                }
-            `;
-        } catch(e) {}
+            logoText = settings.text || 'CEE MİMARLIK';
+            bigSize = settings.bigSize || 70;
+            smallSize = settings.smallSize || 45;
+            opacity = (settings.opacity || 100) / 100;
+        } catch(e) {
+            console.log('Logo ayarları okunamadı, default kullanılıyor');
+        }
     }
+    
+    // Floating logo ayarları
+    if (floatingLogoImg) {
+        floatingLogoImg.style.height = smallSize + 'px';
+        floatingLogoImg.style.opacity = opacity;
+    }
+    
+    // Logo yazılarını güncelle - her zaman yap
+    if (floatingLogoText) {
+        floatingLogoText.textContent = logoText;
+        floatingLogoText.style.display = 'block';
+    }
+    if (headerLogoText) {
+        headerLogoText.textContent = logoText;
+        headerLogoText.style.display = 'block';
+    }
+    
+    // Header logo boyutu için CSS ekle
+    let logoStyle = document.getElementById('logo-size-style');
+    if (!logoStyle) {
+        logoStyle = document.createElement('style');
+        logoStyle.id = 'logo-size-style';
+        document.head.appendChild(logoStyle);
+    }
+    logoStyle.textContent = `
+        .logo-wrapper .site-logo,
+        .logo-wrapper #headerLogo {
+            height: ${bigSize}px !important;
+        }
+        header.scrolled .logo-wrapper .site-logo,
+        header.scrolled .logo-wrapper #headerLogo {
+            height: ${smallSize}px !important;
+        }
+    `;
 }
 document.addEventListener('DOMContentLoaded', updateFloatingLogo);
 
