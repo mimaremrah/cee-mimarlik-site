@@ -6426,7 +6426,7 @@ window.goToAdmin = goToAdmin;
 </section>
 
 <!-- MİMARİ GEÇİŞ BANDI -->
-<div class="architect-divider" id="architectDivider" style="position: relative; height: 80px; background: linear-gradient(135deg, var(--divider-color, #4a4a4a) 0%, var(--divider-color-light, #6b7a8a) 50%, var(--divider-color, #4a4a4a) 100%); overflow: hidden;">
+<div class="architect-divider" id="architectDivider" style="position: relative; height: 80px; overflow: hidden;">
     <!-- Üst kenar - açılı beyaz -->
     <svg class="divider-top" viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 20px;">
         <path d="M0,20 L0,0 L1440,0 L1440,20 L720,10 Z" fill="#ffffff"/>
@@ -6450,6 +6450,10 @@ window.goToAdmin = goToAdmin;
 </div>
 
 <style>
+/* Architect Divider - Varsayılan ve dinamik renk */
+.architect-divider {
+    background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 50%, #4a4a4a 100%);
+}
 /* Dark mode için divider renkleri */
 body.dark-mode .architect-divider .divider-top path {
     fill: #1a1a2e !important;
@@ -11600,6 +11604,17 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--text-color', textColor);
             document.documentElement.style.setProperty('--header-color', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
+            
+            // Divider/Bant renkleri (Simge Arka Plan ile değişir)
+            document.documentElement.style.setProperty('--divider-color', accent);
+            document.documentElement.style.setProperty('--divider-color-light', accentLight);
+            document.documentElement.style.setProperty('--diagonal-color', accent);
+            
+            // Architect Divider bandını güncelle
+            const architectDivider = document.getElementById('architectDivider');
+            if (architectDivider) {
+                architectDivider.style.background = `linear-gradient(135deg, ${accent} 0%, ${accentLight} 50%, ${accent} 100%)`;
+            }
             
             // İkon boyutlarını güncelle
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => {
