@@ -6310,15 +6310,15 @@ window.goToAdmin = goToAdmin;
     display: none;
 }
 
-/* Hero İçerik - ORTADA SABİT */
+/* Hero İçerik - SAĞDA BAŞLA */
 .hero-content-lares {
     position: absolute;
     bottom: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 8%;
+    left: auto;
     z-index: 40;
     max-width: 600px;
-    text-align: center;
+    text-align: right;
     opacity: 1;
 }
 
@@ -6348,11 +6348,11 @@ window.goToAdmin = goToAdmin;
     filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.5));
 }
 
-/* Her harf - TEK ANİMASYON ile sağdan gel, bekle, sola git */
+/* Her harf - SAĞDAN GEL, ORTADA BEKLE, SOLA GİT VE KAL */
 .hero-brand .cee-text .letter {
     display: inline-block;
     opacity: 0;
-    transform: translateX(120px);
+    transform: translateX(200px);
     /* GÜÇLÜ METALİK GEÇİŞ - her harfe ayrı */
     background: linear-gradient(
         180deg,
@@ -6369,39 +6369,39 @@ window.goToAdmin = goToAdmin;
 
 /* C harfi */
 .hero-brand .cee-text .letter-1 { 
-    animation: letterFullAnimation 5s ease-in-out 0.3s forwards;
+    animation: letterAnimation 5s ease-in-out 0.3s forwards;
 }
 
 /* E harfi (1.) */
 .hero-brand .cee-text .letter-2 { 
-    animation: letterFullAnimation 5s ease-in-out 0.5s forwards;
+    animation: letterAnimation 5s ease-in-out 0.5s forwards;
 }
 
 /* E harfi (2.) */
 .hero-brand .cee-text .letter-3 { 
-    animation: letterFullAnimation 5s ease-in-out 0.7s forwards;
+    animation: letterAnimation 5s ease-in-out 0.7s forwards;
 }
 
-/* TEK ANİMASYON: Sağdan gel → Ortada bekle → Sola git */
-@keyframes letterFullAnimation {
+/* SAĞDAN GEL → ORTADA BEKLE → SOLA GİT VE KAL */
+@keyframes letterAnimation {
     0% {
         opacity: 0;
-        transform: translateX(120px);
+        transform: translateX(200px);
     }
-    /* Ortaya geldi */
+    /* Sağdan ortaya geldi */
     12% {
         opacity: 1;
         transform: translateX(0);
     }
     /* Ortada bekliyor */
-    65% {
+    55% {
         opacity: 1;
         transform: translateX(0);
     }
-    /* Sola gidiyor */
+    /* Sola gitti ve KALDI */
     100% {
-        opacity: 0;
-        transform: translateX(-120px);
+        opacity: 1;
+        transform: translateX(-42vw);
     }
 }
 
@@ -6409,37 +6409,37 @@ window.goToAdmin = goToAdmin;
 .hero-brand .mimarlik-text {
     display: block;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 6px;
     margin-top: 12px;
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(150px);
     color: #ffffff;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    animation: textFullAnimation 5s ease-in-out 1s forwards;
+    animation: textAnimation 5s ease-in-out 1s forwards;
 }
 
-/* Metin animasyonu: Sağdan gel → Bekle → Sola git */
-@keyframes textFullAnimation {
+/* METİN ANİMASYONU: Sağdan gel → Bekle → Sola git ve KAL */
+@keyframes textAnimation {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(150px);
     }
     12% {
         opacity: 1;
         transform: translateX(0);
     }
-    65% {
+    55% {
         opacity: 1;
         transform: translateX(0);
     }
     100% {
-        opacity: 0;
-        transform: translateX(-100px);
+        opacity: 1;
+        transform: translateX(-42vw);
     }
 }
 
-/* Açıklama - sağdan gel, bekle, sola git */
+/* Açıklama - sağdan gel, bekle, sola git ve KAL */
 .hero-description {
     font-size: 15px;
     line-height: 1.9;
@@ -6447,11 +6447,9 @@ window.goToAdmin = goToAdmin;
     font-weight: 400;
     margin-bottom: 30px;
     max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
     opacity: 0;
-    transform: translateX(80px);
-    animation: textFullAnimation 5s ease-in-out 1.3s forwards;
+    transform: translateX(120px);
+    animation: textAnimation 5s ease-in-out 1.3s forwards;
     text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 
@@ -6477,8 +6475,8 @@ window.goToAdmin = goToAdmin;
     border: 1px solid #1a1a1a;
     border-radius: 50px;
     opacity: 0;
-    transform: translateX(60px);
-    animation: textFullAnimation 5s ease-in-out 1.6s forwards;
+    transform: translateX(100px);
+    animation: textAnimation 5s ease-in-out 1.6s forwards;
     box-shadow: 
         inset 0 2px 0 rgba(255,255,255,0.5),
         inset 0 -2px 0 rgba(0,0,0,0.2),
@@ -6487,7 +6485,7 @@ window.goToAdmin = goToAdmin;
 }
 
 .hero-cta:hover {
-    transform: translateY(-3px);
+    filter: brightness(1.1);
     box-shadow: 
         inset 0 2px 0 rgba(255,255,255,0.6),
         inset 0 -2px 0 rgba(0,0,0,0.3),
@@ -6578,60 +6576,79 @@ window.goToAdmin = goToAdmin;
 /* ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 992px) {
     .hero-content-lares {
-        left: 50%;
-        right: auto;
+        right: 5%;
+        left: auto;
         bottom: 12%;
         max-width: 90%;
-        text-align: center;
-        transform: translateX(-50%);
-        animation: heroFadeInMobile 1s ease-out 1s forwards;
-    }
-    @keyframes heroFadeInMobile {
-        from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        text-align: right;
     }
     .hero-brand::before {
         display: none;
     }
     .hero-brand .cee-text {
-        font-size: 56px;
-        letter-spacing: 15px;
+        font-size: 48px;
+        letter-spacing: 10px;
+    }
+    .hero-brand .cee-text .letter {
+        animation: letterAnimationMobile 5s ease-in-out 0.3s forwards;
+    }
+    .hero-brand .cee-text .letter-2 {
+        animation-delay: 0.5s;
+    }
+    .hero-brand .cee-text .letter-3 {
+        animation-delay: 0.7s;
+    }
+    @keyframes letterAnimationMobile {
+        0% { opacity: 0; transform: translateX(100px); }
+        12% { opacity: 1; transform: translateX(0); }
+        55% { opacity: 1; transform: translateX(0); }
+        100% { opacity: 1; transform: translateX(-40vw); }
     }
     .hero-brand .mimarlik-text {
-        font-size: 14px;
-        letter-spacing: 4px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        animation: textAnimationMobile 5s ease-in-out 1s forwards;
     }
     .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 500px;
+        max-width: 400px;
+        animation: textAnimationMobile 5s ease-in-out 1.3s forwards;
+    }
+    .hero-cta {
+        animation: textAnimationMobile 5s ease-in-out 1.6s forwards;
+    }
+    @keyframes textAnimationMobile {
+        0% { opacity: 0; transform: translateX(80px); }
+        12% { opacity: 1; transform: translateX(0); }
+        55% { opacity: 1; transform: translateX(0); }
+        100% { opacity: 1; transform: translateX(-40vw); }
     }
 }
 
 @media (max-width: 600px) {
     .hero-content-lares {
         bottom: 10%;
+        right: 3%;
     }
     .hero-location {
         font-size: 9px;
         letter-spacing: 3px;
     }
     .hero-brand .cee-text {
-        font-size: 42px;
-        letter-spacing: 12px;
+        font-size: 36px;
+        letter-spacing: 8px;
     }
     .hero-brand .mimarlik-text {
-        font-size: 11px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1px;
     }
     .hero-description {
-        font-size: 13px;
-        line-height: 1.8;
-        padding: 0 10px;
+        font-size: 12px;
+        line-height: 1.7;
+        max-width: 280px;
     }
     .hero-cta {
-        padding: 14px 30px;
-        font-size: 10px;
+        padding: 12px 25px;
+        font-size: 9px;
     }
     .scroll-indicator {
         bottom: 20px;
