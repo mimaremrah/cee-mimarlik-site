@@ -5442,16 +5442,24 @@
         align-items: center;
         gap: 4px;
         padding: 5px;
+        transition: all 0.4s ease;
     }
     
-    /* Header içindeki logo gizlenecek scroll'da */
-    .logo-wrapper {
-        transition: opacity 0.3s ease;
+    /* Header logo */
+    .logo-wrapper .site-logo,
+    .logo-wrapper #headerLogo {
+        height: 70px;
+        transition: all 0.4s ease;
+    }
+    
+    /* Scroll'da logo küçülsün */
+    header.scrolled .logo-wrapper .site-logo,
+    header.scrolled .logo-wrapper #headerLogo {
+        height: 45px;
     }
     
     header.scrolled .logo-wrapper {
-        opacity: 0;
-        pointer-events: none;
+        gap: 0;
     }
     
     /* Logo altı yazı */
@@ -5461,8 +5469,18 @@
         letter-spacing: 3px;
         color: #505050;
         opacity: 1;
-        transition: all 0.3s ease;
+        max-height: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
         white-space: nowrap;
+    }
+    
+    /* Scroll'da yazı kaybolsun */
+    header.scrolled .logo-text {
+        opacity: 0;
+        max-height: 0;
+        margin: 0;
+        padding: 0;
     }
     
     body.dark-mode .logo-text {
@@ -5476,7 +5494,7 @@
         left: 15px;
         z-index: 10000;
         opacity: 0;
-        transform: scale(0.5) translateY(-50px);
+        transform: scale(0.8) translateY(-30px);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
     }
@@ -5490,9 +5508,11 @@
     /* Metalik arka plan - logoya sarılıyor */
     #floatingLogo a {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 10px 15px;
+        padding: 12px 18px;
+        gap: 6px;
         background: linear-gradient(180deg, 
             #d0d0d0 0%, 
             #b0b0b0 20%,
@@ -5507,6 +5527,7 @@
             inset 0 -2px 0 rgba(0,0,0,0.2),
             0 4px 15px rgba(0,0,0,0.3);
         transition: all 0.3s ease;
+        text-decoration: none;
     }
     
     #floatingLogo a:hover {
@@ -5518,10 +5539,42 @@
     }
     
     #floatingLogo img {
-        height: 40px;
+        height: 45px;
         width: auto;
         cursor: pointer;
         filter: brightness(1.1) contrast(1.05);
+        transition: all 0.3s ease;
+    }
+    
+    /* Floating logo altındaki yazı */
+    .floating-logo-text {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: #1a1a1a;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        white-space: nowrap;
+        max-height: 15px;
+        opacity: 1;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+    
+    /* Scroll derinleştikçe yazı kaybolsun */
+    #floatingLogo.hide-text .floating-logo-text {
+        opacity: 0;
+        max-height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #floatingLogo.hide-text a {
+        padding: 10px 14px;
+        gap: 0;
+    }
+    
+    #floatingLogo.hide-text img {
+        height: 35px;
     }
     
     /* Dark mode */
@@ -5576,6 +5629,7 @@
 <div id="floatingLogo">
     <a href="#anasayfa">
         <img src="logo.png" alt="CEE Mimarlık" id="floatingLogoImg">
+        <span class="floating-logo-text" id="floatingLogoText">CEE MİMARLIK</span>
     </a>
 </div>
 
@@ -9602,12 +9656,20 @@ window.addEventListener('scroll', () => {
             // Floating logo görünür
             if (floatingLogo) {
                 floatingLogo.classList.add('visible');
+                
+                // Scroll derinleştikçe yazı kaybolsun (300px sonra)
+                if (scrollTop > 300) {
+                    floatingLogo.classList.add('hide-text');
+                } else {
+                    floatingLogo.classList.remove('hide-text');
+                }
             }
         } else {
             header.classList.remove('scrolled');
             // Floating logo gizle
             if (floatingLogo) {
                 floatingLogo.classList.remove('visible');
+                floatingLogo.classList.remove('hide-text');
             }
         }
     }
@@ -9630,23 +9692,58 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Floating logo'ya admin'den yüklenen logoyu uygula
+// Floating logo'ya admin'den yüklenen logoyu ve yazıyı uygula
 function updateFloatingLogo() {
     const siteLogo = localStorage.getItem('site_logo');
     const floatingLogoImg = document.getElementById('floatingLogoImg');
+    const floatingLogoText = document.getElementById('floatingLogoText');
+    const headerLogoText = document.getElementById('logoText');
+    
     if (siteLogo && floatingLogoImg) {
         floatingLogoImg.src = siteLogo;
     }
     
     // Logo ayarlarını uygula
     const saved = localStorage.getItem('cee_logo_settings');
-    if (saved && floatingLogoImg) {
+    if (saved) {
         try {
             const settings = JSON.parse(saved);
-            const smallSize = settings.smallSize || 50;
+            const logoText = settings.text || 'CEE MİMARLIK';
+            const bigSize = settings.bigSize || 70;
+            const smallSize = settings.smallSize || 45;
             const opacity = (settings.opacity || 100) / 100;
-            floatingLogoImg.style.height = smallSize + 'px';
-            floatingLogoImg.style.opacity = opacity;
+            
+            // Floating logo ayarları
+            if (floatingLogoImg) {
+                floatingLogoImg.style.height = smallSize + 'px';
+                floatingLogoImg.style.opacity = opacity;
+            }
+            
+            // Logo yazılarını güncelle
+            if (floatingLogoText) {
+                floatingLogoText.textContent = logoText;
+            }
+            if (headerLogoText) {
+                headerLogoText.textContent = logoText;
+            }
+            
+            // Header logo boyutu için CSS ekle
+            let logoStyle = document.getElementById('logo-size-style');
+            if (!logoStyle) {
+                logoStyle = document.createElement('style');
+                logoStyle.id = 'logo-size-style';
+                document.head.appendChild(logoStyle);
+            }
+            logoStyle.textContent = `
+                .logo-wrapper .site-logo,
+                .logo-wrapper #headerLogo {
+                    height: ${bigSize}px !important;
+                }
+                header.scrolled .logo-wrapper .site-logo,
+                header.scrolled .logo-wrapper #headerLogo {
+                    height: ${smallSize}px !important;
+                }
+            `;
         } catch(e) {}
     }
 }

@@ -810,16 +810,22 @@ a{color:inherit;text-decoration:none}
                             <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
                             <label class="form-label" style="font-weight: 600; margin-bottom: 15px; display: block;">⚙️ Logo Ayarları</label>
                             
-                            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label class="form-label">Logo Altı Yazı</label>
+                                <input type="text" class="form-input" id="logoText" value="CEE MİMARLIK" placeholder="CEE MİMARLIK">
+                                <small style="color: #888; font-size: 10px;">Scroll edilince kaybolur</small>
+                            </div>
+                            
+                            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
                                 <div class="form-group">
                                     <label class="form-label">Başlangıç Boyutu (px)</label>
-                                    <input type="number" class="form-input" id="logoBigSize" value="75" min="40" max="150" style="text-align: center;">
+                                    <input type="number" class="form-input" id="logoBigSize" value="70" min="40" max="150" style="text-align: center;">
                                     <small style="color: #888; font-size: 10px;">Header'daki logo</small>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Scroll Boyutu (px)</label>
-                                    <input type="number" class="form-input" id="logoSmallSize" value="50" min="30" max="100" style="text-align: center;">
-                                    <small style="color: #888; font-size: 10px;">Sol üst köşedeki</small>
+                                    <input type="number" class="form-input" id="logoSmallSize" value="45" min="30" max="100" style="text-align: center;">
+                                    <small style="color: #888; font-size: 10px;">Küçülen logo</small>
                                 </div>
                             </div>
                             
@@ -1729,8 +1735,9 @@ a{color:inherit;text-decoration:none}
         if (saved) {
             try {
                 const settings = JSON.parse(saved);
-                document.getElementById('logoBigSize').value = settings.bigSize || 75;
-                document.getElementById('logoSmallSize').value = settings.smallSize || 50;
+                document.getElementById('logoText').value = settings.text || 'CEE MİMARLIK';
+                document.getElementById('logoBigSize').value = settings.bigSize || 70;
+                document.getElementById('logoSmallSize').value = settings.smallSize || 45;
                 document.getElementById('logoOpacity').value = settings.opacity || 100;
                 document.getElementById('opacityValue').textContent = settings.opacity || 100;
                 document.getElementById('logoFooterSize').value = settings.footerSize || 45;
@@ -1740,7 +1747,8 @@ a{color:inherit;text-decoration:none}
     
     function saveLogoSettings() {
         const settings = {
-            bigSize: parseInt(document.getElementById('logoBigSize').value) || 75,
+            text: document.getElementById('logoText').value || 'CEE MİMARLIK',
+            bigSize: parseInt(document.getElementById('logoBigSize').value) || 70,
             smallSize: parseInt(document.getElementById('logoSmallSize').value) || 45,
             opacity: parseInt(document.getElementById('logoOpacity').value) || 100,
             footerSize: parseInt(document.getElementById('logoFooterSize').value) || 45
