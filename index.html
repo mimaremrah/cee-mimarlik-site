@@ -5512,14 +5512,14 @@
         left: 15px;
         z-index: 10000;
         opacity: 0;
-        transform: scale(0.8) translateY(-30px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(0.3) rotate(-10deg);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         pointer-events: none;
     }
     
     #floatingLogo.visible {
-        opacity: 1;
-        transform: scale(1) translateY(0);
+        opacity: var(--logo-opacity, 1);
+        transform: scale(1) rotate(0deg);
         pointer-events: auto;
     }
     
@@ -5542,7 +5542,7 @@
             inset 0 2px 0 rgba(255,255,255,0.5),
             inset 0 -2px 0 rgba(0,0,0,0.2),
             0 4px 15px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         text-decoration: none;
     }
     
@@ -5550,12 +5550,12 @@
         box-shadow: 
             inset 0 2px 0 rgba(255,255,255,0.6),
             inset 0 -2px 0 rgba(0,0,0,0.3),
-            0 8px 25px rgba(0,0,0,0.4);
-        transform: translateY(-2px);
+            0 12px 30px rgba(0,0,0,0.4);
+        transform: translateY(-3px) scale(1.05);
     }
     
     #floatingLogo img {
-        height: 45px;
+        height: var(--floating-logo-size, 50px);
         width: auto;
         cursor: pointer;
         filter: brightness(1.1) contrast(1.05);
@@ -8448,11 +8448,21 @@ function applyLogoSettings() {
     }
     
     const opacity = (settings.opacity || 100) / 100;
-    const bigSize = settings.bigSize || 75;
-    const smallSize = settings.smallSize || 50;
+    const bigSize = settings.bigSize || 70;
+    const smallSize = settings.smallSize || 60;
     const footerSize = settings.footerSize || 45;
     
+    // CSS değişkenlerini ayarla
+    document.documentElement.style.setProperty('--floating-logo-size', smallSize + 'px');
+    document.documentElement.style.setProperty('--logo-opacity', opacity);
+    
     styleEl.textContent = `
+        /* CSS Değişkenleri */
+        :root {
+            --floating-logo-size: ${smallSize}px;
+            --logo-opacity: ${opacity};
+        }
+        
         /* Header logo boyutu - sayfa başında */
         #headerLogo, .site-logo {
             height: ${bigSize}px !important;
@@ -8480,6 +8490,9 @@ function applyLogoSettings() {
         /* Floating logo (scroll'da sol üstte) */
         #floatingLogo img {
             height: ${smallSize}px !important;
+        }
+        
+        #floatingLogo.visible {
             opacity: ${opacity} !important;
         }
         
@@ -9712,6 +9725,7 @@ window.addEventListener('scroll', () => {
 function updateFloatingLogo() {
     const siteLogo = localStorage.getItem('site_logo');
     const floatingLogoImg = document.getElementById('floatingLogoImg');
+    const floatingLogo = document.getElementById('floatingLogo');
     const headerLogoText = document.getElementById('logoText');
     
     if (siteLogo && floatingLogoImg) {
@@ -9721,7 +9735,7 @@ function updateFloatingLogo() {
     // Default değerler
     let logoText = 'CEE MİMARLIK';
     let bigSize = 70;
-    let smallSize = 45;
+    let smallSize = 60;  // Daha büyük default
     let opacity = 1;
     
     // Logo ayarlarını uygula (varsa)
@@ -9731,18 +9745,17 @@ function updateFloatingLogo() {
             const settings = JSON.parse(saved);
             logoText = settings.text || 'CEE MİMARLIK';
             bigSize = settings.bigSize || 70;
-            smallSize = settings.smallSize || 45;
+            smallSize = settings.smallSize || 60;
             opacity = (settings.opacity || 100) / 100;
         } catch(e) {
             console.log('Logo ayarları okunamadı, default kullanılıyor');
         }
     }
     
-    // Floating logo ayarları
-    if (floatingLogoImg) {
-        floatingLogoImg.style.height = smallSize + 'px';
-        floatingLogoImg.style.opacity = opacity;
-    }
+    // CSS değişkenlerini ayarla - tüm site için geçerli
+    document.documentElement.style.setProperty('--floating-logo-size', smallSize + 'px');
+    document.documentElement.style.setProperty('--logo-opacity', opacity);
+    document.documentElement.style.setProperty('--header-logo-size', bigSize + 'px');
     
     // Header logo yazısını güncelle
     if (headerLogoText) {
@@ -9758,10 +9771,29 @@ function updateFloatingLogo() {
         document.head.appendChild(logoStyle);
     }
     logoStyle.textContent = `
+        /* CSS Değişkenleri */
+        :root {
+            --floating-logo-size: ${smallSize}px;
+            --logo-opacity: ${opacity};
+            --header-logo-size: ${bigSize}px;
+        }
+        
+        /* Header logo boyutu */
         .logo-wrapper .site-logo,
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        
+        /* Floating logo boyutu ve opaklık */
+        #floatingLogo img {
+            height: ${smallSize}px !important;
+        }
+        
+        #floatingLogo.visible {
+            opacity: ${opacity} !important;
+        }
+        
         /* Scroll'da header logosu TAMAMEN GİZLENSİN */
         header.scrolled .logo-wrapper {
             opacity: 0 !important;
@@ -9770,6 +9802,8 @@ function updateFloatingLogo() {
             width: 0 !important;
             height: 0 !important;
             overflow: hidden !important;
+            transform: scale(0.5);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         header.scrolled .logo-wrapper .site-logo,
         header.scrolled .logo-wrapper #headerLogo {
@@ -9777,6 +9811,8 @@ function updateFloatingLogo() {
             opacity: 0 !important;
         }
     `;
+    
+    console.log('Logo ayarları uygulandı:', {bigSize, smallSize, opacity});
 }
 document.addEventListener('DOMContentLoaded', updateFloatingLogo);
 

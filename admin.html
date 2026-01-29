@@ -813,19 +813,19 @@ a{color:inherit;text-decoration:none}
                             <div class="form-group">
                                 <label class="form-label">Logo Altı Yazı</label>
                                 <input type="text" class="form-input" id="logoText" value="CEE MİMARLIK" placeholder="CEE MİMARLIK">
-                                <small style="color: #888; font-size: 10px;">Scroll edilince kaybolur</small>
+                                <small style="color: #888; font-size: 10px;">Header'da görünür, scroll'da kaybolur</small>
                             </div>
                             
                             <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
                                 <div class="form-group">
-                                    <label class="form-label">Başlangıç Boyutu (px)</label>
+                                    <label class="form-label">Header Logo (px)</label>
                                     <input type="number" class="form-input" id="logoBigSize" value="70" min="40" max="150" style="text-align: center;">
-                                    <small style="color: #888; font-size: 10px;">Header'daki logo</small>
+                                    <small style="color: #888; font-size: 10px;">Sayfa başındaki logo</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Scroll Boyutu (px)</label>
-                                    <input type="number" class="form-input" id="logoSmallSize" value="45" min="30" max="100" style="text-align: center;">
-                                    <small style="color: #888; font-size: 10px;">Küçülen logo</small>
+                                    <label class="form-label">Floating Logo (px)</label>
+                                    <input type="number" class="form-input" id="logoSmallSize" value="60" min="30" max="120" style="text-align: center;">
+                                    <small style="color: #888; font-size: 10px;">Scroll sonrası metalik kutu</small>
                                 </div>
                             </div>
                             
@@ -833,7 +833,7 @@ a{color:inherit;text-decoration:none}
                                 <label class="form-label">Opaklık: <span id="opacityValue">100</span>%</label>
                                 <input type="range" id="logoOpacity" min="30" max="100" value="100" style="width: 100%; cursor: pointer;" oninput="document.getElementById('opacityValue').textContent = this.value">
                                 <div style="display: flex; justify-content: space-between; font-size: 10px; color: #888;">
-                                    <span>Hafif</span>
+                                    <span>Hafif (scroll dahil)</span>
                                     <span>Tam</span>
                                 </div>
                             </div>
@@ -1737,7 +1737,7 @@ a{color:inherit;text-decoration:none}
                 const settings = JSON.parse(saved);
                 document.getElementById('logoText').value = settings.text || 'CEE MİMARLIK';
                 document.getElementById('logoBigSize').value = settings.bigSize || 70;
-                document.getElementById('logoSmallSize').value = settings.smallSize || 45;
+                document.getElementById('logoSmallSize').value = settings.smallSize || 60;
                 document.getElementById('logoOpacity').value = settings.opacity || 100;
                 document.getElementById('opacityValue').textContent = settings.opacity || 100;
                 document.getElementById('logoFooterSize').value = settings.footerSize || 45;
@@ -1749,12 +1749,12 @@ a{color:inherit;text-decoration:none}
         const settings = {
             text: document.getElementById('logoText').value || 'CEE MİMARLIK',
             bigSize: parseInt(document.getElementById('logoBigSize').value) || 70,
-            smallSize: parseInt(document.getElementById('logoSmallSize').value) || 45,
+            smallSize: parseInt(document.getElementById('logoSmallSize').value) || 60,
             opacity: parseInt(document.getElementById('logoOpacity').value) || 100,
             footerSize: parseInt(document.getElementById('logoFooterSize').value) || 45
         };
         localStorage.setItem('cee_logo_settings', JSON.stringify(settings));
-        toast('Logo ayarları kaydedildi', 'success');
+        toast('Logo ayarları kaydedildi! Sayfayı yenileyince uygulanır.', 'success');
     }
     
     function uploadLogo(input) { 
