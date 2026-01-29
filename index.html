@@ -586,12 +586,12 @@
         .logo-text { color: #4a4a4a; }
         .filter-btn.active { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); border-color: #4a4a4a; color: white; }
         .filter-btn:hover { border-color: #4a4a4a; color: #4a4a4a; }
-        .filter-btn.active:hover { color: white !important; }
-        .team-cta-btn { background: #4a4a4a; }
-        .directions-btn { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
-        .ai-assistant-header { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
-        .ai-panel-header { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
-        .section-decoration .dot { background: #4a4a4a; }
+        .filter-btn.active:hover { color: #1a1a1a !important; }
+        .team-cta-btn { /* Logo gradient CSS'den */ }
+        .directions-btn { /* Logo gradient CSS'den */ }
+        .ai-assistant-header { background: linear-gradient(180deg, #b0b0b0 0%, #606060 50%, #1a1a1a 100%); }
+        .ai-panel-header { background: linear-gradient(180deg, #b0b0b0 0%, #606060 50%, #1a1a1a 100%); }
+        .section-decoration .dot { background: linear-gradient(180deg, #a0a0a0, #1a1a1a); }
         nav a:hover, nav a.active { color: #4a4a4a; }
         nav a::after { background: #4a4a4a; }
         .footer-social-link:hover { background: #4a4a4a; border-color: #4a4a4a; }
@@ -5244,29 +5244,35 @@
         -webkit-text-fill-color: #505050 !important;
     }
 
-    /* === TÜM BUTONLAR - LOGO GRADIENT === */
+    /* === TÜM BUTONLAR - LOGO GRADIENT (Görseldeki gibi) === */
     .hero-cta,
     .team-cta-btn,
     .directions-btn,
     .filter-btn.active {
-        background: linear-gradient(180deg, #c8c8c8 0%, #a0a0a0 35%, #505050 75%, #1a1a1a 100%) !important;
+        background: linear-gradient(180deg, 
+            #d0d0d0 0%, 
+            #b0b0b0 20%,
+            #808080 50%,
+            #505050 80%,
+            #2a2a2a 100%
+        ) !important;
         color: #1a1a1a !important;
         border: 1px solid #1a1a1a !important;
-        border-radius: 3px !important;
+        border-radius: 50px !important;
         box-shadow: 
-            inset 0 1px 0 rgba(255,255,255,0.5),
-            inset 0 -1px 0 rgba(0,0,0,0.2),
-            0 3px 8px rgba(0,0,0,0.2) !important;
-        text-shadow: 0 1px 0 rgba(255,255,255,0.3) !important;
+            inset 0 2px 0 rgba(255,255,255,0.5),
+            inset 0 -2px 0 rgba(0,0,0,0.2),
+            0 4px 15px rgba(0,0,0,0.25) !important;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.4) !important;
     }
 
     .hero-cta:hover,
     .team-cta-btn:hover,
     .directions-btn:hover {
         box-shadow: 
-            inset 0 1px 0 rgba(255,255,255,0.6),
-            inset 0 -1px 0 rgba(0,0,0,0.3),
-            0 6px 15px rgba(0,0,0,0.3) !important;
+            inset 0 2px 0 rgba(255,255,255,0.6),
+            inset 0 -2px 0 rgba(0,0,0,0.3),
+            0 8px 25px rgba(0,0,0,0.35) !important;
         transform: translateY(-2px);
     }
 
@@ -5274,18 +5280,25 @@
     .service-icon-v2,
     .ref-icon,
     .contact-icon-circle {
-        background: linear-gradient(180deg, #c8c8c8 0%, #a0a0a0 35%, #505050 75%, #1a1a1a 100%) !important;
+        background: linear-gradient(180deg, 
+            #d0d0d0 0%, 
+            #b0b0b0 20%,
+            #808080 50%,
+            #505050 80%,
+            #2a2a2a 100%
+        ) !important;
         border: 1px solid #1a1a1a !important;
         box-shadow: 
-            inset 0 1px 0 rgba(255,255,255,0.4),
-            0 3px 8px rgba(0,0,0,0.15) !important;
+            inset 0 2px 0 rgba(255,255,255,0.4),
+            inset 0 -2px 0 rgba(0,0,0,0.2),
+            0 4px 12px rgba(0,0,0,0.2) !important;
     }
 
     .service-icon-v2 svg,
     .ref-icon svg,
     .contact-icon-circle svg {
         color: #1a1a1a !important;
-        filter: drop-shadow(0 1px 0 rgba(255,255,255,0.3));
+        filter: drop-shadow(0 1px 0 rgba(255,255,255,0.4));
     }
 
     /* === ARCHITECT DIVIDER BANDI === */
@@ -6730,7 +6743,7 @@ window.goToAdmin = goToAdmin;
     
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
-        <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none; background: #4a4a4a; color: white; border-radius: 50px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">
+        <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 14px; text-decoration: none; font-weight: 600; letter-spacing: 2px; transition: all 0.3s ease;">
             <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team">👥 UZMAN KADROMUZU TANIYIN</span>
             <span>→</span>
         </a>
@@ -7374,9 +7387,7 @@ loadFaqs();
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
            class="directions-btn"
-           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #4a4a4a, #6a6a6a); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212,175,55,0.3);"
-           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
-           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(212,175,55,0.3)'"
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
            data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
             🧭 Yol Tarifi Al
         </a>
