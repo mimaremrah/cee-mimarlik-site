@@ -5374,15 +5374,20 @@
         flex-direction: column;
         align-items: center;
         gap: 5px;
-        transition: all 0.4s ease;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 8px 15px;
+        border-radius: 12px;
+        background: transparent;
+        position: relative;
     }
     
     /* Logo - Büyük başlangıç */
     #headerLogo {
         height: 70px !important;
         width: auto !important;
-        transition: all 0.4s ease;
-        filter: contrast(1.02);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: contrast(1.02) drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        transform: scale(1);
     }
     
     /* Logo altı yazı */
@@ -5394,8 +5399,9 @@
         opacity: 1;
         max-height: 20px;
         overflow: hidden;
-        transition: all 0.4s ease;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         white-space: nowrap;
+        transform: translateY(0);
     }
     
     /* Dark mode yazı rengi */
@@ -5403,30 +5409,65 @@
         color: #e0e0e0;
     }
     
-    /* === SCROLL EDİLDİĞİNDE === */
+    /* === SCROLL - LOGO SİTEYE SARILIYOR === */
+    header.scrolled .logo-wrapper {
+        gap: 0;
+        padding: 6px 12px;
+        background: linear-gradient(180deg, 
+            rgba(200, 200, 200, 0.95) 0%, 
+            rgba(160, 160, 160, 0.9) 30%,
+            rgba(100, 100, 100, 0.85) 70%,
+            rgba(50, 50, 50, 0.9) 100%
+        );
+        border-radius: 8px;
+        box-shadow: 
+            0 4px 20px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(26, 26, 26, 0.3);
+    }
+    
     header.scrolled #headerLogo {
-        height: 45px !important;
+        height: 40px !important;
+        filter: contrast(1.1) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        transform: scale(1);
     }
     
     header.scrolled .logo-text {
         opacity: 0;
         max-height: 0;
-        margin-top: -5px;
+        transform: translateY(-10px);
+        margin-top: 0;
     }
     
-    header.scrolled .logo-wrapper {
-        gap: 0;
-    }
-    
-    /* Header yükseklik ayarı */
+    /* Header scroll efekti */
     header {
-        padding: 15px 0;
-        transition: all 0.4s ease;
+        padding: 12px 0;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.98);
     }
     
     header.scrolled {
         padding: 8px 0;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Dark mode scrolled */
+    body.dark-mode header.scrolled {
+        background: rgba(26, 26, 26, 0.95);
+    }
+    
+    body.dark-mode header.scrolled .logo-wrapper {
+        background: linear-gradient(180deg, 
+            rgba(120, 120, 120, 0.9) 0%, 
+            rgba(80, 80, 80, 0.85) 30%,
+            rgba(50, 50, 50, 0.85) 70%,
+            rgba(26, 26, 26, 0.9) 100%
+        );
+        border-color: rgba(150, 150, 150, 0.3);
     }
     
     /* Footer logo özel ayarları */
@@ -5435,11 +5476,12 @@
         width: auto !important;
         opacity: 0.85;
         filter: contrast(1.05);
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
     }
     
     #footerLogo:hover {
         opacity: 1;
+        transform: scale(1.05);
     }
     
     /* Responsive */
@@ -5449,12 +5491,17 @@
         }
         
         header.scrolled #headerLogo {
-            height: 40px !important;
+            height: 35px !important;
         }
         
         .logo-text {
             font-size: 9px;
             letter-spacing: 2px;
+        }
+        
+        header.scrolled .logo-wrapper {
+            padding: 5px 10px;
+            border-radius: 6px;
         }
     }
     </style>
@@ -8281,21 +8328,36 @@ function applyLogoSettings() {
     }
     
     const opacity = (settings.opacity || 100) / 100;
+    const bigSize = settings.bigSize || 75;
+    const smallSize = settings.smallSize || 45;
+    const footerSize = settings.footerSize || 45;
     
     styleEl.textContent = `
         /* Admin'den ayarlanan logo değerleri */
         #headerLogo, .site-logo {
-            height: ${settings.bigSize || 75}px !important;
+            height: ${bigSize}px !important;
             opacity: ${opacity} !important;
         }
         
+        /* Scroll - Logo siteye sarılıyor */
         header.scrolled #headerLogo,
         header.scrolled .site-logo {
-            height: ${settings.smallSize || 45}px !important;
+            height: ${smallSize}px !important;
+            opacity: 1 !important; /* Sarılınca tam görünür */
+        }
+        
+        /* Sarılma efekti - Metalik gradient */
+        header.scrolled .logo-wrapper {
+            background: linear-gradient(180deg, 
+                rgba(200, 200, 200, ${0.9 * opacity}) 0%, 
+                rgba(160, 160, 160, ${0.85 * opacity}) 30%,
+                rgba(100, 100, 100, ${0.8 * opacity}) 70%,
+                rgba(50, 50, 50, ${0.85 * opacity}) 100%
+            ) !important;
         }
         
         #footerLogo {
-            height: ${settings.footerSize || 45}px !important;
+            height: ${footerSize}px !important;
             opacity: ${opacity} !important;
         }
         
@@ -9463,19 +9525,30 @@ function scrollToTop() {
     });
 }
 
-// Scroll Progress Indicator + Header Scroll Effect
+// Scroll Progress Indicator + Header Scroll Effect + Logo Sarılma
 window.addEventListener('scroll', () => {
     const scrollProgress = document.getElementById('scrollProgress');
     const progressCircle = document.getElementById('progressCircle');
     const header = document.querySelector('header');
+    const logoWrapper = document.querySelector('.logo-wrapper');
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Header scroll effect
+    // Header scroll effect + Logo sarılma
     if (header) {
         if (scrollTop > 50) {
             header.classList.add('scrolled');
+            
+            // Smooth sarılma efekti - scroll miktarına göre
+            if (logoWrapper) {
+                const scrollPercent = Math.min(scrollTop / 150, 1); // 0-1 arası
+                const scale = 1 - (scrollPercent * 0.05); // Hafif scale efekti
+                logoWrapper.style.transform = `scale(${scale})`;
+            }
         } else {
             header.classList.remove('scrolled');
+            if (logoWrapper) {
+                logoWrapper.style.transform = 'scale(1)';
+            }
         }
     }
     
