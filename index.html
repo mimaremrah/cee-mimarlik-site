@@ -5870,20 +5870,20 @@ window.goToAdmin = goToAdmin;
 /* ────────────────────────────────────────────────────────────────────────────── */
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* CEE MİMARLIK - LOGO UYUMLU METALİK GÜMÜŞ RENK PALETİ                        */
-/* Logodaki krom/gümüş tonlarından türetilmiştir                               */
+/* CEE MİMARLIK - LOGO UYUMLU 2 RENK PALETİ                                    */
+/* PARLAK GÜMÜŞ (#b8b8b8) → KOYU ANTRASİT (#1a1a1a)                            */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-    /* Logodaki metalik tonlar */
-    --chrome-dark: #2d2d2d;      /* En koyu - header/footer */
-    --chrome-medium: #4a4a4a;    /* Orta koyu - başlıklar */
-    --chrome-steel: #6a6a6a;     /* Orta - alt başlıklar */
-    --chrome-silver: #8a8a8a;    /* Orta açık - metinler */
-    --chrome-light: #a8a8a8;     /* Açık gümüş - dekoratif */
-    --chrome-shine: #c8c8c8;     /* Parlak - hover */
-    --chrome-bg: #f5f5f5;        /* Arka plan açık */
-    --chrome-white: #ffffff;     /* Beyaz */
+    /* Logo Renkleri - 2 Ana Ton */
+    --cee-shine: #d0d0d0;       /* En parlak - highlight */
+    --cee-silver: #b8b8b8;      /* Parlak gümüş - üst ton */
+    --cee-mid: #808080;         /* Orta geçiş */
+    --cee-steel: #4a4a4a;       /* Çelik gri - geçiş */
+    --cee-dark: #2a2a2a;        /* Koyu antrasit */
+    --cee-black: #1a1a1a;       /* En koyu - alt ton */
+    --cee-white: #ffffff;
+    --cee-bg: #f5f5f5;
 }
 
 .hero-main-content {
@@ -5934,52 +5934,40 @@ window.goToAdmin = goToAdmin;
         transparent 100%);
 }
 
-/* CEE Yazısı - Logodaki koyu metalik ton + PARLAKLIK */
+/* CEE Yazısı - LOGO UYUMLU 2 RENK GEÇİŞİ */
 .hero-brand .cee-text {
     display: block;
     font-size: 80px;
     font-weight: 800;
     letter-spacing: 45px;
-    color: #4a4a4a;
     line-height: 1;
     opacity: 0;
     animation: fadeInUp 0.8s ease 5.9s forwards;
     margin-right: 40px;
-    /* Metalik Parlaklık Efekti */
+    /* LOGO GEÇİŞİ: Parlak gümüş → Koyu antrasit */
     background: linear-gradient(
-        135deg,
-        #3a3a3a 0%,
-        #6a6a6a 25%,
-        #8a8a8a 50%,
-        #6a6a6a 75%,
-        #3a3a3a 100%
+        180deg,
+        #c8c8c8 0%,       /* Parlak gümüş */
+        #a0a0a0 30%,      /* Orta gümüş */
+        #505050 60%,      /* Geçiş */
+        #1a1a1a 100%      /* Koyu antrasit */
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
 }
 
-/* MİMARLIK Yazısı - Logodaki orta metalik ton + PARLAKLIK */
+/* MİMARLIK Yazısı - LOGO ORTA TONLARI */
 .hero-brand .mimarlik-text {
     display: block;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 12px;
-    color: #6a6a6a;
     margin-top: 8px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.1s forwards;
-    /* Hafif Metalik Efekt */
-    background: linear-gradient(
-        90deg,
-        #5a5a5a 0%,
-        #7a7a7a 50%,
-        #5a5a5a 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #606060;
 }
 
 /* Açıklama - Logodaki açık metalik ton */
@@ -5995,15 +5983,17 @@ window.goToAdmin = goToAdmin;
     animation: fadeInUp 0.8s ease 6.3s forwards;
 }
 
-/* CTA Buton - METALİK PARLAK (varsayılan) */
+/* CTA Buton - LOGO UYUMLU 2 RENK GEÇİŞİ */
 .hero-cta {
     display: inline-block;
-    padding: 15px 35px;
+    padding: 14px 32px;
+    /* LOGO GEÇİŞİ: Parlak gümüş → Koyu antrasit */
     background: linear-gradient(
         180deg,
-        #8a8a8a 0%,
-        #6a6a6a 50%,
-        #4a4a4a 100%
+        #c0c0c0 0%,       /* Parlak üst */
+        #909090 40%,      /* Orta */
+        #404040 80%,      /* Koyu geçiş */
+        #1a1a1a 100%      /* Koyu alt */
     );
     color: #1a1a1a;
     text-decoration: none;
@@ -6012,16 +6002,23 @@ window.goToAdmin = goToAdmin;
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    border: none;
-    border-radius: 30px;
+    border: 1px solid #1a1a1a;
+    border-radius: 3px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.5s forwards;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        inset 0 -1px 0 rgba(0,0,0,0.2),
+        0 3px 10px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .hero-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.5),
+        inset 0 -1px 0 rgba(0,0,0,0.3),
+        0 6px 20px rgba(0,0,0,0.3);
 }
 
 @keyframes fadeInUp {
@@ -6479,27 +6476,37 @@ window.goToAdmin = goToAdmin;
 </div>
 
 <style>
-/* Architect Divider - METALİK PARLAK (üstten alta) */
+/* Architect Divider - LOGO UYUMLU 2 RENK GEÇİŞİ */
 .architect-divider {
+    /* LOGO GEÇİŞİ: Parlak gümüş → Koyu antrasit */
     background: linear-gradient(
         180deg,
-        #9a9a9a 0%,
-        #7a7a7a 30%,
-        #5a5a5a 60%,
-        #3a3a3a 100%
+        #c8c8c8 0%,       /* Parlak gümüş - üst */
+        #a0a0a0 25%,      /* Açık gümüş */
+        #606060 50%,      /* Orta geçiş */
+        #303030 75%,      /* Koyu */
+        #1a1a1a 100%      /* Antrasit - alt */
     );
     position: relative;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 2px solid #0a0a0a;
 }
 
-/* Parlak üst kenar */
+/* Parlak üst kenar - Logo'daki highlight gibi */
 .architect-divider::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 5%, 
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.8) 50%,
+        rgba(255,255,255,0.6) 80%,
+        transparent 95%
+    );
 }
 
 /* Dark mode için divider renkleri */
@@ -11670,24 +11677,29 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--divider-color-light', accentLight);
             document.documentElement.style.setProperty('--diagonal-color', accent);
             
-            // Architect Divider bandını güncelle - METALİK PARLAKLIK (üstten alta)
+            // Architect Divider bandını güncelle - LOGO UYUMLU 2 RENK
             const architectDivider = document.getElementById('architectDivider');
             if (architectDivider) {
-                const darkAccent = darken(accent, 20);
-                const lightAccent = lighten(accent, 25);
-                const shineAccent = lighten(accent, 40);
-                architectDivider.style.background = `linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 60%, ${darkAccent} 100%)`;
+                // Logodaki 2 renk: Parlak gümüş → Koyu antrasit
+                const shine = lighten(accent, 60);    // En parlak
+                const silver = lighten(accent, 40);   // Parlak gümüş
+                const mid = accent;                    // Orta ton
+                const steel = darken(accent, 25);     // Çelik
+                const dark = darken(accent, 50);      // Koyu antrasit
+                architectDivider.style.background = `linear-gradient(180deg, ${shine} 0%, ${silver} 25%, ${mid} 50%, ${steel} 75%, ${dark} 100%)`;
             }
             
-            // Metalik gradient fonksiyonu
-            function createMetallicGradient(baseColor) {
-                const dark = darken(baseColor, 20);
-                const light = lighten(baseColor, 20);
-                const shine = lighten(baseColor, 35);
-                return `linear-gradient(135deg, ${dark} 0%, ${baseColor} 25%, ${shine} 50%, ${baseColor} 75%, ${dark} 100%)`;
+            // LOGO UYUMLU 2 RENK GRADIENT FONKSİYONU
+            function createLogoGradient(baseColor, direction = '180deg') {
+                const shine = lighten(baseColor, 60);
+                const silver = lighten(baseColor, 40);
+                const mid = baseColor;
+                const steel = darken(baseColor, 25);
+                const dark = darken(baseColor, 50);
+                return `linear-gradient(${direction}, ${shine} 0%, ${silver} 30%, ${steel} 70%, ${dark} 100%)`;
             }
             
-            // Metalik stil elementi
+            // Metalik stil elementi - LOGO UYUMLU 2 RENK
             const metallicStyleId = 'metallic-style';
             let metallicStyle = document.getElementById(metallicStyleId);
             if (!metallicStyle) {
@@ -11696,32 +11708,51 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
                 document.head.appendChild(metallicStyle);
             }
             
-            const darkAccent = darken(accent, 15);
-            const lightAccent = lighten(accent, 20);
-            const shineAccent = lighten(accent, 35);
+            // Logo renkleri hesapla
+            const shineAccent = lighten(accent, 60);   // En parlak (#c8c8c8)
+            const silverAccent = lighten(accent, 40);  // Parlak gümüş (#a0a0a0)
+            const steelAccent = darken(accent, 25);    // Çelik (#404040)
+            const darkAccent = darken(accent, 50);     // Koyu antrasit (#1a1a1a)
             
             metallicStyle.textContent = `
-                /* Metalik Butonlar - Parlak Üst, Koyu Alt */
+                /* LOGO UYUMLU 2 RENK BUTONLAR */
                 .hero-cta, .team-cta-btn, .directions-btn {
-                    background: linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 70%, ${darkAccent} 100%) !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+                    background: linear-gradient(180deg, ${shineAccent} 0%, ${silverAccent} 40%, ${steelAccent} 80%, ${darkAccent} 100%) !important;
+                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.2), 0 3px 10px rgba(0,0,0,0.2) !important;
                     color: #1a1a1a !important;
-                    border-radius: 30px !important;
+                    border: 1px solid ${darkAccent} !important;
+                    border-radius: 3px !important;
+                    text-shadow: 0 1px 0 rgba(255,255,255,0.2) !important;
                 }
                 .hero-cta:hover, .team-cta-btn:hover, .directions-btn:hover {
-                    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.3) !important;
                 }
                 
-                /* Metalik İkonlar */
+                /* LOGO UYUMLU 2 RENK İKONLAR */
                 .service-icon-v2, .ref-icon, .contact-icon-circle {
-                    background: linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 70%, ${darkAccent} 100%) !important;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+                    background: linear-gradient(180deg, ${shineAccent} 0%, ${silverAccent} 40%, ${steelAccent} 80%, ${darkAccent} 100%) !important;
+                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2), 0 3px 8px rgba(0,0,0,0.15) !important;
+                    border: 1px solid ${darkAccent} !important;
                 }
                 
                 /* Filter butonları */
                 .filter-btn.active {
-                    background: linear-gradient(180deg, ${lightAccent}, ${darkAccent}) !important;
-                    border-color: ${accent} !important;
+                    background: linear-gradient(180deg, ${silverAccent} 0%, ${steelAccent} 100%) !important;
+                    border-color: ${darkAccent} !important;
+                    color: #1a1a1a !important;
+                }
+                
+                /* Section başlık accent */
+                .section-title .accent {
+                    background: linear-gradient(180deg, ${silverAccent} 0%, ${steelAccent} 100%) !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    background-clip: text !important;
+                }
+                
+                /* AI Chat header */
+                .ai-assistant-header, .ai-panel-header {
+                    background: linear-gradient(180deg, ${silverAccent} 0%, ${steelAccent} 50%, ${darkAccent} 100%) !important;
                 }
             `;
             

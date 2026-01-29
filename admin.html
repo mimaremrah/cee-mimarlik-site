@@ -767,21 +767,21 @@ a{color:inherit;text-decoration:none}
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">CEE Yazı Rengi</label>
-                                <input type="color" class="form-input" id="heroCeeColor" value="#4a4a4a" style="height:45px;padding:5px;">
+                                <input type="color" class="form-input" id="heroCeeColor" value="#808080" style="height:45px;padding:5px;">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">MİMARLIK Yazı Rengi</label>
-                                <input type="color" class="form-input" id="heroMimarlikColor" value="#6a6a6a" style="height:45px;padding:5px;">
+                                <input type="color" class="form-input" id="heroMimarlikColor" value="#606060" style="height:45px;padding:5px;">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Açıklama Rengi</label>
-                                <input type="color" class="form-input" id="heroDescColor" value="#6a6a6a" style="height:45px;padding:5px;">
+                                <input type="color" class="form-input" id="heroDescColor" value="#606060" style="height:45px;padding:5px;">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Buton Rengi</label>
-                                <input type="color" class="form-input" id="heroButtonColor" value="#4a4a4a" style="height:45px;padding:5px;">
+                                <input type="color" class="form-input" id="heroButtonColor" value="#808080" style="height:45px;padding:5px;">
                             </div>
                         </div>
                         
@@ -886,23 +886,23 @@ a{color:inherit;text-decoration:none}
                             <div style="margin-bottom: 25px;">
                                 <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
                                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #4a4a4a; background: linear-gradient(135deg, #f5f5f5, #e0e0e0); color: #4a4a4a; border-radius: 8px;">
-                                        <span style="color: #4a4a4a;">●</span> CEE Metalik
+                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 12px 20px; border: 2px solid #1a1a1a; background: linear-gradient(180deg, #c8c8c8 0%, #808080 50%, #1a1a1a 100%); color: #1a1a1a; border-radius: 3px; font-weight: 700; box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);">
+                                        ⭐ CEE Logo
                                     </button>
-                                    <button onclick="applyTheme('premium')" class="btn" style="padding: 10px 16px; border: 2px solid #6a6a6a; background: linear-gradient(135deg, #f8f8f8, #d8d8d8); color: #5a5a5a; border-radius: 8px;">
-                                        <span style="color: #6a6a6a;">●</span> Premium Gümüş
+                                    <button onclick="applyTheme('premium')" class="btn" style="padding: 12px 20px; border: 2px solid #2a2a2a; background: linear-gradient(180deg, #d0d0d0 0%, #909090 50%, #2a2a2a 100%); color: #1a1a1a; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);">
+                                        Premium
                                     </button>
-                                    <button onclick="applyTheme('steel')" class="btn" style="padding: 10px 16px; border: 2px solid #a8a8a8; background: linear-gradient(135deg, #2d2d2d, #1a1a1a); color: #d0d0d0; border-radius: 8px;">
-                                        <span style="color: #a8a8a8;">●</span> Koyu Çelik
+                                    <button onclick="applyTheme('steel')" class="btn" style="padding: 12px 20px; border: 2px solid #a0a0a0; background: linear-gradient(180deg, #404040 0%, #1a1a1a 100%); color: #c0c0c0; border-radius: 3px;">
+                                        Koyu Çelik
                                     </button>
-                                    <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
+                                    <button onclick="applyTheme('classic')" class="btn" style="padding: 12px 20px; border: 2px solid #c9a227; background: #fff; color: #1a1a1a; border-radius: 3px;">
                                         <span style="color: #c9a227;">●</span> Klasik Altın
                                     </button>
-                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #4a4a4a; background: linear-gradient(135deg, #1a1a1a, #111111); color: #d0d0d0; border-radius: 8px;">
-                                        <span style="color: #a8a8a8;">●</span> Koyu Mod
+                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 12px 20px; border: 2px solid #606060; background: linear-gradient(180deg, #303030 0%, #111111 100%); color: #d0d0d0; border-radius: 3px;">
+                                        Koyu Mod
                                     </button>
-                                    <button onclick="applyTheme('minimal')" class="btn" style="padding: 10px 16px; border: 2px solid #000; background: #fff; color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #000;">●</span> Minimalist
+                                    <button onclick="applyTheme('minimal')" class="btn" style="padding: 12px 20px; border: 2px solid #000; background: #fff; color: #1a1a1a; border-radius: 3px;">
+                                        Minimalist
                                     </button>
                                 </div>
                             </div>
@@ -1506,20 +1506,21 @@ a{color:inherit;text-decoration:none}
     // HAZIR TEMA FONKSİYONU
     function applyTheme(theme) {
         const themes = {
-            // CEE Metalik - Logodaki gümüş/krom tonları
+            // CEE Logo Uyumlu - 2 RENK SİSTEMİ
+            // Parlak gümüş (#b8b8b8) → Koyu antrasit (#1a1a1a)
             cee: {
-                primary: '#4a4a4a', iconBg: '#4a4a4a', bgMain: '#ffffff', 
-                bgSection: '#f5f5f5', text: '#4a4a4a', header: '#2d2d2d'
+                primary: '#808080', iconBg: '#808080', bgMain: '#ffffff', 
+                bgSection: '#f5f5f5', text: '#404040', header: '#1a1a1a'
             },
-            // Premium - Daha açık gümüş
+            // Premium Gümüş - Daha açık ton
             premium: {
-                primary: '#6a6a6a', iconBg: '#6a6a6a', bgMain: '#ffffff', 
-                bgSection: '#f8f8f8', text: '#5a5a5a', header: '#3a3a3a'
+                primary: '#909090', iconBg: '#909090', bgMain: '#ffffff', 
+                bgSection: '#fafafa', text: '#505050', header: '#2a2a2a'
             },
-            // Koyu Çelik - Koyu metalik
+            // Koyu Çelik - Dark mode
             steel: {
-                primary: '#a8a8a8', iconBg: '#4a4a4a', bgMain: '#1a1a1a', 
-                bgSection: '#2d2d2d', text: '#d0d0d0', header: '#0f0f0f'
+                primary: '#a0a0a0', iconBg: '#707070', bgMain: '#1a1a1a', 
+                bgSection: '#252525', text: '#c0c0c0', header: '#0a0a0a'
             },
             classic: {
                 primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
@@ -1530,7 +1531,7 @@ a{color:inherit;text-decoration:none}
                 bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a'
             },
             dark: {
-                primary: '#a8a8a8', iconBg: '#4a4a4a', bgMain: '#111111', 
+                primary: '#a0a0a0', iconBg: '#606060', bgMain: '#111111', 
                 bgSection: '#1a1a1a', text: '#d0d0d0', header: '#0a0a0a'
             },
             warm: {
@@ -1538,7 +1539,7 @@ a{color:inherit;text-decoration:none}
                 bgSection: '#fef3c7', text: '#78350f', header: '#451a03'
             },
             minimal: {
-                primary: '#000000', iconBg: '#000000', bgMain: '#ffffff', 
+                primary: '#000000', iconBg: '#606060', bgMain: '#ffffff', 
                 bgSection: '#fafafa', text: '#171717', header: '#000000'
             }
         };
