@@ -5356,6 +5356,44 @@
     .hero-brand::before {
         background: linear-gradient(to bottom, #a0a0a0, transparent) !important;
     }
+    /* === LOGO NETLİK VE KALİTE AYARLARI === */
+    .site-logo,
+    #headerLogo,
+    #footerLogo,
+    .diag-logo-img,
+    .footer-logo img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: bicubic;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    
+    /* Footer logo özel ayarları */
+    #footerLogo {
+        height: 45px !important;
+        width: auto !important;
+        opacity: 0.85;
+        filter: contrast(1.05);
+        transition: opacity 0.3s ease;
+    }
+    
+    #footerLogo:hover {
+        opacity: 1;
+    }
+    
+    /* Header logo */
+    #headerLogo {
+        height: 55px;
+        width: auto;
+        filter: contrast(1.02);
+    }
+    
+    header.scrolled #headerLogo {
+        height: 45px;
+    }
     </style>
 
 </head>
@@ -5412,7 +5450,7 @@ window.goToAdmin = goToAdmin;
     <div class="header-content">
         <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer; background: transparent !important; border: none !important; box-shadow: none !important;">
             <div class="logo-top">
-                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important;">
+                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: contrast(1.02);">
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
@@ -8124,7 +8162,7 @@ body.dark-mode .btn-secondary {
     <div class="footer-content">
         <div class="footer-bottom" style="border-top: none; padding-top: 0; display: flex; justify-content: center; align-items: center;">
             <div style="display: flex; align-items: center; gap: 15px; justify-content: center;">
-                <img src="" id="footerLogo" class="site-logo" style="height: 50px; display: none;" alt="CEE Mimarlık">
+                <img src="" id="footerLogo" alt="CEE Mimarlık" style="height: 45px; width: auto; display: none; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; opacity: 0.9; filter: contrast(1.05);">
                 <p class="footer-copyright" style="margin: 0; text-align: center; color: #1a1a1a;">
                     © <span id="footerYear">2024</span> 
                     <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #1a1a1a; font-weight: 600;">CEE MİMARLIK</span> 
