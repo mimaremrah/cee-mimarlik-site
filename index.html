@@ -2054,11 +2054,11 @@
             object-position: center;
         }
         
-        /* Lares Tarzı Hero İçerik */
+        /* Lares Tarzı Hero İçerik - SOL HİZALI */
         .hero-content-lares {
             position: absolute;
             top: 50%;
-            right: 8%;
+            left: 8%;
             transform: translateY(-50%);
             z-index: 10;
             max-width: 550px;
@@ -2083,24 +2083,38 @@
             margin: 0 0 30px 0;
             text-transform: uppercase;
             line-height: 1.1;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
             -webkit-animation: heroFadeIn 1s ease-out;
             animation: heroFadeIn 1s ease-out;
         }
         
+        /* CEE yazısına metalik gradient */
         .hero-brand .cee-text {
-            color: #4a4a4a !important;
             display: block;
             font-weight: 800;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
+            font-size: 72px;
+            letter-spacing: 12px;
+            background: linear-gradient(180deg, 
+                #e0e0e0 0%, 
+                #c0c0c0 20%,
+                #909090 50%,
+                #606060 80%,
+                #303030 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            text-shadow: none;
         }
         
         .hero-brand .mimarlik-text {
             color: #ffffff !important;
             display: block;
-            font-weight: 600;
-            letter-spacing: 12px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
+            font-weight: 400;
+            font-size: 28px;
+            letter-spacing: 18px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-top: 5px;
         }
         
         .hero-description {
@@ -2146,10 +2160,10 @@
         
         @media (max-width: 992px) {
             .hero-content-lares {
-                right: 5%;
                 left: 5%;
+                right: 5%;
                 max-width: none;
-                text-align: center;
+                text-align: left;
             }
             .hero-logo-badge {
                 display: block !important;
@@ -2162,8 +2176,13 @@
                 font-size: 28px !important;
                 letter-spacing: 8px !important;
             }
+            .hero-brand .cee-text {
+                font-size: 48px !important;
+                letter-spacing: 8px !important;
+            }
             .hero-brand .mimarlik-text {
-                letter-spacing: 8px;
+                font-size: 20px !important;
+                letter-spacing: 10px !important;
             }
         }
         
@@ -2176,6 +2195,10 @@
             }
             .hero-brand {
                 font-size: 22px !important;
+                letter-spacing: 6px !important;
+            }
+            .hero-brand .cee-text {
+                font-size: 36px !important;
                 letter-spacing: 6px !important;
             }
             .hero-brand .mimarlik-text {
@@ -5228,20 +5251,33 @@
         --logo-dark: #1a1a1a;
     }
 
-    /* === HERO CEE YAZISI === */
+    /* === HERO CEE YAZISI - GÜÇLÜ METALİK === */
     .hero-brand .cee-text {
-        background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 35%, #505050 70%, #1a1a1a 100%) !important;
+        background: linear-gradient(180deg, 
+            #e8e8e8 0%, 
+            #d0d0d0 15%,
+            #a0a0a0 40%,
+            #606060 70%,
+            #303030 100%
+        ) !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         background-clip: text !important;
-        filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
+        filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.6)) !important;
+        font-size: 72px !important;
+        font-weight: 800 !important;
+        letter-spacing: 12px !important;
     }
 
     /* === HERO MİMARLIK YAZISI === */
     .hero-brand .mimarlik-text {
-        color: #505050 !important;
+        color: #ffffff !important;
         background: none !important;
-        -webkit-text-fill-color: #505050 !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-size: 28px !important;
+        font-weight: 400 !important;
+        letter-spacing: 18px !important;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
     }
 
     /* === TÜM BUTONLAR - LOGO GRADIENT (Görseldeki gibi) === */
@@ -5436,14 +5472,13 @@
     /* === FLOATING LOGO - Scroll'da sol üste kayar === */
     #floatingLogo {
         position: fixed;
-        top: 20px;
-        left: 20px;
+        top: 15px;
+        left: 15px;
         z-index: 10000;
         opacity: 0;
         transform: scale(0.5) translateY(-50px);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
-        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
     }
     
     #floatingLogo.visible {
@@ -5452,15 +5487,41 @@
         pointer-events: auto;
     }
     
-    #floatingLogo img {
-        height: 50px;
-        width: auto;
-        cursor: pointer;
-        transition: transform 0.3s ease;
+    /* Metalik arka plan - logoya sarılıyor */
+    #floatingLogo a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        background: linear-gradient(180deg, 
+            #d0d0d0 0%, 
+            #b0b0b0 20%,
+            #808080 50%,
+            #505050 80%,
+            #2a2a2a 100%
+        );
+        border-radius: 12px;
+        border: 1px solid #1a1a1a;
+        box-shadow: 
+            inset 0 2px 0 rgba(255,255,255,0.5),
+            inset 0 -2px 0 rgba(0,0,0,0.2),
+            0 4px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
     }
     
-    #floatingLogo img:hover {
-        transform: scale(1.05);
+    #floatingLogo a:hover {
+        box-shadow: 
+            inset 0 2px 0 rgba(255,255,255,0.6),
+            inset 0 -2px 0 rgba(0,0,0,0.3),
+            0 8px 25px rgba(0,0,0,0.4);
+        transform: translateY(-2px);
+    }
+    
+    #floatingLogo img {
+        height: 40px;
+        width: auto;
+        cursor: pointer;
+        filter: brightness(1.1) contrast(1.05);
     }
     
     /* Dark mode */
@@ -6189,17 +6250,17 @@ window.goToAdmin = goToAdmin;
     display: none;
 }
 
-/* Hero İçerik - Sağ Alt */
+/* Hero İçerik - SOL ALT */
 .hero-content-lares {
     position: absolute;
-    bottom: 10%;
-    right: 6%;
+    bottom: 15%;
+    left: 6%;
     z-index: 40;
-    max-width: 500px;
-    text-align: right;
+    max-width: 550px;
+    text-align: left;
     opacity: 0;
     transform: translateY(40px);
-    animation: heroContentReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 5.5s forwards;
+    animation: heroContentReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
 }
 
 @keyframes heroContentReveal {
@@ -6220,104 +6281,105 @@ window.goToAdmin = goToAdmin;
     position: relative;
 }
 
-/* Dekoratif Çizgi - Sol - Logodaki gümüş ton */
+/* Dekoratif Çizgi - Sol tarafta */
 .hero-brand::before {
     content: '';
     position: absolute;
-    right: calc(100% + 20px);
+    left: calc(100% + 30px);
     top: 8px;
     width: 2px;
     height: 70px;
     background: linear-gradient(to bottom, 
-        #a8a8a8 0%, 
+        #c0c0c0 0%, 
         transparent 100%);
 }
 
-/* CEE Yazısı - LOGO UYUMLU 2 RENK GEÇİŞİ */
+/* CEE Yazısı - LOGO UYUMLU METALİK GEÇİŞ */
 .hero-brand .cee-text {
     display: block;
-    font-size: 80px;
+    font-size: 72px;
     font-weight: 800;
-    letter-spacing: 45px;
+    letter-spacing: 12px;
     line-height: 1;
     opacity: 0;
-    animation: fadeInUp 0.8s ease 5.9s forwards;
-    margin-right: 40px;
-    /* LOGO GEÇİŞİ: Parlak gümüş → Koyu antrasit */
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    /* GÜÇLÜ METALİK GEÇİŞ */
     background: linear-gradient(
         180deg,
-        #c8c8c8 0%,       /* Parlak gümüş */
-        #a0a0a0 30%,      /* Orta gümüş */
-        #505050 60%,      /* Geçiş */
-        #1a1a1a 100%      /* Koyu antrasit */
+        #e8e8e8 0%,
+        #d0d0d0 15%,
+        #a0a0a0 40%,
+        #606060 70%,
+        #303030 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.5));
 }
 
-/* MİMARLIK Yazısı - LOGO ORTA TONLARI */
+/* MİMARLIK Yazısı - BEYAZ */
 .hero-brand .mimarlik-text {
     display: block;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 12px;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 18px;
     margin-top: 8px;
     opacity: 0;
-    animation: fadeInUp 0.8s ease 6.1s forwards;
-    color: #606060;
+    animation: fadeInUp 0.8s ease 0.5s forwards;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* Açıklama - Logodaki açık metalik ton */
+/* Açıklama */
 .hero-description {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.9;
-    color: #6a6a6a;
+    color: rgba(255,255,255,0.9);
     font-weight: 400;
     margin-bottom: 30px;
-    max-width: 420px;
-    margin-left: auto;
+    max-width: 450px;
     opacity: 0;
-    animation: fadeInUp 0.8s ease 6.3s forwards;
+    animation: fadeInUp 0.8s ease 0.7s forwards;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 
-/* CTA Buton - LOGO UYUMLU 2 RENK GEÇİŞİ */
+/* CTA Buton - LOGO UYUMLU METALİK GEÇİŞ */
 .hero-cta {
     display: inline-block;
-    padding: 14px 32px;
-    /* LOGO GEÇİŞİ: Parlak gümüş → Koyu antrasit */
+    padding: 16px 40px;
     background: linear-gradient(
         180deg,
-        #c0c0c0 0%,       /* Parlak üst */
-        #909090 40%,      /* Orta */
-        #404040 80%,      /* Koyu geçiş */
-        #1a1a1a 100%      /* Koyu alt */
+        #d0d0d0 0%,
+        #b0b0b0 20%,
+        #808080 50%,
+        #505050 80%,
+        #2a2a2a 100%
     );
     color: #1a1a1a;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: all 0.3s ease;
     border: 1px solid #1a1a1a;
-    border-radius: 3px;
+    border-radius: 50px;
     opacity: 0;
-    animation: fadeInUp 0.8s ease 6.5s forwards;
+    animation: fadeInUp 0.8s ease 0.9s forwards;
     box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.4),
-        inset 0 -1px 0 rgba(0,0,0,0.2),
-        0 3px 10px rgba(0,0,0,0.2);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 2px 0 rgba(255,255,255,0.5),
+        inset 0 -2px 0 rgba(0,0,0,0.2),
+        0 4px 15px rgba(0,0,0,0.25);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .hero-cta:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.5),
-        inset 0 -1px 0 rgba(0,0,0,0.3),
-        0 6px 20px rgba(0,0,0,0.3);
+        inset 0 2px 0 rgba(255,255,255,0.6),
+        inset 0 -2px 0 rgba(0,0,0,0.3),
+        0 8px 25px rgba(0,0,0,0.35);
 }
 
 @keyframes fadeInUp {
