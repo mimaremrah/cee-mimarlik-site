@@ -5364,150 +5364,146 @@
         -ms-interpolation-mode: bicubic;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
     }
     
-    /* === HEADER LOGO + YAZI SİSTEMİ === */
-    .logo-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 8px 15px;
-        border-radius: 12px;
-        background: transparent;
-        position: relative;
-    }
-    
-    /* Logo - Büyük başlangıç */
-    #headerLogo {
-        height: 70px !important;
-        width: auto !important;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: contrast(1.02) drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-        transform: scale(1);
-    }
-    
-    /* Logo altı yazı */
-    .logo-text {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        color: #1a1a1a;
-        opacity: 1;
-        max-height: 20px;
-        overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        transform: translateY(0);
-    }
-    
-    /* Dark mode yazı rengi */
-    body.dark-mode .logo-text {
-        color: #e0e0e0;
-    }
-    
-    /* === SCROLL - LOGO SİTEYE SARILIYOR === */
-    header.scrolled .logo-wrapper {
-        gap: 0;
-        padding: 6px 12px;
-        background: linear-gradient(180deg, 
-            rgba(200, 200, 200, 0.95) 0%, 
-            rgba(160, 160, 160, 0.9) 30%,
-            rgba(100, 100, 100, 0.85) 70%,
-            rgba(50, 50, 50, 0.9) 100%
-        );
-        border-radius: 8px;
-        box-shadow: 
-            0 4px 20px rgba(0, 0, 0, 0.25),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(26, 26, 26, 0.3);
-    }
-    
-    header.scrolled #headerLogo {
-        height: 40px !important;
-        filter: contrast(1.1) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        transform: scale(1);
-    }
-    
-    header.scrolled .logo-text {
-        opacity: 0;
-        max-height: 0;
-        transform: translateY(-10px);
-        margin-top: 0;
-    }
-    
-    /* Header scroll efekti */
+    /* === HEADER === */
     header {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9998;
         padding: 12px 0;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        background: rgba(255, 255, 255, 0.98);
+        transition: all 0.4s ease;
+        background: #ffffff;
     }
     
     header.scrolled {
         padding: 8px 0;
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     }
     
-    /* Dark mode scrolled */
+    /* Logo wrapper - header içinde */
+    .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 5px;
+    }
+    
+    /* Header içindeki logo gizlenecek scroll'da */
+    .logo-wrapper {
+        transition: opacity 0.3s ease;
+    }
+    
+    header.scrolled .logo-wrapper {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    /* Logo altı yazı */
+    .logo-text {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: #505050;
+        opacity: 1;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    
+    body.dark-mode .logo-text {
+        color: #c0c0c0;
+    }
+    
+    /* === FLOATING LOGO - Scroll'da sol üste kayar === */
+    #floatingLogo {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 10000;
+        opacity: 0;
+        transform: scale(0.5) translateY(-50px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    }
+    
+    #floatingLogo.visible {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        pointer-events: auto;
+    }
+    
+    #floatingLogo img {
+        height: 50px;
+        width: auto;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    #floatingLogo img:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Dark mode */
+    body.dark-mode header {
+        background: #1a1a1a;
+    }
+    
     body.dark-mode header.scrolled {
         background: rgba(26, 26, 26, 0.95);
     }
     
-    body.dark-mode header.scrolled .logo-wrapper {
-        background: linear-gradient(180deg, 
-            rgba(120, 120, 120, 0.9) 0%, 
-            rgba(80, 80, 80, 0.85) 30%,
-            rgba(50, 50, 50, 0.85) 70%,
-            rgba(26, 26, 26, 0.9) 100%
-        );
-        border-color: rgba(150, 150, 150, 0.3);
+    /* Hero tam ekran */
+    .hero {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     
-    /* Footer logo özel ayarları */
+    /* Footer logo */
     #footerLogo {
         height: 45px !important;
         width: auto !important;
-        opacity: 0.85;
-        filter: contrast(1.05);
+        opacity: 0.8;
         transition: all 0.3s ease;
     }
     
     #footerLogo:hover {
         opacity: 1;
-        transform: scale(1.05);
     }
     
     /* Responsive */
     @media (max-width: 768px) {
-        #headerLogo {
-            height: 55px !important;
+        #floatingLogo {
+            top: 15px;
+            left: 15px;
         }
         
-        header.scrolled #headerLogo {
-            height: 35px !important;
+        #floatingLogo img {
+            height: 40px;
         }
         
         .logo-text {
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 2px;
-        }
-        
-        header.scrolled .logo-wrapper {
-            padding: 5px 10px;
-            border-radius: 6px;
         }
     }
     </style>
 
 </head>
 <body>
+
+<!-- FLOATING LOGO - Scroll'da sol üste kayar -->
+<div id="floatingLogo">
+    <a href="#anasayfa">
+        <img src="logo.png" alt="CEE Mimarlık" id="floatingLogoImg">
+    </a>
+</div>
 
 <script>
 // Mobil menü fonksiyonları - Global scope
@@ -8310,7 +8306,7 @@ function loadFooterSettings() {
 
 function applyLogoSettings() {
     const saved = localStorage.getItem('cee_logo_settings');
-    let settings = { bigSize: 75, smallSize: 45, opacity: 100, footerSize: 45 };
+    let settings = { bigSize: 75, smallSize: 50, opacity: 100, footerSize: 45 };
     
     if (saved) {
         try {
@@ -8318,7 +8314,6 @@ function applyLogoSettings() {
         } catch(e) {}
     }
     
-    // CSS değişkenleri oluştur
     const styleId = 'logo-settings-style';
     let styleEl = document.getElementById(styleId);
     if (!styleEl) {
@@ -8329,44 +8324,38 @@ function applyLogoSettings() {
     
     const opacity = (settings.opacity || 100) / 100;
     const bigSize = settings.bigSize || 75;
-    const smallSize = settings.smallSize || 45;
+    const smallSize = settings.smallSize || 50;
     const footerSize = settings.footerSize || 45;
     
     styleEl.textContent = `
-        /* Admin'den ayarlanan logo değerleri */
+        /* Header logo boyutu */
         #headerLogo, .site-logo {
             height: ${bigSize}px !important;
             opacity: ${opacity} !important;
         }
         
-        /* Scroll - Logo siteye sarılıyor */
-        header.scrolled #headerLogo,
-        header.scrolled .site-logo {
+        /* Floating logo (scroll'da sol üstte) */
+        #floatingLogo img {
             height: ${smallSize}px !important;
-            opacity: 1 !important; /* Sarılınca tam görünür */
-        }
-        
-        /* Sarılma efekti - Metalik gradient */
-        header.scrolled .logo-wrapper {
-            background: linear-gradient(180deg, 
-                rgba(200, 200, 200, ${0.9 * opacity}) 0%, 
-                rgba(160, 160, 160, ${0.85 * opacity}) 30%,
-                rgba(100, 100, 100, ${0.8 * opacity}) 70%,
-                rgba(50, 50, 50, ${0.85 * opacity}) 100%
-            ) !important;
-        }
-        
-        #footerLogo {
-            height: ${footerSize}px !important;
             opacity: ${opacity} !important;
         }
         
-        /* Tüm logolar aynı opaklıkta */
+        /* Footer logo */
+        #footerLogo {
+            height: ${footerSize}px !important;
+            opacity: ${opacity * 0.85} !important;
+        }
+        
         .diag-logo-img,
         .footer-logo img {
             opacity: ${opacity} !important;
         }
     `;
+    
+    // Floating logo'yu da güncelle
+    if (typeof updateFloatingLogo === 'function') {
+        updateFloatingLogo();
+    }
 }
 loadFooterSettings();
 </script>
@@ -9525,29 +9514,27 @@ function scrollToTop() {
     });
 }
 
-// Scroll Progress Indicator + Header Scroll Effect + Logo Sarılma
+// Scroll Progress Indicator + Header Scroll Effect + Floating Logo
 window.addEventListener('scroll', () => {
     const scrollProgress = document.getElementById('scrollProgress');
     const progressCircle = document.getElementById('progressCircle');
     const header = document.querySelector('header');
-    const logoWrapper = document.querySelector('.logo-wrapper');
+    const floatingLogo = document.getElementById('floatingLogo');
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Header scroll effect + Logo sarılma
+    // Header scroll effect + Floating logo
     if (header) {
-        if (scrollTop > 50) {
+        if (scrollTop > 100) {
             header.classList.add('scrolled');
-            
-            // Smooth sarılma efekti - scroll miktarına göre
-            if (logoWrapper) {
-                const scrollPercent = Math.min(scrollTop / 150, 1); // 0-1 arası
-                const scale = 1 - (scrollPercent * 0.05); // Hafif scale efekti
-                logoWrapper.style.transform = `scale(${scale})`;
+            // Floating logo görünür
+            if (floatingLogo) {
+                floatingLogo.classList.add('visible');
             }
         } else {
             header.classList.remove('scrolled');
-            if (logoWrapper) {
-                logoWrapper.style.transform = 'scale(1)';
+            // Floating logo gizle
+            if (floatingLogo) {
+                floatingLogo.classList.remove('visible');
             }
         }
     }
@@ -9556,15 +9543,12 @@ window.addEventListener('scroll', () => {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = scrollTop / scrollHeight;
         
-        // Circle parametreleri
         const radius = 46;
         const circumference = 2 * Math.PI * radius;
         
-        // Progress çizgisini ayarla
         progressCircle.style.strokeDasharray = circumference;
         progressCircle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
         
-        // Görünürlük
         if (scrollTop > 200) {
             scrollProgress.classList.add('visible');
         } else {
@@ -9572,6 +9556,28 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+// Floating logo'ya admin'den yüklenen logoyu uygula
+function updateFloatingLogo() {
+    const siteLogo = localStorage.getItem('site_logo');
+    const floatingLogoImg = document.getElementById('floatingLogoImg');
+    if (siteLogo && floatingLogoImg) {
+        floatingLogoImg.src = siteLogo;
+    }
+    
+    // Logo ayarlarını uygula
+    const saved = localStorage.getItem('cee_logo_settings');
+    if (saved && floatingLogoImg) {
+        try {
+            const settings = JSON.parse(saved);
+            const smallSize = settings.smallSize || 50;
+            const opacity = (settings.opacity || 100) / 100;
+            floatingLogoImg.style.height = smallSize + 'px';
+            floatingLogoImg.style.opacity = opacity;
+        } catch(e) {}
+    }
+}
+document.addEventListener('DOMContentLoaded', updateFloatingLogo);
 
 function sendWhatsApp(e) {
     e.preventDefault();
