@@ -5505,10 +5505,14 @@
         color: #c0c0c0 !important;
     }
     
-    /* === FLOATING LOGO - Scroll'da sol üste kayar === */
+    /* === FLOATING LOGO - 3 Aşamalı Sistem === */
+    /* 1: Header logo (sayfa başı) */
+    /* 2: Floating logo (scroll > 100px) */
+    /* 3: Mini logo (projeler sonrası) */
+    
     #floatingLogo {
         position: fixed;
-        top: -100px;
+        top: -120px;
         left: 15px;
         z-index: 10000;
         opacity: 0;
@@ -5518,13 +5522,14 @@
         pointer-events: none;
     }
     
+    /* Aşama 2: Scroll sonrası görünür */
     #floatingLogo.visible {
         top: 15px;
         opacity: 1;
         pointer-events: auto;
     }
     
-    /* Metalik arka plan - logoya sarılıyor */
+    /* Metalik arka plan */
     #floatingLogo a {
         display: flex;
         align-items: center;
@@ -5543,7 +5548,7 @@
             inset 0 2px 0 rgba(255,255,255,0.5),
             inset 0 -2px 0 rgba(0,0,0,0.2),
             0 4px 15px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         text-decoration: none;
     }
     
@@ -5555,25 +5560,22 @@
         transform: translateY(-2px);
     }
     
+    /* Logo img - boyut JavaScript'ten gelecek */
     #floatingLogo img {
-        height: 55px;
         width: auto;
         cursor: pointer;
         filter: brightness(1.1) contrast(1.05);
+        transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Aşama 3: Mini mod - padding küçülsün */
+    #floatingLogo.mini-mode a {
+        padding: 8px 12px;
     }
     
     /* Floating logo altındaki yazı - KALDIRILDI */
     .floating-logo-text {
         display: none !important;
-    }
-    
-    /* Scroll derinleştikçe logo küçülsün */
-    #floatingLogo.hide-text a {
-        padding: 10px 14px !important;
-    }
-    
-    #floatingLogo.hide-text img {
-        height: 35px !important;
     }
     
     /* Dark mode */
@@ -8450,10 +8452,11 @@ function applyLogoSettings() {
     const opacity = (settings.opacity || 100) / 100;
     const bigSize = settings.bigSize || 70;
     const smallSize = settings.smallSize || 55;
+    const miniSize = settings.miniSize || 40;
     const footerSize = settings.footerSize || 45;
     
     styleEl.textContent = `
-        /* Header logo boyutu - sayfa başında */
+        /* 1. AŞAMA: Header logo boyutu - sayfa başında */
         #headerLogo, .site-logo {
             height: ${bigSize}px !important;
             opacity: ${opacity} !important;
@@ -8477,9 +8480,14 @@ function applyLogoSettings() {
             visibility: hidden !important;
         }
         
-        /* Floating logo (scroll'da sol üstte) - ADMIN BOYUTU */
+        /* 2. AŞAMA: Floating logo - ADMIN BOYUTU */
         #floatingLogo img {
             height: ${smallSize}px !important;
+        }
+        
+        /* 3. AŞAMA: Mini logo - projeler sonrası */
+        #floatingLogo.mini-mode img {
+            height: ${miniSize}px !important;
         }
         
         #floatingLogo.visible {
@@ -9660,35 +9668,63 @@ function scrollToTop() {
     });
 }
 
-// Scroll Progress Indicator + Header Scroll Effect + Floating Logo
+// Scroll Progress Indicator + Header Scroll Effect + Floating Logo (3 Aşamalı)
 window.addEventListener('scroll', () => {
     const scrollProgress = document.getElementById('scrollProgress');
     const progressCircle = document.getElementById('progressCircle');
     const header = document.querySelector('header');
     const floatingLogo = document.getElementById('floatingLogo');
+    const floatingLogoImg = document.getElementById('floatingLogoImg');
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Header scroll effect + Floating logo
+    // Projeler bölümünün sonunu bul
+    const projelerSection = document.getElementById('projeler');
+    let projelerEnd = 800; // Default
+    if (projelerSection) {
+        projelerEnd = projelerSection.offsetTop + projelerSection.offsetHeight;
+    }
+    
+    // Logo boyutlarını al
+    let smallSize = 55;
+    let miniSize = 40;
+    const saved = localStorage.getItem('cee_logo_settings');
+    if (saved) {
+        try {
+            const settings = JSON.parse(saved);
+            smallSize = settings.smallSize || 55;
+            miniSize = settings.miniSize || 40;
+        } catch(e) {}
+    }
+    
+    // Header scroll effect + Floating logo (3 Aşama)
     if (header) {
         if (scrollTop > 100) {
             header.classList.add('scrolled');
+            
             // Floating logo görünür
             if (floatingLogo) {
                 floatingLogo.classList.add('visible');
                 
-                // Scroll derinleştikçe yazı kaybolsun (300px sonra)
-                if (scrollTop > 300) {
-                    floatingLogo.classList.add('hide-text');
+                // Aşama 3: Projeler bölümü bittikten sonra mini moda geç
+                if (scrollTop > projelerEnd) {
+                    floatingLogo.classList.add('mini-mode');
+                    if (floatingLogoImg) {
+                        floatingLogoImg.style.height = miniSize + 'px';
+                    }
                 } else {
-                    floatingLogo.classList.remove('hide-text');
+                    // Aşama 2: Normal floating logo
+                    floatingLogo.classList.remove('mini-mode');
+                    if (floatingLogoImg) {
+                        floatingLogoImg.style.height = smallSize + 'px';
+                    }
                 }
             }
         } else {
             header.classList.remove('scrolled');
-            // Floating logo gizle
+            // Aşama 1: Floating logo gizle
             if (floatingLogo) {
                 floatingLogo.classList.remove('visible');
-                floatingLogo.classList.remove('hide-text');
+                floatingLogo.classList.remove('mini-mode');
             }
         }
     }
@@ -9711,7 +9747,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Floating logo'ya admin'den yüklenen logoyu ve yazıyı uygula
+// Floating logo'ya admin'den yüklenen logoyu ve boyutları uygula (3 Aşamalı)
 function updateFloatingLogo() {
     const siteLogo = localStorage.getItem('site_logo');
     const floatingLogoImg = document.getElementById('floatingLogoImg');
@@ -9722,10 +9758,11 @@ function updateFloatingLogo() {
         floatingLogoImg.src = siteLogo;
     }
     
-    // Default değerler
+    // Default değerler (3 Aşama)
     let logoText = 'CEE MİMARLIK';
-    let bigSize = 70;
-    let smallSize = 55;
+    let bigSize = 70;      // 1. Aşama: Header logo
+    let smallSize = 55;    // 2. Aşama: Floating logo
+    let miniSize = 40;     // 3. Aşama: Mini logo (projeler sonrası)
     let opacity = 1;
     
     // Logo ayarlarını uygula (varsa)
@@ -9736,13 +9773,14 @@ function updateFloatingLogo() {
             logoText = settings.text || 'CEE MİMARLIK';
             bigSize = settings.bigSize || 70;
             smallSize = settings.smallSize || 55;
+            miniSize = settings.miniSize || 40;
             opacity = (settings.opacity || 100) / 100;
         } catch(e) {
             console.log('Logo ayarları okunamadı, default kullanılıyor');
         }
     }
     
-    // Floating logo boyutunu DOĞRUDAN uygula
+    // Floating logo başlangıç boyutunu uygula (2. aşama boyutu)
     if (floatingLogoImg) {
         floatingLogoImg.style.height = smallSize + 'px';
         floatingLogoImg.style.width = 'auto';
@@ -9754,7 +9792,7 @@ function updateFloatingLogo() {
         headerLogoText.style.display = 'block';
     }
     
-    // Header logo boyutu için CSS ekle - scroll'da tamamen gizle
+    // Tüm logo boyutları için CSS ekle
     let logoStyle = document.getElementById('logo-size-style');
     if (!logoStyle) {
         logoStyle = document.createElement('style');
@@ -9762,15 +9800,20 @@ function updateFloatingLogo() {
         document.head.appendChild(logoStyle);
     }
     logoStyle.textContent = `
-        /* Header logo boyutu */
+        /* 1. AŞAMA: Header logo boyutu */
         .logo-wrapper .site-logo,
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
         }
         
-        /* Floating logo boyutu ve opaklık - admin panelden */
+        /* 2. AŞAMA: Floating logo boyutu */
         #floatingLogo img {
             height: ${smallSize}px !important;
+        }
+        
+        /* 3. AŞAMA: Mini logo boyutu (projeler sonrası) */
+        #floatingLogo.mini-mode img {
+            height: ${miniSize}px !important;
         }
         
         #floatingLogo.visible {
@@ -9793,7 +9836,7 @@ function updateFloatingLogo() {
         }
     `;
     
-    console.log('Logo ayarları uygulandı:', {bigSize, smallSize, opacity});
+    console.log('Logo ayarları uygulandı (3 Aşama):', {bigSize, smallSize, miniSize, opacity});
 }
 document.addEventListener('DOMContentLoaded', updateFloatingLogo);
 

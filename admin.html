@@ -808,7 +808,7 @@ a{color:inherit;text-decoration:none}
                             
                             <!-- LOGO AYARLARI -->
                             <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                            <label class="form-label" style="font-weight: 600; margin-bottom: 15px; display: block;">⚙️ Logo Ayarları</label>
+                            <label class="form-label" style="font-weight: 600; margin-bottom: 15px; display: block;">⚙️ Logo Ayarları (3 Aşamalı)</label>
                             
                             <div class="form-group">
                                 <label class="form-label">Logo Altı Yazı</label>
@@ -816,16 +816,25 @@ a{color:inherit;text-decoration:none}
                                 <small style="color: #888; font-size: 10px;">Header'da görünür, scroll'da kaybolur</small>
                             </div>
                             
-                            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                                <div class="form-group">
-                                    <label class="form-label">Header Logo (px)</label>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                <label class="form-label" style="color: #666; margin-bottom: 10px;">📐 Logo Boyutları</label>
+                                
+                                <div class="form-group" style="margin-bottom: 12px;">
+                                    <label class="form-label">1️⃣ Header Logo (px)</label>
                                     <input type="number" class="form-input" id="logoBigSize" value="70" min="40" max="150" style="text-align: center;">
                                     <small style="color: #888; font-size: 10px;">Sayfa başındaki logo</small>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Floating Logo (px)</label>
+                                
+                                <div class="form-group" style="margin-bottom: 12px;">
+                                    <label class="form-label">2️⃣ Floating Logo (px)</label>
                                     <input type="number" class="form-input" id="logoSmallSize" value="55" min="30" max="120" style="text-align: center;">
-                                    <small style="color: #888; font-size: 10px;">Scroll sonrası metalik kutu</small>
+                                    <small style="color: #888; font-size: 10px;">Scroll sonrası (projeler bölümüne kadar)</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">3️⃣ Mini Logo (px)</label>
+                                    <input type="number" class="form-input" id="logoMiniSize" value="40" min="25" max="80" style="text-align: center;">
+                                    <small style="color: #888; font-size: 10px;">Projeler bölümü sonrası (en küçük)</small>
                                 </div>
                             </div>
                             
@@ -833,7 +842,7 @@ a{color:inherit;text-decoration:none}
                                 <label class="form-label">Opaklık: <span id="opacityValue">100</span>%</label>
                                 <input type="range" id="logoOpacity" min="30" max="100" value="100" style="width: 100%; cursor: pointer;" oninput="document.getElementById('opacityValue').textContent = this.value">
                                 <div style="display: flex; justify-content: space-between; font-size: 10px; color: #888;">
-                                    <span>Hafif (scroll dahil)</span>
+                                    <span>Hafif</span>
                                     <span>Tam</span>
                                 </div>
                             </div>
@@ -1738,6 +1747,7 @@ a{color:inherit;text-decoration:none}
                 document.getElementById('logoText').value = settings.text || 'CEE MİMARLIK';
                 document.getElementById('logoBigSize').value = settings.bigSize || 70;
                 document.getElementById('logoSmallSize').value = settings.smallSize || 55;
+                document.getElementById('logoMiniSize').value = settings.miniSize || 40;
                 document.getElementById('logoOpacity').value = settings.opacity || 100;
                 document.getElementById('opacityValue').textContent = settings.opacity || 100;
                 document.getElementById('logoFooterSize').value = settings.footerSize || 45;
@@ -1750,6 +1760,7 @@ a{color:inherit;text-decoration:none}
             text: document.getElementById('logoText').value || 'CEE MİMARLIK',
             bigSize: parseInt(document.getElementById('logoBigSize').value) || 70,
             smallSize: parseInt(document.getElementById('logoSmallSize').value) || 55,
+            miniSize: parseInt(document.getElementById('logoMiniSize').value) || 40,
             opacity: parseInt(document.getElementById('logoOpacity').value) || 100,
             footerSize: parseInt(document.getElementById('logoFooterSize').value) || 45
         };
