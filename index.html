@@ -582,7 +582,7 @@
         .hero-brand { color: #4a4a4a; }
         .hero-brand .cee-text { color: #4a4a4a; }
         .hero-brand .mimarlik-text { color: #6a6a6a; }
-        .hero-cta { background: #4a4a4a; color: #ffffff !important; }
+        .hero-cta { /* Logo gradient CSS'den */ }
         .logo-text { color: #4a4a4a; }
         .filter-btn.active { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); border-color: #4a4a4a; color: white; }
         .filter-btn:hover { border-color: #4a4a4a; color: #4a4a4a; }
@@ -11476,10 +11476,10 @@ function loadSiteSettings() {
             /* Accent Rengi */
             .section-title .accent { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
             .hero-brand { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
-            .hero-cta, .team-cta-btn, .directions-btn { background: ${colorSettings.iconBg || '#4a4a4a'} !important; }
-            .filter-btn.active { background: ${colorSettings.iconBg || '#4a4a4a'} !important; border-color: ${colorSettings.iconBg || '#4a4a4a'} !important; color: white !important; }
+            /* Butonlar CSS'deki metalik gradient kullanıyor - override etme */
+            .filter-btn.active { border-color: #1a1a1a !important; }
             .filter-btn:hover { border-color: ${colorSettings.iconBg || '#4a4a4a'} !important; color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
-            .filter-btn.active:hover { color: white !important; }
+            .filter-btn.active:hover { color: #1a1a1a !important; }
             .section-decoration .dot { background: ${colorSettings.iconBg || '#4a4a4a'} !important; }
             nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
             
@@ -12107,24 +12107,37 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             const darkAccent = darken(accent, 50);     // Koyu antrasit (#1a1a1a)
             
             metallicStyle.textContent = `
-                /* LOGO UYUMLU 2 RENK BUTONLAR */
+                /* LOGO UYUMLU METALİK BUTONLAR */
                 .hero-cta, .team-cta-btn, .directions-btn {
-                    background: linear-gradient(180deg, ${shineAccent} 0%, ${silverAccent} 40%, ${steelAccent} 80%, ${darkAccent} 100%) !important;
-                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.2), 0 3px 10px rgba(0,0,0,0.2) !important;
+                    background: linear-gradient(180deg, 
+                        #d0d0d0 0%, 
+                        #b0b0b0 20%,
+                        #808080 50%,
+                        #505050 80%,
+                        #2a2a2a 100%
+                    ) !important;
+                    box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.25) !important;
                     color: #1a1a1a !important;
-                    border: 1px solid ${darkAccent} !important;
-                    border-radius: 3px !important;
-                    text-shadow: 0 1px 0 rgba(255,255,255,0.2) !important;
+                    border: 1px solid #1a1a1a !important;
+                    border-radius: 50px !important;
+                    text-shadow: 0 1px 0 rgba(255,255,255,0.4) !important;
                 }
                 .hero-cta:hover, .team-cta-btn:hover, .directions-btn:hover {
-                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.3) !important;
+                    box-shadow: inset 0 2px 0 rgba(255,255,255,0.6), inset 0 -2px 0 rgba(0,0,0,0.3), 0 8px 25px rgba(0,0,0,0.35) !important;
+                    transform: translateY(-2px);
                 }
                 
-                /* LOGO UYUMLU 2 RENK İKONLAR */
+                /* LOGO UYUMLU METALİK İKONLAR */
                 .service-icon-v2, .ref-icon, .contact-icon-circle {
-                    background: linear-gradient(180deg, ${shineAccent} 0%, ${silverAccent} 40%, ${steelAccent} 80%, ${darkAccent} 100%) !important;
-                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2), 0 3px 8px rgba(0,0,0,0.15) !important;
-                    border: 1px solid ${darkAccent} !important;
+                    background: linear-gradient(180deg, 
+                        #d0d0d0 0%, 
+                        #b0b0b0 20%,
+                        #808080 50%,
+                        #505050 80%,
+                        #2a2a2a 100%
+                    ) !important;
+                    box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), inset 0 -2px 0 rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.2) !important;
+                    border: 1px solid #1a1a1a !important;
                 }
                 
                 /* Filter butonları */
@@ -12169,15 +12182,7 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
             
             // Accent elements (Hero hariç - hero renkleri ayrı ayarlanıyor)
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => {
-                // Hero butonu için ayrı ayar varsa onu kullan
-                const heroSettings = JSON.parse(localStorage.getItem('cee_hero_settings') || '{}');
-                if (el.id === 'heroCta' && heroSettings.buttonColor) {
-                    el.style.background = heroSettings.buttonColor;
-                } else {
-                    el.style.background = accent;
-                }
-            });
+            // Butonlar CSS'deki metalik gradient kullanıyor - inline style uygulamıyoruz
             document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
             document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
             
