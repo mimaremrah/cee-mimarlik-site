@@ -8,11 +8,11 @@
     <script>
     // CEE MİMARLIK - Site Tema Ayarları
     const LIGHT_THEME_DEFAULT = {
-        primary: '#5a6677', iconBg: '#5a6677', bgMain: '#ffffff',
+        primary: '#4a4a4a', iconBg: '#4a4a4a', bgMain: '#ffffff',
         bgSection: '#f8f9fa', text: '#2d3748', header: '#1a202c'
     };
     const DARK_THEME_DEFAULT = {
-        primary: '#5a6677', iconBg: '#5a6677', bgMain: '#111111',
+        primary: '#4a4a4a', iconBg: '#4a4a4a', bgMain: '#111111',
         bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f'
     };
     
@@ -35,8 +35,8 @@
         document.documentElement.style.setProperty('--bg-secondary', ts.bgSection);
         document.documentElement.style.setProperty('--header-bg', ts.header);
         document.documentElement.style.setProperty('--text-color', ts.text);
-        document.documentElement.style.setProperty('--diagonal-color', ts.iconBg || '#5a6677');
-        document.documentElement.style.setProperty('--divider-color', ts.iconBg || '#5a6677');
+        document.documentElement.style.setProperty('--diagonal-color', ts.iconBg || '#4a4a4a');
+        document.documentElement.style.setProperty('--divider-color', ts.iconBg || '#4a4a4a');
         document.documentElement.style.setProperty('--divider-color-light', ts.iconBgLight || '#6b7a8a');
     }
     </script>
@@ -225,7 +225,7 @@
         }
 
         .ai-assistant-header {
-            background: linear-gradient(135deg, #5a6677 0%, #7a8694 100%);
+            background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
             color: white;
             padding: 25px;
             display: flex;
@@ -366,7 +366,7 @@
         }
 
         .ai-assistant-input button {
-            background: linear-gradient(135deg, #5a6677 0%, #7a8694 100%);
+            background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
             border: none;
             border-radius: 50%;
             width: 50px;
@@ -411,7 +411,7 @@
         }
 
         .ai-msg .msg-avatar {
-            background: linear-gradient(135deg, #5a6677 0%, #7a8694 100%);
+            background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
         }
 
         .user-msg .msg-avatar {
@@ -452,7 +452,7 @@
         }
 
         body.dark-mode .msg-content strong {
-            color: #7a8694;
+            color: #6a6a6a;
         }
 
         .typing-indicator-wrapper {
@@ -578,27 +578,27 @@
            ============================================= */
         
         /* IE için sabit renkler */
-        .section-title .accent { color: #5a6677; }
-        .hero-brand { color: var(--accent-gold, #1a1a2e); }
-        .hero-brand .cee-text { color: var(--accent-gold, #1a1a2e); }
-        .hero-brand .mimarlik-text { color: var(--text-color, #4a5568); }
-        .hero-cta { background: #5a6677; color: #ffffff !important; }
-        .logo-text { color: #5a6677; }
-        .filter-btn.active { background: linear-gradient(135deg, #5a6677, #7a8694); border-color: #5a6677; color: white; }
-        .filter-btn:hover { border-color: #5a6677; color: #5a6677; }
+        .section-title .accent { color: #4a4a4a; }
+        .hero-brand { color: #4a4a4a; }
+        .hero-brand .cee-text { color: #4a4a4a; }
+        .hero-brand .mimarlik-text { color: #6a6a6a; }
+        .hero-cta { background: #4a4a4a; color: #ffffff !important; }
+        .logo-text { color: #4a4a4a; }
+        .filter-btn.active { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); border-color: #4a4a4a; color: white; }
+        .filter-btn:hover { border-color: #4a4a4a; color: #4a4a4a; }
         .filter-btn.active:hover { color: white !important; }
-        .team-cta-btn { background: #5a6677; }
-        .directions-btn { background: linear-gradient(135deg, #5a6677, #7a8694); }
-        .ai-assistant-header { background: linear-gradient(135deg, #5a6677, #7a8694); }
-        .ai-panel-header { background: linear-gradient(135deg, #5a6677, #7a8694); }
-        .section-decoration .dot { background: #5a6677; }
-        nav a:hover, nav a.active { color: #5a6677; }
-        nav a::after { background: #5a6677; }
-        .footer-social-link:hover { background: #5a6677; border-color: #5a6677; }
-        .footer-social-bottom a:hover { background: #5a6677; }
-        ::selection { background: #5a6677; }
-        ::-moz-selection { background: #5a6677; }
-        :focus-visible { outline-color: #5a6677; }
+        .team-cta-btn { background: #4a4a4a; }
+        .directions-btn { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
+        .ai-assistant-header { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
+        .ai-panel-header { background: linear-gradient(135deg, #4a4a4a, #6a6a6a); }
+        .section-decoration .dot { background: #4a4a4a; }
+        nav a:hover, nav a.active { color: #4a4a4a; }
+        nav a::after { background: #4a4a4a; }
+        .footer-social-link:hover { background: #4a4a4a; border-color: #4a4a4a; }
+        .footer-social-bottom a:hover { background: #4a4a4a; }
+        ::selection { background: #4a4a4a; }
+        ::-moz-selection { background: #4a4a4a; }
+        :focus-visible { outline-color: #4a4a4a; }
         
         /* =============================================
            CROSS-BROWSER & MOBILE UYUMLULUK
@@ -748,7 +748,7 @@
         /* Firefox Scrollbar Düzeltmesi */
         * {
             scrollbar-width: thin;
-            scrollbar-color: #5a6677 transparent;
+            scrollbar-color: #4a4a4a transparent;
         }
 
         /* Webkit Scrollbar (Chrome, Safari, Edge) */
@@ -762,7 +762,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #5a6677;
+            background: #4a4a4a;
             border-radius: 4px;
         }
 
@@ -772,12 +772,12 @@
 
         /* Selection Rengi */
         ::selection {
-            background: #5a6677;
+            background: #4a4a4a;
             color: white;
         }
 
         ::-moz-selection {
-            background: #5a6677;
+            background: #4a4a4a;
             color: white;
         }
 
@@ -806,7 +806,7 @@
         }
 
         :focus-visible {
-            outline: 2px solid #5a6677;
+            outline: 2px solid #4a4a4a;
             outline-offset: 2px;
         }
 
@@ -911,8 +911,8 @@
             --border: #e0e0e0;
             --shadow: rgba(0, 0, 0, 0.05);
             --whatsapp: #25D366;
-            --icon-bg: #5a6677;
-            --icon-bg-light: #7a8694;
+            --icon-bg: #4a4a4a;
+            --icon-bg-light: #6a6a6a;
         }
 
         body {
@@ -975,7 +975,7 @@
         body[data-theme="elegant"] {
             --primary: #1a1a1a;
             --secondary: #8b7355;
-            --accent: #5a6677;
+            --accent: #4a4a4a;
             --bg: #fafaf8;
             --border: #e8dcc8;
         }
@@ -1882,7 +1882,7 @@
             font-size: 26px;
             font-weight: 300;
             letter-spacing: 8px;
-            color: #5a6677;
+            color: #4a4a4a;
             text-transform: uppercase;
             transition: all 0.4s ease;
         }
@@ -1959,19 +1959,19 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #5a6677;
+            background: #4a4a4a;
             transition: width 0.3s;
         }
 
         nav a:hover::after,
         nav a.active::after {
             width: 100%;
-            background: #5a6677;
+            background: #4a4a4a;
         }
 
         nav a:hover,
         nav a.active {
-            color: #5a6677;
+            color: #4a4a4a;
         }
 
         .header-actions {
@@ -2092,7 +2092,7 @@
         }
         
         .hero-brand .cee-text {
-            color: #5a6677 !important;
+            color: #4a4a4a !important;
             display: block;
             font-weight: 800;
             text-shadow: 0 4px 30px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5), 0 0 40px rgba(90,102,119,0.3);
@@ -2121,7 +2121,7 @@
         .hero-cta {
             display: inline-block;
             padding: 16px 45px;
-            background: #5a6677; /* IE fallback */
+            background: #4a4a4a; /* IE fallback */
             background: rgba(90,102,119,0.9);
             color: #ffffff !important;
             text-decoration: none;
@@ -2140,7 +2140,7 @@
         }
         
         .hero-cta:hover {
-            background: #5a6677; /* IE fallback */
+            background: #4a4a4a; /* IE fallback */
             background: rgba(90,102,119,1);
             -webkit-transform: translateY(-3px);
             transform: translateY(-3px);
@@ -2456,8 +2456,8 @@
         .section-title span.accent,
         h2.section-title .accent,
         h2.section-title span.accent {
-            color: #5a6677; /* IE fallback */
-            color: #5a6677 !important;
+            color: #4a4a4a; /* IE fallback */
+            color: #4a4a4a !important;
             font-weight: 400;
         }
 
@@ -2481,7 +2481,7 @@
         .section-decoration .dot {
             width: 6px;
             height: 6px;
-            background: #5a6677;
+            background: #4a4a4a;
             transform: rotate(45deg);
         }
 
@@ -2495,7 +2495,7 @@
         }
 
         body.dark-mode .section-title .accent {
-            color: #5a6677 !important;
+            color: #4a4a4a !important;
         }
 
         body.dark-mode .section-decoration::before,
@@ -2569,24 +2569,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #5a6677, #7a8694);
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
             z-index: -1;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .filter-btn:hover {
-            border-color: #5a6677; /* IE fallback */
-            border-color: #5a6677;
-            color: #5a6677; /* IE fallback */
-            color: #5a6677;
+            border-color: #4a4a4a; /* IE fallback */
+            border-color: #4a4a4a;
+            color: #4a4a4a; /* IE fallback */
+            color: #4a4a4a;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(90, 102, 119, 0.2);
         }
 
         .filter-btn.active {
-            border-color: #5a6677; /* IE fallback */
-            border-color: #5a6677;
+            border-color: #4a4a4a; /* IE fallback */
+            border-color: #4a4a4a;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(90, 102, 119, 0.35);
@@ -2607,12 +2607,12 @@
         }
 
         body.dark-mode .filter-btn:hover {
-            border-color: #5a6677;
-            color: #5a6677;
+            border-color: #4a4a4a;
+            color: #4a4a4a;
         }
 
         body.dark-mode .filter-btn.active {
-            border-color: #5a6677;
+            border-color: #4a4a4a;
             color: white;
         }
         
@@ -2833,7 +2833,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: #5a6677;
+            background: #4a4a4a;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -3055,7 +3055,7 @@
         }
 
         .ai-panel-header {
-            background: linear-gradient(135deg, #5a6677, #7a8694);
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
             padding: 20px;
             display: flex;
             align-items: center;
@@ -3159,7 +3159,7 @@
         }
 
         .ai-panel-message.user .ai-panel-bubble {
-            background: linear-gradient(135deg, #5a6677, #7a8694);
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -3203,9 +3203,9 @@
         }
 
         .ai-panel-quick-btn:hover {
-            background: linear-gradient(135deg, #5a6677, #7a8694);
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
             color: white;
-            border-color: #5a6677;
+            border-color: #4a4a4a;
             transform: translateY(-2px);
         }
 
@@ -3237,7 +3237,7 @@
         }
 
         .ai-panel-input:focus {
-            border-color: #5a6677;
+            border-color: #4a4a4a;
         }
 
         body.dark-mode .ai-panel-input {
@@ -3249,7 +3249,7 @@
         .ai-panel-send {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #5a6677, #7a8694);
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -3277,7 +3277,7 @@
         .ai-panel-typing-dot {
             width: 8px;
             height: 8px;
-            background: #5a6677;
+            background: #4a4a4a;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -3784,7 +3784,7 @@
         }
         
         body.dark-mode .footer-social-bottom a:hover {
-            background: #5a6677 !important;
+            background: #4a4a4a !important;
             color: white !important;
         }
 
@@ -3824,7 +3824,7 @@
         }
         
         .footer-social-bottom a:hover {
-            background: #5a6677;
+            background: #4a4a4a;
             color: white;
         }
         
@@ -3886,17 +3886,17 @@
         }
 
         .footer-social-link:hover {
-            background: #5a6677;
+            background: #4a4a4a;
             color: var(--white);
-            border-color: #5a6677;
+            border-color: #4a4a4a;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(212,175,55,0.3);
         }
 
         body.dark-mode .footer-social-link:hover {
-            background: #5a6677;
+            background: #4a4a4a;
             color: var(--white);
-            border-color: #5a6677;
+            border-color: #4a4a4a;
         }
 
         .footer-social-link svg {
@@ -4528,7 +4528,7 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: #5a6677;
+            background: #4a4a4a;
             color: #fff;
             padding: 10px 12px;
             writing-mode: horizontal-tb;
@@ -4618,7 +4618,7 @@
         .social-sidebar-content.active .social-sidebar-link:nth-child(3) { transition-delay: 0.3s; }
         .social-sidebar-content.active .social-sidebar-link:nth-child(4) { transition-delay: 0.4s; }
         .social-sidebar-link.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .social-sidebar-link.twitter { background: linear-gradient(135deg, #5a6677, #b8962e); }
+        .social-sidebar-link.twitter { background: linear-gradient(135deg, #4a4a4a, #b8962e); }
         .social-sidebar-link.linkedin { background: #0a66c2; }
         .social-sidebar-link:hover { transform: scale(1.03) !important; box-shadow: 0 5px 20px rgba(0,0,0,0.25); }
         .social-sidebar-footer {
@@ -4627,7 +4627,7 @@
             border-top: 1px solid #f0f0f0;
             text-align: center;
             font-weight: 600;
-            color: #5a6677;
+            color: #4a4a4a;
             font-size: 10px;
         }
         body.dark-mode .social-sidebar-footer { border-top-color: #333333; }
@@ -4639,10 +4639,10 @@
         body.dark-mode .faq-item h3, body.dark-mode .faq-question { color: #e2e8f0 !important; }
         body.dark-mode .faq-answer, body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1a1a1a !important; }
-        body.dark-mode .service-card h3 { color: #5a6677 !important; }
+        body.dark-mode .service-card h3 { color: #4a4a4a !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-title .accent { color: #5a6677 !important; }
+        body.dark-mode .section-title .accent { color: #4a4a4a !important; }
         body.dark-mode .section-label { color: #94a3b8 !important; }
         body.dark-mode #referanslar, body.dark-mode .references-section { background: #111111 !important; }
         body.dark-mode .partner-card, body.dark-mode .reference-card { background: #1a1a1a !important; }
@@ -4730,7 +4730,7 @@
             text-decoration: none;
             font-size: 14px;
         }
-        .team-social-link.email { background: #5a6677; color: white; }
+        .team-social-link.email { background: #4a4a4a; color: white; }
         .team-social-link.instagram { background: linear-gradient(45deg, #f09433, #dc2743); color: white; }
         .team-social-link.linkedin { background: #0a66c2; color: white; }
         .team-social-link.phone { background: #25d366; color: white; }
@@ -4746,10 +4746,10 @@
            ============================================= */
         body.dark-mode .faq-item { background: #1a1a1a !important; }
         body.dark-mode .faq-item h3 { color: #e2e8f0 !important; }
-        body.dark-mode .faq-item span { color: #5a6677 !important; }
+        body.dark-mode .faq-item span { color: #4a4a4a !important; }
         body.dark-mode .faq-answer p { color: #94a3b8 !important; }
         body.dark-mode .service-card { background: #1a1a1a !important; }
-        body.dark-mode .service-card h3 { color: #5a6677 !important; }
+        body.dark-mode .service-card h3 { color: #4a4a4a !important; }
         body.dark-mode .service-card p { color: #94a3b8 !important; }
         body.dark-mode #referanslar { background: #111111 !important; }
         body.dark-mode .ref-card { background: #1a1a1a !important; border: 1px solid #333 !important; }
@@ -4758,18 +4758,18 @@
         body.dark-mode .reference-item { background: #1a1a1a !important; border-color: #333 !important; }
         body.dark-mode .reference-item h4 { color: #e2e8f0 !important; }
         body.dark-mode .section-title { color: #e2e8f0 !important; }
-        body.dark-mode .section-title .accent { color: #5a6677 !important; }
-        body.dark-mode .section-label { color: #5a6677 !important; }
+        body.dark-mode .section-title .accent { color: #4a4a4a !important; }
+        body.dark-mode .section-label { color: #4a4a4a !important; }
         body.dark-mode .location-card { background: linear-gradient(145deg, #1a1a1a 0%, #111111 100%) !important; }
         
         /* =============================================
            MADDE 8: CROSS-BROWSER UYUMLULUK
            ============================================= */
         .filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
-        * { scrollbar-width: thin; scrollbar-color: #5a6677 #f1f1f1; }
+        * { scrollbar-width: thin; scrollbar-color: #4a4a4a #f1f1f1; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #5a6677; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #4a4a4a; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #b8963a; }
         body.dark-mode ::-webkit-scrollbar-track { background: #1a1a1a; }
         
@@ -4938,7 +4938,7 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
         <!-- PWA Meta Tags (Lighthouse Optimized) -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#5a6677">
+    <meta name="theme-color" content="#4a4a4a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="CEE Mimarlık">
@@ -4976,8 +4976,8 @@
         --text-primary: #2d3748;
         --text-secondary: #666666;
         --text-muted: #999999;
-        --accent-gold: #5a6677;
-        --accent-gold-light: #7a8694;
+        --accent-gold: #4a4a4a;
+        --accent-gold-light: #6a6a6a;
         --border-light: #e8e8e8;
         --shadow-soft: 0 2px 20px rgba(0,0,0,0.03);
         --shadow-medium: 0 4px 30px rgba(0,0,0,0.06);
@@ -5869,17 +5869,21 @@ window.goToAdmin = goToAdmin;
 /* Metalik logo tonlarına uyumlu renk paleti                                      */
 /* ────────────────────────────────────────────────────────────────────────────── */
 
-/* Renk Değişkenleri */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* CEE MİMARLIK - LOGO UYUMLU METALİK GÜMÜŞ RENK PALETİ                        */
+/* Logodaki krom/gümüş tonlarından türetilmiştir                               */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
 :root {
-    --cee-antrasit: #1a1a2e;
-    --cee-steel: #16213e;
-    --cee-metal: #4a5568;
-    --cee-silver: #a0aec0;
-    --cee-light: #e2e8f0;
-    --cee-white: #ffffff;
-    --cee-cream: #f7fafc;
-    --accent-gold: #1a1a2e;
-    --text-color: #4a5568;
+    /* Logodaki metalik tonlar */
+    --chrome-dark: #2d2d2d;      /* En koyu - header/footer */
+    --chrome-medium: #4a4a4a;    /* Orta koyu - başlıklar */
+    --chrome-steel: #6a6a6a;     /* Orta - alt başlıklar */
+    --chrome-silver: #8a8a8a;    /* Orta açık - metinler */
+    --chrome-light: #a8a8a8;     /* Açık gümüş - dekoratif */
+    --chrome-shine: #c8c8c8;     /* Parlak - hover */
+    --chrome-bg: #f5f5f5;        /* Arka plan açık */
+    --chrome-white: #ffffff;     /* Beyaz */
 }
 
 .hero-main-content {
@@ -5917,7 +5921,7 @@ window.goToAdmin = goToAdmin;
     position: relative;
 }
 
-/* Dekoratif Çizgi - Sol */
+/* Dekoratif Çizgi - Sol - Logodaki gümüş ton */
 .hero-brand::before {
     content: '';
     position: absolute;
@@ -5926,40 +5930,40 @@ window.goToAdmin = goToAdmin;
     width: 2px;
     height: 70px;
     background: linear-gradient(to bottom, 
-        var(--cee-silver) 0%, 
+        #a8a8a8 0%, 
         transparent 100%);
 }
 
-/* CEE Yazısı - Geniş aralıklı */
+/* CEE Yazısı - Logodaki koyu metalik ton */
 .hero-brand .cee-text {
     display: block;
     font-size: 80px;
     font-weight: 800;
     letter-spacing: 45px;
-    color: var(--accent-gold, #1a1a2e);
+    color: #4a4a4a;
     line-height: 1;
     opacity: 0;
     animation: fadeInUp 0.8s ease 5.9s forwards;
     margin-right: 40px;
 }
 
-/* MİMARLIK Yazısı */
+/* MİMARLIK Yazısı - Logodaki orta metalik ton */
 .hero-brand .mimarlik-text {
     display: block;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 12px;
-    color: var(--text-color, #4a5568);
+    color: #6a6a6a;
     margin-top: 8px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.1s forwards;
 }
 
-/* Açıklama */
+/* Açıklama - Logodaki açık metalik ton */
 .hero-description {
     font-size: 14px;
     line-height: 1.9;
-    color: var(--text-color, #4a5568);
+    color: #6a6a6a;
     font-weight: 400;
     margin-bottom: 30px;
     max-width: 420px;
@@ -5968,12 +5972,12 @@ window.goToAdmin = goToAdmin;
     animation: fadeInUp 0.8s ease 6.3s forwards;
 }
 
-/* CTA Buton */
+/* CTA Buton - Logodaki koyu metalik ton */
 .hero-cta {
     display: inline-block;
     padding: 15px 35px;
-    background: var(--cee-antrasit);
-    color: var(--cee-white);
+    background: #4a4a4a;
+    color: #ffffff;
     text-decoration: none;
     font-size: 11px;
     font-weight: 600;
@@ -5986,9 +5990,9 @@ window.goToAdmin = goToAdmin;
 }
 
 .hero-cta:hover {
-    background: var(--cee-steel);
+    background: #2d2d2d;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(26, 26, 46, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes fadeInUp {
@@ -6023,7 +6027,7 @@ window.goToAdmin = goToAdmin;
 .scroll-text {
     font-size: 9px;
     letter-spacing: 3px;
-    color: var(--cee-silver);
+    color: #a8a8a8;
     text-transform: uppercase;
     margin-bottom: 8px;
     font-weight: 500;
@@ -6032,7 +6036,7 @@ window.goToAdmin = goToAdmin;
 .scroll-arrow {
     width: 20px;
     height: 32px;
-    border: 1.5px solid var(--cee-silver);
+    border: 1.5px solid #a8a8a8;
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
@@ -6046,7 +6050,7 @@ window.goToAdmin = goToAdmin;
     transform: translateX(-50%);
     width: 3px;
     height: 6px;
-    background: var(--cee-metal);
+    background: #6a6a6a;
     border-radius: 2px;
     animation: scrollBounce 1.5s ease-in-out infinite;
 }
@@ -6283,7 +6287,7 @@ window.goToAdmin = goToAdmin;
     align-items: center;
     gap: 10px;
     padding: 14px 28px;
-    background: linear-gradient(135deg, #5a6677, #4a5567);
+    background: linear-gradient(135deg, #4a4a4a, #4a5567);
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
@@ -6363,7 +6367,7 @@ window.goToAdmin = goToAdmin;
 <!-- PROJECTS -->
 <section id="projeler">
     <div class="section-header">
-        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects">PROJE<span class="accent" style="color: #5a6677 !important;">LERİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects">PROJE<span class="accent" style="color: #4a4a4a !important;">LERİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
@@ -6383,7 +6387,7 @@ window.goToAdmin = goToAdmin;
 <section id="hakkimizda">
     <div class="section-header">
         <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US">HAKKIMIZDA</div>
-        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are">BİZ <span class="accent" style="color: #5a6677 !important;">KİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are">BİZ <span class="accent" style="color: #4a4a4a !important;">KİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
@@ -6414,7 +6418,7 @@ window.goToAdmin = goToAdmin;
     
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
-        <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none; background: #5a6677; color: white; border-radius: 50px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">
+        <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 16px; text-decoration: none; background: #4a4a4a; color: white; border-radius: 50px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212,175,55,0.3);">
             <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team">👥 UZMAN KADROMUZU TANIYIN</span>
             <span>→</span>
         </a>
@@ -6422,7 +6426,7 @@ window.goToAdmin = goToAdmin;
 </section>
 
 <!-- MİMARİ GEÇİŞ BANDI -->
-<div class="architect-divider" id="architectDivider" style="position: relative; height: 80px; background: linear-gradient(135deg, var(--divider-color, #5a6677) 0%, var(--divider-color-light, #6b7a8a) 50%, var(--divider-color, #5a6677) 100%); overflow: hidden;">
+<div class="architect-divider" id="architectDivider" style="position: relative; height: 80px; background: linear-gradient(135deg, var(--divider-color, #4a4a4a) 0%, var(--divider-color-light, #6b7a8a) 50%, var(--divider-color, #4a4a4a) 100%); overflow: hidden;">
     <!-- Üst kenar - açılı beyaz -->
     <svg class="divider-top" viewBox="0 0 1440 20" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 20px;">
         <path d="M0,20 L0,0 L1440,0 L1440,20 L720,10 Z" fill="#ffffff"/>
@@ -6461,7 +6465,7 @@ body.dark-mode .architect-divider .divider-bottom path {
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
             <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
-            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">SUNDUĞUMUZ <span class="accent" style="color: #5a6677 !important;">HİZMETLER</span></h2>
+            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">SUNDUĞUMUZ <span class="accent" style="color: #4a4a4a !important;">HİZMETLER</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -6542,7 +6546,7 @@ document.addEventListener('DOMContentLoaded', loadServicesSection);
     border-bottom-color: #333;
 }
 .service-card-v2:hover .service-icon-v2 {
-    background: #5a6677 !important;
+    background: #4a4a4a !important;
     transform: scale(1.1);
     color: white !important;
 }
@@ -6566,7 +6570,7 @@ body.dark-mode .service-card-v2 .service-icon-v2 {
     color: #94a3b8 !important;
 }
 body.dark-mode .service-card-v2:hover .service-icon-v2 {
-    background: #5a6677 !important;
+    background: #4a4a4a !important;
     color: white !important;
 }
 body.dark-mode #hizmetler {
@@ -6602,7 +6606,7 @@ body.dark-mode .contact-icon-circle {
     color: #94a3b8 !important;
 }
 body.dark-mode .contact-icon-circle:hover {
-    background: #5a6677 !important;
+    background: #4a4a4a !important;
     color: white !important;
 }
 
@@ -6633,9 +6637,9 @@ body.dark-mode .filter-btn {
 }
 body.dark-mode .filter-btn:hover,
 body.dark-mode .filter-btn.active {
-    background: linear-gradient(135deg, #5a6677, #7a8694) !important;
+    background: linear-gradient(135deg, #4a4a4a, #6a6a6a) !important;
     color: white !important;
-    border-color: #5a6677 !important;
+    border-color: #4a4a4a !important;
 }
 body.dark-mode .project-item {
     background: #2d2d44 !important;
@@ -6666,7 +6670,7 @@ body.dark-mode .project-info span {
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
             <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</div>
-            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">ÇALIŞTIĞIMIZ <span class="accent" style="color: #5a6677 !important;">KURUMLAR</span></h2>
+            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">ÇALIŞTIĞIMIZ <span class="accent" style="color: #4a4a4a !important;">KURUMLAR</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -6738,7 +6742,7 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 .ref-card:hover .ref-icon {
-    background: #5a6677 !important;
+    background: #4a4a4a !important;
     transform: scale(1.1);
     color: white !important;
 }
@@ -6773,7 +6777,7 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 <section id="sss" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
         <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS">SIK SORULAN SORULAR</div>
-        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">MERAK <span class="accent" style="color: #5a6677 !important;">EDİLENLER</span></h2>
+        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">MERAK <span class="accent" style="color: #4a4a4a !important;">EDİLENLER</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -6826,7 +6830,7 @@ loadFaqs();
 <section id="iletisim">
     <div class="section-header">
         <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</div>
-        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">BİZE <span class="accent" style="color: #5a6677 !important;">ULAŞIN</span></h2>
+        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">BİZE <span class="accent" style="color: #4a4a4a !important;">ULAŞIN</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -6900,7 +6904,7 @@ loadFaqs();
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#5a6677'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -6913,7 +6917,7 @@ loadFaqs();
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#5a6677'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -6925,7 +6929,7 @@ loadFaqs();
                             placeholder="Telefon Numaranız" 
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#5a6677'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                     </div>
@@ -6934,7 +6938,7 @@ loadFaqs();
                         <select 
                             id="contactSubject" 
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
-                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#5a6677'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
                             <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
@@ -6958,7 +6962,7 @@ loadFaqs();
                             rows="5" 
                             maxlength="1000"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; resize: vertical; transition: all 0.3s;"
-                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#5a6677'"
+                            onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         ></textarea>
                     </div>
@@ -6969,7 +6973,7 @@ loadFaqs();
                         type="submit" 
                         id="submitBtn"
                         class="contact-submit-btn"
-                        style="padding: 16px 40px; background: linear-gradient(135deg, #5a6677, #7a8694); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
+                        style="padding: 16px 40px; background: linear-gradient(135deg, #4a4a4a, #6a6a6a); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
                         data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
@@ -6986,7 +6990,7 @@ loadFaqs();
 <section id="ofis-konum" style="padding: 60px 0; ">
     <div class="section-header" style="margin-bottom: 40px; padding: 40px 20px;">
         <div class="section-label" data-tr="NEREDEYIZ" data-en="WHERE WE ARE">NEREDEYIZ</div>
-        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location">OFİS <span class="accent" style="color: #5a6677 !important;">KONUMUMUZ</span></h2>
+        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location">OFİS <span class="accent" style="color: #4a4a4a !important;">KONUMUMUZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -7005,7 +7009,7 @@ loadFaqs();
         
         <!-- Konum İkonu - Harita üzerinde -->
         <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: white; padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; z-index: 10;">
-            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #5a6677 0%, #7a8694 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -7025,7 +7029,7 @@ loadFaqs();
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
            class="directions-btn"
-           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #5a6677, #7a8694); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212,175,55,0.3);"
+           style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #4a4a4a, #6a6a6a); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(212,175,55,0.3);"
            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(212,175,55,0.3)'"
            data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
@@ -8540,8 +8544,8 @@ function toggleDarkMode() {
     document.documentElement.style.setProperty('--bg-secondary', cs.bgSection);
     document.documentElement.style.setProperty('--header-bg', cs.header);
     document.documentElement.style.setProperty('--text-color', cs.text);
-    document.documentElement.style.setProperty('--diagonal-color', cs.iconBg || '#5a6677');
-    document.documentElement.style.setProperty('--divider-color', cs.iconBg || '#5a6677');
+    document.documentElement.style.setProperty('--diagonal-color', cs.iconBg || '#4a4a4a');
+    document.documentElement.style.setProperty('--divider-color', cs.iconBg || '#4a4a4a');
     document.documentElement.style.setProperty('--divider-color-light', cs.iconBgLight || '#6b7a8a');
     
     // Body ve tüm elementleri HEMEN güncelle
@@ -9396,7 +9400,7 @@ function getSmartResponse(message) {
     }
     
     // Telefon numarası tıklanabilir
-    const phoneLink = '<a href="javascript:void(0)" onclick="handlePhoneClick()" style="color: #5a6677; font-weight: 600; text-decoration: none; border-bottom: 2px solid #5a6677;"><span id="displayPhone">(0537) 327 87 65</span></a>';
+    const phoneLink = '<a href="javascript:void(0)" onclick="handlePhoneClick()" style="color: #4a4a4a; font-weight: 600; text-decoration: none; border-bottom: 2px solid #4a4a4a;"><span id="displayPhone">(0537) 327 87 65</span></a>';
     
     // Kategoriye göre cevap
     if (matchedCategory === 'piyes') {
@@ -9667,7 +9671,7 @@ document.addEventListener('DOMContentLoaded', function() {
     referenceItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
-            this.style.borderColor = '#5a6677';
+            this.style.borderColor = '#4a4a4a';
             this.style.boxShadow = '0 5px 20px rgba(212, 175, 55, 0.15)';
         });
         item.addEventListener('mouseleave', function() {
@@ -10977,7 +10981,7 @@ function loadSiteSettings() {
         if (socialLinks.facebook) html += `<a href="${socialLinks.facebook}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #1877f2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">f</a>`;
         if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">📷</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
-        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #5a6677, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
+        if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #4a4a4a, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
         if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â–¶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
@@ -11019,14 +11023,14 @@ function loadSiteSettings() {
             .section-label { color: ${colorSettings.text ? lightenColor(colorSettings.text, 40) : '#999'} !important; }
             
             /* Accent Rengi */
-            .section-title .accent { color: ${colorSettings.iconBg || '#5a6677'} !important; }
-            .hero-brand { color: ${colorSettings.iconBg || '#5a6677'} !important; }
-            .hero-cta, .team-cta-btn, .directions-btn { background: ${colorSettings.iconBg || '#5a6677'} !important; }
-            .filter-btn.active { background: ${colorSettings.iconBg || '#5a6677'} !important; border-color: ${colorSettings.iconBg || '#5a6677'} !important; color: white !important; }
-            .filter-btn:hover { border-color: ${colorSettings.iconBg || '#5a6677'} !important; color: ${colorSettings.iconBg || '#5a6677'} !important; }
+            .section-title .accent { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
+            .hero-brand { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
+            .hero-cta, .team-cta-btn, .directions-btn { background: ${colorSettings.iconBg || '#4a4a4a'} !important; }
+            .filter-btn.active { background: ${colorSettings.iconBg || '#4a4a4a'} !important; border-color: ${colorSettings.iconBg || '#4a4a4a'} !important; color: white !important; }
+            .filter-btn:hover { border-color: ${colorSettings.iconBg || '#4a4a4a'} !important; color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
             .filter-btn.active:hover { color: white !important; }
-            .section-decoration .dot { background: ${colorSettings.iconBg || '#5a6677'} !important; }
-            nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#5a6677'} !important; }
+            .section-decoration .dot { background: ${colorSettings.iconBg || '#4a4a4a'} !important; }
+            nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
             
             /* Header & Footer */
             header, nav, .header { 
@@ -11035,7 +11039,7 @@ function loadSiteSettings() {
             }
             ${colorSettings.header && (colorSettings.header === '#1a1a1a' || colorSettings.header === '#000000' || colorSettings.header === '#111111' || colorSettings.header === '#0f0f0f' || colorSettings.header === '#451a03') ? `
                 nav a { color: #ffffff !important; }
-                nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#5a6677'} !important; }
+                nav a:hover, nav a.active { color: ${colorSettings.iconBg || '#4a4a4a'} !important; }
                 .logo-text { color: #ffffff !important; }
             ` : ''}
             footer, .footer { background: ${colorSettings.header || '#1a1a1a'} !important; }
@@ -11055,19 +11059,19 @@ function loadSiteSettings() {
             
             /* Hizmet ve Referans İkonları */
             .service-icon-v2, .ref-icon, .contact-icon-circle {
-                background: ${colorSettings.iconBg || '#5a6677'} !important;
-                background: linear-gradient(135deg, ${colorSettings.iconBg || '#5a6677'}, ${lightenColor(colorSettings.iconBg || '#5a6677', 15)}) !important;
+                background: ${colorSettings.iconBg || '#4a4a4a'} !important;
+                background: linear-gradient(135deg, ${colorSettings.iconBg || '#4a4a4a'}, ${lightenColor(colorSettings.iconBg || '#4a4a4a', 15)}) !important;
             }
             
             /* Takip Et ve Chat Butonları */
             .social-sidebar-trigger {
-                background: ${colorSettings.iconBg || '#5a6677'} !important;
+                background: ${colorSettings.iconBg || '#4a4a4a'} !important;
             }
             .unified-chat-btn {
-                background: ${colorSettings.iconBg || '#5a6677'} !important;
+                background: ${colorSettings.iconBg || '#4a4a4a'} !important;
             }
             .chat-badge {
-                background: ${colorSettings.iconBg || '#5a6677'} !important;
+                background: ${colorSettings.iconBg || '#4a4a4a'} !important;
             }
         `;
         
@@ -11078,7 +11082,7 @@ function loadSiteSettings() {
         document.head.appendChild(dynamicStyle);
         
         // Hizmet ve Referans ikonlarını güncelle (JavaScript ile oluşturuluyorlar)
-        const accentColor = colorSettings.iconBg || '#5a6677';
+        const accentColor = colorSettings.iconBg || '#4a4a4a';
         const accentLight = lightenColor(accentColor, 15);
         const gradientBg = `linear-gradient(135deg, ${accentColor}, ${accentLight})`;
         
@@ -11492,6 +11496,41 @@ function loadHeroSettings() {
     if (ctaEl && settings.ctaText) {
         ctaEl.textContent = settings.ctaText;
     }
+    
+    // RENK AYARLARI
+    // CEE yazı rengi
+    if (title1El && settings.ceeColor) {
+        title1El.style.color = settings.ceeColor;
+    }
+    
+    // MİMARLIK yazı rengi
+    if (title2El && settings.mimarlikColor) {
+        title2El.style.color = settings.mimarlikColor;
+    }
+    
+    // Açıklama rengi
+    if (descEl && settings.descColor) {
+        descEl.style.color = settings.descColor;
+    }
+    
+    // Buton rengi
+    if (ctaEl && settings.buttonColor) {
+        ctaEl.style.backgroundColor = settings.buttonColor;
+    }
+    
+    // CSS Variables da güncelle
+    if (settings.ceeColor) {
+        document.documentElement.style.setProperty('--hero-cee-color', settings.ceeColor);
+    }
+    if (settings.mimarlikColor) {
+        document.documentElement.style.setProperty('--hero-mimarlik-color', settings.mimarlikColor);
+    }
+    if (settings.descColor) {
+        document.documentElement.style.setProperty('--hero-desc-color', settings.descColor);
+    }
+    if (settings.buttonColor) {
+        document.documentElement.style.setProperty('--hero-button-color', settings.buttonColor);
+    }
 }
 
 // Sayfa yüklendiğinde
@@ -11529,7 +11568,7 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
     }
     
     function lighten(color, percent) {
-        if (!color || color.length < 4) return '#7a8694';
+        if (!color || color.length < 4) return '#6a6a6a';
         try {
             const num = parseInt(color.replace('#', ''), 16);
             const amt = Math.round(2.55 * percent);
@@ -11537,7 +11576,7 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amt));
             const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
             return '#' + ((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1);
-        } catch(e) { return '#7a8694'; }
+        } catch(e) { return '#6a6a6a'; }
     }
     
     function applyColors() {
@@ -11545,7 +11584,7 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             const cs = JSON.parse(localStorage.getItem('color_settings') || '{}');
             if (!cs || Object.keys(cs).length === 0) return;
             
-            const accent = cs.iconBg || '#5a6677';
+            const accent = cs.iconBg || '#4a4a4a';
             const accentLight = lighten(accent, 15);
             const bgMain = cs.bgMain || '#ffffff';
             const bgSection = cs.bgSection || '#f8f9fa';
@@ -11582,16 +11621,18 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             const logo = document.querySelector('.logo-text');
             if (logo) logo.style.color = isDark ? '#fff' : '#1a1a1a';
             
-            // Accent elements
-            document.querySelectorAll('.hero-brand').forEach(el => el.style.color = accent);
-            document.querySelectorAll('.hero-brand .cee-text').forEach(el => el.style.setProperty('color', accent, 'important'));
-            document.querySelectorAll('.hero-brand .mimarlik-text').forEach(el => el.style.setProperty('color', textColor, 'important'));
-            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => el.style.background = accent);
+            // Accent elements (Hero hariç - hero renkleri ayrı ayarlanıyor)
+            document.querySelectorAll('.hero-cta, .team-cta-btn, .directions-btn').forEach(el => {
+                // Hero butonu için ayrı ayar varsa onu kullan
+                const heroSettings = JSON.parse(localStorage.getItem('cee_hero_settings') || '{}');
+                if (el.id === 'heroCta' && heroSettings.buttonColor) {
+                    el.style.background = heroSettings.buttonColor;
+                } else {
+                    el.style.background = accent;
+                }
+            });
             document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
             document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
-            
-            // Hero dekoratif çizgi
-            document.querySelectorAll('.hero-brand::before').forEach(el => el.style.background = accent);
             
             // Icons with gradient
             const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';

@@ -759,6 +759,32 @@ a{color:inherit;text-decoration:none}
                             <label class="form-label">Buton Metni</label>
                             <input type="text" class="form-input" id="heroCtaText" value="İletişime Geçin" placeholder="İletişime Geçin">
                         </div>
+                        
+                        <!-- HERO RENK AYARLARI -->
+                        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                        <label class="form-label" style="margin-bottom: 15px; display: block; font-weight: 600;">🎨 Hero Renkleri:</label>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">CEE Yazı Rengi</label>
+                                <input type="color" class="form-input" id="heroCeeColor" value="#4a4a4a" style="height:45px;padding:5px;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">MİMARLIK Yazı Rengi</label>
+                                <input type="color" class="form-input" id="heroMimarlikColor" value="#6a6a6a" style="height:45px;padding:5px;">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Açıklama Rengi</label>
+                                <input type="color" class="form-input" id="heroDescColor" value="#6a6a6a" style="height:45px;padding:5px;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Buton Rengi</label>
+                                <input type="color" class="form-input" id="heroButtonColor" value="#4a4a4a" style="height:45px;padding:5px;">
+                            </div>
+                        </div>
+                        
                         <button class="btn btn-primary" onclick="saveHeroSettings()">💾 Hero Ayarlarını Kaydet</button>
                     </div>
                 </div>
@@ -860,23 +886,20 @@ a{color:inherit;text-decoration:none}
                             <div style="margin-bottom: 25px;">
                                 <label class="form-label" style="margin-bottom: 12px; display: block;">Hazır Tema Seç:</label>
                                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #1a1a2e; background: linear-gradient(135deg, #f8f9fa, #e2e8f0); color: #1a1a2e; border-radius: 8px;">
-                                        <span style="color: #1a1a2e;">●</span> CEE Metalik
+                                    <button onclick="applyTheme('cee')" class="btn" style="padding: 10px 16px; border: 2px solid #4a4a4a; background: linear-gradient(135deg, #f5f5f5, #e0e0e0); color: #4a4a4a; border-radius: 8px;">
+                                        <span style="color: #4a4a4a;">●</span> CEE Metalik
                                     </button>
-                                    <button onclick="applyTheme('premium')" class="btn" style="padding: 10px 16px; border: 2px solid #16213e; background: linear-gradient(135deg, #f8fafc, #e2e8f0); color: #16213e; border-radius: 8px;">
-                                        <span style="color: #16213e;">●</span> Premium
+                                    <button onclick="applyTheme('premium')" class="btn" style="padding: 10px 16px; border: 2px solid #6a6a6a; background: linear-gradient(135deg, #f8f8f8, #d8d8d8); color: #5a5a5a; border-radius: 8px;">
+                                        <span style="color: #6a6a6a;">●</span> Premium Gümüş
+                                    </button>
+                                    <button onclick="applyTheme('steel')" class="btn" style="padding: 10px 16px; border: 2px solid #a8a8a8; background: linear-gradient(135deg, #2d2d2d, #1a1a1a); color: #d0d0d0; border-radius: 8px;">
+                                        <span style="color: #a8a8a8;">●</span> Koyu Çelik
                                     </button>
                                     <button onclick="applyTheme('classic')" class="btn" style="padding: 10px 16px; border: 2px solid #c9a227; background: linear-gradient(135deg, #fff, #f5f5f5); color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #c9a227;">●</span> Klasik Altın
                                     </button>
-                                    <button onclick="applyTheme('modern')" class="btn" style="padding: 10px 16px; border: 2px solid #3b82f6; background: linear-gradient(135deg, #fff, #f0f7ff); color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #3b82f6;">●</span> Modern Mavi
-                                    </button>
-                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #4a5568; background: linear-gradient(135deg, #1a1a2e, #111111); color: #e2e8f0; border-radius: 8px;">
-                                        <span style="color: #a0aec0;">●</span> Koyu Mod
-                                    </button>
-                                    <button onclick="applyTheme('warm')" class="btn" style="padding: 10px 16px; border: 2px solid #d97706; background: linear-gradient(135deg, #fffbeb, #fef3c7); color: #1a1a1a; border-radius: 8px;">
-                                        <span style="color: #d97706;">●</span> Sıcak Tonlar
+                                    <button onclick="applyTheme('dark')" class="btn" style="padding: 10px 16px; border: 2px solid #4a4a4a; background: linear-gradient(135deg, #1a1a1a, #111111); color: #d0d0d0; border-radius: 8px;">
+                                        <span style="color: #a8a8a8;">●</span> Koyu Mod
                                     </button>
                                     <button onclick="applyTheme('minimal')" class="btn" style="padding: 10px 16px; border: 2px solid #000; background: #fff; color: #1a1a1a; border-radius: 8px;">
                                         <span style="color: #000;">●</span> Minimalist
@@ -1312,6 +1335,12 @@ a{color:inherit;text-decoration:none}
         if (s.title2 && document.getElementById('heroTitle2')) document.getElementById('heroTitle2').value = s.title2;
         if (s.description && document.getElementById('heroDesc')) document.getElementById('heroDesc').value = s.description;
         if (s.ctaText && document.getElementById('heroCtaText')) document.getElementById('heroCtaText').value = s.ctaText;
+        
+        // Renk ayarları
+        if (s.ceeColor && document.getElementById('heroCeeColor')) document.getElementById('heroCeeColor').value = s.ceeColor;
+        if (s.mimarlikColor && document.getElementById('heroMimarlikColor')) document.getElementById('heroMimarlikColor').value = s.mimarlikColor;
+        if (s.descColor && document.getElementById('heroDescColor')) document.getElementById('heroDescColor').value = s.descColor;
+        if (s.buttonColor && document.getElementById('heroButtonColor')) document.getElementById('heroButtonColor').value = s.buttonColor;
     }
     
     function saveHeroSettings() { 
@@ -1319,7 +1348,12 @@ a{color:inherit;text-decoration:none}
             title1: document.getElementById('heroTitle1') ? document.getElementById('heroTitle1').value : 'CEE',
             title2: document.getElementById('heroTitle2') ? document.getElementById('heroTitle2').value : 'MİMARLIK',
             description: document.getElementById('heroDesc') ? document.getElementById('heroDesc').value : '',
-            ctaText: document.getElementById('heroCtaText') ? document.getElementById('heroCtaText').value : 'İletişime Geçin'
+            ctaText: document.getElementById('heroCtaText') ? document.getElementById('heroCtaText').value : 'İletişime Geçin',
+            // Renk ayarları
+            ceeColor: document.getElementById('heroCeeColor') ? document.getElementById('heroCeeColor').value : '#1a1a2e',
+            mimarlikColor: document.getElementById('heroMimarlikColor') ? document.getElementById('heroMimarlikColor').value : '#4a5568',
+            descColor: document.getElementById('heroDescColor') ? document.getElementById('heroDescColor').value : '#4a5568',
+            buttonColor: document.getElementById('heroButtonColor') ? document.getElementById('heroButtonColor').value : '#1a1a2e'
         };
         localStorage.setItem('cee_hero_settings', JSON.stringify(settings));
         toast('Hero ayarları kaydedildi! Anasayfayı yenileyin.', 'success'); 
@@ -1472,13 +1506,20 @@ a{color:inherit;text-decoration:none}
     // HAZIR TEMA FONKSİYONU
     function applyTheme(theme) {
         const themes = {
+            // CEE Metalik - Logodaki gümüş/krom tonları
             cee: {
-                primary: '#1a1a2e', iconBg: '#4a5568', bgMain: '#ffffff', 
-                bgSection: '#f7fafc', text: '#2d3748', header: '#1a1a2e'
+                primary: '#4a4a4a', iconBg: '#4a4a4a', bgMain: '#ffffff', 
+                bgSection: '#f5f5f5', text: '#4a4a4a', header: '#2d2d2d'
             },
+            // Premium - Daha açık gümüş
             premium: {
-                primary: '#16213e', iconBg: '#16213e', bgMain: '#ffffff', 
-                bgSection: '#f8fafc', text: '#334155', header: '#0f172a'
+                primary: '#6a6a6a', iconBg: '#6a6a6a', bgMain: '#ffffff', 
+                bgSection: '#f8f8f8', text: '#5a5a5a', header: '#3a3a3a'
+            },
+            // Koyu Çelik - Koyu metalik
+            steel: {
+                primary: '#a8a8a8', iconBg: '#4a4a4a', bgMain: '#1a1a1a', 
+                bgSection: '#2d2d2d', text: '#d0d0d0', header: '#0f0f0f'
             },
             classic: {
                 primary: '#c9a227', iconBg: '#c9a227', bgMain: '#ffffff', 
@@ -1489,8 +1530,8 @@ a{color:inherit;text-decoration:none}
                 bgSection: '#f0f7ff', text: '#1e293b', header: '#0f172a'
             },
             dark: {
-                primary: '#a0aec0', iconBg: '#4a5568', bgMain: '#111111', 
-                bgSection: '#1a1a2e', text: '#e2e8f0', header: '#0a0a0f'
+                primary: '#a8a8a8', iconBg: '#4a4a4a', bgMain: '#111111', 
+                bgSection: '#1a1a1a', text: '#d0d0d0', header: '#0a0a0a'
             },
             warm: {
                 primary: '#d97706', iconBg: '#d97706', bgMain: '#fffbeb', 
