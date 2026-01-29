@@ -1852,17 +1852,20 @@
             gap: 0;
         }
 
+        /* === LOGO - BÜYÜK BAŞLANGIÇ === */
         .site-logo {
-            height: 120px;
+            height: 75px;
             width: auto;
             transition: all 0.4s ease;
             object-fit: contain;
             filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
             background: transparent !important;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
 
         header.scrolled .site-logo {
-            height: 70px;
+            height: 45px;
         }
 
         header.scrolled .logo-container {
@@ -1878,43 +1881,37 @@
             box-shadow: none;
         }
 
+        /* === LOGO ALTI YAZI === */
         .logo-text {
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: #4a4a4a;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #1a1a1a;
             text-transform: uppercase;
             transition: all 0.4s ease;
+            opacity: 1;
+            max-height: 25px;
+            overflow: hidden;
+            margin-top: 3px;
         }
 
         header.scrolled .logo-text {
-            font-size: 22px;
-            letter-spacing: 6px;
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            font-size: 0;
         }
 
         .logo-subtitle {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: #888;
-            text-transform: uppercase;
-            opacity: 1;
-            white-space: nowrap;
-            margin-top: 4px;
-            padding-left: 2px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            padding-top: 5px;
-            transition: all 0.4s ease;
+            display: none;
         }
 
         header.scrolled .logo-subtitle {
-            opacity: 0;
-            font-size: 0;
-            margin-top: 0;
-            padding-top: 0;
-            border-top: none;
-            height: 0;
-            overflow: hidden;
+            display: none;
+        }
+
+        body.dark-mode .logo-text {
+            color: #e0e0e0;
         }
 
         body.dark-mode .logo-subtitle {
@@ -5371,6 +5368,67 @@
         -webkit-transform: translateZ(0);
     }
     
+    /* === HEADER LOGO + YAZI SİSTEMİ === */
+    .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.4s ease;
+    }
+    
+    /* Logo - Büyük başlangıç */
+    #headerLogo {
+        height: 70px !important;
+        width: auto !important;
+        transition: all 0.4s ease;
+        filter: contrast(1.02);
+    }
+    
+    /* Logo altı yazı */
+    .logo-text {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: #1a1a1a;
+        opacity: 1;
+        max-height: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        white-space: nowrap;
+    }
+    
+    /* Dark mode yazı rengi */
+    body.dark-mode .logo-text {
+        color: #e0e0e0;
+    }
+    
+    /* === SCROLL EDİLDİĞİNDE === */
+    header.scrolled #headerLogo {
+        height: 45px !important;
+    }
+    
+    header.scrolled .logo-text {
+        opacity: 0;
+        max-height: 0;
+        margin-top: -5px;
+    }
+    
+    header.scrolled .logo-wrapper {
+        gap: 0;
+    }
+    
+    /* Header yükseklik ayarı */
+    header {
+        padding: 15px 0;
+        transition: all 0.4s ease;
+    }
+    
+    header.scrolled {
+        padding: 8px 0;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    
     /* Footer logo özel ayarları */
     #footerLogo {
         height: 45px !important;
@@ -5384,15 +5442,20 @@
         opacity: 1;
     }
     
-    /* Header logo */
-    #headerLogo {
-        height: 55px;
-        width: auto;
-        filter: contrast(1.02);
-    }
-    
-    header.scrolled #headerLogo {
-        height: 45px;
+    /* Responsive */
+    @media (max-width: 768px) {
+        #headerLogo {
+            height: 55px !important;
+        }
+        
+        header.scrolled #headerLogo {
+            height: 40px !important;
+        }
+        
+        .logo-text {
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
     }
     </style>
 
@@ -5449,8 +5512,9 @@ window.goToAdmin = goToAdmin;
 <header role="banner">
     <div class="header-content">
         <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer; background: transparent !important; border: none !important; box-shadow: none !important;">
-            <div class="logo-top">
-                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: contrast(1.02);">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                <span class="logo-text" id="logoText">CEE MİMARLIK</span>
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
@@ -8192,6 +8256,55 @@ function loadFooterSettings() {
         footerLogoEl.src = siteLogo;
         footerLogoEl.style.display = 'block';
     }
+    
+    // Logo ayarlarını uygula
+    applyLogoSettings();
+}
+
+function applyLogoSettings() {
+    const saved = localStorage.getItem('cee_logo_settings');
+    let settings = { bigSize: 75, smallSize: 45, opacity: 100, footerSize: 45 };
+    
+    if (saved) {
+        try {
+            settings = JSON.parse(saved);
+        } catch(e) {}
+    }
+    
+    // CSS değişkenleri oluştur
+    const styleId = 'logo-settings-style';
+    let styleEl = document.getElementById(styleId);
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = styleId;
+        document.head.appendChild(styleEl);
+    }
+    
+    const opacity = (settings.opacity || 100) / 100;
+    
+    styleEl.textContent = `
+        /* Admin'den ayarlanan logo değerleri */
+        #headerLogo, .site-logo {
+            height: ${settings.bigSize || 75}px !important;
+            opacity: ${opacity} !important;
+        }
+        
+        header.scrolled #headerLogo,
+        header.scrolled .site-logo {
+            height: ${settings.smallSize || 45}px !important;
+        }
+        
+        #footerLogo {
+            height: ${settings.footerSize || 45}px !important;
+            opacity: ${opacity} !important;
+        }
+        
+        /* Tüm logolar aynı opaklıkta */
+        .diag-logo-img,
+        .footer-logo img {
+            opacity: ${opacity} !important;
+        }
+    `;
 }
 loadFooterSettings();
 </script>
@@ -9350,13 +9463,23 @@ function scrollToTop() {
     });
 }
 
-// Scroll Progress Indicator
+// Scroll Progress Indicator + Header Scroll Effect
 window.addEventListener('scroll', () => {
     const scrollProgress = document.getElementById('scrollProgress');
     const progressCircle = document.getElementById('progressCircle');
+    const header = document.querySelector('header');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Header scroll effect
+    if (header) {
+        if (scrollTop > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
     
     if (scrollProgress && progressCircle) {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = scrollTop / scrollHeight;
         
