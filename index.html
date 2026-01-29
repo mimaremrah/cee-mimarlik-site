@@ -11634,6 +11634,37 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.querySelectorAll('.section-title .accent').forEach(el => el.style.setProperty('color', accent, 'important'));
             document.querySelectorAll('.section-decoration .dot').forEach(el => el.style.background = accent);
             
+            // Section decoration çizgileri (simge rengiyle değişir)
+            document.querySelectorAll('.section-decoration').forEach(el => {
+                el.style.setProperty('--decoration-color', accent);
+            });
+            
+            // Section decoration çizgilerini CSS ile güncelle
+            const styleId = 'dynamic-decoration-style';
+            let styleEl = document.getElementById(styleId);
+            if (!styleEl) {
+                styleEl = document.createElement('style');
+                styleEl.id = styleId;
+                document.head.appendChild(styleEl);
+            }
+            styleEl.textContent = `
+                .section-decoration::before,
+                .section-decoration::after {
+                    background: ${accent} !important;
+                    opacity: 0.3;
+                }
+                .section-decoration .dot {
+                    background: ${accent} !important;
+                }
+                .deco-line {
+                    background: ${accent} !important;
+                }
+                .deco-diamond-big,
+                .deco-diamond-small {
+                    background: ${accent} !important;
+                }
+            `;
+            
             // Icons with gradient
             const grad = 'linear-gradient(135deg, ' + accent + ', ' + accentLight + ')';
             document.querySelectorAll('.service-icon-v2, .ref-icon, .contact-icon-circle').forEach(el => el.style.setProperty('background', grad, 'important'));
