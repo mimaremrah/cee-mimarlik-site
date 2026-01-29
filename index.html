@@ -5995,65 +5995,33 @@ window.goToAdmin = goToAdmin;
     animation: fadeInUp 0.8s ease 6.3s forwards;
 }
 
-/* CTA Buton - Logodaki koyu metalik ton + PARLAKLIK */
+/* CTA Buton - METALİK PARLAK (varsayılan) */
 .hero-cta {
     display: inline-block;
     padding: 15px 35px;
     background: linear-gradient(
-        135deg,
-        #3a3a3a 0%,
-        #5a5a5a 25%,
+        180deg,
+        #8a8a8a 0%,
         #6a6a6a 50%,
-        #5a5a5a 75%,
-        #3a3a3a 100%
+        #4a4a4a 100%
     );
-    color: #ffffff;
+    color: #1a1a1a;
     text-decoration: none;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s ease;
     border: none;
+    border-radius: 30px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 6.5s forwards;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Buton üzerinde parlak çizgi animasyonu */
-.hero-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.2),
-        transparent
-    );
-    transition: left 0.5s ease;
-}
-
-.hero-cta:hover::before {
-    left: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .hero-cta:hover {
-    background: linear-gradient(
-        135deg,
-        #4a4a4a 0%,
-        #6a6a6a 25%,
-        #7a7a7a 50%,
-        #6a6a6a 75%,
-        #4a4a4a 100%
-    );
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 @keyframes fadeInUp {
@@ -6511,16 +6479,13 @@ window.goToAdmin = goToAdmin;
 </div>
 
 <style>
-/* Architect Divider - Varsayılan ve dinamik renk + PARLAKLIK */
+/* Architect Divider - METALİK PARLAK (üstten alta) */
 .architect-divider {
     background: linear-gradient(
-        135deg,
-        #3a3a3a 0%,
-        #5a5a5a 15%,
+        180deg,
+        #9a9a9a 0%,
         #7a7a7a 30%,
-        #8a8a8a 50%,
-        #7a7a7a 70%,
-        #5a5a5a 85%,
+        #5a5a5a 60%,
         #3a3a3a 100%
     );
     position: relative;
@@ -6534,7 +6499,7 @@ window.goToAdmin = goToAdmin;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
 }
 
 /* Dark mode için divider renkleri */
@@ -11705,13 +11670,13 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--divider-color-light', accentLight);
             document.documentElement.style.setProperty('--diagonal-color', accent);
             
-            // Architect Divider bandını güncelle - METALİK PARLAKLIK
+            // Architect Divider bandını güncelle - METALİK PARLAKLIK (üstten alta)
             const architectDivider = document.getElementById('architectDivider');
             if (architectDivider) {
                 const darkAccent = darken(accent, 20);
                 const lightAccent = lighten(accent, 25);
                 const shineAccent = lighten(accent, 40);
-                architectDivider.style.background = `linear-gradient(135deg, ${darkAccent} 0%, ${accent} 15%, ${lightAccent} 30%, ${shineAccent} 50%, ${lightAccent} 70%, ${accent} 85%, ${darkAccent} 100%)`;
+                architectDivider.style.background = `linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 60%, ${darkAccent} 100%)`;
             }
             
             // Metalik gradient fonksiyonu
@@ -11736,24 +11701,26 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             const shineAccent = lighten(accent, 35);
             
             metallicStyle.textContent = `
-                /* Metalik Butonlar */
+                /* Metalik Butonlar - Parlak Üst, Koyu Alt */
                 .hero-cta, .team-cta-btn, .directions-btn {
-                    background: linear-gradient(135deg, ${darkAccent} 0%, ${accent} 25%, ${lightAccent} 50%, ${accent} 75%, ${darkAccent} 100%) !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+                    background: linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 70%, ${darkAccent} 100%) !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+                    color: #1a1a1a !important;
+                    border-radius: 30px !important;
                 }
                 .hero-cta:hover, .team-cta-btn:hover, .directions-btn:hover {
-                    background: linear-gradient(135deg, ${accent} 0%, ${lightAccent} 25%, ${shineAccent} 50%, ${lightAccent} 75%, ${accent} 100%) !important;
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4) !important;
                 }
                 
                 /* Metalik İkonlar */
                 .service-icon-v2, .ref-icon, .contact-icon-circle {
-                    background: linear-gradient(135deg, ${darkAccent} 0%, ${accent} 30%, ${lightAccent} 50%, ${accent} 70%, ${darkAccent} 100%) !important;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+                    background: linear-gradient(180deg, ${shineAccent} 0%, ${lightAccent} 30%, ${accent} 70%, ${darkAccent} 100%) !important;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2) !important;
                 }
                 
                 /* Filter butonları */
                 .filter-btn.active {
-                    background: linear-gradient(135deg, ${darkAccent}, ${lightAccent}) !important;
+                    background: linear-gradient(180deg, ${lightAccent}, ${darkAccent}) !important;
                     border-color: ${accent} !important;
                 }
             `;
