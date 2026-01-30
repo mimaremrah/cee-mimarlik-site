@@ -5896,7 +5896,7 @@ window.goToAdmin = goToAdmin;
             <span class="cee-text" id="heroTitle1">
                 <span class="letter letter-1">C</span><span class="letter letter-2">E</span><span class="letter letter-3">E</span>
             </span>
-            <span class="mimarlik-text" id="heroTitle2">MİMARLIK & YAPI SİSTEMLERİ</span>
+            <span class="mimarlik-text" id="heroTitle2">Mimarlık & Yapı Tasarımları</span>
         </h1>
         
         <!-- Açıklama -->
@@ -6310,15 +6310,15 @@ window.goToAdmin = goToAdmin;
     display: none;
 }
 
-/* Hero İçerik - SAĞDA BAŞLA */
+/* Hero İçerik - SAĞDA SABİT, HARFLER TEK TEK SOLA GEÇİYOR */
 .hero-content-lares {
     position: absolute;
     bottom: 15%;
-    right: 8%;
+    right: 5%;
     left: auto;
     z-index: 40;
-    max-width: 600px;
-    text-align: right;
+    max-width: 500px;
+    text-align: center;
     opacity: 1;
 }
 
@@ -6348,11 +6348,11 @@ window.goToAdmin = goToAdmin;
     filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.5));
 }
 
-/* Her harf - SAĞDAN GEL, ORTADA BEKLE, SOLA GİT VE KAL */
+/* Her harf - TEK ANİMASYON: SAĞDAN GEL → BEKLE → SOLA GİT VE KAL */
 .hero-brand .cee-text .letter {
     display: inline-block;
     opacity: 0;
-    transform: translateX(200px);
+    transform: translateX(80px);
     /* GÜÇLÜ METALİK GEÇİŞ - her harfe ayrı */
     background: linear-gradient(
         180deg,
@@ -6367,96 +6367,99 @@ window.goToAdmin = goToAdmin;
     background-clip: text;
 }
 
-/* C harfi */
+/* C harfi - 6 saniyelik tam döngü */
 .hero-brand .cee-text .letter-1 { 
-    animation: letterAnimation 5s ease-in-out 0.3s forwards;
+    animation: letterFullCycle 6s ease-in-out 0.3s forwards;
 }
 
 /* E harfi (1.) */
 .hero-brand .cee-text .letter-2 { 
-    animation: letterAnimation 5s ease-in-out 0.5s forwards;
+    animation: letterFullCycle 6s ease-in-out 0.5s forwards;
 }
 
 /* E harfi (2.) */
 .hero-brand .cee-text .letter-3 { 
-    animation: letterAnimation 5s ease-in-out 0.7s forwards;
+    animation: letterFullCycle 6s ease-in-out 0.7s forwards;
 }
 
-/* SAĞDAN GEL → ORTADA BEKLE → SOLA GİT VE KAL */
-@keyframes letterAnimation {
+/* HARF TAM DÖNGÜ: Sağdan gel → Bekle → Sola git ve KAL */
+@keyframes letterFullCycle {
     0% {
         opacity: 0;
-        transform: translateX(200px);
+        transform: translateX(80px);
     }
-    /* Sağdan ortaya geldi */
-    12% {
+    /* Sağdan geldi - yerleşti */
+    10% {
         opacity: 1;
         transform: translateX(0);
     }
-    /* Ortada bekliyor */
-    55% {
+    /* Bekliyor - plan çiziliyor */
+    50% {
         opacity: 1;
         transform: translateX(0);
     }
-    /* Sola gitti ve KALDI */
+    /* Sola gitti ve KALDI - planın yanında */
     100% {
         opacity: 1;
-        transform: translateX(-42vw);
+        transform: translateX(-55vw);
     }
 }
 
-/* MİMARLIK & YAPI SİSTEMLERİ */
+/* Mimarlık & Yapı Tasarımları */
 .hero-brand .mimarlik-text {
     display: block;
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 6px;
-    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-top: 15px;
     opacity: 0;
-    transform: translateX(150px);
+    transform: translateX(60px);
     color: #ffffff;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    animation: textAnimation 5s ease-in-out 1s forwards;
+    animation: textFullCycle 6s ease-in-out 1s forwards;
 }
 
-/* METİN ANİMASYONU: Sağdan gel → Bekle → Sola git ve KAL */
-@keyframes textAnimation {
+/* METİN TAM DÖNGÜ: Sağdan gel → Bekle → Sola git ve KAL */
+@keyframes textFullCycle {
     0% {
         opacity: 0;
-        transform: translateX(150px);
+        transform: translateX(60px);
     }
-    12% {
+    10% {
         opacity: 1;
         transform: translateX(0);
     }
-    55% {
+    50% {
         opacity: 1;
         transform: translateX(0);
     }
+    /* Sola gitti ve KALDI - planın yanında */
     100% {
         opacity: 1;
-        transform: translateX(-42vw);
+        transform: translateX(-55vw);
     }
 }
 
-/* Açıklama - sağdan gel, bekle, sola git ve KAL */
+/* Açıklama - sola git ve KAL */
 .hero-description {
-    font-size: 15px;
-    line-height: 1.9;
+    font-size: 14px;
+    line-height: 1.8;
     color: rgba(255,255,255,0.9);
     font-weight: 400;
-    margin-bottom: 30px;
-    max-width: 450px;
+    margin-bottom: 25px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0;
-    transform: translateX(120px);
-    animation: textAnimation 5s ease-in-out 1.3s forwards;
+    transform: translateX(50px);
+    animation: textFullCycle 6s ease-in-out 1.3s forwards;
     text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 
-/* CTA Buton - LOGO UYUMLU METALİK GEÇİŞ */
+/* CTA Buton - sola git ve KAL */
 .hero-cta {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 14px 35px;
     background: linear-gradient(
         180deg,
         #d0d0d0 0%,
@@ -6467,16 +6470,16 @@ window.goToAdmin = goToAdmin;
     );
     color: #1a1a1a;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     transition: all 0.3s ease;
     border: 1px solid #1a1a1a;
     border-radius: 50px;
     opacity: 0;
-    transform: translateX(100px);
-    animation: textAnimation 5s ease-in-out 1.6s forwards;
+    transform: translateX(40px);
+    animation: textFullCycle 6s ease-in-out 1.6s forwards;
     box-shadow: 
         inset 0 2px 0 rgba(255,255,255,0.5),
         inset 0 -2px 0 rgba(0,0,0,0.2),
@@ -6576,11 +6579,11 @@ window.goToAdmin = goToAdmin;
 /* ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 992px) {
     .hero-content-lares {
-        right: 5%;
+        right: 3%;
         left: auto;
         bottom: 12%;
         max-width: 90%;
-        text-align: right;
+        text-align: center;
     }
     .hero-brand::before {
         display: none;
@@ -6589,38 +6592,38 @@ window.goToAdmin = goToAdmin;
         font-size: 48px;
         letter-spacing: 10px;
     }
-    .hero-brand .cee-text .letter {
-        animation: letterAnimationMobile 5s ease-in-out 0.3s forwards;
+    .hero-brand .cee-text .letter-1 {
+        animation: letterFullCycleMobile 5s ease-in-out 0.3s forwards;
     }
     .hero-brand .cee-text .letter-2 {
-        animation-delay: 0.5s;
+        animation: letterFullCycleMobile 5s ease-in-out 0.5s forwards;
     }
     .hero-brand .cee-text .letter-3 {
-        animation-delay: 0.7s;
+        animation: letterFullCycleMobile 5s ease-in-out 0.7s forwards;
     }
-    @keyframes letterAnimationMobile {
-        0% { opacity: 0; transform: translateX(100px); }
+    @keyframes letterFullCycleMobile {
+        0% { opacity: 0; transform: translateX(60px); }
         12% { opacity: 1; transform: translateX(0); }
         55% { opacity: 1; transform: translateX(0); }
-        100% { opacity: 1; transform: translateX(-40vw); }
+        100% { opacity: 1; transform: translateX(-50vw); }
     }
     .hero-brand .mimarlik-text {
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 3px;
-        animation: textAnimationMobile 5s ease-in-out 1s forwards;
+        animation: textFullCycleMobile 5s ease-in-out 1s forwards;
     }
     .hero-description {
-        max-width: 400px;
-        animation: textAnimationMobile 5s ease-in-out 1.3s forwards;
+        max-width: 350px;
+        animation: textFullCycleMobile 5s ease-in-out 1.3s forwards;
     }
     .hero-cta {
-        animation: textAnimationMobile 5s ease-in-out 1.6s forwards;
+        animation: textFullCycleMobile 5s ease-in-out 1.6s forwards;
     }
-    @keyframes textAnimationMobile {
-        0% { opacity: 0; transform: translateX(80px); }
+    @keyframes textFullCycleMobile {
+        0% { opacity: 0; transform: translateX(50px); }
         12% { opacity: 1; transform: translateX(0); }
         55% { opacity: 1; transform: translateX(0); }
-        100% { opacity: 1; transform: translateX(-40vw); }
+        100% { opacity: 1; transform: translateX(-50vw); }
     }
 }
 
@@ -6628,18 +6631,15 @@ window.goToAdmin = goToAdmin;
     .hero-content-lares {
         bottom: 10%;
         right: 3%;
-    }
-    .hero-location {
-        font-size: 9px;
-        letter-spacing: 3px;
+        max-width: 95%;
     }
     .hero-brand .cee-text {
         font-size: 36px;
         letter-spacing: 8px;
     }
     .hero-brand .mimarlik-text {
-        font-size: 9px;
-        letter-spacing: 1px;
+        font-size: 11px;
+        letter-spacing: 2px;
     }
     .hero-description {
         font-size: 12px;
