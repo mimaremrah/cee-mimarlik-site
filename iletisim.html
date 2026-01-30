@@ -18,6 +18,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Cross-Browser Uyumluluk CSS -->
+    <link rel="stylesheet" href="cross-browser-fix.css">
+    
+    <!-- IE11 ve Eski Tarayıcılar için Polyfills -->
+    <script src="polyfills.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -661,7 +667,7 @@
                         <option value="fiyat">Fiyat Teklifi</option>
                         <option value="randevu">Randevu Talebi</option>
                         <option value="bilgi">Bilgi Alma</option>
-                        <option value="diger">Diğer</option>
+                        <option value="diger">DiÄŸer</option>
                     </select>
                 </div>
                 
@@ -792,7 +798,7 @@ function loadContactSettings() {
     }
 }
 
-// Form işlemleri
+// Form iÅŸlemleri
 function setupForm() {
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');

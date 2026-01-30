@@ -7,6 +7,8 @@
     <meta name="robots" content="noindex, nofollow">
     <title>CEE Mimarlık | Yönetim Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cross-browser-fix.css">
+    <script src="polyfills.js" defer></script>
     <style>
 /* Cross-Browser & Mobile Uyumluluk */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box}
@@ -1724,7 +1726,7 @@ a{color:inherit;text-decoration:none}
             document.getElementById('logoPlaceholder').style.display = 'none'; 
             document.getElementById('deleteLogoBtn').style.display = 'block';
             document.getElementById('sidebarLogo').innerHTML = `<img src="${logo}">`;
-            // Sağ alt sabit logo
+            // SaÄŸ alt sabit logo
             document.getElementById('fixedLogoImg').src = logo;
             document.getElementById('fixedLogo').style.display = 'block';
         } else {
@@ -1780,7 +1782,7 @@ a{color:inherit;text-decoration:none}
         reader.readAsDataURL(f); 
     }
     function deleteLogo() {
-        if (confirm('Logoyu silmek istediğinize emin misiniz?')) {
+        if (confirm('Logoyu silmek istediÄŸinize emin misiniz?')) {
             localStorage.removeItem('site_logo');
             loadLogo();
             toast('Logo silindi', 'success');

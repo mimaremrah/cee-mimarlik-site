@@ -121,6 +121,15 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
     
+    <!-- Cross-Browser Uyumluluk CSS -->
+    <link rel="stylesheet" href="cross-browser-fix.css">
+    
+    <!-- IE11 ve Eski Tarayıcılar için Polyfills -->
+    <!--[if IE]>
+    <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+    <![endif]-->
+    <script src="polyfills.js" defer></script>
+    
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
@@ -5353,7 +5362,7 @@
         border-bottom: 2px solid #0a0a0a !important;
     }
 
-    /* === SECTION BAŞLIK ACCENT === */
+    /* === SECTION BAÅžLIK ACCENT === */
     .section-title .accent {
         background: linear-gradient(180deg, #909090 0%, #1a1a1a 100%) !important;
         -webkit-background-clip: text !important;
@@ -5912,7 +5921,7 @@ window.goToAdmin = goToAdmin;
     <!-- SCROLL DOWN INDICATOR                                                   -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="scroll-indicator">
-        <div class="scroll-text">Keşfet</div>
+        <div class="scroll-text">KeÅŸfet</div>
         <div class="scroll-arrow"></div>
     </div>
     
@@ -6322,7 +6331,7 @@ window.goToAdmin = goToAdmin;
     opacity: 1;
 }
 
-/* Şehir Etiketi - Gizli */
+/* Åžehir Etiketi - Gizli */
 .hero-location {
     display: none;
 }
@@ -9798,7 +9807,7 @@ window.addEventListener('scroll', () => {
         } catch(e) {}
     }
     
-    // Header scroll effect + Floating logo (3 Aşama)
+    // Header scroll effect + Floating logo (3 AÅŸama)
     if (header) {
         // Aşama 1: Sayfa başı (0-100px) - Header logo görünür
         if (scrollTop <= 100) {
@@ -9855,10 +9864,10 @@ function updateFloatingLogo() {
         floatingLogoImg.src = siteLogo;
     }
     
-    // Default değerler (3 Aşama)
+    // Default deÄŸerler (3 AÅŸama)
     let logoText = 'CEE MİMARLIK';
-    let bigSize = 70;      // 1. Aşama: Header logo
-    let smallSize = 55;    // 2. Aşama: Floating logo
+    let bigSize = 70;      // 1. AÅŸama: Header logo
+    let smallSize = 55;    // 2. AÅŸama: Floating logo
     let miniSize = 40;     // 3. Aşama: Mini logo (projeler sonrası)
     let opacity = 1;
     
@@ -9897,7 +9906,7 @@ function updateFloatingLogo() {
         document.head.appendChild(logoStyle);
     }
     logoStyle.textContent = `
-        /* 1. AŞAMA: Header logo boyutu */
+        /* 1. AÅžAMA: Header logo boyutu */
         .logo-wrapper .site-logo,
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
@@ -12412,7 +12421,7 @@ document.addEventListener('DOMContentLoaded', loadHeroSettings);
             document.documentElement.style.setProperty('--header-color', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
-            // Divider/Bant renkleri (Simge Arka Plan ile değişir)
+            // Divider/Bant renkleri (Simge Arka Plan ile deÄŸiÅŸir)
             document.documentElement.style.setProperty('--divider-color', accent);
             document.documentElement.style.setProperty('--divider-color-light', accentLight);
             document.documentElement.style.setProperty('--diagonal-color', accent);
