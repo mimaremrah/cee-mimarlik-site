@@ -6341,33 +6341,50 @@ window.goToAdmin = goToAdmin;
 /* CEE Yazısı Container */
 .hero-brand .cee-text {
     display: block;
-    font-size: 72px;
-    font-weight: 800;
-    letter-spacing: 12px;
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 8px;
     line-height: 1;
-    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.5));
+    /* Container'da gölge yok, harflerde var */
 }
 
-/* Her harf - TEK ANİMASYON: SAĞDAN GEL → BEKLE → SOLA GİT VE KAL */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* CEE HARF ANİMASYONU - SAĞDAN GEL, BEKLE, SOLA GİT VE KAL                     */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Her harf - 3D METALİK EFEKT */
 .hero-brand .cee-text .letter {
     display: inline-block;
     opacity: 0;
     transform: translateX(80px);
-    /* GÜÇLÜ METALİK GEÇİŞ - her harfe ayrı */
+    /* GÜÇLÜ METALİK GRADİENT - Parlak üst, koyu alt */
     background: linear-gradient(
         180deg,
-        #e8e8e8 0%,
-        #d0d0d0 15%,
-        #a0a0a0 40%,
+        #ffffff 0%,
+        #f0f0f0 10%,
+        #c0c0c0 30%,
+        #909090 50%,
         #606060 70%,
-        #303030 100%
+        #404040 85%,
+        #202020 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* 3D DERİNLİK GÖLGESİ - Katmanlı */
+    filter: 
+        drop-shadow(1px 1px 0px rgba(255,255,255,0.3))
+        drop-shadow(2px 2px 0px rgba(80,80,80,0.8))
+        drop-shadow(3px 3px 0px rgba(60,60,60,0.7))
+        drop-shadow(4px 4px 0px rgba(40,40,40,0.6))
+        drop-shadow(5px 5px 0px rgba(20,20,20,0.5))
+        drop-shadow(6px 8px 10px rgba(0,0,0,0.5))
+        drop-shadow(0px 15px 25px rgba(0,0,0,0.3));
+    /* Harfler arası boşluk */
+    margin: 0 2px;
 }
 
-/* C harfi - 6 saniyelik tam döngü */
+/* C harfi */
 .hero-brand .cee-text .letter-1 { 
     animation: letterFullCycle 6s ease-in-out 0.3s forwards;
 }
@@ -6388,17 +6405,14 @@ window.goToAdmin = goToAdmin;
         opacity: 0;
         transform: translateX(80px);
     }
-    /* Sağdan geldi - yerleşti */
     10% {
         opacity: 1;
         transform: translateX(0);
     }
-    /* Bekliyor - plan çiziliyor */
     50% {
         opacity: 1;
         transform: translateX(0);
     }
-    /* Sola gitti ve KALDI - planın yanında */
     100% {
         opacity: 1;
         transform: translateX(-55vw);
@@ -6419,7 +6433,7 @@ window.goToAdmin = goToAdmin;
     animation: textFullCycle 6s ease-in-out 1s forwards;
 }
 
-/* METİN TAM DÖNGÜ: Sağdan gel → Bekle → Sola git ve KAL */
+/* METİN TAM DÖNGÜ */
 @keyframes textFullCycle {
     0% {
         opacity: 0;
@@ -6433,7 +6447,6 @@ window.goToAdmin = goToAdmin;
         opacity: 1;
         transform: translateX(0);
     }
-    /* Sola gitti ve KALDI - planın yanında */
     100% {
         opacity: 1;
         transform: translateX(-55vw);
@@ -6589,8 +6602,15 @@ window.goToAdmin = goToAdmin;
         display: none;
     }
     .hero-brand .cee-text {
-        font-size: 48px;
-        letter-spacing: 10px;
+        font-size: 56px;
+        letter-spacing: 6px;
+    }
+    .hero-brand .cee-text .letter {
+        filter: 
+            drop-shadow(1px 1px 0px rgba(255,255,255,0.3))
+            drop-shadow(2px 2px 0px rgba(60,60,60,0.7))
+            drop-shadow(3px 3px 0px rgba(40,40,40,0.5))
+            drop-shadow(4px 6px 8px rgba(0,0,0,0.4));
     }
     .hero-brand .cee-text .letter-1 {
         animation: letterFullCycleMobile 5s ease-in-out 0.3s forwards;
