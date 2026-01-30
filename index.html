@@ -16,6 +16,9 @@
         bgSection: '#1a1a1a', text: '#e2e8f0', header: '#0f0f0f'
     };
     
+    // Global dil değişkeni - sayfa yüklenmeden önce ayarla
+    var SITE_LANG = 'tr';
+    
     if (typeof localStorage !== 'undefined') {
         if (!localStorage.getItem('light_color_settings')) {
             localStorage.setItem('light_color_settings', JSON.stringify(LIGHT_THEME_DEFAULT));
@@ -24,8 +27,16 @@
             localStorage.setItem('dark_color_settings', JSON.stringify(DARK_THEME_DEFAULT));
         }
         
-        // CSS Variables'ı HEMEN ayarla
+        // Dil ayarını HEMEN oku
+        SITE_LANG = localStorage.getItem('cee_public_lang') || 'tr';
+        
+        // Dark mode HEMEN uygula (sayfa yüklenmeden önce)
         var isDarkMode = localStorage.getItem('cee_public_dark') === 'true';
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark-mode');
+        }
+        
+        // CSS Variables'ı HEMEN ayarla
         var ts = isDarkMode 
             ? JSON.parse(localStorage.getItem('dark_color_settings') || '{}')
             : JSON.parse(localStorage.getItem('light_color_settings') || '{}');
@@ -1796,6 +1807,13 @@
             --shadow: rgba(255, 255, 255, 0.05);
         }
 
+        /* Dark Mode Geçiş Animasyonu */
+        body, body *, header, footer, section, 
+        .service-card, .service-card-v2, .ref-card, .faq-item, .team-member,
+        .section-label, .section-title, nav a, .logo-text {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
         /* HEADER & NAV */
         header {
             position: fixed;
@@ -1824,6 +1842,409 @@
 
         body.dark-mode header.scrolled {
             background: rgba(20, 20, 20, 0.98);
+        }
+
+        /* Dark Mode Navigation */
+        body.dark-mode nav a {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode nav a:hover,
+        body.dark-mode nav a.active {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode .logo-text {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .logo-subtitle {
+            color: #909090 !important;
+        }
+
+        /* Dark Mode Sections */
+        body.dark-mode section {
+            background-color: #1a1a1a !important;
+        }
+
+        body.dark-mode #hizmetler,
+        body.dark-mode #referanslar,
+        body.dark-mode #ofis-konum,
+        body.dark-mode #sss,
+        body.dark-mode #ekip,
+        body.dark-mode #projeler {
+            background-color: #111111 !important;
+        }
+
+        /* Dark Mode Cards */
+        body.dark-mode .service-card,
+        body.dark-mode .service-card-v2 {
+            background: #252525 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .service-card h3,
+        body.dark-mode .service-card-v2 h3 {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .service-card p,
+        body.dark-mode .service-card-v2 p {
+            color: #a0a0a0 !important;
+        }
+
+        body.dark-mode .ref-card {
+            background: #252525 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .ref-card h4 {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .ref-card p {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode FAQ */
+        body.dark-mode .faq-item {
+            background: #252525 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .faq-item h3,
+        body.dark-mode .faq-question {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .faq-answer,
+        body.dark-mode .faq-answer p {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode Team */
+        body.dark-mode .team-member {
+            background: #252525 !important;
+        }
+
+        body.dark-mode .team-member h3 {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .team-member p {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode Contact/Location */
+        body.dark-mode .location-card,
+        body.dark-mode .contact-card {
+            background: #252525 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .location-card p,
+        body.dark-mode .contact-card p {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode Buttons - Metalik stil korunacak */
+        body.dark-mode .filter-btn {
+            background: #252525 !important;
+            border-color: #404040 !important;
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .filter-btn:hover {
+            border-color: #606060 !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .filter-btn.active {
+            background: linear-gradient(180deg, #505050 0%, #303030 100%) !important;
+            border-color: #606060 !important;
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode Footer */
+        body.dark-mode footer {
+            background: #111111 !important;
+            border-top-color: #333 !important;
+        }
+
+        body.dark-mode .footer-copyright {
+            color: #808080 !important;
+        }
+
+        body.dark-mode .footer-social-bottom a {
+            background: #252525 !important;
+            color: #a0a0a0 !important;
+            border-color: #404040 !important;
+        }
+
+        body.dark-mode .footer-social-bottom a:hover {
+            background: #404040 !important;
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode Social Panel */
+        body.dark-mode .social-sidebar-panel {
+            background: linear-gradient(180deg, #404040 0%, #353535 25%, #2a2a2a 50%, #1f1f1f 75%, #151515 100%) !important;
+        }
+
+        body.dark-mode .social-sidebar-panel h4,
+        body.dark-mode .social-sidebar-panel .social-header-text {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .social-sidebar-panel .social-follow-text {
+            color: #b0b0b0 !important;
+        }
+
+        /* Dark Mode Chat Menu */
+        body.dark-mode .chat-menu {
+            background: linear-gradient(180deg, #404040 0%, #353535 25%, #2a2a2a 50%, #1f1f1f 75%, #151515 100%) !important;
+        }
+
+        body.dark-mode .chat-menu-title {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .chat-menu-subtitle {
+            color: #b0b0b0 !important;
+        }
+
+        /* Dark Mode Map Badge */
+        body.dark-mode .map-location-badge {
+            background: linear-gradient(180deg, #404040 0%, #353535 25%, #2a2a2a 50%, #1f1f1f 75%, #151515 100%) !important;
+        }
+
+        body.dark-mode .map-location-badge span {
+            color: #e0e0e0 !important;
+        }
+
+        /* Dark Mode Scroll Indicator */
+        body.dark-mode .scroll-indicator {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .scroll-text {
+            color: #909090;
+        }
+
+        /* Dark Mode Butonlar */
+        body.dark-mode .hero-cta,
+        body.dark-mode .team-cta-btn,
+        body.dark-mode .directions-btn {
+            background: linear-gradient(180deg, #505050 0%, #404040 25%, #303030 50%, #202020 75%, #151515 100%) !important;
+            color: #e0e0e0 !important;
+            border: 1px solid #505050 !important;
+        }
+
+        body.dark-mode .hero-cta:hover,
+        body.dark-mode .team-cta-btn:hover,
+        body.dark-mode .directions-btn:hover {
+            background: linear-gradient(180deg, #606060 0%, #505050 25%, #404040 50%, #303030 75%, #202020 100%) !important;
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode İletişim Bölümü */
+        body.dark-mode #iletisim {
+            background-color: #111111 !important;
+        }
+
+        body.dark-mode .contact-form {
+            background: #1a1a1a !important;
+        }
+
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background: #252525 !important;
+            border-color: #404040 !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .contact-form input::placeholder,
+        body.dark-mode .contact-form textarea::placeholder {
+            color: #808080 !important;
+        }
+
+        body.dark-mode .contact-form label {
+            color: #b0b0b0 !important;
+        }
+
+        /* Dark Mode İkon Daireleri */
+        body.dark-mode .service-icon,
+        body.dark-mode .service-icon-v2,
+        body.dark-mode .ref-icon,
+        body.dark-mode .contact-icon {
+            background: linear-gradient(180deg, #505050 0%, #404040 25%, #303030 50%, #202020 75%, #151515 100%) !important;
+        }
+
+        /* Dark Mode Project Cards */
+        body.dark-mode .project-card {
+            background: #252525 !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .project-card h3 {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .project-card p {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode Lightbox */
+        body.dark-mode #lightbox {
+            background: rgba(0, 0, 0, 0.95) !important;
+        }
+
+        /* Dark Mode WhatsApp Panel */
+        body.dark-mode .whatsapp-panel {
+            background: #1a1a1a !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .whatsapp-panel input,
+        body.dark-mode .whatsapp-panel textarea {
+            background: #252525 !important;
+            border-color: #404040 !important;
+            color: #e0e0e0 !important;
+        }
+
+        /* Dark Mode Stats Container */
+        body.dark-mode .stats-item,
+        body.dark-mode .stat-item {
+            background: #252525 !important;
+        }
+
+        body.dark-mode .stats-item h3,
+        body.dark-mode .stat-item h3,
+        body.dark-mode .stat-number {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .stats-item p,
+        body.dark-mode .stat-item p,
+        body.dark-mode .stat-label {
+            color: #a0a0a0 !important;
+        }
+
+        /* Dark Mode Tüm Beyaz Arka Planlar */
+        body.dark-mode .bg-white,
+        body.dark-mode [style*="background: white"],
+        body.dark-mode [style*="background: #fff"],
+        body.dark-mode [style*="background-color: white"],
+        body.dark-mode [style*="background-color: #fff"] {
+            background: #252525 !important;
+            background-color: #252525 !important;
+        }
+
+        /* Dark Mode Text Colors */
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, 
+        body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode p, body.dark-mode span, body.dark-mode li {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode a {
+            color: #c0c0c0;
+        }
+
+        body.dark-mode a:hover {
+            color: #ffffff;
+        }
+
+        /* html.dark-mode için de aynı stilleri uygula */
+        html.dark-mode body {
+            background-color: #111111 !important;
+        }
+
+        html.dark-mode header {
+            background: rgba(20, 20, 20, 0.97) !important;
+        }
+
+        html.dark-mode section {
+            background-color: #1a1a1a !important;
+        }
+
+        /* Dark Mode Hamburger Menu */
+        body.dark-mode .hamburger span,
+        body.dark-mode .hamburger-menu span {
+            background-color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .mobile-menu,
+        body.dark-mode .mobile-nav {
+            background: #1a1a1a !important;
+        }
+
+        body.dark-mode .mobile-menu a,
+        body.dark-mode .mobile-nav a {
+            color: #e0e0e0 !important;
+            border-bottom-color: #333 !important;
+        }
+
+        body.dark-mode .mobile-menu a:hover,
+        body.dark-mode .mobile-nav a:hover {
+            background: #252525 !important;
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode Dropdown */
+        body.dark-mode .nav-dropdown .dropdown-content,
+        body.dark-mode .dropdown-menu {
+            background: #1a1a1a !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .nav-dropdown .dropdown-content a,
+        body.dark-mode .dropdown-menu a {
+            color: #b0b0b0 !important;
+        }
+
+        body.dark-mode .nav-dropdown .dropdown-content a:hover,
+        body.dark-mode .dropdown-menu a:hover {
+            background: #252525 !important;
+            color: #ffffff !important;
+        }
+
+        /* Dark Mode Modal */
+        body.dark-mode .modal-content {
+            background: #1a1a1a !important;
+            border-color: #333 !important;
+        }
+
+        body.dark-mode .modal-content h2,
+        body.dark-mode .modal-content h3 {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .modal-content p {
+            color: #b0b0b0 !important;
+        }
+
+        /* Dark Mode Toast */
+        body.dark-mode .toast {
+            background: #252525 !important;
+            color: #e0e0e0 !important;
+            border-color: #404040 !important;
+        }
+
+        /* Dark Mode Scrollbar */
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #1a1a1a !important;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background: #404040 !important;
+        }
+
+        body.dark-mode ::-webkit-scrollbar-thumb:hover {
+            background: #505050 !important;
         }
 
         .header-content {
@@ -2039,6 +2460,89 @@
             border-color: var(--accent);
         }
 
+        /* DİL SEÇİCİ DROPDOWN */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            min-width: 160px;
+            z-index: 10002;
+            overflow: hidden;
+            animation: langMenuFadeIn 0.2s ease;
+        }
+
+        @keyframes langMenuFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lang-menu.show {
+            display: block;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .lang-option:hover {
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+        }
+
+        .lang-option.active {
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            color: white;
+        }
+
+        .lang-flag {
+            display: inline-flex;
+            width: 24px;
+            height: 16px;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .lang-flag svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Dark Mode için dil menüsü */
+        body.dark-mode .lang-menu {
+            background: #252525;
+            border-color: #404040;
+        }
+
+        body.dark-mode .lang-option {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .lang-option:hover {
+            background: linear-gradient(135deg, #353535, #404040);
+        }
+
+        body.dark-mode .lang-option.active {
+            background: linear-gradient(135deg, #505050, #606060);
+        }
+
         /* HERO SLIDER - MODERN */
         .hero {
             height: 100vh;
@@ -2104,46 +2608,74 @@
             animation: heroFadeIn 1s ease-out;
         }
         
-        /* CEE yazısına metalik gradient */
+        /* CEE yazısına metalik 3D gradient */
         .hero-brand .cee-text {
             display: block;
-            font-weight: 800;
-            font-size: 72px;
-            letter-spacing: 12px;
+            font-weight: 900;
+            font-size: 100px;
+            letter-spacing: 20px;
             background: linear-gradient(180deg, 
-                #e0e0e0 0%, 
-                #c0c0c0 20%,
-                #909090 50%,
-                #606060 80%,
-                #303030 100%
+                #f0f0f0 0%,
+                #d8d8d8 15%,
+                #b8b8b8 35%,
+                #909090 55%,
+                #686868 75%,
+                #404040 100%
             );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8))
+                    drop-shadow(4px 4px 0px rgba(0,0,0,0.5))
+                    drop-shadow(6px 6px 2px rgba(0,0,0,0.3));
             text-shadow: none;
+            position: relative;
         }
         
+        /* Alt yazı - MİMARLIK & YAPI SİSTEMLERİ metalik */
         .hero-brand .mimarlik-text {
-            color: #ffffff !important;
             display: block;
-            font-weight: 400;
-            font-size: 28px;
-            letter-spacing: 18px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            margin-top: 5px;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-top: 15px;
+            background: linear-gradient(180deg, 
+                #f0f0f0 0%,
+                #d8d8d8 15%,
+                #b8b8b8 35%,
+                #909090 55%,
+                #686868 75%,
+                #404040 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+                    drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+                    drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+            text-shadow: none;
         }
         
         .hero-description {
             font-size: 15px;
             line-height: 1.9;
-            color: #ffffff; /* IE fallback */
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
+            font-weight: 500;
             margin-bottom: 35px;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-            -webkit-animation: heroFadeIn 1s ease-out 0.2s both;
-            animation: heroFadeIn 1s ease-out 0.2s both;
+            background: linear-gradient(180deg, 
+                #e8e8e8 0%,
+                #d0d0d0 25%,
+                #b0b0b0 50%,
+                #909090 75%,
+                #707070 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+                    drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+                    drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+            opacity: 0;
+            transform: translateX(50px);
         }
         
         .hero-cta {
@@ -2194,12 +2726,18 @@
                 letter-spacing: 8px !important;
             }
             .hero-brand .cee-text {
-                font-size: 48px !important;
-                letter-spacing: 8px !important;
+                font-size: 70px !important;
+                letter-spacing: 14px !important;
+                filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.7))
+                        drop-shadow(4px 4px 2px rgba(0,0,0,0.4)) !important;
             }
             .hero-brand .mimarlik-text {
                 font-size: 20px !important;
-                letter-spacing: 10px !important;
+                letter-spacing: 8px !important;
+                margin-top: 12px !important;
+                filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                        drop-shadow(2px 2px 0px rgba(0,0,0,0.4))
+                        drop-shadow(3px 3px 1px rgba(0,0,0,0.2)) !important;
             }
         }
         
@@ -2215,14 +2753,22 @@
                 letter-spacing: 6px !important;
             }
             .hero-brand .cee-text {
-                font-size: 36px !important;
-                letter-spacing: 6px !important;
+                font-size: 48px !important;
+                letter-spacing: 10px !important;
+                filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.6))
+                        drop-shadow(3px 3px 2px rgba(0,0,0,0.3)) !important;
             }
             .hero-brand .mimarlik-text {
-                letter-spacing: 6px;
+                font-size: 14px !important;
+                letter-spacing: 6px !important;
+                margin-top: 10px !important;
+                filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                        drop-shadow(2px 2px 1px rgba(0,0,0,0.3)) !important;
             }
             .hero-description {
                 font-size: 14px;
+                filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                        drop-shadow(2px 2px 1px rgba(0,0,0,0.3));
             }
         }
 
@@ -2321,30 +2867,79 @@
         }
 
         .hero-title {
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: 4px;
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: 8px;
             margin-bottom: 20px;
-            color: white;
-            text-shadow: 
-                0 2px 4px rgba(0,0,0,0.8),
-                0 4px 8px rgba(0,0,0,0.6),
-                0 8px 16px rgba(0,0,0,0.4);
+            background: linear-gradient(180deg, 
+                #ffffff 0%,
+                #e0e0e0 15%,
+                #c0c0c0 30%,
+                #a0a0a0 50%,
+                #808080 70%,
+                #606060 85%,
+                #404040 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             line-height: 1.2;
             text-transform: uppercase;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.8))
+                    drop-shadow(0 4px 4px rgba(0,0,0,0.6))
+                    drop-shadow(0 8px 8px rgba(0,0,0,0.4))
+                    drop-shadow(0 16px 16px rgba(0,0,0,0.2));
+            position: relative;
+        }
+
+        /* Hero title için 3D derinlik efekti */
+        .hero-title::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, 
+                #303030 0%,
+                #1a1a1a 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: translate(3px, 3px);
         }
 
         body.dark-mode .hero-title {
-            color: #ffffff;
+            background: linear-gradient(180deg, 
+                #f0f0f0 0%,
+                #d0d0d0 15%,
+                #b0b0b0 30%,
+                #909090 50%,
+                #707070 70%,
+                #505050 85%,
+                #303030 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-meta {
-            font-size: 18px;
-            color: rgba(255,255,255,0.95);
-            letter-spacing: 2px;
-            text-shadow: 
-                0 1px 3px rgba(0,0,0,0.8),
-                0 2px 6px rgba(0,0,0,0.5);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            background: linear-gradient(180deg, 
+                #e0e0e0 0%,
+                #b0b0b0 30%,
+                #808080 60%,
+                #505050 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.7))
+                    drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+            text-transform: uppercase;
         }
 
         /* Navigation Arrows */
@@ -2472,18 +3067,24 @@
 
         .section-label {
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 700;
             letter-spacing: 6px;
-            color: var(--secondary, #999);
+            background: linear-gradient(180deg, #707070 0%, #404040 50%, #1a1a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .section-title {
             font-size: 46px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 6px;
-            color: #2c2c2c !important;
+            background: linear-gradient(180deg, #808080 0%, #505050 30%, #2a2a2a 70%, #1a1a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-transform: uppercase;
             line-height: 1.3;
             margin: 0;
@@ -2493,9 +3094,11 @@
         .section-title span.accent,
         h2.section-title .accent,
         h2.section-title span.accent {
-            color: #4a4a4a; /* IE fallback */
-            color: #4a4a4a !important;
-            font-weight: 400;
+            background: linear-gradient(180deg, #606060 0%, #303030 50%, #1a1a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
         }
 
         /* Alt çizgi dekorasyon */
@@ -2505,6 +3108,16 @@
             justify-content: center;
             gap: 12px;
             margin-top: 25px;
+            transition: none;
+            cursor: default;
+            position: relative;
+            z-index: 100;
+            padding: 20px 50px;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         .section-decoration::before,
@@ -2513,26 +3126,37 @@
             width: 50px;
             height: 1px;
             background: #e0e0e0;
+            pointer-events: none;
         }
 
         .section-decoration .dot {
-            width: 6px;
-            height: 6px;
+            width: 12px;
+            height: 12px;
             background: #4a4a4a;
             transform: rotate(45deg);
+            pointer-events: none;
         }
 
         /* Dark mode */
         body.dark-mode .section-label {
-            color: var(--dm-text-secondary, #94a3b8);
+            background: linear-gradient(180deg, #b0b0b0 0%, #808080 50%, #606060 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         body.dark-mode .section-title {
-            color: #f1f5f9;
+            background: linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 30%, #707070 70%, #505050 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         body.dark-mode .section-title .accent {
-            color: #4a4a4a !important;
+            background: linear-gradient(180deg, #c0c0c0 0%, #909090 50%, #606060 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         body.dark-mode .section-decoration::before,
@@ -2870,20 +3494,33 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: #4a4a4a;
+            background: linear-gradient(180deg, 
+                #d0d0d0 0%, 
+                #b0b0b0 20%,
+                #808080 50%,
+                #505050 80%,
+                #2a2a2a 100%
+            );
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.2),
+                0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
             z-index: 1001;
+            border: 1px solid #1a1a1a;
         }
 
         .unified-chat-btn:hover {
-            transform: scale(1.1);
-            filter: brightness(1.1);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.6),
+                inset 0 -2px 0 rgba(0,0,0,0.3),
+                0 14px 35px rgba(0, 0, 0, 0.45);
         }
 
         .chat-badge {
@@ -2915,12 +3552,19 @@
             position: fixed;
             bottom: 100px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: linear-gradient(180deg, 
+                #e8e8e8 0%, 
+                #d0d0d0 20%,
+                #b8b8b8 50%,
+                #a0a0a0 80%,
+                #888888 100%
+            );
+            border: 1px solid #1a1a1a;
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.6),
+                inset 0 -2px 0 rgba(0,0,0,0.15),
+                0 10px 40px rgba(0,0,0,0.3);
             padding: 8px;
             min-width: 300px;
             opacity: 0;
@@ -2932,9 +3576,18 @@
         }
 
         body.dark-mode .chat-menu {
-            background: rgba(44, 44, 44, 0.98);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background: linear-gradient(180deg, 
+                #505050 0%, 
+                #404040 20%,
+                #303030 50%,
+                #202020 80%,
+                #1a1a1a 100%
+            );
+            border: 1px solid #0a0a0a;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.3),
+                0 10px 40px rgba(0,0,0,0.5);
         }
 
         body.dark-mode .chat-menu-item:hover {
@@ -2942,15 +3595,16 @@
         }
 
         body.dark-mode .chat-menu-title {
-            color: #fff;
+            color: #e0e0e0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         body.dark-mode .chat-menu-subtitle {
-            color: #aaa;
+            color: #b0b0b0;
         }
 
         body.dark-mode .chat-menu-divider {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
         }
 
         .chat-menu.active {
@@ -2974,12 +3628,12 @@
         }
 
         .chat-menu-item:active {
-            background: #e8e8e8;
+            background: rgba(0,0,0,0.1);
             transform: scale(0.98);
         }
 
         .chat-menu-item:hover {
-            background: #f5f5f5;
+            background: rgba(0,0,0,0.08);
         }
 
         .chat-menu-icon {
@@ -3005,15 +3659,17 @@
         }
 
         .chat-menu-title {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
-            color: #2c2c2c;
+            color: #1a1a1a;
             margin-bottom: 2px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
         }
 
         .chat-menu-subtitle {
             font-size: 12px;
-            color: #666;
+            color: #2a2a2a;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.3);
         }
 
         .chat-menu-badge {
@@ -3044,8 +3700,56 @@
 
         .chat-menu-divider {
             height: 1px;
-            background: #e0e0e0;
+            background: rgba(0,0,0,0.2);
             margin: 8px 0;
+        }
+
+        .chat-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            font-weight: 700;
+            font-size: 12px;
+            color: #1a1a1a;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .chat-menu-close-btn {
+            background: linear-gradient(180deg, #d0d0d0, #909090);
+            border: 1px solid #1a1a1a;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #1a1a1a;
+            line-height: 1;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .chat-menu-close-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        body.dark-mode .chat-menu-header {
+            border-bottom-color: rgba(255,255,255,0.2);
+            color: #e0e0e0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        body.dark-mode .chat-menu-close-btn {
+            background: linear-gradient(180deg, #505050, #303030);
+            color: #e0e0e0;
         }
 
         /* AI CHAT WINDOW */
@@ -3521,8 +4225,8 @@
         }
 
         .whatsapp-btn:hover {
-            transform: scale(1.15);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 14px 30px rgba(37, 211, 102, 0.6);
         }
 
         .whatsapp-btn svg {
@@ -4565,8 +5269,14 @@
             z-index: 9998;
         }
         .social-sidebar-trigger {
-            background: #4a4a4a;
-            color: #fff;
+            background: linear-gradient(180deg, 
+                #d0d0d0 0%, 
+                #b0b0b0 20%,
+                #808080 50%,
+                #505050 80%,
+                #2a2a2a 100%
+            ) !important;
+            color: #1a1a1a !important;
             padding: 10px 12px;
             writing-mode: horizontal-tb;
             cursor: pointer;
@@ -4574,15 +5284,27 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-weight: 600;
-            font-size: 11px;
+            font-weight: 700;
+            font-size: 12px;
             letter-spacing: 0.5px;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.2),
+                4px 4px 15px rgba(0,0,0,0.25);
             transition: all 0.3s ease;
+            border: 1px solid #1a1a1a;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        }
+        .social-sidebar-trigger span {
+            color: #1a1a1a !important;
         }
         .social-sidebar-trigger:hover {
             padding-right: 16px;
-            filter: brightness(1.1);
+            transform: translateY(-6px);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.6),
+                inset 0 -2px 0 rgba(0,0,0,0.3),
+                6px 12px 30px rgba(0,0,0,0.4);
         }
         .social-sidebar-icon { font-size: 12px; }
         .social-sidebar-content {
@@ -4590,41 +5312,77 @@
             left: 0;
             bottom: 50px;
             width: 180px;
-            background: white;
+            background: linear-gradient(180deg, 
+                #e8e8e8 0%, 
+                #d0d0d0 20%,
+                #b8b8b8 50%,
+                #a0a0a0 80%,
+                #888888 100%
+            );
             border-radius: 0 12px 12px 0;
-            box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.6),
+                inset 0 -2px 0 rgba(0,0,0,0.15),
+                5px 5px 30px rgba(0,0,0,0.3);
             padding: 12px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             visibility: hidden;
             transform: translateX(-100%);
+            border: 1px solid #1a1a1a;
         }
         .social-sidebar-content.active {
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
         }
-        body.dark-mode .social-sidebar-content { background: #1a1a1a; }
+        body.dark-mode .social-sidebar-content { 
+            background: linear-gradient(180deg, 
+                #606060 0%, 
+                #505050 20%,
+                #404040 50%,
+                #303030 80%,
+                #202020 100%
+            ); 
+        }
         .social-sidebar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
             padding-bottom: 8px;
-            border-bottom: 1px solid #f0f0f0;
-            font-weight: 600;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            font-weight: 700;
             font-size: 12px;
-            color: var(--primary);
+            color: #1a1a1a;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
         }
-        body.dark-mode .social-sidebar-header { border-bottom-color: #333333; color: #e2e8f0; }
+        body.dark-mode .social-sidebar-header { 
+            border-bottom-color: rgba(255,255,255,0.2); 
+            color: #e0e0e0; 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
         .social-close-btn {
-            background: none;
-            border: none;
-            font-size: 20px;
+            background: linear-gradient(180deg, #d0d0d0, #909090);
+            border: 1px solid #1a1a1a;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
             cursor: pointer;
-            color: #999;
+            color: #1a1a1a;
             line-height: 1;
             padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        }
+        .social-close-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
         .social-sidebar-links {
             display: flex;
@@ -4654,20 +5412,37 @@
         .social-sidebar-content.active .social-sidebar-link:nth-child(2) { transition-delay: 0.2s; }
         .social-sidebar-content.active .social-sidebar-link:nth-child(3) { transition-delay: 0.3s; }
         .social-sidebar-content.active .social-sidebar-link:nth-child(4) { transition-delay: 0.4s; }
-        .social-sidebar-link.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .social-sidebar-link.twitter { background: linear-gradient(135deg, #4a4a4a, #b8962e); }
-        .social-sidebar-link.linkedin { background: #0a66c2; }
-        .social-sidebar-link:hover { transform: scale(1.03) !important; box-shadow: 0 5px 20px rgba(0,0,0,0.25); }
+        .social-sidebar-link.instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .social-sidebar-link.twitter { 
+            background: linear-gradient(135deg, #1a1a1a, #333); 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .social-sidebar-link.linkedin { 
+            background: #0a66c2; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .social-sidebar-link:hover { 
+            transform: translateY(-5px) scale(1.05) !important; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important; 
+        }
         .social-sidebar-footer {
             margin-top: 10px;
             padding-top: 8px;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid rgba(0,0,0,0.2);
             text-align: center;
-            font-weight: 600;
-            color: #4a4a4a;
-            font-size: 10px;
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 11px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
         }
-        body.dark-mode .social-sidebar-footer { border-top-color: #333333; }
+        body.dark-mode .social-sidebar-footer { 
+            border-top-color: rgba(255,255,255,0.2); 
+            color: #e0e0e0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
         
         /* =============================================
            MADDE 7: DARK MODE DÜZELTMELERİ
@@ -5117,8 +5892,8 @@
     }
 
     .section-decoration .dot {
-        width: 5px !important;
-        height: 5px !important;
+        width: 12px !important;
+        height: 12px !important;
         background: var(--accent-gold) !important;
     }
 
@@ -5142,12 +5917,14 @@
         transition: all 0.3s ease !important;
     }
     
-    /* İKON DAİRELERİ - Hover: renkli bg, beyaz ikon */
+    /* İKON DAİRELERİ - Hover: renkli bg, beyaz ikon, yukarı çıkma */
     .contact-icon-circle:hover,
     .service-card-v2:hover .service-icon-v2,
     .ref-card:hover .ref-icon {
         background: var(--accent-gold) !important;
         color: white !important;
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.3) !important;
     }
     
     .contact-icon-circle:hover svg,
@@ -5268,33 +6045,47 @@
         --logo-dark: #1a1a1a;
     }
 
-    /* === HERO CEE YAZISI - GÜÇLÜ METALİK === */
+    /* === HERO CEE YAZISI - TEMİZ 3D METALİK === */
     .hero-brand .cee-text {
         background: linear-gradient(180deg, 
-            #e8e8e8 0%, 
-            #d0d0d0 15%,
-            #a0a0a0 40%,
-            #606060 70%,
-            #303030 100%
+            #f0f0f0 0%,
+            #d8d8d8 15%,
+            #b8b8b8 35%,
+            #909090 55%,
+            #686868 75%,
+            #404040 100%
         ) !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         background-clip: text !important;
-        filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.6)) !important;
-        font-size: 72px !important;
-        font-weight: 800 !important;
-        letter-spacing: 12px !important;
+        filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8))
+                drop-shadow(4px 4px 0px rgba(0,0,0,0.5))
+                drop-shadow(6px 6px 2px rgba(0,0,0,0.3)) !important;
+        font-size: 100px !important;
+        font-weight: 900 !important;
+        letter-spacing: 20px !important;
     }
 
-    /* === HERO MİMARLIK YAZISI === */
+    /* === HERO MİMARLIK YAZISI - TEMİZ 3D === */
     .hero-brand .mimarlik-text {
-        color: #ffffff !important;
-        background: none !important;
-        -webkit-text-fill-color: #ffffff !important;
-        font-size: 28px !important;
-        font-weight: 400 !important;
-        letter-spacing: 18px !important;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
+        background: linear-gradient(180deg, 
+            #f0f0f0 0%,
+            #d8d8d8 15%,
+            #b8b8b8 35%,
+            #909090 55%,
+            #686868 75%,
+            #404040 100%
+        ) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+                drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+                drop-shadow(3px 3px 1px rgba(0,0,0,0.3)) !important;
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        letter-spacing: 10px !important;
+        margin-top: 15px !important;
     }
 
     /* === TÜM BUTONLAR - LOGO GRADIENT (Görseldeki gibi) === */
@@ -5325,8 +6116,8 @@
         box-shadow: 
             inset 0 2px 0 rgba(255,255,255,0.6),
             inset 0 -2px 0 rgba(0,0,0,0.3),
-            0 8px 25px rgba(0,0,0,0.35) !important;
-        transform: translateY(-2px);
+            0 12px 30px rgba(0,0,0,0.4) !important;
+        transform: translateY(-6px) scale(1.02);
     }
 
     /* === İKONLAR - LOGO GRADIENT === */
@@ -5360,6 +6151,13 @@
         background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 25%, #606060 50%, #303030 75%, #1a1a1a 100%) !important;
         border-top: 1px solid rgba(255,255,255,0.5) !important;
         border-bottom: 2px solid #0a0a0a !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .architect-divider:hover,
+    #architectDivider:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
     }
 
     /* === SECTION BAÅžLIK ACCENT === */
@@ -5698,22 +6496,22 @@ window.goToAdmin = goToAdmin;
         <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer; background: transparent !important; border: none !important; box-shadow: none !important;">
             <div class="logo-wrapper">
                 <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
-                <span class="logo-text" id="logoText">CEE MİMARLIK</span>
+                <span class="logo-text" id="logoText" data-tr="CEE MİMARLIK" data-en="CEE ARCHITECTURE" data-de="CEE ARCHITEKTUR" data-ru="CEE АРХИТЕКТУРА">CEE MİMARLIK</span>
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
-            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()" data-tr="Anasayfa" data-en="Home">Anasayfa</a>
-            <a href="#projeler" onclick="closeMobileMenu()" data-tr="Projeler" data-en="Projects">Projeler</a>
-            <a href="#hakkimizda" onclick="closeMobileMenu()" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</a>
-            <a href="#hizmetler" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
-            <a href="#referanslar" onclick="closeMobileMenu()" data-tr="Referanslar" data-en="References">Referanslar</a>
-            <a href="#sss" onclick="closeMobileMenu()" data-tr="SSS" data-en="FAQ">SSS</a>
+            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()" data-tr="Anasayfa" data-en="Home" data-de="Startseite" data-ru="Главная">Anasayfa</a>
+            <a href="#projeler" onclick="closeMobileMenu()" data-tr="Projeler" data-en="Projects" data-de="Projekte" data-ru="Проекты">Projeler</a>
+            <a href="#hakkimizda" onclick="closeMobileMenu()" data-tr="Hakkımızda" data-en="About Us" data-de="Über Uns" data-ru="О Нас">Hakkımızda</a>
+            <a href="#hizmetler" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services" data-de="Dienstleistungen" data-ru="Услуги">Hizmetler</a>
+            <a href="#referanslar" onclick="closeMobileMenu()" data-tr="Referanslar" data-en="References" data-de="Referenzen" data-ru="Рекомендации">Referanslar</a>
+            <a href="#sss" onclick="closeMobileMenu()" data-tr="SSS" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ">SSS</a>
             
             <!-- E-HİZMETLER DROPDOWN -->
             <div class="nav-dropdown" style="display: inline-block; position: relative;">
-                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;" data-tr="🛒 E-Hizmetler" data-en="🛒 E-Services">
+                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;" data-tr="🛒 E-Hizmetler" data-en="🛒 E-Services" data-de="🛒 E-Dienste" data-ru="🛒 Э-Услуги">
                     🛒 E-Hizmetler
                 </a>
                 <div class="ehizmetler-menu" id="ehizmetlerMenu" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 10001; margin-top: 10px;">
@@ -5723,20 +6521,50 @@ window.goToAdmin = goToAdmin;
                 </div>
             </div>
             
-            <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact">İletişim</a>
+            <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact" data-de="Kontakt" data-ru="Контакт">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="btn-minimal lang-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Dil deÄŸiÅŸtir" style="display: flex; align-items: center; gap: 6px;">
-                <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
-                    <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
-                        <rect fill="#E30A17" width="1200" height="800"/>
-                        <circle fill="#fff" cx="425" cy="400" r="200"/>
-                        <circle fill="#E30A17" cx="475" cy="400" r="160"/>
-                        <polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/>
-                    </svg>
-                </span>
-                <span id="langText">TR</span>
-            </button>
+            <!-- DİL SEÇİCİ DROPDOWN -->
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="btn-minimal lang-btn" onclick="toggleLangMenu(event)" id="langBtn" aria-label="Dil değiştir" style="display: flex; align-items: center; gap: 6px;">
+                    <span id="langFlag" style="display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden;">
+                        <svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
+                            <rect fill="#E30A17" width="1200" height="800"/>
+                            <circle fill="#fff" cx="425" cy="400" r="200"/>
+                            <circle fill="#E30A17" cx="475" cy="400" r="160"/>
+                            <polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/>
+                        </svg>
+                    </span>
+                    <span id="langText">TR</span>
+                    <span style="font-size: 10px; margin-left: 2px;">▼</span>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <div class="lang-option" onclick="setLanguage('tr')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 1200 800"><rect fill="#E30A17" width="1200" height="800"/><circle fill="#fff" cx="425" cy="400" r="200"/><circle fill="#E30A17" cx="475" cy="400" r="160"/><polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/></svg>
+                        </span>
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('en')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 60 30"><rect fill="#012169" width="60" height="30"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>
+                        </span>
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('de')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 5 3"><rect fill="#000" width="5" height="3"/><rect fill="#D00" y="1" width="5" height="2"/><rect fill="#FFCE00" y="2" width="5" height="1"/></svg>
+                        </span>
+                        <span>Deutsch</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('ru')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 9 6"><rect fill="#fff" width="9" height="3"/><rect fill="#0039A6" y="1" width="9" height="2"/><rect fill="#D52B1E" y="2" width="9" height="2"/><rect fill="#fff" width="9" height="2"/><rect fill="#0039A6" y="2" width="9" height="2"/><rect fill="#D52B1E" y="4" width="9" height="2"/></svg>
+                        </span>
+                        <span>Русский</span>
+                    </div>
+                </div>
+            </div>
             <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema değiştir">🌙</button>
         </div>
     </div>
@@ -5746,11 +6574,11 @@ window.goToAdmin = goToAdmin;
 <div id="socialSidebar" class="social-sidebar">
     <div class="social-sidebar-trigger" onclick="toggleSocialSidebar()">
         <span class="social-sidebar-icon">👋</span>
-        <span class="social-sidebar-text" data-tr="Takip Et" data-en="Follow">Takip Et</span>
+        <span class="social-sidebar-text" data-tr="Takip Et" data-en="Follow" data-de="Folgen" data-ru="Подписаться">Takip Et</span>
     </div>
     <div class="social-sidebar-content" id="socialSidebarContent">
         <div class="social-sidebar-header">
-            <span data-tr="Sosyal Medyalarımız" data-en="Our Social Media">Sosyal Medyalarımız</span>
+            <span data-tr="Sosyal Medyalarımız" data-en="Our Social Media" data-de="Unsere Sozialen Medien" data-ru="Наши Соцсети">Sosyal Medyalarımız</span>
             <button onclick="closeSocialSidebar()" class="social-close-btn">×</button>
         </div>
         <div class="social-sidebar-links">
@@ -5767,7 +6595,7 @@ window.goToAdmin = goToAdmin;
                 <span>LinkedIn</span>
             </a>
         </div>
-        <div class="social-sidebar-footer" data-tr="Bizi Takip Edin!" data-en="Follow Us!">
+        <div class="social-sidebar-footer" data-tr="Bizi Takip Edin!" data-en="Follow Us!" data-de="Folgen Sie Uns!" data-ru="Подпишитесь на Нас!">
             Bizi Takip Edin!
         </div>
     </div>
@@ -5905,23 +6733,23 @@ window.goToAdmin = goToAdmin;
             <span class="cee-text" id="heroTitle1">
                 <span class="letter letter-1">C</span><span class="letter letter-2">E</span><span class="letter letter-3">E</span>
             </span>
-            <span class="mimarlik-text" id="heroTitle2">Mimarlık & Yapı Tasarımları</span>
+            <span class="mimarlik-text" id="heroTitle2" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS" data-de="ARCHITEKTUR & BAUSYSTEME" data-ru="АРХИТЕКТУРА И СТРОИТЕЛЬСТВО">MİMARLIK & YAPI SİSTEMLERİ</span>
         </h1>
         
         <!-- Açıklama -->
-        <p class="hero-description" id="heroDescription">
+        <p class="hero-description" id="heroDescription" data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz." data-en="We reshape your living spaces, offices, villas and commercial projects with turnkey project planning, design and implementation services from A to Z." data-de="Wir gestalten Ihre Wohnräume, Büros, Villen und Gewerbeprojekte mit schlüsselfertiger Projektplanung, Design und Umsetzung von A bis Z neu." data-ru="Мы преобразуем ваши жилые помещения, офисы, виллы и коммерческие проекты с помощью проектирования, дизайна и реализации под ключ от А до Я.">
             Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz.
         </p>
         
         <!-- CTA Buton -->
-        <a href="#iletisim" class="hero-cta" id="heroCta">İletişime Geçin</a>
+        <a href="#iletisim" class="hero-cta" id="heroCta" data-tr="İletişime Geçin" data-en="Contact Us" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами">İletişime Geçin</a>
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <!-- SCROLL DOWN INDICATOR                                                   -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="scroll-indicator">
-        <div class="scroll-text">KeÅŸfet</div>
+        <div class="scroll-text" data-tr="Keşfet" data-en="Explore" data-de="Entdecken" data-ru="Исследовать">Keşfet</div>
         <div class="scroll-arrow"></div>
     </div>
     
@@ -6072,21 +6900,11 @@ window.goToAdmin = goToAdmin;
 
 /* DIAGONAL LOGO - Çizginin altında, ortada */
 .diagonal-logo {
-    position: absolute;
-    bottom: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    opacity: 0;
-    animation: logoAppear 0.6s ease-out 0.8s forwards,
-               lineDisappear 0.5s ease-out 3.5s forwards;
+    display: none !important;
 }
 
 .diag-logo-img {
-    height: 60px;
-    width: auto;
-    opacity: 0.5;
-    filter: brightness(2) drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    display: none !important;
 }
 
 @keyframes logoAppear {
@@ -6220,9 +7038,7 @@ window.goToAdmin = goToAdmin;
 }
 
 .merge-logo {
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: mergeLogoIn 0.6s ease-out 4.3s forwards;
+    display: none !important;
 }
 
 .logo-cee {
@@ -6366,31 +7182,30 @@ window.goToAdmin = goToAdmin;
     display: inline-block;
     opacity: 0;
     transform: translateX(80px);
-    /* GÜÇLÜ METALİK GRADİENT - Parlak üst, koyu alt */
+    /* TEMİZ METALİK GRADİENT */
     background: linear-gradient(
         180deg,
-        #ffffff 0%,
-        #f0f0f0 10%,
-        #c0c0c0 30%,
-        #909090 50%,
-        #606060 70%,
-        #404040 85%,
-        #202020 100%
+        #f0f0f0 0%,
+        #d8d8d8 15%,
+        #b8b8b8 35%,
+        #909090 55%,
+        #686868 75%,
+        #404040 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    /* 3D DERİNLİK GÖLGESİ - Katmanlı */
+    /* TEMİZ 3D GÖLGE - Keskin */
     filter: 
-        drop-shadow(1px 1px 0px rgba(255,255,255,0.3))
-        drop-shadow(2px 2px 0px rgba(80,80,80,0.8))
-        drop-shadow(3px 3px 0px rgba(60,60,60,0.7))
-        drop-shadow(4px 4px 0px rgba(40,40,40,0.6))
-        drop-shadow(5px 5px 0px rgba(20,20,20,0.5))
-        drop-shadow(6px 8px 10px rgba(0,0,0,0.5))
-        drop-shadow(0px 15px 25px rgba(0,0,0,0.3));
+        drop-shadow(1px 1px 0px rgba(255,255,255,0.2))
+        drop-shadow(2px 2px 0px rgba(50,50,50,0.9))
+        drop-shadow(3px 3px 0px rgba(40,40,40,0.8))
+        drop-shadow(4px 4px 0px rgba(30,30,30,0.7))
+        drop-shadow(5px 5px 0px rgba(20,20,20,0.6))
+        drop-shadow(6px 8px 4px rgba(0,0,0,0.4));
     /* Harfler arası boşluk */
-    margin: 0 2px;
+    margin: 0 3px;
+    font-size: 100px;
 }
 
 /* C harfi */
@@ -6428,17 +7243,33 @@ window.goToAdmin = goToAdmin;
     }
 }
 
-/* Mimarlık & Yapı Tasarımları */
+/* MİMARLIK & YAPI SİSTEMLERİ */
 .hero-brand .mimarlik-text {
     display: block;
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 4px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 10px;
     margin-top: 15px;
     opacity: 0;
     transform: translateX(60px);
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    /* METALİK GRADİENT - CEE ile aynı */
+    background: linear-gradient(
+        180deg,
+        #f0f0f0 0%,
+        #d8d8d8 15%,
+        #b8b8b8 35%,
+        #909090 55%,
+        #686868 75%,
+        #404040 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* ORTA SEVİYE 3D GÖLGE */
+    filter: 
+        drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+        drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+        drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
     animation: textFullCycle 6s ease-in-out 1s forwards;
 }
 
@@ -6464,10 +7295,9 @@ window.goToAdmin = goToAdmin;
 
 /* Açıklama - sola git ve KAL */
 .hero-description {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
-    color: rgba(255,255,255,0.9);
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 25px;
     max-width: 400px;
     margin-left: auto;
@@ -6475,7 +7305,22 @@ window.goToAdmin = goToAdmin;
     opacity: 0;
     transform: translateX(50px);
     animation: textFullCycle 6s ease-in-out 1.3s forwards;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    /* METALİK GRADİENT */
+    background: linear-gradient(
+        180deg,
+        #e8e8e8 0%,
+        #d0d0d0 25%,
+        #b0b0b0 50%,
+        #909090 75%,
+        #707070 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* 3D GÖLGE - Orta seviye */
+    filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+            drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+            drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
 }
 
 /* CTA Buton - sola git ve KAL */
@@ -6540,6 +7385,17 @@ window.goToAdmin = goToAdmin;
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s ease 7s forwards;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    transform: translateX(-50%) translateY(-8px);
+}
+
+.scroll-indicator:hover .scroll-arrow {
+    border-color: #6a6a6a;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 @keyframes fadeIn {
@@ -6562,6 +7418,7 @@ window.goToAdmin = goToAdmin;
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .scroll-arrow::before {
@@ -6611,15 +7468,16 @@ window.goToAdmin = goToAdmin;
         display: none;
     }
     .hero-brand .cee-text {
-        font-size: 56px;
-        letter-spacing: 6px;
+        font-size: 70px;
+        letter-spacing: 14px;
     }
     .hero-brand .cee-text .letter {
+        font-size: 70px;
         filter: 
-            drop-shadow(1px 1px 0px rgba(255,255,255,0.3))
-            drop-shadow(2px 2px 0px rgba(60,60,60,0.7))
-            drop-shadow(3px 3px 0px rgba(40,40,40,0.5))
-            drop-shadow(4px 6px 8px rgba(0,0,0,0.4));
+            drop-shadow(1px 1px 0px rgba(255,255,255,0.2))
+            drop-shadow(2px 2px 0px rgba(50,50,50,0.85))
+            drop-shadow(3px 3px 0px rgba(30,30,30,0.7))
+            drop-shadow(4px 5px 3px rgba(0,0,0,0.4));
     }
     .hero-brand .cee-text .letter-1 {
         animation: letterFullCycleMobile 5s ease-in-out 0.3s forwards;
@@ -6637,13 +7495,19 @@ window.goToAdmin = goToAdmin;
         100% { opacity: 1; transform: translateX(-50vw); }
     }
     .hero-brand .mimarlik-text {
-        font-size: 14px;
-        letter-spacing: 3px;
+        font-size: 20px;
+        letter-spacing: 8px;
         animation: textFullCycleMobile 5s ease-in-out 1s forwards;
+        filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                drop-shadow(2px 2px 0px rgba(0,0,0,0.4))
+                drop-shadow(3px 3px 1px rgba(0,0,0,0.2));
     }
     .hero-description {
         max-width: 350px;
         animation: textFullCycleMobile 5s ease-in-out 1.3s forwards;
+        filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                drop-shadow(2px 2px 0px rgba(0,0,0,0.4))
+                drop-shadow(3px 3px 1px rgba(0,0,0,0.2));
     }
     .hero-cta {
         animation: textFullCycleMobile 5s ease-in-out 1.6s forwards;
@@ -6663,31 +7527,42 @@ window.goToAdmin = goToAdmin;
         max-width: 95%;
     }
     .hero-brand .cee-text {
-        font-size: 36px;
-        letter-spacing: 8px;
+        font-size: 48px;
+        letter-spacing: 10px;
+    }
+    .hero-brand .cee-text .letter {
+        font-size: 48px;
+        filter: 
+            drop-shadow(1px 1px 0px rgba(255,255,255,0.2))
+            drop-shadow(2px 2px 0px rgba(50,50,50,0.8))
+            drop-shadow(3px 3px 2px rgba(0,0,0,0.4));
     }
     .hero-brand .mimarlik-text {
-        font-size: 11px;
-        letter-spacing: 2px;
+        font-size: 14px;
+        letter-spacing: 6px;
+        filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                drop-shadow(2px 2px 1px rgba(0,0,0,0.3));
     }
     .hero-description {
-        font-size: 12px;
+        font-size: 13px;
         line-height: 1.7;
         max-width: 280px;
+        filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.6))
+                drop-shadow(2px 2px 1px rgba(0,0,0,0.3));
     }
     .hero-cta {
         padding: 12px 25px;
-        font-size: 9px;
+        font-size: 10px;
     }
     .scroll-indicator {
         bottom: 20px;
     }
     .scroll-text {
-        font-size: 8px;
+        font-size: 9px;
     }
     .scroll-arrow {
-        width: 16px;
-        height: 26px;
+        width: 18px;
+        height: 28px;
     }
 }
 
@@ -6716,16 +7591,31 @@ window.goToAdmin = goToAdmin;
 
 /* Açıklama - Sol hizalı, daha uzun */
 .hero-description {
-    font-size: 16px;
-    font-weight: 400;
-    color: #4a5568;
-    line-height: 1.9;
-    margin-bottom: 40px;
-    max-width: 500px;
-    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    max-width: 400px;
+    text-align: center;
     opacity: 0;
-    transform: translateY(20px);
-    animation: heroFadeUp 0.6s ease-out 5.5s forwards;
+    transform: translateX(50px);
+    animation: textFullCycle 6s ease-in-out 1.3s forwards;
+    /* METALİK GRADİENT */
+    background: linear-gradient(
+        180deg,
+        #e8e8e8 0%,
+        #d0d0d0 25%,
+        #b0b0b0 50%,
+        #909090 75%,
+        #707070 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* 3D GÖLGE */
+    filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.7))
+            drop-shadow(2px 2px 0px rgba(0,0,0,0.5))
+            drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
 }
 
 /* Butonlar - Sol hizalı */
@@ -6918,17 +7808,17 @@ window.goToAdmin = goToAdmin;
 <!-- PROJECTS -->
 <section id="projeler">
     <div class="section-header">
-        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects">PROJE<span class="accent" style="color: #4a4a4a !important;">LERİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects" data-de="Unsere Projekte" data-ru="Наши Проекты">PROJE<span class="accent" style="color: #4a4a4a !important;">LERİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
     <div class="filter-container">
-        <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All">Tümü</button>
-        <button class="filter-btn" data-filter="villa" data-tr="Villa" data-en="Villa">Villa</button>
-        <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment">Apartman</button>
-        <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office">Ofis</button>
-        <button class="filter-btn" data-filter="ticari" data-tr="Ticari" data-en="Commercial">Ticari</button>
-        <button class="filter-btn" data-filter="konut" data-tr="Konut" data-en="Residential">Konut</button>
+        <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All" data-de="Alle" data-ru="Все">Tümü</button>
+        <button class="filter-btn" data-filter="villa" data-tr="Villa" data-en="Villa" data-de="Villa" data-ru="Вилла">Villa</button>
+        <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment" data-de="Wohnung" data-ru="Квартира">Apartman</button>
+        <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office" data-de="Büro" data-ru="Офис">Ofis</button>
+        <button class="filter-btn" data-filter="ticari" data-tr="Ticari" data-en="Commercial" data-de="Gewerblich" data-ru="Коммерческий">Ticari</button>
+        <button class="filter-btn" data-filter="konut" data-tr="Konut" data-en="Residential" data-de="Wohngebäude" data-ru="Жилой">Konut</button>
     </div>
 
     <div class="projects-grid" id="projectsGrid"></div>
@@ -6937,14 +7827,14 @@ window.goToAdmin = goToAdmin;
 <!-- ABOUT -->
 <section id="hakkimizda">
     <div class="section-header">
-        <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US">HAKKIMIZDA</div>
-        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are">BİZ <span class="accent" style="color: #4a4a4a !important;">KİMİZ</span></h2>
+        <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US" data-de="ÜBER UNS" data-ru="О НАС">HAKKIMIZDA</div>
+        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are" data-de="Wer Wir Sind" data-ru="Кто Мы">BİZ <span class="accent" style="color: #4a4a4a !important;">KİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
     <div class="about-content">
         <div class="about-text">
-            <h2 data-tr="CEE Mimarlık" data-en="CEE Architecture">CEE Mimarlık</h2>
+            <h2 data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура">CEE Mimarlık</h2>
             <p data-tr="Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır." 
                data-en="With a modern architectural approach, we create projects that combine aesthetics and functionality. Each project is carefully designed to turn our clients' dreams into reality.">
                 Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır.
@@ -6955,7 +7845,7 @@ window.goToAdmin = goToAdmin;
             </p>
         </div>
         <div class="about-text">
-            <h2 data-tr="Vizyonumuz" data-en="Our Vision">Vizyonumuz</h2>
+            <h2 data-tr="Vizyonumuz" data-en="Our Vision" data-de="Unsere Vision" data-ru="Наше Видение">Vizyonumuz</h2>
             <p data-tr="Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz." 
                data-en="Creating spaces that enhance quality of life with sustainable and environmentally friendly architectural solutions. We work to leave a better world for future generations.">
                 Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz.
@@ -6970,7 +7860,7 @@ window.goToAdmin = goToAdmin;
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
         <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 14px; text-decoration: none; font-weight: 600; letter-spacing: 2px; transition: all 0.3s ease;">
-            <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team">👥 UZMAN KADROMUZU TANIYIN</span>
+            <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team" data-de="👥 Unser Expertenteam Kennenlernen" data-ru="👥 Познакомьтесь с Нашей Командой">👥 UZMAN KADROMUZU TANIYIN</span>
             <span>→</span>
         </a>
     </div>
@@ -7048,8 +7938,8 @@ body.dark-mode .architect-divider .divider-bottom path {
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
-            <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES">HİZMETLERİMİZ</div>
-            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer">SUNDUĞUMUZ <span class="accent" style="color: #4a4a4a !important;">HİZMETLER</span></h2>
+            <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES" data-de="UNSERE DIENSTLEISTUNGEN" data-ru="НАШИ УСЛУГИ">HİZMETLERİMİZ</div>
+            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer" data-de="Unsere Dienstleistungen" data-ru="Наши Услуги">SUNDUĞUMUZ <span class="accent" style="color: #4a4a4a !important;">HİZMETLER</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -7074,12 +7964,48 @@ function loadServicesSection() {
     ];
     
     const defaultServices = [
-        { title: 'Mimari Proje', desc: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı teknik çizimler.' },
-        { title: 'Ruhsat İşlemleri', desc: 'İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin profesyonel takibi ve tamamlanması.' },
-        { title: 'İç Mimarlık', desc: 'Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı hizmeti.' },
-        { title: 'Statik Proje', desc: 'Deprem yönetmeliğine uygun statik hesaplamalar ve güvenli taşıyıcı sistem projeleri.' },
-        { title: 'Şantiye Yönetimi', desc: 'İnşaat sürecinin tamamında profesyonel teknik danışmanlık ve şantiye koordinasyonu.' },
-        { title: '3D Görselleştirme', desc: 'Projenizi inşa etmeden önce fotorealistik 3D render ile gerçeğe en yakın şekilde görün.' }
+        { 
+            titleTr: 'Mimari Proje', titleEn: 'Architectural Design', titleDe: 'Architekturplanung', titleRu: 'Архитектурный Проект',
+            descTr: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı teknik çizimler.',
+            descEn: 'Professional architectural design services for residential, villa, apartment and commercial buildings. 3D visualization and detailed technical drawings.',
+            descDe: 'Professionelle Architekturplanung für Wohn-, Villen-, Wohnungs- und Gewerbebauten. 3D-Visualisierung und detaillierte technische Zeichnungen.',
+            descRu: 'Профессиональные архитектурные услуги для жилых домов, вилл, квартир и коммерческих зданий. 3D-визуализация и детальные технические чертежи.'
+        },
+        { 
+            titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', titleDe: 'Genehmigungsservice', titleRu: 'Разрешительные Услуги',
+            descTr: 'İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin profesyonel takibi ve tamamlanması.',
+            descEn: 'Professional handling and completion of construction permits, occupancy certificates and all municipal permit processes.',
+            descDe: 'Professionelle Bearbeitung und Abschluss von Baugenehmigungen, Nutzungsgenehmigungen und allen kommunalen Genehmigungsverfahren.',
+            descRu: 'Профессиональное оформление и завершение разрешений на строительство, сертификатов на заселение и всех муниципальных разрешительных процессов.'
+        },
+        { 
+            titleTr: 'İç Mimarlık', titleEn: 'Interior Design', titleDe: 'Innenarchitektur', titleRu: 'Дизайн Интерьера',
+            descTr: 'Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı hizmeti.',
+            descEn: 'Custom interior design, furniture selection and decoration consultancy services for your living spaces.',
+            descDe: 'Individuelle Innenarchitektur, Möbelauswahl und Dekorationsberatung für Ihre Wohnräume.',
+            descRu: 'Индивидуальный дизайн интерьера, подбор мебели и консультации по декорированию для ваших жилых помещений.'
+        },
+        { 
+            titleTr: 'Statik Proje', titleEn: 'Structural Engineering', titleDe: 'Tragwerksplanung', titleRu: 'Статический Проект',
+            descTr: 'Deprem yönetmeliğine uygun statik hesaplamalar ve güvenli taşıyıcı sistem projeleri.',
+            descEn: 'Static calculations compliant with earthquake regulations and safe structural system projects.',
+            descDe: 'Statische Berechnungen gemäß Erdbebenvorschriften und sichere Tragwerksprojekte.',
+            descRu: 'Статические расчеты в соответствии с нормами сейсмостойкости и безопасные проекты несущих конструкций.'
+        },
+        { 
+            titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', titleDe: 'Bauleitung', titleRu: 'Управление Стройплощадкой',
+            descTr: 'İnşaat sürecinin tamamında profesyonel teknik danışmanlık ve şantiye koordinasyonu.',
+            descEn: 'Professional technical consultancy and site coordination throughout the entire construction process.',
+            descDe: 'Professionelle technische Beratung und Baustellenkoordination während des gesamten Bauprozesses.',
+            descRu: 'Профессиональное техническое консультирование и координация строительной площадки на протяжении всего строительного процесса.'
+        },
+        { 
+            titleTr: '3D Görselleştirme', titleEn: '3D Visualization', titleDe: '3D-Visualisierung', titleRu: '3D Визуализация',
+            descTr: 'Projenizi inşa etmeden önce fotorealistik 3D render ile gerçeğe en yakın şekilde görün.',
+            descEn: 'See your project in the most realistic way with photorealistic 3D renders before construction.',
+            descDe: 'Sehen Sie Ihr Projekt vor dem Bau mit fotorealistischen 3D-Renderings in realistischster Weise.',
+            descRu: 'Увидьте свой проект максимально реалистично с помощью фотореалистичных 3D-рендеров до начала строительства.'
+        }
     ];
     
     const saved = localStorage.getItem('cee_services');
@@ -7088,10 +8014,15 @@ function loadServicesSection() {
     if (saved) {
         try {
             const parsed = JSON.parse(saved);
-            // Eski veriden sadece title ve desc al
             services = parsed.map((s, i) => ({
-                title: s.title || s.titleTr || defaultServices[i]?.title || 'Hizmet',
-                desc: s.desc || s.descTr || defaultServices[i]?.desc || 'Açıklama'
+                titleTr: s.titleTr || s.title || defaultServices[i]?.titleTr || 'Hizmet',
+                titleEn: s.titleEn || defaultServices[i]?.titleEn || 'Service',
+                titleDe: s.titleDe || defaultServices[i]?.titleDe || defaultServices[i]?.titleEn || 'Dienst',
+                titleRu: s.titleRu || defaultServices[i]?.titleRu || defaultServices[i]?.titleEn || 'Услуга',
+                descTr: s.descTr || s.desc || defaultServices[i]?.descTr || 'Açıklama',
+                descEn: s.descEn || defaultServices[i]?.descEn || 'Description',
+                descDe: s.descDe || defaultServices[i]?.descDe || defaultServices[i]?.descEn || 'Beschreibung',
+                descRu: s.descRu || defaultServices[i]?.descRu || defaultServices[i]?.descEn || 'Описание'
             }));
         } catch(e) {}
     }
@@ -7099,9 +8030,30 @@ function loadServicesSection() {
     const grid = document.getElementById('servicesGrid');
     if (!grid) return;
     
+    // Mevcut dili al
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
+    
     // Renk ve boyut ayarlarını al
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     const iconSize = colorSettings.iconSize || 60;
+    
+    // Dile göre başlık ve açıklama seç
+    const getTitle = (s) => {
+        switch(lang) {
+            case 'de': return s.titleDe || s.titleEn || s.titleTr;
+            case 'ru': return s.titleRu || s.titleEn || s.titleTr;
+            case 'en': return s.titleEn || s.titleTr;
+            default: return s.titleTr;
+        }
+    };
+    const getDesc = (s) => {
+        switch(lang) {
+            case 'de': return s.descDe || s.descEn || s.descTr;
+            case 'ru': return s.descRu || s.descEn || s.descTr;
+            case 'en': return s.descEn || s.descTr;
+            default: return s.descTr;
+        }
+    };
     
     grid.innerHTML = services.map((s, i) => `
         <div class="service-card-v2" style="background: white; padding: 45px 35px; border-radius: 16px; position: relative; transition: all 0.4s ease; border-bottom: 3px solid transparent; overflow: hidden;">
@@ -7110,8 +8062,8 @@ function loadServicesSection() {
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
             </div>
-            <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;">${s.title}</h3>
-            <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;">${s.desc}</p>
+            <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="${s.titleTr}" data-en="${s.titleEn}" data-de="${s.titleDe}" data-ru="${s.titleRu}">${getTitle(s)}</h3>
+            <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="${s.descTr}" data-en="${s.descEn}" data-de="${s.descDe}" data-ru="${s.descRu}">${getDesc(s)}</p>
         </div>
     `).join('');
 }
@@ -7131,8 +8083,9 @@ document.addEventListener('DOMContentLoaded', loadServicesSection);
 }
 .service-card-v2:hover .service-icon-v2 {
     background: #4a4a4a !important;
-    transform: scale(1.1);
+    transform: translateY(-8px) scale(1.1);
     color: white !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3) !important;
 }
 .service-card-v2:hover .service-icon-v2 svg {
     stroke: white;
@@ -7156,6 +8109,8 @@ body.dark-mode .service-card-v2 .service-icon-v2 {
 body.dark-mode .service-card-v2:hover .service-icon-v2 {
     background: #4a4a4a !important;
     color: white !important;
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4) !important;
 }
 body.dark-mode #hizmetler {
     background: #151520 !important;
@@ -7192,6 +8147,8 @@ body.dark-mode .contact-icon-circle {
 body.dark-mode .contact-icon-circle:hover {
     background: #4a4a4a !important;
     color: white !important;
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5) !important;
 }
 
 /* İLETİŞİM FORM - Dark Mode */
@@ -7253,8 +8210,8 @@ body.dark-mode .project-info span {
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
-            <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES">REFERANSLARIMIZ</div>
-            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners">ÇALIŞTIĞIMIZ <span class="accent" style="color: #4a4a4a !important;">KURUMLAR</span></h2>
+            <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES" data-de="UNSERE REFERENZEN" data-ru="НАШИ РЕКОМЕНДАЦИИ">REFERANSLARIMIZ</div>
+            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners" data-de="Unsere Partner" data-ru="Наши Партнеры">ÇALIŞTIĞIMIZ <span class="accent" style="color: #4a4a4a !important;">KURUMLAR</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -7277,10 +8234,10 @@ function loadReferencesSection() {
     ];
     
     const defaultReferences = [
-        { title: 'Çorlu Belediyesi', desc: 'Kamu Projeleri' },
-        { title: 'Özel Sektör', desc: 'Kurumsal Projeler' },
-        { title: 'Konut Projeleri', desc: 'Villa & Apartman' },
-        { title: 'Ticari Yapılar', desc: 'İş Merkezi & Mağaza' }
+        { titleTr: 'Çorlu Belediyesi', titleEn: 'Çorlu Municipality', titleDe: 'Gemeinde Çorlu', titleRu: 'Муниципалитет Чорлу', descTr: 'Kamu Projeleri', descEn: 'Public Projects', descDe: 'Öffentliche Projekte', descRu: 'Государственные Проекты' },
+        { titleTr: 'Özel Sektör', titleEn: 'Private Sector', titleDe: 'Privatsektor', titleRu: 'Частный Сектор', descTr: 'Kurumsal Projeler', descEn: 'Corporate Projects', descDe: 'Unternehmensprojekte', descRu: 'Корпоративные Проекты' },
+        { titleTr: 'Konut Projeleri', titleEn: 'Residential Projects', titleDe: 'Wohnprojekte', titleRu: 'Жилые Проекты', descTr: 'Villa & Apartman', descEn: 'Villa & Apartment', descDe: 'Villa & Wohnung', descRu: 'Виллы и Квартиры' },
+        { titleTr: 'Ticari Yapılar', titleEn: 'Commercial Buildings', titleDe: 'Gewerbebauten', titleRu: 'Коммерческие Здания', descTr: 'İş Merkezi & Mağaza', descEn: 'Business Center & Store', descDe: 'Geschäftszentrum & Laden', descRu: 'Бизнес-центр и Магазин' }
     ];
     
     const saved = localStorage.getItem('cee_references');
@@ -7289,10 +8246,15 @@ function loadReferencesSection() {
     if (saved) {
         try {
             const parsed = JSON.parse(saved);
-            // Eski veriden sadece title ve desc al
             references = parsed.map((r, i) => ({
-                title: r.title || r.titleTr || defaultReferences[i]?.title || 'Referans',
-                desc: r.desc || r.descTr || defaultReferences[i]?.desc || 'Açıklama'
+                titleTr: r.titleTr || r.title || defaultReferences[i]?.titleTr || 'Referans',
+                titleEn: r.titleEn || defaultReferences[i]?.titleEn || 'Reference',
+                titleDe: r.titleDe || defaultReferences[i]?.titleDe || defaultReferences[i]?.titleEn || 'Referenz',
+                titleRu: r.titleRu || defaultReferences[i]?.titleRu || defaultReferences[i]?.titleEn || 'Рекомендация',
+                descTr: r.descTr || r.desc || defaultReferences[i]?.descTr || 'Açıklama',
+                descEn: r.descEn || defaultReferences[i]?.descEn || 'Description',
+                descDe: r.descDe || defaultReferences[i]?.descDe || defaultReferences[i]?.descEn || 'Beschreibung',
+                descRu: r.descRu || defaultReferences[i]?.descRu || defaultReferences[i]?.descEn || 'Описание'
             }));
         } catch(e) {}
     }
@@ -7300,17 +8262,38 @@ function loadReferencesSection() {
     const grid = document.getElementById('referencesGrid');
     if (!grid) return;
     
+    // Mevcut dili al
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
+    
     // Renk ve boyut ayarlarını al
     const colorSettings = JSON.parse(localStorage.getItem('color_settings') || '{}');
     const iconSize = colorSettings.iconSize || 60;
+    
+    // Dile göre başlık ve açıklama seç
+    const getTitle = (r) => {
+        switch(lang) {
+            case 'de': return r.titleDe || r.titleEn || r.titleTr;
+            case 'ru': return r.titleRu || r.titleEn || r.titleTr;
+            case 'en': return r.titleEn || r.titleTr;
+            default: return r.titleTr;
+        }
+    };
+    const getDesc = (r) => {
+        switch(lang) {
+            case 'de': return r.descDe || r.descEn || r.descTr;
+            case 'ru': return r.descRu || r.descEn || r.descTr;
+            case 'en': return r.descEn || r.descTr;
+            default: return r.descTr;
+        }
+    };
     
     grid.innerHTML = references.map((r, i) => `
         <div class="ref-card" style="background: #fafafa; padding: 40px 30px; text-align: center; border-radius: 16px; transition: all 0.4s ease; position: relative; overflow: hidden;">
             <div style="width: ${iconSize}px; height: ${iconSize}px; margin: 0 auto 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease;" class="ref-icon">
                 ${svgIcons[i] || svgIcons[0]}
             </div>
-            <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;">${r.title}</h4>
-            <p style="font-size: 13px; color: #888; margin: 0;">${r.desc}</p>
+            <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="${r.titleTr}" data-en="${r.titleEn}" data-de="${r.titleDe}" data-ru="${r.titleRu}">${getTitle(r)}</h4>
+            <p style="font-size: 13px; color: #888; margin: 0;" data-tr="${r.descTr}" data-en="${r.descEn}" data-de="${r.descDe}" data-ru="${r.descRu}">${getDesc(r)}</p>
         </div>
     `).join('');
 }
@@ -7327,8 +8310,9 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 }
 .ref-card:hover .ref-icon {
     background: #4a4a4a !important;
-    transform: scale(1.1);
+    transform: translateY(-8px) scale(1.1);
     color: white !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3) !important;
 }
 .ref-card:hover .ref-icon svg {
     stroke: white;
@@ -7360,8 +8344,8 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 <!-- SSS (FAQ) SECTION -->
 <section id="sss" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
-        <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS">SIK SORULAN SORULAR</div>
-        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ">MERAK <span class="accent" style="color: #4a4a4a !important;">EDİLENLER</span></h2>
+        <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS" data-de="HÄUFIG GESTELLTE FRAGEN" data-ru="ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ">SIK SORULAN SORULAR</div>
+        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ">MERAK <span class="accent" style="color: #4a4a4a !important;">EDİLENLER</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -7371,13 +8355,58 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 </section>
 
 <script>
-// Varsayılan SSS
+// Varsayılan SSS - 4 dil desteği
 const defaultFaqs = [
-    { questionTr: 'Mimari proje süresi ne kadar?', questionEn: 'How long does an architectural project take?', answerTr: 'Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.', answerEn: 'Depending on the project size, an average residential project takes 3-4 weeks. Villa projects take 4-6 weeks, while commercial projects are completed in 6-8 weeks.' },
-    { questionTr: 'Proje ücreti nasıl hesaplanır?', questionEn: 'How is the project fee calculated?', answerTr: 'Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.', answerEn: 'Project fee is determined based on construction area, project type, level of detail and additional services. Contact us for a detailed quote.' },
-    { questionTr: 'Ruhsat işlemleri dahil mi?', questionEn: 'Are permit services included?', answerTr: 'Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.', answerEn: 'Permit services are separate. Upon request, we follow up all municipal procedures on your behalf. The permit process takes an average of 2-4 months.' },
-    { questionTr: '3D görselleştirme yapıyor musunuz?', questionEn: 'Do you do 3D visualization?', answerTr: 'Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.', answerEn: 'Yes, we offer photorealistic 3D render and animation services. You can see your project as close to reality as possible before construction.' },
-    { questionTr: 'Şantiye takibi yapıyor musunuz?', questionEn: 'Do you provide site supervision?', answerTr: 'Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.', answerEn: 'Yes, we provide site consultancy and technical coordination services. We check project compliance during construction and provide technical support.' }
+    { 
+        questionTr: 'Mimari proje süresi ne kadar?', 
+        questionEn: 'How long does an architectural project take?', 
+        questionDe: 'Wie lange dauert ein Architekturprojekt?', 
+        questionRu: 'Сколько времени занимает архитектурный проект?',
+        answerTr: 'Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.', 
+        answerEn: 'Depending on the project size, an average residential project takes 3-4 weeks. Villa projects take 4-6 weeks, while commercial projects are completed in 6-8 weeks.',
+        answerDe: 'Je nach Projektgröße dauert ein durchschnittliches Wohnprojekt 3-4 Wochen. Villenprojekte dauern 4-6 Wochen, Gewerbeprojekte werden in 6-8 Wochen abgeschlossen.',
+        answerRu: 'В зависимости от размера проекта, средний жилой проект занимает 3-4 недели. Проекты вилл занимают 4-6 недель, коммерческие проекты завершаются за 6-8 недель.'
+    },
+    { 
+        questionTr: 'Proje ücreti nasıl hesaplanır?', 
+        questionEn: 'How is the project fee calculated?', 
+        questionDe: 'Wie wird die Projektgebühr berechnet?', 
+        questionRu: 'Как рассчитывается стоимость проекта?',
+        answerTr: 'Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.', 
+        answerEn: 'Project fee is determined based on construction area, project type, level of detail and additional services. Contact us for a detailed quote.',
+        answerDe: 'Die Projektgebühr wird basierend auf Baufläche, Projekttyp, Detailgrad und Zusatzleistungen bestimmt. Kontaktieren Sie uns für ein detailliertes Angebot.',
+        answerRu: 'Стоимость проекта определяется на основе площади строительства, типа проекта, уровня детализации и дополнительных услуг. Свяжитесь с нами для детального расчета.'
+    },
+    { 
+        questionTr: 'Ruhsat işlemleri dahil mi?', 
+        questionEn: 'Are permit services included?', 
+        questionDe: 'Sind Genehmigungsleistungen inbegriffen?', 
+        questionRu: 'Включены ли разрешительные услуги?',
+        answerTr: 'Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.', 
+        answerEn: 'Permit services are separate. Upon request, we follow up all municipal procedures on your behalf. The permit process takes an average of 2-4 months.',
+        answerDe: 'Genehmigungsleistungen sind separat. Auf Anfrage übernehmen wir alle behördlichen Verfahren in Ihrem Namen. Der Genehmigungsprozess dauert durchschnittlich 2-4 Monate.',
+        answerRu: 'Разрешительные услуги оплачиваются отдельно. По запросу мы ведем все муниципальные процедуры от вашего имени. Процесс получения разрешения занимает в среднем 2-4 месяца.'
+    },
+    { 
+        questionTr: '3D görselleştirme yapıyor musunuz?', 
+        questionEn: 'Do you do 3D visualization?', 
+        questionDe: 'Bieten Sie 3D-Visualisierung an?', 
+        questionRu: 'Делаете ли вы 3D-визуализацию?',
+        answerTr: 'Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.', 
+        answerEn: 'Yes, we offer photorealistic 3D render and animation services. You can see your project as close to reality as possible before construction.',
+        answerDe: 'Ja, wir bieten fotorealistische 3D-Rendering- und Animationsdienste an. Sie können Ihr Projekt vor dem Bau so realitätsnah wie möglich sehen.',
+        answerRu: 'Да, мы предлагаем услуги фотореалистичного 3D-рендеринга и анимации. Вы можете увидеть свой проект максимально приближенным к реальности до начала строительства.'
+    },
+    { 
+        questionTr: 'Şantiye takibi yapıyor musunuz?', 
+        questionEn: 'Do you provide site supervision?', 
+        questionDe: 'Bieten Sie Baustellenüberwachung an?', 
+        questionRu: 'Предоставляете ли вы надзор за строительной площадкой?',
+        answerTr: 'Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.', 
+        answerEn: 'Yes, we provide site consultancy and technical coordination services. We check project compliance during construction and provide technical support.',
+        answerDe: 'Ja, wir bieten Baustellenberatung und technische Koordination an. Wir prüfen die Projekteinhaltung während des Baus und bieten technische Unterstützung.',
+        answerRu: 'Да, мы предоставляем консультации по строительной площадке и услуги технической координации. Мы проверяем соответствие проекту во время строительства и оказываем техническую поддержку.'
+    }
 ];
 
 function loadFaqs() {
@@ -7394,16 +8423,34 @@ function loadFaqs() {
         } catch(e) {}
     }
     
-    const lang = localStorage.getItem('cee_public_lang') || 'tr';
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
+    
+    // Dile göre soru ve cevap seç
+    const getQuestion = (f) => {
+        switch(lang) {
+            case 'de': return f.questionDe || f.questionEn || f.questionTr;
+            case 'ru': return f.questionRu || f.questionEn || f.questionTr;
+            case 'en': return f.questionEn || f.questionTr;
+            default: return f.questionTr;
+        }
+    };
+    const getAnswer = (f) => {
+        switch(lang) {
+            case 'de': return f.answerDe || f.answerEn || f.answerTr;
+            case 'ru': return f.answerRu || f.answerEn || f.answerTr;
+            case 'en': return f.answerEn || f.answerTr;
+            default: return f.answerTr;
+        }
+    };
     
     container.innerHTML = faqs.map(f => `
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr}" data-en="${f.questionEn}">${lang === 'tr' ? f.questionTr : f.questionEn}</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr || ''}" data-en="${f.questionEn || ''}" data-de="${f.questionDe || ''}" data-ru="${f.questionRu || ''}">${getQuestion(f)}</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr}" data-en="${f.answerEn}">${lang === 'tr' ? f.answerTr : f.answerEn}</p>
+                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr || ''}" data-en="${f.answerEn || ''}" data-de="${f.answerDe || ''}" data-ru="${f.answerRu || ''}">${getAnswer(f)}</p>
             </div>
         </div>
     `).join('');
@@ -7413,8 +8460,8 @@ loadFaqs();
 
 <section id="iletisim">
     <div class="section-header">
-        <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</div>
-        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch">BİZE <span class="accent" style="color: #4a4a4a !important;">ULAŞIN</span></h2>
+        <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT" data-de="KONTAKT" data-ru="КОНТАКТ">İLETİŞİM</div>
+        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами">BİZE <span class="accent" style="color: #4a4a4a !important;">ULAŞIN</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -7423,7 +8470,7 @@ loadFaqs();
             
             <!-- İLETİŞİM BİLGİLERİ -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">İletişim Bilgileri</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="İletişim Bilgileri" data-en="Contact Information" data-de="Kontaktinformationen" data-ru="Контактная Информация">İletişim Bilgileri</h3>
                 
                 <div style="margin-bottom: 25px;">
                     <a href="javascript:void(0)" onclick="handlePhoneClick()" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
@@ -7431,7 +8478,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);">Telefon</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="Telefon" data-en="Phone" data-de="Telefon" data-ru="Телефон">Telefon</strong>
                             <span style="color: var(--accent); font-size: 18px;" id="displayPhone">(0537) 327 87 65</span>
                         </div>
                     </a>
@@ -7443,7 +8490,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);">E-posta</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта">E-posta</strong>
                             <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="523137373f3b3f33203e3b3912353f333b3e7c313d3f">[email&#160;protected]</span></span>
                         </div>
                     </a>
@@ -7456,7 +8503,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);">Adres</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="Adres" data-en="Address" data-de="Adresse" data-ru="Адрес">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayAddress">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</span>
                         </div>
                     </a>
@@ -7468,8 +8515,8 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);">Çalışma Saatleri</strong>
-                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
+                            <strong style="display: block; color: var(--primary);" data-tr="Çalışma Saatleri" data-en="Working Hours" data-de="Öffnungszeiten" data-ru="Часы Работы">Çalışma Saatleri</strong>
+                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours" data-tr="Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı" data-en="Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
                         </div>
                     </div>
                 </div>
@@ -7477,14 +8524,16 @@ loadFaqs();
             
             <!-- İLETİŞİM FORMU -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);">Mesaj Gönderin</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="Mesaj Gönderin" data-en="Send a Message" data-de="Nachricht Senden" data-ru="Отправить Сообщение">Mesaj Gönderin</h3>
                 
                 <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
                     <div>
                         <input 
                             type="text" 
                             id="contactName" 
-                            placeholder="Adınız Soyadınız *" 
+                            placeholder="Adınız Soyadınız *"
+                            data-tr="Adınız Soyadınız *"
+                            data-en="Your Full Name *"
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
@@ -7497,7 +8546,9 @@ loadFaqs();
                         <input 
                             type="email" 
                             id="contactEmail" 
-                            placeholder="E-posta Adresiniz *" 
+                            placeholder="E-posta Adresiniz *"
+                            data-tr="E-posta Adresiniz *"
+                            data-en="Your Email Address *"
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
@@ -7510,7 +8561,9 @@ loadFaqs();
                         <input 
                             type="tel" 
                             id="contactPhone" 
-                            placeholder="Telefon Numaranız" 
+                            placeholder="Telefon Numaranız"
+                            data-tr="Telefon Numaranız"
+                            data-en="Your Phone Number"
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
                             onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
@@ -7560,7 +8613,7 @@ loadFaqs();
                         style="padding: 16px 40px; background: linear-gradient(135deg, #4a4a4a, #6a6a6a); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
-                        data-tr="📤 Mesaj Gönder" data-en="📤 Send Message"
+                        data-tr="📤 Mesaj Gönder" data-en="📤 Send Message" data-de="📤 Nachricht Senden" data-ru="📤 Отправить Сообщение"
                     >
                         📤 Mesaj Gönder
                     </button>
@@ -7573,8 +8626,8 @@ loadFaqs();
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
 <section id="ofis-konum" style="padding: 60px 0; ">
     <div class="section-header" style="margin-bottom: 40px; padding: 40px 20px;">
-        <div class="section-label" data-tr="NEREDEYIZ" data-en="WHERE WE ARE">NEREDEYIZ</div>
-        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location">OFİS <span class="accent" style="color: #4a4a4a !important;">KONUMUMUZ</span></h2>
+        <div class="section-label" data-tr="NEREDEYIZ" data-en="WHERE WE ARE" data-de="WO WIR SIND" data-ru="ГДЕ МЫ НАХОДИМСЯ">NEREDEYIZ</div>
+        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location" data-de="Unser Bürostandort" data-ru="Местоположение Офиса">OFİS <span class="accent" style="color: #4a4a4a !important;">KONUMUMUZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -7592,14 +8645,14 @@ loadFaqs();
         </div>
         
         <!-- Konum İkonu - Harita üzerinde -->
-        <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: white; padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; z-index: 10;">
-            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(212,175,55,0.4);">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 20%, #b8b8b8 50%, #a0a0a0 80%, #888888 100%); padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4); display: flex; align-items: center; gap: 10px; z-index: 10; border: 1px solid rgba(0,0,0,0.15);">
+            <div style="width: 36px; height: 36px; background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 30%, #707070 70%, #505050 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
             </div>
-            <span style="font-weight: 600; color: #1a1a1a; font-size: 14px;">CEE Mimarlık</span>
+            <span style="font-weight: 700; color: #1a1a1a; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.5);" data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура">CEE Mimarlık</span>
         </div>
     </div>
     
@@ -7614,7 +8667,7 @@ loadFaqs();
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
            class="directions-btn"
            style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
-           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions">
+           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions" data-de="🧭 Wegbeschreibung" data-ru="🧭 Проложить Маршрут">
             🧭 Yol Tarifi Al
         </a>
     </div>
@@ -7717,6 +8770,35 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.innerHTML = menuHTML;
     } catch (e) {
         console.log('Menü yüklenemedi');
+    }
+});
+
+// ===== DARK MODE BAŞLATMA =====
+document.addEventListener('DOMContentLoaded', function() {
+    var isDark = localStorage.getItem('cee_public_dark') === 'true';
+    var btn = document.getElementById('themeBtn');
+    
+    // Dark mode class'ını body'ye uygula
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        if (btn) btn.textContent = '☀️';
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (btn) btn.textContent = '🌙';
+    }
+    
+    // Dark mode renk ayarlarını uygula
+    var cs = isDark 
+        ? JSON.parse(localStorage.getItem('dark_color_settings') || '{}')
+        : JSON.parse(localStorage.getItem('light_color_settings') || '{}');
+    
+    if (!cs.bgMain) cs = isDark 
+        ? {bgMain:'#111111', bgSection:'#1a1a1a', text:'#e2e8f0', header:'#0f0f0f'}
+        : {bgMain:'#ffffff', bgSection:'#f8f9fa', text:'#2d3748', header:'#1a202c'};
+    
+    // Body arka planını hemen ayarla
+    if (isDark) {
+        document.body.style.backgroundColor = cs.bgMain;
     }
 });
 
@@ -7877,7 +8959,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
 <!-- UNIFIED CHAT BUTTON -->
 <div class="unified-chat-btn" onclick="toggleChatMenu()" id="unifiedChatBtn">
-    <svg viewBox="0 0 24 24" fill="white" width="26" height="26">
+    <svg viewBox="0 0 24 24" fill="#1a1a1a" width="26" height="26" style="filter: drop-shadow(0 1px 0 rgba(255,255,255,0.4));">
         <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
         <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
     </svg>
@@ -7886,6 +8968,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
 <!-- FLOATING MENU - Butondan bağımsız -->
 <div class="chat-menu" id="chatMenu">
+    <div class="chat-menu-header">
+        <span data-tr="İletişim Seçenekleri" data-en="Contact Options" data-de="Kontaktoptionen" data-ru="Варианты Связи">İletişim Seçenekleri</span>
+        <button onclick="toggleChatMenu()" class="chat-menu-close-btn">×</button>
+    </div>
     <div class="chat-menu-item" onclick="openAiAssistant(event)">
         <div class="chat-menu-icon ai-gradient">
             <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
@@ -7896,7 +8982,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </svg>
         </div>
         <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant">CEE AI Asistan</div>
+            <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant" data-de="CEE KI-Assistent" data-ru="CEE ИИ Ассистент">CEE AI Asistan</div>
             <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant">Mimarlık & Mevzuat Danışmanı</div>
         </div>
         <div class="chat-menu-badge">AI</div>
@@ -7911,7 +8997,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </svg>
         </div>
         <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp">WhatsApp</div>
+            <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp" data-de="WhatsApp" data-ru="WhatsApp">WhatsApp</div>
             <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative">Müşteri temsilcisiyle görüş</div>
         </div>
         <div class="chat-menu-badge online">●</div>
@@ -7934,23 +9020,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3>HoÅŸgeldiniz!</h3>
-            <p>Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
+            <h3 data-tr="Hoşgeldiniz!" data-en="Welcome!" data-de="Willkommen!" data-ru="Добро пожаловать!">Hoşgeldiniz!</h3>
+            <p data-tr="Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim." data-en="I am CEE ARCHITECTURE's customer representative. I can answer all your questions about architecture and building regulations.">Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
-                <div class="quick-topic" onclick="askAiQuestion('Piyes ölçüleri nedir?')">📐 Piyes Ölçüleri</div>
-                <div class="quick-topic" onclick="askAiQuestion('Yangın merdiveni ölçüleri')">🔥 Yangın Merdiveni</div>
-                <div class="quick-topic" onclick="askAiQuestion('Merdiven ölçüleri')">🪜 Merdiven</div>
-                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')">📊 Emsal</div>
-                <div class="quick-topic" onclick="askAiQuestion('Sığınak zorunluluğu')">🛡️ Sığınak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Isı yalıtımı')">🏠 Isı Yalıtımı</div>
-                <div class="quick-topic" onclick="askAiQuestion('Otopark ölçüleri')">🚗 Otopark</div>
-                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarımı')">🍳 Mutfak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Kapı pencere ölçüleri')">🚪 Kapı/Pencere</div>
+                <div class="quick-topic" onclick="askAiQuestion('Piyes ölçüleri nedir?')" data-tr="📐 Piyes Ölçüleri" data-en="📐 Room Dimensions">📐 Piyes Ölçüleri</div>
+                <div class="quick-topic" onclick="askAiQuestion('Yangın merdiveni ölçüleri')" data-tr="🔥 Yangın Merdiveni" data-en="🔥 Fire Stairs">🔥 Yangın Merdiveni</div>
+                <div class="quick-topic" onclick="askAiQuestion('Merdiven ölçüleri')" data-tr="🪜 Merdiven" data-en="🪜 Stairs">🪜 Merdiven</div>
+                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')" data-tr="📊 Emsal" data-en="📊 Floor Area Ratio">📊 Emsal</div>
+                <div class="quick-topic" onclick="askAiQuestion('Sığınak zorunluluğu')" data-tr="🛡️ Sığınak" data-en="🛡️ Shelter">🛡️ Sığınak</div>
+                <div class="quick-topic" onclick="askAiQuestion('Isı yalıtımı')" data-tr="🏠 Isı Yalıtımı" data-en="🏠 Insulation">🏠 Isı Yalıtımı</div>
+                <div class="quick-topic" onclick="askAiQuestion('Otopark ölçüleri')" data-tr="🚗 Otopark" data-en="🚗 Parking">🚗 Otopark</div>
+                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarımı')" data-tr="🍳 Mutfak" data-en="🍳 Kitchen">🍳 Mutfak</div>
+                <div class="quick-topic" onclick="askAiQuestion('Kapı pencere ölçüleri')" data-tr="🚪 Kapı/Pencere" data-en="🚪 Door/Window">🚪 Kapı/Pencere</div>
             </div>
             
             <div class="contact-info">
-                <strong>📞 Hemen Ulaşın:</strong><br>
+                <strong data-tr="📞 Hemen Ulaşın:" data-en="📞 Contact Us Now:">📞 Hemen Ulaşın:</strong><br>
                 (0537) 327 87 65<br>
                 <small>Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</small>
             </div>
@@ -7959,6 +9045,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     
     <div class="ai-assistant-input">
         <input type="text" id="aiAssistantInput" placeholder="Mimarlık sorunuzu yazın..." 
+               data-tr="Mimarlık sorunuzu yazın..." data-en="Type your architecture question..."
                onkeypress="if(event.key==='Enter') sendAiAssistantMessage()">
         <button onclick="sendAiAssistantMessage()">
             <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
@@ -8510,7 +9597,7 @@ body.dark-mode .btn-secondary {
                 <p class="footer-copyright" style="margin: 0; text-align: center; color: #1a1a1a;">
                     © <span id="footerYear">2024</span> 
                     <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #1a1a1a; font-weight: 600;">CEE MİMARLIK</span> 
-                    <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved">Tüm hakları saklıdır</span>
+                    <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved" data-de="Alle Rechte vorbehalten" data-ru="Все права защищены">Tüm hakları saklıdır</span>
                 </p>
             </div>
         </div>
@@ -8628,16 +9715,20 @@ loadFooterSettings();
 <script>
 let projects = [];
 let siteLogo = '';
-let currentLang = 'tr';
+let currentLang = (typeof SITE_LANG !== 'undefined') ? SITE_LANG : (localStorage.getItem('cee_public_lang') || 'tr');
 let currentFilter = 'all';
 let currentSlide = 0;
 let heroImages = [];
 
-// Varsayılan projeler (herkes görebilsin)
+// Varsayılan projeler (herkes görebilsin) - 4 dil desteği
 const defaultProjects = [
     {
         id: 'demo1',
         title: 'Modern Villa Projesi',
+        titleTr: 'Modern Villa Projesi',
+        titleEn: 'Modern Villa Project',
+        titleDe: 'Modernes Villaprojekt',
+        titleRu: 'Проект Современной Виллы',
         category: 'villa',
         img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
         location: 'İstanbul',
@@ -8647,6 +9738,10 @@ const defaultProjects = [
     {
         id: 'demo2',
         title: 'Lüks Rezidans',
+        titleTr: 'Lüks Rezidans',
+        titleEn: 'Luxury Residence',
+        titleDe: 'Luxusresidenz',
+        titleRu: 'Роскошная Резиденция',
         category: 'apartman',
         img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
         location: 'Çorlu',
@@ -8656,15 +9751,23 @@ const defaultProjects = [
     {
         id: 'demo3',
         title: 'Ofis Binası',
+        titleTr: 'Ofis Binası',
+        titleEn: 'Office Building',
+        titleDe: 'Bürogebäude',
+        titleRu: 'Офисное Здание',
         category: 'ofis',
         img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-        location: 'TekirdaÄŸ',
+        location: 'Tekirdağ',
         area: '1200m²',
         row: 'top'
     },
     {
         id: 'demo4',
         title: 'Ticari Kompleks',
+        titleTr: 'Ticari Kompleks',
+        titleEn: 'Commercial Complex',
+        titleDe: 'Gewerbekomplex',
+        titleRu: 'Торговый Комплекс',
         category: 'ticari',
         img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
         location: 'İstanbul',
@@ -8674,6 +9777,10 @@ const defaultProjects = [
     {
         id: 'demo5',
         title: 'Minimalist Konut',
+        titleTr: 'Minimalist Konut',
+        titleEn: 'Minimalist Housing',
+        titleDe: 'Minimalistische Wohnung',
+        titleRu: 'Минималистичное Жилье',
         category: 'konut',
         img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
         location: 'Çorlu',
@@ -8683,6 +9790,10 @@ const defaultProjects = [
     {
         id: 'demo6',
         title: 'Bahçeli Villa',
+        titleTr: 'Bahçeli Villa',
+        titleEn: 'Garden Villa',
+        titleDe: 'Villa mit Garten',
+        titleRu: 'Вилла с Садом',
         category: 'villa',
         img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
         location: 'Silivri',
@@ -8692,10 +9803,13 @@ const defaultProjects = [
 ];
 
 function init() {
+    // ÖNCELİKLE dil ayarını yükle
+    currentLang = localStorage.getItem('cee_public_lang') || 'tr';
+    updateLanguageUI();
+    
     loadFromLocalStorage();
     loadColorTheme();
     loadDarkMode();
-    loadLanguage();
     loadSiteSettings();
     setupHero();
     renderProjects();
@@ -8705,7 +9819,11 @@ function init() {
     initMap();
     setupStatsObserver();
     initSocialSidebar();
-    updateLanguageUI();
+    
+    // En son dil uygula (tüm bölümler yüklendikten sonra)
+    setTimeout(() => {
+        applyLanguage();
+    }, 100);
 }
 
 function loadFromLocalStorage() {
@@ -8957,11 +10075,17 @@ function goToSlide(index) {
 
 function renderProjects() {
     const grid = document.getElementById('projectsGrid');
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
+    
+    // Çeviriler
+    const noProjectsText = { tr: 'Henüz proje eklenmedi', en: 'No projects added yet', de: 'Noch keine Projekte hinzugefügt', ru: 'Проекты пока не добавлены' };
+    const viewMoreText = { tr: 'DAHA FAZLA', en: 'VIEW MORE', de: 'MEHR SEHEN', ru: 'ПОДРОБНЕЕ' };
+    const pdfText = { tr: 'PDF DOSYASI', en: 'PDF FILE', de: 'PDF-DATEI', ru: 'PDF ФАЙЛ' };
     
     if (projects.length === 0) {
         grid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 100px 20px; color: var(--secondary);">
-                <p style="font-size: 16px; letter-spacing: 2px;">Henüz proje eklenmedi</p>
+                <p style="font-size: 16px; letter-spacing: 2px;" data-tr="${noProjectsText.tr}" data-en="${noProjectsText.en}" data-de="${noProjectsText.de}" data-ru="${noProjectsText.ru}">${noProjectsText[lang] || noProjectsText.tr}</p>
             </div>
         `;
         return;
@@ -8978,14 +10102,34 @@ function renderProjects() {
         const isPDF = project.mediaType === 'pdf';
         const isVideo = project.mediaType === 'video';
         
+        // Proje başlık ve açıklama çevirileri - 4 dil desteği
+        let title, description;
+        switch(lang) {
+            case 'de': 
+                title = project.titleDe || project.titleEn || project.title;
+                description = project.descriptionDe || project.descriptionEn || project.description;
+                break;
+            case 'ru': 
+                title = project.titleRu || project.titleEn || project.title;
+                description = project.descriptionRu || project.descriptionEn || project.description;
+                break;
+            case 'en': 
+                title = project.titleEn || project.title;
+                description = project.descriptionEn || project.description;
+                break;
+            default: 
+                title = project.titleTr || project.title;
+                description = project.descriptionTr || project.description;
+        }
+        
         let mediaHTML = '';
         if (isPDF) {
             mediaHTML = `
                 <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative;">
                     <div style="text-align: center; color: white;">
                         <div style="font-size: 80px; margin-bottom: 15px;">📄</div>
-                        <div style="font-size: 18px; font-weight: 600; letter-spacing: 2px;">PDF DOSYASI</div>
-                        ${project.title ? `<div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">${project.title}</div>` : ''}
+                        <div style="font-size: 18px; font-weight: 600; letter-spacing: 2px;">${pdfText[lang] || pdfText.tr}</div>
+                        ${title ? `<div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">${title}</div>` : ''}
                     </div>
                 </div>
             `;
@@ -8997,16 +10141,16 @@ function renderProjects() {
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; opacity: 0.9; pointer-events: none;">▶️</div>
             `;
         } else {
-            mediaHTML = `<img src="${project.img}" alt="${project.title || 'Proje'}" class="project-image" loading="lazy">`;
+            mediaHTML = `<img src="${project.img}" alt="${title || 'Proje'}" class="project-image" loading="lazy">`;
         }
         
         return `
             <div class="project-card" onclick="openLightbox('${project.img}', '${project.id}', ${isPDF}, ${isVideo})">
                 ${mediaHTML}
                 <div class="project-overlay">
-                    ${project.title ? `<div class="project-title">${project.title}</div>` : ''}
-                    ${project.description ? `<p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 20px;">${project.description}</p>` : ''}
-                    <button class="project-detail-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 12px 30px; font-size: 12px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;">DAHA FAZLA</button>
+                    ${title ? `<div class="project-title">${title}</div>` : ''}
+                    ${description ? `<p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 20px;">${description}</p>` : ''}
+                    <button class="project-detail-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 12px 30px; font-size: 12px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;">${viewMoreText[lang] || viewMoreText.tr}</button>
                 </div>
             </div>
         `;
@@ -9283,38 +10427,90 @@ function loadDarkMode() {
     }
 }
 
-function toggleLanguage() {
-    currentLang = currentLang === 'tr' ? 'en' : 'tr';
+function toggleLangMenu(event) {
+    event.stopPropagation();
+    const menu = document.getElementById('langMenu');
+    menu.classList.toggle('show');
+    
+    // Aktif dili işaretle
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.remove('active');
+    });
+    const activeOpt = document.querySelector(`.lang-option[onclick="setLanguage('${currentLang}')"]`);
+    if (activeOpt) activeOpt.classList.add('active');
+}
+
+function closeLangMenu() {
+    const menu = document.getElementById('langMenu');
+    if (menu) menu.classList.remove('show');
+}
+
+// Dışarı tıklanınca menüyü kapat
+document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('langDropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        closeLangMenu();
+    }
+});
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('cee_public_lang', currentLang);
     updateLanguageUI();
     applyLanguage();
-    localStorage.setItem('cee_public_lang', currentLang);
+    closeLangMenu();
+}
+
+// Eski toggleLanguage fonksiyonu (geriye uyumluluk için)
+function toggleLanguage() {
+    const langs = ['tr', 'en', 'de', 'ru'];
+    const currentIndex = langs.indexOf(currentLang);
+    const nextIndex = (currentIndex + 1) % langs.length;
+    setLanguage(langs[nextIndex]);
 }
 
 function updateLanguageUI() {
     const langFlag = document.getElementById('langFlag');
     const langText = document.getElementById('langText');
     
-    if (langFlag) {
-        if (currentLang === 'tr') {
-            // Türk Bayrağı SVG
-            langFlag.innerHTML = `<svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
+    const flags = {
+        tr: `<svg viewBox="0 0 1200 800" style="width: 100%; height: 100%;">
                 <rect fill="#E30A17" width="1200" height="800"/>
                 <circle fill="#fff" cx="425" cy="400" r="200"/>
                 <circle fill="#E30A17" cx="475" cy="400" r="160"/>
                 <polygon fill="#fff" points="583,400 764,450 652,326 652,474 764,350" transform="rotate(18 583 400)"/>
-            </svg>`;
-        } else {
-            // İngiliz Bayrağı SVG
-            langFlag.innerHTML = `<svg viewBox="0 0 60 30" style="width: 100%; height: 100%;">
+            </svg>`,
+        en: `<svg viewBox="0 0 60 30" style="width: 100%; height: 100%;">
                 <rect fill="#012169" width="60" height="30"/>
                 <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="polygon(30 15, 30 0, 0 0, 30 15, 60 0, 60 15, 30 15, 60 30, 30 30, 30 15, 0 30, 0 15)"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
                 <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
                 <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
-            </svg>`;
+            </svg>`,
+        de: `<svg viewBox="0 0 5 3" style="width: 100%; height: 100%;">
+                <rect fill="#000" width="5" height="1"/>
+                <rect fill="#D00" y="1" width="5" height="1"/>
+                <rect fill="#FFCE00" y="2" width="5" height="1"/>
+            </svg>`,
+        ru: `<svg viewBox="0 0 9 6" style="width: 100%; height: 100%;">
+                <rect fill="#fff" width="9" height="2"/>
+                <rect fill="#0039A6" y="2" width="9" height="2"/>
+                <rect fill="#D52B1E" y="4" width="9" height="2"/>
+            </svg>`
+    };
+    
+    const texts = { tr: 'TR', en: 'EN', de: 'DE', ru: 'RU' };
+    
+    if (langFlag) langFlag.innerHTML = flags[currentLang] || flags.tr;
+    if (langText) langText.textContent = texts[currentLang] || 'TR';
+    
+    // Aktif dili menüde işaretle
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.remove('active');
+        if (opt.getAttribute('onclick')?.includes(`'${currentLang}'`)) {
+            opt.classList.add('active');
         }
-    }
-    if (langText) langText.textContent = currentLang === 'tr' ? 'TR' : 'EN';
+    });
 }
 
 function loadLanguage() {
@@ -9327,14 +10523,61 @@ function loadLanguage() {
 }
 
 function applyLanguage() {
+    // 4 dil desteği: tr, en, de, ru
     document.querySelectorAll('[data-tr]').forEach(el => {
-        const text = currentLang === 'tr' ? el.dataset.tr : el.dataset.en;
+        let text;
+        switch(currentLang) {
+            case 'de': text = el.dataset.de || el.dataset.en || el.dataset.tr; break;
+            case 'ru': text = el.dataset.ru || el.dataset.en || el.dataset.tr; break;
+            case 'en': text = el.dataset.en || el.dataset.tr; break;
+            default: text = el.dataset.tr;
+        }
+        if (!text) return;
+        
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = text;
+        } else if (el.classList.contains('section-title')) {
+            // Section title için özel işlem - accent span'ını koru
+            const words = text.split(' ');
+            if (words.length > 1) {
+                const lastWord = words.pop();
+                const firstPart = words.join(' ');
+                el.innerHTML = firstPart + ' <span class="accent" style="color: #4a4a4a !important;">' + lastWord + '</span>';
+            } else {
+                el.textContent = text;
+            }
+        } else if (text.includes('<br>') || text.includes('<')) {
+            // HTML içeren metinler için innerHTML kullan
+            el.innerHTML = text;
         } else {
             el.textContent = text;
         }
     });
+    
+    // Select option'ları için özel işlem
+    document.querySelectorAll('select option[data-tr]').forEach(opt => {
+        let text;
+        switch(currentLang) {
+            case 'de': text = opt.dataset.de || opt.dataset.en || opt.dataset.tr; break;
+            case 'ru': text = opt.dataset.ru || opt.dataset.en || opt.dataset.tr; break;
+            case 'en': text = opt.dataset.en || opt.dataset.tr; break;
+            default: text = opt.dataset.tr;
+        }
+        if (text) opt.textContent = text;
+    });
+    
+    // Dinamik bölümleri yeniden yükle (hizmetler, referanslar, SSS, projeler)
+    if (typeof loadServicesSection === 'function') loadServicesSection();
+    if (typeof loadReferencesSection === 'function') loadReferencesSection();
+    if (typeof loadFaqs === 'function') loadFaqs();
+    if (typeof renderProjects === 'function') renderProjects();
+    
+    // Dark mode stillerini yeniden uygula
+    if (document.body.classList.contains('dark-mode')) {
+        setTimeout(() => {
+            if (typeof applyColors === 'function') applyColors();
+        }, 100);
+    }
 }
 
 // SOSYAL MEDYA SEKMESİ FONKSİYONLARI (MADDE 3)
@@ -12344,6 +13587,29 @@ function loadHeroSettings() {
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', loadSiteLogo);
 document.addEventListener('DOMContentLoaded', loadHeroSettings);
+
+// Section decoration tıklama - Global handler
+document.addEventListener('click', function(e) {
+    var target = e.target;
+    // section-decoration veya içindeki dot'a tıklandı mı kontrol et
+    var decoration = target.closest('.section-decoration');
+    if (decoration) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// Section decoration'lara cursor ve title ekle
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.section-decoration').forEach(function(el) {
+        el.style.cursor = 'pointer';
+        el.title = 'Yukarı git';
+    });
+});
 </script>
 
 
