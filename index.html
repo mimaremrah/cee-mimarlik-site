@@ -1846,12 +1846,38 @@
 
         /* Dark Mode Navigation */
         body.dark-mode nav a {
-            color: #b0b0b0 !important;
+            background: linear-gradient(180deg, 
+                #c0c0c0 0%,
+                #d0d0d0 20%,
+                #e0e0e0 40%,
+                #d0d0d0 60%,
+                #c0c0c0 80%,
+                #b0b0b0 100%
+            ) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0px 1px 0px rgba(0,0,0,0.5)) !important;
         }
 
         body.dark-mode nav a:hover,
         body.dark-mode nav a.active {
-            color: #ffffff !important;
+            background: linear-gradient(180deg, 
+                #e0e0e0 0%,
+                #f0f0f0 20%,
+                #ffffff 40%,
+                #f0f0f0 60%,
+                #e0e0e0 80%,
+                #d0d0d0 100%
+            ) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            filter: drop-shadow(0px 1px 0px rgba(0,0,0,0.7)) !important;
+        }
+
+        body.dark-mode nav a::after {
+            background: linear-gradient(90deg, #707070, #a0a0a0, #707070) !important;
         }
 
         body.dark-mode .logo-text {
@@ -2382,8 +2408,22 @@
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
+            font-weight: 600;
+            /* Metalik Gradient Efekti */
+            background: linear-gradient(180deg, 
+                #4a4a4a 0%,
+                #5a5a5a 20%,
+                #6a6a6a 40%,
+                #5a5a5a 60%,
+                #4a4a4a 80%,
+                #3a3a3a 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.3));
         }
 
         nav a::after {
@@ -2393,19 +2433,30 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #4a4a4a;
+            background: linear-gradient(90deg, #3a3a3a, #6a6a6a, #3a3a3a);
             transition: width 0.3s;
         }
 
         nav a:hover::after,
         nav a.active::after {
             width: 100%;
-            background: #4a4a4a;
+            background: linear-gradient(90deg, #3a3a3a, #7a7a7a, #3a3a3a);
         }
 
         nav a:hover,
         nav a.active {
-            color: #4a4a4a;
+            background: linear-gradient(180deg, 
+                #6a6a6a 0%,
+                #7a7a7a 20%,
+                #8a8a8a 40%,
+                #7a7a7a 60%,
+                #6a6a6a 80%,
+                #5a5a5a 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.5));
         }
 
         .header-actions {
@@ -6515,9 +6566,9 @@ window.goToAdmin = goToAdmin;
                     🛒 E-Hizmetler
                 </a>
                 <div class="ehizmetler-menu" id="ehizmetlerMenu" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 10001; margin-top: 10px;">
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Çorlu Kent Rehberi', 'Çorlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">📍 CBS Çorlu</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;">📍 KEOS Ergene</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel Müdürlüğü')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;">📍 Parsel Sorgu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Çorlu Kent Rehberi', 'Çorlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 CBS Çorlu" data-en="📍 CBS Çorlu" data-de="📍 CBS Çorlu" data-ru="📍 CBS Чорлу">📍 CBS Çorlu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 KEOS Ergene" data-en="📍 KEOS Ergene" data-de="📍 KEOS Ergene" data-ru="📍 KEOS Эргене">📍 KEOS Ergene</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel Müdürlüğü')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;" data-tr="📍 Parsel Sorgu" data-en="📍 Parcel Query" data-de="📍 Parzellenabfrage" data-ru="📍 Запрос Участка">📍 Parsel Sorgu</a>
                 </div>
             </div>
             
@@ -8075,11 +8126,15 @@ document.addEventListener('DOMContentLoaded', loadServicesSection);
 <style>
 .service-card-v2 {
     box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    cursor: pointer;
 }
 .service-card-v2:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     border-bottom-color: #333;
+}
+.service-icon-v2 {
+    cursor: pointer;
 }
 .service-card-v2:hover .service-icon-v2 {
     background: #4a4a4a !important;
@@ -8303,6 +8358,12 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 </script>
 
 <style>
+.ref-card {
+    cursor: pointer;
+}
+.ref-icon {
+    cursor: pointer;
+}
 .ref-card:hover {
     background: white;
     transform: translateY(-5px);
@@ -8510,13 +8571,13 @@ loadFaqs();
                 </div>
                 
                 <div style="margin-bottom: 25px;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; cursor: pointer;" title="Çalışma Saatleri">
                         <div class="contact-icon-circle" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div>
                             <strong style="display: block; color: var(--primary);" data-tr="Çalışma Saatleri" data-en="Working Hours" data-de="Öffnungszeiten" data-ru="Часы Работы">Çalışma Saatleri</strong>
-                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours" data-tr="Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı" data-en="Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
+                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours" data-tr="Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı" data-en="Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed" data-de="Montag - Freitag: 09:00 - 18:00<br>Samstag - Sonntag: Geschlossen" data-ru="Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
                         </div>
                     </div>
                 </div>
@@ -8644,9 +8705,9 @@ loadFaqs();
             </iframe>
         </div>
         
-        <!-- Konum İkonu - Harita üzerinde -->
-        <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 20%, #b8b8b8 50%, #a0a0a0 80%, #888888 100%); padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4); display: flex; align-items: center; gap: 10px; z-index: 10; border: 1px solid rgba(0,0,0,0.15);">
-            <div style="width: 36px; height: 36px; background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 30%, #707070 70%, #505050 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);">
+        <!-- Konum İkonu - Harita üzerinde - Animasyonlu -->
+        <div class="map-location-badge" style="position: absolute; top: 20px; right: 60px; background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 20%, #b8b8b8 50%, #a0a0a0 80%, #888888 100%); padding: 12px 16px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4); display: flex; align-items: center; gap: 10px; z-index: 10; border: 1px solid rgba(0,0,0,0.15); cursor: pointer; transition: all 0.3s ease; animation: mapBadgePulse 2s infinite;">
+            <div class="map-badge-icon" style="width: 36px; height: 36px; background: linear-gradient(180deg, #d0d0d0 0%, #a0a0a0 30%, #707070 70%, #505050 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3); animation: mapIconBounce 1.5s infinite;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -8654,6 +8715,29 @@ loadFaqs();
             </div>
             <span style="font-weight: 700; color: #1a1a1a; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.5);" data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура">CEE Mimarlık</span>
         </div>
+        
+        <style>
+        @keyframes mapBadgePulse {
+            0%, 100% { 
+                box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4), 0 0 0 0 rgba(74,74,74,0.4);
+            }
+            50% { 
+                box-shadow: 0 6px 25px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.4), 0 0 0 8px rgba(74,74,74,0);
+            }
+        }
+        @keyframes mapIconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .map-location-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+        }
+        .map-location-badge:hover .map-badge-icon {
+            animation: none;
+            transform: scale(1.1);
+        }
+        </style>
     </div>
     
     <!-- Bilgiler -->
@@ -8692,7 +8776,7 @@ function handlePhoneClick() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // Mobilde doÄŸrudan arama yap
+        // Mobilde doğrudan arama yap
         window.location.href = 'tel:+' + fullPhone;
     } else {
         // Bilgisayarda WhatsApp aç
@@ -8700,9 +8784,10 @@ function handlePhoneClick() {
     }
 }
 
-// İletişim bilgilerini localStorage'dan yükle
+// İletişim bilgilerini localStorage'dan yükle - 4 dil desteği
 function loadContactInfo() {
     const contactSettings = JSON.parse(localStorage.getItem('contact_settings') || '{}');
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
     
     if (contactSettings.phone) {
         const phoneEl = document.getElementById('displayPhone');
@@ -8724,11 +8809,25 @@ function loadContactInfo() {
         if (addressEl) addressEl.innerHTML = contactSettings.address.replace(/\n/g, '<br>');
     }
     
-    if (contactSettings.workHours || contactSettings.weekend) {
-        const hoursEl = document.getElementById('displayHours');
-        if (hoursEl) {
+    // Çalışma saatleri - eğer localStorage'da özel değer yoksa data-* attribute'lardan al
+    const hoursEl = document.getElementById('displayHours');
+    if (hoursEl) {
+        if (contactSettings.workHours || contactSettings.weekend) {
+            // Özel çalışma saatleri varsa kullan
             let hoursText = contactSettings.workHours || 'Pazartesi - Cuma: 09:00 - 18:00';
-            if (contactSettings.weekend) hoursText += '<br>' + contactSettings.w   }
+            if (contactSettings.weekend) hoursText += '<br>' + contactSettings.weekend;
+            hoursEl.innerHTML = hoursText;
+        } else {
+            // Varsayılan çevirileri kullan
+            const hoursTranslations = {
+                tr: 'Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı',
+                en: 'Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed',
+                de: 'Montag - Freitag: 09:00 - 18:00<br>Samstag - Sonntag: Geschlossen',
+                ru: 'Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто'
+            };
+            hoursEl.innerHTML = hoursTranslations[lang] || hoursTranslations.tr;
+        }
+    }
 }
 
 // Sayfa yüklendiğinde iletişim bilgilerini yükle
@@ -9399,7 +9498,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="external-service-container">
         <div class="external-service-header">
             <div style="font-size: 48px; margin-bottom: 15px;">🏛️</div>
-            <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;">Dış Servise Yönlendiriliyorsunuz</h3>
+            <h3 id="externalServiceTitle" style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;" data-tr="Dış Servise Yönlendiriliyorsunuz" data-en="You are being redirected to an external service" data-de="Sie werden zu einem externen Dienst weitergeleitet" data-ru="Вы перенаправляетесь на внешний сервис">Dış Servise Yönlendiriliyorsunuz</h3>
             <p id="externalServiceName" style="font-size: 16px; color: #666; margin-bottom: 20px;"></p>
         </div>
         
@@ -9411,12 +9510,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
                 <div>
-                    <strong style="display: block; margin-bottom: 5px; color: #f59e0b;">Bilgilendirme</strong>
-                    <p style="font-size: 14px; line-height: 1.6; color: #666;">
-                        <span id="externalServiceOwner"></span> tarafından sağlanan bu hizmet, 
-                        <strong style="color: #667eea;">CEE MİMARLIK</strong> ile hiçbir bağlantısı olmayan 
-                        resmi bir devlet/belediye sitesidir.
-                    </p>
+                    <strong id="externalInfoLabel" style="display: block; margin-bottom: 5px; color: #f59e0b;" data-tr="Bilgilendirme" data-en="Information" data-de="Information" data-ru="Информация">Bilgilendirme</strong>
+                    <p id="externalServiceDesc" style="font-size: 14px; line-height: 1.6; color: #666;"></p>
                 </div>
             </div>
             
@@ -9426,27 +9521,21 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
-                <p style="font-size: 13px; color: #666; line-height: 1.5;">
-                    <strong>CEE MİMARLIK</strong> olarak sadece bu hizmetlere kolay erişim sağlıyoruz. 
-                    Siteye yeni sekmede yönlendirileceksiniz.<br><br>
-                    <strong style="color: #667eea;">💡 Geri Dönmek İçin:</strong><br>
-                    • Tarayıcınızın bu sekmesine geri dönün<br>
-                    • Veya tarayıcı geri (<) butonunu kullanın
-                </p>
+                <p id="externalServiceInfo" style="font-size: 13px; color: #666; line-height: 1.5;"></p>
             </div>
         </div>
         
         <div class="external-service-footer">
-            <button onclick="closeExternalServiceModal()" class="btn-secondary">
+            <button onclick="closeExternalServiceModal()" class="btn-secondary" id="externalCancelBtn" data-tr="İptal" data-en="Cancel" data-de="Abbrechen" data-ru="Отмена">
                 İptal
             </button>
-            <button onclick="confirmExternalService()" class="btn-primary">
+            <button onclick="confirmExternalService()" class="btn-primary" id="externalGoBtn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                Siteye Git
+                <span data-tr="Siteye Git" data-en="Go to Site" data-de="Zur Seite" data-ru="Перейти на сайт">Siteye Git</span>
             </button>
         </div>
     </div>
@@ -10566,11 +10655,12 @@ function applyLanguage() {
         if (text) opt.textContent = text;
     });
     
-    // Dinamik bölümleri yeniden yükle (hizmetler, referanslar, SSS, projeler)
+    // Dinamik bölümleri yeniden yükle (hizmetler, referanslar, SSS, projeler, iletişim)
     if (typeof loadServicesSection === 'function') loadServicesSection();
     if (typeof loadReferencesSection === 'function') loadReferencesSection();
     if (typeof loadFaqs === 'function') loadFaqs();
     if (typeof renderProjects === 'function') renderProjects();
+    if (typeof loadContactInfo === 'function') loadContactInfo();
     
     // Dark mode stillerini yeniden uygula
     if (document.body.classList.contains('dark-mode')) {
@@ -10636,10 +10726,31 @@ function openExternalServiceWithWarning(url, serviceName, owner) {
     
     const modal = document.getElementById('externalServiceModal');
     const serviceNameEl = document.getElementById('externalServiceName');
-    const ownerEl = document.getElementById('externalServiceOwner');
+    const descEl = document.getElementById('externalServiceDesc');
+    const infoEl = document.getElementById('externalServiceInfo');
+    
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
     
     serviceNameEl.textContent = serviceName;
-    ownerEl.textContent = owner;
+    
+    // Açıklama metni çevirileri
+    const descTexts = {
+        tr: `<span>${owner}</span> tarafından sağlanan bu hizmet, <strong style="color: #667eea;">CEE MİMARLIK</strong> ile hiçbir bağlantısı olmayan resmi bir devlet/belediye sitesidir.`,
+        en: `This service provided by <span>${owner}</span> is an official government/municipality website with no connection to <strong style="color: #667eea;">CEE ARCHITECTURE</strong>.`,
+        de: `Dieser Dienst, der von <span>${owner}</span> bereitgestellt wird, ist eine offizielle Regierungs-/Gemeinde-Website ohne Verbindung zu <strong style="color: #667eea;">CEE ARCHITEKTUR</strong>.`,
+        ru: `Эта услуга, предоставляемая <span>${owner}</span>, является официальным правительственным/муниципальным сайтом, не связанным с <strong style="color: #667eea;">CEE АРХИТЕКТУРА</strong>.`
+    };
+    
+    // Bilgi metni çevirileri
+    const infoTexts = {
+        tr: `<strong>CEE MİMARLIK</strong> olarak sadece bu hizmetlere kolay erişim sağlıyoruz. Siteye yeni sekmede yönlendirileceksiniz.<br><br><strong style="color: #667eea;">💡 Geri Dönmek İçin:</strong><br>• Tarayıcınızın bu sekmesine geri dönün<br>• Veya tarayıcı geri (&lt;) butonunu kullanın`,
+        en: `As <strong>CEE ARCHITECTURE</strong>, we only provide easy access to these services. You will be redirected to the site in a new tab.<br><br><strong style="color: #667eea;">💡 To Return:</strong><br>• Return to this browser tab<br>• Or use the browser back (&lt;) button`,
+        de: `Als <strong>CEE ARCHITEKTUR</strong> bieten wir nur einfachen Zugang zu diesen Diensten. Sie werden in einem neuen Tab zur Website weitergeleitet.<br><br><strong style="color: #667eea;">💡 Zum Zurückkehren:</strong><br>• Kehren Sie zu diesem Browser-Tab zurück<br>• Oder verwenden Sie die Browser-Zurück-Taste (&lt;)`,
+        ru: `Как <strong>CEE АРХИТЕКТУРА</strong>, мы только обеспечиваем легкий доступ к этим услугам. Вы будете перенаправлены на сайт в новой вкладке.<br><br><strong style="color: #667eea;">💡 Чтобы вернуться:</strong><br>• Вернитесь на эту вкладку браузера<br>• Или используйте кнопку назад (&lt;) браузера`
+    };
+    
+    descEl.innerHTML = descTexts[lang] || descTexts.tr;
+    infoEl.innerHTML = infoTexts[lang] || infoTexts.tr;
     
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
