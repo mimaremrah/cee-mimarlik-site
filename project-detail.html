@@ -14,14 +14,13 @@
         :root {
             --primary: #2c2c2c; --secondary: #666; --bg: #fafafa; --bg-card: #fff;
             --border: #e8e8e8; --text: #2c2c2c; --text-light: #888;
+            --primary: #2c2c2c; --secondary: #666; --bg: #fafafa; --bg-card: #fff;
+            --border: #e8e8e8; --text: #2c2c2c; --text-light: #888;
             --metallic: linear-gradient(180deg, #808080, #505050, #2a2a2a, #1a1a1a);
-            --metallic-light: linear-gradient(180deg, #999, #777, #555);
         }
         body.dark-mode {
             --bg: #0f0f0f; --bg-card: #1a1a1a; --border: #333;
             --text: #e8e8e8; --text-light: #888;
-            --metallic: linear-gradient(180deg, #ccc, #aaa, #888, #666);
-            --metallic-light: linear-gradient(180deg, #bbb, #999, #777);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
@@ -35,36 +34,38 @@
         .logo-text { font-size: 7px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); }
         .header-right { display: flex; align-items: center; gap: 15px; }
         .btn-back { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); text-decoration: none; padding: 8px 20px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.3s; }
-        .btn-back:hover { background: var(--primary); color: white; }
+        .btn-back:hover { background: var(--primary); color: white; border-color: var(--primary); }
         body.dark-mode .btn-back { color: #ccc; border-color: #555; }
-        body.dark-mode .btn-back:hover { background: #ccc; color: #111; }
+        body.dark-mode .btn-back:hover { background: #ccc; color: #111; border-color: #ccc; }
         .theme-toggle { background: none; border: none; font-size: 20px; cursor: pointer; padding: 6px; }
 
         /* HERO */
-        .project-hero { position: relative; width: 100%; height: 70vh; min-height: 400px; max-height: 600px; overflow: hidden; margin-top: 94px; }
+        .project-hero { position: relative; width: 100%; height: 70vh; min-height: 400px; max-height: 650px; overflow: hidden; margin-top: 94px; }
         .project-hero img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 60px; }
-        .hero-category { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 60px; }
+        .hero-category { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
         .hero-title { font-size: clamp(28px, 5vw, 48px); font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: white; margin-bottom: 20px; background: linear-gradient(180deg, #fff, #ccc, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .hero-meta { display: flex; gap: 25px; flex-wrap: wrap; }
-        .hero-meta-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); font-size: 14px; }
-        .hero-meta-item .meta-icon { font-size: 16px; }
+        .hero-meta-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.65); font-size: 14px; }
 
         /* CONTENT */
         .content-area { max-width: 1100px; margin: 0 auto; padding: 60px 30px 80px; }
 
+        /* SECTION TITLE */
+        .section-title { font-size: 14px; letter-spacing: 5px; text-transform: uppercase; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+        body.dark-mode .section-title { background: linear-gradient(180deg, #ccc, #aaa, #888); -webkit-background-clip: text; background-clip: text; }
+
         /* DESCRIPTION */
         .project-desc-section { margin-bottom: 60px; }
-        .section-title { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-        .project-description { font-size: 16px; line-height: 2; color: var(--secondary); }
+        .project-description { font-size: 16px; line-height: 2.0; color: var(--secondary); }
 
         /* INFO GRID */
-        .project-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 60px; }
-        .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: transform 0.3s; }
-        .info-card:hover { transform: translateY(-3px); }
-        .info-card .info-icon { font-size: 24px; margin-bottom: 8px; }
-        .info-card .info-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
-        .info-card .info-value { font-size: 15px; font-weight: 500; color: var(--text); }
+        .project-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 60px; }
+        .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 15px; text-align: center; transition: all 0.3s; }
+        .info-card:hover { transform: translateY(-3px); border-color: #999; }
+        .info-card .info-icon { font-size: 22px; margin-bottom: 8px; }
+        .info-card .info-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 5px; }
+        .info-card .info-value { font-size: 14px; font-weight: 500; color: var(--text); }
 
         /* GALLERY */
         .gallery-section { margin-bottom: 60px; }
@@ -73,46 +74,46 @@
         .gallery-item:hover { transform: scale(1.02); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .gallery-item:hover img { transform: scale(1.08); }
-        .gallery-item::after { content: '🔍'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; opacity: 0; transition: opacity 0.3s; pointer-events: none; background: rgba(0,0,0,0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(200,183,142,0); transition: background 0.3s; }
+        .gallery-item:hover::after { background: rgba(200,183,142,0.1); }
 
         /* DRAWINGS */
         .drawings-section { margin-bottom: 60px; }
         .drawings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .drawing-item { position: relative; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
-        .drawing-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .drawing-item { position: relative; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); transition: all 0.3s; }
+        .drawing-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: #999; }
         .drawing-item img { width: 100%; height: 100%; object-fit: cover; }
-        .drawing-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 15px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+        .drawing-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 15px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
 
         /* LIGHTBOX */
         .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 20px; }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 6px; }
         .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 32px; cursor: pointer; background: none; border: none; z-index: 10000; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
-        .lightbox-close:hover { opacity: 0.7; }
-        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 36px; cursor: pointer; background: rgba(255,255,255,0.1); border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
-        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-close:hover { color: rgba(255,255,255,0.9); }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 36px; cursor: pointer; background: rgba(255,255,255,0.08); border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
-        .lightbox-counter { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 2px; }
+        .lightbox-counter { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 3px; }
 
         /* CTA */
         .cta-section { background: var(--metallic); padding: 60px 30px; border-radius: 16px; text-align: center; margin-bottom: 60px; }
-        .cta-section h3 { font-size: 24px; font-weight: 300; color: white; margin-bottom: 12px; letter-spacing: 3px; }
+        .cta-section h3 { font-size: 22px; font-weight: 300; color: white; margin-bottom: 12px; letter-spacing: 4px; text-transform: uppercase; }
         .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 14px; }
-        .cta-btn { display: inline-block; padding: 14px 35px; background: white; color: #1a1a1a; text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; border-radius: 6px; transition: all 0.3s; }
-        .cta-btn:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .cta-btn { display: inline-block; padding: 14px 35px; background: white; color: #1a1a1a; text-decoration: none; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; font-weight: 500; transition: all 0.3s; border-radius: 4px; }
+        .cta-btn:hover { background: #f0f0f0; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
         /* FOOTER */
         .site-footer { text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); }
         .site-footer p { font-size: 12px; color: var(--text-light); }
 
-        /* LOADING */
+        /* LOADING / NOT FOUND */
         .loading { text-align: center; padding: 200px 20px; }
         .loading-spinner { width: 35px; height: 35px; border: 2px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .not-found { text-align: center; padding: 200px 20px; }
-        .not-found h2 { font-size: 28px; font-weight: 300; margin-bottom: 15px; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .not-found h2 { font-size: 28px; font-weight: 300; margin-bottom: 15px; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 4px; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -142,17 +143,16 @@
             <span class="logo-text" id="logoSubText">MİMARLIK & YAPI SİSTEMLERİ</span>
         </a>
         <div class="header-right">
-            <a href="projeler.html" class="btn-back" data-tr="← Projeler" data-en="← Projects">← Projeler</a>
+            <a href="projeler.html" class="btn-back" data-tr="← Projeler" data-en="← Projects" data-de="← Projekte" data-ru="← Проекты" data-ar="← المشاريع" data-fa="← پروژه‌ها" data-es="← Proyectos">← Projeler</a>
             <button class="theme-toggle" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema">🌙</button>
         </div>
     </div>
 </header>
 
 <div id="mainContent">
-    <div class="loading"><div class="loading-spinner"></div><p>Proje yükleniyor...</p></div>
+    <div class="loading"><div class="loading-spinner"></div><p style="color:var(--text-light);letter-spacing:2px;font-size:13px">Proje yükleniyor...</p></div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
     <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
@@ -162,14 +162,14 @@
 </div>
 
 <footer class="site-footer">
-    <p>© 2026 CEE Mimarlık. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span> · <a href="gizlilik.html" style="color:inherit;text-decoration:underline">Gizlilik</a></p>
+    <p>© <span id="footerYear">2026</span> <span id="footerCompany">CEE Mimarlık</span>. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-ru="Все права защищены." data-ar="جميع الحقوق محفوظة." data-fa="تمامی حقوق محفوظ است." data-es="Todos los derechos reservados.">Tüm hakları saklıdır.</span> · <a href="gizlilik.html" style="color:inherit;text-decoration:underline;opacity:0.6" data-tr="Gizlilik" data-en="Privacy">Gizlilik</a></p>
 </footer>
 
 <script>
-const urlParams = new URLSearchParams(window.location.search);
-const projectId = parseInt(urlParams.get('id'));
-let lightboxImages = [];
-let lightboxIdx = 0;
+var urlParams = new URLSearchParams(window.location.search);
+var projectId = parseInt(urlParams.get('id'));
+var lightboxImages = [];
+var lightboxIdx = 0;
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
@@ -178,138 +178,102 @@ function toggleDarkMode() {
 }
 
 function openLightbox(images, startIdx) {
-    lightboxImages = images;
-    lightboxIdx = startIdx || 0;
+    lightboxImages = images; lightboxIdx = startIdx || 0;
     showLightboxImage();
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-}
-function navLightbox(dir) {
-    lightboxIdx = (lightboxIdx + dir + lightboxImages.length) % lightboxImages.length;
-    showLightboxImage();
-}
-function showLightboxImage() {
-    document.getElementById('lightboxImg').src = lightboxImages[lightboxIdx];
-    document.getElementById('lightboxCounter').textContent = (lightboxIdx + 1) + ' / ' + lightboxImages.length;
-}
-document.getElementById('lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLightbox(); });
-document.addEventListener('keydown', e => {
+function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+function navLightbox(dir) { lightboxIdx = (lightboxIdx + dir + lightboxImages.length) % lightboxImages.length; showLightboxImage(); }
+function showLightboxImage() { document.getElementById('lightboxImg').src = lightboxImages[lightboxIdx]; document.getElementById('lightboxCounter').textContent = (lightboxIdx + 1) + ' / ' + lightboxImages.length; }
+
+document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target.id === 'lightbox') closeLightbox(); });
+document.addEventListener('keydown', function(e) {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') navLightbox(-1);
     if (e.key === 'ArrowRight') navLightbox(1);
 });
+var touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+document.getElementById('lightbox').addEventListener('touchend', function(e) { var d = touchStartX - e.changedTouches[0].clientX; if (Math.abs(d) > 50) d > 0 ? navLightbox(1) : navLightbox(-1); });
 
 function renderProject(project) {
-    const main = document.getElementById('mainContent');
+    var main = document.getElementById('mainContent');
     if (!project) {
-        main.innerHTML = `<div class="not-found"><h2>Proje Bulunamadı</h2><p style="color:var(--secondary);margin-bottom:25px">Aradığınız proje mevcut değil.</p><a href="projeler.html" class="cta-btn">Projelere Dön</a></div>`;
+        main.innerHTML = '<div class="not-found"><h2>Proje Bulunamadı</h2><p style="color:var(--secondary);margin-bottom:25px;font-style:italic">Aradığınız proje mevcut değil.</p><a href="projeler.html" class="cta-btn">Projelere Dön</a></div>';
         return;
     }
+    var images = project.images || (project.image ? [project.image] : []);
+    var drawings = project.drawings || [];
+    var mainImg = images[0] || '';
+    var title = project.title || 'Proje';
+    var desc = project.description || project.shortDesc || '';
+    var html = '';
 
-    const images = project.images || (project.image ? [project.image] : []);
-    const drawings = project.drawings || [];
-    const mainImg = images[0] || '';
-    const title = project.title || 'Proje';
-    const desc = project.description || project.shortDesc || '';
-
-    let html = '';
-
-    // HERO
     if (mainImg) {
-        html += `<div class="project-hero">
-            <img src="${mainImg}" alt="${title}">
-            <div class="hero-overlay">
-                <div class="hero-category">${project.category || 'Proje'}</div>
-                <h1 class="hero-title">${title}</h1>
-                <div class="hero-meta">
-                    ${project.location ? `<div class="hero-meta-item"><span class="meta-icon">📍</span> ${project.location}</div>` : ''}
-                    ${project.area ? `<div class="hero-meta-item"><span class="meta-icon">📐</span> ${project.area} m²</div>` : ''}
-                    ${project.date ? `<div class="hero-meta-item"><span class="meta-icon">📅</span> ${project.date}</div>` : ''}
-                    ${project.status ? `<div class="hero-meta-item"><span class="meta-icon">${project.status === 'Tamamlandı' ? '✅' : project.status === 'Devam Ediyor' ? '🔄' : '📋'}</span> ${project.status}</div>` : ''}
-                </div>
-            </div>
-        </div>`;
+        html += '<div class="project-hero"><img src="' + mainImg + '" alt="' + title + '"><div class="hero-overlay">';
+        html += '<div class="hero-category">' + (project.category || 'Proje') + '</div>';
+        html += '<h1 class="hero-title">' + title + '</h1><div class="hero-meta">';
+        if (project.location) html += '<div class="hero-meta-item">📍 ' + project.location + '</div>';
+        if (project.area) html += '<div class="hero-meta-item">📐 ' + project.area + ' m²</div>';
+        if (project.date) html += '<div class="hero-meta-item">📅 ' + project.date + '</div>';
+        if (project.status) html += '<div class="hero-meta-item">' + (project.status === 'Tamamlandı' ? '✅' : '🔄') + ' ' + project.status + '</div>';
+        html += '</div></div></div>';
     }
 
     html += '<div class="content-area">';
 
-    // INFO CARDS
-    const infoItems = [];
+    var infoItems = [];
     if (project.category) infoItems.push({ icon: '📂', label: 'Kategori', value: project.category });
     if (project.location) infoItems.push({ icon: '📍', label: 'Konum', value: project.location });
     if (project.area) infoItems.push({ icon: '📐', label: 'Alan', value: project.area + ' m²' });
     if (project.date) infoItems.push({ icon: '📅', label: 'Tarih', value: project.date });
     if (project.status) infoItems.push({ icon: '📋', label: 'Durum', value: project.status });
-
     if (infoItems.length > 0) {
         html += '<div class="project-info-grid">';
-        infoItems.forEach(item => {
-            html += `<div class="info-card"><div class="info-icon">${item.icon}</div><div class="info-label">${item.label}</div><div class="info-value">${item.value}</div></div>`;
-        });
+        for (var i = 0; i < infoItems.length; i++) html += '<div class="info-card"><div class="info-icon">' + infoItems[i].icon + '</div><div class="info-label">' + infoItems[i].label + '</div><div class="info-value">' + infoItems[i].value + '</div></div>';
         html += '</div>';
     }
 
-    // DESCRIPTION
     if (desc) {
-        html += `<div class="project-desc-section">
-            <h2 class="section-title" data-tr="Proje Hakkında" data-en="About Project">Proje Hakkında</h2>
-            <p class="project-description">${desc.replace(/\n/g, '<br>')}</p>
-        </div>`;
+        html += '<div class="project-desc-section"><h2 class="section-title" data-tr="Proje Hakkında" data-en="About Project" data-de="Über das Projekt" data-ru="О проекте" data-ar="عن المشروع" data-fa="درباره پروژه" data-es="Sobre el Proyecto">Proje Hakkında</h2>';
+        html += '<p class="project-description">' + desc.replace(/\n/g, '<br>') + '</p></div>';
     }
 
-    // PHOTO GALLERY
-    if (images.length > 1) {
-        html += `<div class="gallery-section">
-            <h2 class="section-title" data-tr="Proje Fotoğrafları" data-en="Project Photos">Proje Fotoğrafları</h2>
-            <div class="gallery-grid">`;
-        images.forEach((img, i) => {
-            html += `<div class="gallery-item" onclick="openLightbox(${JSON.stringify(images).replace(/"/g, '&quot;')}, ${i})"><img src="${img}" alt="Fotoğraf ${i+1}" loading="lazy"></div>`;
-        });
+    if (images.length > 0) {
+        html += '<div class="gallery-section"><h2 class="section-title" data-tr="Proje Fotoğrafları" data-en="Project Photos" data-de="Projektfotos" data-ru="Фотографии" data-ar="صور المشروع" data-fa="عکس‌ها" data-es="Fotos">Proje Fotoğrafları</h2><div class="gallery-grid">';
+        var imgArr = JSON.stringify(images).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        for (var j = 0; j < images.length; j++) html += '<div class="gallery-item" onclick="openLightbox(' + imgArr + ', ' + j + ')"><img src="' + images[j] + '" alt="Fotoğraf ' + (j+1) + '" loading="lazy"></div>';
         html += '</div></div>';
     }
 
-    // DRAWINGS
     if (drawings.length > 0) {
-        html += `<div class="drawings-section">
-            <h2 class="section-title" data-tr="Çizimler & Planlar" data-en="Drawings & Plans">Çizimler & Planlar</h2>
-            <div class="drawings-grid">`;
-        drawings.forEach((img, i) => {
-            html += `<div class="drawing-item" onclick="openLightbox(${JSON.stringify(drawings).replace(/"/g, '&quot;')}, ${i})"><img src="${img}" alt="Çizim ${i+1}" loading="lazy"><div class="drawing-label">Çizim ${i+1}</div></div>`;
-        });
+        html += '<div class="drawings-section"><h2 class="section-title" data-tr="Çizimler & Planlar" data-en="Drawings & Plans" data-de="Zeichnungen" data-ru="Чертежи" data-ar="الرسومات" data-fa="نقشه‌ها" data-es="Planos">Çizimler & Planlar</h2><div class="drawings-grid">';
+        var drwArr = JSON.stringify(drawings).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        for (var k = 0; k < drawings.length; k++) html += '<div class="drawing-item" onclick="openLightbox(' + drwArr + ', ' + k + ')"><img src="' + drawings[k] + '" alt="Çizim ' + (k+1) + '" loading="lazy"><div class="drawing-label">Çizim ' + (k+1) + '</div></div>';
         html += '</div></div>';
     }
 
-    // CTA
-    html += `<div class="cta-section">
-        <h3 data-tr="Benzer Bir Proje Mi Düşünüyorsunuz?" data-en="Thinking About a Similar Project?">Benzer Bir Proje Mi Düşünüyorsunuz?</h3>
-        <p data-tr="Mimari projeleriniz için bizimle iletişime geçebilirsiniz." data-en="Contact us for your architectural projects.">Mimari projeleriniz için bizimle iletişime geçebilirsiniz.</p>
-        <a href="iletisim.html" class="cta-btn" data-tr="İletişime Geç" data-en="Contact Us">İletişime Geç</a>
-    </div>`;
-
+    html += '<div class="cta-section"><h3 data-tr="Benzer Bir Proje Mi Düşünüyorsunuz?" data-en="Thinking About a Similar Project?" data-de="Ähnliches Projekt?" data-ru="Похожий проект?" data-ar="مشروع مماثل؟" data-fa="پروژه مشابه؟" data-es="¿Proyecto similar?">Benzer Bir Proje Mi Düşünüyorsunuz?</h3>';
+    html += '<p data-tr="Mimari projeleriniz için bizimle iletişime geçebilirsiniz." data-en="Contact us for your architectural projects.">Mimari projeleriniz için bizimle iletişime geçebilirsiniz.</p>';
+    html += '<a href="iletisim.html" class="cta-btn" data-tr="İletişime Geç" data-en="Contact Us">İletişime Geç</a></div>';
     html += '</div>';
+
     main.innerHTML = html;
     document.title = title + ' - CEE Mimarlık';
+    if (typeof updatePageLanguage === 'function') updatePageLanguage();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeBtn').textContent = '☀️';
-    }
-    try {
-        const ls = JSON.parse(localStorage.getItem('cee_logo_settings') || '{}');
-        if (ls.image) document.getElementById('headerLogo').src = ls.image;
-        if (ls.text) document.getElementById('logoSubText').textContent = ls.text;
-    } catch(e) {}
+    if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); document.getElementById('themeBtn').textContent = '☀️'; }
+    try { var ls = JSON.parse(localStorage.getItem('cee_logo_settings') || '{}'); if (ls.image) document.getElementById('headerLogo').src = ls.image; if (ls.text) document.getElementById('logoSubText').textContent = ls.text; } catch(e) {}
+    try { var fs = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}'); if (fs.company) document.getElementById('footerCompany').textContent = fs.company; } catch(e) {}
 
-    let projects = [];
+    var projects = [];
     try { projects = JSON.parse(localStorage.getItem('cee_projects') || '[]'); } catch(e) {}
-    const project = !isNaN(projectId) && projectId >= 0 && projectId < projects.length ? projects[projectId] : null;
+    var project = (!isNaN(projectId) && projectId >= 0 && projectId < projects.length) ? projects[projectId] : null;
+    if (project) { try { if (!project.clickCount) project.clickCount = 0; project.clickCount++; projects[projectId] = project; localStorage.setItem('cee_projects', JSON.stringify(projects)); } catch(e) {} }
     renderProject(project);
 });
 </script>
