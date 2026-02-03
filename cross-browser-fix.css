@@ -1,979 +1,279 @@
 /* ====================================================================
-   CEE MİMARLIK - CROSS-BROWSER UYUMLULUK DÜZELTMELERİ
-   Tüm modern ve eski tarayıcılarda tutarlı görünüm sağlar
-   Desteklenen: Chrome, Firefox, Safari, Edge, Opera, IE11+
+   CEE MİMARLIK - CROSS-BROWSER & MOBİL UYUMLULUK v2.0
+   Chrome, Firefox, Safari, Edge, Opera, Samsung Internet
+   iPhone SE → iPad Pro, Android 5+, Desktop
    ==================================================================== */
 
-/* =============================================
-   1. CSS CUSTOM PROPERTIES FALLBACK (IE11)
-   IE11 CSS değişkenlerini desteklemez
-   ============================================= */
-
-/* IE11 için sabit renkler - CSS değişkenleri yerine */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    :root {
-        /* IE11 değişkenleri görmezden gelir, sabit değerler kullanır */
-    }
-    
-    body {
-        background-color: #fafafa !important;
-        color: #2c2c2c !important;
-    }
-    
-    body.dark-mode {
-        background-color: #1a1a1a !important;
-        color: #e0e0e0 !important;
-    }
-    
-    header {
-        background-color: rgba(255, 255, 255, 0.97) !important;
-    }
-    
-    body.dark-mode header {
-        background-color: rgba(20, 20, 20, 0.97) !important;
-    }
-    
-    .section-title .accent {
-        color: #4a4a4a !important;
-    }
-    
-    nav a:hover,
-    nav a.active {
-        color: #4a4a4a !important;
-    }
-    
-    .hero-cta,
-    .team-cta-btn,
-    .directions-btn {
-        background-color: #4a4a4a !important;
-    }
-    
-    .filter-btn.active {
-        background-color: #4a4a4a !important;
-        color: #ffffff !important;
-    }
-    
-    .service-icon-v2,
-    .ref-icon,
-    .contact-icon-circle {
-        background-color: #4a4a4a !important;
-    }
-    
-    .ai-assistant-header,
-    .ai-panel-header {
-        background-color: #4a4a4a !important;
-    }
-    
-    /* IE11 input placeholder */
-    :-ms-input-placeholder {
-        color: #999 !important;
-        opacity: 1 !important;
-    }
-}
-
-/* =============================================
-   2. BACKDROP-FILTER FALLBACK
-   Safari, IE ve eski tarayıcılar için
-   ============================================= */
-
-/* backdrop-filter desteklemeyen tarayıcılar için */
-@supports not (backdrop-filter: blur(10px)) {
-    header {
-        background: rgba(255, 255, 255, 0.98) !important;
-    }
-    
-    body.dark-mode header {
-        background: rgba(20, 20, 20, 0.98) !important;
-    }
-    
-    .hero-nav {
-        background: rgba(0, 0, 0, 0.6) !important;
-    }
-    
-    .hero-cta {
-        background: rgba(74, 74, 74, 0.95) !important;
-    }
-    
-    .toast {
-        background: rgba(255, 255, 255, 0.98) !important;
-    }
-    
-    body.dark-mode .toast {
-        background: rgba(44, 44, 44, 0.98) !important;
-    }
-    
-    .dwg-tools-container {
-        background: rgba(255, 255, 255, 0.98) !important;
-    }
-    
-    body.dark-mode .dwg-tools-container {
-        background: rgba(44, 44, 44, 0.98) !important;
-    }
-    
-    .stats-container {
-        background: rgba(255, 255, 255, 0.95) !important;
-    }
-    
-    body.dark-mode .stats-container {
-        background: rgba(44, 44, 44, 0.95) !important;
-    }
-}
-
-/* =============================================
-   3. FLEXBOX GAP FALLBACK
-   Eski Safari ve tarayıcılar için
-   ============================================= */
-
-/* gap desteklemeyen flexbox için margin kullan */
-@supports not (gap: 10px) {
-    .flex, [class*="flex"],
-    nav,
-    .header-actions,
-    .social-icons,
-    .quick-topics,
-    .hero-indicators,
-    .logo-top,
-    .ai-assistant-input {
-        margin: -5px;
-    }
-    
-    .flex > *, [class*="flex"] > *,
-    nav > *,
-    .header-actions > *,
-    .social-icons > *,
-    .quick-topics > *,
-    .hero-indicators > *,
-    .logo-top > *,
-    .ai-assistant-input > * {
-        margin: 5px;
-    }
-    
-    nav {
-        margin: -20px;
-    }
-    
-    nav > * {
-        margin: 20px;
-    }
-}
-
-/* =============================================
-   4. OBJECT-FIT FALLBACK (IE11)
-   IE11 object-fit desteklemez
-   ============================================= */
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .hero-slide img,
-    .project-item img,
-    .team-member img {
-        width: 100%;
-        height: auto;
-        min-height: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-    
-    .hero-slide,
-    .project-item,
-    .team-member {
-        position: relative;
-        overflow: hidden;
-    }
-}
-
-/* =============================================
-   5. GRADIENT PREFIXES
-   Tüm tarayıcılarda gradient desteği
-   ============================================= */
-
-/* Metalik gradient - tüm tarayıcılar */
-.hero-cta,
-.team-cta-btn,
-.directions-btn {
-    background: #808080; /* Fallback */
-    background: -webkit-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: -moz-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: -o-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-}
-
-.service-icon-v2,
-.ref-icon,
-.contact-icon-circle {
-    background: #808080; /* Fallback */
-    background: -webkit-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: -moz-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: -o-linear-gradient(top, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-    background: linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 20%, #808080 50%, #505050 80%, #2a2a2a 100%);
-}
-
-.ai-assistant-header,
-.ai-panel-header {
-    background: #606060; /* Fallback */
-    background: -webkit-linear-gradient(top, #b0b0b0 0%, #606060 50%, #1a1a1a 100%);
-    background: -moz-linear-gradient(top, #b0b0b0 0%, #606060 50%, #1a1a1a 100%);
-    background: -o-linear-gradient(top, #b0b0b0 0%, #606060 50%, #1a1a1a 100%);
-    background: linear-gradient(180deg, #b0b0b0 0%, #606060 50%, #1a1a1a 100%);
-}
-
-.convert-btn,
-.download-btn {
-    background: #667eea; /* Fallback */
-    background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background: -moz-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background: -o-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-/* =============================================
-   6. TRANSFORM PREFIXES
-   Tüm tarayıcılarda transform desteği
-   ============================================= */
-
-.hero-content {
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.hero-nav {
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.hero-nav:hover {
-    -webkit-transform: translateY(-50%) scale(1.1);
-    -moz-transform: translateY(-50%) scale(1.1);
-    -ms-transform: translateY(-50%) scale(1.1);
-    -o-transform: translateY(-50%) scale(1.1);
-    transform: translateY(-50%) scale(1.1);
-}
-
-button:hover,
-.btn:hover,
-.btn-primary:hover,
-.hero-cta:hover,
-.team-cta-btn:hover,
-.directions-btn:hover {
-    -webkit-transform: translateY(-2px);
-    -moz-transform: translateY(-2px);
-    -ms-transform: translateY(-2px);
-    -o-transform: translateY(-2px);
-    transform: translateY(-2px);
-}
-
-.project-item:hover,
-.team-member:hover {
-    -webkit-transform: translateY(-8px);
-    -moz-transform: translateY(-8px);
-    -ms-transform: translateY(-8px);
-    -o-transform: translateY(-8px);
-    transform: translateY(-8px);
-}
-
-/* =============================================
-   7. TRANSITION PREFIXES
-   Tüm tarayıcılarda transition desteği
-   ============================================= */
-
-button, .btn, .btn-primary, .btn-secondary, a, input, textarea,
-.hero-cta, .team-cta-btn, .directions-btn,
-.project-item, .team-member,
-.social-link, .filter-btn,
-nav a, .logo-container, .site-logo {
-    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* =============================================
-   8. ANIMATION PREFIXES
-   Tüm tarayıcılarda animation desteği
-   ============================================= */
-
-@-webkit-keyframes fadeInUp {
-    from {
-        opacity: 0;
-        -webkit-transform: translateY(30px);
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-@-moz-keyframes fadeInUp {
-    from {
-        opacity: 0;
-        -moz-transform: translateY(30px);
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        -moz-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-@-o-keyframes fadeInUp {
-    from {
-        opacity: 0;
-        -o-transform: translateY(30px);
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        -o-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        -webkit-transform: translateY(30px);
-        -moz-transform: translateY(30px);
-        -o-transform: translateY(30px);
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -o-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@-moz-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@-o-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@-webkit-keyframes slideIn {
-    from {
-        opacity: 0;
-        -webkit-transform: translateX(-20px);
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-}
-
-@-moz-keyframes slideIn {
-    from {
-        opacity: 0;
-        -moz-transform: translateX(-20px);
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        -moz-transform: translateX(0);
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        -webkit-transform: translateX(-20px);
-        -moz-transform: translateX(-20px);
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateX(0);
-        -moz-transform: translateX(0);
-        transform: translateX(0);
-    }
-}
-
-@-webkit-keyframes typing {
-    0%, 60%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
-    30% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
-}
-
-@-moz-keyframes typing {
-    0%, 60%, 100% { -moz-transform: translateY(0); transform: translateY(0); }
-    30% { -moz-transform: translateY(-10px); transform: translateY(-10px); }
-}
-
-@keyframes typing {
-    0%, 60%, 100% {
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        transform: translateY(0);
-    }
-    30% {
-        -webkit-transform: translateY(-10px);
-        -moz-transform: translateY(-10px);
-        transform: translateY(-10px);
-    }
-}
-
-@-webkit-keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-@-moz-keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-@keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-section {
-    -webkit-animation: fadeInUp 0.8s ease-out;
-    -moz-animation: fadeInUp 0.8s ease-out;
-    -o-animation: fadeInUp 0.8s ease-out;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-/* =============================================
-   9. FLEXBOX CROSS-BROWSER
-   Eski tarayıcılar için flexbox desteği
-   ============================================= */
-
-.flex, [class*="flex"],
-nav,
-.header-content,
-.header-actions,
-.social-icons,
-.logo-container,
-.logo-top,
-.ai-assistant-panel,
-.ai-assistant-input,
-.ai-msg,
-.user-msg,
-.msg-avatar,
-.hero-nav,
-.quick-topics,
-.contact-info {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.ai-assistant-panel {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
-
-.logo-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-}
-
-.header-content {
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.hero-nav,
-.msg-avatar,
-.ai-assistant-input button {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-/* =============================================
-   10. GRID CROSS-BROWSER
-   CSS Grid için fallback
-   ============================================= */
-
-.quick-topics,
-.format-options,
-.version-options,
-.stats-container {
-    display: -ms-grid;
-    display: grid;
-}
-
-/* IE11 için grid fallback - flexbox kullan */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .quick-topics,
-    .format-options,
-    .version-options,
-    .stats-container {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
-    
-    .quick-topics > *,
-    .format-options > *,
-    .version-options > * {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 calc(50% - 10px);
-        flex: 0 0 calc(50% - 10px);
-        margin: 5px;
-    }
-    
-    .stats-container > * {
-        -webkit-box-flex: 1;
-        -ms-flex: 1 1 200px;
-        flex: 1 1 200px;
-    }
-}
-
-/* =============================================
-   11. SCROLL BEHAVIOR FALLBACK
-   Eski tarayıcılar için smooth scroll
-   ============================================= */
-
-@supports not (scroll-behavior: smooth) {
-    html {
-        /* JavaScript ile smooth scroll kullanılacak */
-    }
-}
-
-/* =============================================
-   12. FILTER FALLBACK
-   IE11 ve eski tarayıcılar için
-   ============================================= */
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .site-logo {
-        /* IE11'de filter çalışmaz, alternatif kullan */
-        border: none;
-    }
-    
-    body.dark-mode .hero-slide img {
-        /* brightness filter yerine opacity */
-        opacity: 0.85;
-    }
-}
-
-/* =============================================
-   13. APPEARANCE RESET
-   Form elemanları için cross-browser
-   ============================================= */
-
-input, button, select, textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-}
-
-/* Select ok işareti için özel stil */
-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 30px;
-}
-
-/* =============================================
-   14. USER-SELECT CROSS-BROWSER
-   ============================================= */
-
-.no-select,
-button,
-.hero-nav,
-.menu-toggle {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* =============================================
-   15. BOX-SIZING NORMALIZE
-   ============================================= */
-
-*, *::before, *::after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-/* =============================================
-   16. PLACEHOLDER STYLES
-   Tüm tarayıcılarda placeholder rengi
-   ============================================= */
-
-::-webkit-input-placeholder {
-    color: #999;
-    opacity: 1;
-}
-
-::-moz-placeholder {
-    color: #999;
-    opacity: 1;
-}
-
-:-ms-input-placeholder {
-    color: #999;
-    opacity: 1;
-}
-
-::-ms-input-placeholder {
-    color: #999;
-    opacity: 1;
-}
-
-::placeholder {
-    color: #999;
-    opacity: 1;
-}
-
-/* =============================================
-   17. SCROLLBAR STYLES
-   Firefox ve Webkit tarayıcılar için
-   ============================================= */
-
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #4a4a4a transparent;
-}
-
-/* Webkit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #4a4a4a;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #2c2c2c;
-}
-
-/* =============================================
-   18. SELECTION STYLES
-   ============================================= */
-
-::-moz-selection {
-    background: #4a4a4a;
-    color: white;
-}
-
-::selection {
-    background: #4a4a4a;
-    color: white;
-}
-
-/* =============================================
-   19. FOCUS STYLES
-   Accessibility için focus göstergesi
-   ============================================= */
-
-/* Eski tarayıcılar için focus */
-:focus {
-    outline: none;
-}
-
-/* Modern tarayıcılar için focus-visible */
-:focus-visible {
-    outline: 2px solid #4a4a4a;
-    outline-offset: 2px;
-}
-
-/* focus-visible desteklemeyen tarayıcılar için */
-@supports not selector(:focus-visible) {
-    :focus {
-        outline: 2px solid #4a4a4a;
-        outline-offset: 2px;
-    }
-    
-    button:focus,
-    a:focus,
-    input:focus {
-        outline: 2px solid #4a4a4a;
-        outline-offset: 2px;
-    }
-}
-
-/* =============================================
-   20. SAFARI SPECIFIC FIXES
-   ============================================= */
-
-/* Safari iOS scroll fix */
-@supports (-webkit-touch-callout: none) {
-    body {
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .ai-assistant-messages,
-    .modal-content {
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* =============================================
-   21. FIREFOX SPECIFIC FIXES
-   ============================================= */
-
-@-moz-document url-prefix() {
-    /* Firefox'ta button içindeki text hizalama */
-    button {
-        text-align: center;
-    }
-    
-    /* Firefox'ta input padding */
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        padding-top: 0.6em;
-        padding-bottom: 0.6em;
-    }
-}
-
-/* =============================================
-   22. EDGE SPECIFIC FIXES
-   ============================================= */
-
-@supports (-ms-ime-align: auto) {
-    /* Edge Legacy fixes */
-    .hero-slide img {
-        -ms-interpolation-mode: bicubic;
-    }
-}
+/* ═══ 0. GLOBAL RESETS & OVERFLOW FIX ═══ */
+*,*::before,*::after{box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}
+html{overflow-x:hidden!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+body{overflow-x:hidden!important;width:100%!important;max-width:100vw!important;position:relative;min-height:100vh;min-height:-webkit-fill-available;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji'}
+@supports(min-height:100dvh){body{min-height:100dvh}}
+
+/* ═══ 1. IMAGE RENDERING ═══ */
+img{max-width:100%;height:auto;display:block;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-ms-interpolation-mode:bicubic}
+.site-logo,#headerLogo,#footerLogo,.logo-wrapper img,#floatingLogo img,.hero-logo-wrapper img,[id*="Logo"] img,[class*="logo"] img{image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-ms-interpolation-mode:bicubic;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.site-logo,#headerLogo,.logo-wrapper img{background:transparent!important;mix-blend-mode:normal}
+
+/* ═══ 2. FLEXBOX CROSS-BROWSER ═══ */
+.header-content,.footer-bottom,.footer-content,.header-actions,nav,.social-icons{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
+.header-content{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%}
+
+/* ═══ 3. BACKDROP-FILTER FALLBACK ═══ */
+@supports not((-webkit-backdrop-filter:blur(10px)) or (backdrop-filter:blur(10px))){
+    header{background:rgba(255,255,255,0.98)!important}
+    header.scrolled{background:rgba(255,255,255,0.99)!important}
+    body.dark-mode header{background:rgba(20,20,20,0.98)!important}
+    body.dark-mode header.scrolled{background:rgba(20,20,20,0.99)!important}
+    .lang-menu,.ehizmetler-menu{background:rgba(255,255,255,0.99)!important}
+    body.dark-mode .lang-menu,body.dark-mode .ehizmetler-menu{background:rgba(37,37,37,0.99)!important}
+}
+
+/* ═══ 4. HEADER & NAV ═══ */
+header{width:100%!important;max-width:100vw!important;position:sticky;position:-webkit-sticky;top:0;z-index:9999}
+
+@media(max-width:768px){
+    .menu-toggle{display:block!important;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:none!important;border:none!important;font-size:26px!important;padding:8px!important;cursor:pointer;z-index:10001;color:inherit;line-height:1}
+    nav,#mainNav{display:none!important;position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;background:var(--white,#ffffff)!important;-webkit-flex-direction:column!important;flex-direction:column!important;padding:90px 30px 30px 30px!important;gap:0!important;z-index:10000!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch}
+    body.dark-mode nav,body.dark-mode #mainNav{background:var(--dark-bg,#1a1a2e)!important}
+    nav.mobile-open,nav.active,#mainNav.mobile-open,#mainNav.active{display:-webkit-flex!important;display:flex!important}
+    nav a,#mainNav a{padding:16px 0!important;border-bottom:1px solid var(--border,#e5e7eb)!important;font-size:16px!important;letter-spacing:1px!important;width:100%!important;display:block!important;background:none!important;-webkit-background-clip:unset!important;background-clip:unset!important;-webkit-text-fill-color:var(--text,#333)!important;color:var(--text,#333)!important}
+    body.dark-mode nav a,body.dark-mode #mainNav a{-webkit-text-fill-color:var(--text,#e0e0e0)!important;color:var(--text,#e0e0e0)!important}
+    nav a:last-child,#mainNav a:last-child{border-bottom:none!important}
+    .header-actions{-webkit-order:3;-ms-flex-order:3;order:3;gap:8px!important}
+    .social-icons{display:none!important}
+    .logo-wrapper{max-width:55%!important}
+    .logo-wrapper .site-logo,.logo-wrapper #headerLogo{height:50px!important;max-height:50px!important;width:auto!important;max-width:100%!important}
+    .logo-text,#logoText,#siteTitle{font-size:9px!important;letter-spacing:2px!important}
+    .header-content{padding:0 15px!important;min-height:60px}
+}
+
+@media(max-width:375px){
+    .logo-wrapper .site-logo,.logo-wrapper #headerLogo{height:40px!important}
+    .logo-text,#logoText,#siteTitle{font-size:8px!important;letter-spacing:1.5px!important}
+    .header-content{padding:0 10px!important}
+    .menu-toggle{font-size:22px!important;padding:6px!important}
+}
+
+/* ═══ 5. HERO SECTION ═══ */
+.hero{width:100%!important;max-width:100%!important;margin-left:0!important;left:0!important;overflow:hidden!important}
+
+@media(max-width:768px){
+    .hero{height:55vh!important;min-height:320px!important;max-height:480px!important}
+    .hero-content-lares{right:5%!important;left:5%!important;max-width:90%!important;text-align:center!important}
+    .hero-brand{font-size:28px!important;letter-spacing:4px!important;margin-bottom:15px!important}
+    .hero-brand .cee-text{font-size:48px!important;letter-spacing:10px!important}
+    .hero-brand .mimarlik-text{font-size:14px!important;letter-spacing:5px!important}
+    .hero-cta{font-size:12px!important;padding:12px 25px!important;letter-spacing:2px!important}
+    .hero-nav{width:32px!important;height:32px!important;font-size:12px!important}
+    .hero-nav.prev{left:8px!important}
+    .hero-nav.next{right:8px!important}
+    .hero-indicators{bottom:15px!important}
+    .hero-indicator{width:8px!important;height:8px!important}
+}
+
+@media(max-width:375px){
+    .hero{height:50vh!important;min-height:260px!important}
+    .hero-brand .cee-text{font-size:36px!important;letter-spacing:6px!important}
+    .hero-brand .mimarlik-text{font-size:11px!important;letter-spacing:3px!important}
+}
+
+@media(max-width:900px) and (orientation:landscape){
+    .hero{height:100vh!important;min-height:250px!important}
+    .hero-brand .cee-text{font-size:40px!important}
+}
+
+/* ═══ 6. FLOATING LOGO ═══ */
+#floatingLogo{-webkit-transform:translateZ(0);transform:translateZ(0)}
+@media(max-width:768px){
+    #floatingLogo{left:10px!important}
+    #floatingLogo img,.floating-logo-img{width:50px!important;height:50px!important}
+    .floating-logo-bg{width:55px!important;height:55px!important}
+}
+@media(max-width:375px){
+    #floatingLogo img,.floating-logo-img{width:40px!important;height:40px!important}
+    .floating-logo-bg{width:45px!important;height:45px!important}
+}
+
+/* ═══ 7. SECTIONS SPACING ═══ */
+@media(max-width:768px){
+    section{padding:0 20px!important;margin:40px auto!important}
+    .section-title{font-size:24px!important;letter-spacing:3px!important}
+    .section-subtitle{font-size:13px!important}
+}
+@media(max-width:375px){
+    section{padding:0 15px!important;margin:30px auto!important}
+    .section-title{font-size:20px!important}
+}
 
-/* =============================================
-   23. HIGH DPI / RETINA FIXES
-   ============================================= */
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .site-logo,
-    img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
+/* ═══ 8. GRID MOBİL ═══ */
+@media(max-width:768px){
+    .projects-grid{grid-template-columns:1fr!important;gap:20px!important}
+    .services-grid,.service-grid-v2{grid-template-columns:1fr!important;gap:20px!important}
+    .team-grid{grid-template-columns:1fr!important;gap:20px!important}
+    .about-content{grid-template-columns:1fr!important;gap:25px!important}
+    .stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:15px!important}
+    .contact-grid{grid-template-columns:1fr!important;gap:20px!important}
+}
+@media(min-width:769px) and (max-width:1024px){
+    .projects-grid{grid-template-columns:repeat(2,1fr)!important}
+    .services-grid,.service-grid-v2{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* ═══ 9. CARDS OVERFLOW ═══ */
+.project-card,.service-card,.service-card-v2,.ref-card,.faq-item,.team-card,.contact-card{width:100%!important;max-width:100%!important;overflow:hidden}
+.project-card img{width:100%!important;height:auto!important;min-height:200px;max-height:400px;object-fit:cover;object-position:center}
+@media(max-width:768px){.project-card img{min-height:180px;max-height:250px}}
+
+/* ═══ 10. FOOTER ═══ */
+footer{width:100%!important;max-width:100vw!important;overflow:hidden}
+.footer-content{max-width:100%!important}
+@media(max-width:768px){
+    .footer-content{padding:0 20px!important}
+    .footer-bottom{-webkit-flex-direction:column!important;flex-direction:column!important;gap:15px!important;text-align:center!important}
+    .footer-copyright{font-size:12px!important;line-height:1.8!important}
+    .footer-social-bottom{-webkit-justify-content:center!important;justify-content:center!important}
+    #footerLogo,.footer-logo img{height:35px!important;margin:0 auto 10px auto!important}
+}
+@media(max-width:375px){.footer-copyright{font-size:11px!important}.footer-content{padding:0 15px!important}}
+
+/* ═══ 11. DİL DROPDOWN MOBİL ═══ */
+@media(max-width:768px){
+    .lang-dropdown{position:relative!important}
+    .lang-btn,#langBtn{font-size:12px!important;padding:5px 8px!important;gap:4px!important}
+    .lang-menu{right:0!important;left:auto!important;min-width:150px!important;max-height:60vh!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch}
+    .lang-option{padding:10px 14px!important}
+    .lang-flag{width:20px!important;height:14px!important}
+    #langFlag{width:18px!important;height:12px!important}
+}
+
+/* ═══ 12. E-HİZMETLER MOBİL ═══ */
+@media(max-width:768px){
+    .ehizmetler-menu,#ehizmetlerMenu{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:0!important;width:100%!important;max-width:100%!important;border-radius:16px 16px 0 0!important;z-index:10002!important;box-shadow:0 -5px 30px rgba(0,0,0,0.2)!important}
+    .ehizmetler-menu a,#ehizmetlerMenu a{padding:16px 24px!important;font-size:15px!important}
+    .nav-dropdown{width:100%!important}
+}
+
+/* ═══ 13. SOCIAL SIDEBAR MOBİL ═══ */
+@media(max-width:768px){
+    .social-sidebar{bottom:80px!important;z-index:9990!important}
+    .social-sidebar-trigger{padding:8px 10px!important;font-size:11px!important}
+    .social-sidebar-content{width:160px!important}
+    .social-sidebar-content a{padding:8px!important;font-size:13px!important}
+}
+@media(max-width:375px){
+    .social-sidebar{bottom:70px!important}
+    .social-sidebar-trigger{padding:6px 8px!important;font-size:10px!important}
+}
+
+/* ═══ 14. WHATSAPP & CHAT MOBİL ═══ */
+@media(max-width:768px){
+    .whatsapp-btn,.unified-chat-btn{width:50px!important;height:50px!important;bottom:15px!important;right:15px!important}
+    .whatsapp-btn svg,.unified-chat-btn svg{width:26px!important;height:26px!important}
+    .whatsapp-notification{max-width:180px!important;font-size:10px!important;right:70px!important}
+    .ai-chat-window,.whatsapp-form{bottom:0!important;right:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;max-height:100%!important;border-radius:0!important}
+    .chat-menu{bottom:70px!important;right:10px!important;max-width:calc(100vw - 20px)!important}
+}
+
+/* ═══ 15. FORM INPUTS ═══ */
+input,textarea,select,button{-webkit-appearance:none;-moz-appearance:none;appearance:none;font-family:inherit}
+@media(max-width:768px){input[type="text"],input[type="email"],input[type="tel"],input[type="number"],input[type="password"],textarea,select{font-size:16px!important}}
+::-webkit-input-placeholder{color:#999;opacity:1}::-moz-placeholder{color:#999;opacity:1}:-ms-input-placeholder{color:#999;opacity:1}::placeholder{color:#999;opacity:1}
+*:focus-visible{outline:2px solid var(--accent,#4a4a4a);outline-offset:2px}
+
+/* ═══ 16. TOUCH ═══ */
+a,button,.btn,[onclick],[role="button"]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media(max-width:768px){
+    nav a,#mainNav a{min-height:48px!important;display:-webkit-flex!important;display:flex!important;-webkit-align-items:center;align-items:center}
+}
+
+/* ═══ 17. ANIMATION PERFORMANCE ═══ */
+.hero-slide,.hero-slide img,#floatingLogo,.floating-logo-bg,header,.social-sidebar,.whatsapp-btn,.unified-chat-btn{-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform,opacity;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{-webkit-animation-duration:0.01ms!important;animation-duration:0.01ms!important;-webkit-animation-iteration-count:1!important;animation-iteration-count:1!important;-webkit-transition-duration:0.01ms!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+
+/* ═══ 18. DARK MODE ═══ */
+body.dark-mode{color-scheme:dark}
+body.dark-mode img:not([src*="svg"]){filter:brightness(0.95)}
+body.dark-mode .site-logo,body.dark-mode #headerLogo,body.dark-mode #footerLogo,body.dark-mode #floatingLogo img{filter:brightness(1.1)!important}
+
+/* ═══ 19. RTL ═══ */
+html[dir="rtl"]{direction:rtl}
+html[dir="rtl"] body{text-align:right}
+html[dir="rtl"] .header-content{-webkit-flex-direction:row-reverse;flex-direction:row-reverse}
+html[dir="rtl"] nav:not(.mobile-open):not(.active),html[dir="rtl"] #mainNav:not(.mobile-open):not(.active){-webkit-flex-direction:row-reverse;flex-direction:row-reverse}
+html[dir="rtl"] .header-actions{-webkit-flex-direction:row-reverse;flex-direction:row-reverse}
+html[dir="rtl"] .hero-content-lares{right:auto;left:8%;text-align:left}
+html[dir="rtl"] .hero-nav.prev{left:auto;right:10px}
+html[dir="rtl"] .hero-nav.next{right:auto;left:10px}
+html[dir="rtl"] .social-sidebar{left:auto;right:0}
+html[dir="rtl"] .social-sidebar-trigger{border-radius:10px 0 0 10px}
+html[dir="rtl"] .social-sidebar-content{left:auto;right:0;border-radius:12px 0 0 12px;-webkit-transform:translateX(100%);transform:translateX(100%)}
+html[dir="rtl"] .social-sidebar-content.active{-webkit-transform:translateX(0);transform:translateX(0)}
+html[dir="rtl"] .lang-menu{right:auto!important;left:0!important}
+html[dir="rtl"] footer{direction:rtl;text-align:right}
+@media(max-width:768px){
+    html[dir="rtl"] nav,html[dir="rtl"] #mainNav{-webkit-flex-direction:column!important;flex-direction:column!important;text-align:right!important}
+    html[dir="rtl"] .hero-content-lares{left:5%!important;right:5%!important;text-align:center!important}
+}
+
+/* ═══ 20. PRINT ═══ */
+@media print{header,footer,.social-sidebar,.whatsapp-btn,.unified-chat-btn,.chat-menu,.ai-chat-window,#floatingLogo,.cookie-consent,.menu-toggle,.dark-toggle,.lang-dropdown,.hero-nav{display:none!important}body{color:#000!important;background:#fff!important}section{break-inside:avoid}}
+
+/* ═══ 21. SAFARI ═══ */
+@supports(-webkit-overflow-scrolling:touch){
+    header{position:-webkit-sticky;position:sticky}
+    .hero-slide img{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+}
+@supports(-webkit-touch-callout:none){input,textarea,select{font-size:16px!important}}
+
+/* ═══ 22. FIREFOX ═══ */
+@-moz-document url-prefix(){html{scrollbar-width:thin;scrollbar-color:#aaa transparent}.header-content{min-height:0}}
+
+/* ═══ 23. HIGH DPI ═══ */
+@media(-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){.site-logo,#headerLogo,#footerLogo{image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges}}
+
+/* ═══ 24. LANDSCAPE PHONE ═══ */
+@media(max-height:500px) and (orientation:landscape){
+    header{padding:5px 0!important}
+    .logo-wrapper .site-logo,.logo-wrapper #headerLogo{height:35px!important}
+    .logo-text,.logo-subtitle{display:none!important}
+}
+
+/* ═══ 25. VERY LARGE SCREENS ═══ */
+@media(min-width:2560px){.header-content,.footer-content,section{max-width:1800px;margin-left:auto;margin-right:auto}}
+
+/* ═══ 26. SELECTION ═══ */
+::selection{background:#5a6677;color:#fff}
+::-moz-selection{background:#5a6677;color:#fff}
+
+/* ═══ 27. SCROLLBAR ═══ */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#bbb;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#888}
+body.dark-mode ::-webkit-scrollbar-thumb{background:#555}
+body.dark-mode ::-webkit-scrollbar-thumb:hover{background:#777}
+
+/* ═══ 28. COOKIE CONSENT MOBİL ═══ */
+@media(max-width:768px){
+    .cookie-consent,[class*="cookie"]{padding:15px!important;font-size:13px!important}
+    .cookie-consent button,[class*="cookie"] button{width:100%!important;margin-top:10px!important}
+}
+
+/* ═══ 29. MAP MOBİL ═══ */
+#map,.map-container,[class*="map"] iframe{width:100%!important;max-width:100%!important}
+@media(max-width:768px){#map,.map-container{height:250px!important;min-height:250px!important}}
+
+/* ═══ 30. ALT SAYFA HEADER/NAV MOBİL ═══ */
+@media(max-width:768px){
+    nav.active,#mainNav.active{display:-webkit-flex!important;display:flex!important}
+}
+
+/* ═══ 31. IE11 FALLBACK ═══ */
+@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){
+    body{background-color:#fafafa!important;color:#2c2c2c!important}
+    body.dark-mode{background-color:#1a1a1a!important;color:#e0e0e0!important}
+    header{background-color:rgba(255,255,255,0.97)!important}
+    body.dark-mode header{background-color:rgba(20,20,20,0.97)!important}
+    :-ms-input-placeholder{color:#999!important;opacity:1!important}
 }
-
-/* =============================================
-   24. PRINT STYLES
-   ============================================= */
-
-@media print {
-    *, *::before, *::after {
-        background: white !important;
-        color: black !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-    
-    header, footer, .ai-assistant-panel, .hero-nav {
-        display: none !important;
-    }
-    
-    a {
-        text-decoration: underline;
-    }
-    
-    img {
-        max-width: 100% !important;
-        page-break-inside: avoid;
-    }
-}
-
-/* =============================================
-   25. REDUCED MOTION
-   Accessibility için hareket azaltma
-   ============================================= */
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        -webkit-animation-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        -webkit-animation-iteration-count: 1 !important;
-        animation-iteration-count: 1 !important;
-        -webkit-transition-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* =============================================
-   26. iOS SPECIFIC FIXES
-   ============================================= */
-
-/* iOS input zoom önleme */
-@media screen and (max-width: 768px) {
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="password"],
-    input[type="number"],
-    input[type="search"],
-    select,
-    textarea {
-        font-size: 16px !important;
-    }
-}
-
-/* iOS safe area */
-@supports (padding: env(safe-area-inset-top)) {
-    body {
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-    }
-}
-
-/* =============================================
-   27. CLAMP() FALLBACK
-   Eski tarayıcılar için
-   ============================================= */
-
-/* clamp() desteklemeyen tarayıcılar için */
-@supports not (font-size: clamp(1rem, 2vw, 2rem)) {
-    .hero-title {
-        font-size: 56px;
-    }
-    
-    .hero-brand {
-        font-size: 52px;
-    }
-    
-    @media (max-width: 768px) {
-        .hero-title {
-            font-size: 32px;
-        }
-        
-        .hero-brand {
-            font-size: 28px;
-        }
-    }
-}
-
-/* =============================================
-   28. ASPECT-RATIO FALLBACK
-   ============================================= */
-
-@supports not (aspect-ratio: 16/9) {
-    .video-container,
-    .embed-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        overflow: hidden;
-    }
-    
-    .video-container iframe,
-    .embed-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-/* =============================================
-   29. WILL-CHANGE OPTIMIZATION
-   Performans için
-   ============================================= */
-
-.hero-slide,
-.project-item,
-.team-member,
-.hero-nav,
-button,
-.btn {
-    will-change: transform, opacity;
-}
-
-/* =============================================
-   30. TOUCH ACTION
-   Mobile için dokunma davranışı
-   ============================================= */
-
-* {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-}
-
-a, button, input, select, textarea {
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-}
-
-/* =============================================
-   INTERNET EXPLORER 11 POLYFILLS
-   JavaScript ile çözülmesi gereken özellikler
-   ============================================= */
-
-/*
-IE11 için aşağıdaki polyfill'ler gerekebilir:
-1. CSS Variables: css-vars-ponyfill
-2. Object-fit: object-fit-images
-3. Smooth Scroll: smoothscroll-polyfill
-4. IntersectionObserver: intersection-observer polyfill
-
-Script tag olarak eklenebilir:
-<script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/object-fit-images@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
-*/
