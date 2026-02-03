@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <link rel="icon" type="image/png" href="logohq.png">
+    <link rel="apple-touch-icon" href="appletouchicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim | CEE Mimarlık</title>
@@ -570,7 +572,7 @@
             <a href="hizmetler.html">Hizmetler</a>
             <a href="hakkimizda.html">Hakkımızda</a>
             <a href="ekip.html">Ekip</a>
-            <a href="iletisim.html" class="active">İletişim</a>
+            <a href="iletisim.html" class="active" data-tr="İletişim" data-en="Contact" data-de="Kontakt" data-ru="Контакт" data-ar="اتصل بنا" data-fa="تماس" data-es="Contacto">İletişim</a>
         </nav>
         <div class="header-actions">
             <button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
@@ -581,7 +583,7 @@
 
 <section class="page-hero">
     <div class="page-hero-content">
-        <div class="page-label">Bize Ulaşın</div>
+        <div class="page-label" data-tr="Bize Ulaşın" data-en="Get In Touch" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами" data-ar="تواصل معنا" data-fa="با ما تماس بگیرید" data-es="Contáctenos">Bize Ulaşın</div>
         <h1>İletişim</h1>
         <p>Projeleriniz hakkında konuşmak, bilgi almak veya randevu oluşturmak için bize ulaşın.</p>
     </div>
@@ -591,13 +593,13 @@
     <div class="contact-container">
         <!-- Info Side -->
         <div class="contact-info">
-            <h2>İletişim Bilgileri</h2>
+            <h2 data-tr="İletişim Bilgileri" data-en="Contact Information" data-de="Kontaktinformationen" data-ru="Контактная Информация" data-ar="معلومات الاتصال" data-fa="اطلاعات تماس" data-es="Información de Contacto">İletişim Bilgileri</h2>
             <p>Aşağıdaki iletişim kanallarından bize ulaşabilir veya formu doldurarak mesaj gönderebilirsiniz.</p>
             
             <div class="info-item">
                 <div class="info-icon">📍</div>
                 <div class="info-content">
-                    <h3>Adres</h3>
+                    <h3 data-tr="Adres" data-en="Address" data-de="Adresse" data-ru="Адрес" data-ar="العنوان" data-fa="آدرس" data-es="Dirección">Adres</h3>
                     <p id="contactAddress">Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3, 59860<br>Çorlu/Tekirdağ</p>
                 </div>
             </div>
@@ -605,7 +607,7 @@
             <div class="info-item">
                 <div class="info-icon">📞</div>
                 <div class="info-content">
-                    <h3>Telefon</h3>
+                    <h3 data-tr="Telefon" data-en="Phone" data-de="Telefon" data-ru="Телефон" data-ar="الهاتف" data-fa="تلفن" data-es="Teléfono">Telefon</h3>
                     <p><a href="tel:+905373278765" id="contactPhone">+90 (537) 327 87 65</a></p>
                 </div>
             </div>
@@ -613,7 +615,7 @@
             <div class="info-item">
                 <div class="info-icon">✉️</div>
                 <div class="info-content">
-                    <h3>E-posta</h3>
+                    <h3 data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта" data-ar="البريد الإلكتروني" data-fa="ایمیل" data-es="Correo">E-posta</h3>
                     <p><a href="mailto:ceemimarlik@gmail.com" id="contactEmail">ceemimarlik@gmail.com</a></p>
                 </div>
             </div>
@@ -621,7 +623,7 @@
             <div class="info-item">
                 <div class="info-icon">🕐</div>
                 <div class="info-content">
-                    <h3>Çalışma Saatleri</h3>
+                    <h3 data-tr="Çalışma Saatleri" data-en="Working Hours" data-de="Öffnungszeiten" data-ru="Часы Работы" data-ar="ساعات العمل" data-fa="ساعات کاری" data-es="Horario de Trabajo">Çalışma Saatleri</h3>
                     <p id="contactHours">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi: 10:00 - 14:00<br>Pazar: Kapalı</p>
                 </div>
             </div>
@@ -638,7 +640,7 @@
         
         <!-- Form Side -->
         <div class="contact-form-wrapper">
-            <h2>Mesaj Gönderin</h2>
+            <h2 data-tr="Mesaj Gönderin" data-en="Send a Message" data-de="Nachricht Senden" data-ru="Отправить Сообщение" data-ar="أرسل رسالة" data-fa="پیام بفرستید" data-es="Envíe un Mensaje">Mesaj Gönderin</h2>
             
             <div class="form-alert" id="formAlert"></div>
             
@@ -677,7 +679,7 @@
                 </div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span>Mesaj Gönder</span>
+                    <span data-tr="Mesaj Gönder" data-en="Send Message" data-de="Nachricht Senden" data-ru="Отправить" data-ar="إرسال" data-fa="ارسال پیام" data-es="Enviar Mensaje">Mesaj Gönder</span>
                     <span>→</span>
                 </button>
             </form>
@@ -870,5 +872,7 @@ function showAlert(message, type) {
 }
 </script>
 
+<script src="lang-switcher.js"></script>
+<script src="cookie-consent.js"></script>
 </body>
 </html>

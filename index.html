@@ -30,6 +30,15 @@
         // Dil ayarını HEMEN oku
         SITE_LANG = localStorage.getItem('cee_public_lang') || 'tr';
         
+        // RTL dilleri için yön HEMEN ayarla (sayfa yüklenmeden önce)
+        if (SITE_LANG === 'ar' || SITE_LANG === 'fa') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', SITE_LANG);
+        } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', SITE_LANG);
+        }
+        
         // Dark mode HEMEN uygula (sayfa yüklenmeden önce)
         var isDarkMode = localStorage.getItem('cee_public_dark') === 'true';
         if (isDarkMode) {
@@ -156,7 +165,7 @@
             "@type": "PostalAddress",
             "streetAddress": "Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3",
             "addressLocality": "Çorlu",
-            "addressRegion": "TekirdaÄŸ",
+            "addressRegion": "Tekirdağ",
             "postalCode": "59860",
             "addressCountry": "TR"
         },
@@ -218,9 +227,9 @@
         fbq('init', 'YOUR_PIXEL_ID');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
     <style>
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -659,7 +668,7 @@
             }
         }
 
-        /* iPhone Notch / Safe Area DesteÄŸi */
+        /* iPhone Notch / Safe Area Desteği */
         body {
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
@@ -862,7 +871,7 @@
             }
         }
 
-        /* Dark Mode Sistem DesteÄŸi */
+        /* Dark Mode Sistem Desteği */
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme]) {
                 color-scheme: dark;
@@ -3822,7 +3831,7 @@
             overflow: hidden;
         }
 
-        /* AI ASSISTANT PANEL - SAÄž TARAFTA */
+        /* AI ASSISTANT PANEL - SAĞ TARAFTA */
         .ai-assistant-panel {
             position: fixed;
             top: 0;
@@ -4304,7 +4313,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Notification Bubble - SaÄŸda */
+        /* Notification Bubble - Sağda */
         .whatsapp-notification {
             position: absolute;
             bottom: 65px;
@@ -5904,7 +5913,7 @@
         z-index: 1;
     }
 
-    /* BAÅžLIKLAR */
+    /* BAŞLIKLAR */
     .section-header {
         padding: 50px 20px 30px !important;
         background: transparent !important;
@@ -6211,7 +6220,7 @@
         box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
     }
 
-    /* === SECTION BAÅžLIK ACCENT === */
+    /* === SECTION BAŞLIK ACCENT === */
     .section-title .accent {
         background: linear-gradient(180deg, #909090 0%, #1a1a1a 100%) !important;
         -webkit-background-clip: text !important;
@@ -6485,6 +6494,71 @@
     }
     </style>
 
+
+    <!-- RTL Dil Desteği (Arapça, Farsça) -->
+    <style id="rtl-support">
+    html[dir="rtl"] body { direction: rtl; text-align: right; }
+    html[dir="rtl"] .header-content { flex-direction: row-reverse; }
+    html[dir="rtl"] nav { flex-direction: row-reverse; }
+    /* RTL - Social Sidebar sağa taşı */
+    html[dir="rtl"] .social-sidebar { 
+        left: auto !important; 
+        right: 0 !important; 
+    }
+    html[dir="rtl"] .social-sidebar-trigger { 
+        border-radius: 10px 0 0 10px !important; 
+    }
+    html[dir="rtl"] .social-sidebar-content { 
+        left: auto !important; 
+        right: 0 !important; 
+        border-radius: 12px 0 0 12px !important; 
+        transform: translateX(100%) !important; 
+    }
+    html[dir="rtl"] .social-sidebar-content.active { 
+        transform: translateX(0) !important; 
+    }
+    
+    /* RTL - Chat butonu sola taşı */
+    html[dir="rtl"] .unified-chat-btn {
+        right: auto !important;
+        left: 30px !important;
+    }
+    
+    /* RTL - Scroll Top butonu sola taşı */
+    html[dir="rtl"] .scroll-top-btn,
+    html[dir="rtl"] #scrollTopBtn {
+        right: auto !important;
+        left: 30px !important;
+    }
+    
+    /* RTL - Chat menu sola aç */
+    html[dir="rtl"] .chat-menu {
+        right: auto !important;
+        left: 30px !important;
+    }
+    
+    /* RTL - AI Panel sola aç */
+    html[dir="rtl"] .ai-assistant-panel {
+        right: auto !important;
+        left: -450px !important;
+    }
+    html[dir="rtl"] .ai-assistant-panel.active {
+        left: 0 !important;
+    }
+    html[dir="rtl"] .lang-menu { left: auto; right: 0; }
+    html[dir="rtl"] .contact-item { flex-direction: row-reverse; }
+    html[dir="rtl"] .service-card-v2, html[dir="rtl"] .team-card { text-align: right; }
+    html[dir="rtl"] .footer-content { flex-direction: row-reverse; }
+    html[dir="rtl"] .hero-content { text-align: right; }
+    html[dir="rtl"] .section-title { text-align: right; }
+
+    /* RTL Soru İşareti Düzeltmesi */
+    html[dir="rtl"] .faq-question::before { content: '؟'; }
+    html[dir="rtl"] .faq-question { unicode-bidi: plaintext; }
+    html[dir="rtl"] .faq-item { text-align: right; }
+
+    </style>
+
 </head>
 <body>
 
@@ -6531,7 +6605,7 @@ function goToAdmin() {
     window.location.href = 'admin.html';
 }
 
-// Global eriÅŸim
+// Global erişim
 window.closeMobileMenu = closeMobileMenu;
 window.toggleMobileMenu = toggleMobileMenu;
 window.toggleSocialSidebar = toggleSocialSidebar;
@@ -6547,32 +6621,32 @@ window.goToAdmin = goToAdmin;
         <a href="#anasayfa" class="logo-container" style="text-decoration: none; cursor: pointer; background: transparent !important; border: none !important; box-shadow: none !important;">
             <div class="logo-wrapper">
                 <img src="logo.png" alt="CEE Mimarlık Logo" class="site-logo" id="headerLogo" style="background: transparent !important; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
-                <span class="logo-text" id="logoText" data-tr="CEE MİMARLIK" data-en="CEE ARCHITECTURE" data-de="CEE ARCHITEKTUR" data-ru="CEE АРХИТЕКТУРА">CEE MİMARLIK</span>
+                <span class="logo-text" id="logoText" data-tr="CEE MİMARLIK" data-en="CEE ARCHITECTURE" data-de="CEE ARCHITEKTUR" data-ru="CEE АРХИТЕКТУРА" data-ar="CEE للهندسة المعمارية" data-fa="CEE معماری" data-es="CEE ARQUITECTURA">CEE MİMARLIK</span>
             </div>
         </a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" id="menuToggle" aria-label="Menü">☰</button>
         
 <nav role="navigation" aria-label="Ana navigasyon" id="mainNav">
-            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()" data-tr="Anasayfa" data-en="Home" data-de="Startseite" data-ru="Главная">Anasayfa</a>
-            <a href="#projeler" onclick="closeMobileMenu()" data-tr="Projeler" data-en="Projects" data-de="Projekte" data-ru="Проекты">Projeler</a>
-            <a href="#hakkimizda" onclick="closeMobileMenu()" data-tr="Hakkımızda" data-en="About Us" data-de="Über Uns" data-ru="О Нас">Hakkımızda</a>
-            <a href="#hizmetler" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services" data-de="Dienstleistungen" data-ru="Услуги">Hizmetler</a>
-            <a href="#referanslar" onclick="closeMobileMenu()" data-tr="Referanslar" data-en="References" data-de="Referenzen" data-ru="Рекомендации">Referanslar</a>
-            <a href="#sss" onclick="closeMobileMenu()" data-tr="SSS" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ">SSS</a>
+            <a href="#anasayfa" class="active" aria-current="page" onclick="closeMobileMenu()" data-tr="Anasayfa" data-en="Home" data-de="Startseite" data-ru="Главная" data-ar="الرئيسية" data-fa="خانه" data-es="Inicio">Anasayfa</a>
+            <a href="#projeler" onclick="closeMobileMenu()" data-tr="Projeler" data-en="Projects" data-de="Projekte" data-ru="Проекты" data-ar="المشاريع" data-fa="پروژه‌ها" data-es="Proyectos">Projeler</a>
+            <a href="#hakkimizda" onclick="closeMobileMenu()" data-tr="Hakkımızda" data-en="About Us" data-de="Über Uns" data-ru="О Нас" data-ar="من نحن" data-fa="درباره ما" data-es="Nosotros">Hakkımızda</a>
+            <a href="#hizmetler" onclick="closeMobileMenu()" data-tr="Hizmetler" data-en="Services" data-de="Dienstleistungen" data-ru="Услуги" data-ar="الخدمات" data-fa="خدمات" data-es="Servicios">Hizmetler</a>
+            <a href="#referanslar" onclick="closeMobileMenu()" data-tr="Referanslar" data-en="References" data-de="Referenzen" data-ru="Рекомендации" data-ar="المراجع" data-fa="مراجع" data-es="Referencias">Referanslar</a>
+            <a href="#sss" onclick="closeMobileMenu()" data-tr="SSS" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ" data-ar="الأسئلة الشائعة" data-fa="سوالات متداول" data-es="FAQ">SSS</a>
             
             <!-- E-HİZMETLER DROPDOWN -->
             <div class="nav-dropdown" style="display: inline-block; position: relative;">
-                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;" data-tr="🛒 E-Hizmetler" data-en="🛒 E-Services" data-de="🛒 E-Dienste" data-ru="🛒 Э-Услуги">
+                <a href="javascript:void(0)" onclick="toggleEHizmetler(event); return false;" style="color: #10b981;" data-tr="🛒 E-Hizmetler" data-en="🛒 E-Services" data-de="🛒 E-Dienste" data-ru="🛒 Э-Услуги" data-ar="🛒 خدمات إلكترونية" data-fa="🛒 خدمات الکترونیکی" data-es="🛒 E-Servicios">
                     🛒 E-Hizmetler
                 </a>
                 <div class="ehizmetler-menu" id="ehizmetlerMenu" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 10001; margin-top: 10px;">
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Çorlu Kent Rehberi', 'Çorlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 CBS Çorlu" data-en="📍 CBS Çorlu" data-de="📍 CBS Çorlu" data-ru="📍 CBS Чорлу">📍 CBS Çorlu</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 KEOS Ergene" data-en="📍 KEOS Ergene" data-de="📍 KEOS Ergene" data-ru="📍 KEOS Эргене">📍 KEOS Ergene</a>
-                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel Müdürlüğü')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;" data-tr="📍 Parsel Sorgu" data-en="📍 Parcel Query" data-de="📍 Parzellenabfrage" data-ru="📍 Запрос Участка">📍 Parsel Sorgu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://cbs.corlu.bel.tr/GiSoftGis/#/cityguidepublic', 'CBS Çorlu Kent Rehberi', 'Çorlu Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 CBS Çorlu" data-en="📍 CBS Çorlu" data-de="📍 CBS Çorlu" data-ru="📍 CBS Чорлу" data-ar="📍 CBS تشورلو" data-fa="📍 CBS چورلو" data-es="📍 CBS Çorlu">📍 CBS Çorlu</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://keos.ergene.bel.tr/keos/', 'KEOS Ergene Sistemi', 'Ergene Belediyesi')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee;" data-tr="📍 KEOS Ergene" data-en="📍 KEOS Ergene" data-de="📍 KEOS Ergene" data-ru="📍 KEOS Эргене" data-ar="📍 KEOS إرجينه" data-fa="📍 KEOS ارگنه" data-es="📍 KEOS Ergene">📍 KEOS Ergene</a>
+                    <a href="javascript:void(0)" onclick="openExternalServiceWithWarning('https://parselsorgu.tkgm.gov.tr/', 'TKGM Parsel Sorgu', 'Tapu ve Kadastro Genel Müdürlüğü')" style="display: block; padding: 12px 20px; color: #333; text-decoration: none;" data-tr="📍 Parsel Sorgu" data-en="📍 Parcel Query" data-de="📍 Parzellenabfrage" data-ru="📍 Запрос Участка" data-ar="📍 استعلام القطعة" data-fa="📍 استعلام پارسل" data-es="📍 Consulta Parcela">📍 Parsel Sorgu</a>
                 </div>
             </div>
             
-            <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact" data-de="Kontakt" data-ru="Контакт">İletişim</a>
+            <a href="#iletisim" onclick="closeMobileMenu()" data-tr="İletişim" data-en="Contact" data-de="Kontakt" data-ru="Контакт" data-ar="اتصل بنا" data-fa="تماس با ما" data-es="Contacto">İletişim</a>
         </nav>
         <div class="header-actions">
             <!-- DİL SEÇİCİ DROPDOWN -->
@@ -6614,6 +6688,24 @@ window.goToAdmin = goToAdmin;
                         </span>
                         <span>Русский</span>
                     </div>
+                    <div class="lang-option" onclick="setLanguage('ar')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 12 8"><rect fill="#007A3D" width="12" height="8"/><rect fill="#fff" width="12" height="5.33"/><rect fill="#000" width="12" height="2.67"/><polygon fill="#CE1126" points="0,0 4,4 0,8"/></svg>
+                        </span>
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('fa')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 12 7"><rect fill="#239F40" width="12" height="2.33"/><rect fill="#fff" y="2.33" width="12" height="2.34"/><rect fill="#DA0000" y="4.67" width="12" height="2.33"/></svg>
+                        </span>
+                        <span>فارسی</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('es')">
+                        <span class="lang-flag">
+                            <svg viewBox="0 0 3 2"><rect fill="#AA151B" width="3" height="2"/><rect fill="#F1BF00" y="0.5" width="3" height="1"/></svg>
+                        </span>
+                        <span>Español</span>
+                    </div>
                 </div>
             </div>
             <button class="btn-minimal" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema değiştir">🌙</button>
@@ -6623,13 +6715,13 @@ window.goToAdmin = goToAdmin;
 
 <!-- SOL TARAF SOSYAL MEDYA SEKMESİ -->
 <div id="socialSidebar" class="social-sidebar">
-    <div class="social-sidebar-trigger" onclick="toggleSocialSidebar()">
+    <div class="social-sidebar-trigger" onclick="event.stopPropagation(); toggleSocialSidebar()">
         <span class="social-sidebar-icon">👋</span>
-        <span class="social-sidebar-text" data-tr="Takip Et" data-en="Follow" data-de="Folgen" data-ru="Подписаться">Takip Et</span>
+        <span class="social-sidebar-text" data-tr="Takip Et" data-en="Follow" data-de="Folgen" data-ru="Подписаться" data-ar="تابعنا" data-fa="دنبال کنید" data-es="Síguenos">Takip Et</span>
     </div>
     <div class="social-sidebar-content" id="socialSidebarContent">
         <div class="social-sidebar-header">
-            <span data-tr="Sosyal Medyalarımız" data-en="Our Social Media" data-de="Unsere Sozialen Medien" data-ru="Наши Соцсети">Sosyal Medyalarımız</span>
+            <span data-tr="Sosyal Medyalarımız" data-en="Our Social Media" data-de="Unsere Sozialen Medien" data-ru="Наши Соцсети" data-ar="وسائل التواصل الاجتماعي" data-fa="شبکه‌های اجتماعی ما" data-es="Nuestras Redes Sociales">Sosyal Medyalarımız</span>
             <button onclick="closeSocialSidebar()" class="social-close-btn">×</button>
         </div>
         <div class="social-sidebar-links">
@@ -6646,7 +6738,7 @@ window.goToAdmin = goToAdmin;
                 <span>LinkedIn</span>
             </a>
         </div>
-        <div class="social-sidebar-footer" data-tr="Bizi Takip Edin!" data-en="Follow Us!" data-de="Folgen Sie Uns!" data-ru="Подпишитесь на Нас!">
+        <div class="social-sidebar-footer" data-tr="Bizi Takip Edin!" data-en="Follow Us!" data-de="Folgen Sie Uns!" data-ru="Подпишитесь на Нас!" data-ar="تابعونا!" data-fa="ما را دنبال کنید!" data-es="¡Síguenos!">
             Bizi Takip Edin!
         </div>
     </div>
@@ -6738,7 +6830,7 @@ window.goToAdmin = goToAdmin;
                 </svg>
             </div>
             
-            <!-- SAÄž TARAF - PROJE FOTOÄžRAFLARI -->
+            <!-- SAĞ TARAF - PROJE FOTOĞRAFLARI -->
             <div class="diagonal-right">
                 <div class="project-photos">
                     <div class="project-photo" id="projectPhoto1"></div>
@@ -6784,23 +6876,23 @@ window.goToAdmin = goToAdmin;
             <span class="cee-text" id="heroTitle1">
                 <span class="letter letter-1">C</span><span class="letter letter-2">E</span><span class="letter letter-3">E</span>
             </span>
-            <span class="mimarlik-text" id="heroTitle2" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS" data-de="ARCHITEKTUR & BAUSYSTEME" data-ru="АРХИТЕКТУРА И СТРОИТЕЛЬСТВО">MİMARLIK & YAPI SİSTEMLERİ</span>
+            <span class="mimarlik-text" id="heroTitle2" data-tr="MİMARLIK & YAPI SİSTEMLERİ" data-en="ARCHITECTURE & BUILDING SYSTEMS" data-de="ARCHITEKTUR & BAUSYSTEME" data-ru="АРХИТЕКТУРА И СТРОИТЕЛЬСТВО" data-ar="الهندسة المعمارية وأنظمة البناء" data-fa="معماری و سیستم‌های ساختمانی" data-es="ARQUITECTURA Y SISTEMAS DE CONSTRUCCIÓN">MİMARLIK & YAPI SİSTEMLERİ</span>
         </h1>
         
         <!-- Açıklama -->
-        <p class="hero-description" id="heroDescription" data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz." data-en="We reshape your living spaces, offices, villas and commercial projects with turnkey project planning, design and implementation services from A to Z." data-de="Wir gestalten Ihre Wohnräume, Büros, Villen und Gewerbeprojekte mit schlüsselfertiger Projektplanung, Design und Umsetzung von A bis Z neu." data-ru="Мы преобразуем ваши жилые помещения, офисы, виллы и коммерческие проекты с помощью проектирования, дизайна и реализации под ключ от А до Я.">
+        <p class="hero-description" id="heroDescription" data-tr="Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz." data-en="We reshape your living spaces, offices, villas and commercial projects with turnkey project planning, design and implementation services from A to Z." data-de="Wir gestalten Ihre Wohnräume, Büros, Villen und Gewerbeprojekte mit schlüsselfertiger Projektplanung, Design und Umsetzung von A bis Z neu." data-ru="Мы преобразуем ваши жилые помещения, офисы, виллы и коммерческие проекты с помощью проектирования, дизайна и реализации под ключ от А до Я." data-ar="نعيد تشكيل مساحات المعيشة والمكاتب والفيلات والمشاريع التجارية بخدمة تسليم المفتاح من الألف إلى الياء" data-fa="فضاهای زندگی، دفاتر، ویلاها و پروژه‌های تجاری شما را با خدمات کلید در دست از A تا Z بازطراحی می‌کنیم" data-es="Rediseñamos sus espacios habitacionales, oficinas, villas y proyectos comerciales con servicio llave en mano de la A a la Z">
             Yaşam alanlarınızı, ofislerinizi, villalarınızı ve ticari projelerinizi A'dan Z'ye anahtar teslim projelendirme, tasarım ve uygulama hizmeti ile yeniden şekillendiriyoruz.
         </p>
         
         <!-- CTA Buton -->
-        <a href="#iletisim" class="hero-cta" id="heroCta" data-tr="İletişime Geçin" data-en="Contact Us" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами">İletişime Geçin</a>
+        <a href="#iletisim" class="hero-cta" id="heroCta" data-tr="İletişime Geçin" data-en="Contact Us" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами" data-ar="تواصل معنا" data-fa="تماس بگیرید" data-es="Contáctenos">İletişime Geçin</a>
     </div>
     
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <!-- SCROLL DOWN INDICATOR                                                   -->
     <!-- ══════════════════════════════════════════════════════════════════════ -->
     <div class="scroll-indicator">
-        <div class="scroll-text" data-tr="Keşfet" data-en="Explore" data-de="Entdecken" data-ru="Исследовать">Keşfet</div>
+        <div class="scroll-text" data-tr="Keşfet" data-en="Explore" data-de="Entdecken" data-ru="Исследовать" data-ar="اكتشف" data-fa="کاوش کنید" data-es="Explorar">Keşfet</div>
         <div class="scroll-arrow"></div>
     </div>
     
@@ -6866,7 +6958,7 @@ window.goToAdmin = goToAdmin;
 
 
 
-/* SAÄž TARAF - PROJE FOTOÄžRAFLARI (Tam ekran, arkada) */
+/* SAĞ TARAF - PROJE FOTOĞRAFLARI (Tam ekran, arkada) */
 .diagonal-right {
     position: absolute;
     top: 0;
@@ -7198,7 +7290,7 @@ window.goToAdmin = goToAdmin;
     opacity: 1;
 }
 
-/* Åžehir Etiketi - Gizli */
+/* Şehir Etiketi - Gizli */
 .hero-location {
     display: none;
 }
@@ -7859,17 +7951,17 @@ window.goToAdmin = goToAdmin;
 <!-- PROJECTS -->
 <section id="projeler">
     <div class="section-header">
-        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects" data-de="Unsere Projekte" data-ru="Наши Проекты">PROJE<span class="accent" style="color: #4a4a4a !important;">LERİMİZ</span></h2>
+        <h2 class="section-title" data-tr="Projelerimiz" data-en="Our Projects" data-de="Unsere Projekte" data-ru="Наши Проекты" data-ar="مشاريعنا" data-fa="پروژه‌های ما" data-es="Nuestros Proyectos">PROJE<span class="accent" style="color: #4a4a4a !important;">LERİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
     <div class="filter-container">
-        <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All" data-de="Alle" data-ru="Все">Tümü</button>
-        <button class="filter-btn" data-filter="villa" data-tr="Villa" data-en="Villa" data-de="Villa" data-ru="Вилла">Villa</button>
-        <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment" data-de="Wohnung" data-ru="Квартира">Apartman</button>
-        <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office" data-de="Büro" data-ru="Офис">Ofis</button>
-        <button class="filter-btn" data-filter="ticari" data-tr="Ticari" data-en="Commercial" data-de="Gewerblich" data-ru="Коммерческий">Ticari</button>
-        <button class="filter-btn" data-filter="konut" data-tr="Konut" data-en="Residential" data-de="Wohngebäude" data-ru="Жилой">Konut</button>
+        <button class="filter-btn active" data-filter="all" data-tr="Tümü" data-en="All" data-de="Alle" data-ru="Все" data-ar="الكل" data-fa="همه" data-es="Todos">Tümü</button>
+        <button class="filter-btn" data-filter="villa" data-tr="Villa" data-en="Villa" data-de="Villa" data-ru="Вилла" data-ar="فيلا" data-fa="ویلا" data-es="Villa">Villa</button>
+        <button class="filter-btn" data-filter="apartman" data-tr="Apartman" data-en="Apartment" data-de="Wohnung" data-ru="Квартира" data-ar="شقة" data-fa="آپارتمان" data-es="Apartamento">Apartman</button>
+        <button class="filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office" data-de="Büro" data-ru="Офис" data-ar="مكتب" data-fa="دفتر" data-es="Oficina">Ofis</button>
+        <button class="filter-btn" data-filter="ticari" data-tr="Ticari" data-en="Commercial" data-de="Gewerblich" data-ru="Коммерческий" data-ar="تجاري" data-fa="تجاری" data-es="Comercial">Ticari</button>
+        <button class="filter-btn" data-filter="konut" data-tr="Konut" data-en="Residential" data-de="Wohngebäude" data-ru="Жилой" data-ar="سكني" data-fa="مسکونی" data-es="Residencial">Konut</button>
     </div>
 
     <div class="projects-grid" id="projectsGrid"></div>
@@ -7878,31 +7970,31 @@ window.goToAdmin = goToAdmin;
 <!-- ABOUT -->
 <section id="hakkimizda">
     <div class="section-header">
-        <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US" data-de="ÜBER UNS" data-ru="О НАС">HAKKIMIZDA</div>
-        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are" data-de="Wer Wir Sind" data-ru="Кто Мы">BİZ <span class="accent" style="color: #4a4a4a !important;">KİMİZ</span></h2>
+        <div class="section-label" data-tr="HAKKIMIZDA" data-en="ABOUT US" data-de="ÜBER UNS" data-ru="О НАС" data-ar="من نحن" data-fa="درباره ما" data-es="NOSOTROS">HAKKIMIZDA</div>
+        <h2 class="section-title" data-tr="Biz Kimiz" data-en="Who We Are" data-de="Wer Wir Sind" data-ru="Кто Мы" data-ar="من نحن" data-fa="ما کی هستیم" data-es="Quiénes Somos">BİZ <span class="accent" style="color: #4a4a4a !important;">KİMİZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
 
     <div class="about-content">
         <div class="about-text">
-            <h2 data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура">CEE Mimarlık</h2>
+            <h2 data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура" data-ar="CEE للهندسة المعمارية" data-fa="CEE معماری" data-es="CEE Arquitectura">CEE Mimarlık</h2>
             <p data-tr="Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır." 
-               data-en="With a modern architectural approach, we create projects that combine aesthetics and functionality. Each project is carefully designed to turn our clients' dreams into reality.">
+               data-en="With a modern architectural approach, we create projects that combine aesthetics and functionality. Each project is carefully designed to turn our clients' dreams into reality." data-ar="ننتج مشاريع تجمع بين الجمال والوظيفة بمفهوم العمارة الحديثة" data-fa="با درک معماری مدرن، پروژه‌هایی تولید می‌کنیم که زیبایی و کارایی را ترکیب می‌کنند" data-es="Producimos proyectos que combinan estética y funcionalidad con un enfoque arquitectónico moderno">
                 Modern mimarlık anlayışıyla, estetik ve fonksiyonelliği bir araya getiren projeler üretiyoruz. Her proje, müşterilerimizin hayallerini gerçeğe dönüştürmek için özenle tasarlanır.
             </p>
             <p data-tr="Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapılar konusunda uzmanlaşmış olup, her detayda mükemmelliği hedefler." 
-               data-en="Our experienced team specializes in villas, apartments, offices and commercial buildings, aiming for perfection in every detail.">
+               data-en="Our experienced team specializes in villas, apartments, offices and commercial buildings, aiming for perfection in every detail." data-ar="فريقنا ذو الخبرة متخصص في الفيلات والشقق والمكاتب والمباني التجارية" data-fa="تیم باتجربه ما در ویلا، آپارتمان، دفتر و ساختمان‌های تجاری تخصص دارد" data-es="Nuestro equipo experimentado está especializado en villas, apartamentos, oficinas y edificios comerciales">
                 Deneyimli ekibimiz, villa, apartman, ofis ve ticari yapılar konusunda uzmanlaşmış olup, her detayda mükemmelliği hedefler.
             </p>
         </div>
         <div class="about-text">
-            <h2 data-tr="Vizyonumuz" data-en="Our Vision" data-de="Unsere Vision" data-ru="Наше Видение">Vizyonumuz</h2>
+            <h2 data-tr="Vizyonumuz" data-en="Our Vision" data-de="Unsere Vision" data-ru="Наше Видение" data-ar="رؤيتنا" data-fa="چشم‌انداز ما" data-es="Nuestra Visión">Vizyonumuz</h2>
             <p data-tr="Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz." 
-               data-en="Creating spaces that enhance quality of life with sustainable and environmentally friendly architectural solutions. We work to leave a better world for future generations.">
+               data-en="Creating spaces that enhance quality of life with sustainable and environmentally friendly architectural solutions. We work to leave a better world for future generations." data-ar="نخلق أماكن تعزز جودة الحياة بحلول معمارية مستدامة وصديقة للبيئة" data-fa="با راه‌حل‌های معماری پایدار و سازگار با محیط زیست، مکان‌هایی ایجاد می‌کنیم" data-es="Creamos espacios que mejoran la calidad de vida con soluciones arquitectónicas sostenibles">
                 Sürdürülebilir ve çevre dostu mimari çözümlerle, yaşam kalitesini artıran mekanlar yaratmak. Gelecek nesillere daha güzel bir dünya bırakmak için çalışıyoruz.
             </p>
             <p data-tr="İnovasyon ve geleneksel değerleri harmanlayarak, özgün ve zamansız tasarımlar sunuyoruz." 
-               data-en="We offer original and timeless designs by blending innovation and traditional values.">
+               data-en="We offer original and timeless designs by blending innovation and traditional values." data-ar="نقدم تصاميم أصيلة وخالدة من خلال مزج الابتكار والقيم التقليدية" data-fa="با ترکیب نوآوری و ارزش‌های سنتی، طرح‌های اصیل و بی‌زمان ارائه می‌دهیم" data-es="Ofrecemos diseños originales y atemporales combinando innovación y valores tradicionales">
                 İnovasyon ve geleneksel değerleri harmanlayarak, özgün ve zamansız tasarımlar sunuyoruz.
             </p>
         </div>
@@ -7911,7 +8003,7 @@ window.goToAdmin = goToAdmin;
     <!-- UZMAN KADRO BUTTON -->
     <div style="text-align: center; margin-top: 60px;">
         <a href="ekip.html" class="team-cta-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 40px; font-size: 14px; text-decoration: none; font-weight: 600; letter-spacing: 2px; transition: all 0.3s ease;">
-            <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team" data-de="👥 Unser Expertenteam Kennenlernen" data-ru="👥 Познакомьтесь с Нашей Командой">👥 UZMAN KADROMUZU TANIYIN</span>
+            <span data-tr="👥 UZMAN KADROMUZU TANIYIN" data-en="👥 Meet Our Expert Team" data-de="👥 Unser Expertenteam Kennenlernen" data-ru="👥 Познакомьтесь с Нашей Командой" data-ar="👥 تعرف على فريقنا المتخصص" data-fa="👥 تیم متخصص ما را بشناسید" data-es="👥 CONOZCA NUESTRO EQUIPO">👥 UZMAN KADROMUZU TANIYIN</span>
             <span>→</span>
         </a>
     </div>
@@ -7989,8 +8081,8 @@ body.dark-mode .architect-divider .divider-bottom path {
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
-            <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES" data-de="UNSERE DIENSTLEISTUNGEN" data-ru="НАШИ УСЛУГИ">HİZMETLERİMİZ</div>
-            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer" data-de="Unsere Dienstleistungen" data-ru="Наши Услуги">SUNDUĞUMUZ <span class="accent" style="color: #4a4a4a !important;">HİZMETLER</span></h2>
+            <div class="section-label" data-tr="HİZMETLERİMİZ" data-en="OUR SERVICES" data-de="UNSERE DIENSTLEISTUNGEN" data-ru="НАШИ УСЛУГИ" data-ar="خدماتنا" data-fa="خدمات ما" data-es="NUESTROS SERVICIOS">HİZMETLERİMİZ</div>
+            <h2 class="section-title" data-tr="Sunduğumuz Hizmetler" data-en="Services We Offer" data-de="Unsere Dienstleistungen" data-ru="Наши Услуги" data-ar="الخدمات التي نقدمها" data-fa="خدماتی که ارائه می‌دهیم" data-es="Servicios que Ofrecemos">SUNDUĞUMUZ <span class="accent" style="color: #4a4a4a !important;">HİZMETLER</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -8016,46 +8108,64 @@ function loadServicesSection() {
     
     const defaultServices = [
         { 
-            titleTr: 'Mimari Proje', titleEn: 'Architectural Design', titleDe: 'Architekturplanung', titleRu: 'Архитектурный Проект',
+            titleTr: 'Mimari Proje', titleEn: 'Architectural Design', titleDe: 'Architekturplanung', titleRu: 'Архитектурный Проект', titleAr: 'المشروع المعماري', titleFa: 'پروژه معماری', titleEs: 'Proyecto Arquitectónico',
             descTr: 'Konut, villa, apartman ve ticari yapılar için profesyonel mimari proje hizmeti. 3D görselleştirme ve detaylı teknik çizimler.',
             descEn: 'Professional architectural design services for residential, villa, apartment and commercial buildings. 3D visualization and detailed technical drawings.',
             descDe: 'Professionelle Architekturplanung für Wohn-, Villen-, Wohnungs- und Gewerbebauten. 3D-Visualisierung und detaillierte technische Zeichnungen.',
-            descRu: 'Профессиональные архитектурные услуги для жилых домов, вилл, квартир и коммерческих зданий. 3D-визуализация и детальные технические чертежи.'
+            descRu: 'Профессиональные архитектурные услуги для жилых домов, вилл, квартир и коммерческих зданий. 3D-визуализация и детальные технические чертежи.',
+            descAr: 'خدمات التصميم المعماري المهنية للمباني السكنية والفيلات والشقق والتجارية. التصور ثلاثي الأبعاد والرسومات التقنية المفصلة.',
+            descFa: 'خدمات طراحی معماری حرفه‌ای برای ساختمان‌های مسکونی، ویلا، آپارتمان و تجاری. تجسم سه‌بعدی و نقشه‌های فنی دقیق.',
+            descEs: 'Servicios profesionales de diseño arquitectónico para edificios residenciales, villas, apartamentos y comerciales. Visualización 3D y planos técnicos detallados.'
         },
         { 
-            titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', titleDe: 'Genehmigungsservice', titleRu: 'Разрешительные Услуги',
+            titleTr: 'Ruhsat İşlemleri', titleEn: 'Permit Services', titleDe: 'Genehmigungsservice', titleRu: 'Разрешительные Услуги', titleAr: 'إجراءات الترخيص', titleFa: 'خدمات مجوز', titleEs: 'Trámites de Licencia',
             descTr: 'İnşaat ruhsatı, yapı kullanma izni ve tüm belediye izin süreçlerinin profesyonel takibi ve tamamlanması.',
             descEn: 'Professional handling and completion of construction permits, occupancy certificates and all municipal permit processes.',
             descDe: 'Professionelle Bearbeitung und Abschluss von Baugenehmigungen, Nutzungsgenehmigungen und allen kommunalen Genehmigungsverfahren.',
-            descRu: 'Профессиональное оформление и завершение разрешений на строительство, сертификатов на заселение и всех муниципальных разрешительных процессов.'
+            descRu: 'Профессиональное оформление и завершение разрешений на строительство, сертификатов на заселение и всех муниципальных разрешительных процессов.',
+            descAr: 'المعالجة المهنية واستكمال تصاريح البناء وشهادات الإشغال وجميع عمليات التصاريح البلدية.',
+            descFa: 'رسیدگی و تکمیل حرفه‌ای مجوزهای ساخت، گواهی‌های اشغال و تمام فرآیندهای مجوز شهرداری.',
+            descEs: 'Gestión profesional y finalización de permisos de construcción, certificados de ocupación y todos los procesos de permisos municipales.'
         },
         { 
-            titleTr: 'İç Mimarlık', titleEn: 'Interior Design', titleDe: 'Innenarchitektur', titleRu: 'Дизайн Интерьера',
+            titleTr: 'İç Mimarlık', titleEn: 'Interior Design', titleDe: 'Innenarchitektur', titleRu: 'Дизайн Интерьера', titleAr: 'التصميم الداخلي', titleFa: 'معماری داخلی', titleEs: 'Diseño Interior',
             descTr: 'Yaşam alanlarınız için özel iç mekan tasarımı, mobilya seçimi ve dekorasyon danışmanlığı hizmeti.',
             descEn: 'Custom interior design, furniture selection and decoration consultancy services for your living spaces.',
             descDe: 'Individuelle Innenarchitektur, Möbelauswahl und Dekorationsberatung für Ihre Wohnräume.',
-            descRu: 'Индивидуальный дизайн интерьера, подбор мебели и консультации по декорированию для ваших жилых помещений.'
+            descRu: 'Индивидуальный дизайн интерьера, подбор мебели и консультации по декорированию для ваших жилых помещений.',
+            descAr: 'خدمات تصميم داخلي مخصصة واختيار الأثاث واستشارات الديكور لمساحات معيشتك.',
+            descFa: 'خدمات طراحی داخلی سفارشی، انتخاب مبلمان و مشاوره دکوراسیون برای فضاهای زندگی شما.',
+            descEs: 'Servicios de diseño interior personalizado, selección de muebles y asesoría de decoración para sus espacios habitacionales.'
         },
         { 
-            titleTr: 'Statik Proje', titleEn: 'Structural Engineering', titleDe: 'Tragwerksplanung', titleRu: 'Статический Проект',
+            titleTr: 'Statik Proje', titleEn: 'Structural Engineering', titleDe: 'Tragwerksplanung', titleRu: 'Статический Проект', titleAr: 'المشروع الإنشائي', titleFa: 'پروژه سازه', titleEs: 'Ingeniería Estructural',
             descTr: 'Deprem yönetmeliğine uygun statik hesaplamalar ve güvenli taşıyıcı sistem projeleri.',
             descEn: 'Static calculations compliant with earthquake regulations and safe structural system projects.',
             descDe: 'Statische Berechnungen gemäß Erdbebenvorschriften und sichere Tragwerksprojekte.',
-            descRu: 'Статические расчеты в соответствии с нормами сейсмостойкости и безопасные проекты несущих конструкций.'
+            descRu: 'Статические расчеты в соответствии с нормами сейсмостойкости и безопасные проекты несущих конструкций.',
+            descAr: 'حسابات إنشائية متوافقة مع لوائح الزلازل ومشاريع أنظمة هيكلية آمنة.',
+            descFa: 'محاسبات سازه‌ای مطابق با مقررات زلزله و پروژه‌های سیستم سازه‌ای ایمن.',
+            descEs: 'Cálculos estructurales conformes con las regulaciones sísmicas y proyectos de sistemas estructurales seguros.'
         },
         { 
-            titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', titleDe: 'Bauleitung', titleRu: 'Управление Стройплощадкой',
+            titleTr: 'Şantiye Yönetimi', titleEn: 'Site Management', titleDe: 'Bauleitung', titleRu: 'Управление Стройплощадкой', titleAr: 'إدارة الموقع', titleFa: 'مدیریت کارگاه', titleEs: 'Gestión de Obra',
             descTr: 'İnşaat sürecinin tamamında profesyonel teknik danışmanlık ve şantiye koordinasyonu.',
             descEn: 'Professional technical consultancy and site coordination throughout the entire construction process.',
             descDe: 'Professionelle technische Beratung und Baustellenkoordination während des gesamten Bauprozesses.',
-            descRu: 'Профессиональное техническое консультирование и координация строительной площадки на протяжении всего строительного процесса.'
+            descRu: 'Профессиональное техническое консультирование и координация строительной площадки на протяжении всего строительного процесса.',
+            descAr: 'استشارات تقنية مهنية وتنسيق الموقع طوال عملية البناء بأكملها.',
+            descFa: 'مشاوره فنی حرفه‌ای و هماهنگی سایت در طول کل فرآیند ساخت.',
+            descEs: 'Consultoría técnica profesional y coordinación de obra durante todo el proceso de construcción.'
         },
         { 
-            titleTr: '3D Görselleştirme', titleEn: '3D Visualization', titleDe: '3D-Visualisierung', titleRu: '3D Визуализация',
+            titleTr: '3D Görselleştirme', titleEn: '3D Visualization', titleDe: '3D-Visualisierung', titleRu: '3D Визуализация', titleAr: 'التصور ثلاثي الأبعاد', titleFa: 'تجسم سه‌بعدی', titleEs: 'Visualización 3D',
             descTr: 'Projenizi inşa etmeden önce fotorealistik 3D render ile gerçeğe en yakın şekilde görün.',
             descEn: 'See your project in the most realistic way with photorealistic 3D renders before construction.',
             descDe: 'Sehen Sie Ihr Projekt vor dem Bau mit fotorealistischen 3D-Renderings in realistischster Weise.',
-            descRu: 'Увидьте свой проект максимально реалистично с помощью фотореалистичных 3D-рендеров до начала строительства.'
+            descRu: 'Увидьте свой проект максимально реалистично с помощью фотореалистичных 3D-рендеров до начала строительства.',
+            descAr: 'شاهد مشروعك بأقرب شكل للواقع مع التصيير ثلاثي الأبعاد الواقعي قبل البناء.',
+            descFa: 'پروژه خود را با رندرهای سه‌بعدی فتورئالیستیک قبل از ساخت به واقعی‌ترین شکل ببینید.',
+            descEs: 'Vea su proyecto de la manera más realista con renderizados 3D fotorrealistas antes de la construcción.'
         }
     ];
     
@@ -8065,15 +8175,12 @@ function loadServicesSection() {
     if (saved) {
         try {
             const parsed = JSON.parse(saved);
+            // Admin'den gelen çevirili verileri kullan, eksikse varsayılandan al
             services = parsed.map((s, i) => ({
-                titleTr: s.titleTr || s.title || defaultServices[i]?.titleTr || 'Hizmet',
-                titleEn: s.titleEn || defaultServices[i]?.titleEn || 'Service',
-                titleDe: s.titleDe || defaultServices[i]?.titleDe || defaultServices[i]?.titleEn || 'Dienst',
-                titleRu: s.titleRu || defaultServices[i]?.titleRu || defaultServices[i]?.titleEn || 'Услуга',
-                descTr: s.descTr || s.desc || defaultServices[i]?.descTr || 'Açıklama',
-                descEn: s.descEn || defaultServices[i]?.descEn || 'Description',
-                descDe: s.descDe || defaultServices[i]?.descDe || defaultServices[i]?.descEn || 'Beschreibung',
-                descRu: s.descRu || defaultServices[i]?.descRu || defaultServices[i]?.descEn || 'Описание'
+                ...defaultServices[i],
+                ...s,
+                titleTr: s.titleTr || s.title || defaultServices[i]?.titleTr || '',
+                descTr: s.descTr || s.desc || defaultServices[i]?.descTr || ''
             }));
         } catch(e) {}
     }
@@ -8093,6 +8200,9 @@ function loadServicesSection() {
         switch(lang) {
             case 'de': return s.titleDe || s.titleEn || s.titleTr;
             case 'ru': return s.titleRu || s.titleEn || s.titleTr;
+            case 'ar': return s.titleAr || s.titleEn || s.titleTr;
+            case 'fa': return s.titleFa || s.titleEn || s.titleTr;
+            case 'es': return s.titleEs || s.titleEn || s.titleTr;
             case 'en': return s.titleEn || s.titleTr;
             default: return s.titleTr;
         }
@@ -8101,6 +8211,9 @@ function loadServicesSection() {
         switch(lang) {
             case 'de': return s.descDe || s.descEn || s.descTr;
             case 'ru': return s.descRu || s.descEn || s.descTr;
+            case 'ar': return s.descAr || s.descEn || s.descTr;
+            case 'fa': return s.descFa || s.descEn || s.descTr;
+            case 'es': return s.descEs || s.descEn || s.descTr;
             case 'en': return s.descEn || s.descTr;
             default: return s.descTr;
         }
@@ -8113,8 +8226,8 @@ function loadServicesSection() {
                     ${svgIcons[i] || svgIcons[0]}
                 </div>
             </div>
-            <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="${s.titleTr}" data-en="${s.titleEn}" data-de="${s.titleDe}" data-ru="${s.titleRu}">${getTitle(s)}</h3>
-            <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="${s.descTr}" data-en="${s.descEn}" data-de="${s.descDe}" data-ru="${s.descRu}">${getDesc(s)}</p>
+            <h3 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; letter-spacing: 0.5px;" data-tr="${s.titleTr}" data-en="${s.titleEn}" data-de="${s.titleDe}" data-ru="${s.titleRu}" data-ar="${s.titleAr || ''}" data-fa="${s.titleFa || ''}" data-es="${s.titleEs || ''}">${getTitle(s)}</h3>
+            <p style="font-size: 14px; line-height: 1.8; color: #666; margin: 0;" data-tr="${s.descTr}" data-en="${s.descEn}" data-de="${s.descDe}" data-ru="${s.descRu}" data-ar="${s.descAr || ''}" data-fa="${s.descFa || ''}" data-es="${s.descEs || ''}">${getDesc(s)}</p>
         </div>
     `).join('');
 }
@@ -8265,8 +8378,8 @@ body.dark-mode .project-info span {
     <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
         <!-- Başlık -->
         <div class="section-header" style="margin-bottom: 70px; padding: 40px 20px;">
-            <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES" data-de="UNSERE REFERENZEN" data-ru="НАШИ РЕКОМЕНДАЦИИ">REFERANSLARIMIZ</div>
-            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners" data-de="Unsere Partner" data-ru="Наши Партнеры">ÇALIŞTIĞIMIZ <span class="accent" style="color: #4a4a4a !important;">KURUMLAR</span></h2>
+            <div class="section-label" data-tr="REFERANSLARIMIZ" data-en="OUR REFERENCES" data-de="UNSERE REFERENZEN" data-ru="НАШИ РЕКОМЕНДАЦИИ" data-ar="مراجعنا" data-fa="مراجع ما" data-es="NUESTRAS REFERENCIAS">REFERANSLARIMIZ</div>
+            <h2 class="section-title" data-tr="Çalıştığımız Kurumlar" data-en="Our Partners" data-de="Unsere Partner" data-ru="Наши Партнеры" data-ar="المؤسسات التي نعمل معها" data-fa="سازمان‌هایی که با آنها کار می‌کنیم" data-es="Instituciones con las que Trabajamos">ÇALIŞTIĞIMIZ <span class="accent" style="color: #4a4a4a !important;">KURUMLAR</span></h2>
             <div class="section-decoration"><span class="dot"></span></div>
         </div>
         
@@ -8289,10 +8402,10 @@ function loadReferencesSection() {
     ];
     
     const defaultReferences = [
-        { titleTr: 'Çorlu Belediyesi', titleEn: 'Çorlu Municipality', titleDe: 'Gemeinde Çorlu', titleRu: 'Муниципалитет Чорлу', descTr: 'Kamu Projeleri', descEn: 'Public Projects', descDe: 'Öffentliche Projekte', descRu: 'Государственные Проекты' },
-        { titleTr: 'Özel Sektör', titleEn: 'Private Sector', titleDe: 'Privatsektor', titleRu: 'Частный Сектор', descTr: 'Kurumsal Projeler', descEn: 'Corporate Projects', descDe: 'Unternehmensprojekte', descRu: 'Корпоративные Проекты' },
-        { titleTr: 'Konut Projeleri', titleEn: 'Residential Projects', titleDe: 'Wohnprojekte', titleRu: 'Жилые Проекты', descTr: 'Villa & Apartman', descEn: 'Villa & Apartment', descDe: 'Villa & Wohnung', descRu: 'Виллы и Квартиры' },
-        { titleTr: 'Ticari Yapılar', titleEn: 'Commercial Buildings', titleDe: 'Gewerbebauten', titleRu: 'Коммерческие Здания', descTr: 'İş Merkezi & Mağaza', descEn: 'Business Center & Store', descDe: 'Geschäftszentrum & Laden', descRu: 'Бизнес-центр и Магазин' }
+        { titleTr: 'Çorlu Belediyesi', titleEn: 'Çorlu Municipality', titleDe: 'Gemeinde Çorlu', titleRu: 'Муниципалитет Чорлу', titleAr: 'بلدية تشورلو', titleFa: 'شهرداری چورلو', titleEs: 'Municipio de Çorlu', descTr: 'Kamu Projeleri', descEn: 'Public Projects', descDe: 'Öffentliche Projekte', descRu: 'Государственные Проекты', descAr: 'مشاريع حكومية', descFa: 'پروژه‌های دولتی', descEs: 'Proyectos Públicos' },
+        { titleTr: 'Özel Sektör', titleEn: 'Private Sector', titleDe: 'Privatsektor', titleRu: 'Частный Сектор', titleAr: 'القطاع الخاص', titleFa: 'بخش خصوصی', titleEs: 'Sector Privado', descTr: 'Kurumsal Projeler', descEn: 'Corporate Projects', descDe: 'Unternehmensprojekte', descRu: 'Корпоративные Проекты', descAr: 'مشاريع الشركات', descFa: 'پروژه‌های شرکتی', descEs: 'Proyectos Corporativos' },
+        { titleTr: 'Konut Projeleri', titleEn: 'Residential Projects', titleDe: 'Wohnprojekte', titleRu: 'Жилые Проекты', titleAr: 'مشاريع سكنية', titleFa: 'پروژه‌های مسکونی', titleEs: 'Proyectos Residenciales', descTr: 'Villa & Apartman', descEn: 'Villa & Apartment', descDe: 'Villa & Wohnung', descRu: 'Виллы и Квартиры', descAr: 'فيلا وشقة', descFa: 'ویلا و آپارتمان', descEs: 'Villa y Apartamento' },
+        { titleTr: 'Ticari Yapılar', titleEn: 'Commercial Buildings', titleDe: 'Gewerbebauten', titleRu: 'Коммерческие Здания', titleAr: 'مباني تجارية', titleFa: 'ساختمان‌های تجاری', titleEs: 'Edificios Comerciales', descTr: 'İş Merkezi & Mağaza', descEn: 'Business Center & Store', descDe: 'Geschäftszentrum & Laden', descRu: 'Бизнес-центр и Магазин', descAr: 'مركز أعمال ومتجر', descFa: 'مرکز تجاری و فروشگاه', descEs: 'Centro de Negocios y Tienda' }
     ];
     
     const saved = localStorage.getItem('cee_references');
@@ -8302,14 +8415,10 @@ function loadReferencesSection() {
         try {
             const parsed = JSON.parse(saved);
             references = parsed.map((r, i) => ({
-                titleTr: r.titleTr || r.title || defaultReferences[i]?.titleTr || 'Referans',
-                titleEn: r.titleEn || defaultReferences[i]?.titleEn || 'Reference',
-                titleDe: r.titleDe || defaultReferences[i]?.titleDe || defaultReferences[i]?.titleEn || 'Referenz',
-                titleRu: r.titleRu || defaultReferences[i]?.titleRu || defaultReferences[i]?.titleEn || 'Рекомендация',
-                descTr: r.descTr || r.desc || defaultReferences[i]?.descTr || 'Açıklama',
-                descEn: r.descEn || defaultReferences[i]?.descEn || 'Description',
-                descDe: r.descDe || defaultReferences[i]?.descDe || defaultReferences[i]?.descEn || 'Beschreibung',
-                descRu: r.descRu || defaultReferences[i]?.descRu || defaultReferences[i]?.descEn || 'Описание'
+                ...defaultReferences[i],
+                ...r,
+                titleTr: r.titleTr || r.title || defaultReferences[i]?.titleTr || '',
+                descTr: r.descTr || r.desc || defaultReferences[i]?.descTr || ''
             }));
         } catch(e) {}
     }
@@ -8329,6 +8438,9 @@ function loadReferencesSection() {
         switch(lang) {
             case 'de': return r.titleDe || r.titleEn || r.titleTr;
             case 'ru': return r.titleRu || r.titleEn || r.titleTr;
+            case 'ar': return r.titleAr || r.titleEn || r.titleTr;
+            case 'fa': return r.titleFa || r.titleEn || r.titleTr;
+            case 'es': return r.titleEs || r.titleEn || r.titleTr;
             case 'en': return r.titleEn || r.titleTr;
             default: return r.titleTr;
         }
@@ -8337,6 +8449,9 @@ function loadReferencesSection() {
         switch(lang) {
             case 'de': return r.descDe || r.descEn || r.descTr;
             case 'ru': return r.descRu || r.descEn || r.descTr;
+            case 'ar': return r.descAr || r.descEn || r.descTr;
+            case 'fa': return r.descFa || r.descEn || r.descTr;
+            case 'es': return r.descEs || r.descEn || r.descTr;
             case 'en': return r.descEn || r.descTr;
             default: return r.descTr;
         }
@@ -8347,8 +8462,8 @@ function loadReferencesSection() {
             <div style="width: ${iconSize}px; height: ${iconSize}px; margin: 0 auto 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease;" class="ref-icon">
                 ${svgIcons[i] || svgIcons[0]}
             </div>
-            <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="${r.titleTr}" data-en="${r.titleEn}" data-de="${r.titleDe}" data-ru="${r.titleRu}">${getTitle(r)}</h4>
-            <p style="font-size: 13px; color: #888; margin: 0;" data-tr="${r.descTr}" data-en="${r.descEn}" data-de="${r.descDe}" data-ru="${r.descRu}">${getDesc(r)}</p>
+            <h4 style="font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 0 0 8px 0;" data-tr="${r.titleTr}" data-en="${r.titleEn}" data-de="${r.titleDe}" data-ru="${r.titleRu}" data-ar="${r.titleAr || ''}" data-fa="${r.titleFa || ''}" data-es="${r.titleEs || ''}">${getTitle(r)}</h4>
+            <p style="font-size: 13px; color: #888; margin: 0;" data-tr="${r.descTr}" data-en="${r.descEn}" data-de="${r.descDe}" data-ru="${r.descRu}" data-ar="${r.descAr || ''}" data-fa="${r.descFa || ''}" data-es="${r.descEs || ''}">${getDesc(r)}</p>
         </div>
     `).join('');
 }
@@ -8405,8 +8520,8 @@ document.addEventListener('DOMContentLoaded', loadReferencesSection);
 <!-- SSS (FAQ) SECTION -->
 <section id="sss" style="padding: 50px 0; background: var(--bg);">
     <div class="section-header">
-        <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS" data-de="HÄUFIG GESTELLTE FRAGEN" data-ru="ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ">SIK SORULAN SORULAR</div>
-        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ">MERAK <span class="accent" style="color: #4a4a4a !important;">EDİLENLER</span></h2>
+        <div class="section-label" data-tr="SIK SORULAN SORULAR" data-en="FREQUENTLY ASKED QUESTIONS" data-de="HÄUFIG GESTELLTE FRAGEN" data-ru="ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ" data-ar="الأسئلة الشائعة" data-fa="سوالات متداول" data-es="PREGUNTAS FRECUENTES">SIK SORULAN SORULAR</div>
+        <h2 class="section-title" data-tr="Merak Edilenler" data-en="FAQ" data-de="FAQ" data-ru="ЧЗВ" data-ar="الأسئلة الشائعة" data-fa="موارد پرسش" data-es="Preguntas Frecuentes">MERAK <span class="accent" style="color: #4a4a4a !important;">EDİLENLER</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -8423,50 +8538,80 @@ const defaultFaqs = [
         questionEn: 'How long does an architectural project take?', 
         questionDe: 'Wie lange dauert ein Architekturprojekt?', 
         questionRu: 'Сколько времени занимает архитектурный проект?',
+        questionAr: 'كم يستغرق المشروع المعماري؟',
+        questionFa: 'پروژه معماری چقدر طول می‌کشد؟',
+        questionEs: '¿Cuánto dura un proyecto arquitectónico?',
         answerTr: 'Proje büyüklüğüne göre değişmekle birlikte, ortalama bir konut projesi için 3-4 hafta sürmektedir. Villa projeleri 4-6 hafta, ticari projeler ise 6-8 hafta arasında tamamlanır.', 
         answerEn: 'Depending on the project size, an average residential project takes 3-4 weeks. Villa projects take 4-6 weeks, while commercial projects are completed in 6-8 weeks.',
         answerDe: 'Je nach Projektgröße dauert ein durchschnittliches Wohnprojekt 3-4 Wochen. Villenprojekte dauern 4-6 Wochen, Gewerbeprojekte werden in 6-8 Wochen abgeschlossen.',
-        answerRu: 'В зависимости от размера проекта, средний жилой проект занимает 3-4 недели. Проекты вилл занимают 4-6 недель, коммерческие проекты завершаются за 6-8 недель.'
+        answerRu: 'В зависимости от размера проекта, средний жилой проект занимает 3-4 недели. Проекты вилл занимают 4-6 недель, коммерческие проекты завершаются за 6-8 недель.',
+        answerAr: 'يختلف حسب حجم المشروع، مشروع سكني متوسط يستغرق 3-4 أسابيع. مشاريع الفيلات 4-6 أسابيع، المشاريع التجارية 6-8 أسابيع.',
+        answerFa: 'بسته به اندازه پروژه متفاوت است، یک پروژه مسکونی متوسط ۳-۴ هفته طول می‌کشد. پروژه‌های ویلا ۴-۶ هفته و پروژه‌های تجاری ۶-۸ هفته.',
+        answerEs: 'Depende del tamaño del proyecto, un proyecto residencial promedio toma 3-4 semanas. Proyectos de villas 4-6 semanas, proyectos comerciales 6-8 semanas.'
     },
     { 
         questionTr: 'Proje ücreti nasıl hesaplanır?', 
         questionEn: 'How is the project fee calculated?', 
         questionDe: 'Wie wird die Projektgebühr berechnet?', 
         questionRu: 'Как рассчитывается стоимость проекта?',
+        questionAr: 'كيف يتم حساب رسوم المشروع؟',
+        questionFa: 'هزینه پروژه چگونه محاسبه می‌شود؟',
+        questionEs: '¿Cómo se calcula el costo del proyecto?',
         answerTr: 'Proje ücreti; inşaat alanı, proje türü, detay seviyesi ve ek hizmetlere göre belirlenir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz.', 
         answerEn: 'Project fee is determined based on construction area, project type, level of detail and additional services. Contact us for a detailed quote.',
         answerDe: 'Die Projektgebühr wird basierend auf Baufläche, Projekttyp, Detailgrad und Zusatzleistungen bestimmt. Kontaktieren Sie uns für ein detailliertes Angebot.',
-        answerRu: 'Стоимость проекта определяется на основе площади строительства, типа проекта, уровня детализации и дополнительных услуг. Свяжитесь с нами для детального расчета.'
+        answerRu: 'Стоимость проекта определяется на основе площади строительства, типа проекта, уровня детализации и дополнительных услуг. Свяжитесь с нами для детального расчета.',
+        answerAr: 'تحدد رسوم المشروع بناءً على مساحة البناء ونوع المشروع ومستوى التفاصيل والخدمات الإضافية. اتصل بنا للحصول على عرض سعر مفصل.',
+        answerFa: 'هزینه پروژه بر اساس مساحت ساخت، نوع پروژه، سطح جزئیات و خدمات اضافی تعیین می‌شود. برای قیمت دقیق با ما تماس بگیرید.',
+        answerEs: 'El costo se determina según el área de construcción, tipo de proyecto, nivel de detalle y servicios adicionales. Contáctenos para una cotización detallada.'
     },
     { 
         questionTr: 'Ruhsat işlemleri dahil mi?', 
         questionEn: 'Are permit services included?', 
         questionDe: 'Sind Genehmigungsleistungen inbegriffen?', 
         questionRu: 'Включены ли разрешительные услуги?',
+        questionAr: 'هل خدمات التراخيص مشمولة؟',
+        questionFa: 'آیا خدمات مجوز شامل می‌شود؟',
+        questionEs: '¿Se incluyen los trámites de licencia?',
         answerTr: 'Ruhsat işlemleri ayrı bir hizmet olup, talep edilmesi halinde tüm belediye işlemlerini sizin adınıza takip ediyoruz. Ruhsat süreci ortalama 2-4 ay sürmektedir.', 
         answerEn: 'Permit services are separate. Upon request, we follow up all municipal procedures on your behalf. The permit process takes an average of 2-4 months.',
         answerDe: 'Genehmigungsleistungen sind separat. Auf Anfrage übernehmen wir alle behördlichen Verfahren in Ihrem Namen. Der Genehmigungsprozess dauert durchschnittlich 2-4 Monate.',
-        answerRu: 'Разрешительные услуги оплачиваются отдельно. По запросу мы ведем все муниципальные процедуры от вашего имени. Процесс получения разрешения занимает в среднем 2-4 месяца.'
+        answerRu: 'Разрешительные услуги оплачиваются отдельно. По запросу мы ведем все муниципальные процедуры от вашего имени. Процесс получения разрешения занимает в среднем 2-4 месяца.',
+        answerAr: 'خدمات التراخيص منفصلة. عند الطلب، نتابع جميع الإجراءات البلدية نيابة عنكم. تستغرق عملية الترخيص 2-4 أشهر.',
+        answerFa: 'خدمات مجوز جداگانه است. در صورت درخواست، تمام مراحل شهرداری را از طرف شما پیگیری می‌کنیم. فرآیند مجوز ۲-۴ ماه طول می‌کشد.',
+        answerEs: 'Los trámites de licencia son separados. A solicitud, gestionamos todos los procedimientos municipales en su nombre. El proceso toma 2-4 meses.'
     },
     { 
         questionTr: '3D görselleştirme yapıyor musunuz?', 
         questionEn: 'Do you do 3D visualization?', 
         questionDe: 'Bieten Sie 3D-Visualisierung an?', 
         questionRu: 'Делаете ли вы 3D-визуализацию?',
+        questionAr: 'هل تقدمون خدمة التصور ثلاثي الأبعاد؟',
+        questionFa: 'آیا تجسم سه‌بعدی انجام می‌دهید؟',
+        questionEs: '¿Hacen visualización 3D?',
         answerTr: 'Evet, fotorealistik 3D render ve animasyon hizmetleri sunuyoruz. Projenizi inşa etmeden önce gerçeğe en yakın şekilde görebilirsiniz.', 
         answerEn: 'Yes, we offer photorealistic 3D render and animation services. You can see your project as close to reality as possible before construction.',
         answerDe: 'Ja, wir bieten fotorealistische 3D-Rendering- und Animationsdienste an. Sie können Ihr Projekt vor dem Bau so realitätsnah wie möglich sehen.',
-        answerRu: 'Да, мы предлагаем услуги фотореалистичного 3D-рендеринга и анимации. Вы можете увидеть свой проект максимально приближенным к реальности до начала строительства.'
+        answerRu: 'Да, мы предлагаем услуги фотореалистичного 3D-рендеринга и анимации. Вы можете увидеть свой проект максимально приближенным к реальности до начала строительства.',
+        answerAr: 'نعم، نقدم خدمات التصيير والرسوم المتحركة ثلاثية الأبعاد الواقعية. يمكنك رؤية مشروعك بأقرب شكل للواقع قبل البناء.',
+        answerFa: 'بله، خدمات رندر و انیمیشن سه‌بعدی فتورئالیستیک ارائه می‌دهیم. می‌توانید پروژه خود را قبل از ساخت به واقعی‌ترین شکل ببینید.',
+        answerEs: 'Sí, ofrecemos servicios de renderizado 3D fotorrealista y animación. Puede ver su proyecto lo más cercano a la realidad antes de la construcción.'
     },
     { 
         questionTr: 'Şantiye takibi yapıyor musunuz?', 
         questionEn: 'Do you provide site supervision?', 
         questionDe: 'Bieten Sie Baustellenüberwachung an?', 
         questionRu: 'Предоставляете ли вы надзор за строительной площадкой?',
+        questionAr: 'هل توفرون الإشراف على الموقع؟',
+        questionFa: 'آیا نظارت بر سایت ارائه می‌دهید؟',
+        questionEs: '¿Proporcionan supervisión de obra?',
         answerTr: 'Evet, şantiye danışmanlığı ve teknik koordinasyon hizmetleri veriyoruz. İnşaat sürecinde projeye uygunluğu kontrol eder ve teknik destek sağlarız.', 
         answerEn: 'Yes, we provide site consultancy and technical coordination services. We check project compliance during construction and provide technical support.',
         answerDe: 'Ja, wir bieten Baustellenberatung und technische Koordination an. Wir prüfen die Projekteinhaltung während des Baus und bieten technische Unterstützung.',
-        answerRu: 'Да, мы предоставляем консультации по строительной площадке и услуги технической координации. Мы проверяем соответствие проекту во время строительства и оказываем техническую поддержку.'
+        answerRu: 'Да, мы предоставляем консультации по строительной площадке и услуги технической координации. Мы проверяем соответствие проекту во время строительства и оказываем техническую поддержку.',
+        answerAr: 'نعم، نقدم استشارات الموقع وخدمات التنسيق الفني. نتحقق من مطابقة المشروع أثناء البناء ونوفر الدعم الفني.',
+        answerFa: 'بله، خدمات مشاوره سایت و هماهنگی فنی ارائه می‌دهیم. انطباق پروژه را در طول ساخت بررسی می‌کنیم و پشتیبانی فنی ارائه می‌دهیم.',
+        answerEs: 'Sí, brindamos consultoría de obra y servicios de coordinación técnica. Verificamos el cumplimiento del proyecto durante la construcción y proporcionamos soporte técnico.'
     }
 ];
 
@@ -8480,7 +8625,13 @@ function loadFaqs() {
     if (savedFaqs) {
         try {
             const parsed = JSON.parse(savedFaqs);
-            if (parsed.length > 0) faqs = parsed;
+            // Admin'den gelen çevirili verileri kullan, eksikse varsayılandan al
+            faqs = parsed.map((f, i) => ({
+                ...defaultFaqs[i],
+                ...f,
+                questionTr: f.questionTr || f.question || defaultFaqs[i]?.questionTr || '',
+                answerTr: f.answerTr || f.answer || defaultFaqs[i]?.answerTr || ''
+            }));
         } catch(e) {}
     }
     
@@ -8491,6 +8642,9 @@ function loadFaqs() {
         switch(lang) {
             case 'de': return f.questionDe || f.questionEn || f.questionTr;
             case 'ru': return f.questionRu || f.questionEn || f.questionTr;
+            case 'ar': return f.questionAr || f.questionEn || f.questionTr;
+            case 'fa': return f.questionFa || f.questionEn || f.questionTr;
+            case 'es': return f.questionEs || f.questionEn || f.questionTr;
             case 'en': return f.questionEn || f.questionTr;
             default: return f.questionTr;
         }
@@ -8499,6 +8653,9 @@ function loadFaqs() {
         switch(lang) {
             case 'de': return f.answerDe || f.answerEn || f.answerTr;
             case 'ru': return f.answerRu || f.answerEn || f.answerTr;
+            case 'ar': return f.answerAr || f.answerEn || f.answerTr;
+            case 'fa': return f.answerFa || f.answerEn || f.answerTr;
+            case 'es': return f.answerEs || f.answerEn || f.answerTr;
             case 'en': return f.answerEn || f.answerTr;
             default: return f.answerTr;
         }
@@ -8507,11 +8664,11 @@ function loadFaqs() {
     container.innerHTML = faqs.map(f => `
         <div class="faq-item" style="background: white; padding: 25px 30px; margin-bottom: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s;" onclick="toggleFaq(this)">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr || ''}" data-en="${f.questionEn || ''}" data-de="${f.questionDe || ''}" data-ru="${f.questionRu || ''}">${getQuestion(f)}</h3>
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--primary); margin: 0;" data-tr="${f.questionTr || ''}" data-en="${f.questionEn || ''}" data-de="${f.questionDe || ''}" data-ru="${f.questionRu || ''}" data-ar="${f.questionAr || ''}" data-fa="${f.questionFa || ''}" data-es="${f.questionEs || ''}">${getQuestion(f)}</h3>
                 <span style="font-size: 24px; color: var(--accent); transition: all 0.3s;">+</span>
             </div>
             <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.3s;">
-                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr || ''}" data-en="${f.answerEn || ''}" data-de="${f.answerDe || ''}" data-ru="${f.answerRu || ''}">${getAnswer(f)}</p>
+                <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; color: var(--secondary); line-height: 1.7;" data-tr="${f.answerTr || ''}" data-en="${f.answerEn || ''}" data-de="${f.answerDe || ''}" data-ru="${f.answerRu || ''}" data-ar="${f.answerAr || ''}" data-fa="${f.answerFa || ''}" data-es="${f.answerEs || ''}">${getAnswer(f)}</p>
             </div>
         </div>
     `).join('');
@@ -8521,8 +8678,8 @@ loadFaqs();
 
 <section id="iletisim">
     <div class="section-header">
-        <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT" data-de="KONTAKT" data-ru="КОНТАКТ">İLETİŞİM</div>
-        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами">BİZE <span class="accent" style="color: #4a4a4a !important;">ULAŞIN</span></h2>
+        <div class="section-label" data-tr="İLETİŞİM" data-en="CONTACT" data-de="KONTAKT" data-ru="КОНТАКТ" data-ar="اتصل بنا" data-fa="تماس" data-es="CONTACTO">İLETİŞİM</div>
+        <h2 class="section-title" data-tr="Bize Ulaşın" data-en="Get In Touch" data-de="Kontaktieren Sie Uns" data-ru="Свяжитесь с Нами" data-ar="تواصل معنا" data-fa="با ما تماس بگیرید" data-es="Contáctenos">BİZE <span class="accent" style="color: #4a4a4a !important;">ULAŞIN</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -8531,7 +8688,7 @@ loadFaqs();
             
             <!-- İLETİŞİM BİLGİLERİ -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="İletişim Bilgileri" data-en="Contact Information" data-de="Kontaktinformationen" data-ru="Контактная Информация">İletişim Bilgileri</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="İletişim Bilgileri" data-en="Contact Information" data-de="Kontaktinformationen" data-ru="Контактная Информация" data-ar="معلومات الاتصال" data-fa="اطلاعات تماس" data-es="Información de Contacto">İletişim Bilgileri</h3>
                 
                 <div style="margin-bottom: 25px;">
                     <a href="javascript:void(0)" onclick="handlePhoneClick()" style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px; text-decoration: none; cursor: pointer;">
@@ -8539,7 +8696,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);" data-tr="Telefon" data-en="Phone" data-de="Telefon" data-ru="Телефон">Telefon</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="Telefon" data-en="Phone" data-de="Telefon" data-ru="Телефон" data-ar="الهاتف" data-fa="تلفن" data-es="Teléfono">Telefon</strong>
                             <span style="color: var(--accent); font-size: 18px;" id="displayPhone">(0537) 327 87 65</span>
                         </div>
                     </a>
@@ -8551,7 +8708,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);" data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта">E-posta</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта" data-ar="البريد الإلكتروني" data-fa="ایمیل" data-es="Correo">E-posta</strong>
                             <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="523137373f3b3f33203e3b3912353f333b3e7c313d3f">[email&#160;protected]</span></span>
                         </div>
                     </a>
@@ -8564,7 +8721,7 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);" data-tr="Adres" data-en="Address" data-de="Adresse" data-ru="Адрес">Adres</strong>
+                            <strong style="display: block; color: var(--primary);" data-tr="Adres" data-en="Address" data-de="Adresse" data-ru="Адрес" data-ar="العنوان" data-fa="آدرس" data-es="Dirección">Adres</strong>
                             <span style="color: var(--secondary); line-height: 1.6;" id="displayAddress">CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52<br>A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</span>
                         </div>
                     </a>
@@ -8576,8 +8733,8 @@ loadFaqs();
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div>
-                            <strong style="display: block; color: var(--primary);" data-tr="Çalışma Saatleri" data-en="Working Hours" data-de="Öffnungszeiten" data-ru="Часы Работы">Çalışma Saatleri</strong>
-                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours" data-tr="Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı" data-en="Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed" data-de="Montag - Freitag: 09:00 - 18:00<br>Samstag - Sonntag: Geschlossen" data-ru="Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
+                            <strong style="display: block; color: var(--primary);" data-tr="Çalışma Saatleri" data-en="Working Hours" data-de="Öffnungszeiten" data-ru="Часы Работы" data-ar="ساعات العمل" data-fa="ساعات کاری" data-es="Horario de Trabajo">Çalışma Saatleri</strong>
+                            <span style="color: var(--secondary); line-height: 1.6;" id="displayHours" data-tr="Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı" data-en="Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed" data-de="Montag - Freitag: 09:00 - 18:00<br>Samstag - Sonntag: Geschlossen" data-ru="Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто" data-ar="الإثنين - الجمعة: 09:00 - 18:00<br>السبت - الأحد: مغلق" data-fa="دوشنبه - جمعه: 09:00 - 18:00<br>شنبه - یکشنبه: تعطیل" data-es="Lunes - Viernes: 09:00 - 18:00<br>Sábado - Domingo: Cerrado">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı</span>
                         </div>
                     </div>
                 </div>
@@ -8585,7 +8742,7 @@ loadFaqs();
             
             <!-- İLETİŞİM FORMU -->
             <div>
-                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="Mesaj Gönderin" data-en="Send a Message" data-de="Nachricht Senden" data-ru="Отправить Сообщение">Mesaj Gönderin</h3>
+                <h3 style="font-size: 24px; margin-bottom: 30px; color: var(--accent);" data-tr="Mesaj Gönderin" data-en="Send a Message" data-de="Nachricht Senden" data-ru="Отправить Сообщение" data-ar="أرسل رسالة" data-fa="پیام بفرستید" data-es="Envíe un Mensaje">Mesaj Gönderin</h3>
                 
                 <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
                     <div>
@@ -8594,7 +8751,7 @@ loadFaqs();
                             id="contactName" 
                             placeholder="Adınız Soyadınız *"
                             data-tr="Adınız Soyadınız *"
-                            data-en="Your Full Name *"
+                            data-en="Your Full Name *" data-ar="الاسم الكامل *" data-fa="نام و نام خانوادگی *" data-es="Nombre Completo *"
                             required 
                             maxlength="50"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
@@ -8609,7 +8766,7 @@ loadFaqs();
                             id="contactEmail" 
                             placeholder="E-posta Adresiniz *"
                             data-tr="E-posta Adresiniz *"
-                            data-en="Your Email Address *"
+                            data-en="Your Email Address *" data-ar="بريدك الإلكتروني *" data-fa="ایمیل شما *" data-es="Su Correo *"
                             required 
                             maxlength="100"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
@@ -8624,7 +8781,7 @@ loadFaqs();
                             id="contactPhone" 
                             placeholder="Telefon Numaranız"
                             data-tr="Telefon Numaranız"
-                            data-en="Your Phone Number"
+                            data-en="Your Phone Number" data-ar="رقم هاتفك" data-fa="شماره تلفن شما" data-es="Su Teléfono"
                             maxlength="20"
                             style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: all 0.3s;"
                             onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
@@ -8639,14 +8796,14 @@ loadFaqs();
                             onfocus="this.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--icon-bg').trim() || '#4a4a4a'"
                             onblur="this.style.borderColor='#e0e0e0'"
                         >
-                            <option value="" data-tr="Konu Seçin" data-en="Select Subject">Konu Seçin</option>
-                            <option value="Mimari Proje" data-tr="Mimari Proje" data-en="Architectural Project">Mimari Proje</option>
-                            <option value="Villa Tasarımı" data-tr="Villa Tasarımı" data-en="Villa Design">Villa Tasarımı</option>
-                            <option value="Apartman Projesi" data-tr="Apartman Projesi" data-en="Apartment Project">Apartman Projesi</option>
-                            <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building">Ticari Yapı</option>
-                            <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-en="Permit Services">Ruhsat İşlemleri</option>
-                            <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-en="3D Visualization">3D Görselleştirme</option>
-                            <option value="DiÄŸer" data-tr="DiÄŸer" data-en="Other">DiÄŸer</option>
+                            <option value="" data-tr="Konu Seçin" data-en="Select Subject" data-ar="اختر الموضوع" data-fa="موضوع را انتخاب کنید" data-es="Seleccione Asunto">Konu Seçin</option>
+                            <option value="Mimari Proje" data-tr="Mimari Proje" data-en="Architectural Project" data-ar="المشروع المعماري" data-fa="پروژه معماری" data-es="Proyecto Arquitectónico">Mimari Proje</option>
+                            <option value="Villa Tasarımı" data-tr="Villa Tasarımı" data-en="Villa Design" data-ar="تصميم فيلا" data-fa="طراحی ویلا" data-es="Diseño de Villa">Villa Tasarımı</option>
+                            <option value="Apartman Projesi" data-tr="Apartman Projesi" data-en="Apartment Project" data-ar="مشروع الشقة" data-fa="پروژه آپارتمان" data-es="Proyecto Apartamento">Apartman Projesi</option>
+                            <option value="Ticari Yapı" data-tr="Ticari Yapı" data-en="Commercial Building" data-ar="مبنى تجاري" data-fa="ساختمان تجاری" data-es="Edificio Comercial">Ticari Yapı</option>
+                            <option value="Ruhsat İşlemleri" data-tr="Ruhsat İşlemleri" data-ar="إجراءات الترخيص" data-fa="مجوزها" data-es="Licencias" data-en="Permit Services">Ruhsat İşlemleri</option>
+                            <option value="3D Görselleştirme" data-tr="3D Görselleştirme" data-ar="التصور ثلاثي الأبعاد" data-fa="تجسم سه‌بعدی" data-es="Visualización 3D" data-en="3D Visualization">3D Görselleştirme</option>
+                            <option value="Diğer" data-tr="Diğer" data-en="Other" data-ar="أخرى" data-fa="سایر" data-es="Otro">Diğer</option>
                         </select>
                     </div>
                     
@@ -8654,7 +8811,7 @@ loadFaqs();
                         <textarea 
                             id="contactMessage" 
                             data-tr="Mesajınız *" 
-                            data-en="Your Message *"
+                            data-en="Your Message *" data-ar="رسالتك *" data-fa="پیام شما *" data-es="Su Mensaje *"
                             placeholder="Mesajınız *" 
                             required 
                             rows="5" 
@@ -8674,7 +8831,7 @@ loadFaqs();
                         style="padding: 16px 40px; background: linear-gradient(135deg, #4a4a4a, #6a6a6a); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212,175,55,0.4)'"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
-                        data-tr="📤 Mesaj Gönder" data-en="📤 Send Message" data-de="📤 Nachricht Senden" data-ru="📤 Отправить Сообщение"
+                        data-tr="📤 Mesaj Gönder" data-en="📤 Send Message" data-de="📤 Nachricht Senden" data-ru="📤 Отправить Сообщение" data-ar="📤 إرسال رسالة" data-fa="📤 ارسال پیام" data-es="📤 Enviar Mensaje"
                     >
                         📤 Mesaj Gönder
                     </button>
@@ -8687,8 +8844,8 @@ loadFaqs();
 <!-- OFİS KONUMU - BİZE ULAŞIN ALTINA -->
 <section id="ofis-konum" style="padding: 60px 0; ">
     <div class="section-header" style="margin-bottom: 40px; padding: 40px 20px;">
-        <div class="section-label" data-tr="NEREDEYIZ" data-en="WHERE WE ARE" data-de="WO WIR SIND" data-ru="ГДЕ МЫ НАХОДИМСЯ">NEREDEYIZ</div>
-        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location" data-de="Unser Bürostandort" data-ru="Местоположение Офиса">OFİS <span class="accent" style="color: #4a4a4a !important;">KONUMUMUZ</span></h2>
+        <div class="section-label" data-tr="NEREDEYIZ" data-en="WHERE WE ARE" data-de="WO WIR SIND" data-ru="ГДЕ МЫ НАХОДИМСЯ" data-ar="موقعنا" data-fa="کجا هستیم" data-es="UBICACIÓN">NEREDEYIZ</div>
+        <h2 class="section-title" data-tr="Ofis Konumumuz" data-en="Our Office Location" data-de="Unser Bürostandort" data-ru="Местоположение Офиса" data-ar="موقع مكتبنا" data-fa="موقعیت دفتر ما" data-es="Ubicación">OFİS <span class="accent" style="color: #4a4a4a !important;">KONUMUMUZ</span></h2>
         <div class="section-decoration"><span class="dot"></span></div>
     </div>
     
@@ -8713,7 +8870,7 @@ loadFaqs();
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
             </div>
-            <span style="font-weight: 700; color: #1a1a1a; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.5);" data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура">CEE Mimarlık</span>
+            <span style="font-weight: 700; color: #1a1a1a; font-size: 14px; text-shadow: 0 1px 0 rgba(255,255,255,0.5);" data-tr="CEE Mimarlık" data-en="CEE Architecture" data-de="CEE Architektur" data-ru="CEE Архитектура" data-ar="CEE للهندسة المعمارية" data-fa="CEE معماری" data-es="CEE Arquitectura">CEE Mimarlık</span>
         </div>
         
         <style>
@@ -8742,16 +8899,16 @@ loadFaqs();
     
     <!-- Bilgiler -->
     <div style="max-width: 800px; margin: 30px auto 0; padding: 0 20px; text-align: center;">
-        <p style="color: #333; font-size: 15px; margin-bottom: 8px;" data-tr="Adres: CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ" data-en="Address: CEE ARCHITECTURE, Hatip, Ali Osman Celebi Blv. No:52 A Block Floor 1 No:3, 59860 Corlu/Tekirdag">
-            <strong data-tr="Adres:" data-en="Address:">Adres:</strong> CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
+        <p style="color: #333; font-size: 15px; margin-bottom: 8px;" data-tr="Adres: CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ" data-en="Address: CEE ARCHITECTURE, Hatip, Ali Osman Celebi Blv. No:52 A Block Floor 1 No:3, 59860 Corlu/Tekirdag" data-ar="العنوان: CEE للهندسة المعمارية، حاتب، علي عثمان تشلبي بلف. رقم:52 بلوك A الطابق 1 رقم:3، 59860 تشورلو/تكيرداغ" data-fa="آدرس: CEE معماری، حاتپ، علی عثمان چلبی بلو. شماره:52 بلوک A طبقه 1 شماره:3، 59860 چورلو/تکیرداغ" data-es="Dirección: CEE ARQUITECTURA, Hatip, Ali Osman Çelebi Blv. No:52 Bloque A Piso 1 No:3, 59860 Çorlu/Tekirdağ">
+            <strong data-tr="Adres:" data-en="Address:" data-ar="العنوان:" data-fa="آدرس:" data-es="Dirección:">Adres:</strong> CEE MİMARLIK, Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ
         </p>
         <p style="color: #333; font-size: 15px;" id="mapPhone">
-            <strong data-tr="Telefon:" data-en="Phone:">Telefon:</strong> <span id="displayPhoneMap">(0537) 327 87 65</span>
+            <strong data-tr="Telefon:" data-en="Phone:" data-ar="الهاتف:" data-fa="تلفن:" data-es="Teléfono:">Telefon:</strong> <span id="displayPhoneMap">(0537) 327 87 65</span>
         </p>
         <a href="https://www.google.com/maps/dir//41.1570005,27.7831933" target="_blank" 
            class="directions-btn"
            style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 15px; transition: all 0.3s;"
-           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions" data-de="🧭 Wegbeschreibung" data-ru="🧭 Проложить Маршрут">
+           data-tr="🧭 Yol Tarifi Al" data-en="🧭 Get Directions" data-de="🧭 Wegbeschreibung" data-ru="🧭 Проложить Маршрут" data-ar="🧭 الحصول على الاتجاهات" data-fa="🧭 دریافت مسیر" data-es="🧭 Obtener Direcciones">
             🧭 Yol Tarifi Al
         </a>
     </div>
@@ -8823,7 +8980,10 @@ function loadContactInfo() {
                 tr: 'Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi - Pazar: Kapalı',
                 en: 'Monday - Friday: 09:00 - 18:00<br>Saturday - Sunday: Closed',
                 de: 'Montag - Freitag: 09:00 - 18:00<br>Samstag - Sonntag: Geschlossen',
-                ru: 'Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто'
+                ru: 'Понедельник - Пятница: 09:00 - 18:00<br>Суббота - Воскресенье: Закрыто',
+                ar: 'الإثنين - الجمعة: 09:00 - 18:00<br>السبت - الأحد: مغلق',
+                fa: 'دوشنبه - جمعه: 09:00 - 18:00<br>شنبه - یکشنبه: تعطیل',
+                es: 'Lunes - Viernes: 09:00 - 18:00<br>Sábado - Domingo: Cerrado'
             };
             hoursEl.innerHTML = hoursTranslations[lang] || hoursTranslations.tr;
         }
@@ -8868,7 +9028,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         nav.innerHTML = menuHTML;
     } catch (e) {
-        console.log('Menü yüklenemedi');
     }
 });
 
@@ -9020,7 +9179,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         
         // Admin paneline mesaj kaydet
         let messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        messages.unshift(formData); // En yeni baÅŸa ekle
+        messages.unshift(formData); // En yeni başa ekle
         localStorage.setItem('contact_messages', JSON.stringify(messages));
         
         // Success
@@ -9068,7 +9227,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 <!-- FLOATING MENU - Butondan bağımsız -->
 <div class="chat-menu" id="chatMenu">
     <div class="chat-menu-header">
-        <span data-tr="İletişim Seçenekleri" data-en="Contact Options" data-de="Kontaktoptionen" data-ru="Варианты Связи">İletişim Seçenekleri</span>
+        <span data-tr="İletişim Seçenekleri" data-en="Contact Options" data-de="Kontaktoptionen" data-ru="Варианты Связи" data-ar="خيارات الاتصال" data-fa="گزینه‌های تماس" data-es="Opciones de Contacto">İletişim Seçenekleri</span>
         <button onclick="toggleChatMenu()" class="chat-menu-close-btn">×</button>
     </div>
     <div class="chat-menu-item" onclick="openAiAssistant(event)">
@@ -9081,8 +9240,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </svg>
         </div>
         <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant" data-de="CEE KI-Assistent" data-ru="CEE ИИ Ассистент">CEE AI Asistan</div>
-            <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant">Mimarlık & Mevzuat Danışmanı</div>
+            <div class="chat-menu-title" data-tr="CEE AI Asistan" data-en="CEE AI Assistant" data-de="CEE KI-Assistent" data-ru="CEE ИИ Ассистент" data-ar="مساعد CEE الذكي" data-fa="دستیار هوشمند CEE" data-es="Asistente IA CEE">CEE AI Asistan</div>
+            <div class="chat-menu-subtitle" data-tr="Mimarlık & Mevzuat Danışmanı" data-en="Architecture & Regulation Consultant" data-ar="مستشار الهندسة المعمارية والتشريعات" data-fa="مشاور معماری و مقررات" data-es="Consultor de Arquitectura y Regulaciones">Mimarlık & Mevzuat Danışmanı</div>
         </div>
         <div class="chat-menu-badge">AI</div>
     </div>
@@ -9096,14 +9255,14 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </svg>
         </div>
         <div class="chat-menu-content">
-            <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp" data-de="WhatsApp" data-ru="WhatsApp">WhatsApp</div>
-            <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative">Müşteri temsilcisiyle görüş</div>
+            <div class="chat-menu-title" data-tr="WhatsApp" data-en="WhatsApp" data-de="WhatsApp" data-ru="WhatsApp" data-ar="واتساب" data-fa="واتساپ" data-es="WhatsApp">WhatsApp</div>
+            <div class="chat-menu-subtitle" data-tr="Müşteri temsilcisiyle görüş" data-en="Talk to representative" data-ar="تحدث مع ممثل" data-fa="گفتگو با نماینده" data-es="Hablar con representante">Müşteri temsilcisiyle görüş</div>
         </div>
         <div class="chat-menu-badge online">●</div>
     </div>
 </div>
 
-<!-- AI ASSISTANT PANEL - SAÄž TARAFTA -->
+<!-- AI ASSISTANT PANEL - SAĞ TARAFTA -->
 <div class="ai-assistant-panel" id="aiAssistantPanel">
     <div class="ai-assistant-header">
         <div style="display: flex; align-items: center; gap: 12px;">
@@ -9119,23 +9278,23 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="ai-assistant-messages" id="aiAssistantMessages">
         <div class="ai-assistant-welcome">
             <div style="font-size: 48px; margin-bottom: 15px;">👋</div>
-            <h3 data-tr="Hoşgeldiniz!" data-en="Welcome!" data-de="Willkommen!" data-ru="Добро пожаловать!">Hoşgeldiniz!</h3>
-            <p data-tr="Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim." data-en="I am CEE ARCHITECTURE's customer representative. I can answer all your questions about architecture and building regulations.">Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
+            <h3 data-tr="Hoşgeldiniz!" data-en="Welcome!" data-de="Willkommen!" data-ru="Добро пожаловать!" data-ar="!مرحباً" data-fa="!خوش آمدید" data-es="¡Bienvenidos!">Hoşgeldiniz!</h3>
+            <p data-tr="Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim." data-en="I am CEE ARCHITECTURE's customer representative. I can answer all your questions about architecture and building regulations." data-ar="أنا ممثل خدمة عملاء CEE للهندسة المعمارية" data-fa="من نماینده خدمات مشتری CEE معماری هستم" data-es="Soy el representante de servicio al cliente de CEE ARQUITECTURA">Ben CEE MİMARLIK'ın müşteri temsilcisiyim. Mimarlık ve yapı mevzuatı hakkında her türlü sorunuzu yanıtlayabilirim.</p>
             
             <div class="quick-topics">
-                <div class="quick-topic" onclick="askAiQuestion('Piyes ölçüleri nedir?')" data-tr="📐 Piyes Ölçüleri" data-en="📐 Room Dimensions">📐 Piyes Ölçüleri</div>
-                <div class="quick-topic" onclick="askAiQuestion('Yangın merdiveni ölçüleri')" data-tr="🔥 Yangın Merdiveni" data-en="🔥 Fire Stairs">🔥 Yangın Merdiveni</div>
-                <div class="quick-topic" onclick="askAiQuestion('Merdiven ölçüleri')" data-tr="🪜 Merdiven" data-en="🪜 Stairs">🪜 Merdiven</div>
-                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')" data-tr="📊 Emsal" data-en="📊 Floor Area Ratio">📊 Emsal</div>
-                <div class="quick-topic" onclick="askAiQuestion('Sığınak zorunluluğu')" data-tr="🛡️ Sığınak" data-en="🛡️ Shelter">🛡️ Sığınak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Isı yalıtımı')" data-tr="🏠 Isı Yalıtımı" data-en="🏠 Insulation">🏠 Isı Yalıtımı</div>
-                <div class="quick-topic" onclick="askAiQuestion('Otopark ölçüleri')" data-tr="🚗 Otopark" data-en="🚗 Parking">🚗 Otopark</div>
-                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarımı')" data-tr="🍳 Mutfak" data-en="🍳 Kitchen">🍳 Mutfak</div>
-                <div class="quick-topic" onclick="askAiQuestion('Kapı pencere ölçüleri')" data-tr="🚪 Kapı/Pencere" data-en="🚪 Door/Window">🚪 Kapı/Pencere</div>
+                <div class="quick-topic" onclick="askAiQuestion('Piyes ölçüleri nedir?')" data-tr="📐 Piyes Ölçüleri" data-en="📐 Room Dimensions" data-ar="📐 قياسات القطع" data-fa="📐 اندازه‌های قطعه" data-es="📐 Medidas de Piezas">📐 Piyes Ölçüleri</div>
+                <div class="quick-topic" onclick="askAiQuestion('Yangın merdiveni ölçüleri')" data-tr="🔥 Yangın Merdiveni" data-en="🔥 Fire Stairs" data-ar="🔥 سلم الطوارئ" data-fa="🔥 پلکان آتش‌نشانی" data-es="🔥 Escalera de Incendios">🔥 Yangın Merdiveni</div>
+                <div class="quick-topic" onclick="askAiQuestion('Merdiven ölçüleri')" data-tr="🪜 Merdiven" data-en="🪜 Stairs" data-ar="🪜 درج" data-fa="🪜 پلکان" data-es="🪜 Escalera">🪜 Merdiven</div>
+                <div class="quick-topic" onclick="askAiQuestion('Emsal hesaplama')" data-tr="📊 Emsal" data-en="📊 Floor Area Ratio" data-ar="📊 معامل البناء" data-fa="📊 ضریب ساخت" data-es="📊 Coeficiente">📊 Emsal</div>
+                <div class="quick-topic" onclick="askAiQuestion('Sığınak zorunluluğu')" data-tr="🛡️ Sığınak" data-en="🛡️ Shelter" data-ar="🛡️ ملجأ" data-fa="🛡️ پناهگاه" data-es="🛡️ Refugio">🛡️ Sığınak</div>
+                <div class="quick-topic" onclick="askAiQuestion('Isı yalıtımı')" data-tr="🏠 Isı Yalıtımı" data-en="🏠 Insulation" data-ar="🏠 العزل الحراري" data-fa="🏠 عایق حرارتی" data-es="🏠 Aislamiento Térmico">🏠 Isı Yalıtımı</div>
+                <div class="quick-topic" onclick="askAiQuestion('Otopark ölçüleri')" data-tr="🚗 Otopark" data-en="🚗 Parking" data-ar="🚗 موقف السيارات" data-fa="🚗 پارکینگ" data-es="🚗 Estacionamiento">🚗 Otopark</div>
+                <div class="quick-topic" onclick="askAiQuestion('Mutfak tasarımı')" data-tr="🍳 Mutfak" data-en="🍳 Kitchen" data-ar="🍳 مطبخ" data-fa="🍳 آشپزخانه" data-es="🍳 Cocina">🍳 Mutfak</div>
+                <div class="quick-topic" onclick="askAiQuestion('Kapı pencere ölçüleri')" data-tr="🚪 Kapı/Pencere" data-en="🚪 Door/Window" data-ar="🚪 باب/نافذة" data-fa="🚪 در/پنجره" data-es="🚪 Puerta/Ventana">🚪 Kapı/Pencere</div>
             </div>
             
             <div class="contact-info">
-                <strong data-tr="📞 Hemen Ulaşın:" data-en="📞 Contact Us Now:">📞 Hemen Ulaşın:</strong><br>
+                <strong data-tr="📞 Hemen Ulaşın:" data-en="📞 Contact Us Now:" data-ar="📞 اتصل الآن:" data-fa="📞 تماس فوری:" data-es="📞 Llame Ahora:">📞 Hemen Ulaşın:</strong><br>
                 (0537) 327 87 65<br>
                 <small>Hatip, Ali Osman Çelebi Blv. No:52 A Blok Kat 1 No:3, 59860 Çorlu/Tekirdağ</small>
             </div>
@@ -9144,7 +9303,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     
     <div class="ai-assistant-input">
         <input type="text" id="aiAssistantInput" placeholder="Mimarlık sorunuzu yazın..." 
-               data-tr="Mimarlık sorunuzu yazın..." data-en="Type your architecture question..."
+               data-tr="Mimarlık sorunuzu yazın..." data-en="Type your architecture question..." data-ar="...اكتب سؤالك المعماري" data-fa="...سوال معماری خود را بنویسید" data-es="Escriba su pregunta de arquitectura..."
                onkeypress="if(event.key==='Enter') sendAiAssistantMessage()">
         <button onclick="sendAiAssistantMessage()">
             <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
@@ -9164,8 +9323,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 </svg>
             </div>
             <div>
-                <div style="font-weight: 600;" data-tr="Mimarlık Asistanı" data-en="Architecture Assistant">Mimarlık Asistanı</div>
-                <div style="font-size: 11px; opacity: 0.8;" data-tr="AI destekli" data-en="AI powered">AI destekli</div>
+                <div style="font-weight: 600;" data-tr="Mimarlık Asistanı" data-en="Architecture Assistant" data-ar="مساعد الهندسة المعمارية" data-fa="دستیار معماری" data-es="Asistente de Arquitectura">Mimarlık Asistanı</div>
+                <div style="font-size: 11px; opacity: 0.8;" data-tr="AI destekli" data-en="AI powered" data-ar="مدعوم بالذكاء الاصطناعي" data-fa="با پشتیبانی AI" data-es="Con IA">AI destekli</div>
             </div>
         </div>
         <button onclick="toggleAiChat()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
@@ -9176,7 +9335,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             <div class="ai-message-avatar">AI</div>
             <div class="ai-message-content">
                 <p data-tr="Merhaba! 👋 Mimarlık hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?" 
-                   data-en="Hello! 👋 I can answer your questions about architecture. How can I help you?">
+                   data-en="Hello! 👋 I can answer your questions about architecture. How can I help you?" data-ar="مرحباً! 👋 يمكنني الإجابة على أسئلتكم حول الهندسة المعمارية" data-fa="سلام! 👋 می‌توانم به سوالات شما درباره معماری پاسخ دهم" data-es="¡Hola! 👋 Puedo responder sus preguntas sobre arquitectura">
                     Merhaba! 👋 Mimarlık hakkında sorularınızı yanıtlayabilirim. Size nasıl yardımcı olabilirim?
                 </p>
             </div>
@@ -9223,8 +9382,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <polyline points="14 2 14 8 20 8"/>
                 <path d="M12 18v-6M9 15l3 3 3-3"/>
             </svg>
-            <h2 data-tr="DWG Araçları" data-en="DWG Tools">DWG Araçları</h2>
-            <p data-tr="DWG dosyalarınızı dönüştürün ve versiyon düşürün" data-en="Convert and downgrade your DWG files">DWG dosyalarınızı dönüştürün ve versiyon düşürün</p>
+            <h2 data-tr="DWG Araçları" data-en="DWG Tools" data-ar="أدوات DWG" data-fa="ابزارهای DWG" data-es="Herramientas DWG">DWG Araçları</h2>
+            <p data-tr="DWG dosyalarınızı dönüştürün ve versiyon düşürün" data-en="Convert and downgrade your DWG files" data-ar="تحويل ملفات DWG وخفض الإصدار" data-fa="فایل‌های DWG خود را تبدیل و نسخه کاهش دهید" data-es="Convierta y reduzca la versión de sus archivos DWG">DWG dosyalarınızı dönüştürün ve versiyon düşürün</p>
         </div>
 
         <div class="dwg-tools-tabs">
@@ -9233,13 +9392,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M8 12h8M12 8v8"/>
                 </svg>
-                <span data-tr="Format Dönüştürücü" data-en="Format Converter">Format Dönüştürücü</span>
+                <span data-tr="Format Dönüştürücü" data-en="Format Converter" data-ar="محول التنسيق" data-fa="تبدیل فرمت" data-es="Convertidor de Formato">Format Dönüştürücü</span>
             </button>
             <button class="dwg-tab" onclick="switchDwgTab('downgrade')" data-tab="downgrade">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                     <path d="M12 5v14M19 12l-7 7-7-7"/>
                 </svg>
-                <span data-tr="Versiyon Düşürme" data-en="Version Downgrade">Versiyon Düşürme</span>
+                <span data-tr="Versiyon Düşürme" data-en="Version Downgrade" data-ar="خفض الإصدار" data-fa="کاهش نسخه" data-es="Reducción de Versión">Versiyon Düşürme</span>
             </button>
         </div>
 
@@ -9249,8 +9408,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                 </svg>
-                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
-                <p data-tr="Tıklayın veya sürükleyip bırakın" data-en="Click or drag and drop">Tıklayın veya sürükleyip bırakın</p>
+                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File" data-ar="تحميل ملف DWG" data-fa="آپلود فایل DWG" data-es="Subir Archivo DWG">DWG Dosyası Yükle</h3>
+                <p data-tr="Tıklayın veya sürükleyip bırakın" data-en="Click or drag and drop" data-ar="انقر أو اسحب وأفلت" data-fa="کلیک کنید یا بکشید و رها کنید" data-es="Haga clic o arrastre y suelte">Tıklayın veya sürükleyip bırakın</p>
                 <span class="file-info">Max 50MB • DWG, DXF</span>
             </div>
             <input type="file" id="converterFileInput" accept=".dwg,.dxf" style="display: none;" onchange="handleConverterFile(this.files[0])">
@@ -9265,7 +9424,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </div>
 
             <div class="format-selector">
-                <label data-tr="Dönüştürülecek Format:" data-en="Convert to:">Dönüştürülecek Format:</label>
+                <label data-tr="Dönüştürülecek Format:" data-en="Convert to:" data-ar=":التنسيق المطلوب" data-fa=":فرمت تبدیل:" data-es="Formato a Convertir:">Dönüştürülecek Format:</label>
                 <div class="format-options">
                     <label class="format-option">
                         <input type="radio" name="outputFormat" value="pdf" checked>
@@ -9306,14 +9465,14 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </div>
 
             <div class="quality-settings">
-                <label data-tr="Kalite Ayarları:" data-en="Quality Settings:">Kalite Ayarları:</label>
+                <label data-tr="Kalite Ayarları:" data-en="Quality Settings:" data-ar=":إعدادات الجودة" data-fa=":تنظیمات کیفیت:" data-es="Configuración de Calidad:">Kalite Ayarları:</label>
                 <div class="quality-slider-container">
                     <input type="range" min="1" max="4" value="3" class="quality-slider" id="qualitySlider" oninput="updateQualityLabel(this.value)">
                     <div class="quality-labels">
-                        <span data-tr="Düşük" data-en="Low">Düşük</span>
-                        <span data-tr="Orta" data-en="Medium">Orta</span>
-                        <span data-tr="Yüksek" data-en="High">Yüksek</span>
-                        <span data-tr="En Yüksek" data-en="Maximum">En Yüksek</span>
+                        <span data-tr="Düşük" data-en="Low" data-ar="منخفض" data-fa="کم" data-es="Bajo">Düşük</span>
+                        <span data-tr="Orta" data-en="Medium" data-ar="متوسط" data-fa="متوسط" data-es="Medio">Orta</span>
+                        <span data-tr="Yüksek" data-en="High" data-ar="عالي" data-fa="بالا" data-es="Alto">Yüksek</span>
+                        <span data-tr="En Yüksek" data-en="Maximum" data-ar="الأعلى" data-fa="بالاترین" data-es="Máximo">En Yüksek</span>
                     </div>
                     <div class="current-quality" id="currentQuality">Yüksek Kalite</div>
                 </div>
@@ -9324,7 +9483,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <path d="M21 12a9 9 0 1 1-9-9"/>
                     <path d="M12 3v9l4 4"/>
                 </svg>
-                <span data-tr="Dönüştür" data-en="Convert">Dönüştür</span>
+                <span data-tr="Dönüştür" data-en="Convert" data-ar="تحويل" data-fa="تبدیل" data-es="Convertir">Dönüştür</span>
             </button>
 
             <div class="conversion-progress" id="converterProgress" style="display: none;">
@@ -9340,12 +9499,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <h3 data-tr="Dönüştürme Başarılı!" data-en="Conversion Successful!">Dönüştürme Başarılı!</h3>
+                    <h3 data-tr="Dönüştürme Başarılı!" data-en="Conversion Successful!" data-ar="!تم التحويل بنجاح" data-fa="!تبدیل موفق" data-es="¡Conversión Exitosa!">Dönüştürme Başarılı!</h3>
                     <button class="download-btn ripple" id="converterDownloadBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        <span data-tr="Dosyayı İndir" data-en="Download File">Dosyayı İndir</span>
+                        <span data-tr="Dosyayı İndir" data-en="Download File" data-ar="تحميل الملف" data-fa="دانلود فایل" data-es="Descargar Archivo">Dosyayı İndir</span>
                     </button>
                 </div>
             </div>
@@ -9357,8 +9516,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
                 </svg>
-                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File">DWG Dosyası Yükle</h3>
-                <p data-tr="Yüksek versiyon DWG dosyanızı yükleyin" data-en="Upload your high version DWG file">Yüksek versiyon DWG dosyanızı yükleyin</p>
+                <h3 data-tr="DWG Dosyası Yükle" data-en="Upload DWG File" data-ar="تحميل ملف DWG" data-fa="آپلود فایل DWG" data-es="Subir Archivo DWG">DWG Dosyası Yükle</h3>
+                <p data-tr="Yüksek versiyon DWG dosyanızı yükleyin" data-en="Upload your high version DWG file" data-ar="قم بتحميل ملف DWG عالي الإصدار" data-fa="فایل DWG نسخه بالا را آپلود کنید" data-es="Suba su archivo DWG de versión alta">Yüksek versiyon DWG dosyanızı yükleyin</p>
                 <span class="file-info">Max 50MB • DWG Format</span>
             </div>
             <input type="file" id="downgradeFileInput" accept=".dwg" style="display: none;" onchange="handleDowngradeFile(this.files[0])">
@@ -9374,7 +9533,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
             </div>
 
             <div class="version-selector">
-                <label data-tr="Hedef DWG Versiyonu:" data-en="Target DWG Version:">Hedef DWG Versiyonu:</label>
+                <label data-tr="Hedef DWG Versiyonu:" data-en="Target DWG Version:" data-ar=":إصدار DWG المستهدف" data-fa=":نسخه DWG هدف:" data-es="Versión DWG Objetivo:">Hedef DWG Versiyonu:</label>
                 <div class="version-options">
                     <label class="version-option">
                         <input type="radio" name="targetVersion" value="2018">
@@ -9424,7 +9583,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M12 16v-4M12 8h.01"/>
                     </svg>
-                    <span data-tr="Not: Bazı özellikler eski versiyonlarda kaybolabilir" data-en="Note: Some features may be lost in older versions">Not: Bazı özellikler eski versiyonlarda kaybolabilir</span>
+                    <span data-tr="Not: Bazı özellikler eski versiyonlarda kaybolabilir" data-en="Note: Some features may be lost in older versions" data-ar="ملاحظة: قد تفقد بعض الميزات في الإصدارات القديمة" data-fa="توجه: برخی ویژگی‌ها ممکن است در نسخه‌های قدیمی از بین بروند" data-es="Nota: Algunas características pueden perderse en versiones antiguas">Not: Bazı özellikler eski versiyonlarda kaybolabilir</span>
                 </div>
             </div>
 
@@ -9432,7 +9591,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                     <path d="M12 5v14M19 12l-7 7-7-7"/>
                 </svg>
-                <span data-tr="Versiyon Düşür" data-en="Downgrade Version">Versiyon Düşür</span>
+                <span data-tr="Versiyon Düşür" data-en="Downgrade Version" data-ar="خفض الإصدار" data-fa="کاهش نسخه" data-es="Reducir Versión">Versiyon Düşür</span>
             </button>
 
             <div class="conversion-progress" id="downgradeProgress" style="display: none;">
@@ -9448,13 +9607,13 @@ document.getElementById('contactForm').addEventListener('submit', async function
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M9 12l2 2 4-4"/>
                     </svg>
-                    <h3 data-tr="Versiyon Düşürme Başarılı!" data-en="Downgrade Successful!">Versiyon Düşürme Başarılı!</h3>
+                    <h3 data-tr="Versiyon Düşürme Başarılı!" data-en="Downgrade Successful!" data-ar="!تم خفض الإصدار بنجاح" data-fa="!کاهش نسخه موفق" data-es="¡Versión Reducida Exitosamente!">Versiyon Düşürme Başarılı!</h3>
                     <p id="downgradeResultInfo"></p>
                     <button class="download-btn ripple" id="downgradeDownloadBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        <span data-tr="Dosyayı İndir" data-en="Download File">Dosyayı İndir</span>
+                        <span data-tr="Dosyayı İndir" data-en="Download File" data-ar="تحميل الملف" data-fa="دانلود فایل" data-es="Descargar Archivo">Dosyayı İndir</span>
                     </button>
                 </div>
             </div>
@@ -9498,7 +9657,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     <div class="external-service-container">
         <div class="external-service-header">
             <div style="font-size: 48px; margin-bottom: 15px;">🏛️</div>
-            <h3 id="externalServiceTitle" style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;" data-tr="Dış Servise Yönlendiriliyorsunuz" data-en="You are being redirected to an external service" data-de="Sie werden zu einem externen Dienst weitergeleitet" data-ru="Вы перенаправляетесь на внешний сервис">Dış Servise Yönlendiriliyorsunuz</h3>
+            <h3 id="externalServiceTitle" style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #667eea;" data-tr="Dış Servise Yönlendiriliyorsunuz" data-en="You are being redirected to an external service" data-de="Sie werden zu einem externen Dienst weitergeleitet" data-ru="Вы перенаправляетесь на внешний сервис" data-ar="يتم توجيهك إلى خدمة خارجية" data-fa="در حال انتقال به سرویس خارجی" data-es="Siendo redirigido a servicio externo">Dış Servise Yönlendiriliyorsunuz</h3>
             <p id="externalServiceName" style="font-size: 16px; color: #666; margin-bottom: 20px;"></p>
         </div>
         
@@ -9510,7 +9669,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
                 <div>
-                    <strong id="externalInfoLabel" style="display: block; margin-bottom: 5px; color: #f59e0b;" data-tr="Bilgilendirme" data-en="Information" data-de="Information" data-ru="Информация">Bilgilendirme</strong>
+                    <strong id="externalInfoLabel" style="display: block; margin-bottom: 5px; color: #f59e0b;" data-tr="Bilgilendirme" data-en="Information" data-de="Information" data-ru="Информация" data-ar="معلومات" data-fa="اطلاعیه" data-es="Información">Bilgilendirme</strong>
                     <p id="externalServiceDesc" style="font-size: 14px; line-height: 1.6; color: #666;"></p>
                 </div>
             </div>
@@ -9526,7 +9685,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         </div>
         
         <div class="external-service-footer">
-            <button onclick="closeExternalServiceModal()" class="btn-secondary" id="externalCancelBtn" data-tr="İptal" data-en="Cancel" data-de="Abbrechen" data-ru="Отмена">
+            <button onclick="closeExternalServiceModal()" class="btn-secondary" id="externalCancelBtn" data-tr="İptal" data-en="Cancel" data-de="Abbrechen" data-ru="Отмена" data-ar="إلغاء" data-fa="لغو" data-es="Cancelar">
                 İptal
             </button>
             <button onclick="confirmExternalService()" class="btn-primary" id="externalGoBtn">
@@ -9535,7 +9694,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                <span data-tr="Siteye Git" data-en="Go to Site" data-de="Zur Seite" data-ru="Перейти на сайт">Siteye Git</span>
+                <span data-tr="Siteye Git" data-en="Go to Site" data-de="Zur Seite" data-ru="Перейти на сайт" data-ar="اذهب للموقع" data-fa="برو به سایت" data-es="Ir al Sitio">Siteye Git</span>
             </button>
         </div>
     </div>
@@ -9686,7 +9845,9 @@ body.dark-mode .btn-secondary {
                 <p class="footer-copyright" style="margin: 0; text-align: center; color: #1a1a1a;">
                     © <span id="footerYear">2024</span> 
                     <span class="admin-link" onclick="goToAdmin()" id="footerCompany" style="cursor: pointer; color: #1a1a1a; font-weight: 600;">CEE MİMARLIK</span> 
-                    <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved" data-de="Alle Rechte vorbehalten" data-ru="Все права защищены">Tüm hakları saklıdır</span>
+                    <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved" data-de="Alle Rechte vorbehalten" data-ru="Все права защищены" data-ar="جميع الحقوق محفوظة" data-fa="تمامی حقوق محفوظ است" data-es="Todos los derechos reservados">Tüm hakları saklıdır</span>
+                    <span style="margin: 0 8px; opacity: 0.5;">|</span>
+                    <a href="gizlilik.html" style="color: inherit; text-decoration: underline; opacity: 0.7; transition: opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.7'" data-tr="Gizlilik Politikası" data-en="Privacy Policy" data-de="Datenschutz" data-ru="Конфиденциальность" data-ar="سياسة الخصوصية" data-fa="حریم خصوصی" data-es="Privacidad">Gizlilik Politikası</a>
                 </p>
             </div>
         </div>
@@ -10002,14 +10163,14 @@ function setupHero() {
     if (slidesToUse.length === 0) {
         slider.innerHTML = `
             <div class="hero-slide active">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
+                <img src="data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%23e8e8e8' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='24' font-family='Arial'%3EProje Eklenmedi%3C/text%3E%3C/svg%3E" alt="Placeholder">
                 <div class="hero-overlay"></div>
             </div>
         `;
         return;
     }
     
-    // Slides - Sadece fotoÄŸraf
+    // Slides - Sadece fotoğraf
     slider.innerHTML = slidesToUse.map((project, index) => `
         <div class="hero-slide ${index === 0 ? 'active' : ''}">
             <img src="${project.img}" alt="${project.title || 'Proje'}" loading="${index === 0 ? 'eager' : 'lazy'}">
@@ -10042,7 +10203,7 @@ function setupDiagonalSplit(projects) {
         heroSlider.style.visibility = 'hidden';
     }
     
-    // SaÄŸ taraftaki fotoÄŸraflara ilk 4 favori projeyi ekle
+    // Sağ taraftaki fotoğraflara ilk 4 favori projeyi ekle
     if (projects.length > 0) {
         for (let i = 0; i < 4; i++) {
             const photoEl = document.getElementById('projectPhoto' + (i + 1));
@@ -10167,9 +10328,9 @@ function renderProjects() {
     const lang = (typeof currentLang !== 'undefined') ? currentLang : (localStorage.getItem('cee_public_lang') || 'tr');
     
     // Çeviriler
-    const noProjectsText = { tr: 'Henüz proje eklenmedi', en: 'No projects added yet', de: 'Noch keine Projekte hinzugefügt', ru: 'Проекты пока не добавлены' };
-    const viewMoreText = { tr: 'DAHA FAZLA', en: 'VIEW MORE', de: 'MEHR SEHEN', ru: 'ПОДРОБНЕЕ' };
-    const pdfText = { tr: 'PDF DOSYASI', en: 'PDF FILE', de: 'PDF-DATEI', ru: 'PDF ФАЙЛ' };
+    const noProjectsText = { tr: 'Henüz proje eklenmedi', en: 'No projects added yet', de: 'Noch keine Projekte hinzugefügt', ru: 'Проекты пока не добавлены', ar: 'لم تتم إضافة مشاريع بعد', fa: 'هنوز پروژه‌ای اضافه نشده', es: 'Aún no se han añadido proyectos' };
+    const viewMoreText = { tr: 'DAHA FAZLA', en: 'VIEW MORE', de: 'MEHR SEHEN', ru: 'ПОДРОБНЕЕ', ar: 'المزيد', fa: 'بیشتر', es: 'VER MÁS' };
+    const pdfText = { tr: 'PDF DOSYASI', en: 'PDF FILE', de: 'PDF-DATEI', ru: 'PDF ФАЙЛ', ar: 'ملف PDF', fa: 'فایل PDF', es: 'ARCHIVO PDF' };
     
     if (projects.length === 0) {
         grid.innerHTML = `
@@ -10201,6 +10362,18 @@ function renderProjects() {
             case 'ru': 
                 title = project.titleRu || project.titleEn || project.title;
                 description = project.descriptionRu || project.descriptionEn || project.description;
+                break;
+            case 'ar': 
+                title = project.titleAr || project.titleEn || project.title;
+                description = project.descriptionAr || project.descriptionEn || project.description;
+                break;
+            case 'fa': 
+                title = project.titleFa || project.titleEn || project.title;
+                description = project.descriptionFa || project.descriptionEn || project.description;
+                break;
+            case 'es': 
+                title = project.titleEs || project.titleEn || project.title;
+                description = project.descriptionEs || project.descriptionEn || project.description;
                 break;
             case 'en': 
                 title = project.titleEn || project.title;
@@ -10314,7 +10487,7 @@ const defaultTeamMembers = [
     {
         id: '1',
         name: 'Emrah İpek',
-        role: 'BaÅŸ Mimar',
+        role: 'Baş Mimar',
         photo: '',
         bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
@@ -10332,11 +10505,11 @@ function loadTeam() {
     // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
     let team = defaultTeamMembers;
     
-    // Placeholder fotoÄŸraf
-    const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
+    // Placeholder fotoğraf
+    const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
     
     grid.innerHTML = team.map(member => {
-        // Sosyal medya linkleri oluÅŸtur (MADDE 2)
+        // Sosyal medya linkleri oluştur (MADDE 2)
         let socialLinks = '';
         if (member.email) {
             socialLinks += '<a href="mailto:' + member.email + '" class="team-social-link email" title="E-posta">✉️</a>';
@@ -10545,6 +10718,16 @@ document.addEventListener('click', function(e) {
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('cee_public_lang', currentLang);
+    
+    // RTL dilleri için yön ayarla
+    if (lang === 'ar' || lang === 'fa') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', lang);
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', lang);
+    }
+    
     updateLanguageUI();
     applyLanguage();
     closeLangMenu();
@@ -10552,7 +10735,7 @@ function setLanguage(lang) {
 
 // Eski toggleLanguage fonksiyonu (geriye uyumluluk için)
 function toggleLanguage() {
-    const langs = ['tr', 'en', 'de', 'ru'];
+    const langs = ['tr', 'en', 'de', 'ru', 'ar', 'fa', 'es'];
     const currentIndex = langs.indexOf(currentLang);
     const nextIndex = (currentIndex + 1) % langs.length;
     setLanguage(langs[nextIndex]);
@@ -10585,10 +10768,25 @@ function updateLanguageUI() {
                 <rect fill="#fff" width="9" height="2"/>
                 <rect fill="#0039A6" y="2" width="9" height="2"/>
                 <rect fill="#D52B1E" y="4" width="9" height="2"/>
+            </svg>`,
+        ar: `<svg viewBox="0 0 12 8" style="width: 100%; height: 100%;">
+                <rect fill="#007A3D" width="12" height="8"/>
+                <rect fill="#fff" width="12" height="5.33"/>
+                <rect fill="#000" width="12" height="2.67"/>
+                <polygon fill="#CE1126" points="0,0 4,4 0,8"/>
+            </svg>`,
+        fa: `<svg viewBox="0 0 12 7" style="width: 100%; height: 100%;">
+                <rect fill="#239F40" width="12" height="2.33"/>
+                <rect fill="#fff" y="2.33" width="12" height="2.34"/>
+                <rect fill="#DA0000" y="4.67" width="12" height="2.33"/>
+            </svg>`,
+        es: `<svg viewBox="0 0 3 2" style="width: 100%; height: 100%;">
+                <rect fill="#AA151B" width="3" height="2"/>
+                <rect fill="#F1BF00" y="0.5" width="3" height="1"/>
             </svg>`
     };
     
-    const texts = { tr: 'TR', en: 'EN', de: 'DE', ru: 'RU' };
+    const texts = { tr: 'TR', en: 'EN', de: 'DE', ru: 'RU', ar: 'AR', fa: 'FA', es: 'ES' };
     
     if (langFlag) langFlag.innerHTML = flags[currentLang] || flags.tr;
     if (langText) langText.textContent = texts[currentLang] || 'TR';
@@ -10606,6 +10804,16 @@ function loadLanguage() {
     const saved = localStorage.getItem('cee_public_lang');
     if (saved) {
         currentLang = saved;
+        
+        // RTL dilleri için yön ayarla (sayfa yüklendiğinde)
+        if (saved === 'ar' || saved === 'fa') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', saved);
+        } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', saved);
+        }
+        
         updateLanguageUI();
         applyLanguage();
     }
@@ -10618,6 +10826,9 @@ function applyLanguage() {
         switch(currentLang) {
             case 'de': text = el.dataset.de || el.dataset.en || el.dataset.tr; break;
             case 'ru': text = el.dataset.ru || el.dataset.en || el.dataset.tr; break;
+            case 'ar': text = el.dataset.ar || el.dataset.en || el.dataset.tr; break;
+            case 'fa': text = el.dataset.fa || el.dataset.en || el.dataset.tr; break;
+            case 'es': text = el.dataset.es || el.dataset.en || el.dataset.tr; break;
             case 'en': text = el.dataset.en || el.dataset.tr; break;
             default: text = el.dataset.tr;
         }
@@ -10648,6 +10859,9 @@ function applyLanguage() {
         let text;
         switch(currentLang) {
             case 'de': text = opt.dataset.de || opt.dataset.en || opt.dataset.tr; break;
+            case 'ar': text = opt.dataset.ar || opt.dataset.en || opt.dataset.tr; break;
+            case 'fa': text = opt.dataset.fa || opt.dataset.en || opt.dataset.tr; break;
+            case 'es': text = opt.dataset.es || opt.dataset.en || opt.dataset.tr; break;
             case 'ru': text = opt.dataset.ru || opt.dataset.en || opt.dataset.tr; break;
             case 'en': text = opt.dataset.en || opt.dataset.tr; break;
             default: text = opt.dataset.tr;
@@ -10777,7 +10991,7 @@ function closeExternalServiceModal() {
     pendingExternalOwner = '';
 }
 
-// ESC tuÅŸu ile kapat
+// ESC tuşu ile kapat
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('externalServiceModal');
@@ -11021,7 +11235,7 @@ Mutfak tasarım & iç mimari: <strong>(0537) 327 87 65</strong>`;
 <strong>Klozet Kabini:</strong> Min. 80 x 120 cm<br>
 <strong>Lavabo:</strong> 85 cm yükseklik<br>
 <strong>Engelli WC:</strong> Min. 150 x 220 cm<br>
-<strong>DuÅŸ:</strong> Min. 80 x 80 cm<br>
+<strong>Duş:</strong> Min. 80 x 80 cm<br>
 <strong>Küvet:</strong> 70 x 150 cm<br><br>
 Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     }
@@ -11029,7 +11243,7 @@ Banyo tasarımı: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('kapı') || lowerMsg.includes('kapi') || lowerMsg.includes('pencere')) {
         return `<strong>🚪 Kapı & Pencere</strong><br><br>
 <strong>Standart Kapı:</strong> 80-90 cm x 210 cm<br>
-<strong>Ana GiriÅŸ:</strong> Min. 120 cm<br>
+<strong>Ana Giriş:</strong> Min. 120 cm<br>
 <strong>Engelli:</strong> Min. 90 cm net<br><br>
 <strong>Pencere Parapet:</strong> 90-110 cm<br>
 <strong>Havalandırma:</strong> Oda alanının 1/8'i<br><br>
@@ -11065,7 +11279,7 @@ Ruhsat işlemleriniz için: <strong>(0537) 327 87 65</strong>`;
     else if (lowerMsg.includes('asansör') || lowerMsg.includes('asansor')) {
         return `<strong>🛗 Asansör Yönetmeliği</strong><br><br>
 <strong>Zorunluluk:</strong> 4+ katlı binalar<br>
-<strong>Kapasite:</strong> 630 kg (8 kiÅŸi)<br>
+<strong>Kapasite:</strong> 630 kg (8 kişi)<br>
 <strong>Kabin:</strong> Min. 1.00 x 1.25 m<br>
 <strong>Engelli:</strong> 1.10 x 1.40 m<br><br>
 Asansör planlaması: <strong>(0537) 327 87 65</strong>`;
@@ -11161,7 +11375,7 @@ window.addEventListener('scroll', () => {
         } catch(e) {}
     }
     
-    // Header scroll effect + Floating logo (3 AÅŸama)
+    // Header scroll effect + Floating logo (3 Aşama)
     if (header) {
         // Aşama 1: Sayfa başı (0-100px) - Header logo görünür
         if (scrollTop <= 100) {
@@ -11218,10 +11432,10 @@ function updateFloatingLogo() {
         floatingLogoImg.src = siteLogo;
     }
     
-    // Default deÄŸerler (3 AÅŸama)
+    // Default değerler (3 Aşama)
     let logoText = 'CEE MİMARLIK';
-    let bigSize = 70;      // 1. AÅŸama: Header logo
-    let smallSize = 55;    // 2. AÅŸama: Floating logo
+    let bigSize = 70;      // 1. Aşama: Header logo
+    let smallSize = 55;    // 2. Aşama: Floating logo
     let miniSize = 40;     // 3. Aşama: Mini logo (projeler sonrası)
     let opacity = 1;
     
@@ -11236,7 +11450,6 @@ function updateFloatingLogo() {
             miniSize = settings.miniSize || 40;
             opacity = (settings.opacity || 100) / 100;
         } catch(e) {
-            console.log('Logo ayarları okunamadı, default kullanılıyor');
         }
     }
     
@@ -11260,7 +11473,7 @@ function updateFloatingLogo() {
         document.head.appendChild(logoStyle);
     }
     logoStyle.textContent = `
-        /* 1. AÅžAMA: Header logo boyutu */
+        /* 1. AŞAMA: Header logo boyutu */
         .logo-wrapper .site-logo,
         .logo-wrapper #headerLogo {
             height: ${bigSize}px !important;
@@ -11297,7 +11510,6 @@ function updateFloatingLogo() {
         }
     `;
     
-    console.log('Logo ayarları uygulandı (3 Aşama):', {bigSize, smallSize, miniSize, opacity});
 }
 document.addEventListener('DOMContentLoaded', updateFloatingLogo);
 
@@ -11540,7 +11752,7 @@ function getSmartResponse(message) {
         mutfak: ['mutfak', 'kitchen', 'tezgah', 'dolap'],
         banyo: ['banyo', 'tuvalet', 'wc', 'lavabo', 'klozet'],
         kapi: ['kapı', 'kapi', 'door', 'giriş kapı'],
-        pencere: ['pencere', 'window', 'cam', 'doÄŸrama'],
+        pencere: ['pencere', 'window', 'cam', 'doğrama'],
         yalitim: ['yalıtım', 'yalit', 'ısı yalıt', 'ses yalıt', 'nem yalıt', 'bep'],
         deprem: ['deprem', 'earthquake', 'tbdy', 'zemin etüd'],
         cati: ['çatı', 'cati', 'roof', 'dam', 'kiremit'],
@@ -11681,7 +11893,7 @@ Ruhsat hizmeti: ${phoneLink}`;
 • 500 m² arsa<br>
 • TAKS: 0.40<br>
 • <strong>Taban Alanı: 200 m²</strong><br><br>
-<strong>Tipik DeÄŸerler:</strong><br>
+<strong>Tipik Değerler:</strong><br>
 • Konut: 0.30 - 0.40<br>
 • Ticaret: 0.60 - 0.80<br><br>
 İmar durumu analizi: ${phoneLink}`;
@@ -11726,7 +11938,7 @@ Cephe tasarımı: ${phoneLink}`;
 3. Ön proje<br>
 4. Kesin proje<br>
 5. Uygulama projesi<br>
-6. Ruhsat iÅŸlemleri<br><br>
+6. Ruhsat işlemleri<br><br>
 <strong>Hizmetlerimiz:</strong><br>
 • Konut projeleri<br>
 • Villa projeleri<br>
@@ -12221,7 +12433,7 @@ CEE Mimarlık AI asistanıyım. Size yardımcı olabileceğim konular:<br><br>
 Sorunuzu yazın, detaylı bilgi vereyim!`
     };
     
-    // GeliÅŸmiÅŸ anahtar kelime eÅŸleÅŸtirme
+    // Gelişmiş anahtar kelime eşleştirme
     if (q.includes('taks') || q.includes('kaks') || q.includes('emsal')) {
         return answers.taks;
     } else if (q.includes('imar') || q.includes('yapi') || q.includes('mevzuat')) {
@@ -12700,7 +12912,7 @@ function loadVideos() {
                 <video class="video-thumbnail" muted>
                     <source src="${video.img}" type="video/mp4">
                 </video>
-                <div class="video-play-btn">â–¶</div>
+                <div class="video-play-btn">▶</div>
                 <div class="video-title">${video.title || 'Video'}</div>
             </div>
         `).join('');
@@ -12710,7 +12922,7 @@ function loadVideos() {
     videoHTML += demoVideos.map(video => `
         <div class="video-item" onclick="openVideo('${video.id}', 'youtube')">
             <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
-            <div class="video-play-btn">â–¶</div>
+            <div class="video-play-btn">▶</div>
             <div class="video-title">${video.title}</div>
         </div>
     `).join('');
@@ -13144,7 +13356,7 @@ function loadSiteSettings() {
         if (socialLinks.instagram) html += `<a href="${socialLinks.instagram}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">📷</a>`;
         if (socialLinks.linkedin) html += `<a href="${socialLinks.linkedin}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #0a66c2; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">in</a>`;
         if (socialLinks.twitter) html += `<a href="${socialLinks.twitter}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #4a4a4a, #b8962e); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">𝕏</a>`;
-        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">â–¶</a>`;
+        if (socialLinks.youtube) html += `<a href="${socialLinks.youtube}" target="_blank" style="width: 40px; height: 40px; border-radius: 50%; background: #ff0000; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">▶</a>`;
         if (html) socialContainer.innerHTML = html;
     }
     
@@ -13170,7 +13382,7 @@ function loadSiteSettings() {
             root.style.setProperty('--text-primary', colorSettings.text);
         }
         
-        // Dinamik stil oluÅŸtur
+        // Dinamik stil oluştur
         const dynamicStyle = document.createElement('style');
         dynamicStyle.id = 'dynamic-theme';
         dynamicStyle.textContent = `
@@ -13445,11 +13657,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (!window.firebaseDB) {
-        console.log('ℹ️ Firebase bağlantısı yok, localStorage kullanılıyor');
         return;
     }
     
-    console.log('🔥 Firebase bağlandı, veriler yükleniyor...');
     
     // PROJELERİ YÜKLE
     try {
@@ -13473,7 +13683,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
         
         if (projects.length > 0) {
-            console.log('✅ Firebase projeleri yüklendi:', projects.length);
             window.projects = projects;
             
             // Projeleri render et
@@ -13511,7 +13720,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
         
         if (teamMembers.length > 0) {
-            console.log('✅ Firebase ekip üyeleri yüklendi:', teamMembers.length);
             // localStorage'a da kaydet (loadTeam fonksiyonu için)
             localStorage.setItem('team_members', JSON.stringify(teamMembers));
             
@@ -13578,7 +13786,6 @@ window.openProjectDetail = function(projectId) {
                 });
                 
                 if (firebaseProjects.length > 0) {
-                    console.log('✅ Firebase projeleri yüklendi:', firebaseProjects.length);
                     window.firebaseProjects = firebaseProjects;
                     
                     // Proje listesini güncelle
@@ -13589,7 +13796,6 @@ window.openProjectDetail = function(projectId) {
             }
         }
     } catch (error) {
-        console.log('ℹ️ Firebase config bulunamadı, demo modda çalışıyor');
     }
 </script>
 
@@ -13600,8 +13806,6 @@ window.openProjectDetail = function(projectId) {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('✅ Service Worker kayıtlı'))
-            .catch(err => console.log('❌ Service Worker hatası:', err));
     });
 }
 </script>
@@ -13798,7 +14002,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.documentElement.style.setProperty('--header-color', headerColor);
             document.documentElement.style.setProperty('--icon-size', iconSize + 'px');
             
-            // Divider/Bant renkleri (Simge Arka Plan ile deÄŸiÅŸir)
+            // Divider/Bant renkleri (Simge Arka Plan ile değişir)
             document.documentElement.style.setProperty('--divider-color', accent);
             document.documentElement.style.setProperty('--divider-color-light', accentLight);
             document.documentElement.style.setProperty('--diagonal-color', accent);
@@ -13965,7 +14169,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Text
             document.querySelectorAll('.section-title').forEach(el => el.style.color = textColor);
             
-            console.log('✅ Renkler uygulandı');
         } catch(e) { console.error('Renk hatası:', e); }
     }
     

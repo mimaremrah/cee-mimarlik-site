@@ -1103,32 +1103,83 @@ a{color:inherit;text-decoration:none}
 
     <script>
     // AUTH
-    let credentials = { username: 'admin', password: 'admin123' };
-    try { const s = localStorage.getItem('cee_credentials'); if (s) credentials = JSON.parse(s); } catch(e) {}
+    // ═══════════════════════════════════════════
+    // GÜVENLİ LOGIN SİSTEMİ
+    // ═══════════════════════════════════════════
+    let loginAttempts = 0;
+    let lockoutUntil = 0;
+    const MAX_ATTEMPTS = 5;
+    const LOCKOUT_DURATION = 60000;
+    const SESSION_DURATION = 3600000;
 
-    function login() {
+    async function sha256(text) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(text);
+        const hash = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const DEFAULT_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+    let credentials = { username: 'admin', passwordHash: DEFAULT_HASH };
+    try {
+        const s = localStorage.getItem('cee_credentials_v2');
+        if (s) credentials = JSON.parse(s);
+        else {
+            const old = localStorage.getItem('cee_credentials');
+            if (old) {
+                const oldCred = JSON.parse(old);
+                sha256(oldCred.password).then(hash => {
+                    credentials = { username: oldCred.username, passwordHash: hash };
+                    localStorage.setItem('cee_credentials_v2', JSON.stringify(credentials));
+                    localStorage.removeItem('cee_credentials');
+                });
+            }
+        }
+    } catch(e) {}
+
+    async function login() {
+        if (Date.now() < lockoutUntil) {
+            const remaining = Math.ceil((lockoutUntil - Date.now()) / 1000);
+            toast('Çok fazla hatalı deneme. ' + remaining + ' sn bekleyin.', 'error');
+            return;
+        }
         const u = document.getElementById('loginUsername').value;
         const p = document.getElementById('loginPassword').value;
-        if (u === credentials.username && p === credentials.password) {
-            sessionStorage.setItem('adminLoggedIn', 'true');
+        const pHash = await sha256(p);
+
+        if (u === credentials.username && pHash === credentials.passwordHash) {
+            loginAttempts = 0;
+            const token = Date.now().toString(36) + Math.random().toString(36).substr(2);
+            sessionStorage.setItem('adminSession', JSON.stringify({ token, expires: Date.now() + SESSION_DURATION }));
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminLayout').style.display = 'flex';
             loadAll();
-            toast('HoÅŸ geldiniz!', 'success');
+            toast('Hoş geldiniz!', 'success');
+            setTimeout(() => { toast('Oturum süresi doldu', 'error'); logout(); }, SESSION_DURATION);
         } else {
-            toast('Hatalı giriş bilgileri!', 'error');
+            loginAttempts++;
+            if (loginAttempts >= MAX_ATTEMPTS) {
+                lockoutUntil = Date.now() + LOCKOUT_DURATION;
+                toast(MAX_ATTEMPTS + ' hatalı deneme! 1 dk kilitlendi.', 'error');
+            } else {
+                toast('Hatalı giriş! (' + loginAttempts + '/' + MAX_ATTEMPTS + ')', 'error');
+            }
         }
     }
 
     function logout() {
-        sessionStorage.removeItem('adminLoggedIn');
+        sessionStorage.removeItem('adminSession');
         document.getElementById('loginScreen').style.display = 'flex';
         document.getElementById('adminLayout').style.display = 'none';
     }
 
+    function isSessionValid() {
+        try { const s = JSON.parse(sessionStorage.getItem('adminSession') || '{}'); return s.token && s.expires && Date.now() < s.expires; } catch(e) { return false; }
+    }
+
     document.addEventListener('keydown', e => { if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') login(); });
 
-    if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+    if (isSessionValid()) {
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('adminLayout').style.display = 'flex';
         setTimeout(loadAll, 100);
@@ -1264,8 +1315,6 @@ a{color:inherit;text-decoration:none}
         if (services.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🛠️</div><div class="empty-text">Hizmet yok</div></div>'; return; }
         el.innerHTML = services.map((s, i) => `<div class="list-item"><div class="list-item-icon">${s.icon}</div><div class="list-item-content"><div class="list-item-title">${s.title || s.titleTr}</div><div class="list-item-subtitle">${s.desc || s.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('services',${i},1)" ${i===services.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editService(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('services',${i})">🗑️</button></div></div>`).join('');
     }
-    function addService() { const icon = prompt('Emoji:', '🏠'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { services.push({ icon: icon || '🏠', title, desc }); saveServices(); renderServices(); toast('Hizmet eklendi ve kaydedildi', 'success'); } }
-    function editService(i) { const s = services[i]; const icon = prompt('Emoji:', s.icon); const title = prompt('Başlık:', s.title || s.titleTr); const desc = prompt('Açıklama:', s.desc || s.descTr); if (title) { services[i] = { icon: icon || s.icon, title, desc }; saveServices(); renderServices(); toast('Hizmet güncellendi', 'success'); } }
     function saveServices() { localStorage.setItem('cee_services', JSON.stringify(services)); updateStats(); }
 
     // REFERENCES
@@ -1274,9 +1323,259 @@ a{color:inherit;text-decoration:none}
         if (refs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏢</div><div class="empty-text">Referans yok</div></div>'; return; }
         el.innerHTML = refs.map((r, i) => `<div class="list-item"><div class="list-item-icon">${r.icon}</div><div class="list-item-content"><div class="list-item-title">${r.title || r.titleTr}</div><div class="list-item-subtitle">${r.desc || r.descTr}</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},-1)" ${i===0?'disabled':''}>▲</button><button class="btn btn-sm btn-secondary" onclick="moveItem('refs',${i},1)" ${i===refs.length-1?'disabled':''}>▼</button><button class="btn btn-sm btn-secondary" onclick="editRef(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('refs',${i})">🗑️</button></div></div>`).join('');
     }
-    function addReference() { const icon = prompt('Emoji:', '🏢'); const title = prompt('Başlık:', ''); const desc = prompt('Açıklama:', ''); if (title) { refs.push({ icon: icon || '🏢', title, desc }); saveReferences(); renderRefs(); toast('Referans eklendi ve kaydedildi', 'success'); } }
-    function editRef(i) { const r = refs[i]; const icon = prompt('Emoji:', r.icon); const title = prompt('Başlık:', r.title || r.titleTr); const desc = prompt('Açıklama:', r.desc || r.descTr); if (title) { refs[i] = { icon: icon || r.icon, title, desc }; saveReferences(); renderRefs(); toast('Referans güncellendi', 'success'); } }
     function saveReferences() { localStorage.setItem('cee_references', JSON.stringify(refs)); updateStats(); }
+    // ═══════════════════════════════════════════
+    // OTOMATİK ÇEVİRİ SİSTEMİ (MyMemory API)
+    // ═══════════════════════════════════════════
+    const LANG_PAIRS = [
+        { code: 'en', from: 'tr|en', field: 'En' },
+        { code: 'de', from: 'tr|de', field: 'De' },
+        { code: 'ru', from: 'tr|ru', field: 'Ru' },
+        { code: 'ar', from: 'tr|ar', field: 'Ar' },
+        { code: 'fa', from: 'tr|fa', field: 'Fa' },
+        { code: 'es', from: 'tr|es', field: 'Es' }
+    ];
+
+    async function autoTranslate(text, langpair) {
+        try {
+            const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langpair}&de=cee@mimarlik.com`;
+            const res = await fetch(url);
+            const data = await res.json();
+            if (data.responseStatus === 200 && data.responseData.translatedText) {
+                let translated = data.responseData.translatedText;
+                // MyMemory bazen büyük harf döndürüyor, düzelt
+                if (translated === translated.toUpperCase() && text !== text.toUpperCase()) {
+                    translated = translated.charAt(0).toUpperCase() + translated.slice(1).toLowerCase();
+                }
+                return translated;
+            }
+            return null;
+        } catch(e) {
+            console.warn('Çeviri hatası:', langpair, e);
+            return null;
+        }
+    }
+
+    async function translateAllLangs(textTr) {
+        if (!textTr || textTr.trim() === '') return {};
+        const results = {};
+        const promises = LANG_PAIRS.map(async (lang) => {
+            const translated = await autoTranslate(textTr, lang.from);
+            if (translated) results[lang.field] = translated;
+        });
+        await Promise.all(promises);
+        return results;
+    }
+
+    // Çeviri durumunu gösteren toast
+    function showTranslatingToast() {
+        const box = document.getElementById('toastBox');
+        const t = document.createElement('div');
+        t.className = 'toast success';
+        t.id = 'translatingToast';
+        t.innerHTML = '<span>🌐</span><span>6 dile çevriliyor...</span>';
+        box.appendChild(t);
+        return t;
+    }
+
+    // ═══════════════════════════════════════════
+    // HİZMET EKLE/DÜZENLE (OTOMATİK ÇEVİRİLİ)
+    // ═══════════════════════════════════════════
+    async function addService() {
+        const icon = prompt('Emoji:', '🏠');
+        const title = prompt('Başlık (Türkçe):', '');
+        const desc = prompt('Açıklama (Türkçe):', '');
+        if (!title) return;
+
+        const toastEl = showTranslatingToast();
+
+        // Başlık ve açıklamayı paralel çevir
+        const [titleTranslations, descTranslations] = await Promise.all([
+            translateAllLangs(title),
+            translateAllLangs(desc)
+        ]);
+
+        const newService = {
+            icon: icon || '🏠',
+            title, desc,
+            titleTr: title, descTr: desc,
+            titleEn: titleTranslations.En || '', descEn: descTranslations.En || '',
+            titleDe: titleTranslations.De || '', descDe: descTranslations.De || '',
+            titleRu: titleTranslations.Ru || '', descRu: descTranslations.Ru || '',
+            titleAr: titleTranslations.Ar || '', descAr: descTranslations.Ar || '',
+            titleFa: titleTranslations.Fa || '', descFa: descTranslations.Fa || '',
+            titleEs: titleTranslations.Es || '', descEs: descTranslations.Es || ''
+        };
+
+        services.push(newService);
+        saveServices();
+        renderServices();
+        if (toastEl) toastEl.remove();
+        toast('✅ Hizmet eklendi ve 6 dile çevrildi!', 'success');
+    }
+
+    async function editService(i) {
+        const s = services[i];
+        const icon = prompt('Emoji:', s.icon);
+        const title = prompt('Başlık (Türkçe):', s.title || s.titleTr);
+        const desc = prompt('Açıklama (Türkçe):', s.desc || s.descTr);
+        if (!title) return;
+
+        const toastEl = showTranslatingToast();
+
+        const [titleTranslations, descTranslations] = await Promise.all([
+            translateAllLangs(title),
+            translateAllLangs(desc)
+        ]);
+
+        services[i] = {
+            icon: icon || s.icon,
+            title, desc,
+            titleTr: title, descTr: desc,
+            titleEn: titleTranslations.En || s.titleEn || '', descEn: descTranslations.En || s.descEn || '',
+            titleDe: titleTranslations.De || s.titleDe || '', descDe: descTranslations.De || s.descDe || '',
+            titleRu: titleTranslations.Ru || s.titleRu || '', descRu: descTranslations.Ru || s.descRu || '',
+            titleAr: titleTranslations.Ar || s.titleAr || '', descAr: descTranslations.Ar || s.descAr || '',
+            titleFa: titleTranslations.Fa || s.titleFa || '', descFa: descTranslations.Fa || s.descFa || '',
+            titleEs: titleTranslations.Es || s.titleEs || '', descEs: descTranslations.Es || s.descEs || ''
+        };
+
+        saveServices();
+        renderServices();
+        if (toastEl) toastEl.remove();
+        toast('✅ Hizmet güncellendi ve 6 dile çevrildi!', 'success');
+    }
+
+    // ═══════════════════════════════════════════
+    // REFERANS EKLE/DÜZENLE (OTOMATİK ÇEVİRİLİ)
+    // ═══════════════════════════════════════════
+    async function addReference() {
+        const icon = prompt('Emoji:', '🏢');
+        const title = prompt('Başlık (Türkçe):', '');
+        const desc = prompt('Açıklama (Türkçe):', '');
+        if (!title) return;
+
+        const toastEl = showTranslatingToast();
+
+        const [titleTranslations, descTranslations] = await Promise.all([
+            translateAllLangs(title),
+            translateAllLangs(desc)
+        ]);
+
+        const newRef = {
+            icon: icon || '🏢',
+            title, desc,
+            titleTr: title, descTr: desc,
+            titleEn: titleTranslations.En || '', descEn: descTranslations.En || '',
+            titleDe: titleTranslations.De || '', descDe: descTranslations.De || '',
+            titleRu: titleTranslations.Ru || '', descRu: descTranslations.Ru || '',
+            titleAr: titleTranslations.Ar || '', descAr: descTranslations.Ar || '',
+            titleFa: titleTranslations.Fa || '', descFa: descTranslations.Fa || '',
+            titleEs: titleTranslations.Es || '', descEs: descTranslations.Es || ''
+        };
+
+        refs.push(newRef);
+        saveReferences();
+        renderRefs();
+        if (toastEl) toastEl.remove();
+        toast('✅ Referans eklendi ve 6 dile çevrildi!', 'success');
+    }
+
+    async function editRef(i) {
+        const r = refs[i];
+        const icon = prompt('Emoji:', r.icon);
+        const title = prompt('Başlık (Türkçe):', r.title || r.titleTr);
+        const desc = prompt('Açıklama (Türkçe):', r.desc || r.descTr);
+        if (!title) return;
+
+        const toastEl = showTranslatingToast();
+
+        const [titleTranslations, descTranslations] = await Promise.all([
+            translateAllLangs(title),
+            translateAllLangs(desc)
+        ]);
+
+        refs[i] = {
+            icon: icon || r.icon,
+            title, desc,
+            titleTr: title, descTr: desc,
+            titleEn: titleTranslations.En || r.titleEn || '', descEn: descTranslations.En || r.descEn || '',
+            titleDe: titleTranslations.De || r.titleDe || '', descDe: descTranslations.De || r.descDe || '',
+            titleRu: titleTranslations.Ru || r.titleRu || '', descRu: descTranslations.Ru || r.descRu || '',
+            titleAr: titleTranslations.Ar || r.titleAr || '', descAr: descTranslations.Ar || r.descAr || '',
+            titleFa: titleTranslations.Fa || r.titleFa || '', descFa: descTranslations.Fa || r.descFa || '',
+            titleEs: titleTranslations.Es || r.titleEs || '', descEs: descTranslations.Es || r.descEs || ''
+        };
+
+        saveReferences();
+        renderRefs();
+        if (toastEl) toastEl.remove();
+        toast('✅ Referans güncellendi ve 6 dile çevrildi!', 'success');
+    }
+
+    // ═══════════════════════════════════════════
+    // SSS EKLE/DÜZENLE (OTOMATİK ÇEVİRİLİ)
+    // ═══════════════════════════════════════════
+    async function addFaq() {
+        const q = prompt('Soru (Türkçe):', '');
+        const a = prompt('Cevap (Türkçe):', '');
+        if (!q) return;
+
+        const toastEl = showTranslatingToast();
+
+        const [qTranslations, aTranslations] = await Promise.all([
+            translateAllLangs(q),
+            translateAllLangs(a)
+        ]);
+
+        const newFaq = {
+            question: q, answer: a,
+            questionTr: q, answerTr: a,
+            questionEn: qTranslations.En || '', answerEn: aTranslations.En || '',
+            questionDe: qTranslations.De || '', answerDe: aTranslations.De || '',
+            questionRu: qTranslations.Ru || '', answerRu: aTranslations.Ru || '',
+            questionAr: qTranslations.Ar || '', answerAr: aTranslations.Ar || '',
+            questionFa: qTranslations.Fa || '', answerFa: aTranslations.Fa || '',
+            questionEs: qTranslations.Es || '', answerEs: aTranslations.Es || ''
+        };
+
+        faqs.push(newFaq);
+        renderFaqs();
+        if (toastEl) toastEl.remove();
+        toast('✅ SSS eklendi ve 6 dile çevrildi!', 'success');
+    }
+
+    async function editFaq(i) {
+        const f = faqs[i];
+        const q = prompt('Soru (Türkçe):', f.question || f.questionTr);
+        const a = prompt('Cevap (Türkçe):', f.answer || f.answerTr);
+        if (!q) return;
+
+        const toastEl = showTranslatingToast();
+
+        const [qTranslations, aTranslations] = await Promise.all([
+            translateAllLangs(q),
+            translateAllLangs(a)
+        ]);
+
+        faqs[i] = {
+            question: q, answer: a,
+            questionTr: q, answerTr: a,
+            questionEn: qTranslations.En || f.questionEn || '', answerEn: aTranslations.En || f.answerEn || '',
+            questionDe: qTranslations.De || f.questionDe || '', answerDe: aTranslations.De || f.answerDe || '',
+            questionRu: qTranslations.Ru || f.questionRu || '', answerRu: aTranslations.Ru || f.answerRu || '',
+            questionAr: qTranslations.Ar || f.questionAr || '', answerAr: aTranslations.Ar || f.answerAr || '',
+            questionFa: qTranslations.Fa || f.questionFa || '', answerFa: aTranslations.Fa || f.answerFa || '',
+            questionEs: qTranslations.Es || f.questionEs || '', answerEs: aTranslations.Es || f.answerEs || ''
+        };
+
+        renderFaqs();
+        if (toastEl) toastEl.remove();
+        toast('✅ SSS güncellendi ve 6 dile çevrildi!', 'success');
+    }
+
+    // TOAST (ilk tanım)
+    function toast(msg, type = 'success') { const box = document.getElementById('toastBox'); const t = document.createElement('div'); t.className = `toast ${type}`; t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span><span>${msg}</span>`; box.appendChild(t); setTimeout(() => t.remove(), 3000); }
 
     // TEAM
     function renderTeam() {
@@ -1346,8 +1645,6 @@ a{color:inherit;text-decoration:none}
         if (faqs.length === 0) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">❓</div><div class="empty-text">Soru yok</div></div>'; return; }
         el.innerHTML = faqs.map((f, i) => `<div class="list-item"><div class="list-item-icon">❓</div><div class="list-item-content"><div class="list-item-title">${f.question || f.questionTr}</div><div class="list-item-subtitle">${(f.answer || f.answerTr || '').substring(0, 80)}...</div></div><div class="list-item-actions"><button class="btn btn-sm btn-secondary" onclick="editFaq(${i})">✏️</button><button class="btn btn-sm btn-danger" onclick="deleteItem('faqs',${i})">🗑️</button></div></div>`).join('');
     }
-    function addFaq() { const q = prompt('Soru:', ''); const a = prompt('Cevap:', ''); if (q) { faqs.push({ question: q, answer: a }); renderFaqs(); toast('Eklendi', 'success'); } }
-    function editFaq(i) { const f = faqs[i]; const q = prompt('Soru:', f.question || f.questionTr); const a = prompt('Cevap:', f.answer || f.answerTr); if (q) { faqs[i] = { question: q, answer: a }; renderFaqs(); toast('Güncellendi', 'success'); } }
     function saveFaqs() { localStorage.setItem('cee_faqs', JSON.stringify(faqs)); toast('Kaydedildi', 'success'); }
 
     // HERO IMAGES
@@ -1790,7 +2087,7 @@ a{color:inherit;text-decoration:none}
     }
 
     // SECURITY
-    function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; } if (u) credentials.username = u; if (p) credentials.password = p; localStorage.setItem('cee_credentials', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('Güncellendi', 'success'); }
+    async function changePassword() { const u = document.getElementById('newUser').value; const p = document.getElementById('newPass').value; const pc = document.getElementById('newPassConfirm').value; if (!u && !p) { toast('En az bir alan doldurun', 'error'); return; } if (p && p !== pc) { toast('Şifreler eşleşmiyor', 'error'); return; } if (p && p.length < 6) { toast('Şifre en az 6 karakter olmalı', 'error'); return; } if (u) credentials.username = u; if (p) credentials.passwordHash = await sha256(p); localStorage.setItem('cee_credentials_v2', JSON.stringify(credentials)); document.getElementById('newUser').value = ''; document.getElementById('newPass').value = ''; document.getElementById('newPassConfirm').value = ''; toast('Güncellendi (hash\'li)', 'success'); }
 
     // BACKUP
     function exportBackup() { 

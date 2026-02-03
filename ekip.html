@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <link rel="icon" type="image/png" href="logohq.png">
+    <link rel="apple-touch-icon" href="appletouchicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uzman Kadromuz | CEE Mimarlık</title>
@@ -535,6 +537,12 @@
         .empty-state-icon { font-size: 80px; margin-bottom: 20px; opacity: 0.5; }
         .empty-state h3 { font-size: 24px; margin-bottom: 10px; color: var(--text); }
     </style>
+    <meta property="og:title" content="CEE Mimarlık - Ekibimiz">
+    <meta property="og:description" content="CEE Mimarlık - Profesyonel mimarlık, inşaat ve danışmanlık hizmetleri. Çorlu, Tekirdağ.">
+    <meta property="og:image" content="https://www.ceemimarlik.com/ogimage.jpg">
+    <meta property="og:url" content="https://www.ceemimarlik.com/ekip.html">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.ceemimarlik.com/ekip.html">
 </head>
 <body>
 
@@ -562,7 +570,7 @@
 <section class="page-hero">
     <div class="page-hero-content">
         <div class="page-label">Profesyonel Ekibimiz</div>
-        <h1>Uzman Kadromuz</h1>
+        <h1 data-tr="Uzman Kadromuz" data-en="Our Expert Team" data-de="Unser Expertenteam" data-ru="Наша Команда" data-ar="فريقنا المتخصص" data-fa="تیم متخصص ما" data-es="Nuestro Equipo">Uzman Kadromuz</h1>
         <p>20 yılı aşkın tecrübemizle projelerinizi hayata geçiren deneyimli mimarlarımız ve uzman ekibimizle tanışın.</p>
     </div>
 </section>
@@ -644,9 +652,9 @@ function loadTeam() {
                 <p class="team-bio">${m.bio || m.description || 'Deneyimli ekip üyemiz.'}</p>
                 
                 <div class="team-details">
-                    ${m.education ? `<div class="detail-item"><div class="detail-icon">🎓</div><div class="detail-content"><div class="detail-label">Eğitim</div><div class="detail-value">${m.education}</div></div></div>` : ''}
-                    ${m.experience ? `<div class="detail-item"><div class="detail-icon">⏱️</div><div class="detail-content"><div class="detail-label">Deneyim</div><div class="detail-value">${m.experience}</div></div></div>` : ''}
-                    ${m.projects ? `<div class="detail-item"><div class="detail-icon">🏗️</div><div class="detail-content"><div class="detail-label">Tamamlanan Proje</div><div class="detail-value">${m.projects}</div></div></div>` : ''}
+                    ${m.education ? `<div class="detail-item"><div class="detail-icon">🎓</div><div class="detail-content"><div class="detail-label" data-tr="Eğitim" data-en="Education" data-de="Ausbildung" data-ru="Образование" data-ar="التعليم" data-fa="تحصیلات" data-es="Educación">Eğitim</div><div class="detail-value">${m.education}</div></div></div>` : ''}
+                    ${m.experience ? `<div class="detail-item"><div class="detail-icon">⏱️</div><div class="detail-content"><div class="detail-label" data-tr="Deneyim" data-en="Experience" data-de="Erfahrung" data-ru="Опыт" data-ar="الخبرة" data-fa="تجربه" data-es="Experiencia">Deneyim</div><div class="detail-value">${m.experience}</div></div></div>` : ''}
+                    ${m.projects ? `<div class="detail-item"><div class="detail-icon">🏗️</div><div class="detail-content"><div class="detail-label" data-tr="Tamamlanan Proje" data-en="Completed Projects" data-de="Abgeschlossene Projekte" data-ru="Завершенные проекты" data-ar="المشاريع المنجزة" data-fa="پروژه‌های تکمیل شده" data-es="Proyectos Completados">Tamamlanan Proje</div><div class="detail-value">${m.projects}</div></div></div>` : ''}
                     ${m.expertise ? `<div class="detail-item"><div class="detail-icon">⭐</div><div class="detail-content"><div class="detail-label">Uzmanlık Alanı</div><div class="detail-value">${m.expertise}</div></div></div>` : ''}
                 </div>
                 
@@ -734,5 +742,7 @@ function loadMenuItems() {
 }
 </script>
 
+<script src="lang-switcher.js"></script>
+<script src="cookie-consent.js"></script>
 </body>
 </html>
