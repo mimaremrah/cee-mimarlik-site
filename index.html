@@ -8712,8 +8712,11 @@ loadFaqs();
                         </div>
                         <div>
                             <strong style="display: block; color: var(--primary);" data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта" data-ar="البريد الإلكتروني" data-fa="ایمیل" data-es="Correo">E-posta</strong>
-                            <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="523137373f3b3f33203e3b3912353f333b3e7c313d3f">[email&#160;protected]</span></span>
+                            <span style="color: var(--accent);" id="displayEmail">ceemimarlik@gmail.com</span>
                         </div>
+                    </a>
+                    <a href="mailto:info@ceemimarlik.com" id="emailLink2" style="display: flex; align-items: center; gap: 15px; text-decoration: none; cursor: pointer; padding-left: 75px; margin-top: -5px;">
+                        <span style="color: var(--accent);" id="displayEmail2">info@ceemimarlik.com</span>
                     </a>
                 </div>
 
@@ -8962,6 +8965,12 @@ function loadContactInfo() {
         const emailLink = document.getElementById('emailLink');
         if (emailEl) emailEl.textContent = contactSettings.email;
         if (emailLink) emailLink.href = 'mailto:' + contactSettings.email;
+    }
+    if (contactSettings.email2) {
+        const emailEl2 = document.getElementById('displayEmail2');
+        const emailLink2 = document.getElementById('emailLink2');
+        if (emailEl2) emailEl2.textContent = contactSettings.email2;
+        if (emailLink2) emailLink2.href = 'mailto:' + contactSettings.email2;
     }
     
     if (contactSettings.address) {
@@ -10500,7 +10509,8 @@ const defaultTeamMembers = [
         experience: '',
         projects: '',
         expertise: 'Mimari',
-        email: 'ceemimarlik@gmail.com'
+        email: 'ceemimarlik@gmail.com',
+        email2: 'info@ceemimarlik.com'
     }
 ];
 

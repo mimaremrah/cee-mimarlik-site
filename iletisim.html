@@ -537,7 +537,7 @@
                 <div class="info-icon">✉️</div>
                 <div>
                     <div class="info-label" data-tr="E-posta" data-en="Email">E-posta</div>
-                    <div class="info-value"><a href="mailto:ceemimarlik@gmail.com" id="contactEmail">ceemimarlik@gmail.com</a></div>
+                    <div class="info-value"><a href="mailto:ceemimarlik@gmail.com" id="contactEmail">ceemimarlik@gmail.com</a><br><a href="mailto:info@ceemimarlik.com" id="contactEmail2">info@ceemimarlik.com</a></div>
                 </div>
             </div>
             <div class="info-card">
@@ -674,6 +674,10 @@ function loadContactInfo() {
             const el = document.getElementById('contactEmail');
             el.textContent = s.email;
             el.href = 'mailto:' + s.email;
+        }
+        if (s.email2) {
+            const el2 = document.getElementById('contactEmail2');
+            if (el2) { el2.textContent = s.email2; el2.href = 'mailto:' + s.email2; }
         }
         if (s.workHours) document.getElementById('contactHours').textContent = s.workHours;
         if (s.weekend) document.getElementById('contactWeekend').textContent = s.weekend;
