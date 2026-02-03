@@ -1,581 +1,158 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <link rel="icon" type="image/png" href="logohq.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CEE Mimarlık - Güvenli giriş sayfası">
     <meta name="robots" content="noindex, nofollow">
-    <title>CEE | Güvenli Giriş</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="cross-browser-fix.css">
-    <script src="polyfills.js" defer></script>
+    <title>Admin Giriş | CEE Mimarlık</title>
     <style>
-/* Cross-Browser & Mobile Uyumluluk */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-html,body{height:100%;min-height:100%;min-height:-webkit-fill-available}
-@supports(height:100dvh){html,body{min-height:100dvh}}
-body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-*{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-input,button,select,textarea{font-family:inherit;font-size:inherit;-webkit-appearance:none;-moz-appearance:none;appearance:none}
-@media(max-width:768px){input,select,textarea{font-size:16px!important}}
-img,video{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
-::selection{background:#d4af37;color:#fff}
-::-moz-selection{background:#d4af37;color:#fff}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 50%, #d0d0d0 100%);
             padding: 20px;
         }
-
-        .login-container {
+        .login-box {
             background: white;
-            padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 450px;
+            padding: 45px 35px;
             width: 100%;
-        }
-
-        .logo {
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid #e0e0e0;
             text-align: center;
-            margin-bottom: 30px;
         }
-
-        .logo h1 {
-            font-size: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .logo p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #374151;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 15px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-google {
-            background: white;
-            color: #374151;
-            border: 2px solid #e5e7eb;
-            display: flex;
+        .login-logo { margin-bottom: 30px; }
+        .login-logo img { height: 80px; width: auto; margin: 0 auto; }
+        .login-logo-fallback {
+            width: 70px; height: 70px;
+            background: linear-gradient(180deg, #d0d0d0, #808080, #2a2a2a);
+            border-radius: 16px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 15px;
+            border: 1px solid #1a1a1a;
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.3);
         }
-
-        .btn-google:hover {
-            background: #f9fafb;
-            border-color: #667eea;
+        .login-title {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #606060, #2a2a2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
         }
-
-        .divider {
-            text-align: center;
-            margin: 25px 0;
-            position: relative;
-        }
-
-        .divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
+        .login-sub { font-size: 13px; color: #888; margin-bottom: 30px; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        .form-label { font-size: 11px; color: #888; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; display: block; }
+        .form-input {
             width: 100%;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        .divider span {
-            background: white;
-            padding: 0 15px;
-            position: relative;
-            color: #9ca3af;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 14px;
+            color: #333;
+            transition: all 0.3s;
+            font-family: inherit;
         }
-
-        .toggle-form {
-            text-align: center;
-            margin-top: 20px;
-            color: #6b7280;
+        .form-input:focus { outline: none; border-color: #808080; box-shadow: 0 0 0 3px rgba(128,128,128,0.1); }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(180deg, #d0d0d0, #808080, #2a2a2a);
+            color: white;
+            border: 1px solid #1a1a1a;
+            border-radius: 10px;
             font-size: 14px;
-        }
-
-        .toggle-form a {
-            color: #667eea;
             font-weight: 600;
-            text-decoration: none;
+            letter-spacing: 2px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 4px 15px rgba(0,0,0,0.2);
         }
-
-        .toggle-form a:hover {
-            text-decoration: underline;
-        }
-
-        .alert {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .alert-error {
-            background: #fee;
-            color: #c00;
-            border: 1px solid #fcc;
-        }
-
-        .alert-success {
-            background: #efe;
-            color: #0a0;
-            border: 1px solid #cfc;
-        }
-
-        .alert-info {
-            background: #e3f2fd;
-            color: #1976d2;
-            border: 1px solid #90caf9;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .loading.show {
-            display: block;
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .password-toggle {
-            position: relative;
-        }
-
-        .password-toggle button {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            color: #9ca3af;
-        }
-
-        #signupForm {
-            display: none;
-        }
-
-        .firebase-info {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f9fafb;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .firebase-info h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .firebase-info p {
-            font-size: 12px;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        .firebase-info code {
-            background: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            color: #667eea;
-        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .login-error { color: #ef4444; font-size: 13px; margin-top: 12px; display: none; }
+        .back-link { display: block; margin-top: 20px; color: #888; text-decoration: none; font-size: 13px; }
+        .back-link:hover { color: #333; }
     </style>
-
-    <!-- iOS Safari 100vh Fix -->
-    <script>
-    (function(){var vh=window.innerHeight*0.01;document.documentElement.style.setProperty('--vh',vh+'px');window.addEventListener('resize',function(){vh=window.innerHeight*0.01;document.documentElement.style.setProperty('--vh',vh+'px')})})();
-    </script>
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo">
-            <h1>🔐 CEE Güvenli Giriş</h1>
-            <p>Firebase Authentication</p>
+    <div class="login-box">
+        <div class="login-logo">
+            <div class="login-logo-fallback">🏛️</div>
+            <h1 class="login-title">Yönetim Paneli</h1>
+            <p class="login-sub">CEE Mimarlık Admin</p>
         </div>
-
-        <div id="alertBox"></div>
-        
-        <div class="loading" id="loadingSpinner">
-            <div class="spinner"></div>
-            <p style="margin-top: 10px; color: #667eea;">İşleniyor...</p>
+        <div class="form-group">
+            <label class="form-label">Kullanıcı Adı</label>
+            <input type="text" class="form-input" id="username" placeholder="admin" autocomplete="username">
         </div>
-
-        <!-- LOGIN FORM -->
-        <form id="loginForm">
-            <div class="form-group">
-                <label>📧 Email</label>
-                <input type="email" id="loginEmail" placeholder="ornek@email.com" required>
-            </div>
-            
-            <div class="form-group">
-                <label>🔒 Şifre</label>
-                <div class="password-toggle">
-                    <input type="password" id="loginPassword" placeholder="••••••••" required>
-                    <button type="button" onclick="togglePassword('loginPassword')">👁️</button>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">GiriÅŸ Yap</button>
-        </form>
-
-        <!-- SIGNUP FORM -->
-        <form id="signupForm">
-            <div class="form-group">
-                <label>📧 Email</label>
-                <input type="email" id="signupEmail" placeholder="ornek@email.com" required>
-            </div>
-            
-            <div class="form-group">
-                <label>🔒 Şifre (min 6 karakter)</label>
-                <div class="password-toggle">
-                    <input type="password" id="signupPassword" placeholder="••••••••" minlength="6" required>
-                    <button type="button" onclick="togglePassword('signupPassword')">👁️</button>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>🔒 Şifre Tekrar</label>
-                <div class="password-toggle">
-                    <input type="password" id="signupPasswordConfirm" placeholder="••••••••" minlength="6" required>
-                    <button type="button" onclick="togglePassword('signupPasswordConfirm')">👁️</button>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Hesap OluÅŸtur</button>
-        </form>
-
-        <div class="divider"><span>veya</span></div>
-
-        <button class="btn btn-google" onclick="signInWithGoogle()">
-            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-            Google ile GiriÅŸ
-        </button>
-
-        <div class="toggle-form">
-            <span id="toggleText">Hesabınız yok mu? <a onclick="toggleForms()">Kayıt Ol</a></span>
+        <div class="form-group">
+            <label class="form-label">Şifre</label>
+            <input type="password" class="form-input" id="password" placeholder="••••••••" autocomplete="current-password">
         </div>
-
-        <!-- FIREBASE SETUP INFO -->
-        <div class="firebase-info">
-            <h4>🔧 Firebase Yapılandırması</h4>
-            <p>
-                Bu sistem Firebase Authentication kullanır. Çalıştırmak için:
-            </p>
-            <ol style="font-size: 12px; color: #6b7280; margin-top: 10px; padding-left: 20px; line-height: 1.8;">
-                <li><code>FIREBASE_KURULUM.md</code> dosyasını okuyun</li>
-                <li>Firebase Console'dan config alın</li>
-                <li>Aşağıdaki firebaseConfig'i değiştirin</li>
-                <li>Authentication'ı aktif edin</li>
-            </ol>
-        </div>
+        <button class="login-btn" onclick="doLogin()">🔐 Giriş Yap</button>
+        <p class="login-error" id="loginError">Hatalı kullanıcı adı veya şifre!</p>
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
     </div>
-
-    <!-- FIREBASE SDK -->
-    <script type="module">
-        // Firebase imports
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { 
-            getAuth, 
-            signInWithEmailAndPassword,
-            createUserWithEmailAndPassword,
-            signInWithPopup,
-            GoogleAuthProvider,
-            onAuthStateChanged,
-            signOut
-        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-
-        // ===================================
-        // BURAYA KENDİ FIREBASE CONFIG'İNİZİ YAPIŞTIRIN!
-        // ===================================
-        const firebaseConfig = {
-            apiKey: "BURAYA-API-KEY-GELECEK",
-            authDomain: "BURAYA-AUTH-DOMAIN-GELECEK",
-            projectId: "BURAYA-PROJECT-ID-GELECEK",
-            storageBucket: "BURAYA-STORAGE-BUCKET-GELECEK",
-            messagingSenderId: "BURAYA-SENDER-ID-GELECEK",
-            appId: "BURAYA-APP-ID-GELECEK"
-        };
-
-        // Firebase baÅŸlat
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-
-        // Global erişim için
-        window.auth = auth;
-        window.provider = provider;
-        window.signInWithPopup = signInWithPopup;
-        window.signOut = signOut;
-
-        // ===================================
-        // AUTH STATE CHECKER
-        // ===================================
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // Kullanıcı giriş yapmış
-                console.log('✅ Giriş yapıldı:', user.email);
-                
-                // Admin panele yönlendir
-                setTimeout(() => {
-                    window.location.href = 'admin.html';
-                }, 500);
-            } else {
-                // Kullanıcı çıkış yapmış
-                console.log('ℹ️ Giriş yapılmadı');
-            }
-        });
-
-        // ===================================
-        // EMAIL/PASSWORD LOGIN
-        // ===================================
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            showLoading(true);
-            clearAlert();
-
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log('✅ Giriş başarılı:', userCredential.user.email);
-                showAlert('Giriş başarılı! Yönlendiriliyorsunuz...', 'success');
-            } catch (error) {
-                console.error('❌ Giriş hatası:', error);
-                let errorMessage = 'Giriş başarısız!';
-                
-                if (error.code === 'auth/wrong-password') {
-                    errorMessage = 'Hatalı şifre!';
-                } else if (error.code === 'auth/user-not-found') {
-                    errorMessage = 'Kullanıcı bulunamadı!';
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Geçersiz email!';
-                } else if (error.code === 'auth/too-many-requests') {
-                    errorMessage = 'Çok fazla deneme! Lütfen bekleyin.';
-                }
-                
-                showAlert(errorMessage, 'error');
-            } finally {
-                showLoading(false);
-            }
-        });
-
-        // ===================================
-        // EMAIL/PASSWORD SIGNUP
-        // ===================================
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
-
-            if (password !== passwordConfirm) {
-                showAlert('Åžifreler eÅŸleÅŸmiyor!', 'error');
-                return;
-            }
-
-            if (password.length < 6) {
-                showAlert('Şifre en az 6 karakter olmalı!', 'error');
-                return;
-            }
-
-            showLoading(true);
-            clearAlert();
-
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                console.log('✅ Kayıt başarılı:', userCredential.user.email);
-                showAlert('Hesap oluşturuldu! Yönlendiriliyorsunuz...', 'success');
-            } catch (error) {
-                console.error('❌ Kayıt hatası:', error);
-                let errorMessage = 'Kayıt başarısız!';
-                
-                if (error.code === 'auth/email-already-in-use') {
-                    errorMessage = 'Bu email zaten kullanılıyor!';
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Geçersiz email!';
-                } else if (error.code === 'auth/weak-password') {
-                    errorMessage = 'Şifre çok zayıf!';
-                }
-                
-                showAlert(errorMessage, 'error');
-            } finally {
-                showLoading(false);
-            }
-        });
-
-    </script>
-
     <script>
-        // ===================================
-        // GOOGLE SIGN IN
-        // ===================================
-        async function signInWithGoogle() {
-            showLoading(true);
-            clearAlert();
-
-            try {
-                const result = await window.signInWithPopup(window.auth, window.provider);
-                console.log('✅ Google giriş başarılı:', result.user.email);
-                showAlert('Google ile giriş başarılı! Yönlendiriliyorsunuz...', 'success');
-            } catch (error) {
-                console.error('❌ Google giriş hatası:', error);
-                let errorMessage = 'Google ile giriş başarısız!';
-                
-                if (error.code === 'auth/popup-closed-by-user') {
-                    errorMessage = 'Giriş penceresi kapatıldı.';
-                } else if (error.code === 'auth/popup-blocked') {
-                    errorMessage = 'Popup engellendi! Tarayıcı ayarlarını kontrol edin.';
-                }
-                
-                showAlert(errorMessage, 'error');
-            } finally {
-                showLoading(false);
+        document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+        
+        async function sha256(text) {
+            const data = new TextEncoder().encode(text);
+            const hash = await crypto.subtle.digest('SHA-256', data);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        
+        let attempts = 0, lockUntil = 0;
+        
+        async function doLogin() {
+            const now = Date.now();
+            if (now < lockUntil) {
+                document.getElementById('loginError').textContent = `Çok fazla deneme! ${Math.ceil((lockUntil - now) / 1000)} saniye bekleyin.`;
+                document.getElementById('loginError').style.display = 'block';
+                return;
             }
-        }
-
-        // ===================================
-        // UI HELPERS
-        // ===================================
-        function toggleForms() {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const toggleText = document.getElementById('toggleText');
-
-            if (loginForm.style.display !== 'none') {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-                toggleText.innerHTML = 'Zaten hesabınız var mı? <a onclick="toggleForms()">Giriş Yap</a>';
-            } else {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-                toggleText.innerHTML = 'Hesabınız yok mu? <a onclick="toggleForms()">Kayıt Ol</a>';
-            }
-
-            clearAlert();
-        }
-
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            input.type = input.type === 'password' ? 'text' : 'password';
-        }
-
-        function showAlert(message, type) {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
-        }
-
-        function clearAlert() {
-            document.getElementById('alertBox').innerHTML = '';
-        }
-
-        function showLoading(show) {
-            const spinner = document.getElementById('loadingSpinner');
-            spinner.classList.toggle('show', show);
             
-            // Formları devre dışı bırak
-            const forms = document.querySelectorAll('form, button');
-            forms.forEach(el => el.style.pointerEvents = show ? 'none' : 'auto');
-        }
-
-        // Check if Firebase is configured
-        window.addEventListener('load', () => {
-            if (firebaseConfig.apiKey === 'BURAYA-API-KEY-GELECEK') {
-                showAlert('⚠️ Firebase yapılandırılmamış! FIREBASE_KURULUM.md dosyasını okuyun.', 'info');
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            
+            let cred = { username: 'admin', password: 'admin123' };
+            try {
+                const saved = localStorage.getItem('cee_credentials_v2') || localStorage.getItem('cee_credentials');
+                if (saved) cred = JSON.parse(saved);
+            } catch(e) {}
+            
+            let valid = false;
+            if (cred.passwordHash) {
+                valid = (u === cred.username && await sha256(p) === cred.passwordHash);
+            } else {
+                valid = (u === cred.username && p === cred.password);
             }
-        });
+            
+            if (valid) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                sessionStorage.setItem('adminLoginTime', Date.now().toString());
+                window.location.href = 'admin.html';
+            } else {
+                attempts++;
+                if (attempts >= 5) { lockUntil = Date.now() + 30000; attempts = 0; }
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>

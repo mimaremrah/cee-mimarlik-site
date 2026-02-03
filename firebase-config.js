@@ -33,6 +33,3 @@ window.firebaseStorage = storage;
 
 // Export et
 export { app, auth, db, storage };
-
-console.log('✅ Firebase başlatıldı');
-console.log('📦 Project ID:', firebaseConfig.projectId);

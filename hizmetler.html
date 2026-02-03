@@ -6,660 +6,472 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hizmetlerimiz | CEE Mimarlık</title>
-    <meta name="description" content="CEE Mimarlık hizmetleri - Mimari proje, 3D görselleştirme, iç mimari, ruhsat işlemleri ve daha fazlası.">
-    <meta name="keywords" content="mimarlık hizmetleri, mimari proje, 3D görselleştirme, iç mimari, ruhsat, CEE Mimarlık">
-    <meta name="theme-color" content="#5a6677">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Hizmetlerimiz | CEE Mimarlık">
-    <meta property="og:description" content="Profesyonel mimarlık ve tasarım hizmetlerimizi keşfedin.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ceemimarlik.com/hizmetler.html">
-    
-    <link rel="canonical" href="https://www.ceemimarlik.com/hizmetler.html">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Cross-Browser Uyumluluk CSS -->
+    <meta name="description" content="CEE Mimarlık hizmetleri - Mimari proje, iç mimarlık, tadilat, ruhsat ve 3D görselleştirme.">
+    <meta name="theme-color" content="#2c2c2c">
     <link rel="stylesheet" href="cross-browser-fix.css">
-    
-    <!-- IE11 ve Eski Tarayıcılar için Polyfills -->
     <script src="polyfills.js" defer></script>
-    
+    <meta property="og:title" content="CEE Mimarlık - Hizmetlerimiz">
+    <meta property="og:description" content="CEE Mimarlık hizmetleri - Mimari proje, iç mimarlık, tadilat, ruhsat ve 3D görselleştirme.">
+    <meta property="og:image" content="https://www.ceemimarlik.com/ogimage.jpg">
+    <meta property="og:url" content="https://www.ceemimarlik.com/hizmetler.html">
+    <link rel="canonical" href="https://www.ceemimarlik.com/hizmetler.html">
     <style>
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         :root {
-            --primary: #5a6677;
-            --primary-light: #6b7a8a;
-            --text: #2d3748;
-            --text-light: #718096;
-            --bg: #ffffff;
-            --bg-alt: #f8f9fa;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
+            --primary: #2c2c2c;
+            --secondary: #666;
+            --accent: #1a1a1a;
+            --bg: #fafafa;
+            --white: #ffffff;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.05);
         }
-        
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: var(--primary);
             line-height: 1.7;
+            overflow-x: hidden;
         }
-        
+
         body.dark-mode {
-            --primary: #6b7a8a;
-            --text: #e2e8f0;
-            --text-light: #a0aec0;
-            --bg: #111111;
-            --bg-alt: #1a1a1a;
-            --card-bg: #1e1e1e;
+            --primary: #e0e0e0;
+            --secondary: #a0a0a0;
+            --accent: #f0f0f0;
+            --bg: #0f0f0f;
+            --white: #1a1a1a;
             --border: #333;
+            --shadow: rgba(0, 0, 0, 0.3);
         }
-        
+
         /* HEADER */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            top: 0; left: 0; right: 0;
+            z-index: 9999;
+            background: #ffffff;
+            padding: 12px 0;
+            transition: all 0.4s ease;
             border-bottom: 1px solid var(--border);
         }
-        
-        body.dark-mode header { background: rgba(17,17,17,0.95); }
-        
+        body.dark-mode header { background: rgba(15, 15, 15, 0.95); }
+        header.scrolled {
+            padding: 8px 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        body.dark-mode header.scrolled { background: rgba(15, 15, 15, 0.95); }
+
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
-            height: 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
+
         .logo-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 4px;
+            padding: 5px;
             text-decoration: none;
+            transition: all 0.4s ease;
         }
-        
-        .logo-wrapper img { height: 45px; width: auto; }
-        
+        .logo-wrapper img {
+            height: 70px;
+            width: auto;
+            background: transparent !important;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
         .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text);
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
             letter-spacing: 3px;
+            color: #505050;
+            text-align: center;
+            margin-top: 2px;
         }
-        
-        nav { display: flex; gap: 35px; }
-        
+        body.dark-mode .logo-text { color: #c0c0c0; }
+
+        nav { display: flex; gap: 40px; align-items: center; }
         nav a {
-            color: var(--text);
+            color: var(--secondary);
             text-decoration: none;
             font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 8px 0;
+            transition: all 0.3s;
             position: relative;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            background: linear-gradient(180deg, #4a4a4a 0%, #5a5a5a 20%, #6a6a6a 40%, #5a5a5a 60%, #4a4a4a 80%, #3a3a3a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        nav a:hover, nav a.active { color: var(--primary); }
-        
+        body.dark-mode nav a {
+            background: linear-gradient(180deg, #b0b0b0 0%, #c0c0c0 20%, #d0d0d0 40%, #c0c0c0 60%, #b0b0b0 80%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         nav a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #3a3a3a, #6a6a6a, #3a3a3a);
+            transition: width 0.3s;
         }
-        
         nav a:hover::after, nav a.active::after { width: 100%; }
-        
+
         .header-actions { display: flex; align-items: center; gap: 15px; }
-        
         .dark-toggle {
-            width: 42px;
-            height: 42px;
+            width: 40px; height: 40px;
             border-radius: 50%;
-            background: var(--bg-alt);
-            border: 1px solid var(--border);
+            background: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 50%, #b8b8b8 100%);
+            border: 1px solid #999;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.15);
         }
-        
-        .dark-toggle:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        body.dark-mode .dark-toggle {
+            background: linear-gradient(180deg, #505050, #353535, #252525);
+            border-color: #555;
         }
-        
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
-            color: var(--text);
+            color: var(--primary);
+            padding: 8px;
         }
-        
+
         /* PAGE HERO */
         .page-hero {
-            padding: 160px 5% 80px;
-            background: var(--bg-alt);
+            padding: 180px 5% 100px;
             text-align: center;
             position: relative;
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #f0f0f0 100%);
+            overflow: hidden;
         }
-        
+        body.dark-mode .page-hero {
+            background: linear-gradient(180deg, #151515 0%, #1a1a1a 50%, #0f0f0f 100%);
+        }
         .page-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23000000' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        
         .page-hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
         }
-        
-        .page-label {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--primary);
+            font-weight: 600;
+            background: linear-gradient(180deg, #808080, #4a4a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
-            padding: 8px 20px;
-            background: rgba(90, 102, 119, 0.1);
-            border-radius: 30px;
         }
-        
-        body.dark-mode .page-label { background: rgba(107, 122, 138, 0.2); }
-        
+        body.dark-mode .section-label {
+            background: linear-gradient(180deg, #b0b0b0, #808080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .page-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--text);
+            font-size: 46px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            background: linear-gradient(180deg, #808080 0%, #505050 30%, #2a2a2a 70%, #1a1a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        body.dark-mode .page-hero h1 {
+            background: linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 30%, #707070 70%, #505050 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
-        
+        .section-decoration::before,
+        .section-decoration::after {
+            content: '';
+            width: 50px; height: 1px;
+            background: #e0e0e0;
+        }
+        body.dark-mode .section-decoration::before,
+        body.dark-mode .section-decoration::after { background: #333; }
+        .section-decoration .dot {
+            width: 12px; height: 12px;
+            background: linear-gradient(180deg, #a0a0a0, #1a1a1a);
+            transform: rotate(45deg);
+        }
+        body.dark-mode .section-decoration .dot {
+            background: linear-gradient(180deg, #888, #444);
+        }
         .page-hero p {
-            font-size: 18px;
-            color: var(--text-light);
+            font-size: 16px;
+            color: var(--secondary);
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.8;
         }
-        
-        /* SERVICES SECTION */
-        .services-section {
-            padding: 100px 5%;
-            background: var(--bg);
-        }
-        
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 40px;
-        }
-        
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 45px;
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.1);
-        }
-        
-        body.dark-mode .service-card:hover {
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 15px;
-        }
-        
-        .service-description {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-        
-        .service-features {
-            list-style: none;
-        }
-        
-        .service-features li {
-            font-size: 14px;
-            color: var(--text-light);
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .service-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .service-features li::before {
-            content: '✓';
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        /* PROCESS SECTION */
-        .process-section {
-            padding: 100px 5%;
-            background: var(--bg-alt);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            color: var(--text);
-            margin-bottom: 15px;
-        }
-        
-        .section-header p {
-            font-size: 18px;
-            color: var(--text-light);
-        }
-        
-        .process-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            position: relative;
-        }
-        
-        .process-grid::before {
-            content: '';
-            position: absolute;
-            top: 50px;
-            left: 60px;
-            right: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            z-index: 0;
-        }
-        
-        .process-step {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .process-number {
-            width: 100px;
-            height: 100px;
-            background: var(--card-bg);
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 auto 25px;
-            transition: all 0.3s ease;
-        }
-        
-        .process-step:hover .process-number {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .process-step h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
-        
-        .process-step p {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        /* PRICING SECTION */
-        .pricing-section {
-            padding: 100px 5%;
-            background: var(--bg);
-        }
-        
-        .pricing-info {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            background: var(--card-bg);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-        }
-        
-        .pricing-info h3 {
-            font-family: 'Playfair Display', serif;
+
+        /* SECTION TITLES */
+        .section-title {
             font-size: 32px;
-            color: var(--text);
-            margin-bottom: 20px;
-        }
-        
-        .pricing-info p {
-            font-size: 16px;
-            color: var(--text-light);
-            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #606060, #2a2a2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 30px;
+            text-align: center;
         }
-        
-        .pricing-btn {
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+        body.dark-mode .section-title {
+            background: linear-gradient(180deg, #c0c0c0, #707070);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 35px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 30px var(--shadow);
             transition: all 0.3s ease;
         }
-        
-        .pricing-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(90, 102, 119, 0.3);
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
         }
-        
+        body.dark-mode .card { background: #1a1a1a; border-color: #2a2a2a; }
+
         /* CTA */
         .cta-section {
-            padding: 100px 5%;
-            background: var(--primary);
             text-align: center;
+            padding: 80px 5%;
+            background: linear-gradient(180deg, #f0f0f0, #e0e0e0, #f0f0f0);
         }
-        
-        .cta-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            color: white;
+        body.dark-mode .cta-section {
+            background: linear-gradient(180deg, #0f0f0f, #1a1a1a, #0f0f0f);
+        }
+        .cta-title {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #606060, #2a2a2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
         }
-        
-        .cta-section p {
-            color: rgba(255,255,255,0.8);
-            font-size: 18px;
-            margin-bottom: 35px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        body.dark-mode .cta-title {
+            background: linear-gradient(180deg, #c0c0c0, #707070);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .cta-btn-white {
-            display: inline-block;
-            padding: 18px 45px;
-            background: white;
-            color: var(--primary);
+        .cta-text { font-size: 15px; color: var(--secondary); margin-bottom: 30px; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(180deg, #d0d0d0, #808080, #2a2a2a);
+            color: white;
             text-decoration: none;
-            border-radius: 50px;
+            font-size: 13px;
             font-weight: 600;
-            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), inset 0 -2px 0 rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
-        
-        .cta-btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        .cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), 0 10px 30px rgba(0,0,0,0.3);
         }
-        
+
         /* FOOTER */
         footer {
-            background: var(--bg-alt);
-            padding: 40px 5%;
-            border-top: 1px solid var(--border);
+            background: #f8f9fa;
+            padding: 25px 0;
+            border-top: 1px solid #e5e7eb;
+        }
+        body.dark-mode footer { background: #0a0a0a; border-top-color: #222; }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
             text-align: center;
         }
-        
-        footer p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-        
-        footer #footerCompany {
-            font-weight: 600;
-            color: var(--text);
-        }
-        
+        .footer-copyright { font-size: 14px; color: #666; }
+        body.dark-mode .footer-copyright { color: #888; }
+
         /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .process-grid::before {
-                display: none;
-            }
-        }
-        
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            
-            nav {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: var(--bg);
-                flex-direction: column;
-                padding: 20px;
-                border-bottom: 1px solid var(--border);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-            
-            nav.active { display: flex; }
-            nav a { padding: 15px 0; border-bottom: 1px solid var(--border); }
-            
-            .page-hero { padding: 140px 5% 60px; }
-            .page-hero h1 { font-size: 36px; }
-            .page-hero p { font-size: 16px; }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-card {
-                padding: 30px;
-            }
-            
-            .process-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .section-header h2 { font-size: 32px; }
-            .cta-section h2 { font-size: 32px; }
+            .page-hero { padding: 130px 5% 60px; }
+            .page-hero h1 { font-size: 28px; letter-spacing: 3px; }
+            .page-hero p { font-size: 14px; }
+            .section-title { font-size: 24px; letter-spacing: 2px; }
         }
+        @media (max-width: 375px) {
+            .page-hero h1 { font-size: 22px; }
+        }
+
+
+        .services-section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 15px var(--shadow);
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        body.dark-mode .service-card { background: #1a1a1a; border-color: #2a2a2a; }
+        .service-icon {
+            width: 60px; height: 60px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #e8e8e8, #d0d0d0);
+            border: 1px solid #c0c0c0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 2px 8px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .service-icon { background: linear-gradient(180deg, #333, #252525); border-color: #444; }
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .service-card p { font-size: 14px; color: var(--secondary); line-height: 1.8; }
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .services-section { padding: 50px 5%; }
+        }
+
     </style>
 </head>
 <body>
 
-<header>
+<header id="siteHeader">
     <div class="header-content">
-        <a href="index.html" class="logo-wrapper">
-            <img src="logoheaderhq.png" alt="CEE Mimarlık" id="siteLogo" style="display:none;">
-            <span class="logo-text" id="siteTitle">CEE</span>
+        <a href="index.html" class="logo-wrapper" style="text-decoration:none;">
+            <img src="logoheaderhq.png" alt="CEE Mimarlık Logo" id="siteLogo" style="background:transparent!important;">
+            <span class="logo-text" id="siteTitle">CEE MİMARLIK</span>
         </a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menü">☰</button>
         <nav id="mainNav">
-            <a href="index.html">Ana Sayfa</a>
-            <a href="projeler.html">Projeler</a>
-            <a href="hizmetler.html" class="active">Hizmetler</a>
-            <a href="hakkimizda.html">Hakkımızda</a>
-            <a href="ekip.html">Ekip</a>
-            <a href="iletisim.html">İletişim</a>
+            <a href="index.html" data-tr="Ana Sayfa" data-en="Home" data-de="Startseite" data-ru="Главная" data-ar="الرئيسية" data-fa="صفحه اصلی" data-es="Inicio">Ana Sayfa</a>
+            <a href="projeler.html" data-tr="Projeler" data-en="Projects" data-de="Projekte" data-ru="Проекты" data-ar="المشاريع" data-fa="پروژه‌ها" data-es="Proyectos">Projeler</a>
+            <a href="hizmetler.html" class="active" data-tr="Hizmetler" data-en="Services" data-de="Dienstleistungen" data-ru="Услуги" data-ar="الخدمات" data-fa="خدمات" data-es="Servicios">Hizmetler</a>
+            <a href="hakkimizda.html" data-tr="Hakkımızda" data-en="About Us" data-de="Über Uns" data-ru="О Нас" data-ar="من نحن" data-fa="درباره ما" data-es="Nosotros">Hakkımızda</a>
+            <a href="ekip.html" data-tr="Ekip" data-en="Team" data-de="Team" data-ru="Команда" data-ar="الفريق" data-fa="تیم" data-es="Equipo">Ekip</a>
+            <a href="iletisim.html" data-tr="İletişim" data-en="Contact" data-de="Kontakt" data-ru="Контакт" data-ar="اتصل بنا" data-fa="تماس" data-es="Contacto">İletişim</a>
         </nav>
         <div class="header-actions">
-            <button class="dark-toggle" onclick="toggleDarkMode()" title="Tema Değiştir">🌙</button>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="dark-toggle" onclick="toggleDarkMode()" aria-label="Karanlık mod">🌙</button>
         </div>
     </div>
 </header>
 
 <section class="page-hero">
     <div class="page-hero-content">
-        <div class="page-label">Neler Yapıyoruz</div>
+        <p class="section-label" data-tr="Ne Yapıyoruz" data-en="What We Do" data-de="Was Wir Tun" data-ru="Что Мы Делаем" data-ar="ماذا نفعل" data-fa="خدمات ما" data-es="Lo Que Hacemos">Ne Yapıyoruz</p>
         <h1 data-tr="Hizmetlerimiz" data-en="Our Services" data-de="Unsere Dienstleistungen" data-ru="Наши Услуги" data-ar="خدماتنا" data-fa="خدمات ما" data-es="Nuestros Servicios">Hizmetlerimiz</h1>
-        <p>Mimari tasarımdan uygulamaya, ruhsat işlemlerinden şantiye koordinasyonuna kadar kapsamlı hizmetler sunuyoruz.</p>
+        <div class="section-decoration"><div class="dot"></div></div>
+        <p data-tr="Profesyonel mimarlık hizmetlerimizle projelerinizi hayata geçiriyoruz." data-en="We bring your projects to life with our professional architecture services.">Profesyonel mimarlık hizmetlerimizle projelerinizi hayata geçiriyoruz.</p>
     </div>
 </section>
 
 <section class="services-section">
-    <div class="services-container">
-        <div class="services-grid" id="servicesGrid">
-            <!-- Hizmetler JavaScript ile yüklenecek -->
-        </div>
-    </div>
-</section>
-
-<section class="process-section">
-    <div class="section-header">
-        <h2>Çalışma Sürecimiz</h2>
-        <p>Projenizin her aşamasında yanınızdayız</p>
-    </div>
-    <div class="process-container">
-        <div class="process-grid">
-            <div class="process-step">
-                <div class="process-number">1</div>
-                <h3>Görüşme</h3>
-                <p>İhtiyaçlarınızı dinliyor, beklentilerinizi anlıyoruz.</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">2</div>
-                <h3>Tasarım</h3>
-                <p>Özgün ve fonksiyonel tasarım konseptleri hazırlıyoruz.</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">3</div>
-                <h3>Proje</h3>
-                <p>Detaylı uygulama projelerini hazırlıyoruz.</p>
-            </div>
-            <div class="process-step">
-                <div class="process-number">4</div>
-                <h3>Uygulama</h3>
-                <p>Şantiye kontrolü ve koordinasyonu sağlıyoruz.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="pricing-section">
-    <div class="pricing-info">
-        <h3>Fiyat Teklifi Alın</h3>
-        <p>Her proje kendine özeldir. İhtiyaçlarınıza göre özelleştirilmiş fiyat teklifi için bizimle iletişime geçin. Ücretsiz keşif hizmetimizden yararlanın.</p>
-        <a href="iletisim.html" class="pricing-btn">Ücretsiz Teklif Alın</a>
-    </div>
+    <div class="services-grid" id="servicesGrid"></div>
 </section>
 
 <section class="cta-section">
-    <h2>Projeniz İçin Hazırız</h2>
-    <p>Hayalinizdeki mekanı birlikte tasarlayalım. Uzman ekibimizle tanışın.</p>
-    <a href="iletisim.html" class="cta-btn-white">İletişime Geçin →</a>
+    <h2 class="cta-title" data-tr="Projeniz İçin Teklif Alın" data-en="Get a Quote for Your Project">Projeniz İçin Teklif Alın</h2>
+    <p class="cta-text" data-tr="Size özel çözümler için hemen iletişime geçin." data-en="Contact us now for customized solutions.">Size özel çözümler için hemen iletişime geçin.</p>
+    <a href="iletisim.html" class="cta-btn" data-tr="İletişime Geçin →" data-en="Contact Us →">İletişime Geçin →</a>
 </section>
 
 <footer>
-    <p>© <span id="footerYear">2025</span> <span id="footerCompany">CEE MİMARLIK</span> Tüm hakları saklıdır. <span style="margin:0 5px;opacity:0.4;">|</span> <a href="gizlilik.html" style="color:inherit;text-decoration:underline;opacity:0.6;">Gizlilik Politikası</a></p>
+    <div class="footer-content">
+        <p class="footer-copyright" style="margin:0;">
+            © <span id="footerYear">2026</span>
+            <span id="footerCompany" style="font-weight:600;">CEE MİMARLIK</span>
+            <span data-tr="Tüm hakları saklıdır" data-en="All rights reserved" data-de="Alle Rechte vorbehalten" data-ru="Все права защищены" data-ar="جميع الحقوق محفوظة" data-fa="تمامی حقوق محفوظ است" data-es="Todos los derechos reservados">Tüm hakları saklıdır</span>
+            <span style="margin:0 8px;opacity:0.4;">|</span>
+            <a href="gizlilik.html" style="color:inherit;text-decoration:underline;opacity:0.6;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.6'" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Gizlilik Politikası</a>
+        </p>
+    </div>
 </footer>
 
 <script>
-// Dark Mode
+
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('cee_public_dark', isDark);
-    document.querySelector('.dark-toggle').textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    document.querySelector('.dark-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+}
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('.dark-toggle').textContent = '☀️';
 }
 
 function toggleMenu() {
@@ -674,8 +486,6 @@ function toggleMenu() {
         document.body.style.overflow = '';
     }
 }
-
-// Nav link tıklandığında kapat
 document.querySelectorAll('#mainNav a').forEach(a => {
     a.addEventListener('click', () => {
         document.getElementById('mainNav').classList.remove('active');
@@ -683,123 +493,56 @@ document.querySelectorAll('#mainNav a').forEach(a => {
         document.body.style.overflow = '';
     });
 });
-
-// Sayfa yüklendiğinde
-document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('cee_public_dark') === 'true') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.dark-toggle').textContent = '☀️';
-    }
-    
-    loadSiteSettings();
-    loadFooterSettings();
-    loadServices();
+window.addEventListener('scroll', () => {
+    document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Site ayarlarını yükle
 function loadSiteSettings() {
-    const siteLogo = localStorage.getItem('cee_site_logo') || localStorage.getItem('site_logo');
-    const logoEl = document.getElementById('siteLogo');
-    const logoText = document.getElementById('siteTitle');
-    
-    if (siteLogo && logoEl) {
-        logoEl.src = siteLogo;
-        logoEl.style.display = 'block';
-        if (logoText) logoText.style.display = 'none';
-    }
-    
-    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
-    if (footerSettings.company && logoText) {
-        const firstWord = footerSettings.company.split(' ')[0];
-        logoText.textContent = firstWord;
-    }
+    const logo = localStorage.getItem('site_logo');
+    if (logo) { const el = document.getElementById('siteLogo'); if (el) el.src = logo; }
+    try {
+        const ls = JSON.parse(localStorage.getItem('cee_logo_settings') || '{}');
+        if (ls.text) { const el = document.getElementById('siteTitle'); if (el) el.textContent = ls.text; }
+    } catch(e) {}
+    try {
+        const fs = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
+        if (fs.company) { const el = document.getElementById('footerCompany'); if (el) el.textContent = fs.company; }
+    } catch(e) {}
 }
+document.addEventListener('DOMContentLoaded', loadSiteSettings);
 
-// Footer ayarlarını yükle
-function loadFooterSettings() {
-    const footerSettings = JSON.parse(localStorage.getItem('cee_footer_settings') || '{}');
-    document.getElementById('footerYear').textContent = footerSettings.year || new Date().getFullYear();
-    if (footerSettings.company) {
-        document.getElementById('footerCompany').textContent = footerSettings.company;
-    }
-}
 
-// Varsayılan hizmetler
 const defaultServices = [
-    {
-        icon: '🏠',
-        title: 'Mimari Proje',
-        description: 'Konsept tasarımdan uygulama projesine kadar tüm mimari çizimler ve detaylar.',
-        features: ['Avan Proje', 'Kesin Proje', 'Uygulama Projesi', 'Detay Çizimleri']
-    },
-    {
-        icon: '🎨',
-        title: '3D Görselleştirme',
-        description: 'Projenizi inşaat öncesinde görmek için fotorealistik 3D görseller ve animasyonlar.',
-        features: ['3D Modelleme', 'Render', 'Sanal Tur', 'Animasyon']
-    },
-    {
-        icon: '🛋️',
-        title: 'İç Mimari',
-        description: 'Yaşam alanlarınız için özgün ve fonksiyonel iç mekan tasarımları.',
-        features: ['Mekan Planlaması', 'Mobilya Seçimi', 'Malzeme Danışmanlığı', 'Aydınlatma Tasarımı']
-    },
-    {
-        icon: '📋',
-        title: 'Ruhsat & İzin İşlemleri',
-        description: 'Belediye ve ilgili kurumlarla tüm ruhsat ve izin süreçlerinin takibi.',
-        features: ['İmar Durumu', 'Yapı Ruhsatı', 'Yapı Kullanma İzni', 'Isı Yalıtım Raporu']
-    },
-    {
-        icon: '🏗️',
-        title: 'Şantiye Kontrolü',
-        description: 'Projenizin uygulanması sürecinde düzenli şantiye kontrolleri ve koordinasyon.',
-        features: ['Yapım Denetimi', 'Kalite Kontrol', 'Metraj & Hakediş', 'Koordinasyon']
-    },
-    {
-        icon: '🔧',
-        title: 'Tadilat & Restorasyon',
-        description: 'Mevcut yapılarda tadilat ve tarihi yapılarda restorasyon projeleri.',
-        features: ['Tadilat Projesi', 'Güçlendirme', 'Cephe Yenileme', 'Restorasyon']
-    }
+    { icon: '🏠', title: 'Mimari Proje', desc: 'Konut, villa, apartman ve ticari yapılar için modern ve fonksiyonel mimari tasarımlar. Konsept geliştirmeden uygulama projesine kadar A-Z hizmet.' },
+    { icon: '🔍', title: 'İç Mimarlık', desc: 'Yaşam ve çalışma alanlarınız için estetik ve fonksiyonel iç mekan tasarımları. Renk, malzeme ve mobilya seçimi dahil komple çözümler.' },
+    { icon: '🏗️', title: 'Tadilat & Renovasyon', desc: 'Mevcut yapılarınızın modernizasyonu ve yenilenmesi. Mutfak, banyo, ofis tadilatından komple dönüşüme profesyonel hizmet.' },
+    { icon: '📋', title: 'Ruhsat İşlemleri', desc: 'İnşaat ruhsatı, yapı kullanma izni, imar planı ve belediye süreçleri için kapsamlı danışmanlık ve takip hizmeti.' },
+    { icon: '🖥️', title: '3D Görselleştirme', desc: 'Projelerinizin fotorealistik 3D görselleri ve animasyonları. Projenizi inşaattan önce en detaylı şekilde görme imkanı.' },
+    { icon: '🔧', title: 'Şantiye Yönetimi', desc: 'Projelerin saha uygulaması, malzeme kontrolü ve iş gücü koordinasyonu. Zamanında ve bütçeye uygun teslim garantisi.' },
 ];
 
-// Hizmetleri yükle
 function loadServices() {
+    let services;
+    try {
+        const saved = localStorage.getItem('cee_services');
+        services = saved ? JSON.parse(saved) : defaultServices;
+        if (!services || services.length === 0) services = defaultServices;
+    } catch(e) { services = defaultServices; }
+    
     const grid = document.getElementById('servicesGrid');
-    let services = [];
-    
-    const savedServices = localStorage.getItem('cee_services');
-    
-    if (savedServices) {
-        try {
-            services = JSON.parse(savedServices);
-        } catch (e) {
-            services = defaultServices;
-        }
-    } else {
-        services = defaultServices;
-    }
-    
-    if (services.length === 0) {
-        services = defaultServices;
-    }
+    if (!grid) return;
     
     grid.innerHTML = services.map(s => `
         <div class="service-card">
-            <div class="service-icon">${s.icon || '📐'}</div>
-            <h3 class="service-title">${s.title || s.name}</h3>
-            <p class="service-description">${s.description || s.desc}</p>
-            ${s.features && s.features.length > 0 ? `
-                <ul class="service-features">
-                    ${s.features.map(f => `<li>${f}</li>`).join('')}
-                </ul>
-            ` : ''}
+            <div class="service-icon">${s.icon}</div>
+            <h3>${s.title || s.titleTr || ''}</h3>
+            <p>${s.desc || s.descTr || ''}</p>
         </div>
     `).join('');
 }
-</script>
+document.addEventListener('DOMContentLoaded', loadServices);
 
+</script>
 <script src="lang-switcher.js"></script>
 <script src="cookie-consent.js"></script>
 </body>
