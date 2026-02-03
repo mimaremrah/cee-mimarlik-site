@@ -3432,20 +3432,31 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+            top: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             padding: 35px;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 0.5s;
         }
 
         .project-card:hover .project-overlay {
-            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
         }
         
         .project-detail-btn:hover {
             background: white !important;
             color: #1a1a1a !important;
             border-color: white !important;
+        }
+        .project-card:hover .project-detail-btn {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .project-card:hover .proj-desc-hover {
+            max-height: 80px !important;
+            opacity: 1 !important;
         }
 
         .project-title {
@@ -5171,11 +5182,21 @@
             }
             
             .project-card {
+                aspect-ratio: 3/4 !important;
                 height: auto !important;
             }
             
             .project-card img {
-                height: 250px !important;
+                height: 100% !important;
+            }
+
+            .project-card .proj-desc-hover {
+                max-height: 60px !important;
+                opacity: 1 !important;
+            }
+            .project-card .project-detail-btn {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
             }
             
             .team-grid {
@@ -8712,11 +8733,11 @@ loadFaqs();
                         </div>
                         <div>
                             <strong style="display: block; color: var(--primary);" data-tr="E-posta" data-en="Email" data-de="E-Mail" data-ru="Эл. почта" data-ar="البريد الإلكتروني" data-fa="ایمیل" data-es="Correo">E-posta</strong>
-                            <span style="color: var(--accent);" id="displayEmail">ceemimarlik@gmail.com</span>
+                            <span style="color: var(--accent);" id="displayEmail"><span class="__cf_email__" data-cfemail="6e0d0b0b0307030f1c0207052e09030f0702400d0103">[email&#160;protected]</span></span>
                         </div>
                     </a>
-                    <a href="mailto:info@ceemimarlik.com" id="emailLink2" style="display: flex; align-items: center; gap: 15px; text-decoration: none; cursor: pointer; padding-left: 75px; margin-top: -5px;">
-                        <span style="color: var(--accent);" id="displayEmail2">info@ceemimarlik.com</span>
+                    <a href="/cdn-cgi/l/email-protection#2b42454d446b484e4e4642464a5947424005484446" id="emailLink2" style="display: flex; align-items: center; gap: 15px; text-decoration: none; cursor: pointer; padding-left: 75px; margin-top: -5px;">
+                        <span style="color: var(--accent);" id="displayEmail2"><span class="__cf_email__" data-cfemail="21484f474e614244444c484c40534d484a0f424e4c">[email&#160;protected]</span></span>
                     </a>
                 </div>
 
@@ -8922,7 +8943,7 @@ loadFaqs();
 
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Telefon tıklama - Mobilde arama, bilgisayarda WhatsApp
 function handlePhoneClick() {
     const contactSettings = JSON.parse(localStorage.getItem('contact_settings') || '{}');
@@ -10419,14 +10440,14 @@ function renderProjects() {
         }
         
         return `
-            <div class="project-card" onclick="openLightbox('${project.img}', '${project.id}', ${isPDF}, ${isVideo})">
+            <a href="project-detail.html?id=${projects.indexOf(project)}" class="project-card" style="text-decoration:none">
                 ${mediaHTML}
                 <div class="project-overlay">
                     ${title ? `<div class="project-title">${title}</div>` : ''}
-                    ${description ? `<p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 20px;">${description}</p>` : ''}
-                    <button class="project-detail-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 12px 30px; font-size: 12px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;">${viewMoreText[lang] || viewMoreText.tr}</button>
+                    ${description ? `<p style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.6; margin-bottom: 15px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s, opacity 0.5s;" class="proj-desc-hover">${description.length > 80 ? description.substring(0, 80) + '...' : description}</p>` : ''}
+                    <span class="project-detail-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 10px 24px; font-size: 10px; letter-spacing: 3px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; display: inline-block; width: fit-content; opacity: 0; transform: translateY(10px); transition: opacity 0.4s 0.1s, transform 0.4s 0.1s, background 0.3s;">${viewMoreText[lang] || viewMoreText.tr} →</span>
                 </div>
-            </div>
+            </a>
         `;
     }).join('');
 }
@@ -14233,16 +14254,3 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         adminBtn.onmouseover = function() {
             this.style.transform = 'translateX(5px)';
-            this.style.boxShadow = '0 6px 25px rgba(0,0,0,0.4)';
-        };
-        adminBtn.onmouseout = function() {
-            this.style.transform = 'translateX(0)';
-            this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
-        };
-        
-        document.body.appendChild(adminBtn);
-    }
-})();
-</script>
-</body>
-</html>

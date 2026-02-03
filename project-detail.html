@@ -5,19 +5,15 @@
     <link rel="apple-touch-icon" href="appletouchicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-tr="Proje Detay - CEE Mimarlık" data-en="Project Detail - CEE Architecture" data-de="Projektdetail - CEE" data-ru="Детали проекта - CEE" data-ar="تفاصيل المشروع - CEE" data-fa="جزئیات پروژه - CEE" data-es="Detalle del Proyecto - CEE">Proje Detay - CEE Mimarlık</title>
+    <title data-tr="Proje Detay - CEE Mimarlık" data-en="Project Detail - CEE Architecture">Proje Detay - CEE Mimarlık</title>
     <meta name="description" content="CEE Mimarlık projesi detayları">
     <meta property="og:title" content="CEE Mimarlık - Proje Detayı">
-    <meta property="og:description" content="CEE Mimarlık projelerini inceleyin.">
     <meta property="og:image" content="https://www.ceemimarlik.com/ogimage.jpg">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.ceemimarlik.com/project-detail.html">
     <link rel="stylesheet" href="cross-browser-fix.css">
     <style>
         :root {
-            --primary: #2c2c2c; --secondary: #666; --accent: #1a1a1a;
-            --bg: #fafafa; --bg-card: #ffffff; --border: #e8e8e8;
-            --text: #2c2c2c; --text-light: #888;
+            --primary: #2c2c2c; --secondary: #666; --bg: #fafafa; --bg-card: #fff;
+            --border: #e8e8e8; --text: #2c2c2c; --text-light: #888;
             --metallic: linear-gradient(180deg, #808080, #505050, #2a2a2a, #1a1a1a);
             --metallic-light: linear-gradient(180deg, #999, #777, #555);
         }
@@ -31,99 +27,109 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
 
         /* HEADER */
-        .site-header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border); transition: all 0.4s;
-        }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.4s; }
         body.dark-mode .site-header { background: rgba(15,15,15,0.97); }
         .header-inner { max-width: 1200px; margin: 0 auto; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo-area img { height: 70px; width: auto; }
-        .logo-text { font-size: 7px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); margin-top: 4px; }
+        .logo-text { font-size: 7px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); }
         .header-right { display: flex; align-items: center; gap: 15px; }
-        .btn-back {
-            font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--primary);
-            text-decoration: none; padding: 8px 20px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.3s;
-        }
+        .btn-back { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); text-decoration: none; padding: 8px 20px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.3s; }
         .btn-back:hover { background: var(--primary); color: white; }
         body.dark-mode .btn-back { color: #ccc; border-color: #555; }
         body.dark-mode .btn-back:hover { background: #ccc; color: #111; }
         .theme-toggle { background: none; border: none; font-size: 20px; cursor: pointer; padding: 6px; }
 
-        /* MAIN */
-        main { margin-top: 120px; padding: 0 20px 80px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-
-        /* HERO IMAGE */
-        .project-hero { width: 100%; height: 450px; border-radius: 16px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        /* HERO */
+        .project-hero { position: relative; width: 100%; height: 70vh; min-height: 400px; max-height: 600px; overflow: hidden; margin-top: 94px; }
         .project-hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 60px; }
+        .hero-category { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+        .hero-title { font-size: clamp(28px, 5vw, 48px); font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: white; margin-bottom: 20px; background: linear-gradient(180deg, #fff, #ccc, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-meta { display: flex; gap: 25px; flex-wrap: wrap; }
+        .hero-meta-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); font-size: 14px; }
+        .hero-meta-item .meta-icon { font-size: 16px; }
+
+        /* CONTENT */
+        .content-area { max-width: 1100px; margin: 0 auto; padding: 60px 30px 80px; }
+
+        /* DESCRIPTION */
+        .project-desc-section { margin-bottom: 60px; }
+        .section-title { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .project-description { font-size: 16px; line-height: 2; color: var(--secondary); }
+
+        /* INFO GRID */
+        .project-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 60px; }
+        .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: transform 0.3s; }
+        .info-card:hover { transform: translateY(-3px); }
+        .info-card .info-icon { font-size: 24px; margin-bottom: 8px; }
+        .info-card .info-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
+        .info-card .info-value { font-size: 15px; font-weight: 500; color: var(--text); }
 
         /* GALLERY */
-        .project-gallery { display: flex; gap: 10px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 10px; }
-        .project-gallery img { width: 150px; height: 100px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid transparent; transition: all 0.3s; flex-shrink: 0; }
-        .project-gallery img:hover, .project-gallery img.active { border-color: var(--primary); opacity: 0.9; }
+        .gallery-section { margin-bottom: 60px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+        .gallery-item { position: relative; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item::after { content: '🔍'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; opacity: 0; transition: opacity 0.3s; pointer-events: none; background: rgba(0,0,0,0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .gallery-item:hover::after { opacity: 1; }
 
-        /* INFO CARD */
-        .project-info { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 50px; margin-bottom: 40px; }
-        .project-title {
-            font-size: clamp(24px, 4vw, 36px); font-weight: 300; letter-spacing: 4px; text-transform: uppercase;
-            background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            margin-bottom: 20px;
-        }
-        .section-decoration { display: flex; align-items: center; gap: 15px; margin: 15px 0 25px; }
-        .section-decoration::before, .section-decoration::after { content: ''; width: 30px; height: 1px; background: var(--border); }
-        .section-decoration .dot { width: 5px; height: 5px; background: var(--metallic-light); transform: rotate(45deg); }
+        /* DRAWINGS */
+        .drawings-section { margin-bottom: 60px; }
+        .drawings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .drawing-item { position: relative; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+        .drawing-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .drawing-item img { width: 100%; height: 100%; object-fit: cover; }
+        .drawing-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 15px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
 
-        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
-        .project-tag {
-            font-size: 10px; letter-spacing: 2px; color: var(--secondary); border: 1px solid var(--border);
-            padding: 6px 16px; text-transform: uppercase; border-radius: 4px;
-        }
-        .project-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 25px; }
-        .meta-item { padding: 12px; background: var(--bg); border-radius: 10px; text-align: center; }
-        .meta-item .meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
-        .meta-item .meta-value { font-size: 14px; font-weight: 500; color: var(--text); }
-        .project-description { font-size: 15px; line-height: 2; color: var(--secondary); }
+        /* LIGHTBOX */
+        .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 20px; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 32px; cursor: pointer; background: none; border: none; z-index: 10000; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .lightbox-close:hover { opacity: 0.7; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 36px; cursor: pointer; background: rgba(255,255,255,0.1); border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-counter { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 2px; }
 
         /* CTA */
-        .project-cta {
-            background: var(--metallic); padding: 50px; border-radius: 16px; text-align: center;
-        }
-        .cta-title { font-size: 24px; font-weight: 300; color: white; margin-bottom: 15px; letter-spacing: 3px; }
-        .cta-text { color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 14px; }
-        .cta-btn {
-            display: inline-block; padding: 14px 35px; background: white; color: var(--primary);
-            text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-            border-radius: 6px; transition: all 0.3s;
-        }
+        .cta-section { background: var(--metallic); padding: 60px 30px; border-radius: 16px; text-align: center; margin-bottom: 60px; }
+        .cta-section h3 { font-size: 24px; font-weight: 300; color: white; margin-bottom: 12px; letter-spacing: 3px; }
+        .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 14px; }
+        .cta-btn { display: inline-block; padding: 14px 35px; background: white; color: #1a1a1a; text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; border-radius: 6px; transition: all 0.3s; }
         .cta-btn:hover { background: #f0f0f0; transform: translateY(-2px); }
-
-        /* LOADING */
-        .loading { text-align: center; padding: 80px 20px; }
-        .loading-spinner { width: 35px; height: 35px; border: 2px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .not-found { text-align: center; padding: 80px 20px; }
-        .not-found h2 { font-size: 28px; font-weight: 300; margin-bottom: 15px; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* FOOTER */
         .site-footer { text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); }
         .site-footer p { font-size: 12px; color: var(--text-light); }
-        .site-footer a { color: var(--text-light); text-decoration: underline; }
+
+        /* LOADING */
+        .loading { text-align: center; padding: 200px 20px; }
+        .loading-spinner { width: 35px; height: 35px; border: 2px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .not-found { text-align: center; padding: 200px 20px; }
+        .not-found h2 { font-size: 28px; font-weight: 300; margin-bottom: 15px; background: var(--metallic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header-inner { padding: 10px 15px; }
             .logo-area img { height: 50px; }
-            .btn-back { font-size: 10px; padding: 6px 12px; }
-            main { margin-top: 100px; padding: 0 15px 50px; }
-            .project-hero { height: 280px; border-radius: 12px; }
-            .project-info { padding: 30px 20px; border-radius: 12px; }
-            .project-cta { padding: 35px 20px; border-radius: 12px; }
-            .cta-title { font-size: 20px; }
+            .project-hero { height: 50vh; min-height: 300px; margin-top: 80px; }
+            .hero-overlay { padding: 30px 20px; }
+            .hero-title { letter-spacing: 3px; }
+            .hero-meta { gap: 15px; }
+            .content-area { padding: 40px 15px 60px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .drawings-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 40px 20px; border-radius: 12px; }
         }
         @media (max-width: 375px) {
             .logo-area img { height: 40px; }
-            .project-hero { height: 220px; }
+            .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -136,117 +142,173 @@
             <span class="logo-text" id="logoSubText">MİMARLIK & YAPI SİSTEMLERİ</span>
         </a>
         <div class="header-right">
-            <a href="projeler.html" class="btn-back" data-tr="← Projeler" data-en="← Projects" data-de="← Projekte" data-ru="← Проекты" data-ar="← المشاريع" data-fa="← پروژه‌ها" data-es="← Proyectos">← Projeler</a>
-            <button class="theme-toggle" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema Değiştir">🌙</button>
+            <a href="projeler.html" class="btn-back" data-tr="← Projeler" data-en="← Projects">← Projeler</a>
+            <button class="theme-toggle" onclick="toggleDarkMode()" id="themeBtn" aria-label="Tema">🌙</button>
         </div>
     </div>
 </header>
 
-<main id="mainContent">
-    <div class="loading"><div class="loading-spinner"></div><p data-tr="Proje yükleniyor..." data-en="Loading project..." data-de="Projekt wird geladen..." data-ru="Загрузка проекта..." data-ar="جاري تحميل المشروع..." data-fa="در حال بارگذاری..." data-es="Cargando proyecto...">Proje yükleniyor...</p></div>
-</main>
+<div id="mainContent">
+    <div class="loading"><div class="loading-spinner"></div><p>Proje yükleniyor...</p></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+    <img id="lightboxImg" src="" alt="Fotoğraf">
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
 <footer class="site-footer">
-    <p>© 2026 CEE Mimarlık. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span> · <a href="gizlilik.html" data-tr="Gizlilik" data-en="Privacy">Gizlilik</a></p>
+    <p>© 2026 CEE Mimarlık. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span> · <a href="gizlilik.html" style="color:inherit;text-decoration:underline">Gizlilik</a></p>
 </footer>
 
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const projectId = parseInt(urlParams.get('id'));
+let lightboxImages = [];
+let lightboxIdx = 0;
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDark);
-    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    document.getElementById('themeBtn').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 }
+
+function openLightbox(images, startIdx) {
+    lightboxImages = images;
+    lightboxIdx = startIdx || 0;
+    showLightboxImage();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+    lightboxIdx = (lightboxIdx + dir + lightboxImages.length) % lightboxImages.length;
+    showLightboxImage();
+}
+function showLightboxImage() {
+    document.getElementById('lightboxImg').src = lightboxImages[lightboxIdx];
+    document.getElementById('lightboxCounter').textContent = (lightboxIdx + 1) + ' / ' + lightboxImages.length;
+}
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLightbox(); });
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+});
 
 function renderProject(project) {
     const main = document.getElementById('mainContent');
     if (!project) {
-        main.innerHTML = '<div class="not-found"><h2>Proje Bulunamadı</h2><p style="color:var(--secondary);margin-bottom:25px">Aradığınız proje mevcut değil veya kaldırılmış olabilir.</p><a href="projeler.html" class="cta-btn" style="display:inline-block;background:var(--primary);color:white;padding:12px 30px;border-radius:6px;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase">Projelere Dön</a></div>';
+        main.innerHTML = `<div class="not-found"><h2>Proje Bulunamadı</h2><p style="color:var(--secondary);margin-bottom:25px">Aradığınız proje mevcut değil.</p><a href="projeler.html" class="cta-btn">Projelere Dön</a></div>`;
         return;
     }
 
     const images = project.images || (project.image ? [project.image] : []);
+    const drawings = project.drawings || [];
     const mainImg = images[0] || '';
-    const description = project.description || 'Bu proje, modern mimarlık anlayışıyla tasarlanmış olup, estetik ve işlevselliği bir arada sunmaktadır. Proje tasarımından uygulama süreçlerine kadar tüm aşamalar titizlikle yönetilerek, mekânlara teknik açıdan sağlam, estetik ve işlevsel çözümler sunulmaktadır.';
+    const title = project.title || 'Proje';
+    const desc = project.description || project.shortDesc || '';
 
     let html = '';
 
-    // Hero image
+    // HERO
     if (mainImg) {
-        html += `<div class="project-hero"><img src="${mainImg}" alt="${project.title || 'Proje'}" id="heroImg"></div>`;
+        html += `<div class="project-hero">
+            <img src="${mainImg}" alt="${title}">
+            <div class="hero-overlay">
+                <div class="hero-category">${project.category || 'Proje'}</div>
+                <h1 class="hero-title">${title}</h1>
+                <div class="hero-meta">
+                    ${project.location ? `<div class="hero-meta-item"><span class="meta-icon">📍</span> ${project.location}</div>` : ''}
+                    ${project.area ? `<div class="hero-meta-item"><span class="meta-icon">📐</span> ${project.area} m²</div>` : ''}
+                    ${project.date ? `<div class="hero-meta-item"><span class="meta-icon">📅</span> ${project.date}</div>` : ''}
+                    ${project.status ? `<div class="hero-meta-item"><span class="meta-icon">${project.status === 'Tamamlandı' ? '✅' : project.status === 'Devam Ediyor' ? '🔄' : '📋'}</span> ${project.status}</div>` : ''}
+                </div>
+            </div>
+        </div>`;
     }
 
-    // Gallery (if multiple images)
+    html += '<div class="content-area">';
+
+    // INFO CARDS
+    const infoItems = [];
+    if (project.category) infoItems.push({ icon: '📂', label: 'Kategori', value: project.category });
+    if (project.location) infoItems.push({ icon: '📍', label: 'Konum', value: project.location });
+    if (project.area) infoItems.push({ icon: '📐', label: 'Alan', value: project.area + ' m²' });
+    if (project.date) infoItems.push({ icon: '📅', label: 'Tarih', value: project.date });
+    if (project.status) infoItems.push({ icon: '📋', label: 'Durum', value: project.status });
+
+    if (infoItems.length > 0) {
+        html += '<div class="project-info-grid">';
+        infoItems.forEach(item => {
+            html += `<div class="info-card"><div class="info-icon">${item.icon}</div><div class="info-label">${item.label}</div><div class="info-value">${item.value}</div></div>`;
+        });
+        html += '</div>';
+    }
+
+    // DESCRIPTION
+    if (desc) {
+        html += `<div class="project-desc-section">
+            <h2 class="section-title" data-tr="Proje Hakkında" data-en="About Project">Proje Hakkında</h2>
+            <p class="project-description">${desc.replace(/\n/g, '<br>')}</p>
+        </div>`;
+    }
+
+    // PHOTO GALLERY
     if (images.length > 1) {
-        html += '<div class="project-gallery">';
+        html += `<div class="gallery-section">
+            <h2 class="section-title" data-tr="Proje Fotoğrafları" data-en="Project Photos">Proje Fotoğrafları</h2>
+            <div class="gallery-grid">`;
         images.forEach((img, i) => {
-            html += `<img src="${img}" alt="Fotoğraf ${i+1}" class="${i===0?'active':''}" onclick="document.getElementById('heroImg').src=this.src;document.querySelectorAll('.project-gallery img').forEach(g=>g.classList.remove('active'));this.classList.add('active')">`;
+            html += `<div class="gallery-item" onclick="openLightbox(${JSON.stringify(images).replace(/"/g, '&quot;')}, ${i})"><img src="${img}" alt="Fotoğraf ${i+1}" loading="lazy"></div>`;
         });
-        html += '</div>';
+        html += '</div></div>';
     }
 
-    // Info card
-    html += '<div class="project-info">';
-    html += `<h1 class="project-title">${project.title || 'Proje Detayı'}</h1>`;
-    html += '<div class="section-decoration"><span class="dot"></span></div>';
-
-    // Tags
-    const tags = [];
-    if (project.category) tags.push(project.category);
-    if (project.status) tags.push(project.status);
-    if (tags.length > 0) {
-        html += '<div class="project-tags">' + tags.map(t => `<span class="project-tag">${t}</span>`).join('') + '</div>';
-    }
-
-    // Meta grid
-    const metaItems = [];
-    if (project.location) metaItems.push({ label: '📍 Konum', value: project.location });
-    if (project.area) metaItems.push({ label: '📐 Alan', value: project.area + ' m²' });
-    if (project.date) metaItems.push({ label: '📅 Tarih', value: project.date });
-    if (project.category) metaItems.push({ label: '📂 Kategori', value: project.category });
-
-    if (metaItems.length > 0) {
-        html += '<div class="project-meta-grid">';
-        metaItems.forEach(m => {
-            html += `<div class="meta-item"><div class="meta-label">${m.label}</div><div class="meta-value">${m.value}</div></div>`;
+    // DRAWINGS
+    if (drawings.length > 0) {
+        html += `<div class="drawings-section">
+            <h2 class="section-title" data-tr="Çizimler & Planlar" data-en="Drawings & Plans">Çizimler & Planlar</h2>
+            <div class="drawings-grid">`;
+        drawings.forEach((img, i) => {
+            html += `<div class="drawing-item" onclick="openLightbox(${JSON.stringify(drawings).replace(/"/g, '&quot;')}, ${i})"><img src="${img}" alt="Çizim ${i+1}" loading="lazy"><div class="drawing-label">Çizim ${i+1}</div></div>`;
         });
-        html += '</div>';
+        html += '</div></div>';
     }
-
-    html += `<p class="project-description">${description}</p>`;
-    html += '</div>';
 
     // CTA
-    html += `<div class="project-cta">
-        <h3 class="cta-title" data-tr="Benzer Bir Proje Mi Düşünüyorsunuz?" data-en="Thinking About a Similar Project?" data-de="Denken Sie an ein ähnliches Projekt?" data-ru="Думаете о подобном проекте?" data-ar="هل تفكر في مشروع مشابه؟" data-fa="آیا به پروژه مشابهی فکر می‌کنید؟" data-es="¿Pensando en un proyecto similar?">Benzer Bir Proje Mi Düşünüyorsunuz?</h3>
-        <p class="cta-text" data-tr="Mimari projeleriniz için bizimle iletişime geçebilirsiniz." data-en="Contact us for your architectural projects." data-de="Kontaktieren Sie uns für Ihre Architekturprojekte." data-ru="Свяжитесь с нами для ваших архитектурных проектов." data-ar="تواصل معنا لمشاريعك المعمارية." data-fa="برای پروژه‌های معماری خود با ما تماس بگیرید." data-es="Contáctenos para sus proyectos arquitectónicos.">Mimari projeleriniz için bizimle iletişime geçebilirsiniz.</p>
-        <a href="iletisim.html" class="cta-btn" data-tr="İletişime Geç" data-en="Contact Us" data-de="Kontakt" data-ru="Связаться" data-ar="اتصل بنا" data-fa="تماس بگیرید" data-es="Contacto">İletişime Geç</a>
+    html += `<div class="cta-section">
+        <h3 data-tr="Benzer Bir Proje Mi Düşünüyorsunuz?" data-en="Thinking About a Similar Project?">Benzer Bir Proje Mi Düşünüyorsunuz?</h3>
+        <p data-tr="Mimari projeleriniz için bizimle iletişime geçebilirsiniz." data-en="Contact us for your architectural projects.">Mimari projeleriniz için bizimle iletişime geçebilirsiniz.</p>
+        <a href="iletisim.html" class="cta-btn" data-tr="İletişime Geç" data-en="Contact Us">İletişime Geç</a>
     </div>`;
 
+    html += '</div>';
     main.innerHTML = html;
-    document.title = (project.title || 'Proje') + ' - CEE Mimarlık';
+    document.title = title + ' - CEE Mimarlık';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Dark mode
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('themeBtn').textContent = '☀️';
     }
-    // Logo from admin
     try {
         const ls = JSON.parse(localStorage.getItem('cee_logo_settings') || '{}');
         if (ls.image) document.getElementById('headerLogo').src = ls.image;
         if (ls.text) document.getElementById('logoSubText').textContent = ls.text;
     } catch(e) {}
 
-    // Load project from correct localStorage key
     let projects = [];
     try { projects = JSON.parse(localStorage.getItem('cee_projects') || '[]'); } catch(e) {}
-
     const project = !isNaN(projectId) && projectId >= 0 && projectId < projects.length ? projects[projectId] : null;
     renderProject(project);
 });

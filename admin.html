@@ -986,7 +986,8 @@ function openProjectModal(editIdx) {
             <div class="form-group"><label class="form-label">📐 Alan (m²)</label><input type="text" class="form-input" id="prjArea" value="${p.area || ''}" placeholder="120"></div>
             <div class="form-group"><label class="form-label">📅 Tarih</label><input type="text" class="form-input" id="prjDate" value="${p.date || ''}" placeholder="2024"></div>
         </div>
-        <div class="form-group"><label class="form-label">📝 Açıklama</label><textarea class="form-textarea" id="prjDesc" rows="3" placeholder="Proje hakkında kısa açıklama...">${p.description || ''}</textarea></div>
+        <div class="form-group"><label class="form-label">📝 Kısa Açıklama (Kart üzerinde görünür)</label><textarea class="form-textarea" id="prjShortDesc" rows="2" placeholder="Kart üzerinde görünecek 1-2 cümle...">${p.shortDesc || ''}</textarea></div>
+        <div class="form-group"><label class="form-label">📄 Detaylı Açıklama (Detay sayfasında görünür)</label><textarea class="form-textarea" id="prjDesc" rows="3" placeholder="Proje hakkında detaylı açıklama...">${p.description || ''}</textarea></div>
         <div class="form-group">
             <label class="form-label">📷 Proje Fotoğrafları</label>
             <div class="upload-area" onclick="document.getElementById('prjPhotos').click()" style="padding:15px">
@@ -997,18 +998,42 @@ function openProjectModal(editIdx) {
             <div id="prjPhotoPreview" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
                 ${(p.images || (p.image ? [p.image] : [])).map((img, j) => `<div style="position:relative;width:80px;height:60px;border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="${img}" style="width:100%;height:100%;object-fit:cover"><button onclick="removeProjectPhoto(${j})" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button></div>`).join('')}
             </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">📐 Çizim & Plan Fotoğrafları</label>
+            <div class="upload-area" onclick="document.getElementById('prjDrawings').click()" style="padding:15px">
+                <div class="upload-icon" style="font-size:24px">📏</div>
+                <div class="upload-text">Çizim/plan yüklemek için tıklayın</div>
+            </div>
+            <input type="file" id="prjDrawings" accept="image/*" multiple style="display:none" onchange="previewDrawingPhotos(this)">
+            <div id="prjDrawingPreview" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+                ${(p.drawings || []).map((img, j) => `<div style="position:relative;width:80px;height:60px;border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="${img}" style="width:100%;height:100%;object-fit:cover"><button onclick="removeDrawingPhoto(${j})" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button></div>`).join('')}
+            </div>
         </div>`;
     modalMode = 'project';
     document.getElementById('modalSaveBtn').style.display = '';
     document.getElementById('genericModal').classList.add('active');
 }
 let tempProjectPhotos = [];
+let tempDrawingPhotos = [];
 function previewProjectPhotos(input) {
     const preview = document.getElementById('prjPhotoPreview');
     for (let f of input.files) {
         const reader = new FileReader();
         reader.onload = e => {
             tempProjectPhotos.push(e.target.result);
+            preview.innerHTML += `<div style="position:relative;width:80px;height:60px;border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover"><button onclick="this.parentElement.remove()" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button></div>`;
+        };
+        reader.readAsDataURL(f);
+    }
+    input.value = '';
+}
+function previewDrawingPhotos(input) {
+    const preview = document.getElementById('prjDrawingPreview');
+    for (let f of input.files) {
+        const reader = new FileReader();
+        reader.onload = e => {
+            tempDrawingPhotos.push(e.target.result);
             preview.innerHTML += `<div style="position:relative;width:80px;height:60px;border-radius:8px;overflow:hidden;border:1px solid var(--border)"><img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover"><button onclick="this.parentElement.remove()" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button></div>`;
         };
         reader.readAsDataURL(f);
@@ -1023,6 +1048,14 @@ function removeProjectPhoto(idx) {
         localStorage.setItem('cee_projects', JSON.stringify(projects));
     }
     document.getElementById('prjPhotoPreview').children[idx]?.remove();
+}
+function removeDrawingPhoto(idx) {
+    if (projectEditIdx >= 0) {
+        const p = projects[projectEditIdx];
+        if (p.drawings) { p.drawings.splice(idx, 1); }
+        localStorage.setItem('cee_projects', JSON.stringify(projects));
+    }
+    document.getElementById('prjDrawingPreview').children[idx]?.remove();
 }
 
 function uploadProjects(input) {
@@ -1166,6 +1199,8 @@ function saveModal() {
         if (!title) { toast('Proje adı gerekli', 'error'); return; }
         const existingImages = projectEditIdx >= 0 ? (projects[projectEditIdx].images || (projects[projectEditIdx].image ? [projects[projectEditIdx].image] : [])) : [];
         const allImages = [...existingImages, ...tempProjectPhotos];
+        const existingDrawings = projectEditIdx >= 0 ? (projects[projectEditIdx].drawings || []) : [];
+        const allDrawings = [...existingDrawings, ...tempDrawingPhotos];
         const proj = {
             title,
             category: document.getElementById('prjCategory').value || 'Genel',
@@ -1173,8 +1208,10 @@ function saveModal() {
             status: document.getElementById('prjStatus').value,
             area: document.getElementById('prjArea').value,
             date: document.getElementById('prjDate').value,
+            shortDesc: document.getElementById('prjShortDesc').value,
             description: document.getElementById('prjDesc').value,
             images: allImages,
+            drawings: allDrawings,
             image: allImages[0] || '',
             featured: projectEditIdx >= 0 ? projects[projectEditIdx].featured : false
         };
@@ -1183,6 +1220,7 @@ function saveModal() {
         localStorage.setItem('cee_projects', JSON.stringify(projects));
         renderProjects(); updateStats();
         tempProjectPhotos = [];
+        tempDrawingPhotos = [];
         toast(projectEditIdx >= 0 ? 'Proje güncellendi' : 'Proje eklendi', 'success');
         closeModal(); return;
     }
