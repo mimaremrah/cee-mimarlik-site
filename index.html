@@ -131,7 +131,7 @@
     <link rel="canonical" href="https://www.ceemimarlik.com">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- favicon handled by logohq.png above -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
     <!-- Preload Critical Resources -->
@@ -10495,10 +10495,10 @@ const defaultTeamMembers = [
         name: 'Emrah İpek',
         role: 'Baş Mimar',
         photo: '',
-        bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde deneyim sahibiyim. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
+        bio: 'Yaratıcı ve çözüm odaklı bir mimar olarak konut, ticari ve kamusal projelerde tasarım ve uygulama süreçlerinde uzmanlaşmış bir mimarım. Konsept geliştirme, uygulama projesi çizimi ve saha koordinasyonu konularında yetkinim. AutoCAD, Revit ve 3D modelleme programlarını etkin kullanarak estetik, işlevsel ve sürdürülebilir tasarımlar üretmeye odaklanırım. Takım çalışmasına yatkın, sorumluluk sahibi ve detaylara önem veren bir mimarım.',
         education: 'Kırklareli Üniversitesi',
-        experience: '15',
-        projects: '100',
+        experience: '',
+        projects: '',
         expertise: 'Mimari',
         email: 'ceemimarlik@gmail.com'
     }
@@ -10508,8 +10508,15 @@ function loadTeam() {
     const grid = document.getElementById('teamGrid');
     if (!grid) return;
     
-    // Her zaman varsayılan ekip üyesini kullan - Emrah İpek
+    // Admin panelden kaydedilmiş ekip üyelerini yükle, yoksa varsayılanı kullan
     let team = defaultTeamMembers;
+    try {
+        const saved = localStorage.getItem('cee_team');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed.length > 0) team = parsed;
+        }
+    } catch(e) {}
     
     // Placeholder fotoğraf
     const placeholderPhoto = "data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23999' font-size='64' dy='.3em'%3E👤%3C/text%3E%3C/svg%3E";
@@ -13727,7 +13734,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         
         if (teamMembers.length > 0) {
             // localStorage'a da kaydet (loadTeam fonksiyonu için)
-            localStorage.setItem('team_members', JSON.stringify(teamMembers));
+            localStorage.setItem('cee_team', JSON.stringify(teamMembers));
             
             // Ekibi yeniden render et
             if (typeof window.loadTeam === 'function') {
